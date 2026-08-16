@@ -1,6 +1,6 @@
 # Journal
 
-_generated 2026-08-16 18:04 UTC · 40 live entries (12 decisions · 18 findings · 1 questions · 9 intents) · 48 total in history_
+_generated 2026-08-16 18:05 UTC · 40 live entries (12 decisions · 18 findings · 1 questions · 9 intents) · 52 total in history_
 
 ## Decisions
 
@@ -90,12 +90,19 @@ _source: human cli:note · confidence: 1.00_
 
 ## Findings
 
-### e01M05VNN1T5TKJ15Q47KSS3FMJ — Cap/ratio admission serialized with SQLite BEGIN IMMEDIATE; typed reservation e…  `current`
-> Concurrent daily-cap and extraction-ratio admission is serialized via SQLite `BEGIN IMMEDIATE`.
+### e01M05VTCM3AR0WFY9TZPG9W1J8 — Cursor migration and init/bootstrap races fixed; test, race, vet, diff checks p…  `current`
+> Cursor migration and init/bootstrap races are fixed. `go test ./...`, race tests, vet, and diff checks pass.
 
-The LLM reservation/settlement accounting in internal/state landed as atomic operations: concurrent daily-cap and extraction-ratio admission checks are serialized using SQLite `BEGIN IMMEDIATE` transactions, and the API surfaces typed errors for limit, overrun, and duplicate settlement. Implementation stayed inside internal/state with no caller or spec edits.
+The cursor-migration monotonicity fix and two init/bootstrap races are resolved in the live diff, and the full suite (`go test ./...`, race tests, vet, diff checks) passes. Remaining blockers are budget-side: unused reservation path, unenforceable cap, and the neutral-cwd regression.
 
-_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-08-34-01a00b8b-ed93-7352-8324-f0366dc281a0.jsonl#L319 · confidence: 0.91 · tags: internal/state/**_
+_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-18-36-01a00b95-1c07-7d61-a3e4-fb76948ee1b9.jsonl#L961 · confidence: 0.90 · tags: cmd/clew/**, internal/state/**_
+
+### e01M05VTCM3AR0WFY9TZKZMBMA4 — Neutral cwd breaks relative custom extractor commands like ./bin/extractor  `current`
+> Neutral cwd breaks supported relative custom commands such as `./bin/extractor`: `llm.go:93-99`.
+
+Running the LLM subprocess with a neutral working directory (llm.go:93-99) breaks the supported configuration of a relative custom command path, e.g. `./bin/extractor`, which resolves against the project directory.
+
+_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-18-36-01a00b95-1c07-7d61-a3e4-fb76948ee1b9.jsonl#L961 · confidence: 0.90 · tags: internal/llm/**_
 
 ### e01M05V9MQWYX3BAX0VXZ70SHTD — D2: cursor rewind replayed 58,754 bytes once  `current`
 > D2 migration failure: split cursor rewind replayed 58754 bytes and spent 1815 extraction tokens once; delivered pushes=0. Fix is monotonic max(extract, watch-extract), with divergent-cursor regression. State backup: state.db.d1-20260816T1748Z.bak.
@@ -110,13 +117,6 @@ _source: human cli:note · confidence: 1.00_
 D1 live dogfood: 30 session entries appeared from 1 real Codex session with 0 manual notes; observed=5549571, live+backfill extraction=30184, all-LLM=39091, pushes delivered=0/0, open alerts=10; 46 records in 3 newly observed multi-agent metadata classes were pinned as non-utterance adapter metadata.
 
 _source: human cli:note · confidence: 1.00_
-
-### e01M05TCM2N1P9P2EQSE8YKVQX3 — Push failure paths unchecked: unset endpoint returns success, HTTP errors ignor…  `current`
-> HTTP errors are also unchecked.
-
-Audit of the push path found two defects that make push precision unmeasurable: an unset push endpoint returns success (so alerts get a false `pushed_at` mark), and HTTP errors from the push call are not checked either. Located at internal/push/push.go:16 and cmd/clew/watchcmd.go:281.
-
-_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-00-58-01a00b84-f81d-7a61-a3c3-e5bb6beb9ee3.jsonl#L1075 · confidence: 0.87 · tags: internal/push/**, cmd/clew/** · taint: tool_result_
 
 ### e01M05T4XG0RJWQTP25T1K58B61 — Confirm/reject only in event YAML; adapter unknowns undated, absent from status  `current`
 > Confirm/reject exists only in journal event YAML.
@@ -232,21 +232,21 @@ _source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15 · confide
 
 Before treating the internal/state reservation/settlement work as done, do a second review pass covering rollover, double-settlement, and migration behavior, then run the wider test suite beyond the state package.
 
-_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-08-34-01a00b8b-ed93-7352-8324-f0366dc281a0.jsonl#L268 · confidence: 0.85 · tags: internal/state/** · evidence: 1_
+_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-08-34-01a00b8b-ed93-7352-8324-f0366dc281a0.jsonl#L268 · confidence: 0.85 · tags: internal/state/** · evidence: 2_
 
 ### e01M05V5HWA6TFT0A0KDY1QV6C0 — Add transactional reservation + settlement accounting in internal/state with co…  `in_flight`
 > a transactional reservation record plus settlement accounting, with contention tests that prove the cap/ratio cannot be over-admitted
 
 Commitment to implement a transactional reservation record plus settlement accounting inside internal/state, accompanied by contention tests that demonstrate the cap/ratio cannot be over-admitted under concurrent access.
 
-_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-08-34-01a00b8b-ed93-7352-8324-f0366dc281a0.jsonl#L188 · confidence: 0.88 · tags: internal/state/** · evidence: 3_
+_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-08-34-01a00b8b-ed93-7352-8324-f0366dc281a0.jsonl#L188 · confidence: 0.88 · tags: internal/state/** · evidence: 4_
 
 ### e01M05V0G3Q9F41V62P6R5QV53G — Fix migration monotonicity, restore from D1 boundary, rerun cycle before passin…  `in_flight`
 > restoring from the D1 boundary, and will rerun the cycle before calling Task 2 passed.
 
 After the first upgraded live cycle exposed a cursor-rewind defect, the watcher was stopped. Committed follow-up work: correct the cursor migration, restore state from the D1 boundary, and rerun the live cycle. Task 2 will not be declared passed until that rerun is clean.
 
-_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-00-58-01a00b84-f81d-7a61-a3c3-e5bb6beb9ee3.jsonl#L1437 · confidence: 0.92 · evidence: 1_
+_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-00-58-01a00b84-f81d-7a61-a3c3-e5bb6beb9ee3.jsonl#L1437 · confidence: 0.92 · evidence: 2_
 
 ### e01M05TPA9ZK4C8RGC3KBPV2MRF — Re-run the live gate: install binary, normalize spend category, restart watcher  `in_flight`
 > I’m moving back to the live gate now: install this exact binary, normalize the one dogfood spend category, restart the watcher, then verify one full tail/poll cycle has no historical replay, false sessions, or false pushes.

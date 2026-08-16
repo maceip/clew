@@ -1,5 +1,6 @@
 # Journal digest (live entries: id · type/status · title)
-- e01M05VNN1T5TKJ15Q47KSS3FMJ finding/current Cap/ratio admission serialized with SQLite BEGIN IMMEDIATE; typed reservation e…
+- e01M05VTCM3AR0WFY9TZPG9W1J8 finding/current Cursor migration and init/bootstrap races fixed; test, race, vet, diff checks p…
+- e01M05VTCM3AR0WFY9TZKZMBMA4 finding/current Neutral cwd breaks relative custom extractor commands like ./bin/extractor
 - e01M05VFAW9A783PMZZEER0G6FX intent/in_flight Second pass on rollover, double-settlement, migration; then run wider suite
 - e01M05V9MQWYX3BAX0VXZ70SHTD finding/current D2: cursor rewind replayed 58,754 bytes once
 - e01M05V5HWA6TFT0A0KDZY8S45K decision/active Confine the cap/ratio admission fix to internal/state; no caller or spec changes
@@ -9,7 +10,6 @@
 - e01M05TX51R4VZHJMNM804YPMRT finding/current D1: 30 automatic entries; Codex metadata incident pinned
 - e01M05TPA9ZK4C8RGC3KBPV2MRF intent/in_flight Re-run the live gate: install binary, normalize spend category, restart watcher
 - e01M05TG628KAGZ9HCBQSAG562P decision/active Separate session-extraction budget from one-time archaeology budget
-- e01M05TCM2N1P9P2EQSE8YKVQX3 finding/current Push failure paths unchecked: unset endpoint returns success, HTTP errors ignor…
 - e01M05TBYJXEW5N5FE398NJ4RD7 intent/in_flight Tighten live-enrollment/backfill boundary and add failure telemetry
 - e01M05TBYJXEW5N5FE397XYMEHY decision/active Treat first dogfood run's cursor/push/adapter failures as required failure sign…
 - e01M05T4XG0RJWQTP25T1K58B61 finding/current Confirm/reject only in event YAML; adapter unknowns undated, absent from status
