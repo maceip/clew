@@ -441,10 +441,17 @@ func reposLen(db *state.DB) int {
 
 func clipStr(s string, n int) string {
 	s = strings.ReplaceAll(s, "\n", " ")
-	if len(s) <= n {
+	if n <= 0 {
+		return ""
+	}
+	runes := []rune(s)
+	if len(runes) <= n {
 		return s
 	}
-	return s[:n] + "…"
+	if n == 1 {
+		return "…"
+	}
+	return string(runes[:n-1]) + "…"
 }
 
 func minI64(a, b int64) int64 {
