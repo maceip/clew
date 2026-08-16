@@ -1,4 +1,5 @@
 # Journal digest (live entries: id · type/status · title)
+- e01M05VNN1T5TKJ15Q47KSS3FMJ finding/current Cap/ratio admission serialized with SQLite BEGIN IMMEDIATE; typed reservation e…
 - e01M05VFAW9A783PMZZEER0G6FX intent/in_flight Second pass on rollover, double-settlement, migration; then run wider suite
 - e01M05VFAW9A783PMZZEBHJ1TZH finding/current State-package tests pass, including 20-way concurrent reservation races
 - e01M05V9MQWYX3BAX0VXZ70SHTD finding/current D2: cursor rewind replayed 58,754 bytes once
@@ -30,5 +31,4 @@
 - e01M05S9SFKAAM813AR1B8DXEYW finding/current Codex format now detected; watcher tracks only post-baseline bytes
 - e01M05S9SFKAAM813AR1AY96QWH finding/current Final Task 2 dogfood snapshot: 0.113% extraction, 0:1 confirm:reject, 0 pushes
 - e01M05RHSWXDNR10P1PY8ERYA9S decision/active Dogfood metrics predeclared; D0 snapshot recorded
-- e01M05RF74PBCZVAPRY49GCVM7H finding/current answer: Run the live fidelity gate (RealProvider) on a machine with provider ke…
-… (40 more omitted for size)
+… (41 more omitted for size)

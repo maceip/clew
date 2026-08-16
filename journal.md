@@ -1,6 +1,6 @@
 # Journal
 
-_generated 2026-08-16 18:01 UTC · 40 live entries (12 decisions · 18 findings · 1 questions · 9 intents) · 47 total in history_
+_generated 2026-08-16 18:02 UTC · 41 live entries (12 decisions · 19 findings · 1 questions · 9 intents) · 48 total in history_
 
 ## Decisions
 
@@ -89,6 +89,13 @@ Name = clew (owner). Alternatives considered: restart — verb collision, names 
 _source: human cli:note · confidence: 1.00_
 
 ## Findings
+
+### e01M05VNN1T5TKJ15Q47KSS3FMJ — Cap/ratio admission serialized with SQLite BEGIN IMMEDIATE; typed reservation e…  `current`
+> Concurrent daily-cap and extraction-ratio admission is serialized via SQLite `BEGIN IMMEDIATE`.
+
+The LLM reservation/settlement accounting in internal/state landed as atomic operations: concurrent daily-cap and extraction-ratio admission checks are serialized using SQLite `BEGIN IMMEDIATE` transactions, and the API surfaces typed errors for limit, overrun, and duplicate settlement. Implementation stayed inside internal/state with no caller or spec edits.
+
+_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-08-34-01a00b8b-ed93-7352-8324-f0366dc281a0.jsonl#L319 · confidence: 0.91 · tags: internal/state/**_
 
 ### e01M05VFAW9A783PMZZEBHJ1TZH — State-package tests pass, including 20-way concurrent reservation races  `current`
 > The state-package tests now pass, including 20-way concurrent reservation races against both limits.
@@ -239,7 +246,7 @@ _source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T
 
 Commitment to implement a transactional reservation record plus settlement accounting inside internal/state, accompanied by contention tests that demonstrate the cap/ratio cannot be over-admitted under concurrent access.
 
-_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-08-34-01a00b8b-ed93-7352-8324-f0366dc281a0.jsonl#L188 · confidence: 0.88 · tags: internal/state/** · evidence: 2_
+_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-08-34-01a00b8b-ed93-7352-8324-f0366dc281a0.jsonl#L188 · confidence: 0.88 · tags: internal/state/** · evidence: 3_
 
 ### e01M05V0G3Q9F41V62P6R5QV53G — Fix migration monotonicity, restore from D1 boundary, rerun cycle before passin…  `in_flight`
 > restoring from the D1 boundary, and will rerun the cycle before calling Task 2 passed.
