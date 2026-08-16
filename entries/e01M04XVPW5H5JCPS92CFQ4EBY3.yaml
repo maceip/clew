@@ -1,15 +1,12 @@
 id: e01M04XVPW5H5JCPS92CFQ4EBY3
 type: finding
-title: "Independent verification: clean clone green on linux/amd64; unit-test gaps in differ/poller/manifest/archaeology; note-command footgun"
+title: "Independent verify: clean clone green on linux/amd64; differ/poller lack unit tests"
 body: >-
-  Second agent, second machine (cursor cloud VM, Go 1.26.3 via toolchain auto-fetch):
-  go build clean; full `go test ./...` green; acceptance gates PASS — Absence detection,
-  Extraction fidelity (hermetic), Restart round-trip; RealProvider correctly SKIPs without
-  keys; init push-deferral degraded loudly per spec. Gaps: no package-level tests for
-  differ (the status algebra), poller, manifest, archaeology — coverage rides the
-  acceptance suite alone. UX footgun observed live: `clew journal note --help` ingested
-  the literal string "--help" as an entry (no flag parsing on note); cleaned via
-  `journal reject`.
+  Second agent + machine, Go 1.26.3 auto-fetched: build clean; full suite green; acceptance
+  gates 1, 2-hermetic, 3 PASS; RealProvider SKIPs without keys; init push-deferral degraded
+  loudly per spec. Gaps: no package tests for differ, poller, manifest, archaeology —
+  coverage rides the acceptance suite alone. Footgun: `journal note --help` ingested the
+  literal string as an entry (no flag parsing); cleaned via reject.
 quote: "--- PASS: TestAcceptance1_AbsenceDetection / TestAcceptance2_ExtractionFidelityPipeline / TestAcceptance3_RestartRoundTrip; SKIP: TestAcceptance2_RealProvider"
 utterance_by: assistant
 source:
@@ -24,6 +21,5 @@ tags:
     - acceptance/**
 env:
     host: cursor-cloud-vm
-    os: linux/amd64
-    go: 1.26.3
+    hw: linux/amd64 go1.26.3
 affects: []
