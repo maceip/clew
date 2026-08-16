@@ -1,6 +1,6 @@
 # Journal
 
-_generated 2026-08-16 21:35 UTC · 50 live entries (13 decisions · 24 findings · 1 questions · 12 intents) · 68 total in history_
+_generated 2026-08-16 21:36 UTC · 51 live entries (13 decisions · 25 findings · 1 questions · 12 intents) · 69 total in history_
 
 ## DECIDED
 
@@ -14,13 +14,13 @@ _generated 2026-08-16 21:35 UTC · 50 live entries (13 decisions · 24 findings 
 
 ## LEARNED
 
+- `e01M06821D53QYHBJS1FEC2CK7G` Task 5 gate: 3 formats, 1 card, confirm boundary pass — 0m · current
 - `e01M067G2QY8BZNZXBE46QBEXEW` Task 4 gate: 10ms, HTML 30s, ntfy 5/5 — 9m · current
 - `e01M067AZ3VJM73XP82REZEZ1QC` Task 4 channel: ntfy 2383c10c…, card creation only — 12m · current
 - `e01M066XWD8F1SAWQ8HVXGW4J4Z` Task 3 docket gate: 8→1, FYI 0, withdrawal 1 poll — 19m · current
 - `e01M065G8RTKVH6466KE7GQREGX` Task 2 passes its live gate on all five acceptance checks — 44m · current
-- `e01M064YRS4S9NK7KW9NQ1JMDV2` Malformed or missing pinned timestamps silently fall back to ingest time — 53m · suspect
-- `e01M064YRS4S9NK7KW9NN351FQF` I9: Claude settlement ignores cache token fields, letting spend exceed caps — 53m · suspect
-- `e01M064K88F7SDMHA1SPAB51HK7` D2 final: 52 automatic entries; live extraction 0.631% — 1h · current
+- `e01M064YRS4S9NK7KW9NQ1JMDV2` Malformed or missing pinned timestamps silently fall back to ingest time — 54m · suspect
+- `e01M064YRS4S9NK7KW9NN351FQF` I9: Claude settlement ignores cache token fields, letting spend exceed caps — 54m · suspect
 
 ## OPEN
 
@@ -142,6 +142,13 @@ Name = clew (owner). Alternatives considered: restart — verb collision, names 
 _source: human cli:note · confidence: 1.00_
 
 ## Findings
+
+### e01M06821D53QYHBJS1FEC2CK7G — Task 5 gate: 3 formats, 1 card, confirm boundary pass  `current`
+> formats=bundle+dir+https; schema-invalid=reject; quote-missing=reject; batch=1 card; live-stage=1 entry; live-open=pass; live-reject=0 journal writes; accept=1 foreign entry+1 human confirm; branch-push=pass x2 idempotent; full=pass; race=pass; vet=pass.
+
+formats=bundle+dir+https; schema-invalid=reject; quote-missing=reject; batch=1 card; live-stage=1 entry; live-open=pass; live-reject=0 journal writes; accept=1 foreign entry+1 human confirm; branch-push=pass x2 idempotent; full=pass; race=pass; vet=pass.
+
+_source: human cli:note · confidence: 1.00_
 
 ### e01M067G2QY8BZNZXBE46QBEXEW — Task 4 gate: 10ms, HTML 30s, ntfy 5/5  `current`
 > bare-clew=10ms x5; dashboard-sections=5; html-refresh=30s; title-light=nonempty-only; ntfy-delivered=5; payload-valid=5/5; full=pass; race=pass; vet=pass.
