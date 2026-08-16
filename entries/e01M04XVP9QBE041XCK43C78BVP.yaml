@@ -1,15 +1,24 @@
 id: e01M04XVP9QBE041XCK43C78BVP
 type: finding
-title: uncovered surfaces finding placeholder
-body: uncovered surfaces finding placeholder
-quote: uncovered surfaces finding placeholder
+title: Densest decision-bearing sessions happen on uncovered surfaces; manual journaling reads as homework
+body: >-
+  clew itself was designed across phone/cloud chat sessions that no watcher covers. When an
+  agent bridged that sensor gap by prescribing manual `journal note` actions, the owner
+  experienced the product as requiring homework — an I1-violation smell, correctly detected.
+  Mitigations that are not discipline: one-time end-of-conversation export → backfill (one
+  act per conversation, not per finding); and durable decisions echo into covered working
+  sessions when acted on, so the extractor catches them on first echo. Implication: the §11
+  cloud-session sensor trigger (">25% of sessions") effectively fires immediately for
+  phone-heavy owners; the gap must stay loudly visible in status until built.
+quote: "ok not sure im liking this me needing to add to the journal each time a file in a repo is edited let me think about this"
 utterance_by: user
 source:
-    kind: human
-    ref: cli:note
-    surface: cursor
-    at: 2026-08-16T09:18:49.143063708Z
-confidence: 1
+    kind: session
+    ref: chat:cursor-cloud-agent/stratura-strategy-2026-08-15
+    agent: cursor-cloud-agent
+    surface: cursor-cloud-vm
+    at: 2026-08-16T08:19:00Z
+confidence: 0.95
 tags: []
 env: null
 affects: []

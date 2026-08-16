@@ -1,15 +1,23 @@
 id: e01M04XVNN32W4FTFKKSKJSN01V
 type: finding
-title: varalys-lore competitive finding placeholder
-body: varalys-lore competitive finding placeholder
-quote: varalys-lore competitive finding placeholder
-utterance_by: user
+title: varalys/lore occupies session-provenance + git-remote sync; clew differentiates on distillation, intent×reality diff, absence, manifest
+body: >-
+  varalys/lore ships AI-session recording linked to commits, serverless sync through
+  existing git remotes, and cross-tool memory over MCP (installed command `lore` via
+  brew/cargo/AUR; same audience as clew). The git-remote-sync plumbing was independently
+  derived by both projects — that layer is commodity. Unoccupied by lore and core to clew:
+  typed distillation (never transcript), the intent×reality diff with absence, the human
+  steering surface, and the restart manifest. Also: getlore.ai and Epic's Lore VCS make
+  "lore" unownable as a name — basis of the clew naming decision.
+quote: 'lore is retrospective provenance — whole-session storage answering "why does this line exist." Restart is prospective state — distilled typed entries answering "what''s true about this project right now"'
+utterance_by: assistant
 source:
-    kind: human
-    ref: cli:note
-    surface: cursor
-    at: 2026-08-16T09:18:48.483200337Z
-confidence: 1
+    kind: session
+    ref: chat:cursor-cloud-agent/stratura-strategy-2026-08-15
+    agent: cursor-cloud-agent
+    surface: cursor-cloud-vm
+    at: 2026-08-16T08:19:00Z
+confidence: 0.95
 tags: []
 env: null
 affects: []

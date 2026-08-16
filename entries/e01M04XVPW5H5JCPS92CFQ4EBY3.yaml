@@ -1,15 +1,29 @@
 id: e01M04XVPW5H5JCPS92CFQ4EBY3
 type: finding
-title: independent verification finding placeholder
-body: independent verification finding placeholder
-quote: independent verification finding placeholder
-utterance_by: user
+title: "Independent verification: clean clone green on linux/amd64; unit-test gaps in differ/poller/manifest/archaeology; note-command footgun"
+body: >-
+  Second agent, second machine (cursor cloud VM, Go 1.26.3 via toolchain auto-fetch):
+  go build clean; full `go test ./...` green; acceptance gates PASS — Absence detection,
+  Extraction fidelity (hermetic), Restart round-trip; RealProvider correctly SKIPs without
+  keys; init push-deferral degraded loudly per spec. Gaps: no package-level tests for
+  differ (the status algebra), poller, manifest, archaeology — coverage rides the
+  acceptance suite alone. UX footgun observed live: `clew journal note --help` ingested
+  the literal string "--help" as an entry (no flag parsing on note); cleaned via
+  `journal reject`.
+quote: "--- PASS: TestAcceptance1_AbsenceDetection / TestAcceptance2_ExtractionFidelityPipeline / TestAcceptance3_RestartRoundTrip; SKIP: TestAcceptance2_RealProvider"
+utterance_by: assistant
 source:
-    kind: human
-    ref: cli:note
-    surface: cursor
-    at: 2026-08-16T09:18:49.733928893Z
+    kind: session
+    ref: chat:cursor-cloud-agent/stratura-strategy-2026-08-15
+    agent: cursor-cloud-agent
+    surface: cursor-cloud-vm
+    at: 2026-08-16T09:20:00Z
 confidence: 1
-tags: []
-env: null
+tags:
+    - internal/**
+    - acceptance/**
+env:
+    host: cursor-cloud-vm
+    os: linux/amd64
+    go: 1.26.3
 affects: []
