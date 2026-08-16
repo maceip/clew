@@ -1,6 +1,6 @@
 # Journal
 
-_generated 2026-08-16 17:46 UTC · 32 live entries (10 decisions · 15 findings · 1 questions · 6 intents) · 39 total in history_
+_generated 2026-08-16 17:46 UTC · 33 live entries (10 decisions · 16 findings · 1 questions · 6 intents) · 40 total in history_
 
 ## Decisions
 
@@ -75,6 +75,13 @@ Name = clew (owner). Alternatives considered: restart — verb collision, names 
 _source: human cli:note · confidence: 1.00_
 
 ## Findings
+
+### e01M05TX51R4VZHJMNM804YPMRT — D1: 30 automatic entries; Codex metadata incident pinned  `current`
+> D1 live dogfood: 30 session entries appeared from 1 real Codex session with 0 manual notes; observed=5549571, live+backfill extraction=30184, all-LLM=39091, pushes delivered=0/0, open alerts=10; 46 records in 3 newly observed multi-agent metadata classes were pinned as non-utterance adapter metadata.
+
+D1 live dogfood: 30 session entries appeared from 1 real Codex session with 0 manual notes; observed=5549571, live+backfill extraction=30184, all-LLM=39091, pushes delivered=0/0, open alerts=10; 46 records in 3 newly observed multi-agent metadata classes were pinned as non-utterance adapter metadata.
+
+_source: human cli:note · confidence: 1.00_
 
 ### e01M05TCM2N1P9P2EQSE8YKVQX3 — Push failure paths unchecked: unset endpoint returns success, HTTP errors ignor…  `current`
 > HTTP errors are also unchecked.
