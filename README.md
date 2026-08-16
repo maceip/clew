@@ -38,6 +38,7 @@ clew status             # diagnostic expansion
 clew glance --html      # ~/.clew/glance.html, 30s refresh, pinned-tab status light
 clew map                # intent × reality, absence highlighted
 clew docket             # bounded decision cards only (`inbox` remains an alias)
+clew import bundle.yaml # one validated foreign proposal batch; never direct injection
 clew backfill --budget 100000   # months of existing session history → journal
 ```
 
@@ -81,6 +82,22 @@ of amnesia.
   the secret (their re-add pass only restores files the remote *lacks*).
 - Machine-local working state in SQLite (`~/.clew/state.db`); never the
   source of truth.
+
+### Proposing journal entries without journal credentials
+
+`clew import <bundle.yaml|dir|https-url>` validates entry schemas and quotes, marks provenance
+as foreign, and creates one owner docket card. The owner uses `clew docket open <proposal-id>`,
+then `accept` or `reject`; accept is the human-confirm boundary.
+
+PAT-authorized contributors can use the sanctioned fork/PR route:
+
+```bash
+CLEW_PROPOSAL_BRANCH=clew/proposal-my-change clew import bundle.yaml
+# open a PR from clew/proposal-my-change with base branch clew/journal
+```
+
+The branch is based on `clew/journal`; merging that PR confirms the batch. Credentials push,
+everyone else proposes.
 
 ## Acceptance (§10)
 

@@ -258,9 +258,17 @@ func TestForeignImportIsHighMagnitudeAndNeedsCallerAssumption(t *testing.T) {
 	cards = Build(Input{
 		Alerts: []state.Alert{alert}, Now: testNow,
 		Assumptions: map[string]string{key: "the foreign provenance is authentic"},
+		Evidence: map[string][]Evidence{key: {{
+			Text: "exact proposed words", Verbatim: true,
+			Provenance: Provenance{Kind: "foreign", Ref: "bundle.yaml#entry-1"},
+		}}},
 	})
 	if err := cards[0].Validate(); err != nil {
 		t.Fatalf("foreign import with assumption invalid: %v", err)
+	}
+	got := renderString(t, View{Cards: cards, Now: testNow})
+	if !strings.Contains(got, `"exact proposed words"`) || !strings.Contains(got, "[enter] open batch diff") {
+		t.Fatalf("proposal evidence/open missing: %s", got)
 	}
 }
 

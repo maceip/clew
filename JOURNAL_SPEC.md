@@ -193,9 +193,9 @@ entry and thereby broke its own invariant; this is the fix). Human edits are eve
 
 ## 4. Storage and sync (the concurrency answer)
 
-- **Branch:** orphan branch `stratura/journal` in the project's own remote. Chosen over a custom
+- **Branch:** orphan branch `clew/journal` in the project's own remote. Chosen over a custom
   ref namespace deliberately: plain branches survive every host, clone, CI, and agent
-  (`git fetch origin stratura/journal && git show stratura/journal:journal.md`). Custom refs
+  (`git fetch origin clew/journal && git show clew/journal:journal.md`). Custom refs
   don't fetch by default and die in half the tooling. The branch shares no history with `main`;
   it never appears in PRs.
 - **Layout on the branch:** `entries/<id>.yaml` + `events/<id>.yaml` (both append-only,
@@ -206,12 +206,12 @@ entry and thereby broke its own invariant; this is the fix). Human edits are eve
   files; no file is ever written by two parties. Concurrent pushes from two machines resolve
   with `pull --rebase` + union; there is no scenario producing a content conflict. (This is the
   simple-but-hard answer to multi-machine sync: no CRDTs, no server — filenames.)
-- **Bootstrap:** `init` checks the remote for an existing `stratura/journal` branch before
+- **Bootstrap:** `init` checks the remote for an existing `clew/journal` branch before
   creating one. If two machines raced anyway (unrelated orphan roots), the loser adopts the
   remote root and re-adds its local entry/event files on top — they are just files; no history
   reconciliation is needed or attempted.
 - **Redaction (the one sanctioned rewrite):** append-only + git would make a leaked secret
-  immortal on the remote. `stratura redact <id>` rewrites the journal branch with the offending
+  immortal on the remote. `clew redact <id>` rewrites the journal branch with the offending
   file scrubbed and force-pushes; watchers detect the root change and re-sync from the remote.
   Allowed precisely because this branch is coordination data, not code history; the redaction
   itself is recorded as an event (minus the secret).
@@ -221,11 +221,11 @@ entry and thereby broke its own invariant; this is the fix). Human edits are eve
   mode: extraction, differ, glance, docket, and manifest all function with cross-machine
   propagation latency equal to the poll interval. Multi-machine sync works with nothing but the
   repo's remote.
-- **Working materialization per workspace:** the watcher writes `.stratura/` (gitignored on work
+- **Working materialization per workspace:** the watcher writes `.clew/` (gitignored on work
   branches) containing `context.md`, `nudge.md`, `journal.md` symlink/copy. Agents read files;
   they never touch the branch.
-- **Multi-repo:** one journal branch per repo. A machine-level registry (`~/.stratura/state.db`)
-  tracks registered repos. Cross-project views are a CLI join (`stratura status --all`), not a
+- **Multi-repo:** one journal branch per repo. A machine-level registry (`~/.clew/state.db`)
+  tracks registered repos. Cross-project views are a CLI join (`clew status --all`), not a
   merged store.
 
 ### 4.1 Optional relay (accelerator, never substrate)
@@ -250,6 +250,23 @@ and produces no warnings. If a relay *was configured* and becomes unreachable, w
 in `status` and continue at baseline latency; nothing forks, nothing breaks. A public relay
 instance may be hosted cheaply (it stores nothing durable); self-hosting is one static binary.
 Git is the protocol; the relay is a convenience — and, later, the natural hosted product seam.
+
+### 4.2 Writers and proposals
+
+One rule defines the write boundary: **credentialed writers push; everyone else proposes; human
+confirm is the boundary.** A writer already authorized for the repository adds immutable journal
+entries/events and pushes `clew/journal` through the baseline sync protocol. A contributor without
+those credentials runs `clew import <bundle.yaml|dir|https-url>`: clew strictly validates every
+entry, preserves its exact quote, marks its source `foreign`, and stages the whole import as one
+proposal batch. Nothing pending enters `context.md`.
+
+On an owner's machine, one import produces one high-magnitude docket card with representative
+verbatim evidence and the complete addition diff behind `[enter]`; accept writes the foreign
+entries plus human confirm events, while reject writes none. For fork/PAT workflows,
+`CLEW_PROPOSAL_BRANCH=<branch> clew import …` creates a branch based on `clew/journal` and pushes
+the same validated additions. A PR must target `clew/journal`; its human merge is confirmation.
+The optional future relay carries this identical proposal flow over HTTP and gains no write
+authority of its own.
 
 ---
 

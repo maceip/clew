@@ -29,6 +29,7 @@ const (
 	SrcHuman       SourceKind = "human"
 	SrcCarried     SourceKind = "carried"
 	SrcArchaeology SourceKind = "archaeology"
+	SrcForeign     SourceKind = "foreign"
 )
 
 type UtteranceBy string
@@ -121,7 +122,7 @@ func (e *Entry) Validate() error {
 		return fmt.Errorf("entry %s: unknown utterance_by %q", e.ID, e.UtteranceBy)
 	}
 	switch e.Source.Kind {
-	case SrcSession, SrcCommit, SrcDoc, SrcHuman, SrcCarried, SrcArchaeology:
+	case SrcSession, SrcCommit, SrcDoc, SrcHuman, SrcCarried, SrcArchaeology, SrcForeign:
 	default:
 		return fmt.Errorf("entry %s: unknown source.kind %q", e.ID, e.Source.Kind)
 	}

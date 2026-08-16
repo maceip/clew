@@ -38,8 +38,13 @@ func cmdDocket(args []string) error {
 			return fmt.Errorf("usage: clew docket %s <alert-key>", args[0])
 		}
 		return docketDismiss(a, repo, args[1], args[0])
+	case "open", "accept", "reject":
+		if len(args) != 2 {
+			return fmt.Errorf("usage: clew docket %s <proposal-id>", args[0])
+		}
+		return docketProposalAction(a, repo, args[0], proposalBatchID(args[1]))
 	default:
-		return fmt.Errorf("unknown docket verb %q (answer|ack|drop)", args[0])
+		return fmt.Errorf("unknown docket verb %q (answer|open|accept|reject|ack|drop)", args[0])
 	}
 }
 
@@ -55,7 +60,14 @@ func docketList(a *app, repo string) error {
 	lastRuling, learned := docketMetrics(j, now)
 	alerts := a.db.OpenAlerts(repo, true)
 	assumptions := docketAssumptions(alerts)
-	cards := docket.Build(docket.Input{Journal: j, Alerts: alerts, Now: now, Assumptions: assumptions})
+	evidence, err := proposalDocketEvidence(repo, alerts)
+	if err != nil {
+		return err
+	}
+	cards := docket.Build(docket.Input{
+		Journal: j, Alerts: alerts, Now: now, Assumptions: assumptions,
+		Evidence: evidence,
+	})
 
 	failureKey := "system-failure:docket:" + repoBase(repo)
 	if len(cards) > docket.MaxCards {

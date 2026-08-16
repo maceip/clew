@@ -130,6 +130,7 @@ type Card struct {
 	Answers    []Verb // one to three discrete ruling verbs
 	Defer      *Deferral
 	Redirect   *Verb
+	Open       *Verb // opens the full source/diff; not a ruling verb
 	Withdrawal Withdrawal
 }
 
@@ -142,6 +143,7 @@ type Input struct {
 	Now         time.Time
 	Magnitudes  map[string]Magnitude
 	Assumptions map[string]string
+	Evidence    map[string][]Evidence
 }
 
 // EmptyMetrics parameterize the designed empty state. They are not docket
@@ -248,6 +250,9 @@ func applyOverrides(card *Card, in Input) {
 	if assumption, ok := in.Assumptions[card.Key]; ok {
 		card.Assumption = assumption
 	}
+	if evidence, ok := in.Evidence[card.Key]; ok {
+		card.Evidence = append([]Evidence(nil), evidence...)
+	}
 }
 
 func questionCard(e *model.Entry) Card {
@@ -339,6 +344,7 @@ func alertCard(alert state.Alert, j *journal.Journal, computed map[string]*journ
 		card.Magnitude = HighMagnitude
 		card.Answers = []Verb{{Name: "accept", Target: alert.EntryIDs}, {Name: "reject", Target: alert.EntryIDs}}
 		card.Redirect = &Verb{Name: "redirect", Target: alert.EntryIDs}
+		card.Open = &Verb{Name: "open", Label: "open batch diff", Target: alert.EntryIDs}
 		card.Defer = eventDeferral("alert:"+atom(alert.Key)+":proposal-change", alert.Key)
 		card.Withdrawal.Text = "the proposal is accepted, rejected, or replaced"
 	default:
@@ -531,6 +537,11 @@ func (c Card) Validate() error {
 			return invalid("duplicate verb %q", c.Redirect.Name)
 		}
 	}
+	if c.Open != nil {
+		if err := validateVerb(*c.Open); err != nil || c.Open.Name != "open" {
+			return invalid("open must be a discrete source-opening verb")
+		}
+	}
 	if !token(c.Withdrawal.When) || strings.TrimSpace(c.Withdrawal.Text) == "" {
 		return invalid("printed machine withdrawal condition is required")
 	}
@@ -646,6 +657,9 @@ func renderCard(out *strings.Builder, card Card, now time.Time) {
 	}
 	if card.Defer != nil {
 		fmt.Fprintf(out, " [%s → %s]", verbLabel(card.Defer.Verb), card.Defer.Until)
+	}
+	if card.Open != nil {
+		fmt.Fprintf(out, " [enter] %s", verbLabel(*card.Open))
 	}
 	out.WriteByte('\n')
 	fmt.Fprintf(out, "│ withdraws itself if %s [when=%s]\n", card.Withdrawal.Text, card.Withdrawal.When)

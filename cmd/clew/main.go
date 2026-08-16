@@ -14,7 +14,8 @@ usage:
   clew status [--all]                            the glance
   clew glance [--html]                           calm glance; write pinned-tab HTML
   clew map [--html <file>]                       intent × reality with absence
-  clew docket [answer|ack|drop] …                decision cards only
+  clew docket [answer|open|accept|reject|ack|drop] …  decision cards only
+  clew import <bundle.yaml|dir|https-url>         stage one foreign proposal batch
   clew journal show|edit|confirm|reject|supersede|answer|note …
   clew manifest [--spec <file>] [--out <dir>] [--yes]   restart kit
   clew backfill [--since 90d] --budget <tokens>  retroactive extraction
@@ -50,6 +51,8 @@ func main() {
 		err = cmdDocket(args)
 	case "journal":
 		err = cmdJournal(args)
+	case "import":
+		err = cmdImport(args)
 	case "manifest":
 		err = cmdManifest(args)
 	case "backfill":
