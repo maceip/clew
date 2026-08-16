@@ -1,0 +1,11 @@
+id: v01M066XZS0BVBJQSSZ20MBGE1Z
+kind: evidence
+entry: e01M05T4XG0RJWQTP25T1K58B61
+payload:
+    kind: churn
+    note: Replace inbox with a bounded self-cleaning docket
+    ref: churn:b9a7e7f402c98e9f5d0a170ae519135566afc548
+by:
+    who: differ
+    surface: macs-MacBook-Pro
+at: 2026-08-16T21:16:36Z
