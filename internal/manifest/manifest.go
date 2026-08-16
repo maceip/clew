@@ -135,7 +135,7 @@ func Apply(j *journal.Journal, st map[string]*journal.Computed, manifestPath, ou
 			continue
 		}
 		// The choice to lose (or keep) knowledge is itself journaled (§9.2).
-		if !j.HasEvent(model.EvDisposition, id, "disposition", mark) {
+		if !j.HasEvent(model.EvDisposition, id, "disposition", mapMark(mark)) {
 			j.AddEvent(&model.Event{
 				ID: ids.NewEvent(now), Kind: model.EvDisposition, Entry: id,
 				Payload: map[string]any{"disposition": mapMark(mark)},

@@ -563,8 +563,11 @@ capabilities is not punting; every v1 need above has its full answer above):**
 2. **Push channel** — **CLOSED** (dogfood, 2026-08-16): ntfy with a generated unguessable
    topic; plain webhook remains configurable. A fresh install stays disabled until its unique
    topic/URL is generated, so no shared public topic can become a default credential.
-3. **Cursor desktop adapter depth** — SQLite composer store parsing effort vs `cursor-agent`
-   CLI-only for v1; decide after inspecting one week of the user's actual store files.
+3. **Cursor desktop adapter depth** — **CLOSED** (one-week evidence, 2026-08-16): remain
+   `cursor-agent` CLI-only in v1. `state.vscdb` had 31 composer headers but zero created/updated
+   in the preceding seven days (latest 2026-08-09), while the pinned CLI path produced 44
+   transcripts / 10,338,802 bytes across eight project slugs. The desktop store remains a loud
+   fidelity gap; no new adapter is justified by current usage.
 4. **Extraction instruction tuning loop** — fixtures exist (§10); decide promote/demote
    thresholds after the first 100 real entries, not before.
 

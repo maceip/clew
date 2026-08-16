@@ -3,6 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
+	"io"
 	"os"
 	"os/exec"
 	"path/filepath"
@@ -81,16 +82,11 @@ func cmdJournal(args []string) error {
 		fs.Parse(rest[2:])
 		return journalAnswer(a, repo, rest[0], rest[1], *typ)
 	case "note":
-		fs := flag.NewFlagSet("note", flag.ExitOnError)
-		typ := fs.String("type", "finding", "decision|finding|question|intent")
-		title := fs.String("title", "", "title (default: first 80 chars of text)")
-		tags := fs.String("tags", "", "comma-separated path globs")
-		asks := fs.String("asks", "any", "questions only: human|any")
-		if len(rest) < 1 {
-			return fmt.Errorf("usage: clew journal note \"text\" [--type …] [--title …] [--tags a/**,b]")
+		note, help, err := parseJournalNoteArgs(rest, os.Stdout)
+		if err != nil || help {
+			return err
 		}
-		fs.Parse(rest[1:])
-		return journalNote(a, repo, rest[0], *typ, *title, *tags, *asks)
+		return journalNote(a, repo, note.Text, note.Type, note.Title, note.Tags, note.Asks)
 	case "edit":
 		if len(rest) < 1 {
 			return fmt.Errorf("usage: clew journal edit <entry-id>")
@@ -99,6 +95,40 @@ func cmdJournal(args []string) error {
 	default:
 		return fmt.Errorf("unknown journal verb %q", verb)
 	}
+}
+
+type journalNoteArgs struct {
+	Text, Type, Title, Tags, Asks string
+}
+
+func parseJournalNoteArgs(args []string, out io.Writer) (journalNoteArgs, bool, error) {
+	fs := flag.NewFlagSet("note", flag.ContinueOnError)
+	fs.SetOutput(out)
+	typ := fs.String("type", "finding", "decision|finding|question|intent")
+	title := fs.String("title", "", "title (default: first 80 chars of text)")
+	tags := fs.String("tags", "", "comma-separated path globs")
+	asks := fs.String("asks", "any", "questions only: human|any")
+	usage := func() {
+		fmt.Fprintln(out, "usage: clew journal note \"text\" [--type …] [--title …] [--tags a/**,b]")
+		fs.PrintDefaults()
+	}
+	if len(args) == 0 {
+		return journalNoteArgs{}, false, fmt.Errorf("usage: clew journal note \"text\" [--type …] [--title …] [--tags a/**,b]")
+	}
+	if args[0] == "-h" || args[0] == "--help" {
+		usage()
+		return journalNoteArgs{}, true, nil
+	}
+	if err := fs.Parse(args[1:]); err != nil {
+		if err == flag.ErrHelp {
+			return journalNoteArgs{}, true, nil
+		}
+		return journalNoteArgs{}, false, err
+	}
+	if fs.NArg() != 0 {
+		return journalNoteArgs{}, false, fmt.Errorf("unexpected note arguments: %s", strings.Join(fs.Args(), " "))
+	}
+	return journalNoteArgs{Text: args[0], Type: *typ, Title: *title, Tags: *tags, Asks: *asks}, false, nil
 }
 
 func parseAfterID(fs *flag.FlagSet, rest []string) error {
