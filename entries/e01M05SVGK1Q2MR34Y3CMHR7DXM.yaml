@@ -1,0 +1,16 @@
+id: e01M05SVGK1Q2MR34Y3CMHR7DXM
+type: decision
+title: 'No cursor translation: keep `extract:` for live, add bounded `backfill:` for hi…'
+body: Instead of migrating or stacking cursors, the live watcher retains the existing `extract:` cursor while explicit history backfill gets a separate bounded `backfill:` cursor, with `history-end` freezing the boundary between them. Chosen because it preserves v1 pending work across upgrade, keeps live and history from overlapping, and eliminates the risky cursor translation step.
+quote: the live watcher keeps the existing `extract:` cursor, explicit history gets a new bounded `backfill:` cursor, and `history-end` freezes their boundary
+utterance_by: assistant
+source:
+    kind: session
+    ref: codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-00-58-01a00b84-f81d-7a61-a3c3-e5bb6beb9ee3.jsonl#L934
+    agent: codex
+    surface: macs-MacBook-Pro
+    at: 2026-08-16T17:28:03.425Z
+confidence: 0.93
+tags: []
+env: null
+affects: []
