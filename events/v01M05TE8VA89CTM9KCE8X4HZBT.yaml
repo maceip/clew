@@ -1,0 +1,10 @@
+id: v01M05TE8VA89CTM9KCE8X4HZBT
+kind: supersede
+entry: e01M05T52RRS9EXQ92M3PA9WBVF
+payload:
+    by: e01M05TCM2N1P9P2EQSE8YKVQX3
+    why: newer measurement, same env
+by:
+    who: differ
+    surface: macs-MacBook-Pro
+at: 2026-08-16T17:38:18.090903Z

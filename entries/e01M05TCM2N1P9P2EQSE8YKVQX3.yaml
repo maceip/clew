@@ -1,0 +1,20 @@
+id: e01M05TCM2N1P9P2EQSE8YKVQX3
+type: finding
+title: 'Push failure paths unchecked: unset endpoint returns success, HTTP errors ignor…'
+body: 'Audit of the push path found two defects that make push precision unmeasurable: an unset push endpoint returns success (so alerts get a false `pushed_at` mark), and HTTP errors from the push call are not checked either. Located at internal/push/push.go:16 and cmd/clew/watchcmd.go:281.'
+quote: HTTP errors are also unchecked.
+utterance_by: tool_result
+source:
+    kind: session
+    ref: codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-00-58-01a00b84-f81d-7a61-a3c3-e5bb6beb9ee3.jsonl#L1075
+    agent: codex
+    surface: macs-MacBook-Pro
+    at: 2026-08-16T17:37:24.053Z
+confidence: 0.87
+tags:
+    - internal/push/**
+    - cmd/clew/**
+env: null
+affects:
+    - internal/push/push.go
+    - cmd/clew/watchcmd.go
