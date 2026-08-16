@@ -1,12 +1,12 @@
 id: e01M04XVPW5H5JCPS92CFQ4EBY3
 type: finding
-title: "Independent verify: clean clone green on linux/amd64; differ/poller lack unit tests"
+title: "Independent verify: clean clone green; differ/poller/manifest lack unit tests"
 body: >-
-  Second agent + machine, Go 1.26.3 auto-fetched: build clean; full suite green; acceptance
-  gates 1, 2-hermetic, 3 PASS; RealProvider SKIPs without keys; init push-deferral degraded
-  loudly per spec. Gaps: no package tests for differ, poller, manifest, archaeology —
-  coverage rides the acceptance suite alone. Footgun: `journal note --help` ingested the
-  literal string as an entry (no flag parsing); cleaned via reject.
+  Second agent+machine, Go 1.26.3: build clean; full suite green; gates 1, 2-hermetic, 3
+  PASS; RealProvider SKIPs without keys; init push-deferral loud per spec. Gaps: no package
+  tests for differ, poller, manifest, archaeology — coverage rides acceptance alone.
+  Footgun: `journal note --help` ingested the flag as literal entry text; cleaned via
+  reject.
 quote: "--- PASS: TestAcceptance1_AbsenceDetection / TestAcceptance2_ExtractionFidelityPipeline / TestAcceptance3_RestartRoundTrip; SKIP: TestAcceptance2_RealProvider"
 utterance_by: assistant
 source:

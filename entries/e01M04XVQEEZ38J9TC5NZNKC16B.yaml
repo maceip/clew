@@ -2,11 +2,11 @@ id: e01M04XVQEEZ38J9TC5NZNKC16B
 type: question
 title: Run the live fidelity gate (RealProvider) on a machine with provider keys
 body: >-
-  The hermetic pipeline passes, but the go/no-go gate — P ≥ 0.9 / R ≥ 0.75 within 5
-  extraction-instruction iterations against the ratified labels — has never run against a
-  live provider. Until it does, extraction quality (the stated existential risk) is
-  unmeasured and the kill criterion is theoretical. Needs claude/codex CLI or an OpenAI-
-  compatible key; the env flag was RESTART_FIDELITY=1 pre-rename — verify current name.
+  Hermetic pipeline passes, but the go/no-go gate — P≥0.9/R≥0.75 within 5 instruction
+  iterations vs ratified labels — has never run against a live provider. Until it does,
+  extraction quality (the stated existential risk) is unmeasured; the kill criterion is
+  theoretical. Needs claude/codex CLI or OpenAI-compatible key; env flag was
+  RESTART_FIDELITY=1 pre-rename — verify.
 quote: "If you cannot reach P>=0.9 / R>=0.75, stop all other work and report that the kill criterion fired — that outcome is a valid and useful result, and it is written down on purpose"
 utterance_by: assistant
 source:

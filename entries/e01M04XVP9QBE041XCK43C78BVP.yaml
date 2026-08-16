@@ -1,12 +1,12 @@
 id: e01M04XVP9QBE041XCK43C78BVP
 type: finding
-title: Decision-dense sessions happen on uncovered surfaces; manual notes read as homework
+title: Decision-dense sessions live on uncovered surfaces; manual notes = homework
 body: >-
-  clew was designed in phone/cloud chats no watcher covers. When an agent bridged that
-  sensor gap by prescribing manual notes, the owner read the product as homework — an
-  I1-violation smell, correctly detected. Non-discipline mitigations: one export+backfill
-  per important conversation; decisions echo into covered working sessions and are caught
-  on first echo. The §11 cloud-sensor trigger effectively fires now for phone-heavy owners.
+  clew was designed in phone/cloud chats no watcher covers. An agent bridging that gap
+  with prescribed manual notes made the product read as homework — an I1-violation smell,
+  correctly caught. Non-discipline fixes: one export+backfill per key conversation;
+  decisions echo into covered sessions, caught on first echo. §11 cloud-sensor trigger
+  fires now for phone-heavy owners.
 quote: "ok not sure im liking this me needing to add to the journal each time a file in a repo is edited let me think about this"
 utterance_by: user
 source:

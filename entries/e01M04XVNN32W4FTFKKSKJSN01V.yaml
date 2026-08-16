@@ -2,11 +2,11 @@ id: e01M04XVNN32W4FTFKKSKJSN01V
 type: finding
 title: varalys/lore owns session-provenance + git-sync; clew's edge is diff + absence
 body: >-
-  varalys/lore ships session recording linked to commits, serverless git-remote sync, and
-  cross-tool memory over MCP; installs command `lore` via brew/cargo. Same plumbing trick
-  independently derived — that layer is commodity. Unoccupied and core to clew: typed
-  distillation, intent×reality diff with absence, human steering surface, restart manifest.
-  getlore.ai + Epic Lore also make the name unownable.
+  varalys/lore ships session recording linked to commits, serverless git-remote sync,
+  cross-tool memory over MCP; installs `lore` via brew/cargo. Same plumbing independently
+  derived — commodity layer. Unoccupied, core to clew: typed distillation, intent×reality
+  diff with absence, human steering surface, restart manifest. getlore.ai + Epic Lore make
+  the name unownable.
 quote: 'lore is retrospective provenance — whole-session storage answering "why does this line exist." Restart is prospective state — distilled typed entries answering "what''s true about this project right now"'
 utterance_by: assistant
 source:
