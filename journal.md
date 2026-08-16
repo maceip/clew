@@ -1,8 +1,15 @@
 # Journal
 
-_generated 2026-08-16 17:21 UTC · 20 live entries (6 decisions · 11 findings · 1 questions · 2 intents) · 23 total in history_
+_generated 2026-08-16 17:22 UTC · 23 live entries (7 decisions · 12 findings · 1 questions · 3 intents) · 26 total in history_
 
 ## Decisions
+
+### e01M05SG3NTP5W2JX7Y6MG00HQJ — Hold the Task 2 commit; make backfill and live watch disjoint by construction  `active`
+> I’m holding the Task 2 commit and adding a one-time migration, complete-record offsets, and a fixed historical upper bound so backfill and live watch are disjoint by construction.
+
+Rather than commit Task 2 and patch later, the commit is held while three fixes land: a one-time cursor migration for upgrading users, complete-record offsets so init never baselines mid-record, and a fixed historical upper bound so backfill and live watch cannot overlap — disjoint by construction rather than by runtime check.
+
+_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-00-58-01a00b84-f81d-7a61-a3c3-e5bb6beb9ee3.jsonl#L806 · confidence: 0.90_
 
 ### e01M05SA72DPRGNTY7GD0TGHEX7 — Scope freeze: relay, TUI, team mode, adapters need a §11 trigger measurement  `possible-contradiction`
 > Frozen (build nothing here without citing a §11 trigger measurement in the journal and stopping for owner review): relay server, TUI/native apps, team mode, semantic code graphs, treemaps, new adapters, orchestration.
@@ -47,6 +54,13 @@ Name = clew (owner). Alternatives considered: restart — verb collision, names 
 _source: human cli:note · confidence: 1.00_
 
 ## Findings
+
+### e01M05SG3NTP5W2JX7Y6KZD5N6P — Pre-commit review found three Task 2 blockers: cursor migration, backfill overl…  `current`
+> Pre-commit review found three real blockers: upgrade users lacked cursor migration, backfill could overlap live suffixes, and init could baseline inside a partial JSONL record.
+
+A pre-commit review of the Task 2 work surfaced three real blockers: users upgrading had no cursor migration path; backfill could overlap with live suffixes; and init could baseline in the middle of a partial JSONL record, producing a corrupt offset.
+
+_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-00-58-01a00b84-f81d-7a61-a3c3-e5bb6beb9ee3.jsonl#L806 · confidence: 0.93_
 
 ### e01M05SA72DPRGNTY7GCV0CBDK7 — Assumptions prompt cut over-reliance 42%→22%; stacked/delay friction backfired  `current`
 > the assumptions prompt ("accepting this assumes X") reduced over-reliance from 42%→22% without added cognitive load, while stacked/delay-based friction backfired
@@ -136,6 +150,13 @@ _source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15 · confide
 
 ## Intents
 
+### e01M05SG3NTP5W2JX7Y6MP1F1K6 — Add cursor migration, complete-record offsets, and fixed historical upper bound  `proposed`
+> adding a one-time migration, complete-record offsets, and a fixed historical upper bound
+
+Committed follow-up work before the Task 2 commit can land: a one-time cursor migration for existing installs, offsets that always fall on complete JSONL record boundaries, and a fixed upper bound on the historical backfill range.
+
+_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-00-58-01a00b84-f81d-7a61-a3c3-e5bb6beb9ee3.jsonl#L806 · confidence: 0.88_
+
 ### e01M05SA72DPRGNTY7GCXARNKYH — Implement the decision card and enforce I10–I12 in renderer and tests  `in_flight`
 > Enforce I10–I12 in the renderer and in tests: a synthetic FYI item must be unrenderable; an 8th card must collapse to the overflow-failure card; a resolved stomp must withdraw within one poll cycle.
 
@@ -148,4 +169,4 @@ _source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T
 
 Commitment to record the final Task 2 dogfood snapshot and then land the outstanding dogfood fixes in the codebase.
 
-_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-00-58-01a00b84-f81d-7a61-a3c3-e5bb6beb9ee3.jsonl#L729 · confidence: 0.82 · evidence: 1_
+_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-00-58-01a00b84-f81d-7a61-a3c3-e5bb6beb9ee3.jsonl#L729 · confidence: 0.82 · evidence: 2_
