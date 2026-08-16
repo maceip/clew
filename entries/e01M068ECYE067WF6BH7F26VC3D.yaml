@@ -1,0 +1,15 @@
+id: e01M068ECYE067WF6BH7F26VC3D
+type: decision
+title: 'Cursor v1 stays CLI-only: desktop 0 vs CLI 44 in 7d'
+body: 'window=7d; state.vscdb=402391040 bytes; composer-headers=31; desktop-created=0; desktop-updated=0; latest=2026-08-09T07:19:30Z; cursor-cli=44 transcripts; cli-bytes=10338802; project-slugs=8. Decision: CLI-only v1; desktop remains loud gap; adapter trigger=not met.'
+quote: 'window=7d; state.vscdb=402391040 bytes; composer-headers=31; desktop-created=0; desktop-updated=0; latest=2026-08-09T07:19:30Z; cursor-cli=44 transcripts; cli-bytes=10338802; project-slugs=8. Decision: CLI-only v1; desktop remains loud gap; adapter trigger=not met.'
+utterance_by: user
+source:
+    kind: human
+    ref: cli:note
+    surface: macs-MacBook-Pro
+    at: 2026-08-16T21:43:02.350185Z
+confidence: 1
+tags: []
+env: null
+affects: []
