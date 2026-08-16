@@ -1,0 +1,20 @@
+id: e01M064YRS4S9NK7KW9NQ1JMDV2
+type: finding
+title: Malformed or missing pinned timestamps silently fall back to ingest time
+body: When a source record's pinned timestamp is missing or malformed, the adapter/extract path substitutes the ingest-time `now` without signalling, so entries get fabricated source times. Located at adapters.go:151 and extract.go:264; flagged as a gate blocker.
+quote: 'Source time: malformed/missing pinned timestamps silently become ingest `now`.'
+utterance_by: assistant
+source:
+    kind: session
+    ref: codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T16-32-36-01a00c46-b7d2-7e30-8a57-955c5a957888.jsonl#L252
+    agent: codex
+    surface: macs-MacBook-Pro
+    at: 2026-08-16T20:42:04.452Z
+confidence: 0.92
+tags:
+    - internal/adapters/**
+    - internal/extract/**
+env: null
+affects:
+    - internal/adapters/adapters.go
+    - internal/extract/extract.go

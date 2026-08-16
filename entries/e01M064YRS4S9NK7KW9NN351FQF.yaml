@@ -1,0 +1,19 @@
+id: e01M064YRS4S9NK7KW9NN351FQF
+type: finding
+title: 'I9: Claude settlement ignores cache token fields, letting spend exceed caps'
+body: Settlement of Claude LLM calls counts only the non-cache token fields, ignoring `cache_creation_input_tokens` and `cache_read_input_tokens`. Cumulative spend is therefore undercounted and can run past the configured budget caps. Found at llm.go:158 during the read-only gate.
+quote: 'I9: Claude settlement ignores `cache_creation_input_tokens` and `cache_read_input_tokens`, permitting cumulative spend beyond caps.'
+utterance_by: assistant
+source:
+    kind: session
+    ref: codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T16-32-36-01a00c46-b7d2-7e30-8a57-955c5a957888.jsonl#L252
+    agent: codex
+    surface: macs-MacBook-Pro
+    at: 2026-08-16T20:42:04.452Z
+confidence: 0.93
+tags:
+    - internal/llm/**
+    - internal/state/**
+env: null
+affects:
+    - internal/llm/llm.go

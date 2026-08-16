@@ -1,0 +1,20 @@
+id: e01M064YRS4S9NK7KW9NN3114KH
+type: finding
+title: 'I2: any JSON object counts as extraction success and advances the cursor'
+body: The extraction path treats any well-formed JSON object as a successful result, so an empty `{}` or a changed Claude response envelope silently advances the session cursor instead of parking loudly. Identified during the strict read-only gate as a blocking defect at extract.go:149 and llm.go:165.
+quote: 'I2: any JSON object is accepted as extraction success; `{}` or a changed Claude envelope advances the cursor instead of parking loudly.'
+utterance_by: assistant
+source:
+    kind: session
+    ref: codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T16-32-36-01a00c46-b7d2-7e30-8a57-955c5a957888.jsonl#L252
+    agent: codex
+    surface: macs-MacBook-Pro
+    at: 2026-08-16T20:42:04.452Z
+confidence: 0.93
+tags:
+    - internal/extract/**
+    - internal/llm/**
+env: null
+affects:
+    - internal/extract/extract.go
+    - internal/llm/llm.go

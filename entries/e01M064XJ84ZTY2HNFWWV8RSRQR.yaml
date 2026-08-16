@@ -1,0 +1,18 @@
+id: e01M064XJ84ZTY2HNFWWV8RSRQR
+type: finding
+title: Settlement records overruns before reporting them, so the hard cap is unenforce…
+body: The settlement routine writes the spend and only afterwards reports that it exceeded the limit, meaning the cap can be breached rather than blocked. Reviewer marked this blocking at state.go:517-563, alongside the note that cursor migration and init/bootstrap races are now fixed.
+quote: 'Settlement only reports overruns after recording them, so it still cannot enforce the hard cap: `state.go:517-563`.'
+utterance_by: tool_result
+source:
+    kind: session
+    ref: codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T16-32-36-01a00c46-b7d2-7e30-8a57-955c5a957888.jsonl#L245
+    agent: codex
+    surface: macs-MacBook-Pro
+    at: 2026-08-16T20:41:24.996Z
+confidence: 0.9
+tags:
+    - internal/state/**
+env: null
+affects:
+    - internal/state/state.go

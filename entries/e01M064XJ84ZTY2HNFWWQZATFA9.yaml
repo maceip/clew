@@ -1,0 +1,21 @@
+id: e01M064XJ84ZTY2HNFWWQZATFA9
+type: finding
+title: 'Reservation API is dead code: callers still use racy estimate gates + RecordSpe…'
+body: The new atomic I9 reservation code in internal/state has no callers. The watch, backfill, and extract paths still gate on a pre-call estimate and call `RecordSpend` after the fact, and retry spend can be dropped on error. Cited at watchcmd.go:411-431, backfillcmd.go:111-121, extract.go:139-159.
+quote: I9 reservation code is unused; all callers still use racy estimate gates and `RecordSpend` afterward.
+utterance_by: tool_result
+source:
+    kind: session
+    ref: codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T16-32-36-01a00c46-b7d2-7e30-8a57-955c5a957888.jsonl#L245
+    agent: codex
+    surface: macs-MacBook-Pro
+    at: 2026-08-16T20:41:24.996Z
+confidence: 0.91
+tags:
+    - internal/extract/**
+    - '**/watchcmd.go'
+    - '**/backfillcmd.go'
+env: null
+affects:
+    - internal/extract/extract.go
+    - e01M0642VRXV9PCGA4NDJF92E2Y
