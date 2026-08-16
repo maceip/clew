@@ -1,0 +1,15 @@
+id: e01M04YAQN85TF6YQDP33VB4JQ0
+type: finding
+title: placeholder for write-path finding
+body: placeholder for write-path finding
+quote: placeholder for write-path finding
+utterance_by: user
+source:
+    kind: human
+    ref: cli:note
+    surface: cursor
+    at: 2026-08-16T09:27:02.056777336Z
+confidence: 1
+tags: []
+env: null
+affects: []
