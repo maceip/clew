@@ -1,4 +1,5 @@
 # Journal digest (live entries: id · type/status · title)
+- e01M0640H4ZAR0BQMS73R8QW9E7 finding/current Repaired watcher installed as launchd agent dev.clew.watch
 - e01M05VTCM3AR0WFY9TZPG9W1J8 finding/current Cursor migration and init/bootstrap races fixed; test, race, vet, diff checks p…
 - e01M05VTCM3AR0WFY9TZKZMBMA4 finding/current Neutral cwd breaks relative custom extractor commands like ./bin/extractor
 - e01M05VFAW9A783PMZZEER0G6FX intent/in_flight Second pass on rollover, double-settlement, migration; then run wider suite
@@ -30,5 +31,4 @@
 - e01M05S9SFKAAM813AR1B8DXEYW finding/current Codex format now detected; watcher tracks only post-baseline bytes
 - e01M05S9SFKAAM813AR1AY96QWH finding/current Final Task 2 dogfood snapshot: 0.113% extraction, 0:1 confirm:reject, 0 pushes
 - e01M05RHSWXDNR10P1PY8ERYA9S decision/active Dogfood metrics predeclared; D0 snapshot recorded
-- e01M05RF74PBCZVAPRY49GCVM7H finding/current answer: Run the live fidelity gate (RealProvider) on a machine with provider ke…
-… (40 more omitted for size)
+… (41 more omitted for size)

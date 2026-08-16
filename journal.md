@@ -1,6 +1,6 @@
 # Journal
 
-_generated 2026-08-16 20:25 UTC · 40 live entries (12 decisions · 18 findings · 1 questions · 9 intents) · 52 total in history_
+_generated 2026-08-16 20:26 UTC · 41 live entries (12 decisions · 19 findings · 1 questions · 9 intents) · 53 total in history_
 
 ## Decisions
 
@@ -89,6 +89,13 @@ Name = clew (owner). Alternatives considered: restart — verb collision, names 
 _source: human cli:note · confidence: 1.00_
 
 ## Findings
+
+### e01M0640H4ZAR0BQMS73R8QW9E7 — Repaired watcher installed as launchd agent dev.clew.watch  `current`
+> installed launchd agent dev.clew.watch (log: /Users/mac/.clew/logs/watch.log)
+
+After journaling the D2 cursor-rewind finding, the fixed watcher was installed as a launchd agent named dev.clew.watch on the dev Mac, writing to /Users/mac/.clew/logs/watch.log. That log path is where watcher behaviour for subsequent live runs can be inspected.
+
+_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-00-58-01a00b84-f81d-7a61-a3c3-e5bb6beb9ee3.jsonl#L1508 · confidence: 0.86 · tags: cmd/clew/**_
 
 ### e01M05VTCM3AR0WFY9TZPG9W1J8 — Cursor migration and init/bootstrap races fixed; test, race, vet, diff checks p…  `current`
 > Cursor migration and init/bootstrap races are fixed. `go test ./...`, race tests, vet, and diff checks pass.
@@ -253,7 +260,7 @@ _source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T
 
 Next step after the unit path went green is a live-gate run: install the exact built binary, normalize the single dogfood spend category, restart the watcher, then observe one complete tail/poll cycle. Acceptance is negative evidence — no historical replay, no false sessions, no false pushes in that cycle.
 
-_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-00-58-01a00b84-f81d-7a61-a3c3-e5bb6beb9ee3.jsonl#L1323 · confidence: 0.88 · evidence: 2_
+_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-00-58-01a00b84-f81d-7a61-a3c3-e5bb6beb9ee3.jsonl#L1323 · confidence: 0.88 · evidence: 3_
 
 ### e01M05TBYJXEW5N5FE398NJ4RD7 — Tighten live-enrollment/backfill boundary and add failure telemetry  `in_flight`
 > I’m tightening the live-enrollment/backfill boundary and failure telemetry now
