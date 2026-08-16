@@ -1,0 +1,16 @@
+id: e01M05V0G3Q9F41V62P6R5QV53G
+type: intent
+title: Fix migration monotonicity, restore from D1 boundary, rerun cycle before passin…
+body: 'After the first upgraded live cycle exposed a cursor-rewind defect, the watcher was stopped. Committed follow-up work: correct the cursor migration, restore state from the D1 boundary, and rerun the live cycle. Task 2 will not be declared passed until that rerun is clean.'
+quote: restoring from the D1 boundary, and will rerun the cycle before calling Task 2 passed.
+utterance_by: assistant
+source:
+    kind: session
+    ref: codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-00-58-01a00b84-f81d-7a61-a3c3-e5bb6beb9ee3.jsonl#L1437
+    agent: codex
+    surface: macs-MacBook-Pro
+    at: 2026-08-16T17:48:15.351Z
+confidence: 0.92
+tags: []
+env: null
+affects: []

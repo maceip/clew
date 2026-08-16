@@ -1,0 +1,10 @@
+id: v01M05V9W8GK0M4XRHMJGX9MDSD
+kind: evidence
+entry: e01M05SG3NTP5W2JX7Y6MP1F1K6
+payload:
+    kind: session
+    ref: /Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-00-58-01a00b84-f81d-7a61-a3c3-e5bb6beb9ee3.jsonl#L1437
+by:
+    who: extractor
+    surface: macs-MacBook-Pro
+at: 2026-08-16T17:53:22.704426Z

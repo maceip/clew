@@ -1,0 +1,16 @@
+id: e01M05V0G3Q9F41V62P6T44TC04
+type: decision
+title: Cursor migration must be monotonic — never rewind an existing cursor
+body: A divergent legacy cursor was rewound during migration, causing one duplicate re-extraction. The fix chosen is to make the migration monotonic so a migrated cursor can only move forward, closing off any migration path that repositions a cursor backward and replays already-extracted bytes.
+quote: I’m correcting the migration to be monotonic
+utterance_by: assistant
+source:
+    kind: session
+    ref: codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-00-58-01a00b84-f81d-7a61-a3c3-e5bb6beb9ee3.jsonl#L1437
+    agent: codex
+    surface: macs-MacBook-Pro
+    at: 2026-08-16T17:48:15.351Z
+confidence: 0.78
+tags: []
+env: null
+affects: []

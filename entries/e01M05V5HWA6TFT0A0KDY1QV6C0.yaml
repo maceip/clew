@@ -1,0 +1,17 @@
+id: e01M05V5HWA6TFT0A0KDY1QV6C0
+type: intent
+title: Add transactional reservation + settlement accounting in internal/state with co…
+body: Commitment to implement a transactional reservation record plus settlement accounting inside internal/state, accompanied by contention tests that demonstrate the cap/ratio cannot be over-admitted under concurrent access.
+quote: a transactional reservation record plus settlement accounting, with contention tests that prove the cap/ratio cannot be over-admitted
+utterance_by: assistant
+source:
+    kind: session
+    ref: codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-08-34-01a00b8b-ed93-7352-8324-f0366dc281a0.jsonl#L188
+    agent: codex
+    surface: macs-MacBook-Pro
+    at: 2026-08-16T17:51:01.002Z
+confidence: 0.88
+tags:
+    - internal/state/**
+env: null
+affects: []
