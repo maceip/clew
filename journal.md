@@ -1,6 +1,6 @@
 # Journal
 
-_generated 2026-08-16 21:37 UTC · 51 live entries (13 decisions · 25 findings · 1 questions · 12 intents) · 69 total in history_
+_generated 2026-08-16 21:38 UTC · 51 live entries (13 decisions · 25 findings · 1 questions · 12 intents) · 69 total in history_
 
 ## DECIDED
 
@@ -16,9 +16,9 @@ _generated 2026-08-16 21:37 UTC · 51 live entries (13 decisions · 25 findings 
 
 - `e01M06821D53QYHBJS1FEC2CK7G` Task 5 gate: 3 formats, 1 card, confirm boundary pass — 1m · current
 - `e01M067G2QY8BZNZXBE46QBEXEW` Task 4 gate: 10ms, HTML 30s, ntfy 5/5 — 11m · current
-- `e01M067AZ3VJM73XP82REZEZ1QC` Task 4 channel: ntfy 2383c10c…, card creation only — 13m · current
+- `e01M067AZ3VJM73XP82REZEZ1QC` Task 4 channel: ntfy 2383c10c…, card creation only — 14m · current
 - `e01M066XWD8F1SAWQ8HVXGW4J4Z` Task 3 docket gate: 8→1, FYI 0, withdrawal 1 poll — 21m · current
-- `e01M065G8RTKVH6466KE7GQREGX` Task 2 passes its live gate on all five acceptance checks — 45m · current
+- `e01M065G8RTKVH6466KE7GQREGX` Task 2 passes its live gate on all five acceptance checks — 46m · current
 - `e01M064YRS4S9NK7KW9NQ1JMDV2` Malformed or missing pinned timestamps silently fall back to ingest time — 55m · suspect
 - `e01M064YRS4S9NK7KW9NN351FQF` I9: Claude settlement ignores cache token fields, letting spend exceed caps — 55m · suspect
 
@@ -40,7 +40,7 @@ _None._
 
 | Intent | Age | Reality | State |
 |---|---:|---:|---|
-| `e01M065G8RTKVH6466KEB0FRJ8N` Commit the gate fixes as one spec-amended change, then start the docket | 45m | 1 evidence | in_flight |
+| `e01M065G8RTKVH6466KEB0FRJ8N` Commit the gate fixes as one spec-amended change, then start the docket | 46m | 1 evidence | in_flight |
 | `e01M064DHNTXFM29PNWCW0VBBF2` Run a strict read-only gate proving each acceptance point with tests or state q… | 1h | 3 evidence | in_flight |
 | `e01M0642VRXV9PCGA4NDJF92E2Y` Wire atomic budget reservations into every LLM call | 1h | 5 evidence | in_flight |
 | `e01M05VFAW9A783PMZZEER0G6FX` Second pass on rollover, double-settlement, migration; then run wider suite | 3h | 4 evidence | in_flight |
