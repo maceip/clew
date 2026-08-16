@@ -54,18 +54,9 @@ func docketList(a *app, repo string) error {
 	}
 	lastRuling, learned := docketMetrics(j, now)
 	alerts := a.db.OpenAlerts(repo, true)
-	assumptions := make(map[string]string)
-	for _, alert := range alerts {
-		switch alert.Kind {
-		case "contradiction":
-			assumptions["alert:"+alert.Key] = "the retained decision matches the owner's current intent"
-		case "stomp":
-			assumptions["alert:"+alert.Key] = "the selected owner has the work that should survive"
-		case "import":
-			assumptions["alert:"+alert.Key] = "the foreign provenance and batch diff are trustworthy"
-		}
-	}
+	assumptions := docketAssumptions(alerts)
 	cards := docket.Build(docket.Input{Journal: j, Alerts: alerts, Now: now, Assumptions: assumptions})
+
 	failureKey := "system-failure:docket:" + repoBase(repo)
 	if len(cards) > docket.MaxCards {
 		if err := a.db.Set(failureKey, fmt.Sprintf("%d active decision cards; cap=%d", len(cards), docket.MaxCards)); err != nil {
@@ -79,6 +70,21 @@ func docketList(a *app, repo string) error {
 		Repo: repoBase(repo), Cards: cards, Now: now,
 		Empty: docket.EmptyMetricsAt(now, lastRuling, learned), PushPrecision: precision,
 	})
+}
+
+func docketAssumptions(alerts []state.Alert) map[string]string {
+	assumptions := make(map[string]string)
+	for _, alert := range alerts {
+		switch alert.Kind {
+		case "contradiction":
+			assumptions["alert:"+alert.Key] = "the retained decision matches the owner's current intent"
+		case "stomp":
+			assumptions["alert:"+alert.Key] = "the selected owner has the work that should survive"
+		case "import":
+			assumptions["alert:"+alert.Key] = "the foreign provenance and batch diff are trustworthy"
+		}
+	}
+	return assumptions
 }
 
 func currentPushPrecision(alerts []state.Alert) *docket.PushPrecision {

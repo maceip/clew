@@ -12,6 +12,7 @@ usage:
   clew init [--carry <dir>] [--no-archaeology]   register repo; archaeology; install snippets
   clew watch [install|uninstall]                 start/adopt the machine's watcher
   clew status [--all]                            the glance
+  clew glance [--html]                           calm glance; write pinned-tab HTML
   clew map [--html <file>]                       intent × reality with absence
   clew docket [answer|ack|drop] …                decision cards only
   clew journal show|edit|confirm|reject|supersede|answer|note …
@@ -24,8 +25,11 @@ usage:
 
 func main() {
 	if len(os.Args) < 2 {
-		fmt.Print(usage)
-		os.Exit(2)
+		if err := cmdGlance(nil); err != nil {
+			fmt.Fprintln(os.Stderr, "clew:", err)
+			os.Exit(1)
+		}
+		return
 	}
 	cmd, args := os.Args[1], os.Args[2:]
 	var err error
@@ -36,6 +40,8 @@ func main() {
 		err = cmdWatch(args)
 	case "status":
 		err = cmdStatus(args)
+	case "glance":
+		err = cmdGlance(args)
 	case "map":
 		err = cmdMap(args)
 	case "docket":

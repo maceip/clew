@@ -425,17 +425,25 @@ precision behind the same `evidence` field without touching anything else.
   autonomous stretches, nudges are human-directed for **every** vendor; turn-boundary injection
   is the best case, not the norm. The matrix above is the ceiling of what agent surfaces permit
   today, stated so nobody mistakes it for real-time steering.
-- **MCP (optional, never load-bearing):** `stratura mcp` exposes `journal_search`,
+- **MCP (optional, never load-bearing):** `clew mcp` exposes `journal_search`,
   `journal_get(topic)`, `journal_note(entry)` for agents configured with it. Explicit
   `journal_note` writes are welcomed but nothing depends on them (I1).
 
 ### 8.2 The human
 
-- **`status` (the glance)** — five fixed sections, ≤ 7 lines each (I8):
+- **Bare `clew` (the glance)** — returns in <200ms with three calm sections, ≤ 7 lines each
+  (I8), followed by a compact intent × reality strip and current docket count:
+  `DECIDED` · `LEARNED` · `OPEN` (★ = needs human) · `MAP` · `DOCKET`.
+  `status` remains the diagnostic expansion with five fixed sections:
   `SESSIONS` (agent · surface · repo · branch · behind-by · live footprint) ·
   `DECIDED` (newest active) · `LEARNED` (newest findings) · `OPEN` (questions, aging, ★ = needs
   human) · `ALERTS` (contradiction/absence/stomp/adapter-degraded). Every line carries the entry
   id; `journal show <id>` gives quote + source jump.
+- **Ambient tiers:** generated `journal.md` begins with the same DECIDED/LEARNED/OPEN dashboard,
+  ages, ★/ALERTS, and a compact GFM intent × reality table with **ABSENT** highlighted, so GitHub
+  web/mobile is the away-from-desk surface. `clew glance --html` writes a self-contained
+  `~/.clew/glance.html`; the watcher atomically refreshes it, while the page reloads every 30s.
+  Its title is `clew ●` only while the docket is non-empty, otherwise `clew`.
 - **`map`** — the reflexion view: one row per live intent entry: title · tags · **status**
   (`absent` highlighted) · evidence count · last activity · attributed session. `--html`
   emits a single self-contained page (client-side render of the journal dir; no server). A
@@ -456,7 +464,8 @@ precision behind the same `evidence` field without touching anything else.
   the full set is replaced by one failure card: `N more items — the system is misconfigured`, with the
   push-precision report attached. Empty is a designed state:
   `Nothing needs you · last ruling Nd ago · M entries learned since.` No history, unread count,
-  badge, or snooze-forever state exists. Push is card-creation only; GitHub renders the read side.
+  badge, or snooze-forever state exists. ntfy/webhook push happens only on card creation; its
+  notification is exactly the card headline plus why-you strip. GitHub renders the read side.
 - **`journal` edit verbs:** `confirm` (confidence→1.0), `reject` (superseded-by-human),
   `supersede`, `answer`, `note` (free-form human entry). Editing is first-class writing (I6).
 
@@ -534,7 +543,9 @@ capabilities is not punting; every v1 need above has its full answer above):**
    considered: `restart` (verb collision; names the crisis, not the daily
    loop), `lore` (binary/brand collision with varalys/lore, getlore.ai, Epic
    Lore), `wake`, `canon`, `lorekeeper`.
-2. **Push channel default** — ntfy vs plain webhook vs both (one config line either way).
+2. **Push channel** — **CLOSED** (dogfood, 2026-08-16): ntfy with a generated unguessable
+   topic; plain webhook remains configurable. A fresh install stays disabled until its unique
+   topic/URL is generated, so no shared public topic can become a default credential.
 3. **Cursor desktop adapter depth** — SQLite composer store parsing effort vs `cursor-agent`
    CLI-only for v1; decide after inspecting one week of the user's actual store files.
 4. **Extraction instruction tuning loop** — fixtures exist (§10); decide promote/demote

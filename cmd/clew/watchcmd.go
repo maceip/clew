@@ -15,6 +15,7 @@ import (
 
 	"clew/internal/adapters"
 	"clew/internal/differ"
+	"clew/internal/docket"
 	"clew/internal/extract"
 	"clew/internal/gitx"
 	"clew/internal/journal"
@@ -509,11 +510,25 @@ func (w *watcher) pollOne(repo string) {
 	}
 	w.syncRepo(repo) // ≤30s fetch+rebase interval (§4)
 	if res != nil {
+		active := make(map[string]bool)
+		for _, alert := range db.OpenAlerts(repo, true) {
+			active[alert.Key] = true
+		}
+		currentJournal := w.journal(repo)
 		for _, al := range res.NewAlerts {
-			if !al.Blocking {
+			if !al.Blocking || !active[al.Key] || currentJournal == nil {
 				continue
 			}
-			sent, err := push.Send(w.a.cfg.Push, "clew: "+repoBase(repo), al.Body)
+			cards := docket.Build(docket.Input{
+				Journal: currentJournal, Alerts: []state.Alert{al}, Now: time.Now(),
+				Assumptions: docketAssumptions([]state.Alert{al}),
+			})
+			card, ok := cardCreatedByAlert(cards, al)
+			if !ok {
+				continue // FYI-shaped or stale: never push
+			}
+			title, body := docketPushMessage(card)
+			sent, err := push.Send(w.a.cfg.Push, title, body)
 			if err != nil {
 				db.Set("push-error:"+repo, err.Error())
 			} else {
@@ -567,6 +582,27 @@ func (w *watcher) syncRepo(repo string) {
 	} else {
 		db.Set("overfire:"+repo, "")
 	}
+	if db.Get("glance-repo") == repo {
+		if _, err := writeGlanceHTML(buildGlance(w.a, repo, j, now)); err != nil {
+			db.Set("glance-error:"+repo, err.Error())
+		} else {
+			db.Set("glance-error:"+repo, "")
+		}
+	}
+}
+
+func cardCreatedByAlert(cards []docket.Card, alert state.Alert) (docket.Card, bool) {
+	want := "alert:" + alert.Key
+	for _, card := range cards {
+		if card.Key == want || (alert.Kind == "aging" && card.Kind == "question" && strings.Contains(alert.EntryIDs, strings.TrimPrefix(card.Key, "question:"))) {
+			return card, true
+		}
+	}
+	return docket.Card{}, false
+}
+
+func docketPushMessage(card docket.Card) (string, string) {
+	return card.Headline, fmt.Sprintf("%s fired · cost of delay: %s", card.Why.RuleCode, card.Why.CostOfDelay)
 }
 
 // ---- supervision install (§2: launchd / systemd-user) ----

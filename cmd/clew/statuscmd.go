@@ -189,6 +189,7 @@ func statusMachine(a *app) error {
 	statusKVIssues(a, "adapter-paused:", "adapter paused")
 	statusKVIssues(a, "unknown:", "unknown format count")
 	statusKVIssues(a, "system-failure:", "system failure")
+	statusKVIssues(a, "glance-error:", "glance HTML")
 	discoveryIssues := adapters.CodexDiscoveryIssues()
 	for i, issue := range discoveryIssues {
 		if i >= 2 {

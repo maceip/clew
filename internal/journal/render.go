@@ -46,6 +46,7 @@ func Rollup(j *Journal, st map[string]*Computed, now time.Time) string {
 	fmt.Fprintf(&b, "# Journal\n\n_generated %s · %d live entries (%d decisions · %d findings · %d questions · %d intents) · %d total in history_\n",
 		now.UTC().Format(rollupTimestamp), live,
 		counts[model.Decision], counts[model.Finding], counts[model.Question], counts[model.Intent], len(j.Entries))
+	renderDashboard(&b, j, st, now)
 
 	section := func(title string, t model.EntryType) {
 		entries := sortedLive(j, st, t)
@@ -84,6 +85,111 @@ func Rollup(j *Journal, st map[string]*Computed, now time.Time) string {
 	section("Open questions", model.Question)
 	section("Intents", model.Intent)
 	return b.String()
+}
+
+// renderDashboard keeps the branch projection useful on GitHub web and mobile:
+// the current state is first, while the detailed evidence record remains below.
+func renderDashboard(b *strings.Builder, j *Journal, st map[string]*Computed, now time.Time) {
+	section := func(title string, typ model.EntryType, keep func(*model.Entry, *Computed) bool) {
+		fmt.Fprintf(b, "\n## %s\n\n", title)
+		entries := sortedLive(j, st, typ)
+		shown := 0
+		for _, e := range entries {
+			c := st[e.ID]
+			if c == nil || !keep(e, c) {
+				continue
+			}
+			marker := ""
+			if e.Type == model.Question && e.Asks == "human" {
+				marker = " ★"
+			}
+			fmt.Fprintf(b, "- `%s` %s — %s · %s%s\n", e.ID, gfmText(e.Title), age(now, e.Created()), c.Status, marker)
+			shown++
+			if shown == 7 {
+				break
+			}
+		}
+		if shown == 0 {
+			b.WriteString("_None._\n")
+		}
+	}
+	section("DECIDED", model.Decision, func(_ *model.Entry, c *Computed) bool {
+		return c.Status == StActive || c.Status == StPossibleContradiction || c.Status == StContradicted
+	})
+	section("LEARNED", model.Finding, func(_ *model.Entry, c *Computed) bool {
+		return c.Status == StCurrent || c.Status == StSuspect
+	})
+	section("OPEN", model.Question, func(_ *model.Entry, c *Computed) bool { return c.Status == StOpen })
+
+	b.WriteString("\n## ALERTS\n\n")
+	var alerts []string
+	for id, e := range j.Entries {
+		c := st[id]
+		if c == nil || !Live(c.Status) {
+			continue
+		}
+		label := ""
+		switch c.Status {
+		case StPossibleContradiction, StContradicted, StSuspect:
+			label = string(c.Status)
+		case StAbsent:
+			label = "**ABSENT**"
+		case StOpen:
+			if e.Asks == "human" && now.Sub(e.Created()) >= QuestionAging {
+				label = "★ human question aging"
+			}
+		}
+		if label != "" {
+			alerts = append(alerts, fmt.Sprintf("- %s `%s` %s — %s", label, id, gfmText(e.Title), age(now, e.Created())))
+		}
+	}
+	sort.Strings(alerts)
+	if len(alerts) == 0 {
+		b.WriteString("_None._\n")
+	} else {
+		for _, line := range alerts[:minInt(7, len(alerts))] {
+			b.WriteString(line + "\n")
+		}
+	}
+
+	b.WriteString("\n## Intent × reality\n\n| Intent | Age | Reality | State |\n|---|---:|---:|---|\n")
+	intents := sortedLive(j, st, model.Intent)
+	if len(intents) == 0 {
+		b.WriteString("| _None_ | — | — | — |\n")
+	} else {
+		for _, e := range intents[:minInt(7, len(intents))] {
+			c := st[e.ID]
+			status := string(c.Status)
+			if c.Status == StAbsent {
+				status = "**ABSENT**"
+			}
+			fmt.Fprintf(b, "| `%s` %s | %s | %d evidence | %s |\n",
+				e.ID, gfmCell(e.Title), age(now, e.Created()), c.Evidence, status)
+		}
+	}
+}
+
+func age(now, then time.Time) string {
+	d := now.Sub(then)
+	if d < 0 {
+		d = 0
+	}
+	if d < time.Hour {
+		return fmt.Sprintf("%dm", int(d/time.Minute))
+	}
+	if d < 24*time.Hour {
+		return fmt.Sprintf("%dh", int(d/time.Hour))
+	}
+	return fmt.Sprintf("%dd", int(d/(24*time.Hour)))
+}
+
+func gfmText(s string) string { return strings.ReplaceAll(strings.TrimSpace(s), "\n", " ") }
+func gfmCell(s string) string { return strings.ReplaceAll(gfmText(s), "|", "\\|") }
+func minInt(a, b int) int {
+	if a < b {
+		return a
+	}
+	return b
 }
 
 // Digest renders digest.md, the ≤4KB projection fed to extraction calls and

@@ -33,7 +33,9 @@ cd your-project            # any git repo (empty or ancient)
 clew init               # register; archaeology; installs CLAUDE.md/AGENTS.md
                            #   include + Claude nudge hook + .gitignore entry
 clew watch install      # launchd/systemd-user supervised watcher
-clew status             # the glance: SESSIONS·DECIDED·LEARNED·OPEN·ALERTS
+clew                    # calm glance: DECIDED·LEARNED·OPEN·MAP·DOCKET
+clew status             # diagnostic expansion
+clew glance --html      # ~/.clew/glance.html, 30s refresh, pinned-tab status light
 clew map                # intent × reality, absence highlighted
 clew docket             # bounded decision cards only (`inbox` remains an alias)
 clew backfill --budget 100000   # months of existing session history → journal
@@ -45,6 +47,8 @@ never guess-parsed), polls registered repos, extracts journal entries with
 your own agent subscription (`claude -p` → `codex exec` → OpenAI-compatible,
 first available; configurable in `~/.clew/config.yaml`), and syncs the
 journal branch through the repo's own remote. No server, no new credentials.
+Optional phone delivery uses a unique ntfy topic (or plain webhook) configured in
+`~/.clew/config.yaml`; only newly created docket cards push, with headline + why-you.
 
 For agents with no session store: `clew wrap -- gemini …` (PTY tee).
 Optional MCP surface: `clew mcp` (journal_search / journal_get /
