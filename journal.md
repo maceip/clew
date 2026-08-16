@@ -5,7 +5,7 @@ _generated 2026-08-16 22:32 UTC · 53 live entries (14 decisions · 26 findings 
 ## DECIDED
 
 - `e01M068ECYE067WF6BH7F26VC3D` Cursor v1 stays CLI-only: desktop 0 vs CLI 44 in 7d — 49m · active
-- `e01M064DQTWYDVGGAE3M5QRTGME` Re-evaluate the current tree instead of carrying the prior gate verdict forward — 1h · active
+- `e01M064DQTWYDVGGAE3M5QRTGME` Re-evaluate the current tree instead of carrying the prior gate verdict forward — 2h · active
 - `e01M05V5HWA6TFT0A0KDZY8S45K` Confine the cap/ratio admission fix to internal/state; no caller or spec changes — 4h · active
 - `e01M05V0G3Q9F41V62P6T44TC04` Cursor migration must be monotonic — never rewind an existing cursor — 4h · active
 - `e01M05TG628KAGZ9HCBQSAG562P` Separate session-extraction budget from one-time archaeology budget — 4h · active
@@ -14,7 +14,7 @@ _generated 2026-08-16 22:32 UTC · 53 live entries (14 decisions · 26 findings 
 
 ## LEARNED
 
-- `e01M068FQH1ND9MM1WH851AF45M` Task 6 gate: flags 0 writes; algebra, poller, manifest pass — 48m · current
+- `e01M068FQH1ND9MM1WH851AF45M` Task 6 gate: flags 0 writes; algebra, poller, manifest pass — 49m · current
 - `e01M06821D53QYHBJS1FEC2CK7G` Task 5 gate: 3 formats, 1 card, confirm boundary pass — 56m · current
 - `e01M067G2QY8BZNZXBE46QBEXEW` Task 4 gate: 10ms, HTML 30s, ntfy 5/5 — 1h · current
 - `e01M067AZ3VJM73XP82REZEZ1QC` Task 4 channel: ntfy 2383c10c…, card creation only — 1h · current
@@ -41,7 +41,7 @@ _None._
 | Intent | Age | Reality | State |
 |---|---:|---:|---|
 | `e01M065G8RTKVH6466KEB0FRJ8N` Commit the gate fixes as one spec-amended change, then start the docket | 1h | 1 evidence | in_flight |
-| `e01M064DHNTXFM29PNWCW0VBBF2` Run a strict read-only gate proving each acceptance point with tests or state q… | 1h | 3 evidence | in_flight |
+| `e01M064DHNTXFM29PNWCW0VBBF2` Run a strict read-only gate proving each acceptance point with tests or state q… | 2h | 3 evidence | in_flight |
 | `e01M0642VRXV9PCGA4NDJF92E2Y` Wire atomic budget reservations into every LLM call | 2h | 5 evidence | in_flight |
 | `e01M05VFAW9A783PMZZEER0G6FX` Second pass on rollover, double-settlement, migration; then run wider suite | 4h | 4 evidence | in_flight |
 | `e01M05V5HWA6TFT0A0KDY1QV6C0` Add transactional reservation + settlement accounting in internal/state with co… | 4h | 9 evidence | in_flight |
