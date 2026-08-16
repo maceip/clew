@@ -1,6 +1,6 @@
 # Journal
 
-_generated 2026-08-16 17:48 UTC · 33 live entries (10 decisions · 16 findings · 1 questions · 6 intents) · 40 total in history_
+_generated 2026-08-16 17:53 UTC · 34 live entries (10 decisions · 17 findings · 1 questions · 6 intents) · 41 total in history_
 
 ## Decisions
 
@@ -75,6 +75,13 @@ Name = clew (owner). Alternatives considered: restart — verb collision, names 
 _source: human cli:note · confidence: 1.00_
 
 ## Findings
+
+### e01M05V9MQWYX3BAX0VXZ70SHTD — D2: cursor rewind replayed 58,754 bytes once  `current`
+> D2 migration failure: split cursor rewind replayed 58754 bytes and spent 1815 extraction tokens once; delivered pushes=0. Fix is monotonic max(extract, watch-extract), with divergent-cursor regression. State backup: state.db.d1-20260816T1748Z.bak.
+
+D2 migration failure: split cursor rewind replayed 58754 bytes and spent 1815 extraction tokens once; delivered pushes=0. Fix is monotonic max(extract, watch-extract), with divergent-cursor regression. State backup: state.db.d1-20260816T1748Z.bak.
+
+_source: human cli:note · confidence: 1.00_
 
 ### e01M05TX51R4VZHJMNM804YPMRT — D1: 30 automatic entries; Codex metadata incident pinned  `current`
 > D1 live dogfood: 30 session entries appeared from 1 real Codex session with 0 manual notes; observed=5549571, live+backfill extraction=30184, all-LLM=39091, pushes delivered=0/0, open alerts=10; 46 records in 3 newly observed multi-agent metadata classes were pinned as non-utterance adapter metadata.

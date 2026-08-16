@@ -1,4 +1,5 @@
 # Journal digest (live entries: id · type/status · title)
+- e01M05V9MQWYX3BAX0VXZ70SHTD finding/current D2: cursor rewind replayed 58,754 bytes once
 - e01M05TX51R4VZHJMNM804YPMRT finding/current D1: 30 automatic entries; Codex metadata incident pinned
 - e01M05TPA9ZK4C8RGC3KBPV2MRF intent/in_flight Re-run the live gate: install binary, normalize spend category, restart watcher
 - e01M05TG628KAGZ9HCBQSAG562P decision/active Separate session-extraction budget from one-time archaeology budget
@@ -31,4 +32,4 @@
 - e01M04XVP9QBE041XCK43C78BVP finding/current Decision-dense sessions live on uncovered surfaces; manual notes = homework
 - e01M04XVNN32W4FTFKKSKJSN01V finding/current varalys/lore owns session-provenance + git-sync; clew's edge is diff + absence
 - e01M04WCGJS9FS7FQB0YFX9DTYG decision/active Name the system clew (owner decision)
-… (33 more omitted for size)
+… (34 more omitted for size)
