@@ -1,6 +1,6 @@
 # Journal
 
-_generated 2026-08-16 20:35 UTC · 44 live entries (13 decisions · 19 findings · 1 questions · 11 intents) · 57 total in history_
+_generated 2026-08-16 20:35 UTC · 45 live entries (13 decisions · 20 findings · 1 questions · 11 intents) · 58 total in history_
 
 ## Decisions
 
@@ -96,6 +96,13 @@ Name = clew (owner). Alternatives considered: restart — verb collision, names 
 _source: human cli:note · confidence: 1.00_
 
 ## Findings
+
+### e01M064K88F7SDMHA1SPAB51HK7 — D2 final: 52 automatic entries; live extraction 0.631%  `current`
+> D2-final: repos=3; automatic-session-entries=52; observed=6779248; live-extraction=42803 (0.631%); backfill=5057; all-LLM=67936/200000; C:R=0:1; pushes=0 delivered/0 unneeded (precision=N/A); adapter/system incidents=4; parked=0; active-reservations=0; live-sessions=6.
+
+D2-final: repos=3; automatic-session-entries=52; observed=6779248; live-extraction=42803 (0.631%); backfill=5057; all-LLM=67936/200000; C:R=0:1; pushes=0 delivered/0 unneeded (precision=N/A); adapter/system incidents=4; parked=0; active-reservations=0; live-sessions=6.
+
+_source: human cli:note · confidence: 1.00_
 
 ### e01M0642VRXV9PCGA4NDHV479C9 — Cursor path now monotonic and watcher stable  `current`
 > The cursor path is now monotonic and the watcher is stable.

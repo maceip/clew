@@ -1,4 +1,5 @@
 # Journal digest (live entries: id · type/status · title)
+- e01M064K88F7SDMHA1SPAB51HK7 finding/current D2 final: 52 automatic entries; live extraction 0.631%
 - e01M064DQTWYDVGGAE3M5QRTGME decision/active Re-evaluate the current tree instead of carrying the prior gate verdict forward
 - e01M064DHNTXFM29PNWCW0VBBF2 intent/in_flight Run a strict read-only gate proving each acceptance point with tests or state q…
 - e01M0642VRXV9PCGA4NDJF92E2Y intent/in_flight Wire atomic budget reservations into every LLM call
@@ -30,5 +31,4 @@
 - e01M05SA72DPRGNTY7GCQ2RASTP decision/possible-contradiction Cards show verbatim quotes + clickable provenance, never extractor paraphrase
 - e01M05SA72DPRGNTY7GCPEX9W2N decision/possible-contradiction I10–I12 added as hard invariants enforced in code and tests
 - e01M05SA72DPRGNTY7GCN1P7CED decision/possible-contradiction Rename the inbox surface to "docket"; keep inbox as hidden alias
-- e01M05S9SFKAAM813AR1EG3X3WR intent/in_flight Land the dogfood fixes after recording the Task 2 snapshot
-… (44 more omitted for size)
+… (45 more omitted for size)
