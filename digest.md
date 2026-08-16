@@ -1,5 +1,5 @@
 # Journal digest (live entries: id · type/status · title)
-- e01M05VFAW9A783PMZZEER0G6FX intent/proposed Second pass on rollover, double-settlement, migration; then run wider suite
+- e01M05VFAW9A783PMZZEER0G6FX intent/in_flight Second pass on rollover, double-settlement, migration; then run wider suite
 - e01M05VFAW9A783PMZZEBHJ1TZH finding/current State-package tests pass, including 20-way concurrent reservation races
 - e01M05V9MQWYX3BAX0VXZ70SHTD finding/current D2: cursor rewind replayed 58,754 bytes once
 - e01M05V5HWA6TFT0A0KDZY8S45K decision/active Confine the cap/ratio admission fix to internal/state; no caller or spec changes

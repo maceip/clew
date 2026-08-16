@@ -227,12 +227,12 @@ _source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15 · confide
 
 ## Intents
 
-### e01M05VFAW9A783PMZZEER0G6FX — Second pass on rollover, double-settlement, migration; then run wider suite  `proposed`
+### e01M05VFAW9A783PMZZEER0G6FX — Second pass on rollover, double-settlement, migration; then run wider suite  `in_flight`
 > I’m doing a second pass for rollover, double-settlement, and migration behavior before running the wider suite.
 
 Before treating the internal/state reservation/settlement work as done, do a second review pass covering rollover, double-settlement, and migration behavior, then run the wider test suite beyond the state package.
 
-_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-08-34-01a00b8b-ed93-7352-8324-f0366dc281a0.jsonl#L268 · confidence: 0.85 · tags: internal/state/**_
+_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-08-34-01a00b8b-ed93-7352-8324-f0366dc281a0.jsonl#L268 · confidence: 0.85 · tags: internal/state/** · evidence: 1_
 
 ### e01M05V5HWA6TFT0A0KDY1QV6C0 — Add transactional reservation + settlement accounting in internal/state with co…  `in_flight`
 > a transactional reservation record plus settlement accounting, with contention tests that prove the cap/ratio cannot be over-admitted
