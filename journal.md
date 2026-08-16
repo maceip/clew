@@ -143,9 +143,9 @@ Commitment (Task 3): build the docket card to the fixed anatomy — headline-as-
 
 _source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-18-36-01a00b95-1c07-7d61-a3e4-fb76948ee1b9.jsonl#L9 · confidence: 0.90 · tags: docket/** · evidence: 1_
 
-### e01M05S9SFKAAM813AR1EG3X3WR — Land the dogfood fixes after recording the Task 2 snapshot  `proposed`
+### e01M05S9SFKAAM813AR1EG3X3WR — Land the dogfood fixes after recording the Task 2 snapshot  `in_flight`
 > I’m recording that snapshot and then landing the dogfood fixes.
 
 Commitment to record the final Task 2 dogfood snapshot and then land the outstanding dogfood fixes in the codebase.
 
-_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-00-58-01a00b84-f81d-7a61-a3c3-e5bb6beb9ee3.jsonl#L729 · confidence: 0.82_
+_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-00-58-01a00b84-f81d-7a61-a3c3-e5bb6beb9ee3.jsonl#L729 · confidence: 0.82 · evidence: 1_

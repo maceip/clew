@@ -5,7 +5,7 @@
 - e01M05SA72DPRGNTY7GCQ2RASTP decision/possible-contradiction Cards show verbatim quotes + clickable provenance, never extractor paraphrase
 - e01M05SA72DPRGNTY7GCPEX9W2N decision/possible-contradiction I10–I12 added as hard invariants enforced in code and tests
 - e01M05SA72DPRGNTY7GCN1P7CED decision/possible-contradiction Rename the inbox surface to "docket"; keep inbox as hidden alias
-- e01M05S9SFKAAM813AR1EG3X3WR intent/proposed Land the dogfood fixes after recording the Task 2 snapshot
+- e01M05S9SFKAAM813AR1EG3X3WR intent/in_flight Land the dogfood fixes after recording the Task 2 snapshot
 - e01M05S9SFKAAM813AR1B8DXEYW finding/current Codex format now detected; watcher tracks only post-baseline bytes
 - e01M05S9SFKAAM813AR1AY96QWH finding/current Final Task 2 dogfood snapshot: 0.113% extraction, 0:1 confirm:reject, 0 pushes
 - e01M05RPB2N6QDXN1MP31SB64B2 finding/current Dogfood D0 historical-session storm is an I12 failure
