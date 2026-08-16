@@ -1,0 +1,22 @@
+id: e01M05T4XG0RJWQTP25T1K58B61
+type: finding
+title: Confirm/reject only in event YAML; adapter unknowns undated, absent from status
+body: Human confirm/reject signals are recorded only in per-worktree events/*.yaml, so measuring confirm rate requires a find+awk scrape instead of a DB query. Adapter "unknown" counts are cumulative, undated KV rows and never surfaced in status. Both dogfood metrics are therefore not queryable from state.db.
+quote: Confirm/reject exists only in journal event YAML.
+utterance_by: tool_result
+source:
+    kind: session
+    ref: codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-18-36-01a00b95-1c07-7d61-a3e4-fb76948ee1b9.jsonl#L441
+    agent: codex
+    surface: macs-MacBook-Pro
+    at: 2026-08-16T17:33:11.552Z
+confidence: 0.87
+tags:
+    - internal/**
+    - cmd/clew/**
+env:
+    host: local dogfood machine
+    dataset: $CLEW_HOME/state.db + worktrees events/*.yaml
+affects:
+    - internal/**
+    - cmd/clew/**

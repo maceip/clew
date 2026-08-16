@@ -1,0 +1,19 @@
+id: e01M05T52RRS9EXQ92M3PA9WBVF
+type: finding
+title: Baseline/upgrade paths have state-transition races unit tests don't exercise
+body: Reviewing the revised watch fix surfaced several state-transition races in the baseline and upgrade paths that the current unit tests do not cover. Concrete failure sequences were handed to the implementing agent, and a race-suite pass was run against the revised diff to check them.
+quote: The baseline/upgrade paths exposed several state-transition races that unit tests don’t currently exercise.
+utterance_by: assistant
+source:
+    kind: session
+    ref: codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-18-36-01a00b95-1c07-7d61-a3e4-fb76948ee1b9.jsonl#L446
+    agent: codex
+    surface: macs-MacBook-Pro
+    at: 2026-08-16T17:33:16.952Z
+confidence: 0.9
+tags:
+    - cmd/clew/**
+    - internal/**
+env: null
+affects:
+    - cmd/clew/watchcmd.go

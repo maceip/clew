@@ -1,0 +1,21 @@
+id: e01M05T4XG0RJWQTP25SYT4FH0B
+type: finding
+title: 'Task 2 not passable: `spent` conflates extraction, differ, and archaeology'
+body: The dogfood audit judged Task 2 not passable yet. The budget `spent` counter mixes extraction, differ, and archaeology tokens, so the predeclared extraction-only cost metric cannot be read from it. Separating cost by kind is a prerequisite before the Task 2 gate can be honestly evaluated.
+quote: '`spent` combines extraction, differ, and archaeology; it is not extraction-only.'
+utterance_by: tool_result
+source:
+    kind: session
+    ref: codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-18-36-01a00b95-1c07-7d61-a3e4-fb76948ee1b9.jsonl#L441
+    agent: codex
+    surface: macs-MacBook-Pro
+    at: 2026-08-16T17:33:11.552Z
+confidence: 0.9
+tags:
+    - internal/**
+    - cmd/clew/**
+env:
+    host: local dogfood machine
+    dataset: $CLEW_HOME/state.db budget table
+affects:
+    - internal/**
