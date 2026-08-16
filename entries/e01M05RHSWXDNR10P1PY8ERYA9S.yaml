@@ -1,0 +1,15 @@
+id: e01M05RHSWXDNR10P1PY8ERYA9S
+type: decision
+title: Dogfood metrics predeclared; D0 snapshot recorded
+body: 'Dogfood D0 2026-08-16: repos=3; spend=spent/observed, caps=2%,200000/d; confirm:reject=C:R; push precision=needed/total, unneeded=failure; adapter incidents=paused+parked+unknown-format. D0 spend=0/0; C:R=0:1; push=0/0; incidents=0.'
+quote: 'Dogfood D0 2026-08-16: repos=3; spend=spent/observed, caps=2%,200000/d; confirm:reject=C:R; push precision=needed/total, unneeded=failure; adapter incidents=paused+parked+unknown-format. D0 spend=0/0; C:R=0:1; push=0/0; incidents=0.'
+utterance_by: user
+source:
+    kind: human
+    ref: cli:note
+    surface: macs-MacBook-Pro
+    at: 2026-08-16T17:05:16.70191Z
+confidence: 1
+tags: []
+env: null
+affects: []
