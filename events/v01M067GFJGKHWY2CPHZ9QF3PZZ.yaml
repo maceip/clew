@@ -1,0 +1,11 @@
+id: v01M067GFJGKHWY2CPHZ9QF3PZZ
+kind: evidence
+entry: e01M05SPB2EMMC4F4PR0BSPFZKZ
+payload:
+    kind: commit
+    note: Add calm glance tiers and card-only push
+    ref: a18078c4f17e970a8e9c47ef5a26b862cff47798
+by:
+    who: differ
+    surface: macs-MacBook-Pro
+at: 2026-08-16T21:26:42Z

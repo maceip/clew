@@ -1,0 +1,11 @@
+id: v01M067GFJGKHWY2CPHZJ44YF8N
+kind: evidence
+entry: e01M05T52RRS9EXQ92M3PA9WBVF
+payload:
+    kind: churn
+    note: Add calm glance tiers and card-only push
+    ref: churn:a18078c4f17e970a8e9c47ef5a26b862cff47798
+by:
+    who: differ
+    surface: macs-MacBook-Pro
+at: 2026-08-16T21:26:42Z
