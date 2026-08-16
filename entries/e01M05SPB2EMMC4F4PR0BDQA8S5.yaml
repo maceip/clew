@@ -1,0 +1,19 @@
+id: e01M05SPB2EMMC4F4PR0BDQA8S5
+type: finding
+title: 'First watch treated historical sessions as live: 342 overlaps, 27 stomps, 12.9M…'
+body: 'Measured fallout of the first watch run misclassifying pre-existing historical sessions as live: 342 overlaps, 27 stomps, and 12,895,847 observed tokens. This quantifies the historical-session storm previously recorded qualitatively as an I12 failure.'
+quote: First watch misclassified historical sessions as live, producing 342 overlaps, 27 stomps, and 12,895,847 observed tokens.
+utterance_by: tool_result
+source:
+    kind: session
+    ref: codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-18-36-01a00b95-1c07-7d61-a3e4-fb76948ee1b9.jsonl#L335
+    agent: codex
+    surface: macs-MacBook-Pro
+    at: 2026-08-16T17:25:13.934Z
+confidence: 0.91
+tags:
+    - cmd/clew/**
+env:
+    dataset: clew dogfood D0 first watch
+affects:
+    - cmd/clew/watchcmd.go

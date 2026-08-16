@@ -1,0 +1,18 @@
+id: e01M05SPB2EMMC4F4PR0BSPFZKZ
+type: intent
+title: 'Narrow fix for the watch storm: transactional baselines, source-time, bounded c…'
+body: 'The semantics investigation reported a root cause and a narrow fix to the parent: make live baselines transactional, use source-time (not observation-time) session timestamps, and give backfill its own bounded cursor separate from live watch. This is the proposed work to make backfill and live watch disjoint.'
+quote: 'Root cause and narrow fix sent to parent: transactional live baselines, source-time sessions, and bounded separate backfill cursor.'
+utterance_by: tool_result
+source:
+    kind: session
+    ref: codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-18-36-01a00b95-1c07-7d61-a3e4-fb76948ee1b9.jsonl#L335
+    agent: codex
+    surface: macs-MacBook-Pro
+    at: 2026-08-16T17:25:13.934Z
+confidence: 0.62
+tags:
+    - cmd/clew/**
+    - internal/**
+env: null
+affects: []
