@@ -1,0 +1,16 @@
+id: e01M05SG3NTP5W2JX7Y6KZD5N6P
+type: finding
+title: 'Pre-commit review found three Task 2 blockers: cursor migration, backfill overl…'
+body: 'A pre-commit review of the Task 2 work surfaced three real blockers: users upgrading had no cursor migration path; backfill could overlap with live suffixes; and init could baseline in the middle of a partial JSONL record, producing a corrupt offset.'
+quote: 'Pre-commit review found three real blockers: upgrade users lacked cursor migration, backfill could overlap live suffixes, and init could baseline inside a partial JSONL record.'
+utterance_by: assistant
+source:
+    kind: session
+    ref: codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-00-58-01a00b84-f81d-7a61-a3c3-e5bb6beb9ee3.jsonl#L806
+    agent: codex
+    surface: macs-MacBook-Pro
+    at: 2026-08-16T17:21:49.754Z
+confidence: 0.93
+tags: []
+env: null
+affects: []

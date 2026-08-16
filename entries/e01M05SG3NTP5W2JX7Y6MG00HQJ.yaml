@@ -1,0 +1,16 @@
+id: e01M05SG3NTP5W2JX7Y6MG00HQJ
+type: decision
+title: Hold the Task 2 commit; make backfill and live watch disjoint by construction
+body: 'Rather than commit Task 2 and patch later, the commit is held while three fixes land: a one-time cursor migration for upgrading users, complete-record offsets so init never baselines mid-record, and a fixed historical upper bound so backfill and live watch cannot overlap — disjoint by construction rather than by runtime check.'
+quote: I’m holding the Task 2 commit and adding a one-time migration, complete-record offsets, and a fixed historical upper bound so backfill and live watch are disjoint by construction.
+utterance_by: assistant
+source:
+    kind: session
+    ref: codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-00-58-01a00b84-f81d-7a61-a3c3-e5bb6beb9ee3.jsonl#L806
+    agent: codex
+    surface: macs-MacBook-Pro
+    at: 2026-08-16T17:21:49.754Z
+confidence: 0.9
+tags: []
+env: null
+affects: []
