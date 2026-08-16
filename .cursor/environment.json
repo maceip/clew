@@ -1,0 +1,4 @@
+{
+  "name": "clew",
+  "install": "go mod download && go build ./... && GOBIN=\"$HOME/.local/bin\" go install ./cmd/clew"
+}
