@@ -1,14 +1,20 @@
 id: e01M04YAQN85TF6YQDP33VB4JQ0
 type: finding
-title: placeholder for write-path finding
-body: placeholder for write-path finding
-quote: placeholder for write-path finding
+title: Foreign agents can read the journal but not write; contribution path unbuilt
+body: >-
+  cursor[bot] (repo-scoped elsewhere) was denied push to maceip/clew — correct posture:
+  journal write = repo write, else anyone could poison context.md (§6.5 amplifier). But the
+  sanctioned path for non-credentialed contributors is unbuilt; tonight's delivery was a
+  hand-rolled bundle over a side channel. Options: document fork-PR onto clew/journal, or a
+  `clew import <bundle>` verb landing foreign entries pending human confirm.
+quote: "so if you cant even push to the public clew directory does that mean our first real test failed?"
 utterance_by: user
 source:
-    kind: human
-    ref: cli:note
-    surface: cursor
-    at: 2026-08-16T09:27:02.056777336Z
+    kind: session
+    ref: chat:cursor-cloud-agent/stratura-strategy-2026-08-15
+    agent: cursor-cloud-agent
+    surface: cursor-cloud-vm
+    at: 2026-08-16T09:25:00Z
 confidence: 1
 tags: []
 env: null
