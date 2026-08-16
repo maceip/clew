@@ -1,4 +1,6 @@
 # Journal digest (live entries: id · type/status · title)
+- e01M065G8RTKVH6466KEB0FRJ8N intent/proposed Commit the gate fixes as one spec-amended change, then start the docket
+- e01M065G8RTKVH6466KE7GQREGX finding/current Task 2 passes its live gate on all five acceptance checks
 - e01M064YRS4S9NK7KW9NQ1JMDV2 finding/current Malformed or missing pinned timestamps silently fall back to ingest time
 - e01M064YRS4S9NK7KW9NN351FQF finding/current I9: Claude settlement ignores cache token fields, letting spend exceed caps
 - e01M064K88F7SDMHA1SPAB51HK7 finding/current D2 final: 52 automatic entries; live extraction 0.631%
@@ -29,6 +31,4 @@
 - e01M05SA72DPRGNTY7GCXARNKYH intent/in_flight Implement the decision card and enforce I10–I12 in renderer and tests
 - e01M05SA72DPRGNTY7GCV0CBDK7 finding/current Assumptions prompt cut over-reliance 42%→22%; stacked/delay friction backfired
 - e01M05SA72DPRGNTY7GCQ2RASTP decision/possible-contradiction Cards show verbatim quotes + clickable provenance, never extractor paraphrase
-- e01M05SA72DPRGNTY7GCPEX9W2N decision/possible-contradiction I10–I12 added as hard invariants enforced in code and tests
-- e01M05SA72DPRGNTY7GCN1P7CED decision/possible-contradiction Rename the inbox surface to "docket"; keep inbox as hidden alias
-… (45 more omitted for size)
+… (47 more omitted for size)

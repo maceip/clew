@@ -1,6 +1,6 @@
 # Journal
 
-_generated 2026-08-16 20:51 UTC · 45 live entries (13 decisions · 20 findings · 1 questions · 11 intents) · 63 total in history_
+_generated 2026-08-16 20:52 UTC · 47 live entries (13 decisions · 21 findings · 1 questions · 12 intents) · 65 total in history_
 
 ## Decisions
 
@@ -96,6 +96,13 @@ Name = clew (owner). Alternatives considered: restart — verb collision, names 
 _source: human cli:note · confidence: 1.00_
 
 ## Findings
+
+### e01M065G8RTKVH6466KE7GQREGX — Task 2 passes its live gate on all five acceptance checks  `current`
+> Task 2 now passes its live gate: 52 automatic session entries, 0 delivered/unneeded pushes, monotonic cursors, exact installed binary, and no active adapter/LLM errors.
+
+A live gate run on Task 2 passed: 52 automatic session entries recorded, 0 delivered-but-unneeded pushes, cursors monotonic, the exact installed binary in use, and no active adapter or LLM errors. This is the verdict that unblocked committing the gate fixes.
+
+_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-00-58-01a00b84-f81d-7a61-a3c3-e5bb6beb9ee3.jsonl#L1988 · confidence: 0.93_
 
 ### e01M064YRS4S9NK7KW9NQ1JMDV2 — Malformed or missing pinned timestamps silently fall back to ingest time  `current`
 > Source time: malformed/missing pinned timestamps silently become ingest `now`.
@@ -248,12 +255,19 @@ _source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15 · confide
 
 ## Intents
 
+### e01M065G8RTKVH6466KEB0FRJ8N — Commit the gate fixes as one spec-amended change, then start the docket  `proposed`
+> I’m committing the gate fixes as one spec-amended change, then moving to the docket.
+
+After the Task 2 live gate passed, the plan is to land all gate fixes as a single commit that also amends the spec, and then move on to the docket surface work.
+
+_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-00-58-01a00b84-f81d-7a61-a3c3-e5bb6beb9ee3.jsonl#L1988 · confidence: 0.90_
+
 ### e01M064DHNTXFM29PNWCW0VBBF2 — Run a strict read-only gate proving each acceptance point with tests or state q…  `in_flight`
 > I’m doing a strict read-only gate: first loading Clew’s generated context and relevant prior memory, then I’ll inspect the current diff and prove each acceptance point with tests or direct state queries. I’ll report only a blocker or a PASS with exact evidence.
 
 Plan for this session: load Clew's generated context and prior memory, inspect the current diff, and prove each acceptance point via tests or direct state queries — reporting only a blocker or a PASS with exact evidence, making no writes.
 
-_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T16-32-36-01a00c46-b7d2-7e30-8a57-955c5a957888.jsonl#L16 · confidence: 0.88 · evidence: 2_
+_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T16-32-36-01a00c46-b7d2-7e30-8a57-955c5a957888.jsonl#L16 · confidence: 0.88 · evidence: 3_
 
 ### e01M0642VRXV9PCGA4NDJF92E2Y — Wire atomic budget reservations into every LLM call  `in_flight`
 > I’m wiring the new atomic budget reservations into every LLM call next; this closes the remaining race where live extraction and backfill could both spend against the same allowance.
