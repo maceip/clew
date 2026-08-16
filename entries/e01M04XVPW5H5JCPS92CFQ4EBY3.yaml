@@ -1,0 +1,15 @@
+id: e01M04XVPW5H5JCPS92CFQ4EBY3
+type: finding
+title: independent verification finding placeholder
+body: independent verification finding placeholder
+quote: independent verification finding placeholder
+utterance_by: user
+source:
+    kind: human
+    ref: cli:note
+    surface: cursor
+    at: 2026-08-16T09:18:49.733928893Z
+confidence: 1
+tags: []
+env: null
+affects: []
