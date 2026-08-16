@@ -1,8 +1,15 @@
 # Journal
 
-_generated 2026-08-16 20:32 UTC · 42 live entries (12 decisions · 19 findings · 1 questions · 10 intents) · 55 total in history_
+_generated 2026-08-16 20:34 UTC · 44 live entries (13 decisions · 19 findings · 1 questions · 11 intents) · 57 total in history_
 
 ## Decisions
+
+### e01M064DQTWYDVGGAE3M5QRTGME — Re-evaluate the current tree instead of carrying the prior gate verdict forward  `active`
+> The earlier gate’s three blockers are the right pressure points, but the checkout has moved: reservation callers and the neutral-workdir behavior now have new code and tests. I’m re-evaluating the present tree, including untracked test files, instead of carrying that verdict forward.
+
+The prior gate's three blockers were judged the right pressure points, but the checkout has since gained new code and tests for reservation callers and neutral-workdir behavior. The gate will therefore re-evaluate the present tree, including untracked test files, rather than reusing the earlier verdict.
+
+_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T16-32-36-01a00c46-b7d2-7e30-8a57-955c5a957888.jsonl#L35 · confidence: 0.90_
 
 ### e01M05V5HWA6TFT0A0KDZY8S45K — Confine the cap/ratio admission fix to internal/state; no caller or spec changes  `active`
 > I’m implementing this entirely inside `internal/state`
@@ -109,7 +116,7 @@ _source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T
 
 Running the LLM subprocess with a neutral working directory (llm.go:93-99) breaks the supported configuration of a relative custom command path, e.g. `./bin/extractor`, which resolves against the project directory.
 
-_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-18-36-01a00b95-1c07-7d61-a3e4-fb76948ee1b9.jsonl#L961 · confidence: 0.90 · tags: internal/llm/**_
+_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-18-36-01a00b95-1c07-7d61-a3e4-fb76948ee1b9.jsonl#L961 · confidence: 0.90 · tags: internal/llm/** · evidence: 1_
 
 ### e01M05V9MQWYX3BAX0VXZ70SHTD — D2: cursor rewind replayed 58,754 bytes once  `current`
 > D2 migration failure: split cursor rewind replayed 58754 bytes and spent 1815 extraction tokens once; delivered pushes=0. Fix is monotonic max(extract, watch-extract), with divergent-cursor regression. State backup: state.db.d1-20260816T1748Z.bak.
@@ -234,12 +241,19 @@ _source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15 · confide
 
 ## Intents
 
+### e01M064DHNTXFM29PNWCW0VBBF2 — Run a strict read-only gate proving each acceptance point with tests or state q…  `proposed`
+> I’m doing a strict read-only gate: first loading Clew’s generated context and relevant prior memory, then I’ll inspect the current diff and prove each acceptance point with tests or direct state queries. I’ll report only a blocker or a PASS with exact evidence.
+
+Plan for this session: load Clew's generated context and prior memory, inspect the current diff, and prove each acceptance point via tests or direct state queries — reporting only a blocker or a PASS with exact evidence, making no writes.
+
+_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T16-32-36-01a00c46-b7d2-7e30-8a57-955c5a957888.jsonl#L16 · confidence: 0.88_
+
 ### e01M0642VRXV9PCGA4NDJF92E2Y — Wire atomic budget reservations into every LLM call  `in_flight`
 > I’m wiring the new atomic budget reservations into every LLM call next; this closes the remaining race where live extraction and backfill could both spend against the same allowance.
 
 Next step: route every LLM call through the new atomic budget reservations, so live extraction and backfill can no longer both spend against the same allowance. Closing this race is the stated purpose of the change.
 
-_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-00-58-01a00b84-f81d-7a61-a3c3-e5bb6beb9ee3.jsonl#L1577 · confidence: 0.88 · tags: internal/state/** · evidence: 1_
+_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-00-58-01a00b84-f81d-7a61-a3c3-e5bb6beb9ee3.jsonl#L1577 · confidence: 0.88 · tags: internal/state/** · evidence: 2_
 
 ### e01M05VFAW9A783PMZZEER0G6FX — Second pass on rollover, double-settlement, migration; then run wider suite  `in_flight`
 > I’m doing a second pass for rollover, double-settlement, and migration behavior before running the wider suite.
@@ -253,7 +267,7 @@ _source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T
 
 Commitment to implement a transactional reservation record plus settlement accounting inside internal/state, accompanied by contention tests that demonstrate the cap/ratio cannot be over-admitted under concurrent access.
 
-_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-08-34-01a00b8b-ed93-7352-8324-f0366dc281a0.jsonl#L188 · confidence: 0.88 · tags: internal/state/** · evidence: 5_
+_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-08-34-01a00b8b-ed93-7352-8324-f0366dc281a0.jsonl#L188 · confidence: 0.88 · tags: internal/state/** · evidence: 6_
 
 ### e01M05V0G3Q9F41V62P6R5QV53G — Fix migration monotonicity, restore from D1 boundary, rerun cycle before passin…  `in_flight`
 > restoring from the D1 boundary, and will rerun the cycle before calling Task 2 passed.

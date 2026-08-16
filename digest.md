@@ -1,4 +1,6 @@
 # Journal digest (live entries: id · type/status · title)
+- e01M064DQTWYDVGGAE3M5QRTGME decision/active Re-evaluate the current tree instead of carrying the prior gate verdict forward
+- e01M064DHNTXFM29PNWCW0VBBF2 intent/proposed Run a strict read-only gate proving each acceptance point with tests or state q…
 - e01M0642VRXV9PCGA4NDJF92E2Y intent/in_flight Wire atomic budget reservations into every LLM call
 - e01M0642VRXV9PCGA4NDHV479C9 finding/current Cursor path now monotonic and watcher stable
 - e01M0640H4ZAR0BQMS73R8QW9E7 finding/current Repaired watcher installed as launchd agent dev.clew.watch
@@ -29,7 +31,4 @@
 - e01M05SA72DPRGNTY7GCPEX9W2N decision/possible-contradiction I10–I12 added as hard invariants enforced in code and tests
 - e01M05SA72DPRGNTY7GCN1P7CED decision/possible-contradiction Rename the inbox surface to "docket"; keep inbox as hidden alias
 - e01M05S9SFKAAM813AR1EG3X3WR intent/in_flight Land the dogfood fixes after recording the Task 2 snapshot
-- e01M05S9SFKAAM813AR1B8DXEYW finding/current Codex format now detected; watcher tracks only post-baseline bytes
-- e01M05S9SFKAAM813AR1AY96QWH finding/current Final Task 2 dogfood snapshot: 0.113% extraction, 0:1 confirm:reject, 0 pushes
-- e01M05RHSWXDNR10P1PY8ERYA9S decision/active Dogfood metrics predeclared; D0 snapshot recorded
-… (42 more omitted for size)
+… (44 more omitted for size)
