@@ -1,6 +1,6 @@
 # Journal
 
-_generated 2026-08-16 18:02 UTC · 41 live entries (12 decisions · 19 findings · 1 questions · 9 intents) · 48 total in history_
+_generated 2026-08-16 18:02 UTC · 40 live entries (12 decisions · 18 findings · 1 questions · 9 intents) · 48 total in history_
 
 ## Decisions
 
@@ -96,13 +96,6 @@ _source: human cli:note · confidence: 1.00_
 The LLM reservation/settlement accounting in internal/state landed as atomic operations: concurrent daily-cap and extraction-ratio admission checks are serialized using SQLite `BEGIN IMMEDIATE` transactions, and the API surfaces typed errors for limit, overrun, and duplicate settlement. Implementation stayed inside internal/state with no caller or spec edits.
 
 _source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-08-34-01a00b8b-ed93-7352-8324-f0366dc281a0.jsonl#L319 · confidence: 0.91 · tags: internal/state/**_
-
-### e01M05VFAW9A783PMZZEBHJ1TZH — State-package tests pass, including 20-way concurrent reservation races  `current`
-> The state-package tests now pass, including 20-way concurrent reservation races against both limits.
-
-After the transactional reservation/settlement work in internal/state, the package's tests pass, covering 20-way concurrent reservation races against both limits (cap and ratio). Rollover, double-settlement, and migration behavior had not yet been verified at this point, and the wider suite had not been run.
-
-_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-08-34-01a00b8b-ed93-7352-8324-f0366dc281a0.jsonl#L268 · confidence: 0.88 · tags: internal/state/**_
 
 ### e01M05V9MQWYX3BAX0VXZ70SHTD — D2: cursor rewind replayed 58,754 bytes once  `current`
 > D2 migration failure: split cursor rewind replayed 58754 bytes and spent 1815 extraction tokens once; delivered pushes=0. Fix is monotonic max(extract, watch-extract), with divergent-cursor regression. State backup: state.db.d1-20260816T1748Z.bak.
