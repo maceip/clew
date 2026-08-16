@@ -1,4 +1,4 @@
-# restart journal
+# clew journal
 
 Append-only project journal (entries/, events/) plus generated
 projections (journal.md, digest.md). This orphan branch shares no

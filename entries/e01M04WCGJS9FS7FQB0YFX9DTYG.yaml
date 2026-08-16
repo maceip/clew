@@ -1,0 +1,15 @@
+id: e01M04WCGJS9FS7FQB0YFX9DTYG
+type: decision
+title: Name the system clew (owner decision)
+body: 'Name = clew (owner). Alternatives considered: restart — verb collision, names the crisis not the daily loop; lore — binary/brand collision with varalys/lore, getlore.ai, Epic Lore; wake, canon, lorekeeper also considered. Supersedes the builder''s unilateral restart from §12.1.'
+quote: 'Name = clew (owner). Alternatives considered: restart — verb collision, names the crisis not the daily loop; lore — binary/brand collision with varalys/lore, getlore.ai, Epic Lore; wake, canon, lorekeeper also considered. Supersedes the builder''s unilateral restart from §12.1.'
+utterance_by: user
+source:
+    kind: human
+    ref: cli:note
+    surface: macs-MacBook-Pro
+    at: 2026-08-16T08:53:03.193378Z
+confidence: 1
+tags: []
+env: null
+affects: []
