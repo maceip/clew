@@ -1,3 +1,5 @@
+# test fixture: humans edit this once, ever
+#
 # Fixture-2 ground-truth labels (JOURNAL_SPEC Appendix A.1).
 #
 # §10.2: these labels were agent-written; testing an extractor against an

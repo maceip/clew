@@ -18,7 +18,12 @@ feature (§9).
 ## Build & install
 
 ```bash
-go build -o clew ./cmd/clew     # Go ≥ 1.22; single static binary
+# install onto your PATH (single static binary; Go ≥ 1.22):
+GOBIN="$HOME/.local/bin" go install ./cmd/clew   # any dir on your PATH works
+clew help
+
+# plain `go install ./cmd/clew` uses $(go env GOPATH)/bin — put that on PATH
+# first, or you'll hit "command not found". For a local build: go build -o clew ./cmd/clew
 ```
 
 ## Quickstart
