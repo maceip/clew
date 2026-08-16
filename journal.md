@@ -1,6 +1,6 @@
 # Journal
 
-_generated 2026-08-16 21:16 UTC · 47 live entries (13 decisions · 21 findings · 1 questions · 12 intents) · 65 total in history_
+_generated 2026-08-16 21:16 UTC · 48 live entries (13 decisions · 22 findings · 1 questions · 12 intents) · 66 total in history_
 
 ## Decisions
 
@@ -96,6 +96,13 @@ Name = clew (owner). Alternatives considered: restart — verb collision, names 
 _source: human cli:note · confidence: 1.00_
 
 ## Findings
+
+### e01M066XWD8F1SAWQ8HVXGW4J4Z — Task 3 docket gate: 8→1, FYI 0, withdrawal 1 poll  `current`
+> cards=8; render=1 overflow-failure; cap=7; synthetic-FYI-rendered=0; resolved-stomp-withdrawal=1 poll; pushes=0/0; full=pass; race=pass; vet=pass.
+
+cards=8; render=1 overflow-failure; cap=7; synthetic-FYI-rendered=0; resolved-stomp-withdrawal=1 poll; pushes=0/0; full=pass; race=pass; vet=pass.
+
+_source: human cli:note · confidence: 1.00_
 
 ### e01M065G8RTKVH6466KE7GQREGX — Task 2 passes its live gate on all five acceptance checks  `current`
 > Task 2 now passes its live gate: 52 automatic session entries, 0 delivered/unneeded pushes, monotonic cursors, exact installed binary, and no active adapter/LLM errors.

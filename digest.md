@@ -1,4 +1,5 @@
 # Journal digest (live entries: id · type/status · title)
+- e01M066XWD8F1SAWQ8HVXGW4J4Z finding/current Task 3 docket gate: 8→1, FYI 0, withdrawal 1 poll
 - e01M065G8RTKVH6466KEB0FRJ8N intent/in_flight Commit the gate fixes as one spec-amended change, then start the docket
 - e01M065G8RTKVH6466KE7GQREGX finding/current Task 2 passes its live gate on all five acceptance checks
 - e01M064YRS4S9NK7KW9NQ1JMDV2 finding/suspect Malformed or missing pinned timestamps silently fall back to ingest time
@@ -31,4 +32,4 @@
 - e01M05SA72DPRGNTY7GCXARNKYH intent/in_flight Implement the decision card and enforce I10–I12 in renderer and tests
 - e01M05SA72DPRGNTY7GCV0CBDK7 finding/current Assumptions prompt cut over-reliance 42%→22%; stacked/delay friction backfired
 - e01M05SA72DPRGNTY7GCQ2RASTP decision/possible-contradiction Cards show verbatim quotes + clickable provenance, never extractor paraphrase
-… (47 more omitted for size)
+… (48 more omitted for size)
