@@ -1,0 +1,55 @@
+# Fixture-2 ground-truth labels (JOURNAL_SPEC Appendix A.1).
+#
+# §10.2: these labels were agent-written; testing an extractor against an
+# agent's own labels measures agreement, not truth. A human must review and
+# amend this set ONCE, then set `ratified: true` — after which it freezes and
+# becomes the go/no-go gate (precision ≥ 0.9, recall ≥ 0.75 within 5
+# iterations of the extraction instruction, else the product premise fails).
+ratified: true
+
+targets:
+  decisions_min: 6 # recover ≥ 6 of 7 decisions
+  findings_min: 4  # recover ≥ 4 of 5 findings
+  precision: 0.9
+  recall: 0.75
+  instruction_iterations: 5 # the kill criterion is written down on purpose
+
+decisions:
+  - id: D1
+    title: knowledge plane ships first, control plane opt-in/team-phase
+    match: ["knowledge plane", "control plane"]
+  - id: D2
+    title: wedge is observe-only (zero workflow change)
+    match: ["observe-only", "workflow change"]
+  - id: D3
+    title: journal = typed entries with provenance; distillate never transcript; human-editable
+    match: ["typed entries", "provenance"]
+  - id: D4
+    title: divergence-by-default; reconcile-as-a-run; radar never locks
+    match: ["divergence", "never locks"]
+  - id: D5
+    title: git is transport (journal branch); sensors are session streams + fs events
+    match: ["git", "transport"]
+  - id: D6
+    title: human surface = glance + reflexion map; push only when human-blocking
+    match: ["glance", "push"]
+  - id: D7
+    title: the intent–reality diff (incl. absence) is the core product claim
+    match: ["absence", "core product claim"]
+
+findings:
+  - id: F1
+    title: agentdesk repo is a clean drift specimen (11 surface PRs, workload core never in-flight)
+    match: ["agentdesk", "drift"]
+  - id: F2
+    title: OpenHands/Agent Canvas owns the parallel-agent console category
+    match: ["console", "non-differentiating"]
+  - id: F3
+    title: lock-and-notary fails as the lead pitch for working developers (solo or team); at best secondary value for security-minded orgs; anti-forgetting and close-the-laptop resonate
+    match: ["secondary value", "anti-forgetting"]
+  - id: F4
+    title: merge conflicts are not the pain; forgotten work and lost findings are
+    match: ["merge conflicts", "forgotten"]
+  - id: F5
+    title: Claude Agent Teams' failure modes demonstrate publish-by-discipline failing
+    match: ["agent teams", "advisory locks"]
