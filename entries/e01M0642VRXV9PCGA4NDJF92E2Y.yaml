@@ -1,0 +1,17 @@
+id: e01M0642VRXV9PCGA4NDJF92E2Y
+type: intent
+title: Wire atomic budget reservations into every LLM call
+body: 'Next step: route every LLM call through the new atomic budget reservations, so live extraction and backfill can no longer both spend against the same allowance. Closing this race is the stated purpose of the change.'
+quote: I’m wiring the new atomic budget reservations into every LLM call next; this closes the remaining race where live extraction and backfill could both spend against the same allowance.
+utterance_by: assistant
+source:
+    kind: session
+    ref: codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-00-58-01a00b84-f81d-7a61-a3c3-e5bb6beb9ee3.jsonl#L1577
+    agent: codex
+    surface: macs-MacBook-Pro
+    at: 2026-08-16T20:26:50.013Z
+confidence: 0.88
+tags:
+    - internal/state/**
+env: null
+affects: []

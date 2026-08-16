@@ -1,0 +1,19 @@
+id: e01M0642VRXV9PCGA4NDHV479C9
+type: finding
+title: Cursor path now monotonic and watcher stable
+body: After the migration-monotonicity work, the cursor path no longer rewinds and the watcher is reported stable. This is the status following the earlier fixes for cursor migration and the watch storm; remaining work moved on to budget accounting.
+quote: The cursor path is now monotonic and the watcher is stable.
+utterance_by: assistant
+source:
+    kind: session
+    ref: codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-00-58-01a00b84-f81d-7a61-a3c3-e5bb6beb9ee3.jsonl#L1577
+    agent: codex
+    surface: macs-MacBook-Pro
+    at: 2026-08-16T20:26:50.013Z
+confidence: 0.78
+tags:
+    - internal/state/**
+env: null
+affects:
+    - e01M05V0G3Q9F41V62P6T44TC04
+    - e01M05V0G3Q9F41V62P6R5QV53G
