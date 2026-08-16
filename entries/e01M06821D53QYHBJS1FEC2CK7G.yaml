@@ -1,0 +1,15 @@
+id: e01M06821D53QYHBJS1FEC2CK7G
+type: finding
+title: 'Task 5 gate: 3 formats, 1 card, confirm boundary pass'
+body: formats=bundle+dir+https; schema-invalid=reject; quote-missing=reject; batch=1 card; live-stage=1 entry; live-open=pass; live-reject=0 journal writes; accept=1 foreign entry+1 human confirm; branch-push=pass x2 idempotent; full=pass; race=pass; vet=pass.
+quote: formats=bundle+dir+https; schema-invalid=reject; quote-missing=reject; batch=1 card; live-stage=1 entry; live-open=pass; live-reject=0 journal writes; accept=1 foreign entry+1 human confirm; branch-push=pass x2 idempotent; full=pass; race=pass; vet=pass.
+utterance_by: user
+source:
+    kind: human
+    ref: cli:note
+    surface: macs-MacBook-Pro
+    at: 2026-08-16T21:36:17.317827Z
+confidence: 1
+tags: []
+env: null
+affects: []
