@@ -1,0 +1,11 @@
+id: v01M068G950YTD7884A9794NCXT
+kind: evidence
+entry: e01M05T4XG0RJWQTP25T1K58B61
+payload:
+    kind: churn
+    note: Harden note parsing attribution and dispositions
+    ref: churn:1aefd6e112625763522d6af08115da7a96a1eaa1
+by:
+    who: differ
+    surface: macs-MacBook-Pro
+at: 2026-08-16T21:44:04Z
