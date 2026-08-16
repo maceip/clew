@@ -1,6 +1,6 @@
 # Journal
 
-_generated 2026-08-16 20:43 UTC · 45 live entries (13 decisions · 20 findings · 1 questions · 11 intents) · 58 total in history_
+_generated 2026-08-16 20:44 UTC · 45 live entries (13 decisions · 20 findings · 1 questions · 11 intents) · 63 total in history_
 
 ## Decisions
 
@@ -97,6 +97,20 @@ _source: human cli:note · confidence: 1.00_
 
 ## Findings
 
+### e01M064YRS4S9NK7KW9NQ1JMDV2 — Malformed or missing pinned timestamps silently fall back to ingest time  `current`
+> Source time: malformed/missing pinned timestamps silently become ingest `now`.
+
+When a source record's pinned timestamp is missing or malformed, the adapter/extract path substitutes the ingest-time `now` without signalling, so entries get fabricated source times. Located at adapters.go:151 and extract.go:264; flagged as a gate blocker.
+
+_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T16-32-36-01a00c46-b7d2-7e30-8a57-955c5a957888.jsonl#L252 · confidence: 0.92 · tags: internal/adapters/**, internal/extract/**_
+
+### e01M064YRS4S9NK7KW9NN351FQF — I9: Claude settlement ignores cache token fields, letting spend exceed caps  `current`
+> I9: Claude settlement ignores `cache_creation_input_tokens` and `cache_read_input_tokens`, permitting cumulative spend beyond caps.
+
+Settlement of Claude LLM calls counts only the non-cache token fields, ignoring `cache_creation_input_tokens` and `cache_read_input_tokens`. Cumulative spend is therefore undercounted and can run past the configured budget caps. Found at llm.go:158 during the read-only gate.
+
+_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T16-32-36-01a00c46-b7d2-7e30-8a57-955c5a957888.jsonl#L252 · confidence: 0.93 · tags: internal/llm/**, internal/state/**_
+
 ### e01M064K88F7SDMHA1SPAB51HK7 — D2 final: 52 automatic entries; live extraction 0.631%  `current`
 > D2-final: repos=3; automatic-session-entries=52; observed=6779248; live-extraction=42803 (0.631%); backfill=5057; all-LLM=67936/200000; C:R=0:1; pushes=0 delivered/0 unneeded (precision=N/A); adapter/system incidents=4; parked=0; active-reservations=0; live-sessions=6.
 
@@ -104,26 +118,12 @@ D2-final: repos=3; automatic-session-entries=52; observed=6779248; live-extracti
 
 _source: human cli:note · confidence: 1.00_
 
-### e01M0642VRXV9PCGA4NDHV479C9 — Cursor path now monotonic and watcher stable  `current`
-> The cursor path is now monotonic and the watcher is stable.
-
-After the migration-monotonicity work, the cursor path no longer rewinds and the watcher is reported stable. This is the status following the earlier fixes for cursor migration and the watch storm; remaining work moved on to budget accounting.
-
-_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-00-58-01a00b84-f81d-7a61-a3c3-e5bb6beb9ee3.jsonl#L1577 · confidence: 0.78 · tags: internal/state/**_
-
 ### e01M0640H4ZAR0BQMS73R8QW9E7 — Repaired watcher installed as launchd agent dev.clew.watch  `current`
 > installed launchd agent dev.clew.watch (log: /Users/mac/.clew/logs/watch.log)
 
 After journaling the D2 cursor-rewind finding, the fixed watcher was installed as a launchd agent named dev.clew.watch on the dev Mac, writing to /Users/mac/.clew/logs/watch.log. That log path is where watcher behaviour for subsequent live runs can be inspected.
 
 _source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-00-58-01a00b84-f81d-7a61-a3c3-e5bb6beb9ee3.jsonl#L1508 · confidence: 0.86 · tags: cmd/clew/**_
-
-### e01M05VTCM3AR0WFY9TZKZMBMA4 — Neutral cwd breaks relative custom extractor commands like ./bin/extractor  `current`
-> Neutral cwd breaks supported relative custom commands such as `./bin/extractor`: `llm.go:93-99`.
-
-Running the LLM subprocess with a neutral working directory (llm.go:93-99) breaks the supported configuration of a relative custom command path, e.g. `./bin/extractor`, which resolves against the project directory.
-
-_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-18-36-01a00b95-1c07-7d61-a3e4-fb76948ee1b9.jsonl#L961 · confidence: 0.90 · tags: internal/llm/** · evidence: 1_
 
 ### e01M05V9MQWYX3BAX0VXZ70SHTD — D2: cursor rewind replayed 58,754 bytes once  `current`
 > D2 migration failure: split cursor rewind replayed 58754 bytes and spent 1815 extraction tokens once; delivered pushes=0. Fix is monotonic max(extract, watch-extract), with divergent-cursor regression. State backup: state.db.d1-20260816T1748Z.bak.
@@ -253,14 +253,14 @@ _source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15 · confide
 
 Plan for this session: load Clew's generated context and prior memory, inspect the current diff, and prove each acceptance point via tests or direct state queries — reporting only a blocker or a PASS with exact evidence, making no writes.
 
-_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T16-32-36-01a00c46-b7d2-7e30-8a57-955c5a957888.jsonl#L16 · confidence: 0.88 · evidence: 1_
+_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T16-32-36-01a00c46-b7d2-7e30-8a57-955c5a957888.jsonl#L16 · confidence: 0.88 · evidence: 2_
 
 ### e01M0642VRXV9PCGA4NDJF92E2Y — Wire atomic budget reservations into every LLM call  `in_flight`
 > I’m wiring the new atomic budget reservations into every LLM call next; this closes the remaining race where live extraction and backfill could both spend against the same allowance.
 
 Next step: route every LLM call through the new atomic budget reservations, so live extraction and backfill can no longer both spend against the same allowance. Closing this race is the stated purpose of the change.
 
-_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-00-58-01a00b84-f81d-7a61-a3c3-e5bb6beb9ee3.jsonl#L1577 · confidence: 0.88 · tags: internal/state/** · evidence: 2_
+_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-00-58-01a00b84-f81d-7a61-a3c3-e5bb6beb9ee3.jsonl#L1577 · confidence: 0.88 · tags: internal/state/** · evidence: 3_
 
 ### e01M05VFAW9A783PMZZEER0G6FX — Second pass on rollover, double-settlement, migration; then run wider suite  `in_flight`
 > I’m doing a second pass for rollover, double-settlement, and migration behavior before running the wider suite.
@@ -274,7 +274,7 @@ _source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T
 
 Commitment to implement a transactional reservation record plus settlement accounting inside internal/state, accompanied by contention tests that demonstrate the cap/ratio cannot be over-admitted under concurrent access.
 
-_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-08-34-01a00b8b-ed93-7352-8324-f0366dc281a0.jsonl#L188 · confidence: 0.88 · tags: internal/state/** · evidence: 6_
+_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-08-34-01a00b8b-ed93-7352-8324-f0366dc281a0.jsonl#L188 · confidence: 0.88 · tags: internal/state/** · evidence: 7_
 
 ### e01M05V0G3Q9F41V62P6R5QV53G — Fix migration monotonicity, restore from D1 boundary, rerun cycle before passin…  `in_flight`
 > restoring from the D1 boundary, and will rerun the cycle before calling Task 2 passed.

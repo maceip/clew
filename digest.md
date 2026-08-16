@@ -1,11 +1,11 @@
 # Journal digest (live entries: id · type/status · title)
+- e01M064YRS4S9NK7KW9NQ1JMDV2 finding/current Malformed or missing pinned timestamps silently fall back to ingest time
+- e01M064YRS4S9NK7KW9NN351FQF finding/current I9: Claude settlement ignores cache token fields, letting spend exceed caps
 - e01M064K88F7SDMHA1SPAB51HK7 finding/current D2 final: 52 automatic entries; live extraction 0.631%
 - e01M064DQTWYDVGGAE3M5QRTGME decision/active Re-evaluate the current tree instead of carrying the prior gate verdict forward
 - e01M064DHNTXFM29PNWCW0VBBF2 intent/in_flight Run a strict read-only gate proving each acceptance point with tests or state q…
 - e01M0642VRXV9PCGA4NDJF92E2Y intent/in_flight Wire atomic budget reservations into every LLM call
-- e01M0642VRXV9PCGA4NDHV479C9 finding/current Cursor path now monotonic and watcher stable
 - e01M0640H4ZAR0BQMS73R8QW9E7 finding/current Repaired watcher installed as launchd agent dev.clew.watch
-- e01M05VTCM3AR0WFY9TZKZMBMA4 finding/current Neutral cwd breaks relative custom extractor commands like ./bin/extractor
 - e01M05VFAW9A783PMZZEER0G6FX intent/in_flight Second pass on rollover, double-settlement, migration; then run wider suite
 - e01M05V9MQWYX3BAX0VXZ70SHTD finding/current D2: cursor rewind replayed 58,754 bytes once
 - e01M05V5HWA6TFT0A0KDZY8S45K decision/active Confine the cap/ratio admission fix to internal/state; no caller or spec changes
