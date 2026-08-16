@@ -1,4 +1,5 @@
 # Journal digest (live entries: id · type/status · title)
+- e01M068ECYE067WF6BH7F26VC3D decision/active Cursor v1 stays CLI-only: desktop 0 vs CLI 44 in 7d
 - e01M06821D53QYHBJS1FEC2CK7G finding/current Task 5 gate: 3 formats, 1 card, confirm boundary pass
 - e01M067G2QY8BZNZXBE46QBEXEW finding/current Task 4 gate: 10ms, HTML 30s, ntfy 5/5
 - e01M067AZ3VJM73XP82REZEZ1QC finding/current Task 4 channel: ntfy 2383c10c…, card creation only
@@ -32,4 +33,4 @@
 - e01M05SG3NTP5W2JX7Y6MG00HQJ decision/active Hold the Task 2 commit; make backfill and live watch disjoint by construction
 - e01M05SG3NTP5W2JX7Y6KZD5N6P finding/current Pre-commit review found three Task 2 blockers: cursor migration, backfill overl…
 - e01M05SA72DPRGNTY7GD0TGHEX7 decision/possible-contradiction Scope freeze: relay, TUI, team mode, adapters need a §11 trigger measurement
-… (51 more omitted for size)
+… (52 more omitted for size)
