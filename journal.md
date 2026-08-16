@@ -192,12 +192,12 @@ _source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15 · confide
 
 ## Intents
 
-### e01M05TPA9ZK4C8RGC3KBPV2MRF — Re-run the live gate: install binary, normalize spend category, restart watcher  `proposed`
+### e01M05TPA9ZK4C8RGC3KBPV2MRF — Re-run the live gate: install binary, normalize spend category, restart watcher  `in_flight`
 > I’m moving back to the live gate now: install this exact binary, normalize the one dogfood spend category, restart the watcher, then verify one full tail/poll cycle has no historical replay, false sessions, or false pushes.
 
 Next step after the unit path went green is a live-gate run: install the exact built binary, normalize the single dogfood spend category, restart the watcher, then observe one complete tail/poll cycle. Acceptance is negative evidence — no historical replay, no false sessions, no false pushes in that cycle.
 
-_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-00-58-01a00b84-f81d-7a61-a3c3-e5bb6beb9ee3.jsonl#L1323 · confidence: 0.88_
+_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-00-58-01a00b84-f81d-7a61-a3c3-e5bb6beb9ee3.jsonl#L1323 · confidence: 0.88 · evidence: 1_
 
 ### e01M05TBYJXEW5N5FE398NJ4RD7 — Tighten live-enrollment/backfill boundary and add failure telemetry  `in_flight`
 > I’m tightening the live-enrollment/backfill boundary and failure telemetry now
