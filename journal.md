@@ -1,6 +1,6 @@
 # Journal
 
-_generated 2026-08-16 17:06 UTC · 10 live entries (2 decisions · 7 findings · 1 questions · 0 intents) · 12 total in history_
+_generated 2026-08-16 17:07 UTC · 11 live entries (2 decisions · 8 findings · 1 questions · 0 intents) · 13 total in history_
 
 ## Decisions
 
@@ -19,6 +19,13 @@ Name = clew (owner). Alternatives considered: restart — verb collision, names 
 _source: human cli:note · confidence: 1.00_
 
 ## Findings
+
+### e01M05RPB2N6QDXN1MP31SB64B2 — Dogfood D0 historical-session storm is an I12 failure  `current`
+> Dogfood failure D0: historical sessions misclassified live=33; observed tokens=12895847; overlaps=342; stomps=27; actual pushes=0; false pushed_at=27; extraction spend=0; adapter incidents=1; watcher stopped before extraction.
+
+Dogfood failure D0: historical sessions misclassified live=33; observed tokens=12895847; overlaps=342; stomps=27; actual pushes=0; false pushed_at=27; extraction spend=0; adapter incidents=1; watcher stopped before extraction.
+
+_source: human cli:note · confidence: 1.00_
 
 ### e01M05RF74PBCZVAPRY49GCVM7H — answer: Run the live fidelity gate (RealProvider) on a machine with provider ke…  `current`
 > P=.91 R=.83; D=6/7 F=4/5; reject=0; claude; iter=1; PASS
