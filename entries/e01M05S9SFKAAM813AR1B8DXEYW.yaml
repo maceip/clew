@@ -1,0 +1,17 @@
+id: e01M05S9SFKAAM813AR1B8DXEYW
+type: finding
+title: Codex format now detected; watcher tracks only post-baseline bytes
+body: 'After repair, clew detects the current Codex session format: re-initialization found 3 sessions with large metadata, and the watcher now tracks only bytes written after the baseline, using source time rather than ingest time. This addresses the historical-session storm seen in dogfood D0.'
+quote: 'The current Codex format is now detected: re-init found 3 large-metadata sessions, and the watcher is tracking only post-baseline bytes with source time.'
+utterance_by: assistant
+source:
+    kind: session
+    ref: codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-00-58-01a00b84-f81d-7a61-a3c3-e5bb6beb9ee3.jsonl#L729
+    agent: codex
+    surface: macs-MacBook-Pro
+    at: 2026-08-16T17:18:22.707Z
+confidence: 0.85
+tags: []
+env: null
+affects:
+    - e01M05RPB2N6QDXN1MP31SB64B2

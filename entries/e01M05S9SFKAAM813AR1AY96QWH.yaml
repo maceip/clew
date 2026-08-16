@@ -1,0 +1,18 @@
+id: e01M05S9SFKAAM813AR1AY96QWH
+type: finding
+title: 'Final Task 2 dogfood snapshot: 0.113% extraction, 0:1 confirm:reject, 0 pushes'
+body: 'Final Task 2 dogfood measurement of clew: 6 automatic entries produced; 5,057 of 4,491,713 observed bytes extracted (0.113%); confirm-to-reject ratio 0:1; actual pushes 0 of 0; 1 adapter incident (the previously journaled D0 session storm); 0 parked items. Recorded after the Codex-format detection and watcher baseline repairs.'
+quote: 'Final Task 2 snapshot is: 6 automatic entries; extraction 5,057 / 4,491,713 observed = 0.113%; confirm:reject 0:1; actual pushes 0/0; adapter incidents 1 (the journaled D0 storm); parked 0.'
+utterance_by: assistant
+source:
+    kind: session
+    ref: codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-00-58-01a00b84-f81d-7a61-a3c3-e5bb6beb9ee3.jsonl#L729
+    agent: codex
+    surface: macs-MacBook-Pro
+    at: 2026-08-16T17:18:22.707Z
+confidence: 0.93
+tags: []
+env:
+    host: local dogfood run
+    dataset: clew dogfood sessions, 4,491,713 bytes observed
+affects: []
