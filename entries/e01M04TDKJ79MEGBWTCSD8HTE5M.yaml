@@ -1,0 +1,15 @@
+id: e01M04TDKJ79MEGBWTCSD8HTE5M
+type: finding
+title: Lock-and-notary pitches fail for any team whose job isn't security — not just …
+body: Lock-and-notary pitches fail for any team whose job isn't security — not just solo devs. Evidence framing must lead with anti-forgetting/throughput, never audit.
+quote: Lock-and-notary pitches fail for any team whose job isn't security — not just solo devs. Evidence framing must lead with anti-forgetting/throughput, never audit.
+utterance_by: user
+source:
+    kind: human
+    ref: cli:note
+    surface: macs-MacBook-Pro
+    at: 2026-08-16T08:18:41.863449Z
+confidence: 1
+tags: []
+env: null
+affects: []
