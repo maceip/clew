@@ -1,0 +1,15 @@
+id: e01M05TX51R4VZHJMNM804YPMRT
+type: finding
+title: 'D1: 30 automatic entries; Codex metadata incident pinned'
+body: 'D1 live dogfood: 30 session entries appeared from 1 real Codex session with 0 manual notes; observed=5549571, live+backfill extraction=30184, all-LLM=39091, pushes delivered=0/0, open alerts=10; 46 records in 3 newly observed multi-agent metadata classes were pinned as non-utterance adapter metadata.'
+quote: 'D1 live dogfood: 30 session entries appeared from 1 real Codex session with 0 manual notes; observed=5549571, live+backfill extraction=30184, all-LLM=39091, pushes delivered=0/0, open alerts=10; 46 records in 3 newly observed multi-agent metadata classes were pinned as non-utterance adapter metadata.'
+utterance_by: user
+source:
+    kind: human
+    ref: cli:note
+    surface: macs-MacBook-Pro
+    at: 2026-08-16T17:46:25.720035Z
+confidence: 1
+tags: []
+env: null
+affects: []
