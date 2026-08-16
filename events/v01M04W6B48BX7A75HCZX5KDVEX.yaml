@@ -1,0 +1,11 @@
+id: v01M04W6B48BX7A75HCZX5KDVEX
+kind: evidence
+entry: e01M04H0KBY8QQWXPE8DP99N012
+payload:
+    kind: commit
+    note: Implement the journal system per JOURNAL_SPEC v1
+    ref: 3ec6cb91176446ac4f216e5a64c2daa72821717e
+by:
+    who: differ
+    surface: macs-MacBook-Pro
+at: 2026-08-16T08:49:41Z

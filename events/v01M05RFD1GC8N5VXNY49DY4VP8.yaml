@@ -1,0 +1,11 @@
+id: v01M05RFD1GC8N5VXNY49DY4VP8
+kind: evidence
+entry: e01M04H0KBY8QQWXPE8DP99N012
+payload:
+    kind: commit
+    note: Fix generated journal title clipping
+    ref: de4282ea478934e6435dceea690c927cafaa47be
+by:
+    who: differ
+    surface: macs-MacBook-Pro
+at: 2026-08-16T17:03:58Z
