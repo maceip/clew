@@ -1,5 +1,5 @@
 # Journal digest (live entries: id · type/status · title)
-- e01M0642VRXV9PCGA4NDJF92E2Y intent/proposed Wire atomic budget reservations into every LLM call
+- e01M0642VRXV9PCGA4NDJF92E2Y intent/in_flight Wire atomic budget reservations into every LLM call
 - e01M0642VRXV9PCGA4NDHV479C9 finding/current Cursor path now monotonic and watcher stable
 - e01M0640H4ZAR0BQMS73R8QW9E7 finding/current Repaired watcher installed as launchd agent dev.clew.watch
 - e01M05VTCM3AR0WFY9TZKZMBMA4 finding/current Neutral cwd breaks relative custom extractor commands like ./bin/extractor

@@ -234,12 +234,12 @@ _source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15 · confide
 
 ## Intents
 
-### e01M0642VRXV9PCGA4NDJF92E2Y — Wire atomic budget reservations into every LLM call  `proposed`
+### e01M0642VRXV9PCGA4NDJF92E2Y — Wire atomic budget reservations into every LLM call  `in_flight`
 > I’m wiring the new atomic budget reservations into every LLM call next; this closes the remaining race where live extraction and backfill could both spend against the same allowance.
 
 Next step: route every LLM call through the new atomic budget reservations, so live extraction and backfill can no longer both spend against the same allowance. Closing this race is the stated purpose of the change.
 
-_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-00-58-01a00b84-f81d-7a61-a3c3-e5bb6beb9ee3.jsonl#L1577 · confidence: 0.88 · tags: internal/state/**_
+_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-00-58-01a00b84-f81d-7a61-a3c3-e5bb6beb9ee3.jsonl#L1577 · confidence: 0.88 · tags: internal/state/** · evidence: 1_
 
 ### e01M05VFAW9A783PMZZEER0G6FX — Second pass on rollover, double-settlement, migration; then run wider suite  `in_flight`
 > I’m doing a second pass for rollover, double-settlement, and migration behavior before running the wider suite.
