@@ -1,0 +1,15 @@
+id: e01M05S9TK3X86C59JCJDWZ7Z6R
+type: finding
+title: Dogfood D0 metrics after repair
+body: 'Dogfood 2026-08-16: repos=3; automatic entries=6; extraction=5057/4491713=0.113%; confirm:reject=0:1; actual pushes=0/0; false pushes repaired=27; adapter incidents=1; parked=0; clean cold-start sessions=0,alerts=0; live sessions after append=1.'
+quote: 'Dogfood 2026-08-16: repos=3; automatic entries=6; extraction=5057/4491713=0.113%; confirm:reject=0:1; actual pushes=0/0; false pushes repaired=27; adapter incidents=1; parked=0; clean cold-start sessions=0,alerts=0; live sessions after append=1.'
+utterance_by: user
+source:
+    kind: human
+    ref: cli:note
+    surface: macs-MacBook-Pro
+    at: 2026-08-16T17:18:23.843973Z
+confidence: 1
+tags: []
+env: null
+affects: []
