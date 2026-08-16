@@ -1,6 +1,6 @@
 # Journal
 
-_generated 2026-08-16 17:25 UTC · 23 live entries (7 decisions · 12 findings · 1 questions · 3 intents) · 26 total in history_
+_generated 2026-08-16 17:27 UTC · 25 live entries (7 decisions · 13 findings · 1 questions · 4 intents) · 30 total in history_
 
 ## Decisions
 
@@ -9,7 +9,7 @@ _generated 2026-08-16 17:25 UTC · 23 live entries (7 decisions · 12 findings �
 
 Rather than commit Task 2 and patch later, the commit is held while three fixes land: a one-time cursor migration for upgrading users, complete-record offsets so init never baselines mid-record, and a fixed historical upper bound so backfill and live watch cannot overlap — disjoint by construction rather than by runtime check.
 
-_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-00-58-01a00b84-f81d-7a61-a3c3-e5bb6beb9ee3.jsonl#L806 · confidence: 0.90_
+_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-00-58-01a00b84-f81d-7a61-a3c3-e5bb6beb9ee3.jsonl#L806 · confidence: 0.90 · evidence: 1_
 
 ### e01M05SA72DPRGNTY7GD0TGHEX7 — Scope freeze: relay, TUI, team mode, adapters need a §11 trigger measurement  `possible-contradiction`
 > Frozen (build nothing here without citing a §11 trigger measurement in the journal and stopping for owner review): relay server, TUI/native apps, team mode, semantic code graphs, treemaps, new adapters, orchestration.
@@ -55,6 +55,20 @@ _source: human cli:note · confidence: 1.00_
 
 ## Findings
 
+### e01M05SPB2EMMC4F4PR0BDQA8S5 — First watch treated historical sessions as live: 342 overlaps, 27 stomps, 12.9M…  `current`
+> First watch misclassified historical sessions as live, producing 342 overlaps, 27 stomps, and 12,895,847 observed tokens.
+
+Measured fallout of the first watch run misclassifying pre-existing historical sessions as live: 342 overlaps, 27 stomps, and 12,895,847 observed tokens. This quantifies the historical-session storm previously recorded qualitatively as an I12 failure.
+
+_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-18-36-01a00b95-1c07-7d61-a3e4-fb76948ee1b9.jsonl#L335 · confidence: 0.91 · tags: cmd/clew/** · taint: tool_result_
+
+### e01M05SPB2EMMC4F4PR09QWMXG8 — Push precision unmeasurable: unset push returns success, faking pushed_at  `current`
+> Push precision is unmeasurable: unset push returns success, causing false `pushed_at` marks
+
+With push unconfigured, the push path returns success and HTTP errors go unchecked, so alerts get marked `pushed_at` even though nothing was delivered. Push precision therefore cannot be measured from the current data. Located in internal/push/push.go:16 and cmd/clew/watchcmd.go:281.
+
+_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-18-36-01a00b95-1c07-7d61-a3e4-fb76948ee1b9.jsonl#L335 · confidence: 0.92 · tags: internal/push/**, cmd/clew/** · taint: tool_result_
+
 ### e01M05SG3NTP5W2JX7Y6KZD5N6P — Pre-commit review found three Task 2 blockers: cursor migration, backfill overl…  `current`
 > Pre-commit review found three real blockers: upgrade users lacked cursor migration, backfill could overlap live suffixes, and init could baseline inside a partial JSONL record.
 
@@ -82,13 +96,6 @@ _source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T
 Final Task 2 dogfood measurement of clew: 6 automatic entries produced; 5,057 of 4,491,713 observed bytes extracted (0.113%); confirm-to-reject ratio 0:1; actual pushes 0 of 0; 1 adapter incident (the previously journaled D0 session storm); 0 parked items. Recorded after the Codex-format detection and watcher baseline repairs.
 
 _source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-00-58-01a00b84-f81d-7a61-a3c3-e5bb6beb9ee3.jsonl#L729 · confidence: 0.93_
-
-### e01M05RPB2N6QDXN1MP31SB64B2 — Dogfood D0 historical-session storm is an I12 failure  `current`
-> Dogfood failure D0: historical sessions misclassified live=33; observed tokens=12895847; overlaps=342; stomps=27; actual pushes=0; false pushed_at=27; extraction spend=0; adapter incidents=1; watcher stopped before extraction.
-
-Dogfood failure D0: historical sessions misclassified live=33; observed tokens=12895847; overlaps=342; stomps=27; actual pushes=0; false pushed_at=27; extraction spend=0; adapter incidents=1; watcher stopped before extraction.
-
-_source: human cli:note · confidence: 1.00_
 
 ### e01M05RF74PBCZVAPRY49GCVM7H — answer: Run the live fidelity gate (RealProvider) on a machine with provider ke…  `current`
 > P=.91 R=.83; D=6/7 F=4/5; reject=0; claude; iter=1; PASS
@@ -150,12 +157,19 @@ _source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15 · confide
 
 ## Intents
 
+### e01M05SPB2EMMC4F4PR0BSPFZKZ — Narrow fix for the watch storm: transactional baselines, source-time, bounded c…  `proposed`
+> Root cause and narrow fix sent to parent: transactional live baselines, source-time sessions, and bounded separate backfill cursor.
+
+The semantics investigation reported a root cause and a narrow fix to the parent: make live baselines transactional, use source-time (not observation-time) session timestamps, and give backfill its own bounded cursor separate from live watch. This is the proposed work to make backfill and live watch disjoint.
+
+_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-18-36-01a00b95-1c07-7d61-a3e4-fb76948ee1b9.jsonl#L335 · confidence: 0.62 · tags: cmd/clew/**, internal/** · taint: tool_result_
+
 ### e01M05SG3NTP5W2JX7Y6MP1F1K6 — Add cursor migration, complete-record offsets, and fixed historical upper bound  `in_flight`
 > adding a one-time migration, complete-record offsets, and a fixed historical upper bound
 
 Committed follow-up work before the Task 2 commit can land: a one-time cursor migration for existing installs, offsets that always fall on complete JSONL record boundaries, and a fixed upper bound on the historical backfill range.
 
-_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-00-58-01a00b84-f81d-7a61-a3c3-e5bb6beb9ee3.jsonl#L806 · confidence: 0.88 · evidence: 1_
+_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-00-58-01a00b84-f81d-7a61-a3c3-e5bb6beb9ee3.jsonl#L806 · confidence: 0.88 · evidence: 2_
 
 ### e01M05SA72DPRGNTY7GCXARNKYH — Implement the decision card and enforce I10–I12 in renderer and tests  `in_flight`
 > Enforce I10–I12 in the renderer and in tests: a synthetic FYI item must be unrenderable; an 8th card must collapse to the overflow-failure card; a resolved stomp must withdraw within one poll cycle.

@@ -1,4 +1,7 @@
 # Journal digest (live entries: id · type/status · title)
+- e01M05SPB2EMMC4F4PR0BSPFZKZ intent/proposed Narrow fix for the watch storm: transactional baselines, source-time, bounded c…
+- e01M05SPB2EMMC4F4PR0BDQA8S5 finding/current First watch treated historical sessions as live: 342 overlaps, 27 stomps, 12.9M…
+- e01M05SPB2EMMC4F4PR09QWMXG8 finding/current Push precision unmeasurable: unset push returns success, faking pushed_at
 - e01M05SG3NTP5W2JX7Y6MP1F1K6 intent/in_flight Add cursor migration, complete-record offsets, and fixed historical upper bound
 - e01M05SG3NTP5W2JX7Y6MG00HQJ decision/active Hold the Task 2 commit; make backfill and live watch disjoint by construction
 - e01M05SG3NTP5W2JX7Y6KZD5N6P finding/current Pre-commit review found three Task 2 blockers: cursor migration, backfill overl…
@@ -11,7 +14,6 @@
 - e01M05S9SFKAAM813AR1EG3X3WR intent/in_flight Land the dogfood fixes after recording the Task 2 snapshot
 - e01M05S9SFKAAM813AR1B8DXEYW finding/current Codex format now detected; watcher tracks only post-baseline bytes
 - e01M05S9SFKAAM813AR1AY96QWH finding/current Final Task 2 dogfood snapshot: 0.113% extraction, 0:1 confirm:reject, 0 pushes
-- e01M05RPB2N6QDXN1MP31SB64B2 finding/current Dogfood D0 historical-session storm is an I12 failure
 - e01M05RHSWXDNR10P1PY8ERYA9S decision/active Dogfood metrics predeclared; D0 snapshot recorded
 - e01M05RF74PBCZVAPRY49GCVM7H finding/current answer: Run the live fidelity gate (RealProvider) on a machine with provider ke…
 - e01M05REDJZAERAWRQG7349E7Y1 finding/current Live fidelity gate passed on iteration 1
