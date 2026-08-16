@@ -1,0 +1,15 @@
+id: e01M067AZ3VJM73XP82REZEZ1QC
+type: finding
+title: 'Task 4 channel: ntfy 2383c10c…, card creation only'
+body: ntfy-topic=https://ntfy.sh/2383c10ce6438813da9969532f2df2f7; push-trigger=docket-card-creation-only; payload=headline+why-you; html-refresh=30s.
+quote: ntfy-topic=https://ntfy.sh/2383c10ce6438813da9969532f2df2f7; push-trigger=docket-card-creation-only; payload=headline+why-you; html-refresh=30s.
+utterance_by: user
+source:
+    kind: human
+    ref: cli:note
+    surface: macs-MacBook-Pro
+    at: 2026-08-16T21:23:41.307799Z
+confidence: 1
+tags: []
+env: null
+affects: []
