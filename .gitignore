@@ -1,4 +1,4 @@
-/restart
+/clew
 /bin/
-.restart/
+.clew/
 *.test

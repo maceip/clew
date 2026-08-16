@@ -8,7 +8,7 @@ import (
 	"strings"
 	"time"
 
-	"restart/internal/model"
+	"clew/internal/model"
 )
 
 const (

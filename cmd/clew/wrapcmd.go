@@ -5,16 +5,16 @@ import (
 	"os"
 	"time"
 
-	"restart/internal/state"
-	"restart/internal/wrapx"
+	"clew/internal/state"
+	"clew/internal/wrapx"
 )
 
 // cmdWrap: PTY tee for agents without session files (§5.1). The transcript
-// lands in ~/.restart/raw/ where the wrap adapter tails it; nudges can be
+// lands in ~/.clew/raw/ where the wrap adapter tails it; nudges can be
 // injected at prompt boundaries (§8.1 matrix).
 func cmdWrap(args []string) error {
 	nudge := true
-	// Accept: restart wrap [--no-nudge] -- <argv…>   (also tolerate no --).
+	// Accept: clew wrap [--no-nudge] -- <argv…>   (also tolerate no --).
 	var argv []string
 	for i := 0; i < len(args); i++ {
 		switch args[i] {
@@ -29,7 +29,7 @@ func cmdWrap(args []string) error {
 		}
 	}
 	if len(argv) == 0 {
-		return fmt.Errorf("usage: restart wrap -- <agent argv…>")
+		return fmt.Errorf("usage: clew wrap -- <agent argv…>")
 	}
 	a, err := load()
 	if err != nil {

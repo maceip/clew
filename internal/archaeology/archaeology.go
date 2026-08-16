@@ -16,12 +16,12 @@ import (
 	"strings"
 	"time"
 
-	"restart/internal/gitx"
-	"restart/internal/ids"
-	"restart/internal/journal"
-	"restart/internal/llm"
-	"restart/internal/model"
-	"restart/internal/scrub"
+	"clew/internal/gitx"
+	"clew/internal/ids"
+	"clew/internal/journal"
+	"clew/internal/llm"
+	"clew/internal/model"
+	"clew/internal/scrub"
 )
 
 const (
@@ -78,7 +78,7 @@ var todoRe = regexp.MustCompile(`(?i)\b(TODO|FIXME)\b[:( ]\s*(.{4,160})`)
 
 var skipDirs = map[string]bool{
 	".git": true, "node_modules": true, "vendor": true, "dist": true,
-	"build": true, ".restart": true, "target": true, ".next": true,
+	"build": true, ".clew": true, "target": true, ".next": true,
 	"__pycache__": true, ".venv": true,
 }
 

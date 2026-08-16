@@ -1,6 +1,7 @@
 # The Journal System — Founding Spec v1
 
-**Working name:** `stratura` (placeholder; rename before first tag).
+**Name:** `clew` — owner's decision, 2026-08-16 (§12.1 closed). The text below
+retains the original working name `stratura` as written; read it as `clew`.
 **Status:** Buildable spec. **This single file is the complete founding document** — copy it
 alone into the new repository. Its predecessors (ADR-0007 fleet-kernel, ADR-0008 inversion)
 remain in the source repo as decision history; neither is required reading, and everything this
@@ -499,7 +500,10 @@ capabilities is not punting; every v1 need above has its full answer above):**
 
 ## 12. Open decisions (real ones, small)
 
-1. **Name** — before first tag.
+1. **Name** — **CLOSED** (owner, 2026-08-16): **`clew`**. Alternatives
+   considered: `restart` (verb collision; names the crisis, not the daily
+   loop), `lore` (binary/brand collision with varalys/lore, getlore.ai, Epic
+   Lore), `wake`, `canon`, `lorekeeper`.
 2. **Push channel default** — ntfy vs plain webhook vs both (one config line either way).
 3. **Cursor desktop adapter depth** — SQLite composer store parsing effort vs `cursor-agent`
    CLI-only for v1; decide after inspecting one week of the user's actual store files.

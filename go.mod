@@ -1,4 +1,4 @@
-module restart
+module clew
 
 go 1.26.3
 

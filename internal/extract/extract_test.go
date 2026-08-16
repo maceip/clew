@@ -7,11 +7,11 @@ import (
 	"testing"
 	"time"
 
-	"restart/internal/adapters"
-	"restart/internal/config"
-	"restart/internal/journal"
-	"restart/internal/llm"
-	"restart/internal/state"
+	"clew/internal/adapters"
+	"clew/internal/config"
+	"clew/internal/journal"
+	"clew/internal/llm"
+	"clew/internal/state"
 )
 
 type stub struct {

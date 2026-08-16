@@ -7,10 +7,10 @@ import (
 	"testing"
 	"time"
 
-	"restart/internal/ids"
-	"restart/internal/journal"
-	"restart/internal/model"
-	"restart/internal/state"
+	"clew/internal/ids"
+	"clew/internal/journal"
+	"clew/internal/model"
+	"clew/internal/state"
 )
 
 var now = time.Date(2026, 8, 16, 12, 0, 0, 0, time.UTC)
@@ -98,7 +98,7 @@ func TestNudgeAppendOnce(t *testing.T) {
 	if err := AppendNudges(repo, db); err != nil {
 		t.Fatal(err)
 	}
-	b, _ := readFile(repo + "/.restart/nudge.md")
+	b, _ := readFile(repo + "/.clew/nudge.md")
 	if strings.Count(b, "intent X absent") != 1 {
 		t.Fatalf("nudge must be delivered once, got:\n%s", b)
 	}

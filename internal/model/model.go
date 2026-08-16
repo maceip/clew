@@ -8,7 +8,7 @@ import (
 	"time"
 	"unicode/utf8"
 
-	"restart/internal/ids"
+	"clew/internal/ids"
 )
 
 type EntryType string

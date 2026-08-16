@@ -1,7 +1,7 @@
 package main
 
 import (
-	"restart/internal/mcp"
+	"clew/internal/mcp"
 )
 
 // cmdMCP: optional stdio MCP surface (§8.1) — journal_search, journal_get,

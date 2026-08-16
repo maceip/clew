@@ -5,8 +5,8 @@ import (
 	"testing"
 	"time"
 
-	"restart/internal/ids"
-	"restart/internal/model"
+	"clew/internal/ids"
+	"clew/internal/model"
 )
 
 var now = time.Date(2026, 8, 16, 12, 0, 0, 0, time.UTC)

@@ -19,7 +19,7 @@ func write(t *testing.T, dir, name, content string) string {
 const claudeFixture = `{"type":"mode","mode":"normal","sessionId":"s1"}
 {"type":"user","message":{"role":"user","content":"let's use SQLite for state"},"uuid":"u1","timestamp":"2026-08-11T14:02:11Z","cwd":"/w","sessionId":"s1","version":"2.1.220"}
 {"type":"assistant","message":{"role":"assistant","content":[{"type":"text","text":"Agreed, SQLite it is."},{"type":"tool_use","id":"t1","name":"Write","input":{"file_path":"/w/store/db.go","content":"x"}},{"type":"tool_use","id":"t2","name":"Bash","input":{"command":"go test ./...","description":"run tests"}}]},"timestamp":"2026-08-11T14:03:00Z","cwd":"/w","sessionId":"s1"}
-{"type":"user","message":{"role":"user","content":[{"type":"tool_result","tool_use_id":"t2","content":[{"type":"text","text":"ok restart/internal/journal 0.3s"}]}]},"timestamp":"2026-08-11T14:03:05Z","cwd":"/w","sessionId":"s1"}
+{"type":"user","message":{"role":"user","content":[{"type":"tool_result","tool_use_id":"t2","content":[{"type":"text","text":"ok clew/internal/journal 0.3s"}]}]},"timestamp":"2026-08-11T14:03:05Z","cwd":"/w","sessionId":"s1"}
 {"type":"brand-new-thing","payload":{"x":1}}
 `
 
@@ -133,7 +133,7 @@ func TestFormatBreakPausesAdapter(t *testing.T) {
 }
 
 func TestSlugify(t *testing.T) {
-	if got := slugify("/Users/mac/restart"); got != "-Users-mac-restart" {
+	if got := slugify("/Users/x/my-app"); got != "-Users-x-my-app" {
 		t.Errorf("claude slug: %q", got)
 	}
 }

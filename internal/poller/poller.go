@@ -10,8 +10,8 @@ import (
 	"strings"
 	"time"
 
-	"restart/internal/gitx"
-	"restart/internal/state"
+	"clew/internal/gitx"
+	"clew/internal/state"
 )
 
 type Snapshot struct {

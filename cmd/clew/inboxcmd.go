@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"time"
 
-	"restart/internal/ids"
-	"restart/internal/journal"
-	"restart/internal/model"
+	"clew/internal/ids"
+	"clew/internal/journal"
+	"clew/internal/model"
 )
 
 // cmdInbox lists human-blocking items only (§8.2): ★questions, possible-
@@ -28,12 +28,12 @@ func cmdInbox(args []string) error {
 	switch args[0] {
 	case "answer":
 		if len(args) < 3 {
-			return fmt.Errorf("usage: restart inbox answer <question-id> \"text\"")
+			return fmt.Errorf("usage: clew inbox answer <question-id> \"text\"")
 		}
 		return journalAnswer(a, repo, args[1], args[2], "")
 	case "ack", "drop":
 		if len(args) < 2 {
-			return fmt.Errorf("usage: restart inbox %s <alert-key>", args[0])
+			return fmt.Errorf("usage: clew inbox %s <alert-key>", args[0])
 		}
 		return inboxDismiss(a, repo, args[1], args[0])
 	default:
@@ -57,11 +57,11 @@ func inboxList(a *app, repo string) error {
 			continue
 		}
 		age := int(now.Sub(e.Created()).Hours() / 24)
-		fmt.Printf("★ %s %q — open %dd; blocks: agents cannot answer it\n    ↳ restart inbox answer %s \"…\"\n", id, e.Title, age, id)
+		fmt.Printf("★ %s %q — open %dd; blocks: agents cannot answer it\n    ↳ clew inbox answer %s \"…\"\n", id, e.Title, age, id)
 		n++
 	}
 	for _, al := range a.db.OpenAlerts(repo, true) {
-		fmt.Printf("● [%s] %s\n    ↳ restart inbox ack %s   (or: drop)\n", al.Kind, al.Body, al.Key)
+		fmt.Printf("● [%s] %s\n    ↳ clew inbox ack %s   (or: drop)\n", al.Kind, al.Body, al.Key)
 		n++
 	}
 	if n == 0 {

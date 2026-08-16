@@ -13,19 +13,19 @@ import (
 
 	"gopkg.in/yaml.v3"
 
-	"restart/internal/adapters"
-	"restart/internal/config"
-	"restart/internal/differ"
-	"restart/internal/extract"
-	"restart/internal/gitx"
-	"restart/internal/ids"
-	"restart/internal/journal"
-	"restart/internal/llm"
-	"restart/internal/manifest"
-	"restart/internal/materialize"
-	"restart/internal/model"
-	"restart/internal/poller"
-	"restart/internal/state"
+	"clew/internal/adapters"
+	"clew/internal/config"
+	"clew/internal/differ"
+	"clew/internal/extract"
+	"clew/internal/gitx"
+	"clew/internal/ids"
+	"clew/internal/journal"
+	"clew/internal/llm"
+	"clew/internal/manifest"
+	"clew/internal/materialize"
+	"clew/internal/model"
+	"clew/internal/poller"
+	"clew/internal/state"
 )
 
 // ---------- shared plumbing ----------
@@ -81,7 +81,7 @@ func addIntent(t *testing.T, j *journal.Journal, title string, tags []string, at
 // The sibling rule is the criterion, not commit counts.
 
 func TestAcceptance1_AbsenceDetection(t *testing.T) {
-	t.Setenv("RESTART_HOME", t.TempDir())
+	t.Setenv("CLEW_HOME", t.TempDir())
 	base := t.TempDir()
 	repo := mkRepo(t, base, "agentdesk")
 	commitFile(t, repo, "README.md", "agentdesk", "init", time.Now().Add(-40*24*time.Hour))
@@ -162,7 +162,7 @@ func TestAcceptance1_AbsenceDetection(t *testing.T) {
 // Ground truth: fixtures/strategy-session/labels.yaml (Appendix A), pending
 // one-time human ratification. This hermetic run exercises the full
 // pipeline + harness with a faithful stub provider and proves the
-// zero-fabrication gate; the real-provider gate runs with RESTART_FIDELITY=1.
+// zero-fabrication gate; the real-provider gate runs with CLEW_FIDELITY=1.
 
 type labelFile struct {
 	Ratified bool `yaml:"ratified"`
@@ -305,11 +305,11 @@ func TestAcceptance2_ExtractionFidelityPipeline(t *testing.T) {
 }
 
 // TestAcceptance2_RealProvider runs the same gate against the configured
-// live provider. Opt-in: RESTART_FIDELITY=1 (costs tokens; §10.2 kill
+// live provider. Opt-in: CLEW_FIDELITY=1 (costs tokens; §10.2 kill
 // criterion applies after human ratification of the labels).
 func TestAcceptance2_RealProvider(t *testing.T) {
-	if os.Getenv("RESTART_FIDELITY") != "1" {
-		t.Skip("set RESTART_FIDELITY=1 to run the live extraction fidelity gate")
+	if os.Getenv("CLEW_FIDELITY") != "1" {
+		t.Skip("set CLEW_FIDELITY=1 to run the live extraction fidelity gate")
 	}
 	lf := loadLabels(t)
 	p, note := llm.Pick(config.Load())
@@ -350,7 +350,7 @@ func mk(typ, title, quote string, line int, by string) map[string]any {
 // intact; dropped entries recorded with disposition: dropped.
 
 func TestAcceptance3_RestartRoundTrip(t *testing.T) {
-	t.Setenv("RESTART_HOME", t.TempDir())
+	t.Setenv("CLEW_HOME", t.TempDir())
 	base := t.TempDir()
 	oldRepo := mkRepo(t, base, "old-project")
 	commitFile(t, oldRepo, "README.md", "old", "init", time.Now().Add(-time.Hour))
@@ -449,7 +449,7 @@ func TestAcceptance3_RestartRoundTrip(t *testing.T) {
 	if err := materialize.Write(newRepo, jNew, stNew, db, now); err != nil {
 		t.Fatal(err)
 	}
-	ctx, err := os.ReadFile(filepath.Join(newRepo, ".restart", "context.md"))
+	ctx, err := os.ReadFile(filepath.Join(newRepo, ".clew", "context.md"))
 	if err != nil {
 		t.Fatal(err)
 	}

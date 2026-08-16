@@ -5,7 +5,7 @@ import (
 	"sort"
 	"time"
 
-	"restart/internal/model"
+	"clew/internal/model"
 )
 
 // Status values are computed by each watcher from entries + events and never

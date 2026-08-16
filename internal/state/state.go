@@ -1,4 +1,4 @@
-// Package state is the machine-local working state (~/.restart/state.db,
+// Package state is the machine-local working state (~/.clew/state.db,
 // JOURNAL_SPEC §2). SQLite, never the source of truth — the journal lives in
 // git. Holds: registered repos, tail watermarks, live sessions + footprints,
 // seen commits + attribution, alerts, budget meters, parked slices, kv.
@@ -14,7 +14,7 @@ import (
 
 	_ "modernc.org/sqlite"
 
-	"restart/internal/gitx"
+	"clew/internal/gitx"
 )
 
 type DB struct{ *sql.DB }

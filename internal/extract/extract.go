@@ -14,15 +14,15 @@ import (
 	"time"
 	"unicode/utf8"
 
-	"restart/internal/adapters"
-	"restart/internal/config"
-	"restart/internal/gitx"
-	"restart/internal/ids"
-	"restart/internal/journal"
-	"restart/internal/llm"
-	"restart/internal/model"
-	"restart/internal/scrub"
-	"restart/internal/state"
+	"clew/internal/adapters"
+	"clew/internal/config"
+	"clew/internal/gitx"
+	"clew/internal/ids"
+	"clew/internal/journal"
+	"clew/internal/llm"
+	"clew/internal/model"
+	"clew/internal/scrub"
+	"clew/internal/state"
 )
 
 //go:embed assets/instruction.md

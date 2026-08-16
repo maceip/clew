@@ -12,16 +12,16 @@ import (
 	"syscall"
 	"time"
 
-	"restart/internal/adapters"
-	"restart/internal/differ"
-	"restart/internal/extract"
-	"restart/internal/gitx"
-	"restart/internal/journal"
-	"restart/internal/llm"
-	"restart/internal/materialize"
-	"restart/internal/poller"
-	"restart/internal/push"
-	"restart/internal/state"
+	"clew/internal/adapters"
+	"clew/internal/differ"
+	"clew/internal/extract"
+	"clew/internal/gitx"
+	"clew/internal/journal"
+	"clew/internal/llm"
+	"clew/internal/materialize"
+	"clew/internal/poller"
+	"clew/internal/push"
+	"clew/internal/state"
 )
 
 func cmdWatch(args []string) error {
@@ -51,7 +51,7 @@ func cmdWatch(args []string) error {
 	defer os.Remove(lock)
 
 	w := newWatcher(a)
-	fmt.Printf("restart watcher: surface=%s provider=%s repos=%d\n",
+	fmt.Printf("clew watcher: surface=%s provider=%s repos=%d\n",
 		a.cfg.Surface, providerName(w.provider, w.providerNote), reposLen(a.db))
 
 	stop := make(chan os.Signal, 1)
@@ -152,7 +152,7 @@ func (w *watcher) tail(repo string, ad adapters.Adapter, file string) {
 		db.Set("adapter-paused:"+file, ferr.Detail)
 		db.UpsertAlert(state.Alert{
 			Key: "adapter:" + file, RepoPath: repo, Kind: "adapter",
-			Body:     fmt.Sprintf("adapter %s paused: %s (file %s) — update restart or report the format", ad.ID(), ferr.Detail, file),
+			Body:     fmt.Sprintf("adapter %s paused: %s (file %s) — update clew or report the format", ad.ID(), ferr.Detail, file),
 			Blocking: true,
 		})
 		return
@@ -278,7 +278,7 @@ func (w *watcher) pollOne(repo string) {
 			if !al.Blocking {
 				continue
 			}
-			if err := push.Send(w.a.cfg.Push, "restart: "+repoBase(repo), al.Body); err == nil {
+			if err := push.Send(w.a.cfg.Push, "clew: "+repoBase(repo), al.Body); err == nil {
 				db.MarkAlert(al.Key, "pushed_at")
 			}
 		}
@@ -343,7 +343,7 @@ func watchInstall() error {
 		plist := fmt.Sprintf(`<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0"><dict>
-  <key>Label</key><string>dev.restart.watch</string>
+  <key>Label</key><string>dev.clew.watch</string>
   <key>ProgramArguments</key><array><string>%s</string><string>watch</string></array>
   <key>RunAtLoad</key><true/>
   <key>KeepAlive</key><true/>
@@ -351,7 +351,7 @@ func watchInstall() error {
   <key>StandardErrorPath</key><string>%s/watch.log</string>
 </dict></plist>
 `, bin, logDir, logDir)
-		p := filepath.Join(home, "Library", "LaunchAgents", "dev.restart.watch.plist")
+		p := filepath.Join(home, "Library", "LaunchAgents", "dev.clew.watch.plist")
 		if err := os.MkdirAll(filepath.Dir(p), 0o755); err != nil {
 			return err
 		}
@@ -362,12 +362,12 @@ func watchInstall() error {
 		if out, err := exec.Command("launchctl", "load", "-w", p).CombinedOutput(); err != nil {
 			return fmt.Errorf("launchctl load: %v: %s", err, out)
 		}
-		fmt.Println("installed launchd agent dev.restart.watch (log:", logDir+"/watch.log)")
+		fmt.Println("installed launchd agent dev.clew.watch (log:", logDir+"/watch.log)")
 		return nil
 	case "linux":
 		home, _ := os.UserHomeDir()
 		unit := fmt.Sprintf(`[Unit]
-Description=restart journal watcher
+Description=clew journal watcher
 
 [Service]
 ExecStart=%s watch
@@ -381,17 +381,17 @@ WantedBy=default.target
 		if err := os.MkdirAll(dir, 0o755); err != nil {
 			return err
 		}
-		p := filepath.Join(dir, "restart-watch.service")
+		p := filepath.Join(dir, "clew-watch.service")
 		if err := os.WriteFile(p, []byte(unit), 0o644); err != nil {
 			return err
 		}
-		if out, err := exec.Command("systemctl", "--user", "enable", "--now", "restart-watch.service").CombinedOutput(); err != nil {
+		if out, err := exec.Command("systemctl", "--user", "enable", "--now", "clew-watch.service").CombinedOutput(); err != nil {
 			return fmt.Errorf("systemctl: %v: %s (unit written to %s)", err, out, p)
 		}
-		fmt.Println("installed systemd user unit restart-watch.service")
+		fmt.Println("installed systemd user unit clew-watch.service")
 		return nil
 	default:
-		return fmt.Errorf("no supervisor template for %s — run `restart watch` under your own supervisor", runtime.GOOS)
+		return fmt.Errorf("no supervisor template for %s — run `clew watch` under your own supervisor", runtime.GOOS)
 	}
 }
 
@@ -399,14 +399,14 @@ func watchUninstall() error {
 	switch runtime.GOOS {
 	case "darwin":
 		home, _ := os.UserHomeDir()
-		p := filepath.Join(home, "Library", "LaunchAgents", "dev.restart.watch.plist")
+		p := filepath.Join(home, "Library", "LaunchAgents", "dev.clew.watch.plist")
 		exec.Command("launchctl", "unload", p).Run()
 		os.Remove(p)
 		fmt.Println("removed launchd agent")
 	case "linux":
-		exec.Command("systemctl", "--user", "disable", "--now", "restart-watch.service").Run()
+		exec.Command("systemctl", "--user", "disable", "--now", "clew-watch.service").Run()
 		home, _ := os.UserHomeDir()
-		os.Remove(filepath.Join(home, ".config", "systemd", "user", "restart-watch.service"))
+		os.Remove(filepath.Join(home, ".config", "systemd", "user", "clew-watch.service"))
 		fmt.Println("removed systemd user unit")
 	}
 	return nil

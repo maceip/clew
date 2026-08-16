@@ -7,10 +7,10 @@ import (
 	"strings"
 	"time"
 
-	"restart/internal/adapters"
-	"restart/internal/journal"
-	"restart/internal/model"
-	"restart/internal/poller"
+	"clew/internal/adapters"
+	"clew/internal/journal"
+	"clew/internal/model"
+	"clew/internal/poller"
 )
 
 // cmdStatus renders the glance (§8.2): five fixed sections, ≤7 lines each
@@ -89,7 +89,7 @@ func statusRepo(a *app, repo string) error {
 		}
 		for i, e := range es {
 			if i >= 7 { // I8: glance ≤ 7 items per section
-				fmt.Printf("  … %d more (see .restart/journal.md)\n", len(es)-7)
+				fmt.Printf("  … %d more (see .clew/journal.md)\n", len(es)-7)
 				break
 			}
 			fmt.Println("  " + line(e, st[e.ID]))
@@ -134,7 +134,7 @@ func statusRepo(a *app, repo string) error {
 	}
 	for i, al := range alerts {
 		if i >= 7 {
-			fmt.Printf("  … %d more (restart inbox)\n", len(alerts)-7)
+			fmt.Printf("  … %d more (clew inbox)\n", len(alerts)-7)
 			break
 		}
 		fmt.Printf("  [%s] %s\n", al.Kind, clipStr(al.Body, 110))

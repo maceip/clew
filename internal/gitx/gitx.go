@@ -1,6 +1,6 @@
 // Package gitx implements journal storage on git (JOURNAL_SPEC §4):
 // an orphan branch in the project's own remote, checked out into a
-// per-repo worktree under ~/.restart/worktrees/. Git is the wire, never
+// per-repo worktree under ~/.clew/worktrees/. Git is the wire, never
 // the witness (I5).
 package gitx
 
@@ -16,9 +16,9 @@ import (
 
 // Branch is the orphan journal branch name. A plain branch is chosen over a
 // custom ref namespace deliberately (§4): it survives every host and tool.
-const Branch = "restart/journal"
+const Branch = "clew/journal"
 
-var identity = []string{"-c", "user.name=restart", "-c", "user.email=journal@restart.invalid"}
+var identity = []string{"-c", "user.name=clew", "-c", "user.email=journal@clew.invalid"}
 
 // Run executes git in dir and returns trimmed combined output. Errors carry
 // the command line and output (failure-trace discipline).
@@ -69,11 +69,11 @@ func RepoID(repoPath string) string {
 }
 
 func Home() string {
-	if h := os.Getenv("RESTART_HOME"); h != "" {
+	if h := os.Getenv("CLEW_HOME"); h != "" {
 		return h
 	}
 	home, _ := os.UserHomeDir()
-	return filepath.Join(home, ".restart")
+	return filepath.Join(home, ".clew")
 }
 
 // WorktreeDir is where the journal branch is checked out for a repo.
@@ -96,7 +96,7 @@ func remoteBranchSHA(repoPath, remote string) string {
 // genesisCommit creates the orphan root commit via plumbing (works even in a
 // repo with an unborn HEAD) and returns its sha.
 func genesisCommit(repoPath string) (string, error) {
-	readme := "# restart journal\n\nAppend-only project journal (entries/, events/) plus generated\nprojections (journal.md, digest.md). This orphan branch shares no\nhistory with your code and never appears in PRs. See JOURNAL_SPEC.md.\n"
+	readme := "# clew journal\n\nAppend-only project journal (entries/, events/) plus generated\nprojections (journal.md, digest.md). This orphan branch shares no\nhistory with your code and never appears in PRs. See JOURNAL_SPEC.md.\n"
 	blob, err := runStdin(repoPath, readme, "hash-object", "-w", "--stdin")
 	if err != nil {
 		return "", err
@@ -105,7 +105,7 @@ func genesisCommit(repoPath string) (string, error) {
 	if err != nil {
 		return "", err
 	}
-	return commitTree(repoPath, tree, "", "restart: journal genesis")
+	return commitTree(repoPath, tree, "", "clew: journal genesis")
 }
 
 func commitTree(repoPath, tree, parent, msg string) (string, error) {
@@ -115,8 +115,8 @@ func commitTree(repoPath, tree, parent, msg string) (string, error) {
 	}
 	cmd := exec.Command("git", append(append([]string{"-C", repoPath}, identity...), args...)...)
 	cmd.Env = append(os.Environ(),
-		"GIT_AUTHOR_NAME=restart", "GIT_AUTHOR_EMAIL=journal@restart.invalid",
-		"GIT_COMMITTER_NAME=restart", "GIT_COMMITTER_EMAIL=journal@restart.invalid")
+		"GIT_AUTHOR_NAME=clew", "GIT_AUTHOR_EMAIL=journal@clew.invalid",
+		"GIT_COMMITTER_NAME=clew", "GIT_COMMITTER_EMAIL=journal@clew.invalid")
 	out, err := cmd.CombinedOutput()
 	s := strings.TrimSpace(string(out))
 	if err != nil {

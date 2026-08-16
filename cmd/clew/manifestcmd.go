@@ -7,8 +7,8 @@ import (
 	"path/filepath"
 	"time"
 
-	"restart/internal/journal"
-	"restart/internal/manifest"
+	"clew/internal/journal"
+	"clew/internal/manifest"
 )
 
 // cmdManifest: the restart kit (§9). First run generates MANIFEST.md for the
@@ -43,7 +43,7 @@ func cmdManifest(args []string) error {
 		if err != nil {
 			return err
 		}
-		fmt.Printf("wrote %s\n\nnext: edit the [carry]/[drop] marks (the human pass, §9.2),\nthen: restart manifest --out <dir>\n", path)
+		fmt.Printf("wrote %s\n\nnext: edit the [carry]/[drop] marks (the human pass, §9.2),\nthen: clew manifest --out <dir>\n", path)
 		return nil
 	}
 
@@ -64,7 +64,7 @@ func cmdManifest(args []string) error {
 		return err
 	}
 	fmt.Printf("carried %d, dropped %d (dispositions journaled — the loss is deliberate and dated)\n", len(res.Carried), len(res.Dropped))
-	fmt.Printf("  %s   (≤4KB, paste-ready first prompt)\n  %s\nimport in the successor repo: restart init --carry %s\n",
+	fmt.Printf("  %s   (≤4KB, paste-ready first prompt)\n  %s\nimport in the successor repo: clew init --carry %s\n",
 		res.SeedPath, res.GenesisDir, res.GenesisDir)
 	return nil
 }

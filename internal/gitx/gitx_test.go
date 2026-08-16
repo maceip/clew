@@ -7,15 +7,15 @@ import (
 	"testing"
 	"time"
 
-	"restart/internal/ids"
-	"restart/internal/journal"
-	"restart/internal/model"
+	"clew/internal/ids"
+	"clew/internal/journal"
+	"clew/internal/model"
 )
 
 // mkRemote creates a bare "remote" and two clones ("machines" A and B).
 func mkRemote(t *testing.T) (bare, repoA, repoB string) {
 	t.Helper()
-	t.Setenv("RESTART_HOME", t.TempDir())
+	t.Setenv("CLEW_HOME", t.TempDir())
 	base := t.TempDir()
 	bare = filepath.Join(base, "remote.git")
 	if _, err := Run(base, "init", "-q", "--bare", bare); err != nil {
@@ -174,7 +174,7 @@ func TestRedactRewriteDoesNotResurrect(t *testing.T) {
 }
 
 func TestLocalOnlyNoRemote(t *testing.T) {
-	t.Setenv("RESTART_HOME", t.TempDir())
+	t.Setenv("CLEW_HOME", t.TempDir())
 	repo := t.TempDir()
 	if _, err := Run(repo, "init", "-q"); err != nil {
 		t.Fatal(err)

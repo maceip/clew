@@ -11,17 +11,17 @@ import (
 
 	"gopkg.in/yaml.v3"
 
-	"restart/internal/ids"
-	"restart/internal/journal"
-	"restart/internal/model"
-	"restart/internal/scrub"
+	"clew/internal/ids"
+	"clew/internal/journal"
+	"clew/internal/model"
+	"clew/internal/scrub"
 )
 
 // cmdJournal: human edit verbs (§8.2). Editing is first-class writing (I6):
 // every verb is an append-only event (or a new entry), never a mutation.
 func cmdJournal(args []string) error {
 	if len(args) == 0 {
-		return fmt.Errorf("usage: restart journal show|edit|confirm|reject|supersede|answer|note …")
+		return fmt.Errorf("usage: clew journal show|edit|confirm|reject|supersede|answer|note …")
 	}
 	a, err := load()
 	if err != nil {
@@ -36,7 +36,7 @@ func cmdJournal(args []string) error {
 	switch verb {
 	case "show":
 		if len(rest) < 1 {
-			return fmt.Errorf("usage: restart journal show <entry-id>")
+			return fmt.Errorf("usage: clew journal show <entry-id>")
 		}
 		return journalShow(a, repo, rest[0])
 	case "confirm":
@@ -69,14 +69,14 @@ func cmdJournal(args []string) error {
 			return err
 		}
 		if *by == "" {
-			return fmt.Errorf("usage: restart journal supersede <old-id> --by <new-id>")
+			return fmt.Errorf("usage: clew journal supersede <old-id> --by <new-id>")
 		}
 		return humanEvent(a, repo, rest[0], model.EvSupersede, map[string]any{"by": *by}, "superseded by "+*by)
 	case "answer":
 		fs := flag.NewFlagSet("answer", flag.ExitOnError)
 		typ := fs.String("type", "finding", "entry type for the answer (decision|finding)")
 		if len(rest) < 2 {
-			return fmt.Errorf("usage: restart journal answer <question-id> \"text\" [--type decision]")
+			return fmt.Errorf("usage: clew journal answer <question-id> \"text\" [--type decision]")
 		}
 		fs.Parse(rest[2:])
 		return journalAnswer(a, repo, rest[0], rest[1], *typ)
@@ -87,13 +87,13 @@ func cmdJournal(args []string) error {
 		tags := fs.String("tags", "", "comma-separated path globs")
 		asks := fs.String("asks", "any", "questions only: human|any")
 		if len(rest) < 1 {
-			return fmt.Errorf("usage: restart journal note \"text\" [--type …] [--title …] [--tags a/**,b]")
+			return fmt.Errorf("usage: clew journal note \"text\" [--type …] [--title …] [--tags a/**,b]")
 		}
 		fs.Parse(rest[1:])
 		return journalNote(a, repo, rest[0], *typ, *title, *tags, *asks)
 	case "edit":
 		if len(rest) < 1 {
-			return fmt.Errorf("usage: restart journal edit <entry-id>")
+			return fmt.Errorf("usage: clew journal edit <entry-id>")
 		}
 		return journalEdit(a, repo, rest[0])
 	default:

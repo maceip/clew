@@ -7,9 +7,9 @@ import (
 	"testing"
 	"time"
 
-	"restart/internal/ids"
-	"restart/internal/journal"
-	"restart/internal/model"
+	"clew/internal/ids"
+	"clew/internal/journal"
+	"clew/internal/model"
 )
 
 func TestServerRoundTrip(t *testing.T) {

@@ -1,6 +1,6 @@
 // Package wrapx is the PTY tee (JOURNAL_SPEC §5.1 `wrap`): a transcript-
 // equivalent for agents with no accessible session store. Input bytes are
-// logged as user turns, output as assistant turns, to ~/.restart/raw/.
+// logged as user turns, output as assistant turns, to ~/.clew/raw/.
 // At a prompt boundary the wrapper can inject one nudge line (§8.1 matrix).
 package wrapx
 
@@ -20,8 +20,8 @@ import (
 	"github.com/creack/pty"
 	"golang.org/x/term"
 
-	"restart/internal/gitx"
-	"restart/internal/ids"
+	"clew/internal/gitx"
+	"clew/internal/ids"
 )
 
 type Options struct {
@@ -147,11 +147,11 @@ func Run(o *Options) (int, error) {
 	}()
 
 	// nudge injection: at a prompt boundary (output idle ≥ 2s), inject one
-	// pending line from .restart/nudge.md, consuming it.
+	// pending line from .clew/nudge.md, consuming it.
 	stop := make(chan struct{})
 	if o.Nudge {
 		go func() {
-			nudgePath := filepath.Join(cwd, ".restart", "nudge.md")
+			nudgePath := filepath.Join(cwd, ".clew", "nudge.md")
 			tick := time.NewTicker(3 * time.Second)
 			defer tick.Stop()
 			for {

@@ -8,10 +8,10 @@ import (
 
 	"gopkg.in/yaml.v3"
 
-	"restart/internal/gitx"
-	"restart/internal/ids"
-	"restart/internal/model"
-	"restart/internal/scrub"
+	"clew/internal/gitx"
+	"clew/internal/ids"
+	"clew/internal/model"
+	"clew/internal/scrub"
 )
 
 // cmdRedact: the one sanctioned rewrite (§4). Scrubs the entry file in place
@@ -20,7 +20,7 @@ import (
 // force-pushes. The redaction itself is journaled (minus the secret).
 func cmdRedact(args []string) error {
 	if len(args) < 1 {
-		return fmt.Errorf("usage: restart redact <entry-id>")
+		return fmt.Errorf("usage: clew redact <entry-id>")
 	}
 	id := args[0]
 	a, err := load()

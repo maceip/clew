@@ -8,7 +8,7 @@ import (
 	"net/http"
 	"time"
 
-	"restart/internal/config"
+	"clew/internal/config"
 )
 
 // Send pushes one item. Every pushed item names why it blocks (I8) — the

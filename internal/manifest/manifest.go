@@ -1,4 +1,4 @@
-// Package manifest implements the restart manifest (JOURNAL_SPEC §9): the
+// Package manifest implements the clew manifest (JOURNAL_SPEC §9): the
 // tool for the reset moment. Disposition pass → MANIFEST.md, human pass
 // (edit carry/drop marks), then SEED.md + genesis/ outputs. The choice to
 // lose knowledge is itself journaled as disposition events.
@@ -15,10 +15,10 @@ import (
 
 	"gopkg.in/yaml.v3"
 
-	"restart/internal/ids"
-	"restart/internal/journal"
-	"restart/internal/llm"
-	"restart/internal/model"
+	"clew/internal/ids"
+	"clew/internal/journal"
+	"clew/internal/llm"
+	"clew/internal/model"
 )
 
 const SeedCap = 4 * 1024 // §9.3: SEED.md ≤ 4 KB
@@ -60,7 +60,7 @@ func Generate(j *journal.Journal, st map[string]*journal.Computed, specPath stri
 
 	var b strings.Builder
 	fmt.Fprintf(&b, "# Restart manifest — %s\n\n", now.UTC().Format("2006-01-02"))
-	b.WriteString("Mark each entry `[carry]` or `[drop]`, then run `restart manifest --out <dir>`.\n")
+	b.WriteString("Mark each entry `[carry]` or `[drop]`, then run `clew manifest --out <dir>`.\n")
 	if specPath != "" {
 		fmt.Fprintf(&b, "Disposition vs spec %s (%s): covered / missing / contradicts.\n", filepath.Base(specPath), method)
 	}

@@ -1,4 +1,4 @@
-// Package config loads ~/.restart/config.yaml. Everything has a working
+// Package config loads ~/.clew/config.yaml. Everything has a working
 // default; the file is optional.
 package config
 
@@ -8,7 +8,7 @@ import (
 
 	"gopkg.in/yaml.v3"
 
-	"restart/internal/gitx"
+	"clew/internal/gitx"
 )
 
 type Push struct {
@@ -93,7 +93,7 @@ func WriteSkeleton() error {
 	}
 	c := Default()
 	b, _ := yaml.Marshal(c)
-	head := "# restart config. Defaults shown; push.url enables phone push (ntfy/webhook).\n"
+	head := "# clew config. Defaults shown; push.url enables phone push (ntfy/webhook).\n"
 	return os.WriteFile(p, append([]byte(head), b...), 0o644)
 }
 

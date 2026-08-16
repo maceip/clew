@@ -6,12 +6,12 @@ import (
 	"path/filepath"
 	"time"
 
-	"restart/internal/config"
-	"restart/internal/gitx"
-	"restart/internal/journal"
-	"restart/internal/llm"
-	"restart/internal/materialize"
-	"restart/internal/state"
+	"clew/internal/config"
+	"clew/internal/gitx"
+	"clew/internal/journal"
+	"clew/internal/llm"
+	"clew/internal/materialize"
+	"clew/internal/state"
 )
 
 // app bundles the shared runtime: config + machine state.
@@ -40,9 +40,9 @@ func (a *app) repoFromCwd() (string, error) {
 	// Not registered yet, but inside a git repo → helpful error.
 	if gitx.IsRepo(cwd) {
 		root, _ := gitx.Root(cwd)
-		return "", fmt.Errorf("%s is not registered — run `restart init` first", root)
+		return "", fmt.Errorf("%s is not registered — run `clew init` first", root)
 	}
-	return "", fmt.Errorf("not inside a registered repo (run `restart init` in one, or see `restart status --all`)")
+	return "", fmt.Errorf("not inside a registered repo (run `clew init` in one, or see `clew status --all`)")
 }
 
 // targetRepos returns the repo of cwd, or all registered when all=true or
@@ -58,7 +58,7 @@ func (a *app) targetRepos(all bool) ([]string, error) {
 		return nil, err
 	}
 	if len(repos) == 0 {
-		return nil, fmt.Errorf("no repos registered — run `restart init` inside one")
+		return nil, fmt.Errorf("no repos registered — run `clew init` inside one")
 	}
 	var out []string
 	for _, r := range repos {
@@ -86,7 +86,7 @@ func regen(wt string) error {
 	return journal.WriteProjections(j, st, time.Now())
 }
 
-// syncAndMaterialize pushes/pulls the journal and refreshes .restart/.
+// syncAndMaterialize pushes/pulls the journal and refreshes .clew/.
 func (a *app) syncAndMaterialize(repo string) (*gitx.SyncResult, error) {
 	res, err := gitx.Sync(repo, regen)
 	if err != nil {

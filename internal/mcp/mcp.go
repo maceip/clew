@@ -13,11 +13,11 @@ import (
 	"strings"
 	"time"
 
-	"restart/internal/globx"
-	"restart/internal/ids"
-	"restart/internal/journal"
-	"restart/internal/model"
-	"restart/internal/scrub"
+	"clew/internal/globx"
+	"clew/internal/ids"
+	"clew/internal/journal"
+	"clew/internal/model"
+	"clew/internal/scrub"
 )
 
 type Server struct {
@@ -83,7 +83,7 @@ func (s *Server) dispatch(r *req) (any, map[string]any) {
 		return map[string]any{
 			"protocolVersion": pv,
 			"capabilities":    map[string]any{"tools": map[string]any{}},
-			"serverInfo":      map[string]any{"name": "restart", "version": "0.1.0"},
+			"serverInfo":      map[string]any{"name": "clew", "version": "0.1.0"},
 		}, nil
 	case "ping":
 		return map[string]any{}, nil

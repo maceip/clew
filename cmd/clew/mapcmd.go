@@ -9,8 +9,8 @@ import (
 	"strings"
 	"time"
 
-	"restart/internal/journal"
-	"restart/internal/model"
+	"clew/internal/journal"
+	"clew/internal/model"
 )
 
 type mapRow struct {
@@ -137,7 +137,7 @@ func writeMapHTML(path, repo string, rows []mapRow, expired []*model.Entry, unma
 	}
 	expJSON, _ := json.Marshal(exp)
 	unmJSON, _ := json.Marshal(unmapped)
-	page := `<!doctype html><meta charset="utf-8"><title>restart map — ` + repo + `</title>
+	page := `<!doctype html><meta charset="utf-8"><title>clew map — ` + repo + `</title>
 <style>
 body{font:14px/1.5 -apple-system,system-ui,sans-serif;margin:2rem;color:#1a1a1a;max-width:1100px}
 h1{font-size:1.2rem} table{border-collapse:collapse;width:100%}

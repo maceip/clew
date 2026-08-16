@@ -13,7 +13,7 @@ import (
 	"strings"
 	"time"
 
-	"restart/internal/config"
+	"clew/internal/config"
 )
 
 type Result struct {
@@ -160,7 +160,7 @@ type codexCLI struct{ model string }
 func (c *codexCLI) Name() string { return "codex" }
 
 func (c *codexCLI) Call(prompt string) (*Result, error) {
-	tmp, err := os.CreateTemp("", "restart-codex-*.txt")
+	tmp, err := os.CreateTemp("", "clew-codex-*.txt")
 	if err != nil {
 		return nil, err
 	}

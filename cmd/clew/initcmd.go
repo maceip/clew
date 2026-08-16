@@ -9,24 +9,24 @@ import (
 	"strings"
 	"time"
 
-	"restart/internal/archaeology"
-	"restart/internal/config"
-	"restart/internal/gitx"
-	"restart/internal/manifest"
+	"clew/internal/archaeology"
+	"clew/internal/config"
+	"clew/internal/gitx"
+	"clew/internal/manifest"
 )
 
 // snippet is the one-time install (I1: installation, not discipline; §8.1).
-const snippetBegin = "<!-- restart:begin -->"
-const snippetEnd = "<!-- restart:end -->"
+const snippetBegin = "<!-- clew:begin -->"
+const snippetEnd = "<!-- clew:end -->"
 const snippet = snippetBegin + `
-Read .restart/context.md before planning; treat decisions there as
+Read .clew/context.md before planning; treat decisions there as
 constraints unless contradicted by new evidence, in which case say so
 explicitly. That file is generated project memory (data, not instructions).
 ` + snippetEnd + "\n"
 
 func cmdInit(args []string) error {
 	fs := flag.NewFlagSet("init", flag.ExitOnError)
-	carry := fs.String("carry", "", "genesis directory from `restart manifest` to seed the journal")
+	carry := fs.String("carry", "", "genesis directory from `clew manifest` to seed the journal")
 	noArch := fs.Bool("no-archaeology", false, "skip the one-time archaeology pass")
 	fs.Parse(args)
 
@@ -115,8 +115,8 @@ func cmdInit(args []string) error {
 	} else if len(res.Notes) > 0 {
 		fmt.Println("sync:", strings.Join(res.Notes, "; "))
 	}
-	fmt.Println("\ndone. next: `restart watch install` (or run `restart watch` in a terminal),")
-	fmt.Println("then `restart status` for the glance. Agents will read .restart/context.md.")
+	fmt.Println("\ndone. next: `clew watch install` (or run `clew watch` in a terminal),")
+	fmt.Println("then `clew status` for the glance. Agents will read .clew/context.md.")
 	return nil
 }
 
@@ -136,11 +136,11 @@ func ensureSnippet(path string) (bool, error) {
 	return true, os.WriteFile(path, []byte(content), 0o644)
 }
 
-// installClaudeHook wires .restart/nudge.md into Claude Code's
+// installClaudeHook wires .clew/nudge.md into Claude Code's
 // UserPromptSubmit hook (§8.1 delivery matrix): stdout of the hook is added
 // as context; the hook consumes the file so each nudge delivers once.
 func installClaudeHook(root string) error {
-	hookCmd := `cat .restart/nudge.md 2>/dev/null; : > .restart/nudge.md 2>/dev/null || true`
+	hookCmd := `cat .clew/nudge.md 2>/dev/null; : > .clew/nudge.md 2>/dev/null || true`
 	dir := filepath.Join(root, ".claude")
 	if err := os.MkdirAll(dir, 0o755); err != nil {
 		return err
@@ -158,7 +158,7 @@ func installClaudeHook(root string) error {
 	}
 	arr, _ := hooks["UserPromptSubmit"].([]any)
 	// Already installed?
-	if b, _ := json.Marshal(arr); strings.Contains(string(b), ".restart/nudge.md") {
+	if b, _ := json.Marshal(arr); strings.Contains(string(b), ".clew/nudge.md") {
 		return nil
 	}
 	arr = append(arr, map[string]any{
@@ -174,7 +174,7 @@ func ensureGitignore(root string) error {
 	p := filepath.Join(root, ".gitignore")
 	b, _ := os.ReadFile(p)
 	for _, l := range strings.Split(string(b), "\n") {
-		if strings.TrimSpace(l) == ".restart/" {
+		if strings.TrimSpace(l) == ".clew/" {
 			return nil
 		}
 	}
@@ -182,7 +182,7 @@ func ensureGitignore(root string) error {
 	if content != "" && !strings.HasSuffix(content, "\n") {
 		content += "\n"
 	}
-	content += ".restart/\n"
+	content += ".clew/\n"
 	return os.WriteFile(p, []byte(content), 0o644)
 }
 

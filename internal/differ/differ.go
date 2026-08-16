@@ -14,13 +14,13 @@ import (
 	"strings"
 	"time"
 
-	"restart/internal/globx"
-	"restart/internal/ids"
-	"restart/internal/journal"
-	"restart/internal/llm"
-	"restart/internal/model"
-	"restart/internal/poller"
-	"restart/internal/state"
+	"clew/internal/globx"
+	"clew/internal/ids"
+	"clew/internal/journal"
+	"clew/internal/llm"
+	"clew/internal/model"
+	"clew/internal/poller"
+	"clew/internal/state"
 )
 
 type Input struct {

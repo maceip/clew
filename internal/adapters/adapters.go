@@ -589,7 +589,7 @@ func stripCursorWrapper(s string) string {
 	return s
 }
 
-// ---------- wrap (~/.restart/raw/*.jsonl, written by `restart wrap`) ----------
+// ---------- wrap (~/.clew/raw/*.jsonl, written by `clew wrap`) ----------
 // Our own format, v1: first line {"kind":"meta",...}; then
 // {"at","dir":"in|out","text"}. Terminal input = user; output = assistant
 // (the extractor decides taint for quoted third-party content, §6.5).
@@ -599,8 +599,8 @@ type Wrap struct{}
 func (a *Wrap) ID() string { return "wrap" }
 
 func (a *Wrap) Discover(repoPath string) []string {
-	m, _ := filepath.Glob(filepath.Join(home(), ".restart", "raw", "*.jsonl"))
-	if rh := os.Getenv("RESTART_HOME"); rh != "" {
+	m, _ := filepath.Glob(filepath.Join(home(), ".clew", "raw", "*.jsonl"))
+	if rh := os.Getenv("CLEW_HOME"); rh != "" {
 		m2, _ := filepath.Glob(filepath.Join(rh, "raw", "*.jsonl"))
 		m = append(m, m2...)
 	}

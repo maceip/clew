@@ -19,7 +19,7 @@ import (
 
 	"gopkg.in/yaml.v3"
 
-	"restart/internal/model"
+	"clew/internal/model"
 )
 
 type Journal struct {
