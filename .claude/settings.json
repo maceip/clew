@@ -1,0 +1,14 @@
+{
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "command": "cat .restart/nudge.md 2\u003e/dev/null; : \u003e .restart/nudge.md 2\u003e/dev/null || true",
+            "type": "command"
+          }
+        ]
+      }
+    ]
+  }
+}

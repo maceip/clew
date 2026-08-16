@@ -1,0 +1,4 @@
+/restart
+/bin/
+.restart/
+*.test
