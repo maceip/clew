@@ -1,0 +1,15 @@
+id: e01M04XVQEEZ38J9TC5NZNKC16B
+type: finding
+title: live fidelity gate question placeholder
+body: live fidelity gate question placeholder
+quote: live fidelity gate question placeholder
+utterance_by: user
+source:
+    kind: human
+    ref: cli:note
+    surface: cursor
+    at: 2026-08-16T09:18:50.318107841Z
+confidence: 1
+tags: []
+env: null
+affects: []
