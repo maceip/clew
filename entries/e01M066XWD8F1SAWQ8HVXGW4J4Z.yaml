@@ -1,0 +1,15 @@
+id: e01M066XWD8F1SAWQ8HVXGW4J4Z
+type: finding
+title: 'Task 3 docket gate: 8→1, FYI 0, withdrawal 1 poll'
+body: cards=8; render=1 overflow-failure; cap=7; synthetic-FYI-rendered=0; resolved-stomp-withdrawal=1 poll; pushes=0/0; full=pass; race=pass; vet=pass.
+quote: cards=8; render=1 overflow-failure; cap=7; synthetic-FYI-rendered=0; resolved-stomp-withdrawal=1 poll; pushes=0/0; full=pass; race=pass; vet=pass.
+utterance_by: user
+source:
+    kind: human
+    ref: cli:note
+    surface: macs-MacBook-Pro
+    at: 2026-08-16T21:16:32.552542Z
+confidence: 1
+tags: []
+env: null
+affects: []
