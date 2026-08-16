@@ -1,0 +1,17 @@
+id: e01M05SA72DPRGNTY7GCQ2RASTP
+type: decision
+title: Cards show verbatim quotes + clickable provenance, never extractor paraphrase
+body: 'Decision cards must render verbatim quotes with clickable provenance chips (session line / commit / entry) and must never show the extractor''s paraphrase, summary, or reasoning. Reason: system-generated explanations are advocacy and increase acceptance of wrong content, while clickable sources reduce over-reliance. One "accepting this assumes: X" line is allowed on high-magnitude cards only; no o…'
+quote: 'Design consequences: cards show verbatim quotes + clickable provenance, never the extractor''s paraphrase or reasoning; high-magnitude cards carry one assumptions line; no other friction, ever.'
+utterance_by: user
+source:
+    kind: session
+    ref: codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-18-36-01a00b95-1c07-7d61-a3e4-fb76948ee1b9.jsonl#L9
+    agent: codex
+    surface: macs-MacBook-Pro
+    at: 2026-08-16T17:18:36.621Z
+confidence: 0.92
+tags:
+    - docket/**
+env: null
+affects: []

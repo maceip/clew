@@ -1,0 +1,17 @@
+id: e01M05SA72DPRGNTY7GCXARNKYH
+type: intent
+title: Implement the decision card and enforce I10–I12 in renderer and tests
+body: 'Commitment (Task 3): build the docket card to the fixed anatomy — headline-as-question ≤80 chars, why-you strip with rule fired and ticking stall timers, verbatim-quote evidence rows with provenance chips, assumptions line on high-magnitude only, 1–3 verbs plus defer-until-event, printed withdrawal condition, ordering by blocking cost, designed empty state. Tests must prove the three invariants.'
+quote: 'Enforce I10–I12 in the renderer and in tests: a synthetic FYI item must be unrenderable; an 8th card must collapse to the overflow-failure card; a resolved stomp must withdraw within one poll cycle.'
+utterance_by: user
+source:
+    kind: session
+    ref: codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-18-36-01a00b95-1c07-7d61-a3e4-fb76948ee1b9.jsonl#L9
+    agent: codex
+    surface: macs-MacBook-Pro
+    at: 2026-08-16T17:18:36.621Z
+confidence: 0.9
+tags:
+    - docket/**
+env: null
+affects: []

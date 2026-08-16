@@ -1,0 +1,19 @@
+id: e01M05SA72DPRGNTY7GCV0CBDK7
+type: finding
+title: Assumptions prompt cut over-reliance 42%→22%; stacked/delay friction backfired
+body: 'From the over-reliance literature (Buçinca cognitive-forcing lineage through Ghosh et al. 2026, n=214): an "accepting this assumes X" prompt reduced over-reliance from 42% to 22% with no added cognitive load, while delay-based and stacked friction backfired. This is why the assumptions line is the single permitted forcing function on clew cards and why no other friction is added.'
+quote: the assumptions prompt ("accepting this assumes X") reduced over-reliance from 42%→22% without added cognitive load, while stacked/delay-based friction backfired
+utterance_by: user
+source:
+    kind: session
+    ref: codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-18-36-01a00b95-1c07-7d61-a3e4-fb76948ee1b9.jsonl#L9
+    agent: codex
+    surface: macs-MacBook-Pro
+    at: 2026-08-16T17:18:36.621Z
+confidence: 0.85
+tags:
+    - docket/**
+env:
+    dataset: Ghosh et al. 2026 over-reliance study, n=214
+affects:
+    - docket/**

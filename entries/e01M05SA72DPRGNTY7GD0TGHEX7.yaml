@@ -1,0 +1,17 @@
+id: e01M05SA72DPRGNTY7GD0TGHEX7
+type: decision
+title: 'Scope freeze: relay, TUI, team mode, adapters need a §11 trigger measurement'
+body: Relay server, TUI/native apps, team mode, semantic code graphs, treemaps, new adapters, and orchestration are frozen. Building any of them requires first citing a §11 trigger measurement in the journal and stopping for owner review — measurement, not enthusiasm, unfreezes scope.
+quote: 'Frozen (build nothing here without citing a §11 trigger measurement in the journal and stopping for owner review): relay server, TUI/native apps, team mode, semantic code graphs, treemaps, new adapters, orchestration.'
+utterance_by: user
+source:
+    kind: session
+    ref: codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-18-36-01a00b95-1c07-7d61-a3e4-fb76948ee1b9.jsonl#L9
+    agent: codex
+    surface: macs-MacBook-Pro
+    at: 2026-08-16T17:18:36.621Z
+confidence: 0.93
+tags:
+    - JOURNAL_SPEC.md
+env: null
+affects: []

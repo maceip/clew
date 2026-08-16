@@ -1,0 +1,18 @@
+id: e01M05SA72DPRGNTY7GCN1P7CED
+type: decision
+title: Rename the inbox surface to "docket"; keep inbox as hidden alias
+body: 'The decision surface is renamed inbox → docket, with "inbox" kept only as a hidden alias for muscle memory. Reason: vocabulary is a forcing function against email-drift — an inbox invites FYI accumulation, unread counts, and backlog; a docket is a list of items awaiting a ruling. The docket is the only surface that carries verbs.'
+quote: Rename the surface — vocabulary is a forcing function against email-drift. It's a docket of decision cards (clew docket, with inbox as a hidden alias for muscle memory).
+utterance_by: user
+source:
+    kind: session
+    ref: codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-18-36-01a00b95-1c07-7d61-a3e4-fb76948ee1b9.jsonl#L9
+    agent: codex
+    surface: macs-MacBook-Pro
+    at: 2026-08-16T17:18:36.621Z
+confidence: 0.94
+tags:
+    - docket/**
+    - inbox/**
+env: null
+affects: []
