@@ -1,0 +1,13 @@
+id: v01M065GZB8C2SS9H9S5BP8EC30
+kind: evidence
+entry: e01M065G8RTKVH6466KEB0FRJ8N
+payload:
+    confidence: 0.85
+    kind: commit
+    note: 'journal: 3 file(s)'
+    ref: 1be8c5020483730f4effd68b53f599bdf3db33c5
+    via: link-pass
+by:
+    who: differ
+    surface: macs-MacBook-Pro
+at: 2026-08-16T20:52:01Z

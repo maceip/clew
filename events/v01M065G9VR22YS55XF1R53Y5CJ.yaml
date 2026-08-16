@@ -1,0 +1,11 @@
+id: v01M065G9VR22YS55XF1R53Y5CJ
+kind: evidence
+entry: e01M05SPB2EMMC4F4PR0928NA31
+payload:
+    kind: churn
+    note: Make zero-homework watch safe and measurable
+    ref: churn:b4c4cd3663a5297257723e4d6fafc87130641920
+by:
+    who: differ
+    surface: macs-MacBook-Pro
+at: 2026-08-16T20:51:39Z
