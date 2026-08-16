@@ -1,0 +1,15 @@
+id: e01M05V9MQWYX3BAX0VXZ70SHTD
+type: finding
+title: 'D2: cursor rewind replayed 58,754 bytes once'
+body: 'D2 migration failure: split cursor rewind replayed 58754 bytes and spent 1815 extraction tokens once; delivered pushes=0. Fix is monotonic max(extract, watch-extract), with divergent-cursor regression. State backup: state.db.d1-20260816T1748Z.bak.'
+quote: 'D2 migration failure: split cursor rewind replayed 58754 bytes and spent 1815 extraction tokens once; delivered pushes=0. Fix is monotonic max(extract, watch-extract), with divergent-cursor regression. State backup: state.db.d1-20260816T1748Z.bak.'
+utterance_by: user
+source:
+    kind: human
+    ref: cli:note
+    surface: macs-MacBook-Pro
+    at: 2026-08-16T17:53:15.004943Z
+confidence: 1
+tags: []
+env: null
+affects: []
