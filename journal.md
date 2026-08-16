@@ -1,6 +1,6 @@
 # Journal
 
-_generated 2026-08-16 17:37 UTC · 31 live entries (9 decisions · 16 findings · 1 questions · 5 intents) · 36 total in history_
+_generated 2026-08-16 17:38 UTC · 30 live entries (9 decisions · 15 findings · 1 questions · 5 intents) · 37 total in history_
 
 ## Decisions
 
@@ -69,12 +69,12 @@ _source: human cli:note · confidence: 1.00_
 
 ## Findings
 
-### e01M05T52RRS9EXQ92M3PA9WBVF — Baseline/upgrade paths have state-transition races unit tests don't exercise  `current`
-> The baseline/upgrade paths exposed several state-transition races that unit tests don’t currently exercise.
+### e01M05TCM2N1P9P2EQSE8YKVQX3 — Push failure paths unchecked: unset endpoint returns success, HTTP errors ignor…  `current`
+> HTTP errors are also unchecked.
 
-Reviewing the revised watch fix surfaced several state-transition races in the baseline and upgrade paths that the current unit tests do not cover. Concrete failure sequences were handed to the implementing agent, and a race-suite pass was run against the revised diff to check them.
+Audit of the push path found two defects that make push precision unmeasurable: an unset push endpoint returns success (so alerts get a false `pushed_at` mark), and HTTP errors from the push call are not checked either. Located at internal/push/push.go:16 and cmd/clew/watchcmd.go:281.
 
-_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-18-36-01a00b95-1c07-7d61-a3e4-fb76948ee1b9.jsonl#L446 · confidence: 0.90 · tags: cmd/clew/**, internal/**_
+_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-00-58-01a00b84-f81d-7a61-a3c3-e5bb6beb9ee3.jsonl#L1075 · confidence: 0.87 · tags: internal/push/**, cmd/clew/** · taint: tool_result_
 
 ### e01M05T4XG0RJWQTP25T1K58B61 — Confirm/reject only in event YAML; adapter unknowns undated, absent from status  `current`
 > Confirm/reject exists only in journal event YAML.
@@ -96,13 +96,6 @@ _source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T
 Measured fallout of the first watch run misclassifying pre-existing historical sessions as live: 342 overlaps, 27 stomps, and 12,895,847 observed tokens. This quantifies the historical-session storm previously recorded qualitatively as an I12 failure.
 
 _source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-18-36-01a00b95-1c07-7d61-a3e4-fb76948ee1b9.jsonl#L335 · confidence: 0.91 · tags: cmd/clew/** · taint: tool_result_
-
-### e01M05SPB2EMMC4F4PR09QWMXG8 — Push precision unmeasurable: unset push returns success, faking pushed_at  `current`
-> Push precision is unmeasurable: unset push returns success, causing false `pushed_at` marks
-
-With push unconfigured, the push path returns success and HTTP errors go unchecked, so alerts get marked `pushed_at` even though nothing was delivered. Push precision therefore cannot be measured from the current data. Located in internal/push/push.go:16 and cmd/clew/watchcmd.go:281.
-
-_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-18-36-01a00b95-1c07-7d61-a3e4-fb76948ee1b9.jsonl#L335 · confidence: 0.92 · tags: internal/push/**, cmd/clew/** · taint: tool_result_
 
 ### e01M05SG3NTP5W2JX7Y6KZD5N6P — Pre-commit review found three Task 2 blockers: cursor migration, backfill overl…  `current`
 > Pre-commit review found three real blockers: upgrade users lacked cursor migration, backfill could overlap live suffixes, and init could baseline inside a partial JSONL record.
@@ -192,26 +185,26 @@ _source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15 · confide
 
 ## Intents
 
-### e01M05TBYJXEW5N5FE398NJ4RD7 — Tighten live-enrollment/backfill boundary and add failure telemetry  `proposed`
+### e01M05TBYJXEW5N5FE398NJ4RD7 — Tighten live-enrollment/backfill boundary and add failure telemetry  `in_flight`
 > I’m tightening the live-enrollment/backfill boundary and failure telemetry now
 
 Work in progress to harden the boundary between live enrollment and backfill, and to add telemetry for failures. This follows the recorded pass of Task 1 and the cursor/push/adapter failures observed in the first dogfood run.
 
-_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-00-58-01a00b84-f81d-7a61-a3c3-e5bb6beb9ee3.jsonl#L1041 · confidence: 0.85_
+_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-00-58-01a00b84-f81d-7a61-a3c3-e5bb6beb9ee3.jsonl#L1041 · confidence: 0.85 · evidence: 1_
 
 ### e01M05SPB2EMMC4F4PR0BSPFZKZ — Narrow fix for the watch storm: transactional baselines, source-time, bounded c…  `in_flight`
 > Root cause and narrow fix sent to parent: transactional live baselines, source-time sessions, and bounded separate backfill cursor.
 
 The semantics investigation reported a root cause and a narrow fix to the parent: make live baselines transactional, use source-time (not observation-time) session timestamps, and give backfill its own bounded cursor separate from live watch. This is the proposed work to make backfill and live watch disjoint.
 
-_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-18-36-01a00b95-1c07-7d61-a3e4-fb76948ee1b9.jsonl#L335 · confidence: 0.62 · tags: cmd/clew/**, internal/** · evidence: 3 · taint: tool_result_
+_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-18-36-01a00b95-1c07-7d61-a3e4-fb76948ee1b9.jsonl#L335 · confidence: 0.62 · tags: cmd/clew/**, internal/** · evidence: 4 · taint: tool_result_
 
 ### e01M05SG3NTP5W2JX7Y6MP1F1K6 — Add cursor migration, complete-record offsets, and fixed historical upper bound  `in_flight`
 > adding a one-time migration, complete-record offsets, and a fixed historical upper bound
 
 Committed follow-up work before the Task 2 commit can land: a one-time cursor migration for existing installs, offsets that always fall on complete JSONL record boundaries, and a fixed upper bound on the historical backfill range.
 
-_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-00-58-01a00b84-f81d-7a61-a3c3-e5bb6beb9ee3.jsonl#L806 · confidence: 0.88 · evidence: 3_
+_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-00-58-01a00b84-f81d-7a61-a3c3-e5bb6beb9ee3.jsonl#L806 · confidence: 0.88 · evidence: 4_
 
 ### e01M05SA72DPRGNTY7GCXARNKYH — Implement the decision card and enforce I10–I12 in renderer and tests  `in_flight`
 > Enforce I10–I12 in the renderer and in tests: a synthetic FYI item must be unrenderable; an 8th card must collapse to the overflow-failure card; a resolved stomp must withdraw within one poll cycle.
