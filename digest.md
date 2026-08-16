@@ -1,4 +1,6 @@
 # Journal digest (live entries: id · type/status · title)
+- e01M05TBYJXEW5N5FE398NJ4RD7 intent/proposed Tighten live-enrollment/backfill boundary and add failure telemetry
+- e01M05TBYJXEW5N5FE397XYMEHY decision/active Treat first dogfood run's cursor/push/adapter failures as required failure sign…
 - e01M05T52RRS9EXQ92M3PA9WBVF finding/current Baseline/upgrade paths have state-transition races unit tests don't exercise
 - e01M05T4XG0RJWQTP25T1K58B61 finding/current Confirm/reject only in event YAML; adapter unknowns undated, absent from status
 - e01M05T4XG0RJWQTP25SYT4FH0B finding/current Task 2 not passable: `spent` conflates extraction, differ, and archaeology
