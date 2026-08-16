@@ -1,5 +1,9 @@
 # Journal digest (live entries: id · type/status · title)
 - e01M05V9MQWYX3BAX0VXZ70SHTD finding/current D2: cursor rewind replayed 58,754 bytes once
+- e01M05V5HWA6TFT0A0KDZY8S45K decision/active Confine the cap/ratio admission fix to internal/state; no caller or spec changes
+- e01M05V5HWA6TFT0A0KDY1QV6C0 intent/proposed Add transactional reservation + settlement accounting in internal/state with co…
+- e01M05V0G3Q9F41V62P6T44TC04 decision/active Cursor migration must be monotonic — never rewind an existing cursor
+- e01M05V0G3Q9F41V62P6R5QV53G intent/proposed Fix migration monotonicity, restore from D1 boundary, rerun cycle before passin…
 - e01M05TX51R4VZHJMNM804YPMRT finding/current D1: 30 automatic entries; Codex metadata incident pinned
 - e01M05TPA9ZK4C8RGC3KBPV2MRF intent/in_flight Re-run the live gate: install binary, normalize spend category, restart watcher
 - e01M05TG628KAGZ9HCBQSAG562P decision/active Separate session-extraction budget from one-time archaeology budget
@@ -27,9 +31,4 @@
 - e01M05RF74PBCZVAPRY49GCVM7H finding/current answer: Run the live fidelity gate (RealProvider) on a machine with provider ke…
 - e01M05REDJZAERAWRQG7349E7Y1 finding/current Live fidelity gate passed on iteration 1
 - e01M04YAQN85TF6YQDP33VB4JQ0 finding/current Foreign agents can read the journal but not write; contribution path unbuilt
-- e01M04XVQEEZ38J9TC5NZNKC16B question/answered Run the live fidelity gate (RealProvider) on a machine with provider keys
-- e01M04XVPW5H5JCPS92CFQ4EBY3 finding/current Independent verify: clean clone green; differ/poller/manifest lack unit tests
-- e01M04XVP9QBE041XCK43C78BVP finding/current Decision-dense sessions live on uncovered surfaces; manual notes = homework
-- e01M04XVNN32W4FTFKKSKJSN01V finding/current varalys/lore owns session-provenance + git-sync; clew's edge is diff + absence
-- e01M04WCGJS9FS7FQB0YFX9DTYG decision/active Name the system clew (owner decision)
-… (34 more omitted for size)
+… (38 more omitted for size)
