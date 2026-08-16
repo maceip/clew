@@ -1,8 +1,15 @@
 # Journal
 
-_generated 2026-08-16 17:03 UTC · 9 live entries (1 decisions · 7 findings · 1 questions · 0 intents) · 11 total in history_
+_generated 2026-08-16 17:05 UTC · 10 live entries (2 decisions · 7 findings · 1 questions · 0 intents) · 12 total in history_
 
 ## Decisions
+
+### e01M05RHSWXDNR10P1PY8ERYA9S — Dogfood metrics predeclared; D0 snapshot recorded  `active`
+> Dogfood D0 2026-08-16: repos=3; spend=spent/observed, caps=2%,200000/d; confirm:reject=C:R; push precision=needed/total, unneeded=failure; adapter incidents=paused+parked+unknown-format. D0 spend=0/0; C:R=0:1; push=0/0; incidents=0.
+
+Dogfood D0 2026-08-16: repos=3; spend=spent/observed, caps=2%,200000/d; confirm:reject=C:R; push precision=needed/total, unneeded=failure; adapter incidents=paused+parked+unknown-format. D0 spend=0/0; C:R=0:1; push=0/0; incidents=0.
+
+_source: human cli:note · confidence: 1.00_
 
 ### e01M04WCGJS9FS7FQB0YFX9DTYG — Name the system clew (owner decision)  `active`
 > Name = clew (owner). Alternatives considered: restart — verb collision, names the crisis not the daily loop; lore — binary/brand collision with varalys/lore, getlore.ai, Epic Lore; wake, canon, lorekeeper also considered. Supersedes the builder's unilateral restart from §12.1.

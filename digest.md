@@ -1,4 +1,5 @@
 # Journal digest (live entries: id · type/status · title)
+- e01M05RHSWXDNR10P1PY8ERYA9S decision/active Dogfood metrics predeclared; D0 snapshot recorded
 - e01M05RF74PBCZVAPRY49GCVM7H finding/current answer: Run the live fidelity gate (RealProvider) on a machine with provider ke…
 - e01M05REDJZAERAWRQG7349E7Y1 finding/current Live fidelity gate passed on iteration 1
 - e01M04YAQN85TF6YQDP33VB4JQ0 finding/current Foreign agents can read the journal but not write; contribution path unbuilt
