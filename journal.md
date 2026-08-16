@@ -1,6 +1,6 @@
 # Journal
 
-_generated 2026-08-16 17:03 UTC · 8 live entries (1 decisions · 6 findings · 1 questions · 0 intents) · 10 total in history_
+_generated 2026-08-16 17:03 UTC · 9 live entries (1 decisions · 7 findings · 1 questions · 0 intents) · 11 total in history_
 
 ## Decisions
 
@@ -12,6 +12,13 @@ Name = clew (owner). Alternatives considered: restart — verb collision, names 
 _source: human cli:note · confidence: 1.00_
 
 ## Findings
+
+### e01M05RF74PBCZVAPRY49GCVM7H — answer: Run the live fidelity gate (RealProvider) on a machine with provider ke…  `current`
+> P=.91 R=.83; D=6/7 F=4/5; reject=0; claude; iter=1; PASS
+
+P=.91 R=.83; D=6/7 F=4/5; reject=0; claude; iter=1; PASS
+
+_source: human inbox:answer:e01M04XVQEEZ38J9TC5NZNKC16B · confidence: 1.00 · tags: acceptance/**_
 
 ### e01M05REDJZAERAWRQG7349E7Y1 — Live fidelity gate passed on iteration 1  `current`
 > Live fidelity gate iteration 1: P=0.91; R=0.83; decisions=6/7; findings=4/5; rejected=0; provider=claude; PASS.
@@ -57,7 +64,7 @@ _source: human cli:note · confidence: 1.00_
 
 ## Open questions
 
-### e01M04XVQEEZ38J9TC5NZNKC16B — Run the live fidelity gate (RealProvider) on a machine with provider keys  `open`
+### e01M04XVQEEZ38J9TC5NZNKC16B — Run the live fidelity gate (RealProvider) on a machine with provider keys  `answered`
 > If you cannot reach P>=0.9 / R>=0.75, stop all other work and report that the kill criterion fired — that outcome is a valid and useful result, and it is written down on purpose
 
 Hermetic pipeline passes, but the go/no-go gate — P≥0.9/R≥0.75 within 5 instruction iterations vs ratified labels — has never run against a live provider. Until it does, extraction quality (the stated existential risk) is unmeasured; the kill criterion is theoretical. Needs claude/codex CLI or OpenAI-compatible key; env flag was RESTART_FIDELITY=1 pre-rename — verify.
