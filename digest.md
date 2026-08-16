@@ -1,4 +1,5 @@
 # Journal digest (live entries: id · type/status · title)
+- e01M067G2QY8BZNZXBE46QBEXEW finding/current Task 4 gate: 10ms, HTML 30s, ntfy 5/5
 - e01M067AZ3VJM73XP82REZEZ1QC finding/current Task 4 channel: ntfy 2383c10c…, card creation only
 - e01M066XWD8F1SAWQ8HVXGW4J4Z finding/current Task 3 docket gate: 8→1, FYI 0, withdrawal 1 poll
 - e01M065G8RTKVH6466KEB0FRJ8N intent/in_flight Commit the gate fixes as one spec-amended change, then start the docket
@@ -31,5 +32,4 @@
 - e01M05SG3NTP5W2JX7Y6KZD5N6P finding/current Pre-commit review found three Task 2 blockers: cursor migration, backfill overl…
 - e01M05SA72DPRGNTY7GD0TGHEX7 decision/possible-contradiction Scope freeze: relay, TUI, team mode, adapters need a §11 trigger measurement
 - e01M05SA72DPRGNTY7GCXARNKYH intent/in_flight Implement the decision card and enforce I10–I12 in renderer and tests
-- e01M05SA72DPRGNTY7GCV0CBDK7 finding/current Assumptions prompt cut over-reliance 42%→22%; stacked/delay friction backfired
-… (49 more omitted for size)
+… (50 more omitted for size)
