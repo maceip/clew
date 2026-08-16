@@ -1,4 +1,5 @@
 # Journal digest (live entries: id · type/status · title)
+- e01M04XVQEEZ38J9TC5NZNKC16B finding/current live fidelity gate question placeholder
 - e01M04XVPW5H5JCPS92CFQ4EBY3 finding/current independent verification finding placeholder
 - e01M04XVP9QBE041XCK43C78BVP finding/current uncovered surfaces finding placeholder
 - e01M04XVNN32W4FTFKKSKJSN01V finding/current varalys-lore competitive finding placeholder
