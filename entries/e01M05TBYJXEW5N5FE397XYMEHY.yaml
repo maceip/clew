@@ -1,0 +1,16 @@
+id: e01M05TBYJXEW5N5FE397XYMEHY
+type: decision
+title: Treat first dogfood run's cursor/push/adapter failures as required failure sign…
+body: The first dogfood run surfaced real cursor, push, and adapter failures. The assistant is treating that run as the required failure signal rather than as an acceptance run, so those failures do not block recording Task 1 as passed but do drive the current work on the live-enrollment/backfill boundary and failure telemetry.
+quote: the first dogfood run exposed real cursor, push, and adapter failures, so I’m treating that run as the required failure signal—not as acceptance
+utterance_by: assistant
+source:
+    kind: session
+    ref: codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-00-58-01a00b84-f81d-7a61-a3c3-e5bb6beb9ee3.jsonl#L1041
+    agent: codex
+    surface: macs-MacBook-Pro
+    at: 2026-08-16T17:37:02.045Z
+confidence: 0.82
+tags: []
+env: null
+affects: []

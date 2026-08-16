@@ -1,0 +1,16 @@
+id: e01M05TBYJXEW5N5FE398NJ4RD7
+type: intent
+title: Tighten live-enrollment/backfill boundary and add failure telemetry
+body: Work in progress to harden the boundary between live enrollment and backfill, and to add telemetry for failures. This follows the recorded pass of Task 1 and the cursor/push/adapter failures observed in the first dogfood run.
+quote: I’m tightening the live-enrollment/backfill boundary and failure telemetry now
+utterance_by: assistant
+source:
+    kind: session
+    ref: codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-00-58-01a00b84-f81d-7a61-a3c3-e5bb6beb9ee3.jsonl#L1041
+    agent: codex
+    surface: macs-MacBook-Pro
+    at: 2026-08-16T17:37:02.045Z
+confidence: 0.85
+tags: []
+env: null
+affects: []
