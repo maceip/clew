@@ -1,8 +1,8 @@
 # Journal digest (live entries: id · type/status · title)
-- e01M065G8RTKVH6466KEB0FRJ8N intent/proposed Commit the gate fixes as one spec-amended change, then start the docket
+- e01M065G8RTKVH6466KEB0FRJ8N intent/in_flight Commit the gate fixes as one spec-amended change, then start the docket
 - e01M065G8RTKVH6466KE7GQREGX finding/current Task 2 passes its live gate on all five acceptance checks
-- e01M064YRS4S9NK7KW9NQ1JMDV2 finding/current Malformed or missing pinned timestamps silently fall back to ingest time
-- e01M064YRS4S9NK7KW9NN351FQF finding/current I9: Claude settlement ignores cache token fields, letting spend exceed caps
+- e01M064YRS4S9NK7KW9NQ1JMDV2 finding/suspect Malformed or missing pinned timestamps silently fall back to ingest time
+- e01M064YRS4S9NK7KW9NN351FQF finding/suspect I9: Claude settlement ignores cache token fields, letting spend exceed caps
 - e01M064K88F7SDMHA1SPAB51HK7 finding/current D2 final: 52 automatic entries; live extraction 0.631%
 - e01M064DQTWYDVGGAE3M5QRTGME decision/active Re-evaluate the current tree instead of carrying the prior gate verdict forward
 - e01M064DHNTXFM29PNWCW0VBBF2 intent/in_flight Run a strict read-only gate proving each acceptance point with tests or state q…
@@ -19,11 +19,11 @@
 - e01M05TG628KAGZ9HCBQSAG562P decision/active Separate session-extraction budget from one-time archaeology budget
 - e01M05TBYJXEW5N5FE398NJ4RD7 intent/in_flight Tighten live-enrollment/backfill boundary and add failure telemetry
 - e01M05TBYJXEW5N5FE397XYMEHY decision/active Treat first dogfood run's cursor/push/adapter failures as required failure sign…
-- e01M05T4XG0RJWQTP25T1K58B61 finding/current Confirm/reject only in event YAML; adapter unknowns undated, absent from status
-- e01M05T4XG0RJWQTP25SYT4FH0B finding/current Task 2 not passable: `spent` conflates extraction, differ, and archaeology
+- e01M05T4XG0RJWQTP25T1K58B61 finding/suspect Confirm/reject only in event YAML; adapter unknowns undated, absent from status
+- e01M05T4XG0RJWQTP25SYT4FH0B finding/suspect Task 2 not passable: `spent` conflates extraction, differ, and archaeology
 - e01M05SVGK1Q2MR34Y3CMHR7DXM decision/active No cursor translation: keep `extract:` for live, add bounded `backfill:` for hi…
 - e01M05SPB2EMMC4F4PR0BSPFZKZ intent/in_flight Narrow fix for the watch storm: transactional baselines, source-time, bounded c…
-- e01M05SPB2EMMC4F4PR0BDQA8S5 finding/current First watch treated historical sessions as live: 342 overlaps, 27 stomps, 12.9M…
+- e01M05SPB2EMMC4F4PR0BDQA8S5 finding/suspect First watch treated historical sessions as live: 342 overlaps, 27 stomps, 12.9M…
 - e01M05SG3NTP5W2JX7Y6MP1F1K6 intent/in_flight Add cursor migration, complete-record offsets, and fixed historical upper bound
 - e01M05SG3NTP5W2JX7Y6MG00HQJ decision/active Hold the Task 2 commit; make backfill and live watch disjoint by construction
 - e01M05SG3NTP5W2JX7Y6KZD5N6P finding/current Pre-commit review found three Task 2 blockers: cursor migration, backfill overl…
