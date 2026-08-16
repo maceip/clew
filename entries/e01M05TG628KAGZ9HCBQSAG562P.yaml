@@ -1,0 +1,16 @@
+id: e01M05TG628KAGZ9HCBQSAG562P
+type: decision
+title: Separate session-extraction budget from one-time archaeology budget
+body: 'Extraction budget for live sessions is now tracked separately from the one-time historical archaeology budget. Reason: deriving the archaeology allowance as a ratio of observed session tokens yields zero budget at cold start (zero observed sessions), making backfill of historical docs mathematically impossible. Sits alongside the pre-/post-enrollment byte boundary.'
+quote: I’m also separating session-extraction budget from one-time archaeology, because applying a session-token ratio to cold-start docs makes archaeology mathematically impossible at zero observed sessions.
+utterance_by: assistant
+source:
+    kind: session
+    ref: codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-00-58-01a00b84-f81d-7a61-a3c3-e5bb6beb9ee3.jsonl#L1200
+    agent: codex
+    surface: macs-MacBook-Pro
+    at: 2026-08-16T17:39:20.776Z
+confidence: 0.9
+tags: []
+env: null
+affects: []
