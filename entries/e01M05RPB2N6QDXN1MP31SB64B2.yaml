@@ -1,0 +1,15 @@
+id: e01M05RPB2N6QDXN1MP31SB64B2
+type: finding
+title: Dogfood D0 historical-session storm is an I12 failure
+body: 'Dogfood failure D0: historical sessions misclassified live=33; observed tokens=12895847; overlaps=342; stomps=27; actual pushes=0; false pushed_at=27; extraction spend=0; adapter incidents=1; watcher stopped before extraction.'
+quote: 'Dogfood failure D0: historical sessions misclassified live=33; observed tokens=12895847; overlaps=342; stomps=27; actual pushes=0; false pushed_at=27; extraction spend=0; adapter incidents=1; watcher stopped before extraction.'
+utterance_by: user
+source:
+    kind: human
+    ref: cli:note
+    surface: macs-MacBook-Pro
+    at: 2026-08-16T17:07:45.365367Z
+confidence: 1
+tags: []
+env: null
+affects: []
