@@ -1,4 +1,10 @@
 # Journal digest (live entries: id · type/status · title)
+- e01M05SA72DPRGNTY7GD0TGHEX7 decision/possible-contradiction Scope freeze: relay, TUI, team mode, adapters need a §11 trigger measurement
+- e01M05SA72DPRGNTY7GCXARNKYH intent/proposed Implement the decision card and enforce I10–I12 in renderer and tests
+- e01M05SA72DPRGNTY7GCV0CBDK7 finding/current Assumptions prompt cut over-reliance 42%→22%; stacked/delay friction backfired
+- e01M05SA72DPRGNTY7GCQ2RASTP decision/possible-contradiction Cards show verbatim quotes + clickable provenance, never extractor paraphrase
+- e01M05SA72DPRGNTY7GCPEX9W2N decision/possible-contradiction I10–I12 added as hard invariants enforced in code and tests
+- e01M05SA72DPRGNTY7GCN1P7CED decision/possible-contradiction Rename the inbox surface to "docket"; keep inbox as hidden alias
 - e01M05S9TK3X86C59JCJDWZ7Z6R finding/current Dogfood D0 metrics after repair
 - e01M05RPB2N6QDXN1MP31SB64B2 finding/current Dogfood D0 historical-session storm is an I12 failure
 - e01M05RHSWXDNR10P1PY8ERYA9S decision/active Dogfood metrics predeclared; D0 snapshot recorded
