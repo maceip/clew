@@ -1,0 +1,16 @@
+id: e01M065G8RTKVH6466KEB0FRJ8N
+type: intent
+title: Commit the gate fixes as one spec-amended change, then start the docket
+body: After the Task 2 live gate passed, the plan is to land all gate fixes as a single commit that also amends the spec, and then move on to the docket surface work.
+quote: I’m committing the gate fixes as one spec-amended change, then moving to the docket.
+utterance_by: assistant
+source:
+    kind: session
+    ref: codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-00-58-01a00b84-f81d-7a61-a3c3-e5bb6beb9ee3.jsonl#L1988
+    agent: codex
+    surface: macs-MacBook-Pro
+    at: 2026-08-16T20:51:37.882Z
+confidence: 0.9
+tags: []
+env: null
+affects: []

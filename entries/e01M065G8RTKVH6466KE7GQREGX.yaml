@@ -1,0 +1,17 @@
+id: e01M065G8RTKVH6466KE7GQREGX
+type: finding
+title: Task 2 passes its live gate on all five acceptance checks
+body: 'A live gate run on Task 2 passed: 52 automatic session entries recorded, 0 delivered-but-unneeded pushes, cursors monotonic, the exact installed binary in use, and no active adapter or LLM errors. This is the verdict that unblocked committing the gate fixes.'
+quote: 'Task 2 now passes its live gate: 52 automatic session entries, 0 delivered/unneeded pushes, monotonic cursors, exact installed binary, and no active adapter/LLM errors.'
+utterance_by: assistant
+source:
+    kind: session
+    ref: codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-00-58-01a00b84-f81d-7a61-a3c3-e5bb6beb9ee3.jsonl#L1988
+    agent: codex
+    surface: macs-MacBook-Pro
+    at: 2026-08-16T20:51:37.882Z
+confidence: 0.93
+tags: []
+env:
+    dataset: live session watch
+affects: []
