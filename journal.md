@@ -1,6 +1,6 @@
 # Journal
 
-_generated 2026-08-16 09:18 UTC · 3 live entries (1 decisions · 2 findings · 0 questions · 0 intents) · 5 total in history_
+_generated 2026-08-16 09:18 UTC · 4 live entries (1 decisions · 3 findings · 0 questions · 0 intents) · 6 total in history_
 
 ## Decisions
 
@@ -12,6 +12,13 @@ Name = clew (owner). Alternatives considered: restart — verb collision, names 
 _source: human cli:note · confidence: 1.00_
 
 ## Findings
+
+### e01M04XVP9QBE041XCK43C78BVP — uncovered surfaces finding placeholder  `current`
+> uncovered surfaces finding placeholder
+
+uncovered surfaces finding placeholder
+
+_source: human cli:note · confidence: 1.00_
 
 ### e01M04XVNN32W4FTFKKSKJSN01V — varalys-lore competitive finding placeholder  `current`
 > varalys-lore competitive finding placeholder
