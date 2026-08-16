@@ -1,0 +1,15 @@
+id: e01M05REDJZAERAWRQG7349E7Y1
+type: finding
+title: Live fidelity gate passed on iteration 1
+body: 'Live fidelity gate iteration 1: P=0.91; R=0.83; decisions=6/7; findings=4/5; rejected=0; provider=claude; PASS.'
+quote: 'Live fidelity gate iteration 1: P=0.91; R=0.83; decisions=6/7; findings=4/5; rejected=0; provider=claude; PASS.'
+utterance_by: user
+source:
+    kind: human
+    ref: cli:note
+    surface: macs-MacBook-Pro
+    at: 2026-08-16T17:03:25.791199Z
+confidence: 1
+tags: []
+env: null
+affects: []
