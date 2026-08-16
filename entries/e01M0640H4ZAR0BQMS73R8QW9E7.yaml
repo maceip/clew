@@ -1,0 +1,19 @@
+id: e01M0640H4ZAR0BQMS73R8QW9E7
+type: finding
+title: Repaired watcher installed as launchd agent dev.clew.watch
+body: After journaling the D2 cursor-rewind finding, the fixed watcher was installed as a launchd agent named dev.clew.watch on the dev Mac, writing to /Users/mac/.clew/logs/watch.log. That log path is where watcher behaviour for subsequent live runs can be inspected.
+quote: 'installed launchd agent dev.clew.watch (log: /Users/mac/.clew/logs/watch.log)'
+utterance_by: user
+source:
+    kind: session
+    ref: codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-00-58-01a00b84-f81d-7a61-a3c3-e5bb6beb9ee3.jsonl#L1508
+    agent: codex
+    surface: macs-MacBook-Pro
+    at: 2026-08-16T20:25:33.599Z
+confidence: 0.86
+tags:
+    - cmd/clew/**
+env:
+    host: local macOS dev machine (launchd)
+affects:
+    - /Users/mac/.clew/logs/watch.log
