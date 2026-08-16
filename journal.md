@@ -14,11 +14,11 @@ _generated 2026-08-16 21:56 UTC · 53 live entries (14 decisions · 26 findings 
 
 ## LEARNED
 
-- `e01M068FQH1ND9MM1WH851AF45M` Task 6 gate: flags 0 writes; algebra, poller, manifest pass — 12m · current
+- `e01M068FQH1ND9MM1WH851AF45M` Task 6 gate: flags 0 writes; algebra, poller, manifest pass — 13m · current
 - `e01M06821D53QYHBJS1FEC2CK7G` Task 5 gate: 3 formats, 1 card, confirm boundary pass — 20m · current
-- `e01M067G2QY8BZNZXBE46QBEXEW` Task 4 gate: 10ms, HTML 30s, ntfy 5/5 — 29m · current
-- `e01M067AZ3VJM73XP82REZEZ1QC` Task 4 channel: ntfy 2383c10c…, card creation only — 32m · current
-- `e01M066XWD8F1SAWQ8HVXGW4J4Z` Task 3 docket gate: 8→1, FYI 0, withdrawal 1 poll — 39m · current
+- `e01M067G2QY8BZNZXBE46QBEXEW` Task 4 gate: 10ms, HTML 30s, ntfy 5/5 — 30m · current
+- `e01M067AZ3VJM73XP82REZEZ1QC` Task 4 channel: ntfy 2383c10c…, card creation only — 33m · current
+- `e01M066XWD8F1SAWQ8HVXGW4J4Z` Task 3 docket gate: 8→1, FYI 0, withdrawal 1 poll — 40m · current
 - `e01M065G8RTKVH6466KE7GQREGX` Task 2 passes its live gate on all five acceptance checks — 1h · current
 - `e01M064YRS4S9NK7KW9NQ1JMDV2` Malformed or missing pinned timestamps silently fall back to ingest time — 1h · suspect
 
@@ -43,7 +43,7 @@ _None._
 | `e01M065G8RTKVH6466KEB0FRJ8N` Commit the gate fixes as one spec-amended change, then start the docket | 1h | 1 evidence | in_flight |
 | `e01M064DHNTXFM29PNWCW0VBBF2` Run a strict read-only gate proving each acceptance point with tests or state q… | 1h | 3 evidence | in_flight |
 | `e01M0642VRXV9PCGA4NDJF92E2Y` Wire atomic budget reservations into every LLM call | 1h | 5 evidence | in_flight |
-| `e01M05VFAW9A783PMZZEER0G6FX` Second pass on rollover, double-settlement, migration; then run wider suite | 3h | 4 evidence | in_flight |
+| `e01M05VFAW9A783PMZZEER0G6FX` Second pass on rollover, double-settlement, migration; then run wider suite | 4h | 4 evidence | in_flight |
 | `e01M05V5HWA6TFT0A0KDY1QV6C0` Add transactional reservation + settlement accounting in internal/state with co… | 4h | 9 evidence | in_flight |
 | `e01M05V0G3Q9F41V62P6R5QV53G` Fix migration monotonicity, restore from D1 boundary, rerun cycle before passin… | 4h | 3 evidence | in_flight |
 | `e01M05TPA9ZK4C8RGC3KBPV2MRF` Re-run the live gate: install binary, normalize spend category, restart watcher | 4h | 3 evidence | in_flight |
