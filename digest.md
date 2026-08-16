@@ -1,4 +1,6 @@
 # Journal digest (live entries: id · type/status · title)
+- e01M05VFAW9A783PMZZEER0G6FX intent/proposed Second pass on rollover, double-settlement, migration; then run wider suite
+- e01M05VFAW9A783PMZZEBHJ1TZH finding/current State-package tests pass, including 20-way concurrent reservation races
 - e01M05V9MQWYX3BAX0VXZ70SHTD finding/current D2: cursor rewind replayed 58,754 bytes once
 - e01M05V5HWA6TFT0A0KDZY8S45K decision/active Confine the cap/ratio admission fix to internal/state; no caller or spec changes
 - e01M05V5HWA6TFT0A0KDY1QV6C0 intent/in_flight Add transactional reservation + settlement accounting in internal/state with co…
@@ -29,6 +31,4 @@
 - e01M05S9SFKAAM813AR1AY96QWH finding/current Final Task 2 dogfood snapshot: 0.113% extraction, 0:1 confirm:reject, 0 pushes
 - e01M05RHSWXDNR10P1PY8ERYA9S decision/active Dogfood metrics predeclared; D0 snapshot recorded
 - e01M05RF74PBCZVAPRY49GCVM7H finding/current answer: Run the live fidelity gate (RealProvider) on a machine with provider ke…
-- e01M05REDJZAERAWRQG7349E7Y1 finding/current Live fidelity gate passed on iteration 1
-- e01M04YAQN85TF6YQDP33VB4JQ0 finding/current Foreign agents can read the journal but not write; contribution path unbuilt
-… (38 more omitted for size)
+… (40 more omitted for size)
