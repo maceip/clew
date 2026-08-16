@@ -1,5 +1,5 @@
 # Journal digest (live entries: id · type/status · title)
-- e01M05SG3NTP5W2JX7Y6MP1F1K6 intent/proposed Add cursor migration, complete-record offsets, and fixed historical upper bound
+- e01M05SG3NTP5W2JX7Y6MP1F1K6 intent/in_flight Add cursor migration, complete-record offsets, and fixed historical upper bound
 - e01M05SG3NTP5W2JX7Y6MG00HQJ decision/active Hold the Task 2 commit; make backfill and live watch disjoint by construction
 - e01M05SG3NTP5W2JX7Y6KZD5N6P finding/current Pre-commit review found three Task 2 blockers: cursor migration, backfill overl…
 - e01M05SA72DPRGNTY7GD0TGHEX7 decision/possible-contradiction Scope freeze: relay, TUI, team mode, adapters need a §11 trigger measurement
