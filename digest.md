@@ -1,4 +1,5 @@
 # Journal digest (live entries: id · type/status · title)
+- e01M05S9TK3X86C59JCJDWZ7Z6R finding/current Dogfood D0 metrics after repair
 - e01M05RPB2N6QDXN1MP31SB64B2 finding/current Dogfood D0 historical-session storm is an I12 failure
 - e01M05RHSWXDNR10P1PY8ERYA9S decision/active Dogfood metrics predeclared; D0 snapshot recorded
 - e01M05RF74PBCZVAPRY49GCVM7H finding/current answer: Run the live fidelity gate (RealProvider) on a machine with provider ke…

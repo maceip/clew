@@ -1,6 +1,6 @@
 # Journal
 
-_generated 2026-08-16 17:18 UTC · 11 live entries (2 decisions · 8 findings · 1 questions · 0 intents) · 13 total in history_
+_generated 2026-08-16 17:18 UTC · 12 live entries (2 decisions · 9 findings · 1 questions · 0 intents) · 14 total in history_
 
 ## Decisions
 
@@ -19,6 +19,13 @@ Name = clew (owner). Alternatives considered: restart — verb collision, names 
 _source: human cli:note · confidence: 1.00_
 
 ## Findings
+
+### e01M05S9TK3X86C59JCJDWZ7Z6R — Dogfood D0 metrics after repair  `current`
+> Dogfood 2026-08-16: repos=3; automatic entries=6; extraction=5057/4491713=0.113%; confirm:reject=0:1; actual pushes=0/0; false pushes repaired=27; adapter incidents=1; parked=0; clean cold-start sessions=0,alerts=0; live sessions after append=1.
+
+Dogfood 2026-08-16: repos=3; automatic entries=6; extraction=5057/4491713=0.113%; confirm:reject=0:1; actual pushes=0/0; false pushes repaired=27; adapter incidents=1; parked=0; clean cold-start sessions=0,alerts=0; live sessions after append=1.
+
+_source: human cli:note · confidence: 1.00_
 
 ### e01M05RPB2N6QDXN1MP31SB64B2 — Dogfood D0 historical-session storm is an I12 failure  `current`
 > Dogfood failure D0: historical sessions misclassified live=33; observed tokens=12895847; overlaps=342; stomps=27; actual pushes=0; false pushed_at=27; extraction spend=0; adapter incidents=1; watcher stopped before extraction.
