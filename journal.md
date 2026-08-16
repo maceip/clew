@@ -1,6 +1,6 @@
 # Journal
 
-_generated 2026-08-16 21:25 UTC · 49 live entries (13 decisions · 23 findings · 1 questions · 12 intents) · 67 total in history_
+_generated 2026-08-16 21:26 UTC · 49 live entries (13 decisions · 23 findings · 1 questions · 12 intents) · 67 total in history_
 
 ## DECIDED
 
@@ -17,8 +17,8 @@ _generated 2026-08-16 21:25 UTC · 49 live entries (13 decisions · 23 findings 
 - `e01M067AZ3VJM73XP82REZEZ1QC` Task 4 channel: ntfy 2383c10c…, card creation only — 2m · current
 - `e01M066XWD8F1SAWQ8HVXGW4J4Z` Task 3 docket gate: 8→1, FYI 0, withdrawal 1 poll — 9m · current
 - `e01M065G8RTKVH6466KE7GQREGX` Task 2 passes its live gate on all five acceptance checks — 34m · current
-- `e01M064YRS4S9NK7KW9NQ1JMDV2` Malformed or missing pinned timestamps silently fall back to ingest time — 43m · suspect
-- `e01M064YRS4S9NK7KW9NN351FQF` I9: Claude settlement ignores cache token fields, letting spend exceed caps — 43m · suspect
+- `e01M064YRS4S9NK7KW9NQ1JMDV2` Malformed or missing pinned timestamps silently fall back to ingest time — 44m · suspect
+- `e01M064YRS4S9NK7KW9NN351FQF` I9: Claude settlement ignores cache token fields, letting spend exceed caps — 44m · suspect
 - `e01M064K88F7SDMHA1SPAB51HK7` D2 final: 52 automatic entries; live extraction 0.631% — 50m · current
 - `e01M0640H4ZAR0BQMS73R8QW9E7` Repaired watcher installed as launchd agent dev.clew.watch — 1h · current
 
