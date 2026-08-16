@@ -1,0 +1,15 @@
+id: e01M04XVP9QBE041XCK43C78BVP
+type: finding
+title: uncovered surfaces finding placeholder
+body: uncovered surfaces finding placeholder
+quote: uncovered surfaces finding placeholder
+utterance_by: user
+source:
+    kind: human
+    ref: cli:note
+    surface: cursor
+    at: 2026-08-16T09:18:49.143063708Z
+confidence: 1
+tags: []
+env: null
+affects: []
