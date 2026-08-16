@@ -13,7 +13,7 @@ usage:
   clew watch [install|uninstall]                 start/adopt the machine's watcher
   clew status [--all]                            the glance
   clew map [--html <file>]                       intent × reality with absence
-  clew inbox [answer|ack|drop] …                 human-blocking items only
+  clew docket [answer|ack|drop] …                decision cards only
   clew journal show|edit|confirm|reject|supersede|answer|note …
   clew manifest [--spec <file>] [--out <dir>] [--yes]   restart kit
   clew backfill [--since 90d] --budget <tokens>  retroactive extraction
@@ -38,8 +38,10 @@ func main() {
 		err = cmdStatus(args)
 	case "map":
 		err = cmdMap(args)
-	case "inbox":
-		err = cmdInbox(args)
+	case "docket":
+		err = cmdDocket(args)
+	case "inbox": // hidden compatibility alias
+		err = cmdDocket(args)
 	case "journal":
 		err = cmdJournal(args)
 	case "manifest":

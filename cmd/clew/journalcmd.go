@@ -188,7 +188,7 @@ func journalAnswer(a *app, repo, qid, text, typ string) error {
 		ID: ids.NewEntry(now), Type: et,
 		Title: clipStr("answer: "+q.Title, 80), Body: clipStr(text, 400), Quote: text,
 		UtteranceBy: model.ByUser,
-		Source: model.Source{Kind: model.SrcHuman, Ref: "inbox:answer:" + qid,
+		Source: model.Source{Kind: model.SrcHuman, Ref: "docket:answer:" + qid,
 			Surface: a.cfg.Surface, At: now},
 		Confidence: 1.0, Tags: q.Tags,
 	}

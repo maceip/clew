@@ -105,7 +105,9 @@ func Run(db *state.DB, in *Input, now time.Time) (*Result, error) {
 
 	// ---- alerts ----
 	st = journal.Compute(j, now) // recompute after event writes
-	emitAlerts(db, in, st, res, now)
+	if err := emitAlerts(db, in, st, res, now); err != nil {
+		return nil, err
+	}
 	return res, nil
 }
 
@@ -134,14 +136,22 @@ func autoSupersede(j *journal.Journal, st map[string]*journal.Computed, addEvent
 	}
 }
 
-func emitAlerts(db *state.DB, in *Input, st map[string]*journal.Computed, res *Result, now time.Time) {
+var differAlertKinds = []string{"contradiction", "absence", "aging", "suspect", "stomp", "overlap"}
+
+func emitAlerts(db *state.DB, in *Input, st map[string]*journal.Computed, res *Result, now time.Time) error {
 	j := in.Journal
-	upsert := func(kind, entryIDs, body string, blocking bool) {
-		key := kind + ":" + shortHash(in.Repo+entryIDs+body)
-		a := state.Alert{Key: key, RepoPath: in.Repo, Kind: kind, Body: body, EntryIDs: entryIDs, Blocking: blocking}
-		if isNew, _ := db.UpsertAlert(a); isNew {
-			res.NewAlerts = append(res.NewAlerts, a)
-		}
+	active := []state.Alert{}
+	emit := func(kind, identity, entryIDs, body, resolvedWhen string, blocking bool) {
+		fingerprint := shortHash(in.Repo + "\x00" + kind + "\x00" + identity)
+		active = append(active, state.Alert{
+			Key:          kind + ":" + fingerprint,
+			RepoPath:     in.Repo,
+			Kind:         kind,
+			Body:         body,
+			EntryIDs:     entryIDs,
+			WithdrawWhen: kind + ":" + resolvedWhen + ":" + fingerprint,
+			Blocking:     blocking,
+		})
 	}
 
 	seenPair := map[string]bool{}
@@ -158,26 +168,26 @@ func emitAlerts(db *state.DB, in *Input, st map[string]*journal.Computed, res *R
 				oe := j.Entries[other]
 				body := fmt.Sprintf("possible contradiction: %q vs %q — quotes: “%s” / “%s” (needs human: only you can rule it a real contradiction)",
 					e.Title, oe.Title, clip(e.Quote, 80), clip(oe.Quote, 80))
-				upsert("contradiction", pk, body, true)
+				emit("contradiction", pk, pk, body, "status-resolved", true)
 			}
 		case journal.StAbsent:
 			body := fmt.Sprintf("absence: intent %q has zero evidence while %d+ sibling intents progressed — was it forgotten? (blocks: only a human can decide drop vs revive)",
 				e.Title, journal.AbsenceSiblings)
-			upsert("absence", id, body, true)
+			emit("absence", id, id, body, "status-resolved", true)
 		case journal.StOpen:
 			if e.Asks == "human" && now.Sub(e.Created()) > journal.QuestionAging {
 				body := fmt.Sprintf("question aging: %q open %dd, addressed to you (blocks: agents cannot answer it)",
 					e.Title, int(now.Sub(e.Created()).Hours()/24))
-				upsert("aging", id, body, true)
+				emit("aging", id, id, body, "status-resolved", true)
 			}
 		case journal.StSuspect:
 			body := fmt.Sprintf("suspect finding: %q — affected paths churned since it was measured; re-measure or supersede", e.Title)
-			upsert("suspect", id, body, false)
+			emit("suspect", id, id, body, "status-resolved", false)
 		}
 	}
 
 	// Overlap radar (§5.2): footprint intersection between live sessions on
-	// this repo; same file while dirty → stomp (inbox), else map annotation.
+	// this repo; same file while dirty → stomp (docket), else map annotation.
 	sessions := db.LiveSessions(in.Repo, 30*time.Minute)
 	dirty := map[string]bool{}
 	if in.Snapshot != nil {
@@ -190,16 +200,23 @@ func emitAlerts(db *state.DB, in *Input, st map[string]*journal.Computed, res *R
 			fa, fb := db.Footprints(sessions[i].ID), db.Footprints(sessions[k].ID)
 			for _, f := range intersect(fa, fb) {
 				rel := relPath(in.Repo, f)
+				identity := pairID(sessions[i].ID, sessions[k].ID) + "\x00" + rel
 				if dirty[rel] {
 					body := fmt.Sprintf("stomp risk: sessions %s(%s) and %s(%s) both touched %s and it is dirty — lost-work scenario",
 						sessions[i].Agent, sessions[i].Surface, sessions[k].Agent, sessions[k].Surface, rel)
-					upsert("stomp", rel, body, true)
+					emit("stomp", identity, rel, body, "path-clean-or-sessions-diverged", true)
 				} else {
-					upsert("overlap", rel, fmt.Sprintf("overlap: two sessions touched %s on this repo+branch", rel), false)
+					emit("overlap", identity, rel, fmt.Sprintf("overlap: two sessions touched %s on this repo+branch", rel), "path-dirty-or-sessions-diverged", false)
 				}
 			}
 		}
 	}
+	created, err := db.ReconcileAlerts(in.Repo, differAlertKinds, active)
+	if err != nil {
+		return fmt.Errorf("reconcile differ alerts: %w", err)
+	}
+	res.NewAlerts = append(res.NewAlerts, created...)
+	return nil
 }
 
 // linkPass batches unmapped commits × unevidenced intents through the

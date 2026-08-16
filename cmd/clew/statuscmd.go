@@ -134,7 +134,7 @@ func statusRepo(a *app, repo string) error {
 	}
 	for i, al := range alerts {
 		if i >= 7 {
-			fmt.Printf("  … %d more (clew inbox)\n", len(alerts)-7)
+			fmt.Printf("  … %d more (clew docket)\n", len(alerts)-7)
 			break
 		}
 		fmt.Printf("  [%s] %s\n", al.Kind, clipStr(al.Body, 110))
@@ -188,6 +188,7 @@ func statusMachine(a *app) error {
 	statusKVIssues(a, "adapter-error:", "adapter")
 	statusKVIssues(a, "adapter-paused:", "adapter paused")
 	statusKVIssues(a, "unknown:", "unknown format count")
+	statusKVIssues(a, "system-failure:", "system failure")
 	discoveryIssues := adapters.CodexDiscoveryIssues()
 	for i, issue := range discoveryIssues {
 		if i >= 2 {

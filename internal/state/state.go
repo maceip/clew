@@ -56,7 +56,7 @@ CREATE TABLE IF NOT EXISTS commits_seen(
 CREATE TABLE IF NOT EXISTS alerts(
   key TEXT PRIMARY KEY, repo_path TEXT, kind TEXT, body TEXT, entry_ids TEXT,
   blocking INTEGER, created_at TEXT, nudged_at TEXT, pushed_at TEXT,
-  acked_at TEXT, dropped_at TEXT);
+  acked_at TEXT, dropped_at TEXT, withdraw_when TEXT);
 CREATE TABLE IF NOT EXISTS budget(
   day TEXT, kind TEXT, tokens INTEGER, PRIMARY KEY(day, kind));
 CREATE TABLE IF NOT EXISTS llm_budget_reservations(
@@ -69,6 +69,43 @@ CREATE TABLE IF NOT EXISTS parked(
   offset INTEGER, reason TEXT, raw_path TEXT, at TEXT);
 CREATE TABLE IF NOT EXISTS kv(k TEXT PRIMARY KEY, v TEXT);
 `)
+	if err != nil {
+		return err
+	}
+	return migrateAlertWithdrawal(db)
+}
+
+// migrateAlertWithdrawal preserves databases created before alert withdrawal
+// conditions became durable. CREATE TABLE IF NOT EXISTS does not add columns
+// to an existing table, so keep the additive migration explicit.
+func migrateAlertWithdrawal(db *sql.DB) error {
+	rows, err := db.Query(`PRAGMA table_info(alerts)`)
+	if err != nil {
+		return err
+	}
+	defer rows.Close()
+	found := false
+	for rows.Next() {
+		var cid, notNull, primaryKey int
+		var name, typ string
+		var defaultValue sql.NullString
+		if err := rows.Scan(&cid, &name, &typ, &notNull, &defaultValue, &primaryKey); err != nil {
+			return err
+		}
+		if name == "withdraw_when" {
+			found = true
+		}
+	}
+	if err := rows.Err(); err != nil {
+		return err
+	}
+	if err := rows.Close(); err != nil {
+		return err
+	}
+	if found {
+		return nil
+	}
+	_, err = db.Exec(`ALTER TABLE alerts ADD COLUMN withdraw_when TEXT`)
 	return err
 }
 
@@ -328,6 +365,7 @@ func (d *DB) RecentCommits(repo string, since time.Time, onlyUnmapped bool) []Co
 
 type Alert struct {
 	Key, RepoPath, Kind, Body, EntryIDs    string
+	WithdrawWhen                           string
 	Blocking                               bool
 	CreatedAt                              time.Time
 	NudgedAt, PushedAt, AckedAt, DroppedAt string
@@ -335,9 +373,9 @@ type Alert struct {
 
 // UpsertAlert inserts if new; returns true if newly created.
 func (d *DB) UpsertAlert(a Alert) (bool, error) {
-	res, err := d.Exec(`INSERT OR IGNORE INTO alerts(key, repo_path, kind, body, entry_ids, blocking, created_at)
-		VALUES(?,?,?,?,?,?,?)`,
-		a.Key, a.RepoPath, a.Kind, a.Body, a.EntryIDs, boolInt(a.Blocking), now())
+	res, err := d.Exec(`INSERT OR IGNORE INTO alerts(key, repo_path, kind, body, entry_ids, blocking, created_at, withdraw_when)
+		VALUES(?,?,?,?,?,?,?,?)`,
+		a.Key, a.RepoPath, a.Kind, a.Body, a.EntryIDs, boolInt(a.Blocking), now(), a.WithdrawWhen)
 	if err != nil {
 		return false, err
 	}
@@ -347,7 +385,8 @@ func (d *DB) UpsertAlert(a Alert) (bool, error) {
 
 func (d *DB) OpenAlerts(repo string, blockingOnly bool) []Alert {
 	q := `SELECT key, repo_path, kind, body, entry_ids, blocking, created_at,
-	      COALESCE(nudged_at,''), COALESCE(pushed_at,''), COALESCE(acked_at,''), COALESCE(dropped_at,'')
+	      COALESCE(nudged_at,''), COALESCE(pushed_at,''), COALESCE(acked_at,''), COALESCE(dropped_at,''),
+	      COALESCE(withdraw_when,'')
 	      FROM alerts WHERE acked_at IS NULL AND dropped_at IS NULL`
 	args := []any{}
 	if repo != "" {
@@ -369,13 +408,110 @@ func (d *DB) OpenAlerts(repo string, blockingOnly bool) []Alert {
 		var blocking int
 		var created string
 		if rows.Scan(&a.Key, &a.RepoPath, &a.Kind, &a.Body, &a.EntryIDs, &blocking, &created,
-			&a.NudgedAt, &a.PushedAt, &a.AckedAt, &a.DroppedAt) == nil {
+			&a.NudgedAt, &a.PushedAt, &a.AckedAt, &a.DroppedAt, &a.WithdrawWhen) == nil {
 			a.Blocking = blocking == 1
 			a.CreatedAt, _ = time.Parse(time.RFC3339, created)
 			out = append(out, a)
 		}
 	}
 	return out
+}
+
+// ReconcileAlerts makes active the complete alert set for the supplied
+// repo/kinds. Active alerts are inserted or refreshed; any previously open
+// alert in the same scope whose key is absent is withdrawn via dropped_at.
+// It returns only alerts inserted by this reconciliation, for delivery.
+//
+// WithdrawWhen is required here (but not by UpsertAlert, which also stores
+// operational alerts owned by other subsystems). It is an opaque,
+// machine-readable condition naming why the differ will stop emitting the
+// alert on a later poll.
+func (d *DB) ReconcileAlerts(repo string, kinds []string, active []Alert) ([]Alert, error) {
+	managed := make(map[string]bool, len(kinds))
+	for _, kind := range kinds {
+		if kind == "" {
+			return nil, fmt.Errorf("cannot reconcile empty alert kind")
+		}
+		managed[kind] = true
+	}
+	if len(managed) == 0 {
+		return nil, nil
+	}
+	activeKeys := make(map[string]bool, len(active))
+	for _, a := range active {
+		switch {
+		case a.Key == "":
+			return nil, fmt.Errorf("cannot reconcile alert with empty key")
+		case a.RepoPath != repo:
+			return nil, fmt.Errorf("alert %s belongs to repo %q, reconcile scope is %q", a.Key, a.RepoPath, repo)
+		case !managed[a.Kind]:
+			return nil, fmt.Errorf("alert %s kind %q is outside reconcile scope", a.Key, a.Kind)
+		case a.WithdrawWhen == "":
+			return nil, fmt.Errorf("alert %s has no withdrawal condition", a.Key)
+		case activeKeys[a.Key]:
+			return nil, fmt.Errorf("duplicate active alert key %s", a.Key)
+		}
+		activeKeys[a.Key] = true
+	}
+
+	tx, err := d.Begin()
+	if err != nil {
+		return nil, err
+	}
+	defer tx.Rollback()
+	stamp := now()
+	created := make([]Alert, 0, len(active))
+	for _, a := range active {
+		res, err := tx.Exec(`INSERT OR IGNORE INTO alerts(
+			key, repo_path, kind, body, entry_ids, blocking, created_at, withdraw_when)
+			VALUES(?,?,?,?,?,?,?,?)`, a.Key, a.RepoPath, a.Kind, a.Body, a.EntryIDs,
+			boolInt(a.Blocking), stamp, a.WithdrawWhen)
+		if err != nil {
+			return nil, err
+		}
+		n, err := res.RowsAffected()
+		if err != nil {
+			return nil, err
+		}
+		if n > 0 {
+			a.CreatedAt, _ = time.Parse(time.RFC3339, stamp)
+			created = append(created, a)
+			continue
+		}
+		// Stable keys let mutable display prose (for example question age or
+		// session labels) refresh without creating a new alert.
+		if _, err := tx.Exec(`UPDATE alerts SET body=?, entry_ids=?, blocking=?, withdraw_when=?
+			WHERE key=? AND repo_path=? AND kind=? AND acked_at IS NULL AND dropped_at IS NULL`,
+			a.Body, a.EntryIDs, boolInt(a.Blocking), a.WithdrawWhen,
+			a.Key, repo, a.Kind); err != nil {
+			return nil, err
+		}
+	}
+
+	args := make([]any, 0, 2+len(managed)+len(activeKeys))
+	args = append(args, stamp, repo)
+	kindMarks := make([]string, 0, len(managed))
+	for kind := range managed {
+		kindMarks = append(kindMarks, "?")
+		args = append(args, kind)
+	}
+	q := `UPDATE alerts SET dropped_at=? WHERE repo_path=? AND kind IN (` + strings.Join(kindMarks, ",") + `)
+		AND acked_at IS NULL AND dropped_at IS NULL`
+	if len(activeKeys) > 0 {
+		keyMarks := make([]string, 0, len(activeKeys))
+		for key := range activeKeys {
+			keyMarks = append(keyMarks, "?")
+			args = append(args, key)
+		}
+		q += ` AND key NOT IN (` + strings.Join(keyMarks, ",") + `)`
+	}
+	if _, err := tx.Exec(q, args...); err != nil {
+		return nil, err
+	}
+	if err := tx.Commit(); err != nil {
+		return nil, err
+	}
+	return created, nil
 }
 
 func (d *DB) MarkAlert(key, column string) error {

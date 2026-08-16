@@ -193,7 +193,7 @@ func Write(repoPath string, j *journal.Journal, st map[string]*journal.Computed,
 // AppendNudges adds never-delivered alerts to .clew/nudge.md. The Claude
 // hook (installed by init) cats-and-truncates this file on UserPromptSubmit;
 // wrapped PTYs inject a line at prompt boundaries. A nudge that cannot reach
-// the agent reaches the human via inbox/push (§8.1 invariant).
+// the agent reaches the human via docket/push (§8.1 invariant).
 func AppendNudges(repoPath string, db *state.DB) error {
 	dir := filepath.Join(repoPath, ".clew")
 	if err := os.MkdirAll(dir, 0o755); err != nil {

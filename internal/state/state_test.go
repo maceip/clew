@@ -1,12 +1,133 @@
 package state
 
 import (
+	"database/sql"
 	"errors"
 	"path/filepath"
 	"sync"
 	"testing"
 	"time"
 )
+
+func TestOpenMigratesLegacyAlertWithdrawalColumn(t *testing.T) {
+	path := filepath.Join(t.TempDir(), "state.db")
+	raw, err := sql.Open("sqlite", path)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if _, err := raw.Exec(`
+		CREATE TABLE alerts(
+		  key TEXT PRIMARY KEY, repo_path TEXT, kind TEXT, body TEXT, entry_ids TEXT,
+		  blocking INTEGER, created_at TEXT, nudged_at TEXT, pushed_at TEXT,
+		  acked_at TEXT, dropped_at TEXT);
+		INSERT INTO alerts(key, repo_path, kind, body, entry_ids, blocking, created_at)
+		VALUES('absence:legacy', '/repo', 'absence', 'legacy body', 'e1', 1, '2026-08-16T12:00:00Z');
+	`); err != nil {
+		raw.Close()
+		t.Fatal(err)
+	}
+	if err := raw.Close(); err != nil {
+		t.Fatal(err)
+	}
+
+	db, err := Open(path)
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer db.Close()
+	alerts := db.OpenAlerts("/repo", false)
+	if len(alerts) != 1 || alerts[0].WithdrawWhen != "" {
+		t.Fatalf("legacy alert after migration = %#v", alerts)
+	}
+	active := alerts[0]
+	active.WithdrawWhen = "absence:status-resolved:legacy"
+	created, err := db.ReconcileAlerts("/repo", []string{"absence"}, []Alert{active})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(created) != 0 {
+		t.Fatalf("legacy alert was reinserted: %#v", created)
+	}
+	alerts = db.OpenAlerts("/repo", false)
+	if len(alerts) != 1 || alerts[0].WithdrawWhen != active.WithdrawWhen {
+		t.Fatalf("withdrawal metadata was not backfilled: %#v", alerts)
+	}
+}
+
+func TestReconcileAlertsWithdrawsOnlyStaleAlertsInScope(t *testing.T) {
+	db, err := Open(filepath.Join(t.TempDir(), "state.db"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer db.Close()
+	repo := "/repo"
+	if _, err := db.UpsertAlert(Alert{
+		Key: "adapter:file", RepoPath: repo, Kind: "adapter", Body: "parser stopped", Blocking: true,
+	}); err != nil {
+		t.Fatal(err)
+	}
+	active := []Alert{
+		{
+			Key: "absence:a", RepoPath: repo, Kind: "absence", Body: "intent absent",
+			EntryIDs: "e1", WithdrawWhen: "absence:status-resolved:a", Blocking: true,
+		},
+		{
+			Key: "overlap:b", RepoPath: repo, Kind: "overlap", Body: "sessions overlap",
+			EntryIDs: "shared.go", WithdrawWhen: "overlap:sessions-diverged:b",
+		},
+	}
+	created, err := db.ReconcileAlerts(repo, []string{"absence", "overlap"}, active)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(created) != 2 {
+		t.Fatalf("created %d alerts, want 2", len(created))
+	}
+
+	active[0].Body = "intent still absent"
+	created, err = db.ReconcileAlerts(repo, []string{"absence", "overlap"}, active[:1])
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(created) != 0 {
+		t.Fatalf("stable active alert recreated: %#v", created)
+	}
+	open := db.OpenAlerts(repo, false)
+	if len(open) != 2 {
+		t.Fatalf("open alerts = %#v, want active absence plus unmanaged adapter", open)
+	}
+	byKey := map[string]Alert{}
+	for _, a := range open {
+		byKey[a.Key] = a
+	}
+	if got := byKey["absence:a"]; got.Body != "intent still absent" || got.WithdrawWhen != active[0].WithdrawWhen {
+		t.Fatalf("active alert was not refreshed: %#v", got)
+	}
+	if _, ok := byKey["adapter:file"]; !ok {
+		t.Fatal("reconciliation dropped an alert outside its managed kinds")
+	}
+	var dropped string
+	if err := db.QueryRow(`SELECT COALESCE(dropped_at,'') FROM alerts WHERE key='overlap:b'`).Scan(&dropped); err != nil {
+		t.Fatal(err)
+	}
+	if dropped == "" {
+		t.Fatal("stale overlap alert was not withdrawn")
+	}
+}
+
+func TestReconcileAlertsRequiresWithdrawalCondition(t *testing.T) {
+	db, err := Open(filepath.Join(t.TempDir(), "state.db"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer db.Close()
+	_, err = db.ReconcileAlerts("/repo", []string{"absence"}, []Alert{
+		{Key: "absence:a", RepoPath: "/repo", Kind: "absence"},
+	})
+	if err == nil {
+		t.Fatal("alert without machine-readable withdrawal condition was accepted")
+	}
+}
 
 func TestSessionActivityRangeNeverRegresses(t *testing.T) {
 	db, err := Open(filepath.Join(t.TempDir(), "state.db"))

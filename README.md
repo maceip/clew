@@ -35,7 +35,7 @@ clew init               # register; archaeology; installs CLAUDE.md/AGENTS.md
 clew watch install      # launchd/systemd-user supervised watcher
 clew status             # the glance: SESSIONS·DECIDED·LEARNED·OPEN·ALERTS
 clew map                # intent × reality, absence highlighted
-clew inbox              # human-blocking items only
+clew docket             # bounded decision cards only (`inbox` remains an alias)
 clew backfill --budget 100000   # months of existing session history → journal
 ```
 
@@ -88,7 +88,7 @@ CLEW_FIDELITY=1 go test ./acceptance -run RealProvider -v   # live extraction ga
 1. **Absence detection** — synthetic agentdesk-shaped fixture: real git
    commits evidence 5 eligible sibling intents; the workload-runner intent
    flips to `absent` exactly then (sibling rule, not wall-clock), and lands
-   in the inbox.
+   in the docket.
 2. **Extraction fidelity** — `fixtures/strategy-session/` carries the
    Appendix-A label set (D1–D7, F1–F5) with `ratified: false`; per §10.2 a
    human must review/amend once and set `ratified: true`, after which the
@@ -110,7 +110,7 @@ resolved (all within the spec's own invariants):
 | 2 | §3.1 questions "carry who-can-answer" but §3.2's example (an intent) shows no field | added `asks: human\|any` on question entries |
 | 3 | §7.1.3 intent "completion confirmation event" unnamed | `clew journal confirm <id> --done` |
 | 4 | §7.1.3 "only a human confirm event sets contradicted" — verb unspecified | `clew journal confirm <id> --contradicts <other-id>` |
-| 5 | inbox `ack`/`drop` transport unspecified | persisted as `disposition` events on the branch so acks propagate to every machine's inbox |
+| 5 | docket `ack`/`drop` transport unspecified | persisted as `disposition` events on the branch so rulings propagate to every machine's docket |
 | 6 | intent with evidence older than 7d, not done: no status enumerated | renders `proposed` (map shows evidence count, so it stays legible) |
 | 7 | §12.3 cursor desktop store depth | v1 parses Cursor **CLI** transcripts (format pinned from live files); the desktop `state.vscdb` is detected and flagged "not parsed — lower fidelity" per I2, never guessed |
 | 8 | §6.3 "default: cheapest configured provider" — cheapness unknowable | `auto` = first available of claude → codex → OpenAI-compatible; explicit `provider:` overrides |
@@ -135,7 +135,7 @@ fidelity, cloud-session gap).
 ## Layout
 
 ```
-cmd/clew/          CLI: init watch status map inbox journal manifest
+cmd/clew/          CLI: init watch status map docket journal manifest
                       backfill wrap redact mcp
 internal/model        entry/event schema + validation (§3)
 internal/journal      store, status algebra, rollup/digest (§3, §7.1.3)

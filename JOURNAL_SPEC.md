@@ -50,7 +50,7 @@ repo's history; build nothing from it unless §11's triggers fire.
 | Customer | Reads | Gets |
 |---|---|---|
 | **Agent** (dropped into an empty or existing repo, any vendor) | `.stratura/context.md` (injected at session start), MCP tools (optional) | The project's active decisions, relevant findings, open questions — without burning context on transcripts or re-deriving |
-| **Human** (steering N agents across laptop/servers/phone) | `stratura status`, `map`, `inbox`, the journal branch anywhere git renders | Who's on what, what was decided/learned, what's aging, what was never built, what needs *them* — without interviewing agents |
+| **Human** (steering N agents across laptop/servers/phone) | `clew`, `map`, `docket`, the journal branch anywhere git renders | Who's on what, what was decided/learned, what's aging, what was never built, what needs *them* — without interviewing agents |
 
 **Non-goals (v1, hard):** no agent runtime, no sandbox, no chat UI, no session-sync service, no
 server, no graph database, no orchestration (`run`/`land` remain ADR-0007's team-phase), no
@@ -71,6 +71,9 @@ policy language. One binary + one git branch.
 | I7 | **No entry without evidence of utterance.** Every extracted entry carries a verbatim (redacted) quote and a source pointer. No quote → no entry. | Extraction schema validation | Hallucinated journal rot — the product dies if the glance can't be trusted |
 | I8 | **Bounded attention.** Push only for human-blocking items; every pushed item names why it blocks. Glance ≤ 7 items per section. | §8 ranking gate | Dashboard/feed fatigue |
 | I9 | **Bounded cost.** Extraction spend ≤ 2% of observed session tokens, hard daily cap, live meter in `status`. | §6.4 budget | Token runaway; silent bill shock |
+| I10 | **Decision-shaped only.** The docket (formerly `inbox`) contains exclusively items answerable by 1–3 discrete verbs. Nothing FYI-shaped may render there; information belongs to the glance. One import is one card; a session's findings are zero cards. | Typed card builder rejects zero-verb, >3-verb, and non-blocking inputs | Email/feed drift; human review as clerical work |
+| I11 | **Self-cleaning.** Every card carries a machine-checkable withdrawal condition, printed on the card and evaluated continuously. Stomps withdraw when their dirty overlap clears, contradictions on supersession/ruling, questions on answer/expiry. The docket describes now; it has no history, unread count, or badge. | Poll reconciliation + render-time journal status check | Backlog accumulation; stale intervention theater |
+| I12 | **Volume is a system-failure signal.** At most seven cards render and there is no scrolling. Overflow becomes one misconfiguration card with push precision attached. Sustained >7 cards/day or any push that did not truly need the human is logged as a system failure, never user workload. | Hard renderer cap + failure meter | Normalizing over-firing as human workload |
 
 ---
 
@@ -88,31 +91,31 @@ source of truth.
  │  claude · codex │──▶│  incremental,         │──▶│        MCP tools · nudges   │
  │  cursor · wrap  │   │  schema-validated)    │   │                            │
  │ repo poller     │   │ differ (join + status │   │ human: status · map ·      │
- │  commits, dirty │──▶│  algebra + alerts)    │──▶│  inbox · journal edit ·    │
+ │  commits, dirty │──▶│  algebra + alerts)    │──▶│  docket · journal edit ·   │
  │  trees, branches│   │ materializer          │   │  manifest                  │
  └─────────────────┘   │  (context/rollup/     │   └────────────────────────────┘
                        │   nudge files)        │
                        └──────────┬───────────┘
                                   ▼
                     JOURNAL: append-only entry files
-                    on orphan branch `stratura/journal`
+                    on orphan branch `clew/journal`
                     in the project's own remote
 ```
 
 CLI surface (complete):
 
 ```
-stratura init [--carry <dir>]      # register repo; archaeology; install snippets
-stratura watch                      # start/adopt the machine's watcher
-stratura status                     # the glance
-stratura map [--html <file>]        # intent × reality with absence
-stratura inbox [answer|ack|drop]    # human-blocking items only
-stratura journal [show|edit|confirm|reject|supersede|answer|note]
-stratura manifest [--spec <file>] [--out <dir>]   # restart kit
-stratura backfill [--since 90d]     # retroactive extraction from existing session files
-stratura wrap -- <agent argv…>      # PTY tee for agents without session files
-stratura redact <entry-id>          # scrub + rewrite journal branch (the one sanctioned rewrite)
-stratura mcp                        # stdio MCP server (optional surface)
+clew init [--carry <dir>]          # register repo; archaeology; install snippets
+clew watch                          # start/adopt the machine's watcher
+clew status                         # the glance
+clew map [--html <file>]            # intent × reality with absence
+clew docket                         # decision cards only (`inbox` hidden alias)
+clew journal [show|edit|confirm|reject|supersede|answer|note]
+clew manifest [--spec <file>] [--out <dir>]   # restart kit
+clew backfill [--since 90d]         # retroactive extraction from existing session files
+clew wrap -- <agent argv…>          # PTY tee for agents without session files
+clew redact <entry-id>              # scrub + rewrite journal branch (the one sanctioned rewrite)
+clew mcp                            # stdio MCP server (optional surface)
 ```
 
 ---
@@ -215,7 +218,7 @@ entry and thereby broke its own invariant; this is the fix). Human edits are eve
 - **Baseline sync protocol (the default; no relay required or assumed):** each watcher pushes
   the journal branch on local change (debounced ~5 s) and fetch+rebases on an interval (≤ 30 s)
   and before materializing `context.md` or rollups. This alone is the complete, fully-supported
-  mode: extraction, differ, glance, inbox, and manifest all function with cross-machine
+  mode: extraction, differ, glance, docket, and manifest all function with cross-machine
   propagation latency equal to the poll interval. Multi-machine sync works with nothing but the
   repo's remote.
 - **Working materialization per workspace:** the watcher writes `.stratura/` (gitignored on work
@@ -238,7 +241,7 @@ the glance silently stale, which kills trust where it is load-bearing. (4) Authz
 journal permissions = repo permissions.
 
 What a server does better — latency and the phone write-path — enters as an **optional,
-stateless relay**: it carries only signals ("journal changed: entry ids …") and inbox answers,
+stateless relay**: it carries only signals ("journal changed: entry ids …") and docket rulings,
 never journal content as source of truth. Watchers subscribe for real-time nudge propagation;
 the phone answers questions via one HTTP POST that the relay forwards to a watcher, which
 writes the entry and pushes. **A relay is never required:** the baseline protocol (§4) is the
@@ -277,7 +280,7 @@ Commit→session attribution: time-window + footprint overlap + author; unattrib
 displayed state — never guessed.
 
 **Overlap radar:** two live sessions' footprints (attributed or dirty-set) intersecting on the
-same repo+branch → reality event → inbox only if both touched the *same file* while dirty
+same repo+branch → reality event → docket only if both touched the *same file* while dirty
 (the lost-work scenario); otherwise it's a `map` annotation.
 
 ### 5.3 Cold start and backfill (the "existing barrage of complex projects" answer)
@@ -387,7 +390,7 @@ precision behind the same `evidence` field without touching anything else.
      `current` (a 340ms emulator number does not supersede a 90ms server number). Findings with
      `affects`: churn on affected paths without a superseding finding → `suspect` prompt.
 4. **Alerts emitted:** contradiction, absence, stomp (from radar), question-aging (> 7d for
-   `human`-addressed) → inbox + nudge files.
+   `human`-addressed) → typed docket candidates + nudge files. FYI alerts never become cards.
 
 ---
 
@@ -413,7 +416,7 @@ precision behind the same `evidence` field without touching anything else.
 | Agent | Mechanism | Latency |
 |---|---|---|
 | Claude Code | `UserPromptSubmit` hook returns `.stratura/nudge.md` as additional context (hook installed by `init`) | next user turn |
-| Codex | no context-injection hook today → nudge routes to the human (inbox/push) with a one-keystroke "send to session" that types a single line into the wrapped PTY if `wrap`ped, else shows copy-paste | human-speed |
+| Codex | no context-injection hook today → nudge routes to the human (docket/push) with a one-keystroke "send to session" that types a single line into the wrapped PTY if `wrap`ped, else shows copy-paste | human-speed |
 | wrap-mode agents | watcher can inject one line into the PTY at a prompt boundary | next prompt |
 
   Invariant: **a nudge that cannot reach the agent must reach the human** — the system never
@@ -438,11 +441,22 @@ precision behind the same `evidence` field without touching anything else.
   emits a single self-contained page (client-side render of the journal dir; no server). A
   treemap visual is deliberately *not* v1: the table+highlight delivers the function (absence at
   a glance); the treemap is polish and listed in §11 as such.
-- **`inbox`** — human-blocking items only: ★questions, possible-contradiction pairs, absences,
-  stomps, adapter breaks. Verbs: `answer <id> "text"` (becomes an entry, echoes to agents via context), `ack`,
-  `drop`. Push channel: configurable webhook/ntfy per machine — phone delivery without an app;
-  the journal branch itself renders on GitHub mobile for the read side. That is the entire v1
-  phone story, chosen because it exists.
+- **`docket`** (`inbox` is a hidden compatibility alias) — the only surface with verbs. It renders
+  current decision cards, never alerts, summaries, findings, or other FYI material. Every card has:
+  (1) an answerable question ≤80 characters; (2) a why-you strip naming the invariant/rule that
+  fired and cost of delay; (3) exact evidence strings with source-opening provenance chips, never
+  an extractor explanation or paraphrase; (4) one `accepting this assumes: …` line only for
+  high-magnitude decisions, irreversible actions, and foreign imports; (5) 1–3 discrete verbs,
+  plus defer-until-a-named-event and redirect when applicable; and (6) its machine-checkable
+  withdrawal condition printed verbatim. Checkpoint richness scales with magnitude; there are no
+  delays or stacked friction.
+
+  Cards order by blocking cost (running agents stalled first, with elapsed stall time recomputed on
+  every render). The renderer emits at most seven cards and never scrolls. If more are eligible,
+  the full set is replaced by one failure card: `N more items — the system is misconfigured`, with the
+  push-precision report attached. Empty is a designed state:
+  `Nothing needs you · last ruling Nd ago · M entries learned since.` No history, unread count,
+  badge, or snooze-forever state exists. Push is card-creation only; GitHub renders the read side.
 - **`journal` edit verbs:** `confirm` (confidence→1.0), `reject` (superseded-by-human),
   `supersede`, `answer`, `note` (free-form human entry). Editing is first-class writing (I6).
 
@@ -496,7 +510,7 @@ starting the successor repo.
 **v1 core (this spec):** claude/codex/cursor/wrap sensors · repo poller · overlap radar ·
 extractor + redaction + budget · journal store/sync (orphan branch, append-only) · differ
 (mapping, status algebra, absence rule, contradiction check) · context materializer +
-CLAUDE.md/AGENTS.md install · nudge delivery matrix · MCP (optional) · status/map/inbox/journal ·
+CLAUDE.md/AGENTS.md install · nudge delivery matrix · MCP (optional) · status/map/docket/journal ·
 manifest + genesis carry · archaeology + backfill · the three acceptance fixtures.
 
 **Explicitly sequenced (each with the trigger that pulls it in — sequencing separable
@@ -507,7 +521,7 @@ capabilities is not punting; every v1 need above has its full answer above):**
 | Reconcile-as-a-run helper (spawn an agent with both diffs + both intents) | first time overlap radar shows the same file diverging in 2 workspaces weekly |
 | Semantic code-graph mapping enrichment (LogicLens-class) | glob+LLM mapping precision measurably fails on a real monorepo (unmapped-intent rate > 20%) |
 | Treemap/visual map, richer TUI | table+HTML demonstrably insufficient for > 100 live intents |
-| Team mode (multi-human, shared inbox, roles) | second human joins a journaled project |
+| Team mode (multi-human, shared docket, roles) | second human joins a journaled project |
 | Orchestration & authority (ADR-0007: run/land, grants, gate, sealed reports) | team mode exists and multi-writer collisions appear at landing |
 | Cloud-session sensors (Claude web / Codex cloud export) | > 25% of a user's sessions are cloud-side — honesty note: for a phone-heavy user this trigger likely fires **immediately**; until built, those sessions appear as visible gaps in `status` from day one, never silent ones (I2) |
 | Phone app | webhook + GitHub-mobile read path measurably fails users |

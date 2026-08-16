@@ -1,4 +1,4 @@
-// Package push delivers human-blocking inbox items to a phone without an app
+// Package push delivers newly created docket cards to a phone without an app
 // (JOURNAL_SPEC §8.2): ntfy or plain webhook, one config line either way.
 package push
 
