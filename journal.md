@@ -1,6 +1,6 @@
 # Journal
 
-_generated 2026-08-16 17:20 UTC · 18 live entries (6 decisions · 10 findings · 1 questions · 1 intents) · 20 total in history_
+_generated 2026-08-16 17:21 UTC · 20 live entries (6 decisions · 11 findings · 1 questions · 2 intents) · 23 total in history_
 
 ## Decisions
 
@@ -55,12 +55,19 @@ From the over-reliance literature (Buçinca cognitive-forcing lineage through Gh
 
 _source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-18-36-01a00b95-1c07-7d61-a3e4-fb76948ee1b9.jsonl#L9 · confidence: 0.85 · tags: docket/**_
 
-### e01M05S9TK3X86C59JCJDWZ7Z6R — Dogfood D0 metrics after repair  `current`
-> Dogfood 2026-08-16: repos=3; automatic entries=6; extraction=5057/4491713=0.113%; confirm:reject=0:1; actual pushes=0/0; false pushes repaired=27; adapter incidents=1; parked=0; clean cold-start sessions=0,alerts=0; live sessions after append=1.
+### e01M05S9SFKAAM813AR1B8DXEYW — Codex format now detected; watcher tracks only post-baseline bytes  `current`
+> The current Codex format is now detected: re-init found 3 large-metadata sessions, and the watcher is tracking only post-baseline bytes with source time.
 
-Dogfood 2026-08-16: repos=3; automatic entries=6; extraction=5057/4491713=0.113%; confirm:reject=0:1; actual pushes=0/0; false pushes repaired=27; adapter incidents=1; parked=0; clean cold-start sessions=0,alerts=0; live sessions after append=1.
+After repair, clew detects the current Codex session format: re-initialization found 3 sessions with large metadata, and the watcher now tracks only bytes written after the baseline, using source time rather than ingest time. This addresses the historical-session storm seen in dogfood D0.
 
-_source: human cli:note · confidence: 1.00_
+_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-00-58-01a00b84-f81d-7a61-a3c3-e5bb6beb9ee3.jsonl#L729 · confidence: 0.85_
+
+### e01M05S9SFKAAM813AR1AY96QWH — Final Task 2 dogfood snapshot: 0.113% extraction, 0:1 confirm:reject, 0 pushes  `current`
+> Final Task 2 snapshot is: 6 automatic entries; extraction 5,057 / 4,491,713 observed = 0.113%; confirm:reject 0:1; actual pushes 0/0; adapter incidents 1 (the journaled D0 storm); parked 0.
+
+Final Task 2 dogfood measurement of clew: 6 automatic entries produced; 5,057 of 4,491,713 observed bytes extracted (0.113%); confirm-to-reject ratio 0:1; actual pushes 0 of 0; 1 adapter incident (the previously journaled D0 session storm); 0 parked items. Recorded after the Codex-format detection and watcher baseline repairs.
+
+_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-00-58-01a00b84-f81d-7a61-a3c3-e5bb6beb9ee3.jsonl#L729 · confidence: 0.93_
 
 ### e01M05RPB2N6QDXN1MP31SB64B2 — Dogfood D0 historical-session storm is an I12 failure  `current`
 > Dogfood failure D0: historical sessions misclassified live=33; observed tokens=12895847; overlaps=342; stomps=27; actual pushes=0; false pushed_at=27; extraction spend=0; adapter incidents=1; watcher stopped before extraction.
@@ -129,9 +136,16 @@ _source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15 · confide
 
 ## Intents
 
-### e01M05SA72DPRGNTY7GCXARNKYH — Implement the decision card and enforce I10–I12 in renderer and tests  `proposed`
+### e01M05SA72DPRGNTY7GCXARNKYH — Implement the decision card and enforce I10–I12 in renderer and tests  `in_flight`
 > Enforce I10–I12 in the renderer and in tests: a synthetic FYI item must be unrenderable; an 8th card must collapse to the overflow-failure card; a resolved stomp must withdraw within one poll cycle.
 
 Commitment (Task 3): build the docket card to the fixed anatomy — headline-as-question ≤80 chars, why-you strip with rule fired and ticking stall timers, verbatim-quote evidence rows with provenance chips, assumptions line on high-magnitude only, 1–3 verbs plus defer-until-event, printed withdrawal condition, ordering by blocking cost, designed empty state. Tests must prove the three invariants.
 
-_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-18-36-01a00b95-1c07-7d61-a3e4-fb76948ee1b9.jsonl#L9 · confidence: 0.90 · tags: docket/**_
+_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-18-36-01a00b95-1c07-7d61-a3e4-fb76948ee1b9.jsonl#L9 · confidence: 0.90 · tags: docket/** · evidence: 1_
+
+### e01M05S9SFKAAM813AR1EG3X3WR — Land the dogfood fixes after recording the Task 2 snapshot  `proposed`
+> I’m recording that snapshot and then landing the dogfood fixes.
+
+Commitment to record the final Task 2 dogfood snapshot and then land the outstanding dogfood fixes in the codebase.
+
+_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-00-58-01a00b84-f81d-7a61-a3c3-e5bb6beb9ee3.jsonl#L729 · confidence: 0.82_
