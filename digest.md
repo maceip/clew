@@ -1,6 +1,6 @@
 # Journal digest (live entries: id · type/status · title)
 - e01M064DQTWYDVGGAE3M5QRTGME decision/active Re-evaluate the current tree instead of carrying the prior gate verdict forward
-- e01M064DHNTXFM29PNWCW0VBBF2 intent/proposed Run a strict read-only gate proving each acceptance point with tests or state q…
+- e01M064DHNTXFM29PNWCW0VBBF2 intent/in_flight Run a strict read-only gate proving each acceptance point with tests or state q…
 - e01M0642VRXV9PCGA4NDJF92E2Y intent/in_flight Wire atomic budget reservations into every LLM call
 - e01M0642VRXV9PCGA4NDHV479C9 finding/current Cursor path now monotonic and watcher stable
 - e01M0640H4ZAR0BQMS73R8QW9E7 finding/current Repaired watcher installed as launchd agent dev.clew.watch
