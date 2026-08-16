@@ -1,0 +1,15 @@
+id: e01M04XVNN32W4FTFKKSKJSN01V
+type: finding
+title: varalys-lore competitive finding placeholder
+body: varalys-lore competitive finding placeholder
+quote: varalys-lore competitive finding placeholder
+utterance_by: user
+source:
+    kind: human
+    ref: cli:note
+    surface: cursor
+    at: 2026-08-16T09:18:48.483200337Z
+confidence: 1
+tags: []
+env: null
+affects: []
