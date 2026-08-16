@@ -1,6 +1,6 @@
 # Journal
 
-_generated 2026-08-16 21:27 UTC · 50 live entries (13 decisions · 24 findings · 1 questions · 12 intents) · 68 total in history_
+_generated 2026-08-16 21:28 UTC · 50 live entries (13 decisions · 24 findings · 1 questions · 12 intents) · 68 total in history_
 
 ## DECIDED
 
@@ -9,7 +9,7 @@ _generated 2026-08-16 21:27 UTC · 50 live entries (13 decisions · 24 findings 
 - `e01M05V0G3Q9F41V62P6T44TC04` Cursor migration must be monotonic — never rewind an existing cursor — 3h · active
 - `e01M05TG628KAGZ9HCBQSAG562P` Separate session-extraction budget from one-time archaeology budget — 3h · active
 - `e01M05TBYJXEW5N5FE397XYMEHY` Treat first dogfood run's cursor/push/adapter failures as required failure sign… — 3h · active
-- `e01M05SVGK1Q2MR34Y3CMHR7DXM` No cursor translation: keep `extract:` for live, add bounded `backfill:` for hi… — 3h · active
+- `e01M05SVGK1Q2MR34Y3CMHR7DXM` No cursor translation: keep `extract:` for live, add bounded `backfill:` for hi… — 4h · active
 - `e01M05SG3NTP5W2JX7Y6MG00HQJ` Hold the Task 2 commit; make backfill and live watch disjoint by construction — 4h · active
 
 ## LEARNED
@@ -18,8 +18,8 @@ _generated 2026-08-16 21:27 UTC · 50 live entries (13 decisions · 24 findings 
 - `e01M067AZ3VJM73XP82REZEZ1QC` Task 4 channel: ntfy 2383c10c…, card creation only — 4m · current
 - `e01M066XWD8F1SAWQ8HVXGW4J4Z` Task 3 docket gate: 8→1, FYI 0, withdrawal 1 poll — 11m · current
 - `e01M065G8RTKVH6466KE7GQREGX` Task 2 passes its live gate on all five acceptance checks — 36m · current
-- `e01M064YRS4S9NK7KW9NQ1JMDV2` Malformed or missing pinned timestamps silently fall back to ingest time — 45m · suspect
-- `e01M064YRS4S9NK7KW9NN351FQF` I9: Claude settlement ignores cache token fields, letting spend exceed caps — 45m · suspect
+- `e01M064YRS4S9NK7KW9NQ1JMDV2` Malformed or missing pinned timestamps silently fall back to ingest time — 46m · suspect
+- `e01M064YRS4S9NK7KW9NN351FQF` I9: Claude settlement ignores cache token fields, letting spend exceed caps — 46m · suspect
 - `e01M064K88F7SDMHA1SPAB51HK7` D2 final: 52 automatic entries; live extraction 0.631% — 52m · current
 
 ## OPEN
