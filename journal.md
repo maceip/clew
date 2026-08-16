@@ -1,8 +1,15 @@
 # Journal
 
-_generated 2026-08-16 17:40 UTC · 30 live entries (9 decisions · 15 findings · 1 questions · 5 intents) · 37 total in history_
+_generated 2026-08-16 17:40 UTC · 31 live entries (10 decisions · 15 findings · 1 questions · 5 intents) · 38 total in history_
 
 ## Decisions
+
+### e01M05TG628KAGZ9HCBQSAG562P — Separate session-extraction budget from one-time archaeology budget  `active`
+> I’m also separating session-extraction budget from one-time archaeology, because applying a session-token ratio to cold-start docs makes archaeology mathematically impossible at zero observed sessions.
+
+Extraction budget for live sessions is now tracked separately from the one-time historical archaeology budget. Reason: deriving the archaeology allowance as a ratio of observed session tokens yields zero budget at cold start (zero observed sessions), making backfill of historical docs mathematically impossible. Sits alongside the pre-/post-enrollment byte boundary.
+
+_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-00-58-01a00b84-f81d-7a61-a3c3-e5bb6beb9ee3.jsonl#L1200 · confidence: 0.90_
 
 ### e01M05TBYJXEW5N5FE397XYMEHY — Treat first dogfood run's cursor/push/adapter failures as required failure sign…  `active`
 > the first dogfood run exposed real cursor, push, and adapter failures, so I’m treating that run as the required failure signal—not as acceptance
@@ -190,7 +197,7 @@ _source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15 · confide
 
 Work in progress to harden the boundary between live enrollment and backfill, and to add telemetry for failures. This follows the recorded pass of Task 1 and the cursor/push/adapter failures observed in the first dogfood run.
 
-_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-00-58-01a00b84-f81d-7a61-a3c3-e5bb6beb9ee3.jsonl#L1041 · confidence: 0.85 · evidence: 1_
+_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-00-58-01a00b84-f81d-7a61-a3c3-e5bb6beb9ee3.jsonl#L1041 · confidence: 0.85 · evidence: 2_
 
 ### e01M05SPB2EMMC4F4PR0BSPFZKZ — Narrow fix for the watch storm: transactional baselines, source-time, bounded c…  `in_flight`
 > Root cause and narrow fix sent to parent: transactional live baselines, source-time sessions, and bounded separate backfill cursor.
