@@ -1,0 +1,19 @@
+id: e01M05VTCM3AR0WFY9TZPG9W1J8
+type: finding
+title: Cursor migration and init/bootstrap races fixed; test, race, vet, diff checks p…
+body: 'The cursor-migration monotonicity fix and two init/bootstrap races are resolved in the live diff, and the full suite (`go test ./...`, race tests, vet, diff checks) passes. Remaining blockers are budget-side: unused reservation path, unenforceable cap, and the neutral-cwd regression.'
+quote: Cursor migration and init/bootstrap races are fixed. `go test ./...`, race tests, vet, and diff checks pass.
+utterance_by: assistant
+source:
+    kind: session
+    ref: codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-18-36-01a00b95-1c07-7d61-a3e4-fb76948ee1b9.jsonl#L961
+    agent: codex
+    surface: macs-MacBook-Pro
+    at: 2026-08-16T18:02:23.747Z
+confidence: 0.9
+tags:
+    - cmd/clew/**
+    - internal/state/**
+env: null
+affects:
+    - internal/state/**

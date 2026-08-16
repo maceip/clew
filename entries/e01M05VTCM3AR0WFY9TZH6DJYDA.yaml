@@ -1,0 +1,22 @@
+id: e01M05VTCM3AR0WFY9TZH6DJYDA
+type: finding
+title: I9 reservation API is dead code; callers still use racy estimate gates
+body: 'The transactional reservation/settlement work landed in internal/state, but no caller uses it: watch, backfill, and extract still gate on pre-flight estimates and call RecordSpend afterward, so the race remains. Retry spend can also be dropped on error. Cited sites: watchcmd.go:411-431, backfillcmd.go:111-121, extract.go:139-159.'
+quote: I9 reservation code is unused; all callers still use racy estimate gates and `RecordSpend` afterward.
+utterance_by: assistant
+source:
+    kind: session
+    ref: codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-18-36-01a00b95-1c07-7d61-a3e4-fb76948ee1b9.jsonl#L961
+    agent: codex
+    surface: macs-MacBook-Pro
+    at: 2026-08-16T18:02:23.747Z
+confidence: 0.93
+tags:
+    - cmd/clew/**
+    - internal/state/**
+env: null
+affects:
+    - cmd/clew/watchcmd.go
+    - cmd/clew/backfillcmd.go
+    - extract.go
+    - internal/state/**
