@@ -6,6 +6,7 @@
 package adapters
 
 import (
+	"bufio"
 	"bytes"
 	"encoding/json"
 	"fmt"
@@ -51,7 +52,7 @@ func (e *FormatError) Error() string {
 
 // readNew returns complete new lines since offset (a trailing partial line is
 // left for the next pass), the new offset, and the 1-based first line number.
-func readNew(file string, offset int64) ([][]byte, int64, int, error) {
+func readNew(file string, offset int64, limit ...int64) ([][]byte, int64, int, error) {
 	f, err := os.Open(file)
 	if err != nil {
 		return nil, offset, 0, err
@@ -61,10 +62,18 @@ func readNew(file string, offset int64) ([][]byte, int64, int, error) {
 	if err != nil {
 		return nil, offset, 0, err
 	}
-	if fi.Size() < offset { // truncated/rotated: start over (watermark reset)
+	size := fi.Size()
+	bounded := len(limit) > 0
+	if bounded && limit[0] < size {
+		size = limit[0]
+	}
+	if size < offset && bounded {
+		return nil, offset, 0, nil
+	}
+	if size < offset { // truncated/rotated: start over (watermark reset)
 		offset = 0
 	}
-	if fi.Size() == offset {
+	if size == offset {
 		return nil, offset, 0, nil
 	}
 	// Count lines before offset for line numbering.
@@ -76,7 +85,7 @@ func readNew(file string, offset int64) ([][]byte, int64, int, error) {
 		}
 		startLine = bytes.Count(head, []byte{'\n'}) + 1
 	}
-	buf := make([]byte, fi.Size()-offset)
+	buf := make([]byte, size-offset)
 	if _, err := f.ReadAt(buf, offset); err != nil {
 		return nil, offset, 0, err
 	}
@@ -94,6 +103,37 @@ func readNew(file string, offset int64) ([][]byte, int64, int, error) {
 	return lines, offset + int64(last+1), startLine, nil
 }
 
+// CompleteOffset returns the byte immediately after the file's last newline.
+// A watcher baseline must never start inside a partially written JSONL record.
+func CompleteOffset(file string) (int64, error) {
+	f, err := os.Open(file)
+	if err != nil {
+		return 0, err
+	}
+	defer f.Close()
+	fi, err := f.Stat()
+	if err != nil {
+		return 0, err
+	}
+	const chunkSize int64 = 64 * 1024
+	end := fi.Size()
+	for end > 0 {
+		start := end - chunkSize
+		if start < 0 {
+			start = 0
+		}
+		buf := make([]byte, end-start)
+		if _, err := f.ReadAt(buf, start); err != nil {
+			return 0, err
+		}
+		if i := bytes.LastIndexByte(buf, '\n'); i >= 0 {
+			return start + int64(i) + 1, nil
+		}
+		end = start
+	}
+	return 0, nil
+}
+
 // slugify reproduces the session-store cwd slug: every non-alphanumeric
 // byte becomes '-' (observed in both claude and cursor stores).
 func slugify(path string) string {
@@ -108,12 +148,15 @@ func slugify(path string) string {
 	return b.String()
 }
 
-func parseTS(s string) time.Time {
+func parseTS(s string) (time.Time, error) {
+	if s == "" {
+		return time.Time{}, fmt.Errorf("missing timestamp")
+	}
 	t, err := time.Parse(time.RFC3339, s)
 	if err != nil {
-		return time.Time{}
+		return time.Time{}, err
 	}
-	return t
+	return t, nil
 }
 
 func home() string {
@@ -128,6 +171,20 @@ type Adapter interface {
 	Discover(repoPath string) []string
 	// Parse consumes complete lines from offset and returns a delta.
 	Parse(file string, offset int64) (*Delta, error)
+}
+
+type rangeAdapter interface {
+	ParseRange(file string, offset, end int64) (*Delta, error)
+}
+
+// ParseRange parses complete records in [offset,end), never bytes appended
+// after the fixed upper bound.
+func ParseRange(a Adapter, file string, offset, end int64) (*Delta, error) {
+	p, ok := a.(rangeAdapter)
+	if !ok {
+		return nil, fmt.Errorf("adapter %s does not support bounded backfill", a.ID())
+	}
+	return p.ParseRange(file, offset, end)
 }
 
 // All returns the v1 adapter set.
@@ -159,13 +216,21 @@ func (a *Claude) Discover(repoPath string) []string {
 }
 
 func (a *Claude) Parse(file string, offset int64) (*Delta, error) {
-	lines, newOff, startLine, err := readNew(file, offset)
+	return a.parse(file, offset)
+}
+
+func (a *Claude) ParseRange(file string, offset, end int64) (*Delta, error) {
+	return a.parse(file, offset, end)
+}
+
+func (a *Claude) parse(file string, offset int64, limit ...int64) (*Delta, error) {
+	lines, newOff, startLine, err := readNew(file, offset, limit...)
 	if err != nil {
 		return nil, err
 	}
 	d := &Delta{Adapter: a.ID(), Agent: a.ID(), File: file, NewOffset: newOff,
 		StartLine: startLine, Unknown: map[string]int{}}
-	bad := 0
+	bad, timestampBad := 0, 0
 	for i, raw := range lines {
 		d.Bytes += len(raw) + 1
 		var env struct {
@@ -186,16 +251,24 @@ func (a *Claude) Parse(file string, offset int64) (*Delta, error) {
 		if env.SessionID != "" {
 			d.SessionID = env.SessionID
 		}
-		at := parseTS(env.Timestamp)
 		line := startLine + i
 		switch env.Type {
 		case "user", "assistant":
+			at, tsErr := parseTS(env.Timestamp)
+			if tsErr != nil {
+				timestampBad++
+				d.Unknown["timestamp"]++
+				continue
+			}
 			a.message(d, env.Type, env.Message, at, line)
 		default:
 			if !knownClaudeTypes[env.Type] {
 				d.Unknown[env.Type]++
 			}
 		}
+	}
+	if timestampBad > 0 {
+		return d, &FormatError{a.ID(), file, fmt.Sprintf("%d/%d records have invalid or missing timestamps", timestampBad, len(lines))}
 	}
 	if len(lines) > 4 && bad*2 > len(lines) {
 		return d, &FormatError{a.ID(), file, fmt.Sprintf("%d/%d lines unparseable (version drift?)", bad, len(lines))}
@@ -295,18 +368,22 @@ type Codex struct{}
 
 func (a *Codex) ID() string { return "codex" }
 
-func (a *Codex) Discover(repoPath string) []string {
+func recentCodexFiles() []string {
 	root := filepath.Join(home(), ".codex", "sessions")
 	var out []string
-	// Only recent files can be cheaply cwd-matched: meta line holds the cwd,
-	// checked in Parse; Discover returns candidates from the last 3 days.
 	for d := 0; d < 3; d++ {
 		day := time.Now().AddDate(0, 0, -d)
 		m, _ := filepath.Glob(filepath.Join(root, day.Format("2006"), day.Format("01"), day.Format("02"), "rollout-*.jsonl"))
 		out = append(out, m...)
 	}
+	return out
+}
+
+func (a *Codex) Discover(repoPath string) []string {
+	// Only recent files can be cheaply cwd-matched: meta line holds the cwd,
+	// checked in Parse; Discover returns candidates from the last 3 days.
 	var match []string
-	for _, f := range out {
+	for _, f := range recentCodexFiles() {
 		if cwd := codexCWD(f); cwd != "" && sameOrUnder(cwd, repoPath) {
 			match = append(match, f)
 		}
@@ -324,45 +401,92 @@ func CodexCWD(file string) string { return codexCWD(file) }
 
 // codexCWD peeks at the session_meta line (first line) for the cwd.
 func codexCWD(file string) string {
+	cwd, _ := codexCWDChecked(file)
+	return cwd
+}
+
+func codexCWDChecked(file string) (string, error) {
+	meta, err := codexMetaChecked(file)
+	return meta.CWD, err
+}
+
+type codexMetadata struct {
+	ID, CWD string
+}
+
+func codexMetaChecked(file string) (codexMetadata, error) {
 	f, err := os.Open(file)
 	if err != nil {
-		return ""
+		return codexMetadata{}, err
 	}
 	defer f.Close()
-	buf := make([]byte, 8192)
-	n, _ := f.Read(buf)
-	i := bytes.IndexByte(buf[:n], '\n')
-	if i < 0 {
-		i = n
+	scanner := bufio.NewScanner(f)
+	scanner.Buffer(make([]byte, 64*1024), 2*1024*1024)
+	if !scanner.Scan() {
+		if err := scanner.Err(); err != nil {
+			return codexMetadata{}, err
+		}
+		return codexMetadata{}, fmt.Errorf("missing complete session_meta record")
 	}
 	var env struct {
 		Type    string `json:"type"`
 		Payload struct {
+			ID  string `json:"id"`
 			CWD string `json:"cwd"`
 		} `json:"payload"`
 	}
-	if json.Unmarshal(buf[:i], &env) != nil || env.Type != "session_meta" {
-		return ""
+	if err := json.Unmarshal(scanner.Bytes(), &env); err != nil {
+		return codexMetadata{}, fmt.Errorf("invalid session_meta JSON: %w", err)
 	}
-	return env.Payload.CWD
+	if env.Type != "session_meta" || env.Payload.CWD == "" {
+		return codexMetadata{}, fmt.Errorf("first record is %q, want session_meta with cwd", env.Type)
+	}
+	return codexMetadata{ID: env.Payload.ID, CWD: env.Payload.CWD}, nil
+}
+
+// CodexDiscoveryIssues makes malformed/oversized metadata visible in status
+// instead of silently omitting that entire session from discovery (I2).
+func CodexDiscoveryIssues() []string {
+	var out []string
+	for _, file := range recentCodexFiles() {
+		if _, err := codexCWDChecked(file); err != nil {
+			out = append(out, filepath.Base(file)+": "+err.Error())
+		}
+	}
+	return out
 }
 
 var knownCodexTypes = map[string]bool{
 	"event_msg": true, "turn_context": true, "compacted": true,
+	// Multi-agent coordination metadata observed in Codex 2026-08. It is
+	// transport state, not a human/assistant utterance.
+	"world_state": true, "inter_agent_communication_metadata": true,
 }
 
 var knownCodexItems = map[string]bool{
-	"reasoning": true, "web_search_call": true, "function_call_output": false,
+	"reasoning": true, "web_search_call": true, "agent_message": true,
 }
 
 func (a *Codex) Parse(file string, offset int64) (*Delta, error) {
-	lines, newOff, startLine, err := readNew(file, offset)
+	return a.parse(file, offset)
+}
+
+func (a *Codex) ParseRange(file string, offset, end int64) (*Delta, error) {
+	return a.parse(file, offset, end)
+}
+
+func (a *Codex) parse(file string, offset int64, limit ...int64) (*Delta, error) {
+	lines, newOff, startLine, err := readNew(file, offset, limit...)
+	if err != nil {
+		return nil, err
+	}
+	meta, err := codexMetaChecked(file)
 	if err != nil {
 		return nil, err
 	}
 	d := &Delta{Adapter: a.ID(), Agent: a.ID(), File: file, NewOffset: newOff,
-		StartLine: startLine, Unknown: map[string]int{}}
-	bad := 0
+		SessionID: meta.ID, CWD: meta.CWD, StartLine: startLine, Unknown: map[string]int{}}
+	bad, timestampBad := 0, 0
 	for i, raw := range lines {
 		d.Bytes += len(raw) + 1
 		var env struct {
@@ -375,7 +499,6 @@ func (a *Codex) Parse(file string, offset int64) (*Delta, error) {
 			d.Unknown["unparseable"]++
 			continue
 		}
-		at := parseTS(env.Timestamp)
 		line := startLine + i
 		switch env.Type {
 		case "session_meta":
@@ -387,12 +510,21 @@ func (a *Codex) Parse(file string, offset int64) (*Delta, error) {
 				d.SessionID, d.CWD = p.ID, p.CWD
 			}
 		case "response_item":
+			at, tsErr := parseTS(env.Timestamp)
+			if tsErr != nil {
+				timestampBad++
+				d.Unknown["timestamp"]++
+				continue
+			}
 			a.item(d, env.Payload, at, line)
 		default:
 			if !knownCodexTypes[env.Type] {
 				d.Unknown[env.Type]++
 			}
 		}
+	}
+	if timestampBad > 0 {
+		return d, &FormatError{a.ID(), file, fmt.Sprintf("%d/%d records have invalid or missing timestamps", timestampBad, len(lines))}
 	}
 	if len(lines) > 4 && bad*2 > len(lines) {
 		return d, &FormatError{a.ID(), file, fmt.Sprintf("%d/%d lines unparseable", bad, len(lines))}
@@ -467,9 +599,9 @@ func (a *Codex) item(d *Delta, raw json.RawMessage, at time.Time, line int) {
 		if out, ok := p["output"].(string); ok && strings.TrimSpace(out) != "" {
 			d.Messages = append(d.Messages, Message{Role: "tool_result", Text: clip(out, 2000), At: at, Line: line})
 		}
-	case "reasoning", "web_search_call":
+	case "reasoning", "web_search_call", "agent_message":
 	default:
-		if typ != "" {
+		if typ != "" && !knownCodexItems[typ] {
 			d.Unknown["item:"+typ]++
 		}
 	}
@@ -513,7 +645,15 @@ func DesktopStorePresent() bool {
 }
 
 func (a *Cursor) Parse(file string, offset int64) (*Delta, error) {
-	lines, newOff, startLine, err := readNew(file, offset)
+	return a.parse(file, offset)
+}
+
+func (a *Cursor) ParseRange(file string, offset, end int64) (*Delta, error) {
+	return a.parse(file, offset, end)
+}
+
+func (a *Cursor) parse(file string, offset int64, limit ...int64) (*Delta, error) {
+	lines, newOff, startLine, err := readNew(file, offset, limit...)
 	if err != nil {
 		return nil, err
 	}
@@ -598,14 +738,18 @@ type Wrap struct{}
 
 func (a *Wrap) ID() string { return "wrap" }
 
-func (a *Wrap) Discover(repoPath string) []string {
+func wrapFiles() []string {
 	m, _ := filepath.Glob(filepath.Join(home(), ".clew", "raw", "*.jsonl"))
 	if rh := os.Getenv("CLEW_HOME"); rh != "" {
 		m2, _ := filepath.Glob(filepath.Join(rh, "raw", "*.jsonl"))
 		m = append(m, m2...)
 	}
+	return m
+}
+
+func (a *Wrap) Discover(repoPath string) []string {
 	var out []string
-	for _, f := range m {
+	for _, f := range wrapFiles() {
 		if cwd := wrapMeta(f); cwd != "" && sameOrUnder(cwd, repoPath) {
 			out = append(out, f)
 		}
@@ -614,34 +758,78 @@ func (a *Wrap) Discover(repoPath string) []string {
 }
 
 func wrapMeta(file string) string {
-	f, err := os.Open(file)
-	if err != nil {
-		return ""
-	}
-	defer f.Close()
-	buf := make([]byte, 4096)
-	n, _ := f.Read(buf)
-	i := bytes.IndexByte(buf[:n], '\n')
-	if i < 0 {
-		i = n
-	}
-	var meta struct {
-		Kind string `json:"kind"`
-		CWD  string `json:"cwd"`
-	}
-	if json.Unmarshal(buf[:i], &meta) != nil || meta.Kind != "meta" {
-		return ""
-	}
+	meta, _ := wrapMetaChecked(file)
 	return meta.CWD
 }
 
+type wrapMetadata struct {
+	CWD, Session, Agent string
+}
+
+func wrapMetaChecked(file string) (wrapMetadata, error) {
+	f, err := os.Open(file)
+	if err != nil {
+		return wrapMetadata{}, err
+	}
+	defer f.Close()
+	scanner := bufio.NewScanner(f)
+	scanner.Buffer(make([]byte, 64*1024), 2*1024*1024)
+	if !scanner.Scan() {
+		if err := scanner.Err(); err != nil {
+			return wrapMetadata{}, err
+		}
+		return wrapMetadata{}, fmt.Errorf("missing complete meta record")
+	}
+	var meta struct {
+		Kind    string   `json:"kind"`
+		CWD     string   `json:"cwd"`
+		Session string   `json:"session"`
+		Argv    []string `json:"argv"`
+	}
+	if err := json.Unmarshal(scanner.Bytes(), &meta); err != nil {
+		return wrapMetadata{}, fmt.Errorf("invalid wrap meta JSON: %w", err)
+	}
+	if meta.Kind != "meta" || meta.CWD == "" {
+		return wrapMetadata{}, fmt.Errorf("first record is %q, want meta with cwd", meta.Kind)
+	}
+	agent := "wrap"
+	if len(meta.Argv) > 0 {
+		agent = "wrap:" + filepath.Base(meta.Argv[0])
+	}
+	return wrapMetadata{CWD: meta.CWD, Session: meta.Session, Agent: agent}, nil
+}
+
+func WrapDiscoveryIssues() []string {
+	var out []string
+	for _, file := range wrapFiles() {
+		if _, err := wrapMetaChecked(file); err != nil {
+			out = append(out, filepath.Base(file)+": "+err.Error())
+		}
+	}
+	return out
+}
+
 func (a *Wrap) Parse(file string, offset int64) (*Delta, error) {
-	lines, newOff, startLine, err := readNew(file, offset)
+	return a.parse(file, offset)
+}
+
+func (a *Wrap) ParseRange(file string, offset, end int64) (*Delta, error) {
+	return a.parse(file, offset, end)
+}
+
+func (a *Wrap) parse(file string, offset int64, limit ...int64) (*Delta, error) {
+	lines, newOff, startLine, err := readNew(file, offset, limit...)
 	if err != nil {
 		return nil, err
 	}
-	d := &Delta{Adapter: a.ID(), File: file, NewOffset: newOff,
+	meta, err := wrapMetaChecked(file)
+	if err != nil {
+		return nil, err
+	}
+	d := &Delta{Adapter: a.ID(), File: file, NewOffset: newOff, CWD: meta.CWD,
+		SessionID: meta.Session, Agent: meta.Agent,
 		StartLine: startLine, Unknown: map[string]int{}}
+	timestampBad := 0
 	for i, raw := range lines {
 		d.Bytes += len(raw) + 1
 		var env struct {
@@ -669,12 +857,27 @@ func (a *Wrap) Parse(file string, offset int64) (*Delta, error) {
 				}
 			}
 		case env.Dir == "in":
-			d.Messages = append(d.Messages, Message{Role: "user", Text: env.Text, At: parseTS(env.At), Line: line})
+			at, err := parseTS(env.At)
+			if err != nil {
+				timestampBad++
+				d.Unknown["timestamp"]++
+				continue
+			}
+			d.Messages = append(d.Messages, Message{Role: "user", Text: env.Text, At: at, Line: line})
 		case env.Dir == "out":
-			d.Messages = append(d.Messages, Message{Role: "assistant", Text: env.Text, At: parseTS(env.At), Line: line})
+			at, err := parseTS(env.At)
+			if err != nil {
+				timestampBad++
+				d.Unknown["timestamp"]++
+				continue
+			}
+			d.Messages = append(d.Messages, Message{Role: "assistant", Text: env.Text, At: at, Line: line})
 		default:
 			d.Unknown["line"]++
 		}
+	}
+	if timestampBad > 0 {
+		return d, &FormatError{a.ID(), file, fmt.Sprintf("%d/%d records have invalid or missing timestamps", timestampBad, len(lines))}
 	}
 	if d.Agent == "" {
 		d.Agent = "wrap"

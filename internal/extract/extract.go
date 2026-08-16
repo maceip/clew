@@ -8,6 +8,7 @@ import (
 	_ "embed"
 	"encoding/json"
 	"fmt"
+	"io"
 	"os"
 	"path/filepath"
 	"strings"
@@ -36,14 +37,15 @@ const (
 
 // Outcome reports one extraction call's results.
 type Outcome struct {
-	Entries    []*model.Entry
-	Events     []*model.Event
-	Rejected   int // entries rejected by validation (fabricated quote etc.)
-	Redactions int
-	Tokens     int
-	Parked     bool
-	ParkReason string
-	NewOffset  int64
+	Entries        []*model.Entry
+	Events         []*model.Event
+	Rejected       int // entries rejected by validation (fabricated quote etc.)
+	Redactions     int
+	Tokens         int
+	ObservedTokens int // transcript tokens consumed (byte estimate), for backfill metering
+	Parked         bool
+	ParkReason     string
+	NewOffset      int64
 }
 
 // wire mirrors the strict output schema of the instruction.
@@ -69,9 +71,9 @@ type wire struct {
 	} `json:"links"`
 }
 
-// Gate enforces the I9 budget: extraction tokens ≤ session_pct% of observed
-// session tokens today AND under the absolute daily cap. Cap hit = pause
-// loudly; sensors keep recording (watermarks make catch-up safe).
+// Gate enforces the unattended-live I9 budget: extraction tokens ≤
+// session_pct% of observed session tokens today AND under the absolute daily
+// cap. Cap hit = pause loudly; sensors keep recording.
 func Gate(db *state.DB, cfg *config.Config, estimate int) (bool, string) {
 	spent := db.TokensToday("spent")
 	observed := db.TokensToday("observed")
@@ -79,10 +81,21 @@ func Gate(db *state.DB, cfg *config.Config, estimate int) (bool, string) {
 	if spent+estimate > cap {
 		return false, fmt.Sprintf("daily cap: spent %d + est %d > %d", spent, estimate, cap)
 	}
+	sessionSpent := db.TokensToday("extraction-spent")
 	pctBudget := int(cfg.Extractor.SessionPct / 100 * float64(observed))
-	if spent+estimate > pctBudget {
+	if sessionSpent+estimate > pctBudget {
 		return false, fmt.Sprintf("2%%-rule: spent %d + est %d > %d (%.0f%% of %d observed)",
-			spent, estimate, pctBudget, cfg.Extractor.SessionPct, observed)
+			sessionSpent, estimate, pctBudget, cfg.Extractor.SessionPct, observed)
+	}
+	return true, ""
+}
+
+// GateDaily applies the absolute machine-wide LLM cap to non-session calls,
+// which have no honest session-token denominator (archaeology and differ).
+func GateDaily(db *state.DB, cfg *config.Config, estimate int) (bool, string) {
+	spent := db.TokensToday("spent")
+	if spent+estimate > cfg.Extractor.DailyCapTokens {
+		return false, fmt.Sprintf("daily cap: spent %d + est %d > %d", spent, estimate, cfg.Extractor.DailyCapTokens)
 	}
 	return true, ""
 }
@@ -91,11 +104,27 @@ func Gate(db *state.DB, cfg *config.Config, estimate int) (bool, string) {
 // The caller persists outcome entries/events (already applied to j) and the
 // new watermark.
 func Run(j *journal.Journal, p llm.Provider, a adapters.Adapter, file string, offset int64, surface string, now time.Time) (*Outcome, error) {
-	d, err := a.Parse(file, offset)
+	return run(j, p, a, file, offset, -1, surface, now)
+}
+
+// RunUntil is the explicit-backfill path. end is the immutable enrollment
+// boundary, so history extraction can never consume a later live suffix.
+func RunUntil(j *journal.Journal, p llm.Provider, a adapters.Adapter, file string, offset, end int64, surface string, now time.Time) (*Outcome, error) {
+	return run(j, p, a, file, offset, end, surface, now)
+}
+
+func run(j *journal.Journal, p llm.Provider, a adapters.Adapter, file string, offset, end int64, surface string, now time.Time) (*Outcome, error) {
+	var d *adapters.Delta
+	var err error
+	if end >= 0 {
+		d, err = adapters.ParseRange(a, file, offset, end)
+	} else {
+		d, err = a.Parse(file, offset)
+	}
 	if err != nil {
 		return nil, err
 	}
-	out := &Outcome{NewOffset: d.NewOffset}
+	out := &Outcome{NewOffset: d.NewOffset, ObservedTokens: d.Bytes / 4}
 	if len(d.Messages) == 0 {
 		return out, nil
 	}
@@ -122,7 +151,7 @@ func Run(j *journal.Journal, p llm.Provider, a adapters.Adapter, file string, of
 			continue
 		}
 		cand := &wire{}
-		if json.Unmarshal([]byte(raw), cand) == nil {
+		if validWireEnvelope([]byte(raw), cand) {
 			w = cand
 			break
 		}
@@ -139,7 +168,7 @@ func Run(j *journal.Journal, p llm.Provider, a adapters.Adapter, file string, of
 	newIDs := make([]string, len(w.Entries))
 	for i, we := range w.Entries {
 		e, ok := validateEntry(we.Type, we.Title, we.Body, we.Quote, we.Line, we.UtteranceBy,
-			we.Confidence, we.Tags, we.Env, we.Affects, we.Asks, d, surface, now)
+			we.Confidence, we.Tags, we.Env, we.Affects, we.Asks, d, surface)
 		if !ok {
 			out.Rejected++
 			continue
@@ -204,13 +233,29 @@ func Run(j *journal.Journal, p llm.Provider, a adapters.Adapter, file string, of
 	return out, nil
 }
 
+func validWireEnvelope(raw []byte, dst *wire) bool {
+	var object map[string]json.RawMessage
+	if json.Unmarshal(raw, &object) != nil {
+		return false
+	}
+	entries, ok := object["entries"]
+	if !ok || string(entries) == "null" {
+		return false // {} or a drifted provider envelope is not success (I2)
+	}
+	var shape []json.RawMessage
+	if json.Unmarshal(entries, &shape) != nil {
+		return false
+	}
+	return json.Unmarshal(raw, dst) == nil
+}
+
 // validateEntry enforces the schema (§6.2) and I7: the quote must be found
 // verbatim (whitespace-normalized) in a transcript message; utterance_by is
 // overridden by the actual role of the message the quote was found in, so a
 // web-page quote can never dodge taint by claiming to be the assistant.
 func validateEntry(typ, title, body, quote string, line int, uttBy string,
 	conf float64, tags []string, env *model.Env, affects []string, asks string,
-	d *adapters.Delta, surface string, now time.Time) (*model.Entry, bool) {
+	d *adapters.Delta, surface string) (*model.Entry, bool) {
 
 	var et model.EntryType
 	switch typ {
@@ -234,7 +279,7 @@ func validateEntry(typ, title, body, quote string, line int, uttBy string,
 	}
 	at := msg.At
 	if at.IsZero() {
-		at = now
+		return nil, false // source time is evidence; ingest time is not a substitute
 	}
 	e := &model.Entry{
 		ID:          ids.NewEntry(at),
@@ -363,12 +408,62 @@ func readDigest(j *journal.Journal) string {
 
 // ParkSlice saves the raw slice for later inspection (I2: parked, not lost).
 func ParkSlice(db *state.DB, a adapters.Adapter, file string, offset int64, reason string) error {
+	d, err := a.Parse(file, offset)
+	if err != nil {
+		return err
+	}
+	return parkDelta(db, a, file, offset, reason, d)
+}
+
+func ParkSliceUntil(db *state.DB, a adapters.Adapter, file string, offset, end int64, reason string) error {
+	d, err := adapters.ParseRange(a, file, offset, end)
+	if err != nil {
+		return err
+	}
+	return parkDelta(db, a, file, offset, reason, d)
+}
+
+// ParkRawRange preserves the exact adapter bytes for an unknown or broken
+// record. Rendered messages are insufficient here because the unrecognized
+// envelope is precisely the evidence needed to update the pinned parser.
+func ParkRawRange(db *state.DB, a adapters.Adapter, file string, offset, end int64, reason string) error {
+	if end <= offset {
+		return fmt.Errorf("empty raw range [%d,%d)", offset, end)
+	}
+	src, err := os.Open(file)
+	if err != nil {
+		return err
+	}
+	defer src.Close()
 	dir := filepath.Join(gitx.Home(), "parked")
 	if err := os.MkdirAll(dir, 0o755); err != nil {
 		return err
 	}
-	d, err := a.Parse(file, offset)
+	p := filepath.Join(dir, fmt.Sprintf("%d-%s.jsonl", time.Now().UnixNano(), a.ID()))
+	dst, err := os.OpenFile(p, os.O_WRONLY|os.O_CREATE|os.O_EXCL, 0o600)
 	if err != nil {
+		return err
+	}
+	_, copyErr := io.CopyN(dst, io.NewSectionReader(src, offset, end-offset), end-offset)
+	closeErr := dst.Close()
+	if copyErr != nil {
+		os.Remove(p)
+		return copyErr
+	}
+	if closeErr != nil {
+		os.Remove(p)
+		return closeErr
+	}
+	if err := db.Park(a.ID(), file, offset, reason, p); err != nil {
+		os.Remove(p)
+		return err
+	}
+	return nil
+}
+
+func parkDelta(db *state.DB, a adapters.Adapter, file string, offset int64, reason string, d *adapters.Delta) error {
+	dir := filepath.Join(gitx.Home(), "parked")
+	if err := os.MkdirAll(dir, 0o755); err != nil {
 		return err
 	}
 	raw := renderSlice(d.Messages)

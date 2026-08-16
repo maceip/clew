@@ -331,12 +331,28 @@ OpenAI-compatible endpoint. Default: the cheapest configured provider. This reus
 the user already pays for and keeps the system vendorless. Extraction prompts and schemas are
 fixed files in the repo (versioned), not templates users must tune.
 
+Provider subprocesses run from a neutral temporary directory so their own transcripts cannot
+become recursive sensor input. Custom command executables must therefore be absolute or
+PATH-resolved, and file arguments must be absolute; invalid relative paths fail loudly in status.
+
 ### 6.4 Budget (I9)
 
 Spend meter per day per machine. Rule: extraction tokens ≤ 2% of observed session tokens that
 day, with an absolute daily cap (default 200k tokens). Backfill runs only inside explicit
 `--budget` bounds. Meter shown in `status`; cap hit = extraction pauses loudly, sensors keep
 recording (nothing is lost — extraction catches up later; watermarks make this safe).
+
+The 2% ratio gates unattended **live session extraction**. Explicit one-time archaeology and
+`backfill --budget` share the absolute daily LLM cap but do not consume that ratio; backfill is
+additionally bounded by its required command-line budget. Archaeology, backfill, and optional LLM
+differ passes are metered separately. This preserves §5.3 cold start without inventing session
+observations that did not occur, while every autonomous or explicit provider call remains capped.
+
+Before every provider call, clew atomically reserves a conservative upper bound: prompt bytes,
+fixed envelope overhead, and a 16 KB output contract. Concurrent watcher/backfill calls therefore
+cannot spend the same allowance. Actual usage settles the reservation; a call that fails before
+reporting usage is charged the full reservation. A provider that violates the reserved/output
+contract is paused loudly and the overrun is recorded as a system failure before any further call.
 
 ---
 

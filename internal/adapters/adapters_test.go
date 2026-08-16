@@ -3,6 +3,7 @@ package adapters
 import (
 	"os"
 	"path/filepath"
+	"strings"
 	"testing"
 )
 
@@ -62,6 +63,17 @@ func TestClaudeAdapterPinned(t *testing.T) {
 	}
 }
 
+func TestClaudeInvalidTimestampPausesLoudly(t *testing.T) {
+	file := write(t, t.TempDir(), "bad-time.jsonl", `{"type":"user","message":{"role":"user","content":"x"},"timestamp":"not-a-time","cwd":"/w","sessionId":"s1"}`+"\n")
+	d, err := (&Claude{}).Parse(file, 0)
+	if d == nil {
+		t.Fatal("format failure lost the parkable delta")
+	}
+	if _, ok := err.(*FormatError); !ok {
+		t.Fatalf("invalid timestamp error = %T %v, want FormatError", err, err)
+	}
+}
+
 const codexFixture = `{"timestamp":"2026-08-11T18:47:09.146Z","type":"session_meta","payload":{"id":"c-1","cwd":"/w","originator":"codex-tui","cli_version":"0.128.0"}}
 {"timestamp":"2026-08-11T18:47:10.000Z","type":"response_item","payload":{"type":"message","role":"user","content":[{"type":"input_text","text":"measure the p95 please"}]}}
 {"timestamp":"2026-08-11T18:47:11.000Z","type":"response_item","payload":{"type":"reasoning","summary":[],"encrypted_content":"xxx"}}
@@ -97,6 +109,49 @@ func TestCodexAdapterPinned(t *testing.T) {
 	}
 }
 
+func TestCodexCWDReadsLargeSessionMetadata(t *testing.T) {
+	dir := t.TempDir()
+	large := `{"timestamp":"2026-08-16T17:01:37Z","type":"session_meta","payload":{"id":"c-large","cwd":"/Users/mac/restart","base_instructions":{"text":"` +
+		strings.Repeat("x", 32*1024) + `"}}}` + "\n"
+	file := write(t, dir, "rollout-large.jsonl", large)
+	if got := CodexCWD(file); got != "/Users/mac/restart" {
+		t.Fatalf("CodexCWD() = %q, want current large-metadata session cwd", got)
+	}
+}
+
+func TestCodexNonzeroTailKeepsStableSessionMetadata(t *testing.T) {
+	dir := t.TempDir()
+	file := write(t, dir, "rollout-tail.jsonl", codexFixture)
+	firstNewline := strings.IndexByte(codexFixture, '\n') + 1
+	d, err := (&Codex{}).Parse(file, int64(firstNewline))
+	if err != nil {
+		t.Fatal(err)
+	}
+	if d.SessionID != "c-1" || d.CWD != "/w" {
+		t.Fatalf("nonzero tail lost metadata: %+v", d)
+	}
+}
+
+func TestCodexMetadataErrorIsExplicit(t *testing.T) {
+	file := write(t, t.TempDir(), "rollout-bad.jsonl", "{not-json}\n")
+	if _, err := codexCWDChecked(file); err == nil {
+		t.Fatal("malformed session metadata was silently ignored")
+	}
+}
+
+func TestCodexInvalidTimestampPausesLoudly(t *testing.T) {
+	raw := `{"timestamp":"2026-08-16T12:00:00Z","type":"session_meta","payload":{"id":"c1","cwd":"/w"}}` + "\n" +
+		`{"timestamp":"invalid","type":"response_item","payload":{"type":"message","role":"user","content":[{"type":"input_text","text":"x"}]}}` + "\n"
+	file := write(t, t.TempDir(), "rollout-bad-time.jsonl", raw)
+	d, err := (&Codex{}).Parse(file, 0)
+	if d == nil {
+		t.Fatal("format failure lost the parkable delta")
+	}
+	if _, ok := err.(*FormatError); !ok {
+		t.Fatalf("invalid timestamp error = %T %v, want FormatError", err, err)
+	}
+}
+
 const cursorFixture = `{"role":"user","message":{"content":[{"type":"text","text":"<timestamp>x</timestamp>\n<user_query>\nplease add caching\n</user_query>"}]}}
 {"role":"assistant","message":{"content":[{"type":"text","text":"Adding a cache layer."},{"type":"tool_use","name":"Write","input":{"path":"/w/cache/lru.go","contents":"x"}},{"type":"tool_use","name":"Shell","input":{"command":"go build ./..."}}]}}
 {"role":"assistant","message":{"content":[{"type":"weird_block","x":1}]}}
@@ -129,6 +184,30 @@ func TestFormatBreakPausesAdapter(t *testing.T) {
 	_, err := (&Claude{}).Parse(f, 0)
 	if _, ok := err.(*FormatError); !ok {
 		t.Fatalf("want FormatError (I2: pause loudly), got %v", err)
+	}
+}
+
+func TestCompleteOffsetAndBoundedParseExcludePartialOrLiveSuffix(t *testing.T) {
+	dir := t.TempDir()
+	first := `{"type":"user","message":{"role":"user","content":"historical"},"timestamp":"2026-08-11T14:02:11Z","cwd":"/w","sessionId":"s1"}` + "\n"
+	second := `{"type":"user","message":{"role":"user","content":"live"},"timestamp":"2026-08-16T14:02:11Z","cwd":"/w","sessionId":"s1"}` + "\n"
+	file := write(t, dir, "range.jsonl", first+"partial")
+	end, err := CompleteOffset(file)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if end != int64(len(first)) {
+		t.Fatalf("CompleteOffset() = %d, want %d", end, len(first))
+	}
+	if err := os.WriteFile(file, []byte(first+second), 0o644); err != nil {
+		t.Fatal(err)
+	}
+	delta, err := ParseRange(&Claude{}, file, 0, end)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(delta.Messages) != 1 || delta.Messages[0].Text != "historical" || delta.NewOffset != end {
+		t.Fatalf("bounded parse crossed history boundary: %+v", delta)
 	}
 }
 

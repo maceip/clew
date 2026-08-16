@@ -5,7 +5,10 @@
 package state
 
 import (
+	"context"
+	"crypto/rand"
 	"database/sql"
+	"encoding/hex"
 	"fmt"
 	"os"
 	"path/filepath"
@@ -56,6 +59,11 @@ CREATE TABLE IF NOT EXISTS alerts(
   acked_at TEXT, dropped_at TEXT);
 CREATE TABLE IF NOT EXISTS budget(
   day TEXT, kind TEXT, tokens INTEGER, PRIMARY KEY(day, kind));
+CREATE TABLE IF NOT EXISTS llm_budget_reservations(
+  id TEXT PRIMARY KEY, day TEXT NOT NULL, kind TEXT NOT NULL,
+  tokens INTEGER NOT NULL CHECK(tokens >= 0), created_at TEXT NOT NULL);
+CREATE INDEX IF NOT EXISTS llm_budget_reservations_day_kind
+  ON llm_budget_reservations(day, kind);
 CREATE TABLE IF NOT EXISTS parked(
   id INTEGER PRIMARY KEY AUTOINCREMENT, adapter TEXT, file TEXT,
   offset INTEGER, reason TEXT, raw_path TEXT, at TEXT);
@@ -77,6 +85,12 @@ func (d *DB) RegisterRepo(path, remote string) error {
 	_, err := d.Exec(`INSERT INTO repos(path, remote, registered_at) VALUES(?,?,?)
 		ON CONFLICT(path) DO UPDATE SET remote=excluded.remote`, path, remote, now())
 	return err
+}
+
+func (d *DB) RepoRegistered(path string) bool {
+	var n int
+	d.QueryRow(`SELECT COUNT(*) FROM repos WHERE path=?`, path).Scan(&n)
+	return n > 0
 }
 
 func (d *DB) Repos() ([]Repo, error) {
@@ -114,9 +128,16 @@ func (d *DB) RepoFor(dir string) string {
 // ---- watermarks (§6.1: byte offset per file, persisted) ----
 
 func (d *DB) Watermark(file string) int64 {
-	var off int64
-	d.QueryRow(`SELECT offset FROM watermarks WHERE file=?`, file).Scan(&off)
+	off, _ := d.WatermarkOK(file)
 	return off
+}
+
+func (d *DB) WatermarkOK(file string) (int64, bool) {
+	var off int64
+	if err := d.QueryRow(`SELECT offset FROM watermarks WHERE file=?`, file).Scan(&off); err != nil {
+		return 0, false
+	}
+	return off, true
 }
 
 func (d *DB) SetWatermark(file, adapter, repo string, offset int64) error {
@@ -124,6 +145,48 @@ func (d *DB) SetWatermark(file, adapter, repo string, offset int64) error {
 		VALUES(?,?,?,?,?) ON CONFLICT(file) DO UPDATE SET offset=excluded.offset, updated_at=excluded.updated_at`,
 		file, adapter, repo, offset, now())
 	return err
+}
+
+// InitWatermark records a starting offset without advancing an existing
+// watermark. init uses this to make watch forward-only; explicit backfill
+// keeps its independent extract: watermark.
+func (d *DB) InitWatermark(file, adapter, repo string, offset int64) (bool, error) {
+	n, err := d.InitWatermarks(WatermarkInit{File: file, Adapter: adapter, Repo: repo, Offset: offset})
+	return n == 1, err
+}
+
+type WatermarkInit struct {
+	File, Adapter, Repo string
+	Offset              int64
+}
+
+// InitWatermarks enrolls all cursors for one session atomically. INSERT OR
+// IGNORE makes concurrent watcher/backfill enrollment choose one coherent
+// owner without moving established cursors.
+func (d *DB) InitWatermarks(inits ...WatermarkInit) (int, error) {
+	tx, err := d.Begin()
+	if err != nil {
+		return 0, err
+	}
+	defer tx.Rollback()
+	added := 0
+	stamp := now()
+	for _, init := range inits {
+		res, err := tx.Exec(`INSERT OR IGNORE INTO watermarks(file, adapter, repo_path, offset, updated_at)
+			VALUES(?,?,?,?,?)`, init.File, init.Adapter, init.Repo, init.Offset, stamp)
+		if err != nil {
+			return added, err
+		}
+		n, err := res.RowsAffected()
+		if err != nil {
+			return added, err
+		}
+		added += int(n)
+	}
+	if err := tx.Commit(); err != nil {
+		return added, err
+	}
+	return added, nil
 }
 
 // ---- sessions ----
@@ -136,7 +199,9 @@ type Session struct {
 func (d *DB) UpsertSession(s Session) error {
 	_, err := d.Exec(`INSERT INTO sessions(id, adapter, agent, file, repo_path, surface, title, ctl_sock, started_at, last_activity)
 		VALUES(?,?,?,?,?,?,?,?,?,?)
-		ON CONFLICT(id) DO UPDATE SET last_activity=excluded.last_activity,
+		ON CONFLICT(id) DO UPDATE SET
+		  started_at=CASE WHEN excluded.started_at < sessions.started_at THEN excluded.started_at ELSE sessions.started_at END,
+		  last_activity=CASE WHEN excluded.last_activity > sessions.last_activity THEN excluded.last_activity ELSE sessions.last_activity END,
 		  title=CASE WHEN excluded.title!='' THEN excluded.title ELSE sessions.title END,
 		  ctl_sock=CASE WHEN excluded.ctl_sock!='' THEN excluded.ctl_sock ELSE sessions.ctl_sock END`,
 		s.ID, s.Adapter, s.Agent, s.File, s.RepoPath, s.Surface, s.Title, s.CtlSock,
@@ -327,10 +392,257 @@ func (d *DB) MarkAlert(key, column string) error {
 
 func day() string { return time.Now().UTC().Format("2006-01-02") }
 
+// LLMBudgetLimits are checked when reserving a provider call. DailyCapTokens
+// always applies to aggregate LLM spend. LiveSessionPct is optional (zero
+// disables it) and applies only to the extraction cost center, whose spend is
+// bounded against today's observed session tokens.
+type LLMBudgetLimits struct {
+	DailyCapTokens int
+	LiveSessionPct float64
+}
+
+// LLMBudgetReservation is the durable claim a caller must settle after its
+// provider call, including on provider failure (with actualTokens=0).
+type LLMBudgetReservation struct {
+	ID, Day, Kind string
+	Tokens        int
+}
+
+// LLMBudgetLimitError is returned without creating a reservation. Limit is
+// either "daily-cap" or "live-session-ratio".
+type LLMBudgetLimitError struct {
+	Limit                      string
+	Kind                       string
+	Requested, Spent, Reserved int
+	LimitTokens, Observed      int
+	LiveSessionPct             float64
+}
+
+func (e *LLMBudgetLimitError) Error() string {
+	if e.Limit == "live-session-ratio" {
+		return fmt.Sprintf("LLM budget reservation denied: extraction spend %d + reserved %d + requested %d exceeds %.2f%% of %d observed tokens (%d)",
+			e.Spent, e.Reserved, e.Requested, e.LiveSessionPct, e.Observed, e.LimitTokens)
+	}
+	return fmt.Sprintf("LLM budget reservation denied: aggregate spend %d + reserved %d + requested %d exceeds daily cap %d",
+		e.Spent, e.Reserved, e.Requested, e.LimitTokens)
+}
+
+// LLMBudgetOverrunError is returned after settlement has committed the actual
+// spend. Callers must surface it loudly; accounting is intentionally honest.
+type LLMBudgetOverrunError struct {
+	ReservationID, Kind string
+	Reserved, Actual    int
+}
+
+func (e *LLMBudgetOverrunError) Error() string {
+	return fmt.Sprintf("LLM budget overrun: %s reservation %s reserved %d tokens but used %d; actual spend was recorded",
+		e.Kind, e.ReservationID, e.Reserved, e.Actual)
+}
+
+type LLMBudgetReservationNotFoundError struct{ ReservationID string }
+
+func (e *LLMBudgetReservationNotFoundError) Error() string {
+	return fmt.Sprintf("LLM budget reservation %s not found (already settled or unknown)", e.ReservationID)
+}
+
+// ReserveLLMBudget atomically admits an estimated provider call. BEGIN
+// IMMEDIATE serializes the read/check/insert across goroutines and processes,
+// so concurrent callers cannot each observe the same remaining capacity.
+// kind is a base cost-center name such as extraction, differ, or archaeology.
+func (d *DB) ReserveLLMBudget(kind string, estimate int, limits LLMBudgetLimits) (*LLMBudgetReservation, error) {
+	if kind == "" || kind == "spent" || kind == "observed" || strings.HasSuffix(kind, "-spent") {
+		return nil, fmt.Errorf("invalid LLM budget kind %q (use a base cost-center name)", kind)
+	}
+	if estimate < 0 {
+		return nil, fmt.Errorf("invalid LLM budget estimate %d", estimate)
+	}
+	if limits.DailyCapTokens <= 0 {
+		return nil, fmt.Errorf("invalid LLM daily cap %d", limits.DailyCapTokens)
+	}
+	if limits.LiveSessionPct < 0 {
+		return nil, fmt.Errorf("invalid live-session percentage %.2f", limits.LiveSessionPct)
+	}
+	id, err := newLLMBudgetReservationID()
+	if err != nil {
+		return nil, err
+	}
+	r := &LLMBudgetReservation{ID: id, Kind: kind, Tokens: estimate}
+	err = d.withImmediate(func(conn *sql.Conn) error {
+		r.Day = day()
+		spent, err := budgetTokensConn(conn, r.Day, "spent")
+		if err != nil {
+			return err
+		}
+		reserved, err := reservedTokensConn(conn, r.Day, "")
+		if err != nil {
+			return err
+		}
+		if spent+reserved+estimate > limits.DailyCapTokens {
+			return &LLMBudgetLimitError{
+				Limit: "daily-cap", Kind: kind, Requested: estimate,
+				Spent: spent, Reserved: reserved, LimitTokens: limits.DailyCapTokens,
+			}
+		}
+		if kind == "extraction" && limits.LiveSessionPct > 0 {
+			extractionSpent, err := budgetTokensConn(conn, r.Day, "extraction-spent")
+			if err != nil {
+				return err
+			}
+			extractionReserved, err := reservedTokensConn(conn, r.Day, "extraction")
+			if err != nil {
+				return err
+			}
+			observed, err := budgetTokensConn(conn, r.Day, "observed")
+			if err != nil {
+				return err
+			}
+			ratioCap := int(float64(observed) * limits.LiveSessionPct / 100)
+			if extractionSpent+extractionReserved+estimate > ratioCap {
+				return &LLMBudgetLimitError{
+					Limit: "live-session-ratio", Kind: kind, Requested: estimate,
+					Spent: extractionSpent, Reserved: extractionReserved,
+					LimitTokens: ratioCap, Observed: observed, LiveSessionPct: limits.LiveSessionPct,
+				}
+			}
+		}
+		_, err = conn.ExecContext(context.Background(), `INSERT INTO llm_budget_reservations(id, day, kind, tokens, created_at)
+			VALUES(?,?,?,?,?)`, r.ID, r.Day, r.Kind, r.Tokens, now())
+		return err
+	})
+	if err != nil {
+		return nil, err
+	}
+	return r, nil
+}
+
+// SettleLLMBudget atomically releases a reservation and records actual spend
+// in both the aggregate "spent" meter and the per-kind "<kind>-spent" meter.
+// If actual exceeds the reservation, accounting commits before the loud error
+// is returned.
+func (d *DB) SettleLLMBudget(reservationID string, actualTokens int) error {
+	if reservationID == "" {
+		return fmt.Errorf("empty LLM budget reservation id")
+	}
+	if actualTokens < 0 {
+		return fmt.Errorf("invalid actual LLM token count %d", actualTokens)
+	}
+	var overrun *LLMBudgetOverrunError
+	err := d.withImmediate(func(conn *sql.Conn) error {
+		var reservation LLMBudgetReservation
+		err := conn.QueryRowContext(context.Background(),
+			`SELECT id, day, kind, tokens FROM llm_budget_reservations WHERE id=?`, reservationID).
+			Scan(&reservation.ID, &reservation.Day, &reservation.Kind, &reservation.Tokens)
+		if err == sql.ErrNoRows {
+			return &LLMBudgetReservationNotFoundError{ReservationID: reservationID}
+		}
+		if err != nil {
+			return err
+		}
+		if _, err := conn.ExecContext(context.Background(),
+			`DELETE FROM llm_budget_reservations WHERE id=?`, reservationID); err != nil {
+			return err
+		}
+		if err := addBudgetTokensConn(conn, reservation.Day, "spent", actualTokens); err != nil {
+			return err
+		}
+		if err := addBudgetTokensConn(conn, reservation.Day, reservation.Kind+"-spent", actualTokens); err != nil {
+			return err
+		}
+		if actualTokens > reservation.Tokens {
+			overrun = &LLMBudgetOverrunError{
+				ReservationID: reservation.ID, Kind: reservation.Kind,
+				Reserved: reservation.Tokens, Actual: actualTokens,
+			}
+		}
+		return nil
+	})
+	if err != nil {
+		return err
+	}
+	if overrun != nil {
+		return overrun
+	}
+	return nil
+}
+
+func newLLMBudgetReservationID() (string, error) {
+	var raw [16]byte
+	if _, err := rand.Read(raw[:]); err != nil {
+		return "", fmt.Errorf("create LLM budget reservation id: %w", err)
+	}
+	return hex.EncodeToString(raw[:]), nil
+}
+
+// withImmediate is a small SQLite transaction primitive for budget admission
+// and settlement. A deferred transaction would allow two readers to see the
+// same capacity before either becomes the writer.
+func (d *DB) withImmediate(fn func(*sql.Conn) error) (err error) {
+	ctx := context.Background()
+	conn, err := d.Conn(ctx)
+	if err != nil {
+		return err
+	}
+	defer conn.Close()
+	if _, err = conn.ExecContext(ctx, "BEGIN IMMEDIATE"); err != nil {
+		return err
+	}
+	committed := false
+	defer func() {
+		if !committed {
+			_, _ = conn.ExecContext(ctx, "ROLLBACK")
+		}
+	}()
+	if err = fn(conn); err != nil {
+		return err
+	}
+	if _, err = conn.ExecContext(ctx, "COMMIT"); err != nil {
+		return err
+	}
+	committed = true
+	return nil
+}
+
+func budgetTokensConn(conn *sql.Conn, budgetDay, kind string) (int, error) {
+	var tokens int
+	err := conn.QueryRowContext(context.Background(),
+		`SELECT COALESCE((SELECT tokens FROM budget WHERE day=? AND kind=?), 0)`, budgetDay, kind).Scan(&tokens)
+	return tokens, err
+}
+
+func reservedTokensConn(conn *sql.Conn, budgetDay, kind string) (int, error) {
+	var tokens int
+	query := `SELECT COALESCE(SUM(tokens), 0) FROM llm_budget_reservations WHERE day=?`
+	args := []any{budgetDay}
+	if kind != "" {
+		query += ` AND kind=?`
+		args = append(args, kind)
+	}
+	err := conn.QueryRowContext(context.Background(), query, args...).Scan(&tokens)
+	return tokens, err
+}
+
+func addBudgetTokensConn(conn *sql.Conn, budgetDay, kind string, n int) error {
+	_, err := conn.ExecContext(context.Background(), `INSERT INTO budget(day, kind, tokens) VALUES(?,?,?)
+		ON CONFLICT(day, kind) DO UPDATE SET tokens = tokens + excluded.tokens`, budgetDay, kind, n)
+	return err
+}
+
 func (d *DB) AddTokens(kind string, n int) error {
 	_, err := d.Exec(`INSERT INTO budget(day, kind, tokens) VALUES(?,?,?)
 		ON CONFLICT(day, kind) DO UPDATE SET tokens = tokens + excluded.tokens`, day(), kind, n)
 	return err
+}
+
+// RecordSpend preserves the aggregate I9 meter while also making each LLM
+// cost center independently measurable during dogfood.
+func (d *DB) RecordSpend(kind string, n int) error {
+	return d.withImmediate(func(conn *sql.Conn) error {
+		budgetDay := day()
+		if err := addBudgetTokensConn(conn, budgetDay, "spent", n); err != nil {
+			return err
+		}
+		return addBudgetTokensConn(conn, budgetDay, kind+"-spent", n)
+	})
 }
 
 func (d *DB) TokensToday(kind string) int {
@@ -383,6 +695,28 @@ func (d *DB) Set(k, v string) error {
 
 func (d *DB) Incr(k string) {
 	d.Exec(`INSERT INTO kv(k, v) VALUES(?, '1') ON CONFLICT(k) DO UPDATE SET v = CAST(CAST(v AS INTEGER)+1 AS TEXT)`, k)
+}
+
+type KVPair struct {
+	Key, Value string
+}
+
+// KVPrefix returns non-empty machine degradations in stable key order. Status
+// uses this instead of requiring operators to inspect state.db directly (I2).
+func (d *DB) KVPrefix(prefix string) []KVPair {
+	rows, err := d.Query(`SELECT k, v FROM kv WHERE k LIKE ? AND v != '' ORDER BY k`, prefix+"%")
+	if err != nil {
+		return nil
+	}
+	defer rows.Close()
+	var out []KVPair
+	for rows.Next() {
+		var p KVPair
+		if rows.Scan(&p.Key, &p.Value) == nil {
+			out = append(out, p)
+		}
+	}
+	return out
 }
 
 func boolInt(b bool) int {

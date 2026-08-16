@@ -147,6 +147,12 @@ func statusRepo(a *app, repo string) error {
 	if v := a.db.Get("overfire:" + repo); v != "" {
 		fmt.Printf("!! %s\n", v)
 	}
+	if v := a.db.Get("push-error:" + repo); v != "" {
+		fmt.Printf("!! push: %s\n", clipStr(v, 120))
+	}
+	if v := a.db.Get("differ-error:" + repo); v != "" {
+		fmt.Printf("!! differ: %s\n", clipStr(v, 120))
+	}
 	if len(j.LoadErrors) > 0 {
 		fmt.Printf("!! %d journal file(s) failed to parse (never guessed): %s\n", len(j.LoadErrors), firstN(j.LoadErrors, 2))
 	}
@@ -157,11 +163,46 @@ func statusMachine(a *app) error {
 	fmt.Println("\n── machine ──")
 	p, note := a.provider()
 	observed, spent := a.db.TokensToday("observed"), a.db.TokensToday("spent")
+	extractionSpent := a.db.TokensToday("extraction-spent")
 	pctBudget := int(a.cfg.Extractor.SessionPct / 100 * float64(observed))
-	fmt.Printf("extraction: %s · spent %s of min(%s [2%% rule], %s [daily cap]) · observed %s today\n",
-		providerName(p, note), kTok(spent), kTok(pctBudget), kTok(a.cfg.Extractor.DailyCapTokens), kTok(observed))
+	fmt.Printf("session extraction: %s · spent %s of %s (2%% rule) · observed %s today\n",
+		providerName(p, note), kTok(extractionSpent), kTok(pctBudget), kTok(observed))
+	fmt.Printf("all LLM: spent %s of %s daily cap · backfill %s · archaeology %s · differ %s\n",
+		kTok(spent), kTok(a.cfg.Extractor.DailyCapTokens), kTok(a.db.TokensToday("backfill-spent")),
+		kTok(a.db.TokensToday("archaeology-spent")), kTok(a.db.TokensToday("differ-spent")))
 	if v := a.db.Get("extract-paused"); v != "" {
 		fmt.Printf("!! extraction paused: %s\n", v)
+	}
+	if v := a.db.Get("differ-paused"); v != "" {
+		fmt.Printf("!! LLM differ paused: %s\n", v)
+	}
+	if v := a.db.Get("migration-note"); v != "" {
+		fmt.Printf("!! cursor migration: %s\n", clipStr(v, 120))
+	}
+	if v := a.db.Get("watch-provider-error"); v != "" {
+		fmt.Printf("!! watcher provider unavailable: %s\n", clipStr(v, 120))
+	}
+	statusKVIssues(a, "extract-error:", "extraction")
+	statusKVIssues(a, "llm-error:", "LLM")
+	statusKVIssues(a, "llm-disabled:", "LLM disabled")
+	statusKVIssues(a, "adapter-error:", "adapter")
+	statusKVIssues(a, "adapter-paused:", "adapter paused")
+	statusKVIssues(a, "unknown:", "unknown format count")
+	discoveryIssues := adapters.CodexDiscoveryIssues()
+	for i, issue := range discoveryIssues {
+		if i >= 2 {
+			fmt.Printf("!! %d more codex discovery error(s)\n", len(discoveryIssues)-2)
+			break
+		}
+		fmt.Printf("!! codex discovery: %s\n", clipStr(issue, 120))
+	}
+	wrapIssues := adapters.WrapDiscoveryIssues()
+	for i, issue := range wrapIssues {
+		if i >= 2 {
+			fmt.Printf("!! %d more wrap discovery error(s)\n", len(wrapIssues)-2)
+			break
+		}
+		fmt.Printf("!! wrap discovery: %s\n", clipStr(issue, 120))
 	}
 	if n := a.db.ParkedCount(); n > 0 {
 		fmt.Printf("!! %d parked slice(s) awaiting a smarter parser: %s\n", n, strings.Join(a.db.ParkedRecent(2), "; "))
@@ -175,6 +216,18 @@ func statusMachine(a *app) error {
 	// Cloud-session honesty (§11): visible gap, never a silent one.
 	fmt.Println("cloud sessions (claude web / codex cloud): no sensor in v1 — those sessions are a visible gap here")
 	return nil
+}
+
+func statusKVIssues(a *app, prefix, label string) {
+	issues := a.db.KVPrefix(prefix)
+	for i, issue := range issues {
+		if i >= 2 {
+			fmt.Printf("!! %d more %s issue(s)\n", len(issues)-2, label)
+			break
+		}
+		key := strings.TrimPrefix(issue.Key, prefix)
+		fmt.Printf("!! %s %s: %s\n", label, clipStr(key, 48), clipStr(issue.Value, 100))
+	}
 }
 
 func kTok(n int) string {

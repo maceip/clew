@@ -107,6 +107,90 @@ func TestRunParksOnSchemaFailure(t *testing.T) {
 	}
 }
 
+func TestRunParksOnEmptyOrDriftedJSONEnvelope(t *testing.T) {
+	for _, response := range []string{`{}`, `{"result":"{\"entries\":[]}"}`, `{"entries":null}`} {
+		t.Run(response, func(t *testing.T) {
+			j, _ := journal.Load(t.TempDir())
+			p := &stub{out: response}
+			a, f := mkSession(t)
+			out, err := Run(j, p, a, f, 0, "s", time.Now())
+			if err != nil {
+				t.Fatal(err)
+			}
+			if !out.Parked || out.NewOffset != 0 || p.calls != 2 {
+				t.Fatalf("drifted envelope accepted: %+v calls=%d", out, p.calls)
+			}
+		})
+	}
+}
+
+func TestRunUntilStopsAtEnrollmentBoundary(t *testing.T) {
+	j, _ := journal.Load(t.TempDir())
+	a, file := mkSession(t)
+	firstEnd := int64(len(sessionFixture[:indexOf(sessionFixture, "\n")+1]))
+	out, err := RunUntil(j, &stub{out: `{"entries":[]}`, tokens: 10}, a, file, 0, firstEnd, "s", time.Now())
+	if err != nil {
+		t.Fatal(err)
+	}
+	if out.NewOffset != firstEnd {
+		t.Fatalf("RunUntil advanced to %d, want boundary %d", out.NewOffset, firstEnd)
+	}
+}
+
+func TestParkSliceUntilExcludesLiveSuffix(t *testing.T) {
+	t.Setenv("CLEW_HOME", t.TempDir())
+	db, err := state.Open(filepath.Join(t.TempDir(), "state.db"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer db.Close()
+	a, file := mkSession(t)
+	firstEnd := int64(indexOf(sessionFixture, "\n") + 1)
+	if err := ParkSliceUntil(db, a, file, 0, firstEnd, "fixture"); err != nil {
+		t.Fatal(err)
+	}
+	var rawPath string
+	if err := db.QueryRow(`SELECT raw_path FROM parked LIMIT 1`).Scan(&rawPath); err != nil {
+		t.Fatal(err)
+	}
+	raw, err := os.ReadFile(rawPath)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if contains(string(raw), "p95 = 340ms") {
+		t.Fatalf("parked history crossed into live suffix: %s", raw)
+	}
+}
+
+func TestParkRawRangePreservesUnknownEnvelopeExactly(t *testing.T) {
+	t.Setenv("CLEW_HOME", t.TempDir())
+	db, err := state.Open(filepath.Join(t.TempDir(), "state.db"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer db.Close()
+	raw := []byte("{\"type\":\"future-envelope\",\"opaque\":true}\nknown-live-suffix\n")
+	file := filepath.Join(t.TempDir(), "session.jsonl")
+	if err := os.WriteFile(file, raw, 0o600); err != nil {
+		t.Fatal(err)
+	}
+	end := int64(indexOf(string(raw), "\n") + 1)
+	if err := ParkRawRange(db, &adapters.Claude{}, file, 0, end, "unknown fixture"); err != nil {
+		t.Fatal(err)
+	}
+	var rawPath string
+	if err := db.QueryRow(`SELECT raw_path FROM parked LIMIT 1`).Scan(&rawPath); err != nil {
+		t.Fatal(err)
+	}
+	got, err := os.ReadFile(rawPath)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if string(got) != string(raw[:end]) {
+		t.Fatalf("parked raw = %q, want %q", got, raw[:end])
+	}
+}
+
 func TestSecretScrubbedBeforeWrite(t *testing.T) {
 	j, _ := journal.Load(t.TempDir())
 	fx := `{"type":"user","message":{"role":"user","content":"the deploy key is AKIAIOSFODNN7EXAMPLE keep it safe"},"timestamp":"2026-08-11T14:02:11Z","sessionId":"s1","cwd":"/w"}` + "\n"
@@ -145,6 +229,7 @@ func TestBudgetGate(t *testing.T) {
 	cfg := config.Default()
 	db.AddTokens("observed", 100_000)
 	db.AddTokens("spent", 1_000)
+	db.AddTokens("extraction-spent", 1_000)
 	if ok, _ := Gate(db, cfg, 500); !ok {
 		t.Error("1500 < 2% of 100k: should pass")
 	}
@@ -157,6 +242,22 @@ func TestBudgetGate(t *testing.T) {
 	db.AddTokens("spent", 198_000)
 	if ok, _ := Gate(db, cfg, 5_000); ok {
 		t.Error("absolute daily cap must hold even with huge observed volume")
+	}
+}
+
+func TestDailyGateAllowsColdStartArchaeologyWithoutSessionDenominator(t *testing.T) {
+	db, err := state.Open(filepath.Join(t.TempDir(), "s.db"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer db.Close()
+	cfg := config.Default()
+	if ok, reason := GateDaily(db, cfg, 27_100); !ok {
+		t.Fatalf("cold-start archaeology rejected without observed sessions: %s", reason)
+	}
+	db.AddTokens("spent", cfg.Extractor.DailyCapTokens-100)
+	if ok, _ := GateDaily(db, cfg, 101); ok {
+		t.Fatal("daily LLM cap did not stop archaeology/differ")
 	}
 }
 

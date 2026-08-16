@@ -9,10 +9,12 @@ import (
 	"strings"
 	"time"
 
+	"clew/internal/adapters"
 	"clew/internal/archaeology"
 	"clew/internal/config"
 	"clew/internal/gitx"
 	"clew/internal/manifest"
+	"clew/internal/state"
 )
 
 // snippet is the one-time install (I1: installation, not discipline; §8.1).
@@ -48,10 +50,16 @@ func cmdInit(args []string) error {
 	defer a.close()
 
 	remote := gitx.RemoteName(root)
-	if err := a.db.RegisterRepo(root, remote); err != nil {
-		return err
+	baselined := 0
+	if !a.db.RepoRegistered(root) {
+		baselined, err = baselineSessionFiles(a.db, root, adapters.All())
+		if err != nil {
+			return err
+		}
 	}
-	fmt.Printf("registered %s (remote: %s)\n", root, orNone(remote))
+	if baselined > 0 {
+		fmt.Printf("baselined %d existing session file(s); `clew backfill` imports history explicitly\n", baselined)
+	}
 
 	// Bootstrap journal branch (checks remote for an existing one first, §4).
 	wt, err := gitx.EnsureJournal(root)
@@ -96,6 +104,9 @@ func cmdInit(args []string) error {
 	// Archaeology (§5.3): mechanical always; LLM distillation when available.
 	if !*noArch {
 		p, note := a.provider()
+		if p != nil {
+			p = newBudgetedProvider(p, a.db, a.cfg, "archaeology", false, 0)
+		}
 		if p == nil {
 			fmt.Printf("archaeology: %s\n", note)
 		}
@@ -103,7 +114,6 @@ func cmdInit(args []string) error {
 		if err != nil {
 			return err
 		}
-		a.db.AddTokens("spent", res.Tokens)
 		fmt.Printf("archaeology: %d entries seeded (confidence ≤ 0.6; confirm to make absence-eligible)\n", res.Added)
 		for _, s := range res.Skipped {
 			fmt.Printf("  skipped: %s\n", s)
@@ -115,9 +125,41 @@ func cmdInit(args []string) error {
 	} else if len(res.Notes) > 0 {
 		fmt.Println("sync:", strings.Join(res.Notes, "; "))
 	}
+	// Make the repo watcher-visible only after branch bootstrap, snippets,
+	// archaeology, and the first sync are complete. watch is installed before
+	// init in zero-homework dogfood, so early registration races EnsureJournal.
+	if err := a.db.RegisterRepo(root, remote); err != nil {
+		return err
+	}
+	fmt.Printf("registered %s (remote: %s)\n", root, orNone(remote))
 	fmt.Println("\ndone. next: `clew watch install` (or run `clew watch` in a terminal),")
 	fmt.Println("then `clew status` for the glance. Agents will read .clew/context.md.")
 	return nil
+}
+
+func baselineSessionFiles(db *state.DB, repo string, all []adapters.Adapter) (int, error) {
+	baselined := 0
+	for _, adapter := range all {
+		for _, file := range adapter.Discover(repo) {
+			offset, err := adapters.CompleteOffset(file)
+			if err != nil {
+				return baselined, fmt.Errorf("baseline %s: %w", file, err)
+			}
+			added, err := db.InitWatermarks(
+				state.WatermarkInit{File: "tail:" + file, Adapter: adapter.ID(), Repo: repo, Offset: offset},
+				state.WatermarkInit{File: "extract:" + file, Adapter: adapter.ID(), Repo: repo, Offset: offset},
+				state.WatermarkInit{File: "history-end:" + file, Adapter: adapter.ID(), Repo: repo, Offset: offset},
+				state.WatermarkInit{File: "backfill:" + file, Adapter: adapter.ID(), Repo: repo, Offset: 0},
+			)
+			if err != nil {
+				return baselined, err
+			}
+			if added > 0 {
+				baselined++
+			}
+		}
+	}
+	return baselined, nil
 }
 
 func ensureSnippet(path string) (bool, error) {

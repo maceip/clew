@@ -10,6 +10,7 @@ import (
 	"net/http"
 	"os"
 	"os/exec"
+	"path/filepath"
 	"strings"
 	"time"
 
@@ -43,6 +44,9 @@ func Pick(cfg *config.Config) (Provider, string) {
 		if len(ex.Command) == 0 {
 			return nil, "extractor provider=command but no command configured"
 		}
+		if err := validateNeutralCommand(ex.Command); err != nil {
+			return nil, err.Error()
+		}
 		return &cmdProvider{argv: ex.Command}, ""
 	default: // auto
 		if p, _ := claudeIfPresent(ex); p != nil {
@@ -56,6 +60,18 @@ func Pick(cfg *config.Config) (Provider, string) {
 		}
 		return nil, "no extraction provider available (claude/codex not in PATH, no " + ex.OpenAIKeyEnv + ")"
 	}
+}
+
+func validateNeutralCommand(argv []string) error {
+	if strings.ContainsRune(argv[0], os.PathSeparator) && !filepath.IsAbs(argv[0]) {
+		return fmt.Errorf("extractor command executable %q must be absolute or PATH-resolved (provider calls run from a neutral directory)", argv[0])
+	}
+	for _, arg := range argv[1:] {
+		if strings.HasPrefix(arg, "./") || strings.HasPrefix(arg, "../") {
+			return fmt.Errorf("extractor command argument %q must be absolute (provider calls run from a neutral directory)", arg)
+		}
+	}
+	return nil
 }
 
 func claudeIfPresent(ex config.Extractor) (Provider, string) {
@@ -92,6 +108,10 @@ const callTimeout = 5 * time.Minute
 
 func runArgv(argv []string, stdin string) (string, error) {
 	cmd := exec.Command(argv[0], argv[1:]...)
+	// Provider CLIs often persist their own transcript keyed by cwd. Keep
+	// extraction calls outside every registered project so the watcher cannot
+	// observe and recursively extract its own prompts.
+	cmd.Dir = os.TempDir()
 	cmd.Stdin = strings.NewReader(stdin)
 	var out, errb bytes.Buffer
 	cmd.Stdout = &out
@@ -135,22 +155,28 @@ func (c *claudeCLI) Call(prompt string) (*Result, error) {
 	if err != nil {
 		return nil, err
 	}
+	return decodeClaudeResult(prompt, out), nil
+}
+
+func decodeClaudeResult(prompt, out string) *Result {
 	var env struct {
 		Result string `json:"result"`
 		Usage  struct {
-			Input  int `json:"input_tokens"`
-			Output int `json:"output_tokens"`
+			Input         int `json:"input_tokens"`
+			Output        int `json:"output_tokens"`
+			CacheCreation int `json:"cache_creation_input_tokens"`
+			CacheRead     int `json:"cache_read_input_tokens"`
 		} `json:"usage"`
 	}
 	if err := json.Unmarshal([]byte(out), &env); err != nil || env.Result == "" {
 		// Envelope drift: fall back to raw output, estimated tokens.
-		return &Result{Text: out, Tokens: (len(prompt) + len(out)) / 4}, nil
+		return &Result{Text: out, Tokens: (len(prompt) + len(out)) / 4}
 	}
-	tok := env.Usage.Input + env.Usage.Output
+	tok := env.Usage.Input + env.Usage.Output + env.Usage.CacheCreation + env.Usage.CacheRead
 	if tok == 0 {
 		tok = (len(prompt) + len(env.Result)) / 4
 	}
-	return &Result{Text: env.Result, Tokens: tok}, nil
+	return &Result{Text: env.Result, Tokens: tok}
 }
 
 // ---- codex exec ----
