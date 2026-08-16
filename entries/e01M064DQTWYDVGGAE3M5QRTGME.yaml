@@ -1,0 +1,16 @@
+id: e01M064DQTWYDVGGAE3M5QRTGME
+type: decision
+title: Re-evaluate the current tree instead of carrying the prior gate verdict forward
+body: The prior gate's three blockers were judged the right pressure points, but the checkout has since gained new code and tests for reservation callers and neutral-workdir behavior. The gate will therefore re-evaluate the present tree, including untracked test files, rather than reusing the earlier verdict.
+quote: 'The earlier gate’s three blockers are the right pressure points, but the checkout has moved: reservation callers and the neutral-workdir behavior now have new code and tests. I’m re-evaluating the present tree, including untracked test files, instead of carrying that verdict forward.'
+utterance_by: assistant
+source:
+    kind: session
+    ref: codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T16-32-36-01a00c46-b7d2-7e30-8a57-955c5a957888.jsonl#L35
+    agent: codex
+    surface: macs-MacBook-Pro
+    at: 2026-08-16T20:32:46.428Z
+confidence: 0.9
+tags: []
+env: null
+affects: []
