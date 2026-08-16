@@ -1,6 +1,6 @@
 # Journal
 
-_generated 2026-08-16 09:27 UTC · 7 live entries (1 decisions · 5 findings · 1 questions · 0 intents) · 9 total in history_
+_generated 2026-08-16 17:03 UTC · 8 live entries (1 decisions · 6 findings · 1 questions · 0 intents) · 10 total in history_
 
 ## Decisions
 
@@ -13,12 +13,19 @@ _source: human cli:note · confidence: 1.00_
 
 ## Findings
 
-### e01M04YAQN85TF6YQDP33VB4JQ0 — placeholder for write-path finding  `current`
-> placeholder for write-path finding
+### e01M05REDJZAERAWRQG7349E7Y1 — Live fidelity gate passed on iteration 1  `current`
+> Live fidelity gate iteration 1: P=0.91; R=0.83; decisions=6/7; findings=4/5; rejected=0; provider=claude; PASS.
 
-placeholder for write-path finding
+Live fidelity gate iteration 1: P=0.91; R=0.83; decisions=6/7; findings=4/5; rejected=0; provider=claude; PASS.
 
 _source: human cli:note · confidence: 1.00_
+
+### e01M04YAQN85TF6YQDP33VB4JQ0 — Foreign agents can read the journal but not write; contribution path unbuilt  `current`
+> so if you cant even push to the public clew directory does that mean our first real test failed?
+
+cursor[bot] was denied push to maceip/clew — correct posture: journal write = repo write, else anyone could poison context.md (§6.5 amplifier). But there is no sanctioned path for non-credentialed contributors; tonight's delivery was a hand-rolled bundle. Options: document fork-PR onto clew/journal, or a `clew import <bundle>` verb landing entries pending human confirm.
+
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15 · confidence: 1.00_
 
 ### e01M04XVPW5H5JCPS92CFQ4EBY3 — Independent verify: clean clone green; differ/poller/manifest lack unit tests  `current`
 > --- PASS: TestAcceptance1_AbsenceDetection / TestAcceptance2_ExtractionFidelityPipeline / TestAcceptance3_RestartRoundTrip; SKIP: TestAcceptance2_RealProvider

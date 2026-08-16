@@ -1,5 +1,6 @@
 # Journal digest (live entries: id · type/status · title)
-- e01M04YAQN85TF6YQDP33VB4JQ0 finding/current placeholder for write-path finding
+- e01M05REDJZAERAWRQG7349E7Y1 finding/current Live fidelity gate passed on iteration 1
+- e01M04YAQN85TF6YQDP33VB4JQ0 finding/current Foreign agents can read the journal but not write; contribution path unbuilt
 - e01M04XVQEEZ38J9TC5NZNKC16B question/open Run the live fidelity gate (RealProvider) on a machine with provider keys
 - e01M04XVPW5H5JCPS92CFQ4EBY3 finding/current Independent verify: clean clone green; differ/poller/manifest lack unit tests
 - e01M04XVP9QBE041XCK43C78BVP finding/current Decision-dense sessions live on uncovered surfaces; manual notes = homework
