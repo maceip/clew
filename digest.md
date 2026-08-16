@@ -1,4 +1,5 @@
 # Journal digest (live entries: id · type/status · title)
+- e01M05TPA9ZK4C8RGC3KBPV2MRF intent/proposed Re-run the live gate: install binary, normalize spend category, restart watcher
 - e01M05TG628KAGZ9HCBQSAG562P decision/active Separate session-extraction budget from one-time archaeology budget
 - e01M05TCM2N1P9P2EQSE8YKVQX3 finding/current Push failure paths unchecked: unset endpoint returns success, HTTP errors ignor…
 - e01M05TBYJXEW5N5FE398NJ4RD7 intent/in_flight Tighten live-enrollment/backfill boundary and add failure telemetry
