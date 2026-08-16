@@ -1,10 +1,10 @@
 # Journal
 
-_generated 2026-08-16 22:39 UTC · 53 live entries (14 decisions · 26 findings · 1 questions · 12 intents) · 71 total in history_
+_generated 2026-08-16 22:40 UTC · 53 live entries (14 decisions · 26 findings · 1 questions · 12 intents) · 71 total in history_
 
 ## DECIDED
 
-- `e01M068ECYE067WF6BH7F26VC3D` Cursor v1 stays CLI-only: desktop 0 vs CLI 44 in 7d — 56m · active
+- `e01M068ECYE067WF6BH7F26VC3D` Cursor v1 stays CLI-only: desktop 0 vs CLI 44 in 7d — 57m · active
 - `e01M064DQTWYDVGGAE3M5QRTGME` Re-evaluate the current tree instead of carrying the prior gate verdict forward — 2h · active
 - `e01M05V5HWA6TFT0A0KDZY8S45K` Confine the cap/ratio admission fix to internal/state; no caller or spec changes — 4h · active
 - `e01M05V0G3Q9F41V62P6T44TC04` Cursor migration must be monotonic — never rewind an existing cursor — 4h · active
