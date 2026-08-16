@@ -1,6 +1,6 @@
 # Journal
 
-_generated 2026-08-16 21:32 UTC · 50 live entries (13 decisions · 24 findings · 1 questions · 12 intents) · 68 total in history_
+_generated 2026-08-16 21:33 UTC · 50 live entries (13 decisions · 24 findings · 1 questions · 12 intents) · 68 total in history_
 
 ## DECIDED
 
@@ -18,8 +18,8 @@ _generated 2026-08-16 21:32 UTC · 50 live entries (13 decisions · 24 findings 
 - `e01M067AZ3VJM73XP82REZEZ1QC` Task 4 channel: ntfy 2383c10c…, card creation only — 9m · current
 - `e01M066XWD8F1SAWQ8HVXGW4J4Z` Task 3 docket gate: 8→1, FYI 0, withdrawal 1 poll — 16m · current
 - `e01M065G8RTKVH6466KE7GQREGX` Task 2 passes its live gate on all five acceptance checks — 41m · current
-- `e01M064YRS4S9NK7KW9NQ1JMDV2` Malformed or missing pinned timestamps silently fall back to ingest time — 50m · suspect
-- `e01M064YRS4S9NK7KW9NN351FQF` I9: Claude settlement ignores cache token fields, letting spend exceed caps — 50m · suspect
+- `e01M064YRS4S9NK7KW9NQ1JMDV2` Malformed or missing pinned timestamps silently fall back to ingest time — 51m · suspect
+- `e01M064YRS4S9NK7KW9NN351FQF` I9: Claude settlement ignores cache token fields, letting spend exceed caps — 51m · suspect
 - `e01M064K88F7SDMHA1SPAB51HK7` D2 final: 52 automatic entries; live extraction 0.631% — 57m · current
 
 ## OPEN
@@ -33,8 +33,8 @@ _None._
 - possible-contradiction `e01M05SA72DPRGNTY7GCQ2RASTP` Cards show verbatim quotes + clickable provenance, never extractor paraphrase — 4h
 - possible-contradiction `e01M05SA72DPRGNTY7GD0TGHEX7` Scope freeze: relay, TUI, team mode, adapters need a §11 trigger measurement — 4h
 - suspect `e01M05SPB2EMMC4F4PR0BDQA8S5` First watch treated historical sessions as live: 342 overlaps, 27 stomps, 12.9M… — 4h
-- suspect `e01M05T4XG0RJWQTP25SYT4FH0B` Task 2 not passable: `spent` conflates extraction, differ, and archaeology — 3h
-- suspect `e01M05T4XG0RJWQTP25T1K58B61` Confirm/reject only in event YAML; adapter unknowns undated, absent from status — 3h
+- suspect `e01M05T4XG0RJWQTP25SYT4FH0B` Task 2 not passable: `spent` conflates extraction, differ, and archaeology — 4h
+- suspect `e01M05T4XG0RJWQTP25T1K58B61` Confirm/reject only in event YAML; adapter unknowns undated, absent from status — 4h
 
 ## Intent × reality
 
