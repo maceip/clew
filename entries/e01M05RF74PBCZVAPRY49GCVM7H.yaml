@@ -1,0 +1,16 @@
+id: e01M05RF74PBCZVAPRY49GCVM7H
+type: finding
+title: 'answer: Run the live fidelity gate (RealProvider) on a machine with provider ke…'
+body: P=.91 R=.83; D=6/7 F=4/5; reject=0; claude; iter=1; PASS
+quote: P=.91 R=.83; D=6/7 F=4/5; reject=0; claude; iter=1; PASS
+utterance_by: user
+source:
+    kind: human
+    ref: inbox:answer:e01M04XVQEEZ38J9TC5NZNKC16B
+    surface: macs-MacBook-Pro
+    at: 2026-08-16T17:03:51.958265Z
+confidence: 1
+tags:
+    - acceptance/**
+env: null
+affects: []
