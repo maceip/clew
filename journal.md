@@ -1,6 +1,6 @@
 # Journal
 
-_generated 2026-08-16 09:17 UTC · 2 live entries (1 decisions · 1 findings · 0 questions · 0 intents) · 3 total in history_
+_generated 2026-08-16 09:17 UTC · 3 live entries (1 decisions · 2 findings · 0 questions · 0 intents) · 4 total in history_
 
 ## Decisions
 
@@ -12,6 +12,13 @@ Name = clew (owner). Alternatives considered: restart — verb collision, names 
 _source: human cli:note · confidence: 1.00_
 
 ## Findings
+
+### e01M04XS4RN9Z26XEE0CNHX8AT5 — --help  `current`
+> --help
+
+--help
+
+_source: human cli:note · confidence: 1.00_
 
 ### e01M04TDKJ79MEGBWTCSD8HTE5M — Lock-and-notary pitches fail for any team whose job isn't security — not just …  `current`
 > Lock-and-notary pitches fail for any team whose job isn't security — not just solo devs. Evidence framing must lead with anti-forgetting/throughput, never audit.
