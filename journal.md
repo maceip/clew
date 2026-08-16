@@ -4,7 +4,7 @@ _generated 2026-08-16 21:23 UTC · 49 live entries (13 decisions · 23 findings 
 
 ## DECIDED
 
-- `e01M064DQTWYDVGGAE3M5QRTGME` Re-evaluate the current tree instead of carrying the prior gate verdict forward — 50m · active
+- `e01M064DQTWYDVGGAE3M5QRTGME` Re-evaluate the current tree instead of carrying the prior gate verdict forward — 51m · active
 - `e01M05V5HWA6TFT0A0KDZY8S45K` Confine the cap/ratio admission fix to internal/state; no caller or spec changes — 3h · active
 - `e01M05V0G3Q9F41V62P6T44TC04` Cursor migration must be monotonic — never rewind an existing cursor — 3h · active
 - `e01M05TG628KAGZ9HCBQSAG562P` Separate session-extraction budget from one-time archaeology budget — 3h · active
@@ -19,7 +19,7 @@ _generated 2026-08-16 21:23 UTC · 49 live entries (13 decisions · 23 findings 
 - `e01M065G8RTKVH6466KE7GQREGX` Task 2 passes its live gate on all five acceptance checks — 32m · current
 - `e01M064YRS4S9NK7KW9NQ1JMDV2` Malformed or missing pinned timestamps silently fall back to ingest time — 41m · suspect
 - `e01M064YRS4S9NK7KW9NN351FQF` I9: Claude settlement ignores cache token fields, letting spend exceed caps — 41m · suspect
-- `e01M064K88F7SDMHA1SPAB51HK7` D2 final: 52 automatic entries; live extraction 0.631% — 47m · current
+- `e01M064K88F7SDMHA1SPAB51HK7` D2 final: 52 automatic entries; live extraction 0.631% — 48m · current
 - `e01M0640H4ZAR0BQMS73R8QW9E7` Repaired watcher installed as launchd agent dev.clew.watch — 58m · current
 
 ## OPEN
@@ -42,7 +42,7 @@ _None._
 |---|---:|---:|---|
 | `e01M065G8RTKVH6466KEB0FRJ8N` Commit the gate fixes as one spec-amended change, then start the docket | 32m | 1 evidence | in_flight |
 | `e01M064DHNTXFM29PNWCW0VBBF2` Run a strict read-only gate proving each acceptance point with tests or state q… | 51m | 3 evidence | in_flight |
-| `e01M0642VRXV9PCGA4NDJF92E2Y` Wire atomic budget reservations into every LLM call | 56m | 5 evidence | in_flight |
+| `e01M0642VRXV9PCGA4NDJF92E2Y` Wire atomic budget reservations into every LLM call | 57m | 5 evidence | in_flight |
 | `e01M05VFAW9A783PMZZEER0G6FX` Second pass on rollover, double-settlement, migration; then run wider suite | 3h | 4 evidence | in_flight |
 | `e01M05V5HWA6TFT0A0KDY1QV6C0` Add transactional reservation + settlement accounting in internal/state with co… | 3h | 9 evidence | in_flight |
 | `e01M05V0G3Q9F41V62P6R5QV53G` Fix migration monotonicity, restore from D1 boundary, rerun cycle before passin… | 3h | 3 evidence | in_flight |
