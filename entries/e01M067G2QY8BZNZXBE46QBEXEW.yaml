@@ -1,0 +1,15 @@
+id: e01M067G2QY8BZNZXBE46QBEXEW
+type: finding
+title: 'Task 4 gate: 10ms, HTML 30s, ntfy 5/5'
+body: bare-clew=10ms x5; dashboard-sections=5; html-refresh=30s; title-light=nonempty-only; ntfy-delivered=5; payload-valid=5/5; full=pass; race=pass; vet=pass.
+quote: bare-clew=10ms x5; dashboard-sections=5; html-refresh=30s; title-light=nonempty-only; ntfy-delivered=5; payload-valid=5/5; full=pass; race=pass; vet=pass.
+utterance_by: user
+source:
+    kind: human
+    ref: cli:note
+    surface: macs-MacBook-Pro
+    at: 2026-08-16T21:26:28.862743Z
+confidence: 1
+tags: []
+env: null
+affects: []
