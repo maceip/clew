@@ -1,0 +1,15 @@
+id: e01M069MQYJX6QVW3YCWWTAWV34
+type: finding
+title: --help
+body: --help
+quote: --help
+utterance_by: user
+source:
+    kind: human
+    ref: cli:note
+    surface: cursor
+    at: 2026-08-16T22:03:58.802665362Z
+confidence: 1
+tags: []
+env: null
+affects: []
