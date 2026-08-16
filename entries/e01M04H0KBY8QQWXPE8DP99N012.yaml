@@ -1,0 +1,16 @@
+id: e01M04H0KBY8QQWXPE8DP99N012
+type: decision
+title: Name the system restart
+body: the app name is restart; the spec placeholder stratura was renamed per spec section 12.1
+quote: the app name is restart; the spec placeholder stratura was renamed per spec section 12.1
+utterance_by: user
+source:
+    kind: human
+    ref: cli:note
+    surface: macs-MacBook-Pro
+    at: 2026-08-16T05:34:18.4941Z
+confidence: 1
+tags:
+    - cmd/**
+env: null
+affects: []
