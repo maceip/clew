@@ -14,7 +14,7 @@ _generated 2026-08-16 22:42 UTC · 53 live entries (14 decisions · 26 findings 
 
 ## LEARNED
 
-- `e01M068FQH1ND9MM1WH851AF45M` Task 6 gate: flags 0 writes; algebra, poller, manifest pass — 58m · current
+- `e01M068FQH1ND9MM1WH851AF45M` Task 6 gate: flags 0 writes; algebra, poller, manifest pass — 59m · current
 - `e01M06821D53QYHBJS1FEC2CK7G` Task 5 gate: 3 formats, 1 card, confirm boundary pass — 1h · current
 - `e01M067G2QY8BZNZXBE46QBEXEW` Task 4 gate: 10ms, HTML 30s, ntfy 5/5 — 1h · current
 - `e01M067AZ3VJM73XP82REZEZ1QC` Task 4 channel: ntfy 2383c10c…, card creation only — 1h · current
@@ -46,7 +46,7 @@ _None._
 | `e01M05VFAW9A783PMZZEER0G6FX` Second pass on rollover, double-settlement, migration; then run wider suite | 4h | 4 evidence | in_flight |
 | `e01M05V5HWA6TFT0A0KDY1QV6C0` Add transactional reservation + settlement accounting in internal/state with co… | 4h | 9 evidence | in_flight |
 | `e01M05V0G3Q9F41V62P6R5QV53G` Fix migration monotonicity, restore from D1 boundary, rerun cycle before passin… | 4h | 3 evidence | in_flight |
-| `e01M05TPA9ZK4C8RGC3KBPV2MRF` Re-run the live gate: install binary, normalize spend category, restart watcher | 4h | 3 evidence | in_flight |
+| `e01M05TPA9ZK4C8RGC3KBPV2MRF` Re-run the live gate: install binary, normalize spend category, restart watcher | 5h | 3 evidence | in_flight |
 
 ## Decisions
 
