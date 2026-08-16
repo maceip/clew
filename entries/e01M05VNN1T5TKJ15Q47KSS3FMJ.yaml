@@ -1,0 +1,18 @@
+id: e01M05VNN1T5TKJ15Q47KSS3FMJ
+type: finding
+title: Cap/ratio admission serialized with SQLite BEGIN IMMEDIATE; typed reservation e…
+body: 'The LLM reservation/settlement accounting in internal/state landed as atomic operations: concurrent daily-cap and extraction-ratio admission checks are serialized using SQLite `BEGIN IMMEDIATE` transactions, and the API surfaces typed errors for limit, overrun, and duplicate settlement. Implementation stayed inside internal/state with no caller or spec edits.'
+quote: Concurrent daily-cap and extraction-ratio admission is serialized via SQLite `BEGIN IMMEDIATE`.
+utterance_by: assistant
+source:
+    kind: session
+    ref: codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-08-34-01a00b8b-ed93-7352-8324-f0366dc281a0.jsonl#L319
+    agent: codex
+    surface: macs-MacBook-Pro
+    at: 2026-08-16T17:59:48.538Z
+confidence: 0.91
+tags:
+    - internal/state/**
+env: null
+affects:
+    - internal/state/**
