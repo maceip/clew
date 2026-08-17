@@ -28,10 +28,10 @@ _None._
 
 ## ALERTS
 
-- possible-contradiction `e01M05SA72DPRGNTY7GCN1P7CED` Rename the inbox surface to "docket"; keep inbox as hidden alias — 16h
-- possible-contradiction `e01M05SA72DPRGNTY7GCPEX9W2N` I10–I12 added as hard invariants enforced in code and tests — 16h
-- possible-contradiction `e01M05SA72DPRGNTY7GCQ2RASTP` Cards show verbatim quotes + clickable provenance, never extractor paraphrase — 16h
-- possible-contradiction `e01M05SA72DPRGNTY7GD0TGHEX7` Scope freeze: relay, TUI, team mode, adapters need a §11 trigger measurement — 16h
+- possible-contradiction `e01M05SA72DPRGNTY7GCN1P7CED` Rename the inbox surface to "docket"; keep inbox as hidden alias — 17h
+- possible-contradiction `e01M05SA72DPRGNTY7GCPEX9W2N` I10–I12 added as hard invariants enforced in code and tests — 17h
+- possible-contradiction `e01M05SA72DPRGNTY7GCQ2RASTP` Cards show verbatim quotes + clickable provenance, never extractor paraphrase — 17h
+- possible-contradiction `e01M05SA72DPRGNTY7GD0TGHEX7` Scope freeze: relay, TUI, team mode, adapters need a §11 trigger measurement — 17h
 - suspect `e01M05SPB2EMMC4F4PR0BDQA8S5` First watch treated historical sessions as live: 342 overlaps, 27 stomps, 12.9M… — 16h
 - suspect `e01M05T4XG0RJWQTP25SYT4FH0B` Task 2 not passable: `spent` conflates extraction, differ, and archaeology — 16h
 - suspect `e01M05T4XG0RJWQTP25T1K58B61` Confirm/reject only in event YAML; adapter unknowns undated, absent from status — 16h
