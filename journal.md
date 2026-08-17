@@ -1,6 +1,6 @@
 # Journal
 
-_generated 2026-08-17 08:36 UTC · 53 live entries (14 decisions · 26 findings · 1 questions · 12 intents) · 71 total in history_
+_generated 2026-08-17 08:37 UTC · 53 live entries (14 decisions · 26 findings · 1 questions · 12 intents) · 71 total in history_
 
 ## DECIDED
 
@@ -9,7 +9,7 @@ _generated 2026-08-17 08:36 UTC · 53 live entries (14 decisions · 26 findings 
 - `e01M05V5HWA6TFT0A0KDZY8S45K` Confine the cap/ratio admission fix to internal/state; no caller or spec changes — 14h · active
 - `e01M05V0G3Q9F41V62P6T44TC04` Cursor migration must be monotonic — never rewind an existing cursor — 14h · active
 - `e01M05TG628KAGZ9HCBQSAG562P` Separate session-extraction budget from one-time archaeology budget — 14h · active
-- `e01M05TBYJXEW5N5FE397XYMEHY` Treat first dogfood run's cursor/push/adapter failures as required failure sign… — 14h · active
+- `e01M05TBYJXEW5N5FE397XYMEHY` Treat first dogfood run's cursor/push/adapter failures as required failure sign… — 15h · active
 - `e01M05SVGK1Q2MR34Y3CMHR7DXM` No cursor translation: keep `extract:` for live, add bounded `backfill:` for hi… — 15h · active
 
 ## LEARNED
