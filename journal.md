@@ -46,7 +46,7 @@ _None._
 | `e01M05VFAW9A783PMZZEER0G6FX` Second pass on rollover, double-settlement, migration; then run wider suite | 6h | 4 evidence | in_flight |
 | `e01M05V5HWA6TFT0A0KDY1QV6C0` Add transactional reservation + settlement accounting in internal/state with co… | 6h | 9 evidence | in_flight |
 | `e01M05V0G3Q9F41V62P6R5QV53G` Fix migration monotonicity, restore from D1 boundary, rerun cycle before passin… | 6h | 3 evidence | in_flight |
-| `e01M05TPA9ZK4C8RGC3KBPV2MRF` Re-run the live gate: install binary, normalize spend category, restart watcher | 6h | 3 evidence | in_flight |
+| `e01M05TPA9ZK4C8RGC3KBPV2MRF` Re-run the live gate: install binary, normalize spend category, restart watcher | 7h | 3 evidence | in_flight |
 
 ## Decisions
 
