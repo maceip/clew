@@ -8,7 +8,7 @@ _generated 2026-08-17 13:39 UTC · 53 live entries (14 decisions · 26 findings 
 - `e01M064DQTWYDVGGAE3M5QRTGME` Re-evaluate the current tree instead of carrying the prior gate verdict forward — 17h · active
 - `e01M05V5HWA6TFT0A0KDZY8S45K` Confine the cap/ratio admission fix to internal/state; no caller or spec changes — 19h · active
 - `e01M05V0G3Q9F41V62P6T44TC04` Cursor migration must be monotonic — never rewind an existing cursor — 19h · active
-- `e01M05TG628KAGZ9HCBQSAG562P` Separate session-extraction budget from one-time archaeology budget — 19h · active
+- `e01M05TG628KAGZ9HCBQSAG562P` Separate session-extraction budget from one-time archaeology budget — 20h · active
 - `e01M05TBYJXEW5N5FE397XYMEHY` Treat first dogfood run's cursor/push/adapter failures as required failure sign… — 20h · active
 - `e01M05SVGK1Q2MR34Y3CMHR7DXM` No cursor translation: keep `extract:` for live, add bounded `backfill:` for hi… — 20h · active
 
