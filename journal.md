@@ -1,6 +1,6 @@
 # Journal
 
-_generated 2026-08-17 14:35 UTC · 53 live entries (14 decisions · 26 findings · 1 questions · 12 intents) · 71 total in history_
+_generated 2026-08-17 14:36 UTC · 53 live entries (14 decisions · 26 findings · 1 questions · 12 intents) · 71 total in history_
 
 ## DECIDED
 
@@ -15,7 +15,7 @@ _generated 2026-08-17 14:35 UTC · 53 live entries (14 decisions · 26 findings 
 ## LEARNED
 
 - `e01M068FQH1ND9MM1WH851AF45M` Task 6 gate: flags 0 writes; algebra, poller, manifest pass — 16h · current
-- `e01M06821D53QYHBJS1FEC2CK7G` Task 5 gate: 3 formats, 1 card, confirm boundary pass — 16h · current
+- `e01M06821D53QYHBJS1FEC2CK7G` Task 5 gate: 3 formats, 1 card, confirm boundary pass — 17h · current
 - `e01M067G2QY8BZNZXBE46QBEXEW` Task 4 gate: 10ms, HTML 30s, ntfy 5/5 — 17h · current
 - `e01M067AZ3VJM73XP82REZEZ1QC` Task 4 channel: ntfy 2383c10c…, card creation only — 17h · current
 - `e01M066XWD8F1SAWQ8HVXGW4J4Z` Task 3 docket gate: 8→1, FYI 0, withdrawal 1 poll — 17h · current
