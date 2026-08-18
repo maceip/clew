@@ -1,6 +1,6 @@
 # Journal
 
-_generated 2026-08-18 15:48 UTC · 63 live entries (18 decisions · 31 findings · 1 questions · 13 intents) · 81 total in history_
+_generated 2026-08-18 15:48 UTC · 66 live entries (19 decisions · 32 findings · 1 questions · 14 intents) · 84 total in history_
 
 ## DECIDED
 
@@ -9,8 +9,8 @@ _generated 2026-08-18 15:48 UTC · 63 live entries (18 decisions · 31 findings 
 - `e01M0AQHSRF4DVDYZ989MTZQV7E` SEED.md is watcher-maintained continuously, never generated on demand — 24m · possible-contradiction
 - `e01M0AQHSRF4DVDYZ989M4DVHYX` Lineage inheritance is explicit; only promoted laws auto-carry — 24m · possible-contradiction
 - `e01M068ECYE067WF6BH7F26VC3D` Cursor v1 stays CLI-only: desktop 0 vs CLI 44 in 7d — 1d · active
+- `e01M065T92NXY1ER6R73YCQNH84` Recover docket empty-state and withdrawal wording from Task 3 journal source — 1d · possible-contradiction
 - `e01M064DQTWYDVGGAE3M5QRTGME` Re-evaluate the current tree instead of carrying the prior gate verdict forward — 1d · active
-- `e01M05V5HWA6TFT0A0KDZY8S45K` Confine the cap/ratio admission fix to internal/state; no caller or spec changes — 1d · active
 
 ## LEARNED
 
@@ -32,21 +32,21 @@ _None._
 - possible-contradiction `e01M05SA72DPRGNTY7GCPEX9W2N` I10–I12 added as hard invariants enforced in code and tests — 1d
 - possible-contradiction `e01M05SA72DPRGNTY7GCQ2RASTP` Cards show verbatim quotes + clickable provenance, never extractor paraphrase — 1d
 - possible-contradiction `e01M05SA72DPRGNTY7GD0TGHEX7` Scope freeze: relay, TUI, team mode, adapters need a §11 trigger measurement — 1d
+- possible-contradiction `e01M065T92NXY1ER6R73YCQNH84` Recover docket empty-state and withdrawal wording from Task 3 journal source — 1d
 - possible-contradiction `e01M0AQHSRF4DVDYZ989M4DVHYX` Lineage inheritance is explicit; only promoted laws auto-carry — 24m
 - possible-contradiction `e01M0AQHSRF4DVDYZ989MTZQV7E` SEED.md is watcher-maintained continuously, never generated on demand — 24m
-- possible-contradiction `e01M0AQHSRF4DVDYZ989W6K185N` Owner laws live in an owner-scope journal with a ≤1KB injection budget — 24m
 
 ## Intent × reality
 
 | Intent | Age | Reality | State |
 |---|---:|---:|---|
 | `e01M0AQHSRF4DVDYZ989PVHGA7R` Birth detection: auto-init a new repo with owner laws only | 24m | 1 evidence | in_flight |
+| `e01M0664DX5WAZ01J6KJBCZP4QC` Add contract tests for docket invariants and failure modes | 1d | 0 evidence | proposed |
 | `e01M065G8RTKVH6466KEB0FRJ8N` Commit the gate fixes as one spec-amended change, then start the docket | 1d | 1 evidence | in_flight |
 | `e01M064DHNTXFM29PNWCW0VBBF2` Run a strict read-only gate proving each acceptance point with tests or state q… | 1d | 3 evidence | in_flight |
 | `e01M0642VRXV9PCGA4NDJF92E2Y` Wire atomic budget reservations into every LLM call | 1d | 5 evidence | in_flight |
 | `e01M05VFAW9A783PMZZEER0G6FX` Second pass on rollover, double-settlement, migration; then run wider suite | 1d | 4 evidence | in_flight |
 | `e01M05V5HWA6TFT0A0KDY1QV6C0` Add transactional reservation + settlement accounting in internal/state with co… | 1d | 9 evidence | in_flight |
-| `e01M05V0G3Q9F41V62P6R5QV53G` Fix migration monotonicity, restore from D1 boundary, rerun cycle before passin… | 1d | 3 evidence | in_flight |
 
 ## Decisions
 
@@ -84,6 +84,13 @@ _source: session codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T
 window=7d; state.vscdb=402391040 bytes; composer-headers=31; desktop-created=0; desktop-updated=0; latest=2026-08-09T07:19:30Z; cursor-cli=44 transcripts; cli-bytes=10338802; project-slugs=8. Decision: CLI-only v1; desktop remains loud gap; adapter trigger=not met.
 
 _source: human cli:note · confidence: 1.00_
+
+### e01M065T92NXY1ER6R73YCQNH84 — Recover docket empty-state and withdrawal wording from Task 3 journal source  `possible-contradiction`
+> The generated journal contains the Task 3 source pointer and the fixed card decisions. I’m using that exact source to recover the missing empty-state wording and withdrawal semantics before locking the package API.
+
+Rather than re-deriving the card semantics, the generated journal's Task 3 source pointer and fixed card decisions are used as the authoritative source to recover the missing empty-state wording and withdrawal semantics before the package API is locked.
+
+_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T16-56-09-01a00c5c-48cc-7850-8fe0-e14bc4f7cc79.jsonl#L75 · confidence: 0.80 · tags: docket/** · pairs-with: e01M05SA72DPRGNTY7GCN1P7CED, e01M05SA72DPRGNTY7GCPEX9W2N, e01M05SA72DPRGNTY7GCQ2RASTP_
 
 ### e01M064DQTWYDVGGAE3M5QRTGME — Re-evaluate the current tree instead of carrying the prior gate verdict forward  `active`
 > The earlier gate’s three blockers are the right pressure points, but the checkout has moved: reservation callers and the neutral-workdir behavior now have new code and tests. I’m re-evaluating the present tree, including untracked test files, instead of carrying that verdict forward.
@@ -146,21 +153,21 @@ _source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T
 
 Decision cards must render verbatim quotes with clickable provenance chips (session line / commit / entry) and must never show the extractor's paraphrase, summary, or reasoning. Reason: system-generated explanations are advocacy and increase acceptance of wrong content, while clickable sources reduce over-reliance. One "accepting this assumes: X" line is allowed on high-magnitude cards only; no o…
 
-_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-18-36-01a00b95-1c07-7d61-a3e4-fb76948ee1b9.jsonl#L9 · confidence: 0.92 · tags: docket/** · pairs-with: e01M05SA72DPRGNTY7GCN1P7CED, e01M05SA72DPRGNTY7GCPEX9W2N_
+_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-18-36-01a00b95-1c07-7d61-a3e4-fb76948ee1b9.jsonl#L9 · confidence: 0.92 · tags: docket/** · pairs-with: e01M05SA72DPRGNTY7GCN1P7CED, e01M05SA72DPRGNTY7GCPEX9W2N, e01M065T92NXY1ER6R73YCQNH84_
 
 ### e01M05SA72DPRGNTY7GCPEX9W2N — I10–I12 added as hard invariants enforced in code and tests  `possible-contradiction`
 > Add these three as I10–I12, hard law, enforced in code and tests, not convention:
 
 Three new spec invariants, ranking as hard law rather than convention: I10 docket holds only items answerable by 1–3 discrete verbs (nothing FYI-shaped); I11 every card carries a machine-checkable, printed withdrawal condition and the docket keeps no history/counts/badges; I12 hard cap of seven cards, and sustained volume or an unneeded push is logged as system failure, never user workload.
 
-_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-18-36-01a00b95-1c07-7d61-a3e4-fb76948ee1b9.jsonl#L9 · confidence: 0.93 · tags: JOURNAL_SPEC.md, docket/** · evidence: 5 · pairs-with: e01M05SA72DPRGNTY7GCN1P7CED, e01M05SA72DPRGNTY7GCQ2RASTP, e01M05SA72DPRGNTY7GD0TGHEX7_
+_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-18-36-01a00b95-1c07-7d61-a3e4-fb76948ee1b9.jsonl#L9 · confidence: 0.93 · tags: JOURNAL_SPEC.md, docket/** · evidence: 5 · pairs-with: e01M05SA72DPRGNTY7GCN1P7CED, e01M05SA72DPRGNTY7GCQ2RASTP, e01M05SA72DPRGNTY7GD0TGHEX7, e01M065T92NXY1ER6R73YCQNH84_
 
 ### e01M05SA72DPRGNTY7GCN1P7CED — Rename the inbox surface to "docket"; keep inbox as hidden alias  `possible-contradiction`
 > Rename the surface — vocabulary is a forcing function against email-drift. It's a docket of decision cards (clew docket, with inbox as a hidden alias for muscle memory).
 
 The decision surface is renamed inbox → docket, with "inbox" kept only as a hidden alias for muscle memory. Reason: vocabulary is a forcing function against email-drift — an inbox invites FYI accumulation, unread counts, and backlog; a docket is a list of items awaiting a ruling. The docket is the only surface that carries verbs.
 
-_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-18-36-01a00b95-1c07-7d61-a3e4-fb76948ee1b9.jsonl#L9 · confidence: 0.94 · tags: docket/**, inbox/** · pairs-with: e01M05SA72DPRGNTY7GCPEX9W2N, e01M05SA72DPRGNTY7GCQ2RASTP_
+_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-18-36-01a00b95-1c07-7d61-a3e4-fb76948ee1b9.jsonl#L9 · confidence: 0.94 · tags: docket/**, inbox/** · pairs-with: e01M05SA72DPRGNTY7GCPEX9W2N, e01M05SA72DPRGNTY7GCQ2RASTP, e01M065T92NXY1ER6R73YCQNH84_
 
 ### e01M05RHSWXDNR10P1PY8ERYA9S — Dogfood metrics predeclared; D0 snapshot recorded  `active`
 > Dogfood D0 2026-08-16: repos=3; spend=spent/observed, caps=2%,200000/d; confirm:reject=C:R; push precision=needed/total, unneeded=failure; adapter incidents=paused+parked+unknown-format. D0 spend=0/0; C:R=0:1; push=0/0; incidents=0.
@@ -247,6 +254,13 @@ _source: human cli:note · confidence: 1.00_
 cards=8; render=1 overflow-failure; cap=7; synthetic-FYI-rendered=0; resolved-stomp-withdrawal=1 poll; pushes=0/0; full=pass; race=pass; vet=pass.
 
 _source: human cli:note · confidence: 1.00_
+
+### e01M0660RW03A1VSC6ENMH9M2J7 — Parallel agent task killed by gpt-5.6-sol TPM rate limit  `current`
+> stream disconnected before completion: Rate limit reached for gpt-5.6-sol in organization ‹redacted› on tokens per min (TPM): Limit 500000, Used 397298, Requested 204717.
+
+The task2_final agent errored with "stream disconnected before completion" due to an OpenAI org-level tokens-per-minute limit for gpt-5.6-sol: limit 500000, used 397298, requested 204717. Running several agents concurrently can exceed the TPM ceiling and drop in-flight work.
+
+_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T16-56-09-01a00c5c-48cc-7850-8fe0-e14bc4f7cc79.jsonl#L160 · confidence: 0.85 · taint: tool_result_
 
 ### e01M065G8RTKVH6466KE7GQREGX — Task 2 passes its live gate on all five acceptance checks  `current`
 > Task 2 now passes its live gate: 52 automatic session entries, 0 delivered/unneeded pushes, monotonic cursors, exact installed binary, and no active adapter/LLM errors.
@@ -412,6 +426,13 @@ _source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15 · confide
 Build auto-init so that a fresh git init plus an agent session on a watched machine sets up watch, journal branch, and context.md carrying only the owner's laws — no lore and no birth card required. Acceptance test: `mkdir x && git init && claude` yields a context containing the owner's laws with zero clew commands typed.
 
 _source: session codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-24-00-01a01578-e6db-7833-9ab2-0457569af643.jsonl#L9 · confidence: 0.93 · tags: .clew/** · evidence: 1_
+
+### e01M0664DX5WAZ01J6KJBCZP4QC — Add contract tests for docket invariants and failure modes  `proposed`
+> The core package now compiles. I’m adding contract tests around the three hard invariants plus the less visible failure modes: no paraphrase leakage, stale withdrawal, timer ordering, high-magnitude assumptions, exact provenance, event-bound defer, and empty/overflow rendering.
+
+With the core package compiling, the plan is to write contract tests covering three hard invariants plus less visible failure modes: no paraphrase leakage, stale withdrawal, timer ordering, high-magnitude assumptions, exact provenance, event-bound defer, and empty/overflow rendering.
+
+_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T16-56-09-01a00c5c-48cc-7850-8fe0-e14bc4f7cc79.jsonl#L218 · confidence: 0.88 · tags: docket/**_
 
 ### e01M065G8RTKVH6466KEB0FRJ8N — Commit the gate fixes as one spec-amended change, then start the docket  `in_flight`
 > I’m committing the gate fixes as one spec-amended change, then moving to the docket.

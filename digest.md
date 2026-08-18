@@ -15,6 +15,9 @@
 - e01M067G2QY8BZNZXBE46QBEXEW finding/current Task 4 gate: 10ms, HTML 30s, ntfy 5/5
 - e01M067AZ3VJM73XP82REZEZ1QC finding/current Task 4 channel: ntfy 2383c10c…, card creation only
 - e01M066XWD8F1SAWQ8HVXGW4J4Z finding/current Task 3 docket gate: 8→1, FYI 0, withdrawal 1 poll
+- e01M0664DX5WAZ01J6KJBCZP4QC intent/proposed Add contract tests for docket invariants and failure modes
+- e01M0660RW03A1VSC6ENMH9M2J7 finding/current Parallel agent task killed by gpt-5.6-sol TPM rate limit
+- e01M065T92NXY1ER6R73YCQNH84 decision/possible-contradiction Recover docket empty-state and withdrawal wording from Task 3 journal source
 - e01M065G8RTKVH6466KEB0FRJ8N intent/in_flight Commit the gate fixes as one spec-amended change, then start the docket
 - e01M065G8RTKVH6466KE7GQREGX finding/current Task 2 passes its live gate on all five acceptance checks
 - e01M064YRS4S9NK7KW9NQ1JMDV2 finding/suspect Malformed or missing pinned timestamps silently fall back to ingest time
@@ -32,7 +35,4 @@
 - e01M05V0G3Q9F41V62P6R5QV53G intent/in_flight Fix migration monotonicity, restore from D1 boundary, rerun cycle before passin…
 - e01M05TX51R4VZHJMNM804YPMRT finding/current D1: 30 automatic entries; Codex metadata incident pinned
 - e01M05TPA9ZK4C8RGC3KBPV2MRF intent/in_flight Re-run the live gate: install binary, normalize spend category, restart watcher
-- e01M05TG628KAGZ9HCBQSAG562P decision/active Separate session-extraction budget from one-time archaeology budget
-- e01M05TBYJXEW5N5FE398NJ4RD7 intent/in_flight Tighten live-enrollment/backfill boundary and add failure telemetry
-- e01M05TBYJXEW5N5FE397XYMEHY decision/active Treat first dogfood run's cursor/push/adapter failures as required failure sign…
-… (63 more omitted for size)
+… (66 more omitted for size)
