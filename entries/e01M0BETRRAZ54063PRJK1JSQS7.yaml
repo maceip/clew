@@ -1,0 +1,17 @@
+id: e01M0BETRRAZ54063PRJK1JSQS7
+type: decision
+title: 'The finish message is a surface: what exists, where it lives, my next move'
+body: >-
+  Owner correction: codex signed off in builder frame (Nothing was pushed. No real apply...) — accurate, meaningless to the human, and alarming: didn't-push read as failure. Rule: the closing utterance speaks the human frame in plain words — what exists now, whether it is safely shared or local-only, what the human can say next — then shows the two screens. Compliance detail lives behind explain.
+quote: 'when i read that my first thought is: "ok it didnt push anything so thats not good", then i dont know what the rest of it means'
+utterance_by: user
+source:
+    kind: session
+    ref: chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18
+    agent: cursor-cloud-agent
+    surface: cursor-cloud-vm
+    at: 2026-08-18T22:10:00Z
+confidence: 1
+tags: []
+env: null
+affects: []
