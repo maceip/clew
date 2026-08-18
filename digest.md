@@ -1,4 +1,5 @@
 # Journal digest (live entries: id · type/status · title)
+- e01M0BEYP65CE70G0VVSX3PV01B decision/active Finished means shared: work ends pushed or PR'd; local-only is an alarm
 - e01M0BETRRAZ54063PRJK1JSQS7 decision/active The finish message is a surface: what exists, where it lives, my next move
 - e01M0BER1Q5W312NDD7GZ283RCM question/open Cap the two screens at 7+7; overflow policy is an open question
 - e01M0BER1Q412DRFQYESPCN0Q30 decision/active Lines are plain speech, no ids; near-duplicates fold; held items rest
@@ -32,5 +33,4 @@
 - e01M0ASQGKZ9ZY4XRF6K7KRCT75 question/open Adopt clew witness <transcript> as the cloud-session gap fix?
 - e01M0ASQGKX2F9THW496N79Z83F question/open Approve selfwatch + journal add + owner-laws relocation to a git-reachable repo
 - e01M0ASQGKVW3RPZ2M51J3WQ9G9 question/open Approve cloud env recipes: install clew + wire MCP in cursor/codex/claude envs
-- e01M0ASQGKRQBVSGHP3RCYNWYEG question/open Approve extractor over-firing tune: rollup >32KB and docket hit 8 cards
-… (113 more omitted for size)
+… (114 more omitted for size)

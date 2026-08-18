@@ -1,16 +1,16 @@
 # Journal
 
-_generated 2026-08-18 22:12 UTC · 113 live entries (44 decisions · 40 findings · 9 questions · 20 intents) · 133 total in history_
+_generated 2026-08-18 22:13 UTC · 114 live entries (45 decisions · 40 findings · 9 questions · 20 intents) · 134 total in history_
 
 ## DECIDED
 
-- `e01M0BETRRAZ54063PRJK1JSQS7` The finish message is a surface: what exists, where it lives, my next move — 2m · active
-- `e01M0BER1Q412DRFQYESPCN0Q30` Lines are plain speech, no ids; near-duplicates fold; held items rest — 4m · active
-- `e01M0BEM04PAZ85R5YNRM2Y31Z6` Broken states carry their verb: no unactionable warnings for humans — 8m · active
+- `e01M0BEYP65CE70G0VVSX3PV01B` Finished means shared: work ends pushed or PR'd; local-only is an alarm — 2m · active
+- `e01M0BETRRAZ54063PRJK1JSQS7` The finish message is a surface: what exists, where it lives, my next move — 3m · active
+- `e01M0BER1Q412DRFQYESPCN0Q30` Lines are plain speech, no ids; near-duplicates fold; held items rest — 5m · active
+- `e01M0BEM04PAZ85R5YNRM2Y31Z6` Broken states carry their verb: no unactionable warnings for humans — 9m · active
 - `e01M0AZDDYC49Y1741H7W74Y1QY` Second tab: the intent gap — everything intended, not yet real — 4h · active
 - `e01M0AZ7JBPJRNHFJQC6WEEQB9Y` Silence is the signal: an absent merge means truly nothing new — 4h · active
 - `e01M0AZ4BGF1VC0VSXA05VYVEQ3` Explain is live: the attending agent reads the entry and explains — 4h · active
-- `e01M0AZ0K17AA5D9P7KZDSPJQSY` Merge lines must pass the amnesia test; verbs are apply/explain/defer — 4h · active
 
 ## LEARNED
 
@@ -24,7 +24,7 @@ _generated 2026-08-18 22:12 UTC · 113 live entries (44 decisions · 40 findings
 
 ## OPEN
 
-- `e01M0BER1Q5W312NDD7GZ283RCM` Cap the two screens at 7+7; overflow policy is an open question — 4m · open ★
+- `e01M0BER1Q5W312NDD7GZ283RCM` Cap the two screens at 7+7; overflow policy is an open question — 5m · open ★
 - `e01M0AY97K0AZHNJW0D87KTD7YH` Two-grade telling: block dependent tasks on unresolved drift? — 4h · open ★
 - `e01M0ASQGM2P07Z36KVZX6P8EH4` Adopt the complexity law: additions must be a verb, label, rendering, or config — 6h · open ★
 - `e01M0ASQGKZ9ZY4XRF6K7KRCT75` Adopt clew witness <transcript> as the cloud-session gap fix? — 6h · open ★
@@ -55,6 +55,13 @@ _generated 2026-08-18 22:12 UTC · 113 live entries (44 decisions · 40 findings
 | `e01M0AQHSRF4DVDYZ989PVHGA7R` Birth detection: auto-init a new repo with owner laws only | 6h | 1 evidence | in_flight |
 
 ## Decisions
+
+### e01M0BEYP65CE70G0VVSX3PV01B — Finished means shared: work ends pushed or PR'd; local-only is an alarm  `active`
+> why do i need to tell it to push? with all the journals and dockets and intents and knowledge that should never be the case?
+
+Owner ruling closing the push gap: a task is not finished until the work is shared per repo convention — pushed to the branch or opened as a PR. Committed-but-local is an alarm state the finish message must name, never a resting state. Root cause on record: this norm lived in behavior and was never spoken, so the memory had nothing to inject; said once here, it reaches every agent forever.
+
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00_
 
 ### e01M0BETRRAZ54063PRJK1JSQS7 — The finish message is a surface: what exists, where it lives, my next move  `active`
 > when i read that my first thought is: "ok it didnt push anything so thats not good", then i dont know what the rest of it means
