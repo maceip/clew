@@ -1,0 +1,12 @@
+id: v01M0BER1JG15ZMPFYZFA6VFEQJ
+kind: evidence
+entry: e01M05SA72DPRGNTY7GCXARNKYH
+payload:
+    kind: commit
+    note: 'journal: plain-speech/no-ids ruling, 7+7 cap question, spoken-verbs interim note'
+    ref: 03453909c924fbd7d3d893642b3510654adc105a
+    via: subject-match
+by:
+    who: differ
+    surface: macs-MacBook-Pro
+at: 2026-08-18T22:09:22Z

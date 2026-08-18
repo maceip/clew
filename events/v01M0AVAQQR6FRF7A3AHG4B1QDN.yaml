@@ -1,0 +1,12 @@
+id: v01M0AVAQQR6FRF7A3AHG4B1QDN
+kind: evidence
+entry: e01M0ASQGK4FMKRNCNR91KJ06JD
+payload:
+    kind: commit
+    note: 'journal: owner ruling — restart-with-mutation is the flagship workflow'
+    ref: 6d3b4f597e5e143524c95e04320266fba797679f
+    via: subject-match
+by:
+    who: differ
+    surface: macs-MacBook-Pro
+at: 2026-08-18T16:30:03Z

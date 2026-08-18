@@ -1,0 +1,12 @@
+id: v01M0AXFHWGPXC1GDX69PKNJ9JA
+kind: evidence
+entry: e01M0AXCM561K3C5QXAVGVGT46T
+payload:
+    kind: commit
+    note: 'journal: vendor-neutral freshness ruling + hook survey findings + ladder intent + vocabulary-reduction ruling'
+    ref: cbfc0a87bef5ce45bb8c0e7b223faef0e19bbe29
+    via: subject-match
+by:
+    who: differ
+    surface: macs-MacBook-Pro
+at: 2026-08-18T17:07:38Z

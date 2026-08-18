@@ -1,0 +1,12 @@
+id: v01M0ASQWS8HS624DNQAERGH52G
+kind: evidence
+entry: e01M068ECYE067WF6BH7F26VC3D
+payload:
+    kind: commit
+    note: 'journal: full session record — 3 ratified decisions, 8 findings, 6 ruling questions + raw 788-message transcript (secrets scrubbed)'
+    ref: 20e0d82b9ad522cfa410fcfbf8a3e538aa7ae0e0
+    via: subject-match
+by:
+    who: differ
+    surface: macs-MacBook-Pro
+at: 2026-08-18T16:02:17Z

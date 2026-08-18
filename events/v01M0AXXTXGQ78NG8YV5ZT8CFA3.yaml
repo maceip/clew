@@ -1,0 +1,12 @@
+id: v01M0AXXTXGQ78NG8YV5ZT8CFA3
+kind: evidence
+entry: e01M0AXXKMNNKKY721HJ3REN3KH
+payload:
+    kind: commit
+    note: 'journal: contact-point freshness ruling'
+    ref: a83f0f04e011322aaa7801e563896243c74ec670
+    via: subject-match
+by:
+    who: differ
+    surface: macs-MacBook-Pro
+at: 2026-08-18T17:15:26Z

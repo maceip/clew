@@ -1,0 +1,12 @@
+id: v01M0BFY0DGTZDK68V0F02X5J9C
+kind: evidence
+entry: e01M0BFY164YEV6DAEFVGGH18VT
+payload:
+    kind: commit
+    note: 'journal: lag-never-deaf limiter ruling'
+    ref: 71bed05e27fcd9a52546a52882559cc84a250326
+    via: subject-match
+by:
+    who: differ
+    surface: macs-MacBook-Pro
+at: 2026-08-18T22:30:06Z

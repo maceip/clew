@@ -1,0 +1,12 @@
+id: v01M0AZS3D0R9F6JDW9DHTH62WJ
+kind: evidence
+entry: e01M0AZN6HJETV241AK5RSBDHNR
+payload:
+    kind: commit
+    note: 'journal: restart tab hard half — what not to carry'
+    ref: b9b17a6c6be36e3a76f1dd2a7de7f2d039ec84c8
+    via: subject-match
+by:
+    who: differ
+    surface: macs-MacBook-Pro
+at: 2026-08-18T17:47:48Z

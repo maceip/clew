@@ -1,0 +1,12 @@
+id: v01M0BEYNFR7B7XHM8Z8XTCCPRB
+kind: evidence
+entry: e01M0BEYP65CE70G0VVSX3PV01B
+payload:
+    kind: commit
+    note: 'journal: finished-means-shared ruling'
+    ref: 9df0522c4916bc1857e68e89a07f5b74d1239423
+    via: subject-match
+by:
+    who: differ
+    surface: macs-MacBook-Pro
+at: 2026-08-18T22:12:59Z

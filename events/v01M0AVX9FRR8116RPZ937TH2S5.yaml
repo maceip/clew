@@ -1,0 +1,12 @@
+id: v01M0AVX9FRR8116RPZ937TH2S5
+kind: evidence
+entry: e01M0AVXA7EH2KD1BPZ4GJNKN67
+payload:
+    kind: commit
+    note: 'journal: witness-node adoption ruling'
+    ref: d03e76f1d2ebc2213271992191837d541cc33e95
+    via: subject-match
+by:
+    who: differ
+    surface: macs-MacBook-Pro
+at: 2026-08-18T16:40:11Z

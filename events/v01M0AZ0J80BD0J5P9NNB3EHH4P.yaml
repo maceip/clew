@@ -1,0 +1,12 @@
+id: v01M0AZ0J80BD0J5P9NNB3EHH4P
+kind: evidence
+entry: e01M0AYQ3VJM71SMM1YQFYE1X61
+payload:
+    kind: commit
+    note: 'journal: amnesia test + three-verb amendment to knowledge merge'
+    ref: b6f6ab0cd6baf3ff7aba14dfcc4d2c79fcefca90
+    via: subject-match
+by:
+    who: differ
+    surface: macs-MacBook-Pro
+at: 2026-08-18T17:34:24Z

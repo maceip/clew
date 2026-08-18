@@ -1,0 +1,12 @@
+id: v01M0ASAJ10QCE8YZ5CWQ7CT3WW
+kind: evidence
+entry: e01M05SG3NTP5W2JX7Y6MG00HQJ
+payload:
+    kind: commit
+    note: 'journal: session record — 4 surface intents + write-path ruling question (held construct) + projection-conflict finding'
+    ref: f8facba76bfbce24f081a15ad55652a571d38670
+    via: subject-match
+by:
+    who: differ
+    surface: macs-MacBook-Pro
+at: 2026-08-18T15:55:00Z

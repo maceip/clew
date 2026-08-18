@@ -1,0 +1,12 @@
+id: v01M0AVWK10B1RJVXDBZ7C7ZF96
+kind: evidence
+entry: e01M0ASQGJZPFJD3FSRT7P4HX44
+payload:
+    kind: commit
+    note: 'journal: two owner rulings — I9 replacement, witness-node adoption'
+    ref: f905cc6c64ead7a14520f6245d3a5834c66c4dcf
+    via: subject-match
+by:
+    who: differ
+    surface: macs-MacBook-Pro
+at: 2026-08-18T16:39:48Z

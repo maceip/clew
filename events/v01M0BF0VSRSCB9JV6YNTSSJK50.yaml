@@ -1,0 +1,12 @@
+id: v01M0BF0VSRSCB9JV6YNTSSJK50
+kind: evidence
+entry: e01M0BF0WMX264RA9D0VTM9R24K
+payload:
+    kind: commit
+    note: 'journal: ids-are-plumbing ruling'
+    ref: d3c122da0c3be5edc4d8e2fa479eacced982986a
+    via: subject-match
+by:
+    who: differ
+    surface: macs-MacBook-Pro
+at: 2026-08-18T22:14:11Z

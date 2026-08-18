@@ -1,0 +1,12 @@
+id: v01M0AZ7HW8KGA49R5THPW8KP8D
+kind: evidence
+entry: e01M0AZ7JBPJRNHFJQC6WEEQB9Y
+payload:
+    kind: commit
+    note: 'journal: silence-is-the-signal ruling'
+    ref: bde49235a5a6fb0e11473a09e90a5951dd8018ea
+    via: subject-match
+by:
+    who: differ
+    surface: macs-MacBook-Pro
+at: 2026-08-18T17:38:13Z

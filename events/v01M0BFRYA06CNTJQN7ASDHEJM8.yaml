@@ -1,0 +1,12 @@
+id: v01M0BFRYA06CNTJQN7ASDHEJM8
+kind: evidence
+entry: e01M0AZ4BGF1VC0VSXA05VYVEQ3
+payload:
+    kind: commit
+    note: 'journal: evidence-settles-merge ruling + full wording-sweep scope'
+    ref: a4992570440dee46a2794892cabb9d82e52d6522
+    via: subject-match
+by:
+    who: differ
+    surface: macs-MacBook-Pro
+at: 2026-08-18T22:27:20Z
