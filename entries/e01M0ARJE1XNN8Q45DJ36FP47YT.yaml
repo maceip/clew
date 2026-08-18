@@ -1,0 +1,15 @@
+id: e01M0ARJE1XNN8Q45DJ36FP47YT
+type: finding
+title: web surface intent placeholder
+body: web surface intent placeholder
+quote: web surface intent placeholder
+utterance_by: user
+source:
+    kind: human
+    ref: cli:note
+    surface: cursor
+    at: 2026-08-18T15:41:49.501740162Z
+confidence: 1
+tags: []
+env: null
+affects: []
