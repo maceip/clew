@@ -1,0 +1,11 @@
+id: v01M0AZMWMGD6SD3MGT9QMV58RB
+kind: evidence
+entry: e01M064XJ84ZTY2HNFWWQZATFA9
+payload:
+    kind: churn
+    note: Ship I13 owner memory and explicit lineage
+    ref: churn:5a56835ff13911a868bda153456b50e26b785574
+by:
+    who: differ
+    surface: macs-MacBook-Pro
+at: 2026-08-18T17:45:30Z

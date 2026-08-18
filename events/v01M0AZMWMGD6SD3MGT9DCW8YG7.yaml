@@ -1,0 +1,11 @@
+id: v01M0AZMWMGD6SD3MGT9DCW8YG7
+kind: evidence
+entry: e01M05V5HWA6TFT0A0KDZY8S45K
+payload:
+    kind: commit
+    note: Ship I13 owner memory and explicit lineage
+    ref: 5a56835ff13911a868bda153456b50e26b785574
+by:
+    who: differ
+    surface: macs-MacBook-Pro
+at: 2026-08-18T17:45:30Z
