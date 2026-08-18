@@ -1,0 +1,17 @@
+id: e01M0AZ94HSDVRAQB1DSYDH4A89
+type: note
+title: Merge primitive accepted; kill criterion is backlog regression
+body: >-
+  Owner assessment: the knowledge merge may fail under real projects with huge diffs, but stands as a good primitive because it speaks directly to the fear of drift. Watch condition: if merges routinely exceed a handful of lines under real load, the surface has regressed into a backlog and needs redesign. Sustained pressure beyond human apply-bandwidth is itself a signal of over-parallelization.
+quote: 'this may fail under real work or real projects with huge diffs but i think its a good primitive as it direcetly speaks to the fear of the drift'
+utterance_by: user
+source:
+    kind: session
+    ref: chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18
+    agent: cursor-cloud-agent
+    surface: cursor-cloud-vm
+    at: 2026-08-18T17:38:00Z
+confidence: 1
+tags: []
+env: null
+affects: []
