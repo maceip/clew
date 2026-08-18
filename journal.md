@@ -1,16 +1,16 @@
 # Journal
 
-_generated 2026-08-18 22:09 UTC · 110 live entries (42 decisions · 40 findings · 8 questions · 20 intents) · 130 total in history_
+_generated 2026-08-18 22:09 UTC · 112 live entries (43 decisions · 40 findings · 9 questions · 20 intents) · 132 total in history_
 
 ## DECIDED
 
+- `e01M0BER1Q412DRFQYESPCN0Q30` Lines are plain speech, no ids; near-duplicates fold; held items rest — 1m · active
 - `e01M0BEM04PAZ85R5YNRM2Y31Z6` Broken states carry their verb: no unactionable warnings for humans — 5m · active
 - `e01M0AZDDYC49Y1741H7W74Y1QY` Second tab: the intent gap — everything intended, not yet real — 4h · active
 - `e01M0AZ7JBPJRNHFJQC6WEEQB9Y` Silence is the signal: an absent merge means truly nothing new — 4h · active
 - `e01M0AZ4BGF1VC0VSXA05VYVEQ3` Explain is live: the attending agent reads the entry and explains — 4h · active
 - `e01M0AZ0K17AA5D9P7KZDSPJQSY` Merge lines must pass the amnesia test; verbs are apply/explain/defer — 4h · active
 - `e01M0AYQ3VJM71SMM1YQFYE1X61` Knowledge Merge at finish: glanceable apply/defer list, external memory — 4h · active
-- `e01M0AY6VWJV133F811JYAANJPE` Stale finish: know and tell, never act — the reconcile is read-only — 4h · active
 
 ## LEARNED
 
@@ -24,13 +24,13 @@ _generated 2026-08-18 22:09 UTC · 110 live entries (42 decisions · 40 findings
 
 ## OPEN
 
+- `e01M0BER1Q5W312NDD7GZ283RCM` Cap the two screens at 7+7; overflow policy is an open question — 1m · open ★
 - `e01M0AY97K0AZHNJW0D87KTD7YH` Two-grade telling: block dependent tasks on unresolved drift? — 4h · open ★
 - `e01M0ASQGM2P07Z36KVZX6P8EH4` Adopt the complexity law: additions must be a verb, label, rendering, or config — 6h · open ★
 - `e01M0ASQGKZ9ZY4XRF6K7KRCT75` Adopt clew witness <transcript> as the cloud-session gap fix? — 6h · open ★
 - `e01M0ASQGKX2F9THW496N79Z83F` Approve selfwatch + journal add + owner-laws relocation to a git-reachable repo — 6h · open ★
 - `e01M0ASQGKVW3RPZ2M51J3WQ9G9` Approve cloud env recipes: install clew + wire MCP in cursor/codex/claude envs — 6h · open ★
 - `e01M0ASQGKRQBVSGHP3RCYNWYEG` Approve extractor over-firing tune: rollup >32KB and docket hit 8 cards — 6h · open ★
-- `e01M0ASQGKPPZ4Y3H8P1RV88DZN` URGENT: approve budget-deadlock fix - floor rule or smaller extraction slices — 6h · open ★
 
 ## ALERTS
 
@@ -55,6 +55,13 @@ _generated 2026-08-18 22:09 UTC · 110 live entries (42 decisions · 40 findings
 | `e01M0AQHSRF4DVDYZ989PVHGA7R` Birth detection: auto-init a new repo with owner laws only | 6h | 1 evidence | in_flight |
 
 ## Decisions
+
+### e01M0BER1Q412DRFQYESPCN0Q30 — Lines are plain speech, no ids; near-duplicates fold; held items rest  `active`
+> language in each <knowledge merge/intent gap> thats confusing, e.g., "Let cloud agents that can only"
+
+Owner corrections from the first real run: rendered lines confused (Let cloud agents that can only...) and full entry ids burned attention. Rules: plain spoken English, subject-first, one breath; no ids or codes on lines — identity lives behind explain; near-duplicates fold to one line; held-for-owner entries appear in no actionable list. The amnesia test stays the floor; this adds plain speech.
+
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00_
 
 ### e01M0BEM04PAZ85R5YNRM2Y31Z6 — Broken states carry their verb: no unactionable warnings for humans  `active`
 > that is state the human cant immediately fix/help with
@@ -633,6 +640,13 @@ Lock-and-notary pitches fail for any team whose job isn't security — not just 
 _source: human cli:note · confidence: 1.00_
 
 ## Open questions
+
+### e01M0BER1Q5W312NDD7GZ283RCM — Cap the two screens at 7+7; overflow policy is an open question  `open`
+> 7 merge, 7 diff decisions => 14 decisions is probably the max we should allow, although not sure what to do if there are more than that
+
+Owner bound: seven merge plus seven gap — fourteen decisions — is probably the most a human should ever face at once. Unresolved: what happens when more exist. Candidates on record: rank by stakes and fold the rest into one waiting line; treat sustained overflow as restart pressure feeding the held restart tab. Owner has not ruled.
+
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 0.95_
 
 ### e01M0AY97K0AZHNJW0D87KTD7YH — Two-grade telling: block dependent tasks on unresolved drift?  `open`
 > go to agent Y that has drifted and ask it to work on task B that has dependency on the "unmerged decison A", and i forget to "tell it to undo its own drift"
