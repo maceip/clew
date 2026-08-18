@@ -1,4 +1,5 @@
 # Journal digest (live entries: id · type/status · title)
+- e01M0BEM04PAZ85R5YNRM2Y31Z6 decision/active Broken states carry their verb: no unactionable warnings for humans
 - e01M0AZN6HJETV241AK5RSBDHNR intent/proposed Held: a restart tab — stage selected drift into the next generation
 - e01M0AZDDYC49Y1741H7W74Y1QY decision/active Second tab: the intent gap — everything intended, not yet real
 - e01M0AZ7JBPJRNHFJQC6WEEQB9Y decision/active Silence is the signal: an absent merge means truly nothing new
@@ -32,4 +33,4 @@
 - e01M0ASQGKPPZ4Y3H8P1RV88DZN question/open URGENT: approve budget-deadlock fix - floor rule or smaller extraction slices
 - e01M0ASQGKMHGY4F7JBEQX1ZT3T finding/current This chat became the supernode: 788 messages of unjournaled load-bearing context
 - e01M0ASQGKJN308G4HVJTE4A4AB finding/current note-then-edit has a limbo: placeholders auto-commit and leaked into a seed
-… (109 more omitted for size)
+… (110 more omitted for size)

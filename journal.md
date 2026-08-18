@@ -1,16 +1,16 @@
 # Journal
 
-_generated 2026-08-18 22:06 UTC · 109 live entries (41 decisions · 40 findings · 8 questions · 20 intents) · 129 total in history_
+_generated 2026-08-18 22:07 UTC · 110 live entries (42 decisions · 40 findings · 8 questions · 20 intents) · 130 total in history_
 
 ## DECIDED
 
+- `e01M0BEM04PAZ85R5YNRM2Y31Z6` Broken states carry their verb: no unactionable warnings for humans — 3m · active
 - `e01M0AZDDYC49Y1741H7W74Y1QY` Second tab: the intent gap — everything intended, not yet real — 4h · active
 - `e01M0AZ7JBPJRNHFJQC6WEEQB9Y` Silence is the signal: an absent merge means truly nothing new — 4h · active
 - `e01M0AZ4BGF1VC0VSXA05VYVEQ3` Explain is live: the attending agent reads the entry and explains — 4h · active
 - `e01M0AZ0K17AA5D9P7KZDSPJQSY` Merge lines must pass the amnesia test; verbs are apply/explain/defer — 4h · active
 - `e01M0AYQ3VJM71SMM1YQFYE1X61` Knowledge Merge at finish: glanceable apply/defer list, external memory — 4h · active
 - `e01M0AY6VWJV133F811JYAANJPE` Stale finish: know and tell, never act — the reconcile is read-only — 4h · active
-- `e01M0AXZTTHG5FKXETX0X8PR6EX` On finish, check in first: reconcile against the delta before next steps — 4h · active
 
 ## LEARNED
 
@@ -55,6 +55,13 @@ _generated 2026-08-18 22:06 UTC · 109 live entries (41 decisions · 40 findings
 | `e01M0AQHSRF4DVDYZ989PVHGA7R` Birth detection: auto-init a new repo with owner laws only | 6h | 1 evidence | in_flight |
 
 ## Decisions
+
+### e01M0BEM04PAZ85R5YNRM2Y31Z6 — Broken states carry their verb: no unactionable warnings for humans  `active`
+> that is state the human cant immediately fix/help with
+
+Owner correction from the first real merge/gap run: could-not-check lines handed the human a problem with no action. Rule: a broken state shown to a human must carry its fix verb (usually hand to the attending agent) or name who is already fixing it; problems only machinery can fix route to agents, never to human eyes. Earned silence stands — broken arrives actionable, like everything else.
+
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00_
 
 ### e01M0AZDDYC49Y1741H7W74Y1QY — Second tab: the intent gap — everything intended, not yet real  `active`
 > the intent gap is a similar thing that lists simply all the crazy shit thats not yet implemented
