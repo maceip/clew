@@ -1,0 +1,15 @@
+id: e01M0ARJFTWEWY5H6JFJ17656W4
+type: finding
+title: cloud surface intent placeholder
+body: cloud surface intent placeholder
+quote: cloud surface intent placeholder
+utterance_by: user
+source:
+    kind: human
+    ref: cli:note
+    surface: cursor
+    at: 2026-08-18T15:41:51.32410932Z
+confidence: 1
+tags: []
+env: null
+affects: []
