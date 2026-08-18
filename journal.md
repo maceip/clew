@@ -1,16 +1,16 @@
 # Journal
 
-_generated 2026-08-18 22:29 UTC · 117 live entries (48 decisions · 40 findings · 9 questions · 20 intents) · 137 total in history_
+_generated 2026-08-18 22:30 UTC · 118 live entries (49 decisions · 40 findings · 9 questions · 20 intents) · 138 total in history_
 
 ## DECIDED
 
-- `e01M0BFRYY2WVHJZ3R3TDV4CFTS` The wording sweep covers every fear-attached word; docket stays by name — 4m · active
-- `e01M0BFRYY1EW9CFMJNDJ5QH3M2` Evidence settles merge lines; apply is never asked for finished work — 4m · active
-- `e01M0BF0WMX264RA9D0VTM9R24K` Entry ids are machine plumbing: never shown to or relayed through humans — 16m · active
-- `e01M0BEYP65CE70G0VVSX3PV01B` Finished means shared: work ends pushed or PR'd; local-only is an alarm — 18m · active
-- `e01M0BETRRAZ54063PRJK1JSQS7` The finish message is a surface: what exists, where it lives, my next move — 19m · active
-- `e01M0BER1Q412DRFQYESPCN0Q30` Lines are plain speech, no ids; near-duplicates fold; held items rest — 21m · active
-- `e01M0BEM04PAZ85R5YNRM2Y31Z6` Broken states carry their verb: no unactionable warnings for humans — 25m · active
+- `e01M0BFY164YEV6DAEFVGGH18VT` The limiter gates distillation timing, never sensing; failure is lag — 2m · active
+- `e01M0BFRYY2WVHJZ3R3TDV4CFTS` The wording sweep covers every fear-attached word; docket stays by name — 5m · active
+- `e01M0BFRYY1EW9CFMJNDJ5QH3M2` Evidence settles merge lines; apply is never asked for finished work — 5m · active
+- `e01M0BF0WMX264RA9D0VTM9R24K` Entry ids are machine plumbing: never shown to or relayed through humans — 17m · active
+- `e01M0BEYP65CE70G0VVSX3PV01B` Finished means shared: work ends pushed or PR'd; local-only is an alarm — 19m · active
+- `e01M0BETRRAZ54063PRJK1JSQS7` The finish message is a surface: what exists, where it lives, my next move — 20m · active
+- `e01M0BER1Q412DRFQYESPCN0Q30` Lines are plain speech, no ids; near-duplicates fold; held items rest — 22m · active
 
 ## LEARNED
 
@@ -24,7 +24,7 @@ _generated 2026-08-18 22:29 UTC · 117 live entries (48 decisions · 40 findings
 
 ## OPEN
 
-- `e01M0BER1Q5W312NDD7GZ283RCM` Cap the two screens at 7+7; overflow policy is an open question — 21m · open ★
+- `e01M0BER1Q5W312NDD7GZ283RCM` Cap the two screens at 7+7; overflow policy is an open question — 22m · open ★
 - `e01M0AY97K0AZHNJW0D87KTD7YH` Two-grade telling: block dependent tasks on unresolved drift? — 5h · open ★
 - `e01M0ASQGM2P07Z36KVZX6P8EH4` Adopt the complexity law: additions must be a verb, label, rendering, or config — 6h · open ★
 - `e01M0ASQGKZ9ZY4XRF6K7KRCT75` Adopt clew witness <transcript> as the cloud-session gap fix? — 6h · open ★
@@ -55,6 +55,13 @@ _generated 2026-08-18 22:29 UTC · 117 live entries (48 decisions · 40 findings
 | `e01M0AQHSRF4DVDYZ989PVHGA7R` Birth detection: auto-init a new repo with owner laws only | 7h | 1 evidence | in_flight |
 
 ## Decisions
+
+### e01M0BFY164YEV6DAEFVGGH18VT — The limiter gates distillation timing, never sensing; failure is lag  `active`
+> a deaf agent is useless and will lead to more problems for me to deal with later?
+
+Owner challenge: a deaf agent is useless. Purpose on record: the limiter is not cost control — it protects shared rate limits and guards against runaway loops. Corrected design: sensing (tailing, recording) is free and never stops; only distillation may lag under pressure, shown as memory is N minutes behind, catching up when headroom returns. Deafness is impossible; nothing goes unrecorded.
+
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00_
 
 ### e01M0BFRYY2WVHJZ3R3TDV4CFTS — The wording sweep covers every fear-attached word; docket stays by name  `active`
 > why is 7 indexing on "law" when we discussed _all_ legal sounding words, with docket being ok

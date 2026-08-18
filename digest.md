@@ -1,4 +1,5 @@
 # Journal digest (live entries: id · type/status · title)
+- e01M0BFY164YEV6DAEFVGGH18VT decision/active The limiter gates distillation timing, never sensing; failure is lag
 - e01M0BFRYY2WVHJZ3R3TDV4CFTS decision/active The wording sweep covers every fear-attached word; docket stays by name
 - e01M0BFRYY1EW9CFMJNDJ5QH3M2 decision/active Evidence settles merge lines; apply is never asked for finished work
 - e01M0BF0WMX264RA9D0VTM9R24K decision/active Entry ids are machine plumbing: never shown to or relayed through humans
@@ -32,5 +33,4 @@
 - e01M0AV0H7RY7DG79VCMHPEMPJP decision/active Glance direction ruling: graphic, two zooms — deferred behind single-project
 - e01M0ATYJG615JE6BV5MG5RAF9Z decision/active clew from must accept multiple parent projects, with strand selection
 - e01M0ASSNH1HP68M1QERV9AKG5A finding/current Attachments bypass the secret scrub; GitHub push protection caught PATs
-- e01M0ASQGM2P07Z36KVZX6P8EH4 question/open Adopt the complexity law: additions must be a verb, label, rendering, or config
-… (117 more omitted for size)
+… (118 more omitted for size)
