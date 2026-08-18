@@ -54,8 +54,11 @@ func Run(db *state.DB, in *Input, now time.Time) (*Result, error) {
 	}
 
 	// ---- 7.1(1) glob match: new commits × entry tags → evidence ----
-	commits := db.RecentCommits(in.Repo, now.Add(-14*24*time.Hour), true)
+	commits := db.RecentCommits(in.Repo, now.Add(-14*24*time.Hour), false)
 	for _, c := range commits {
+		if c.Mapped {
+			continue
+		}
 		matched := false
 		for id, e := range j.Entries {
 			if e.Type != model.Intent && e.Type != model.Decision {
@@ -120,6 +123,9 @@ func Run(db *state.DB, in *Input, now time.Time) (*Result, error) {
 func subjectLinkPass(db *state.DB, in *Input, commits []state.Commit, addEvent func(model.EventKind, string, map[string]any, time.Time)) []string {
 	var linked []string
 	for _, commit := range commits {
+		if strings.HasPrefix(strings.ToLower(strings.TrimSpace(commit.Subject)), "journal:") {
+			continue
+		}
 		clauses := evidenceClauses(commit.Subject)
 		matched := false
 		for id, entry := range in.Journal.Entries {
@@ -166,7 +172,7 @@ func clauseMatches(clauses []map[string]bool, entryWords map[string]bool) bool {
 
 func hasWorkEvidence(j *journal.Journal, id string) bool {
 	for _, event := range j.EventsFor(id) {
-		if event.Kind == model.EvEvidence && (event.PStr("kind") == "commit" || event.PStr("kind") == "completion") {
+		if journal.CountsAsRealityEvidence(event) && (event.PStr("kind") == "commit" || event.PStr("kind") == "completion") {
 			return true
 		}
 	}

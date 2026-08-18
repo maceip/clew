@@ -2,6 +2,7 @@ package journal
 
 import (
 	"sort"
+	"strings"
 	"time"
 
 	"clew/internal/model"
@@ -90,7 +91,9 @@ func Compute(j *Journal, now time.Time) map[string]*Computed {
 			}
 			switch v.Kind {
 			case model.EvEvidence:
-				c.Evidence++
+				if CountsAsRealityEvidence(v) {
+					c.Evidence++
+				}
 			case model.EvConfirm:
 				if v.By.Who == "human" {
 					c.Confidence = 1.0
@@ -222,7 +225,7 @@ func intentStatus(j *Journal, all map[string]*Computed, e *model.Entry, c *Compu
 		if v.Kind == model.EvConfirm && v.PBool("done") {
 			return StDone
 		}
-		if v.Kind == model.EvEvidence {
+		if CountsAsRealityEvidence(v) {
 			hasSuccessorEvidence = true
 			if v.PStr("kind") == "completion" {
 				return StDone
@@ -231,7 +234,7 @@ func intentStatus(j *Journal, all map[string]*Computed, e *model.Entry, c *Compu
 	}
 	recent := false
 	for _, v := range j.EventsFor(e.ID) {
-		if v.Kind == model.EvEvidence &&
+		if CountsAsRealityEvidence(v) &&
 			(c.LineageStatusAt.IsZero() || v.At.After(c.LineageStatusAt)) &&
 			now.Sub(v.At) <= InFlightWindow {
 			recent = true
@@ -254,7 +257,7 @@ func intentStatus(j *Journal, all map[string]*Computed, e *model.Entry, c *Compu
 				continue
 			}
 			for _, v := range j.EventsFor(oid) {
-				if v.Kind == model.EvEvidence && v.At.After(created) {
+				if CountsAsRealityEvidence(v) && v.At.After(created) {
 					siblings++
 					break
 				}
@@ -265,6 +268,18 @@ func intentStatus(j *Journal, all map[string]*Computed, e *model.Entry, c *Compu
 		}
 	}
 	return StProposed
+}
+
+// CountsAsRealityEvidence rejects coordination-only commits. Older watcher
+// builds could observe cached clew/journal commits as if they were code
+// reality and attach subject-match events to the decision the commit merely
+// recorded. Those immutable events stay in history, but never move an intent
+// or settle a merge line.
+func CountsAsRealityEvidence(event *model.Event) bool {
+	if event == nil || event.Kind != model.EvEvidence {
+		return false
+	}
+	return event.PStr("kind") != "commit" || !strings.HasPrefix(strings.ToLower(strings.TrimSpace(event.PStr("note"))), "journal:")
 }
 
 func lineageStatusCompatible(typ model.EntryType, status Status) bool {

@@ -60,6 +60,18 @@ func TestIntentInFlightAndProposed(t *testing.T) {
 	}
 }
 
+func TestJournalCommitIsNotRealityEvidence(t *testing.T) {
+	j := mkJournal(t)
+	e := entry(t, j, model.Intent, "settle merge evidence", now.Add(-24*time.Hour))
+	event(t, j, model.EvEvidence, e.ID, now.Add(-time.Hour), map[string]any{
+		"kind": "commit", "ref": "journal-sha", "note": "journal: settle merge evidence ruling",
+	}, "differ")
+	computed := Compute(j, now)[e.ID]
+	if computed.Evidence != 0 || computed.Status != StProposed {
+		t.Fatalf("coordination commit changed reality: %+v", computed)
+	}
+}
+
 func TestIntentDone(t *testing.T) {
 	j := mkJournal(t)
 	e := entry(t, j, model.Intent, "ship the runner", now.Add(-10*24*time.Hour))

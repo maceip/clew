@@ -133,6 +133,20 @@ func TestVerifiedWorkSettlesAndOnlyShowsOnce(t *testing.T) {
 	}
 }
 
+func TestJournalCommitDoesNotSettleWork(t *testing.T) {
+	base := time.Date(2026, 8, 18, 17, 0, 0, 0, time.UTC)
+	entry := testEntry(ids.NewEntry(base), model.Decision, "Choose the next color", base)
+	j := &journal.Journal{Entries: map[string]*model.Entry{entry.ID: entry}, Events: []*model.Event{{
+		ID: ids.NewEvent(base.Add(time.Minute)), Kind: model.EvEvidence, Entry: entry.ID,
+		Payload: map[string]any{"kind": "commit", "ref": "journal-sha", "note": "journal: decision entry"},
+		By:      model.By{Who: "differ"}, At: base.Add(time.Minute),
+	}}}
+	view := BuildMerge(j, nil)
+	if len(view.Settled) != 0 || len(view.Items) != 1 {
+		t.Fatalf("journal-only commit settled work: %#v", view)
+	}
+}
+
 func TestMemoryLagAppearsOnBothScreens(t *testing.T) {
 	for _, screen := range []Screen{KnowledgeMerge, IntentGap} {
 		var out bytes.Buffer
