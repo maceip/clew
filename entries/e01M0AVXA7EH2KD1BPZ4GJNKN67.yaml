@@ -1,0 +1,21 @@
+id: e01M0AVXA7EH2KD1BPZ4GJNKN67
+type: decision
+title: Witness-node role adopted: always-on ear with owner API creds, sequenced
+body: >-
+  Owner sgtm: one always-on clew node (owner infra) whose sensors are API pollers with
+  owner account creds — witnesses cursor/codex cloud sessions live with zero agent
+  cooperation, runs extraction centrally, sole writer of projections (kills that
+  conflict class). Git stays the only required meeting point; degrade-to-baseline
+  preserved. Build gated behind single-lineage sequencing.
+quote: 'that sgtm with one wrinkle still in my brain, how does this system work for 2,10,100 projects'
+utterance_by: user
+source:
+    kind: session
+    ref: chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18
+    agent: cursor-cloud-agent
+    surface: cursor-cloud-vm
+    at: 2026-08-18T16:38:00Z
+confidence: 1
+tags: []
+env: null
+affects: []
