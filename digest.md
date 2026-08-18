@@ -1,4 +1,9 @@
 # Journal digest (live entries: id · type/status · title)
+- e01M0AQHSRF4DVDYZ989W6K185N decision/possible-contradiction Owner laws live in an owner-scope journal with a ≤1KB injection budget
+- e01M0AQHSRF4DVDYZ989RNZVC46 decision/active `clew from` is the one explicit lineage command; never automatic
+- e01M0AQHSRF4DVDYZ989PVHGA7R intent/proposed Birth detection: auto-init a new repo with owner laws only
+- e01M0AQHSRF4DVDYZ989MTZQV7E decision/possible-contradiction SEED.md is watcher-maintained continuously, never generated on demand
+- e01M0AQHSRF4DVDYZ989M4DVHYX decision/possible-contradiction Lineage inheritance is explicit; only promoted laws auto-carry
 - e01M068FQH1ND9MM1WH851AF45M finding/current Task 6 gate: flags 0 writes; algebra, poller, manifest pass
 - e01M068ECYE067WF6BH7F26VC3D decision/active Cursor v1 stays CLI-only: desktop 0 vs CLI 44 in 7d
 - e01M06821D53QYHBJS1FEC2CK7G finding/current Task 5 gate: 3 formats, 1 card, confirm boundary pass
@@ -28,9 +33,4 @@
 - e01M05T4XG0RJWQTP25T1K58B61 finding/suspect Confirm/reject only in event YAML; adapter unknowns undated, absent from status
 - e01M05T4XG0RJWQTP25SYT4FH0B finding/suspect Task 2 not passable: `spent` conflates extraction, differ, and archaeology
 - e01M05SVGK1Q2MR34Y3CMHR7DXM decision/active No cursor translation: keep `extract:` for live, add bounded `backfill:` for hi…
-- e01M05SPB2EMMC4F4PR0BSPFZKZ intent/in_flight Narrow fix for the watch storm: transactional baselines, source-time, bounded c…
-- e01M05SPB2EMMC4F4PR0BDQA8S5 finding/suspect First watch treated historical sessions as live: 342 overlaps, 27 stomps, 12.9M…
-- e01M05SG3NTP5W2JX7Y6MP1F1K6 intent/in_flight Add cursor migration, complete-record offsets, and fixed historical upper bound
-- e01M05SG3NTP5W2JX7Y6MG00HQJ decision/active Hold the Task 2 commit; make backfill and live watch disjoint by construction
-- e01M05SG3NTP5W2JX7Y6KZD5N6P finding/current Pre-commit review found three Task 2 blockers: cursor migration, backfill overl…
-… (53 more omitted for size)
+… (58 more omitted for size)

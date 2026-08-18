@@ -1,16 +1,16 @@
 # Journal
 
-_generated 2026-08-18 15:25 UTC · 53 live entries (14 decisions · 26 findings · 1 questions · 12 intents) · 71 total in history_
+_generated 2026-08-18 15:28 UTC · 58 live entries (18 decisions · 26 findings · 1 questions · 13 intents) · 76 total in history_
 
 ## DECIDED
 
+- `e01M0AQHSRF4DVDYZ989W6K185N` Owner laws live in an owner-scope journal with a ≤1KB injection budget — 4m · possible-contradiction
+- `e01M0AQHSRF4DVDYZ989RNZVC46` `clew from` is the one explicit lineage command; never automatic — 4m · active
+- `e01M0AQHSRF4DVDYZ989MTZQV7E` SEED.md is watcher-maintained continuously, never generated on demand — 4m · possible-contradiction
+- `e01M0AQHSRF4DVDYZ989M4DVHYX` Lineage inheritance is explicit; only promoted laws auto-carry — 4m · possible-contradiction
 - `e01M068ECYE067WF6BH7F26VC3D` Cursor v1 stays CLI-only: desktop 0 vs CLI 44 in 7d — 1d · active
 - `e01M064DQTWYDVGGAE3M5QRTGME` Re-evaluate the current tree instead of carrying the prior gate verdict forward — 1d · active
 - `e01M05V5HWA6TFT0A0KDZY8S45K` Confine the cap/ratio admission fix to internal/state; no caller or spec changes — 1d · active
-- `e01M05V0G3Q9F41V62P6T44TC04` Cursor migration must be monotonic — never rewind an existing cursor — 1d · active
-- `e01M05TG628KAGZ9HCBQSAG562P` Separate session-extraction budget from one-time archaeology budget — 1d · active
-- `e01M05TBYJXEW5N5FE397XYMEHY` Treat first dogfood run's cursor/push/adapter failures as required failure sign… — 1d · active
-- `e01M05SVGK1Q2MR34Y3CMHR7DXM` No cursor translation: keep `extract:` for live, add bounded `backfill:` for hi… — 1d · active
 
 ## LEARNED
 
@@ -32,23 +32,51 @@ _None._
 - possible-contradiction `e01M05SA72DPRGNTY7GCPEX9W2N` I10–I12 added as hard invariants enforced in code and tests — 1d
 - possible-contradiction `e01M05SA72DPRGNTY7GCQ2RASTP` Cards show verbatim quotes + clickable provenance, never extractor paraphrase — 1d
 - possible-contradiction `e01M05SA72DPRGNTY7GD0TGHEX7` Scope freeze: relay, TUI, team mode, adapters need a §11 trigger measurement — 1d
-- suspect `e01M05SPB2EMMC4F4PR0BDQA8S5` First watch treated historical sessions as live: 342 overlaps, 27 stomps, 12.9M… — 1d
-- suspect `e01M05T4XG0RJWQTP25SYT4FH0B` Task 2 not passable: `spent` conflates extraction, differ, and archaeology — 1d
-- suspect `e01M05T4XG0RJWQTP25T1K58B61` Confirm/reject only in event YAML; adapter unknowns undated, absent from status — 1d
+- possible-contradiction `e01M0AQHSRF4DVDYZ989M4DVHYX` Lineage inheritance is explicit; only promoted laws auto-carry — 4m
+- possible-contradiction `e01M0AQHSRF4DVDYZ989MTZQV7E` SEED.md is watcher-maintained continuously, never generated on demand — 4m
+- possible-contradiction `e01M0AQHSRF4DVDYZ989W6K185N` Owner laws live in an owner-scope journal with a ≤1KB injection budget — 4m
 
 ## Intent × reality
 
 | Intent | Age | Reality | State |
 |---|---:|---:|---|
+| `e01M0AQHSRF4DVDYZ989PVHGA7R` Birth detection: auto-init a new repo with owner laws only | 4m | 0 evidence | proposed |
 | `e01M065G8RTKVH6466KEB0FRJ8N` Commit the gate fixes as one spec-amended change, then start the docket | 1d | 1 evidence | in_flight |
 | `e01M064DHNTXFM29PNWCW0VBBF2` Run a strict read-only gate proving each acceptance point with tests or state q… | 1d | 3 evidence | in_flight |
 | `e01M0642VRXV9PCGA4NDJF92E2Y` Wire atomic budget reservations into every LLM call | 1d | 5 evidence | in_flight |
 | `e01M05VFAW9A783PMZZEER0G6FX` Second pass on rollover, double-settlement, migration; then run wider suite | 1d | 4 evidence | in_flight |
 | `e01M05V5HWA6TFT0A0KDY1QV6C0` Add transactional reservation + settlement accounting in internal/state with co… | 1d | 9 evidence | in_flight |
 | `e01M05V0G3Q9F41V62P6R5QV53G` Fix migration monotonicity, restore from D1 boundary, rerun cycle before passin… | 1d | 3 evidence | in_flight |
-| `e01M05TPA9ZK4C8RGC3KBPV2MRF` Re-run the live gate: install binary, normalize spend category, restart watcher | 1d | 3 evidence | in_flight |
 
 ## Decisions
+
+### e01M0AQHSRF4DVDYZ989W6K185N — Owner laws live in an owner-scope journal with a ≤1KB injection budget  `possible-contradiction`
+> an owner-scope journal synced like any other; findings promoted via clew journal promote <id>; extractor proposes promotion when a finding's content is project-agnostic; ≤1KB injection budget into every project's context, forever.
+
+Laws are stored as an owner-scope journal synced like any other. Findings become laws through an explicit `clew journal promote <id>`, with the extractor proposing promotion when a finding's content is project-agnostic. The resulting law set is capped at a ≤1KB injection into every project's context, permanently.
+
+_source: session codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-24-00-01a01578-e6db-7833-9ab2-0457569af643.jsonl#L9 · confidence: 0.92 · tags: .clew/** · pairs-with: e01M0AQHSRF4DVDYZ989M4DVHYX, e01M0AQHSRF4DVDYZ989MTZQV7E_
+
+### e01M0AQHSRF4DVDYZ989RNZVC46 — `clew from` is the one explicit lineage command; never automatic  `active`
+> Runnable at birth or any time later; un-carrying is a reject (carried entries keep provenance like everything else). Never automatic. The birth card may suggest clew from X on blatant name/topic overlap — suggest only, never act.
+
+Pulling a predecessor's seed (decisions, findings, graveyard, exhibits, organ-bank pin) happens only via an explicit `clew from <repo>`; with no args it lists candidates ranked by recency and topic overlap, showing what each would carry. It can run at birth or later, un-carrying is recorded as a reject so carried entries keep provenance, and the birth card may only suggest `clew from X` on name/t…
+
+_source: session codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-24-00-01a01578-e6db-7833-9ab2-0457569af643.jsonl#L9 · confidence: 0.93_
+
+### e01M0AQHSRF4DVDYZ989MTZQV7E — SEED.md is watcher-maintained continuously, never generated on demand  `possible-contradiction`
+> the watcher maintains SEED.md continuously alongside context.md — regenerated on journal change, never on demand. The carry-kit always predates the urge to restart.
+
+The watcher regenerates SEED.md alongside context.md on every journal change rather than building it when a restart is requested. Reason: the carry-kit must already exist before anyone wants to restart, so a seed is never missing or stale at the moment it is needed.
+
+_source: session codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-24-00-01a01578-e6db-7833-9ab2-0457569af643.jsonl#L9 · confidence: 0.94 · tags: .clew/** · pairs-with: e01M0AQHSRF4DVDYZ989M4DVHYX, e01M0AQHSRF4DVDYZ989W6K185N_
+
+### e01M0AQHSRF4DVDYZ989M4DVHYX — Lineage inheritance is explicit; only promoted laws auto-carry  `possible-contradiction`
+> lore inheritance was made explicit because a wrong lineage guess poisons a fresh project worse than no inheritance at all — laws are safe to auto-carry precisely because promotion certified them project-agnostic.
+
+clew will never auto-carry project lore into a new repo. Rationale: a wrong lineage guess poisons a fresh project worse than inheriting nothing at all. Owner laws are the sole exception and may be injected automatically, because the promotion step already certified each law as project-agnostic. This is the governing reason behind invariant I13.
+
+_source: session codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-24-00-01a01578-e6db-7833-9ab2-0457569af643.jsonl#L9 · confidence: 0.95 · tags: .clew/** · pairs-with: e01M0AQHSRF4DVDYZ989MTZQV7E, e01M0AQHSRF4DVDYZ989W6K185N_
 
 ### e01M068ECYE067WF6BH7F26VC3D — Cursor v1 stays CLI-only: desktop 0 vs CLI 44 in 7d  `active`
 > window=7d; state.vscdb=402391040 bytes; composer-headers=31; desktop-created=0; desktop-updated=0; latest=2026-08-09T07:19:30Z; cursor-cli=44 transcripts; cli-bytes=10338802; project-slugs=8. Decision: CLI-only v1; desktop remains loud gap; adapter trigger=not met.
@@ -342,6 +370,13 @@ Hermetic pipeline passes, but the go/no-go gate — P≥0.9/R≥0.75 within 5 in
 _source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15 · confidence: 1.00 · tags: acceptance/**_
 
 ## Intents
+
+### e01M0AQHSRF4DVDYZ989PVHGA7R — Birth detection: auto-init a new repo with owner laws only  `proposed`
+> new git init + agent session on a watched machine → auto-init (watch, journal branch, context.md) with owner laws only. No lore, no card required. Acceptance: mkdir x && git init && claude yields a context containing the owner's laws with zero clew commands typed.
+
+Build auto-init so that a fresh git init plus an agent session on a watched machine sets up watch, journal branch, and context.md carrying only the owner's laws — no lore and no birth card required. Acceptance test: `mkdir x && git init && claude` yields a context containing the owner's laws with zero clew commands typed.
+
+_source: session codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-24-00-01a01578-e6db-7833-9ab2-0457569af643.jsonl#L9 · confidence: 0.93 · tags: .clew/**_
 
 ### e01M065G8RTKVH6466KEB0FRJ8N — Commit the gate fixes as one spec-amended change, then start the docket  `in_flight`
 > I’m committing the gate fixes as one spec-amended change, then moving to the docket.
