@@ -1,0 +1,15 @@
+id: e01M0ARJC3CMW89DH89FC3EW679
+type: finding
+title: proposal ruling placeholder
+body: proposal ruling placeholder
+quote: proposal ruling placeholder
+utterance_by: user
+source:
+    kind: human
+    ref: cli:note
+    surface: cursor
+    at: 2026-08-18T15:41:47.500645423Z
+confidence: 1
+tags: []
+env: null
+affects: []
