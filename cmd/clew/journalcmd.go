@@ -12,6 +12,7 @@ import (
 
 	"gopkg.in/yaml.v3"
 
+	"clew/internal/gitx"
 	"clew/internal/ids"
 	"clew/internal/journal"
 	"clew/internal/model"
@@ -144,7 +145,7 @@ func parseAfterID(fs *flag.FlagSet, rest []string) error {
 }
 
 func journalShow(a *app, repo, id string) error {
-	j, err := a.openJournal(repo)
+	j, err := journal.LoadForDisplay(gitx.WorktreeDir(repo))
 	if err != nil {
 		return err
 	}
@@ -153,6 +154,12 @@ func journalShow(a *app, repo, id string) error {
 		return fmt.Errorf("no entry %s", id)
 	}
 	st := journal.Compute(j, time.Now())[id]
+	for _, path := range j.DisplayRecoveries {
+		if filepath.Base(path) == id+".yaml" {
+			fmt.Println("!! exact source recovered for display; the saved title was not clean YAML")
+			break
+		}
+	}
 	b, _ := yaml.Marshal(e)
 	fmt.Print(string(b))
 	fmt.Printf("--- computed (never persisted, §3.2) ---\nstatus: %s\nconfidence: %.2f\nevidence: %d\nlast_activity: %s\n",
