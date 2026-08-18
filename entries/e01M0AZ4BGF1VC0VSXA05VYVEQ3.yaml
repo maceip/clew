@@ -1,0 +1,17 @@
+id: e01M0AZ4BGF1VC0VSXA05VYVEQ3
+type: decision
+title: Explain is live: the attending agent reads the entry and explains
+body: >-
+  Refinement: the merge diff encodes nothing but lines, entry ids, and verbs. Pressing explain hands the entry to the agent already present at the finish boundary — it reads the journal, quotes the owner's words, and explains what applying means for the work at hand, answering follow-ups conversationally. clew stays the bookkeeper of see-once and defer state; the agent is the explain engine.
+quote: 'so you dont need to encode the "explain in more detail in the kowledge diff" itself'
+utterance_by: user
+source:
+    kind: session
+    ref: chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18
+    agent: cursor-cloud-agent
+    surface: cursor-cloud-vm
+    at: 2026-08-18T17:35:00Z
+confidence: 1
+tags: []
+env: null
+affects: []
