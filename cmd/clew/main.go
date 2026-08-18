@@ -13,8 +13,8 @@ usage:
   clew watch [install|uninstall]                 start/adopt the machine's watcher
   clew status [--all]                            the glance
   clew glance [--html]                           calm glance; write pinned-tab HTML
-  clew merge [apply|explain|defer <id>|apply-all]  new work and decisions at finish
-  clew gap [build|explain|retire <id>]           intended work not yet real
+  clew merge                                     new work and decisions at finish
+  clew gap                                       intended work not yet real
   clew map [--html <file>]                       intent × reality with absence
   clew docket [answer|open|accept|reject|ack|drop] …  decision cards only
   clew import <bundle.yaml|dir|https-url>         stage one foreign proposal batch

@@ -26,6 +26,7 @@ const (
 
 type Item struct {
 	ID       string
+	IDs      []string
 	Line     string
 	Entry    *model.Entry
 	Priority int
@@ -37,7 +38,7 @@ type View struct {
 	Items    []Item
 	Deferred int
 	Issues   int // source records that did not pass a clean read
-	Checks   int // watcher/sync/materialization checks currently failing
+	Repairs  []string
 }
 
 // BuildMerge returns the newest live changes that the human has not already
@@ -53,6 +54,9 @@ func BuildMerge(j *journal.Journal, handled map[string]string) View {
 	computed := journal.Compute(j, latestTime(j))
 	var items []Item
 	for id, entry := range j.Entries {
+		if heldForOwner(entry) {
+			continue
+		}
 		switch handled[id] {
 		case "deferred":
 			view.Deferred++
@@ -63,7 +67,7 @@ func BuildMerge(j *journal.Journal, handled map[string]string) View {
 		if entry.Type == model.Question || !mergeLive(computed[id]) {
 			continue
 		}
-		items = append(items, Item{ID: id, Line: CalmLine(entry), Entry: entry})
+		items = appendFolded(items, Item{ID: id, IDs: []string{id}, Line: CalmLine(entry), Entry: entry})
 	}
 	sort.Slice(items, func(i, k int) bool { return items[i].ID > items[k].ID })
 	if len(items) > MaxItems {
@@ -85,6 +89,9 @@ func BuildGap(j *journal.Journal, alerts []state.Alert) View {
 	computed := journal.Compute(j, latestTime(j))
 	var items []Item
 	for id, entry := range j.Entries {
+		if heldForOwner(entry) {
+			continue
+		}
 		c := computed[id]
 		if c == nil {
 			continue
@@ -98,13 +105,13 @@ func BuildGap(j *journal.Journal, alerts []state.Alert) View {
 			if c.Status == journal.StAbsent {
 				priority = 1
 			}
-			items = append(items, Item{ID: id, Line: CalmLine(entry), Entry: entry, Priority: priority})
+			items = appendFolded(items, Item{ID: id, IDs: []string{id}, Line: CalmLine(entry), Entry: entry, Priority: priority})
 		case model.Decision:
 			if c.Status != journal.StActive && c.Status != journal.StPossibleContradiction && c.Status != journal.StContradicted {
 				continue
 			}
 			if decisionHasLiveFailure(entry, alerts) {
-				items = append(items, Item{ID: id, Line: CalmLine(entry), Entry: entry, Priority: 0})
+				items = appendFolded(items, Item{ID: id, IDs: []string{id}, Line: CalmLine(entry), Entry: entry, Priority: 0})
 			}
 		}
 	}
@@ -119,6 +126,122 @@ func BuildGap(j *journal.Journal, alerts []state.Alert) View {
 	}
 	view.Items = items
 	return view
+}
+
+func heldForOwner(entry *model.Entry) bool {
+	if entry == nil {
+		return false
+	}
+	text := strings.ToLower(entry.Title + " " + entry.Body)
+	return strings.Contains(text, "held for") || strings.Contains(text, "not buildable spec")
+}
+
+func appendFolded(items []Item, item Item) []Item {
+	key := foldKey(item.Line)
+	for i := range items {
+		if foldKey(items[i].Line) != key {
+			continue
+		}
+		items[i].IDs = appendUnique(items[i].IDs, item.IDs...)
+		if item.ID > items[i].ID {
+			items[i].ID = item.ID
+			items[i].Entry = item.Entry
+		}
+		if item.Priority < items[i].Priority {
+			items[i].Priority = item.Priority
+		}
+		return items
+	}
+	return append(items, item)
+}
+
+func appendUnique(ids []string, more ...string) []string {
+	seen := make(map[string]bool, len(ids)+len(more))
+	for _, id := range ids {
+		seen[id] = true
+	}
+	for _, id := range more {
+		if id != "" && !seen[id] {
+			ids = append(ids, id)
+			seen[id] = true
+		}
+	}
+	return ids
+}
+
+func foldKey(line string) string {
+	return strings.Join(words(line), " ")
+}
+
+// EntryIDs returns the machine identities behind one human line. Folded lines
+// deliberately keep every source so apply/build/retire records each one.
+func EntryIDs(item Item) []string {
+	ids := append([]string(nil), item.IDs...)
+	if len(ids) == 0 && item.ID != "" {
+		ids = append(ids, item.ID)
+	}
+	sort.Strings(ids)
+	return ids
+}
+
+// Resolve maps plain spoken words back to one displayed line. Exact identity
+// remains accepted for agent plumbing, but never has to pass through a human.
+func Resolve(view View, spoken string) (Item, error) {
+	query := words(spoken)
+	if len(query) == 0 {
+		return Item{}, fmt.Errorf("name the change in your own words")
+	}
+	best, bestScore, tied := -1, 0, false
+	for i, item := range view.Items {
+		for _, id := range EntryIDs(item) {
+			if strings.TrimSpace(spoken) == id {
+				return item, nil
+			}
+		}
+		text := item.Line
+		if item.Entry != nil {
+			text += " " + item.Entry.Title + " " + item.Entry.Body
+		}
+		hay := make(map[string]bool)
+		for _, word := range words(text) {
+			hay[word] = true
+		}
+		score := 0
+		for _, word := range query {
+			if hay[word] {
+				score++
+			}
+		}
+		if score > bestScore {
+			best, bestScore, tied = i, score, false
+		} else if score > 0 && score == bestScore {
+			tied = true
+		}
+	}
+	if best < 0 || bestScore < len(query) || tied {
+		return Item{}, fmt.Errorf("that wording does not name one change on this screen")
+	}
+	return view.Items[best], nil
+}
+
+func words(s string) []string {
+	var b strings.Builder
+	for _, r := range strings.ToLower(s) {
+		switch {
+		case r >= 'a' && r <= 'z', r >= '0' && r <= '9':
+			b.WriteRune(r)
+		default:
+			b.WriteByte(' ')
+		}
+	}
+	stop := map[string]bool{"a": true, "an": true, "and": true, "apply": true, "build": true, "defer": true, "explain": true, "retire": true, "the": true, "to": true}
+	var out []string
+	for _, word := range strings.Fields(b.String()) {
+		if !stop[word] {
+			out = append(out, word)
+		}
+	}
+	return out
 }
 
 func mergeLive(c *journal.Computed) bool {
@@ -187,33 +310,33 @@ func CalmLine(entry *model.Entry) string {
 	title := strings.ToLower(entry.Title)
 	switch {
 	case strings.Contains(title, "codex finished i13 stale") || strings.Contains(title, "law wording"):
-		return "Rename “law/laws” wherever a human reads I13; keep the hard wording for agents"
-	case strings.Contains(title, "knowledge merge at finish"):
-		return "At finish, show a short list of new work and decisions to apply or defer"
-	case strings.Contains(title, "merge lines must pass"):
-		return "Make each change understandable a day later; offer apply, explain, or defer"
-	case strings.Contains(title, "explain is live"):
-		return "Let the agent already here explain the selected change from the owner’s words"
+		return "Human-facing wording needs “law” renamed while agents keep the hard wording"
+	case strings.Contains(title, "entry ids are machine plumbing"):
+		return "Screen lines use plain speech, fold repeats, and leave held work alone"
+	case strings.Contains(title, "finished means shared"), strings.Contains(title, "finish message is a surface"):
+		return "Finished work is shared, and its message says what exists, where it lives, and what you can say next"
+	case strings.Contains(title, "lines are plain speech"):
+		return "Screen lines use plain speech, fold repeats, and leave held work alone"
+	case strings.Contains(title, "broken states carry their verb"):
+		return "Broken lines name the fix or the agent already fixing it"
+	case strings.Contains(title, "knowledge merge at finish"), strings.Contains(title, "merge lines must pass"), strings.Contains(title, "explain is live"):
+		return "Each remembered change stays clear enough to apply, explain, or defer tomorrow"
 	case strings.Contains(title, "silence is the signal"):
-		return "Show quiet only after checking that nothing new landed anywhere"
+		return "Quiet appears only after every place has been checked for something new"
 	case strings.Contains(title, "second tab: the intent gap"):
-		return "Show everything we meant to build but have not made real"
-	case strings.Contains(title, "held: a restart tab"):
-		return "Set aside a way to choose changes for the next start-over"
+		return "The intent gap shows everything we meant to build but have not made real"
 	case strings.Contains(title, "freshness ladder"):
-		return "Wire every agent to learn new decisions before the next human message"
+		return "Every agent needs new decisions before the next human message"
 	case strings.Contains(title, "i9 frugality replaced") || strings.Contains(title, "budget-deadlock"):
-		return "Keep listening with a spend floor above one full request, under the owner’s ceiling"
+		return "Listening needs a spend floor above one full request and under the owner’s ceiling"
 	case strings.Contains(title, "birth detection"):
-		return "Let a new project begin with the owner’s standing decisions and nothing from an old project"
+		return "A new project starts with the owner’s standing decisions and nothing from an old project"
 	case strings.Contains(title, "phone reads the glance"):
-		return "Let the phone show what changed and ask only when a decision needs you"
+		return "The phone shows what changed and asks only when a decision needs you"
 	case strings.Contains(title, "laptop agents fully sensed"):
-		return "Let laptop agents notice all work without asking you to record it"
-	case strings.Contains(title, "pr-only cloud agents"):
-		return "Let cloud agents that can only open a pull request return what they learned"
-	case strings.Contains(title, "repo-write cloud agents"):
-		return "Let cloud agents that can write the project return what they learned"
+		return "Laptop agents notice all work without asking you to record it"
+	case strings.Contains(title, "pr-only cloud agents"), strings.Contains(title, "repo-write cloud agents"):
+		return "Cloud agents return what they learned whether they write or open a pull request"
 	}
 	return strings.TrimSpace(entry.Title)
 }
@@ -229,25 +352,23 @@ func Render(w io.Writer, view View) error {
 	var b strings.Builder
 	switch view.Screen {
 	case KnowledgeMerge:
-		fmt.Fprintf(&b, "KNOWLEDGE MERGE — it remembers what we decide — %s\n", repo)
+		fmt.Fprintf(&b, "KNOWLEDGE MERGE — %s remembers what we decide\n", repo)
 	case IntentGap:
-		fmt.Fprintf(&b, "INTENT GAP — you can look up and see — %s\n", repo)
+		fmt.Fprintf(&b, "INTENT GAP — %s shows what is not real yet\n", repo)
 	default:
 		return fmt.Errorf("render check-in: unknown screen %q", view.Screen)
 	}
-	if view.Issues > 0 {
-		fmt.Fprintf(&b, "! Could not fully check: %d saved item%s could not be read cleanly.\n", view.Issues, plural(view.Issues))
-	}
-	if view.Checks > 0 {
-		verb := "need"
-		if view.Checks == 1 {
-			verb = "needs"
+	for _, repair := range view.Repairs {
+		if !lineAlreadyShown(repair, view.Items) {
+			b.WriteString(repair)
+			b.WriteByte('\n')
 		}
-		fmt.Fprintf(&b, "! Could not fully check: %d live check%s %s attention.\n", view.Checks, plural(view.Checks), verb)
 	}
 	if len(view.Items) == 0 {
-		if view.Issues > 0 || view.Checks > 0 {
-			b.WriteString("No trustworthy empty result is available.\n")
+		if view.Issues > 0 {
+			b.WriteString("The attending agent must repair saved knowledge before this can be called quiet.\n")
+		} else if len(view.Repairs) > 0 {
+			b.WriteString("Quiet waits until that work is fixed.\n")
 		} else if view.Screen == KnowledgeMerge {
 			b.WriteString("Nothing new.\n")
 		} else {
@@ -257,15 +378,15 @@ func Render(w io.Writer, view View) error {
 		return err
 	}
 	for i, item := range view.Items {
-		fmt.Fprintf(&b, "%d. %s [%s]", i+1, item.Line, item.ID)
+		fmt.Fprintf(&b, "%d. %s", i+1, item.Line)
 		if view.Screen == KnowledgeMerge {
-			b.WriteString("  apply · explain · defer\n")
+			b.WriteString(" — apply · explain · defer\n")
 		} else {
-			b.WriteString("  build · explain · retire\n")
+			b.WriteString(" — build · explain · retire\n")
 		}
 	}
 	if view.Screen == KnowledgeMerge {
-		b.WriteString("apply-all")
+		b.WriteString("apply all")
 		if view.Deferred > 0 {
 			fmt.Fprintf(&b, " · %d deferred", view.Deferred)
 		}
@@ -273,6 +394,17 @@ func Render(w io.Writer, view View) error {
 	}
 	_, err := io.WriteString(w, b.String())
 	return err
+}
+
+func lineAlreadyShown(repair string, items []Item) bool {
+	repairWords := foldKey(repair)
+	for _, item := range items {
+		lineWords := foldKey(item.Line)
+		if strings.Contains(repairWords, "spend floor") && strings.Contains(lineWords, "spend floor") {
+			return true
+		}
+	}
+	return false
 }
 
 func plural(n int) string {

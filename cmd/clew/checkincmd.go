@@ -26,6 +26,9 @@ func cmdMerge(args []string) error {
 	if len(args) == 0 {
 		return checkin.Render(os.Stdout, view)
 	}
+	if len(args) == 2 && args[0] == "apply" && args[1] == "all" {
+		args = []string{"apply-all"}
+	}
 	verb := args[0]
 	switch verb {
 	case "apply-all":
@@ -37,36 +40,44 @@ func cmdMerge(args []string) error {
 		}
 		ids := make([]string, 0, len(view.Items))
 		for _, item := range view.Items {
-			if err := a.db.Set(mergeStateKey(repo, item.ID), "applied"); err != nil {
-				return err
+			for _, id := range checkin.EntryIDs(item) {
+				if err := a.db.Set(mergeStateKey(repo, id), "applied"); err != nil {
+					return err
+				}
+				ids = append(ids, id)
 			}
-			ids = append(ids, item.ID)
 		}
 		return checkin.RenderAgentHandoff(os.Stdout, "apply", ids)
 	case "apply", "explain", "defer":
-		if len(args) != 2 {
-			return fmt.Errorf("usage: clew merge %s <entry-id>", verb)
+		if len(args) < 2 {
+			return fmt.Errorf("name the change to %s", verb)
 		}
-		if !viewHas(view, args[1]) {
-			return fmt.Errorf("%s is not on the current knowledge merge", args[1])
+		item, err := checkin.Resolve(view, strings.Join(args[1:], " "))
+		if err != nil {
+			return err
 		}
+		ids := checkin.EntryIDs(item)
 		switch verb {
 		case "apply":
-			if err := a.db.Set(mergeStateKey(repo, args[1]), "applied"); err != nil {
-				return err
+			for _, id := range ids {
+				if err := a.db.Set(mergeStateKey(repo, id), "applied"); err != nil {
+					return err
+				}
 			}
-			return checkin.RenderAgentHandoff(os.Stdout, "apply", []string{args[1]})
+			return checkin.RenderAgentHandoff(os.Stdout, "apply", ids)
 		case "explain":
-			return checkin.RenderAgentHandoff(os.Stdout, "explain", []string{args[1]})
+			return checkin.RenderAgentHandoff(os.Stdout, "explain", ids)
 		case "defer":
-			if err := a.db.Set(mergeStateKey(repo, args[1]), "deferred"); err != nil {
-				return err
+			for _, id := range ids {
+				if err := a.db.Set(mergeStateKey(repo, id), "deferred"); err != nil {
+					return err
+				}
 			}
-			fmt.Println("Deferred. It will remain in the count below the next list.")
+			fmt.Println("That change is deferred and remains in the count below the next list.")
 			return nil
 		}
 	default:
-		return fmt.Errorf("usage: clew merge [apply|explain|defer <entry-id>|apply-all]")
+		return fmt.Errorf("say apply, explain, or defer, then name the change")
 	}
 	return nil
 }
@@ -84,31 +95,36 @@ func cmdGap(args []string) error {
 	if len(args) == 0 {
 		return checkin.Render(os.Stdout, view)
 	}
-	if len(args) != 2 {
-		return fmt.Errorf("usage: clew gap build|explain|retire <entry-id>")
+	if len(args) < 2 {
+		return fmt.Errorf("say build, explain, or retire, then name the change")
 	}
-	verb, id := args[0], args[1]
-	if !viewHas(view, id) {
-		return fmt.Errorf("%s is not on the current intent gap", id)
+	verb := args[0]
+	item, err := checkin.Resolve(view, strings.Join(args[1:], " "))
+	if err != nil {
+		return err
 	}
+	entryIDs := checkin.EntryIDs(item)
 	switch verb {
 	case "build", "explain":
-		return checkin.RenderAgentHandoff(os.Stdout, verb, []string{id})
+		return checkin.RenderAgentHandoff(os.Stdout, verb, entryIDs)
 	case "retire":
-		if err := j.AddEvent(&model.Event{
-			ID: ids.NewEvent(time.Now()), Kind: model.EvReject, Entry: id,
-			Payload: map[string]any{"reason": "retired through intent gap"},
-			By:      model.By{Who: "human", Surface: a.cfg.Surface}, At: time.Now().UTC(),
-		}); err != nil {
-			return err
+		for _, id := range entryIDs {
+			now := time.Now()
+			if err := j.AddEvent(&model.Event{
+				ID: ids.NewEvent(now), Kind: model.EvReject, Entry: id,
+				Payload: map[string]any{"reason": "retired through intent gap"},
+				By:      model.By{Who: "human", Surface: a.cfg.Surface}, At: now.UTC(),
+			}); err != nil {
+				return err
+			}
 		}
 		if _, err := a.syncAndMaterialize(repo); err != nil {
 			return err
 		}
-		fmt.Printf("Retired %s. Its source and this decision remain available.\n", id)
+		fmt.Println("That intent is retired; its source and this decision remain available.")
 		return nil
 	default:
-		return fmt.Errorf("usage: clew gap build|explain|retire <entry-id>")
+		return fmt.Errorf("say build, explain, or retire, then name the change")
 	}
 }
 
@@ -123,7 +139,7 @@ func knowledgeMergeView(a *app) (string, *journal.Journal, checkin.View, error) 
 	}
 	view := checkin.BuildMerge(j, mergeStates(a, repo))
 	view.Repo = repoBase(repo)
-	view.Checks = checkinFailureCount(a, repo)
+	view.Repairs = checkinFailureRepairs(a, repo)
 	return repo, j, view, nil
 }
 
@@ -138,7 +154,7 @@ func intentGapView(a *app) (string, *journal.Journal, checkin.View, error) {
 	}
 	view := checkin.BuildGap(j, a.db.OpenAlerts(repo, false))
 	view.Repo = repoBase(repo)
-	view.Checks = checkinFailureCount(a, repo)
+	view.Repairs = checkinFailureRepairs(a, repo)
 	return repo, j, view, nil
 }
 
@@ -153,16 +169,7 @@ func mergeStates(a *app, repo string) map[string]string {
 	return out
 }
 
-func viewHas(view checkin.View, id string) bool {
-	for _, item := range view.Items {
-		if item.ID == id {
-			return true
-		}
-	}
-	return false
-}
-
-func checkinFailureCount(a *app, repo string) int {
+func checkinFailureRepairs(a *app, repo string) []string {
 	keys := []string{
 		"sync-error:" + repo,
 		"differ-error:" + repo,
@@ -173,13 +180,32 @@ func checkinFailureCount(a *app, repo string) int {
 		"owner-sync-error",
 	}
 	n := 0
+	spendFloor := false
 	for _, key := range keys {
-		if a.db.Get(key) != "" {
+		value := a.db.Get(key)
+		if value != "" {
 			n++
+			if key == "extract-paused" && strings.Contains(strings.ToLower(value), "budget") {
+				spendFloor = true
+			}
 		}
 	}
 	for _, prefix := range []string{"extract-error:", "adapter-error:", "adapter-paused:", "birth-error:", "birth-hook-error:"} {
-		n += len(a.db.KVPrefix(prefix))
+		for _, pair := range a.db.KVPrefix(prefix) {
+			if pair.Value != "" {
+				n++
+			}
+		}
 	}
-	return n
+	var repairs []string
+	if spendFloor {
+		repairs = append(repairs, "Listening is paused until the spend floor is built — build")
+		n--
+	}
+	if n == 1 {
+		repairs = append(repairs, "The attending agent must fix one live check")
+	} else if n > 1 {
+		repairs = append(repairs, fmt.Sprintf("The attending agent must fix %d live checks", n))
+	}
+	return repairs
 }
