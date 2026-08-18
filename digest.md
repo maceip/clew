@@ -1,4 +1,5 @@
 # Journal digest (live entries: id · type/status · title)
+- e01M0AXRKQ8C7FZNKARW83CMBMX decision/active The five promises are the foundation (owner ratified)
 - e01M0AXF5FM9RDFP817NF7QW5BN decision/active Human-facing surface must reduce to the desires it satisfies
 - e01M0AXCM53D36PDN0H85S0WE3W decision/active Mind-plane freshness is vendor-neutral; hooks accelerate, never carry it
 - e01M0AVAR0N8ZCCN1VJW3GQ5PF4 decision/active Restart-with-mutation is the flagship advertised workflow, not a failure mode
@@ -33,5 +34,4 @@
 - e01M065G8RTKVH6466KE7GQREGX finding/current Task 2 passes its live gate on all five acceptance checks
 - e01M064YRS4S9NK7KW9NQ1JMDV2 finding/suspect Malformed or missing pinned timestamps silently fall back to ingest time
 - e01M064YRS4S9NK7KW9NN351FQF finding/suspect I9: Claude settlement ignores cache token fields, letting spend exceed caps
-- e01M064K88F7SDMHA1SPAB51HK7 finding/current D2 final: 52 automatic entries; live extraction 0.631%
-… (77 more omitted for size)
+… (78 more omitted for size)
