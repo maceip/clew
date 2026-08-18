@@ -1,16 +1,16 @@
 # Journal
 
-_generated 2026-08-18 22:58 UTC · 118 live entries (49 decisions · 40 findings · 9 questions · 20 intents) · 138 total in history_
+_generated 2026-08-18 22:59 UTC · 118 live entries (49 decisions · 40 findings · 9 questions · 20 intents) · 138 total in history_
 
 ## DECIDED
 
-- `e01M0BFY164YEV6DAEFVGGH18VT` The limiter gates distillation timing, never sensing; failure is lag — 30m · active
-- `e01M0BFRYY2WVHJZ3R3TDV4CFTS` The wording sweep covers every fear-attached word; docket stays by name — 33m · active
-- `e01M0BFRYY1EW9CFMJNDJ5QH3M2` Evidence settles merge lines; apply is never asked for finished work — 33m · active
-- `e01M0BF0WMX264RA9D0VTM9R24K` Entry ids are machine plumbing: never shown to or relayed through humans — 45m · active
-- `e01M0BEYP65CE70G0VVSX3PV01B` Finished means shared: work ends pushed or PR'd; local-only is an alarm — 47m · active
-- `e01M0BETRRAZ54063PRJK1JSQS7` The finish message is a surface: what exists, where it lives, my next move — 48m · active
-- `e01M0BER1Q412DRFQYESPCN0Q30` Lines are plain speech, no ids; near-duplicates fold; held items rest — 50m · active
+- `e01M0BFY164YEV6DAEFVGGH18VT` The limiter gates distillation timing, never sensing; failure is lag — 31m · active
+- `e01M0BFRYY2WVHJZ3R3TDV4CFTS` The wording sweep covers every fear-attached word; docket stays by name — 34m · active
+- `e01M0BFRYY1EW9CFMJNDJ5QH3M2` Evidence settles merge lines; apply is never asked for finished work — 34m · active
+- `e01M0BF0WMX264RA9D0VTM9R24K` Entry ids are machine plumbing: never shown to or relayed through humans — 46m · active
+- `e01M0BEYP65CE70G0VVSX3PV01B` Finished means shared: work ends pushed or PR'd; local-only is an alarm — 48m · active
+- `e01M0BETRRAZ54063PRJK1JSQS7` The finish message is a surface: what exists, where it lives, my next move — 49m · active
+- `e01M0BER1Q412DRFQYESPCN0Q30` Lines are plain speech, no ids; near-duplicates fold; held items rest — 51m · active
 
 ## LEARNED
 
@@ -24,7 +24,7 @@ _generated 2026-08-18 22:58 UTC · 118 live entries (49 decisions · 40 findings
 
 ## OPEN
 
-- `e01M0BER1Q5W312NDD7GZ283RCM` Cap the two screens at 7+7; overflow policy is an open question — 50m · open ★
+- `e01M0BER1Q5W312NDD7GZ283RCM` Cap the two screens at 7+7; overflow policy is an open question — 51m · open ★
 - `e01M0AY97K0AZHNJW0D87KTD7YH` Two-grade telling: block dependent tasks on unresolved drift? — 5h · open ★
 - `e01M0ASQGM2P07Z36KVZX6P8EH4` Adopt the complexity law: additions must be a verb, label, rendering, or config — 7h · open ★
 - `e01M0ASQGKZ9ZY4XRF6K7KRCT75` Adopt clew witness <transcript> as the cloud-session gap fix? — 7h · open ★
@@ -47,7 +47,7 @@ _generated 2026-08-18 22:58 UTC · 118 live entries (49 decisions · 40 findings
 | Intent | Age | Reality | State |
 |---|---:|---:|---|
 | `e01M0AZN6HJETV241AK5RSBDHNR` Held: a restart tab — stage selected drift into the next generation | 5h | 0 evidence | proposed |
-| `e01M0AXCM561K3C5QXAVGVGT46T` Build the freshness ladder: one delta payload, five delivery layers | 5h | 0 evidence | proposed |
+| `e01M0AXCM561K3C5QXAVGVGT46T` Build the freshness ladder: one delta payload, five delivery layers | 6h | 0 evidence | proposed |
 | `e01M0ARJKGSQFSH8WSVZEG520DH` Surface coverage: phone reads the glance and receives decision cards | 7h | 0 evidence | proposed |
 | `e01M0ARJHKDP6Z6R1FKZSJ8AN4S` Surface coverage: laptop agents fully sensed with zero human effort | 7h | 0 evidence | proposed |
 | `e01M0ARJFTWEWY5H6JFJ17656W4` Surface coverage: PR-only cloud agents (Codex-app-class) contribute knowledge | 7h | 0 evidence | proposed |
