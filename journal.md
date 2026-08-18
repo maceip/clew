@@ -1,21 +1,21 @@
 # Journal
 
-_generated 2026-08-18 17:57 UTC · 80 live entries (28 decisions · 31 findings · 3 questions · 18 intents) · 100 total in history_
+_generated 2026-08-18 17:58 UTC · 80 live entries (28 decisions · 31 findings · 3 questions · 18 intents) · 100 total in history_
 
 ## DECIDED
 
-- `e01M0AZ0K17AA5D9P7KZDSPJQSY` Merge lines must pass the amnesia test; verbs are apply/explain/defer — 24m · active
-- `e01M0AXXKMNNKKY721HJ3REN3KH` Freshness is owed at contact points; a task runs on its snapshot — 43m · active
-- `e01M0AXRKQ8C7FZNKARW83CMBMX` The five promises are the foundation (owner ratified) — 45m · active
-- `e01M0AXF5FM9RDFP817NF7QW5BN` Human-facing surface must reduce to the desires it satisfies — 51m · active
-- `e01M0AXCM53D36PDN0H85S0WE3W` Mind-plane freshness is vendor-neutral; hooks accelerate, never carry it — 57m · active
+- `e01M0AZ0K17AA5D9P7KZDSPJQSY` Merge lines must pass the amnesia test; verbs are apply/explain/defer — 25m · active
+- `e01M0AXXKMNNKKY721HJ3REN3KH` Freshness is owed at contact points; a task runs on its snapshot — 44m · active
+- `e01M0AXRKQ8C7FZNKARW83CMBMX` The five promises are the foundation (owner ratified) — 46m · active
+- `e01M0AXF5FM9RDFP817NF7QW5BN` Human-facing surface must reduce to the desires it satisfies — 52m · active
+- `e01M0AXCM53D36PDN0H85S0WE3W` Mind-plane freshness is vendor-neutral; hooks accelerate, never carry it — 58m · active
 - `e01M0AVAR0N8ZCCN1VJW3GQ5PF4` Restart-with-mutation is the flagship advertised workflow, not a failure mode — 1h · active
 - `e01M0ATYJG615JE6BV5MG5RAF9Z` clew from must accept multiple parent projects, with strand selection — 1h · active
 
 ## LEARNED
 
 - `e01M0ASSNH1HP68M1QERV9AKG5A` Attachments bypass the secret scrub; GitHub push protection caught PATs — 1h · current
-- `e01M0ASQGKDZ8J6SQQK3BXKYAV5` module clew blocks go install by URL; release binaries or rename needed — 1h · current
+- `e01M0ASQGKDZ8J6SQQK3BXKYAV5` module clew blocks go install by URL; release binaries or rename needed — 2h · current
 - `e01M069MQYJX6QVW3YCWWTAWV34` --help — 1d · current
 - `e01M068FQH1ND9MM1WH851AF45M` Task 6 gate: flags 0 writes; algebra, poller, manifest pass — 1d · current
 - `e01M06821D53QYHBJS1FEC2CK7G` Task 5 gate: 3 formats, 1 card, confirm boundary pass — 1d · current
@@ -24,8 +24,8 @@ _generated 2026-08-18 17:57 UTC · 80 live entries (28 decisions · 31 findings 
 
 ## OPEN
 
-- `e01M0ASQGKZ9ZY4XRF6K7KRCT75` Adopt clew witness <transcript> as the cloud-session gap fix? — 1h · open ★
-- `e01M0ASQGKX2F9THW496N79Z83F` Approve selfwatch + journal add + owner-laws relocation to a git-reachable repo — 1h · open ★
+- `e01M0ASQGKZ9ZY4XRF6K7KRCT75` Adopt clew witness <transcript> as the cloud-session gap fix? — 2h · open ★
+- `e01M0ASQGKX2F9THW496N79Z83F` Approve selfwatch + journal add + owner-laws relocation to a git-reachable repo — 2h · open ★
 
 ## ALERTS
 
