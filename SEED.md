@@ -1,13 +1,13 @@
 ---
 format: clew.seed/v1
-digest: sha256:6ef620d2d7cdc38e0452341dc228aa4104de1976d24e2e759e06cff73bac7055
+digest: sha256:e4e3cfae2180aaf4f035dfa49436d86dec265616aeb97cfc6b6a73a4d499ee7a
 snapshot:
     repository:
         id: r8631b465b9e40c83e4d3e137
         name: restart
         remote: https://github.com/maceip/clew.git
-    journal_revision: sha256:25b1340cc50ac7ec4d5a02e0d2daa0c6bc91f5c034dcf0771675b4a92d3da3f8
-    changed_at: 2026-08-18T23:07:17Z
+    journal_revision: sha256:791c744975067a137d8a36173ef09d714f6435aacd2f1d28dc3b17d4ccb6f080
+    changed_at: 2026-08-18T23:10:35Z
     lifecycle:
         state: active
     topics:
@@ -2429,6 +2429,24 @@ snapshot:
                 surface: macs-MacBook-Pro
               at: 2026-08-16T20:44:51.438665Z
         - entry:
+            id: e01M065G8RTKVH6466KEB0FRJ8N
+            type: intent
+            title: Commit the gate fixes as one spec-amended change, then start the docket
+            body: After the Task 2 live gate passed, the plan is to land all gate fixes as a single commit that also amends the spec, and then move on to the docket surface work.
+            quote: I’m committing the gate fixes as one spec-amended change, then moving to the docket.
+            utterance_by: assistant
+            source:
+                kind: session
+                ref: codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-00-58-01a00b84-f81d-7a61-a3c3-e5bb6beb9ee3.jsonl#L1988
+                agent: codex
+                surface: macs-MacBook-Pro
+                at: 2026-08-16T20:51:37.882Z
+            confidence: 0.9
+            tags: []
+            env: null
+            affects: []
+          status: absent
+        - entry:
             id: e01M065SK8W1ZT32KZF92CP8KRT
             type: finding
             title: Alerts only inserted; nothing closed them and keys used mutable prose
@@ -2820,6 +2838,19 @@ snapshot:
             who: differ
             surface: macs-MacBook-Pro
           at: 2026-08-16T20:51:39Z
+        - id: v01M065GZB8C2SS9H9S5BP8EC30
+          kind: evidence
+          entry: e01M065G8RTKVH6466KEB0FRJ8N
+          payload:
+            confidence: 0.85
+            kind: commit
+            note: 'journal: 3 file(s)'
+            ref: 1be8c5020483730f4effd68b53f599bdf3db33c5
+            via: link-pass
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-16T20:52:01Z
         - id: v01M066XZS0BVBJQSSZ17NZTTSR
           kind: evidence
           entry: e01M05V5HWA6TFT0A0KDZY8S45K
@@ -3650,6 +3681,102 @@ snapshot:
             who: differ
             surface: macs-MacBook-Pro
           at: 2026-08-18T17:45:30Z
+        - id: v01M0AZMWMGEBE16SP0P9PNT451
+          kind: evidence
+          entry: e01M0AV0H7T9P69CNPB56MRAG8V
+          payload:
+            kind: commit
+            note: Ship I13 owner memory and explicit lineage
+            ref: 5a56835ff13911a868bda153456b50e26b785574
+            via: subject-match
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-18T17:45:30Z
+        - id: v01M0AZMWMGEBE16SP0PBHC23RN
+          kind: evidence
+          entry: e01M0AVXA7EH2KD1BPZ4GJNKN67
+          payload:
+            kind: commit
+            note: Ship I13 owner memory and explicit lineage
+            ref: 5a56835ff13911a868bda153456b50e26b785574
+            via: subject-match
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-18T17:45:30Z
+        - id: v01M0AZMWMGEBE16SP0PEJTYZPB
+          kind: evidence
+          entry: e01M0AVAR0N8ZCCN1VJW3GQ5PF4
+          payload:
+            kind: commit
+            note: Ship I13 owner memory and explicit lineage
+            ref: 5a56835ff13911a868bda153456b50e26b785574
+            via: subject-match
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-18T17:45:30Z
+        - id: v01M0AZMWMGEBE16SP0PHT83B2D
+          kind: evidence
+          entry: e01M0AQHSRF4DVDYZ989W6K185N
+          payload:
+            kind: commit
+            note: Ship I13 owner memory and explicit lineage
+            ref: 5a56835ff13911a868bda153456b50e26b785574
+            via: subject-match
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-18T17:45:30Z
+        - id: v01M0AZMWMGEBE16SP0PNMJ6RXN
+          kind: evidence
+          entry: e01M0ATYJG615JE6BV5MG5RAF9Z
+          payload:
+            kind: commit
+            note: Ship I13 owner memory and explicit lineage
+            ref: 5a56835ff13911a868bda153456b50e26b785574
+            via: subject-match
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-18T17:45:30Z
+        - id: v01M0AZMWMGEBE16SP0PS13M6MD
+          kind: evidence
+          entry: e01M0ASQGK4FMKRNCNR91KJ06JD
+          payload:
+            kind: commit
+            note: Ship I13 owner memory and explicit lineage
+            ref: 5a56835ff13911a868bda153456b50e26b785574
+            via: subject-match
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-18T17:45:30Z
+        - id: v01M0AZMWMGEBE16SP0PV79J7K0
+          kind: evidence
+          entry: e01M0AQHSRF4DVDYZ989M4DVHYX
+          payload:
+            kind: commit
+            note: Ship I13 owner memory and explicit lineage
+            ref: 5a56835ff13911a868bda153456b50e26b785574
+            via: subject-match
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-18T17:45:30Z
+        - id: v01M0AZMWMGEBE16SP0PY76EGPR
+          kind: evidence
+          entry: e01M0AQHSRF4DVDYZ989RNZVC46
+          payload:
+            kind: commit
+            note: Ship I13 owner memory and explicit lineage
+            ref: 5a56835ff13911a868bda153456b50e26b785574
+            via: subject-match
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-18T17:45:30Z
         - id: v01M0AZS3D0R9F6JDW9DENN65PT
           kind: evidence
           entry: e01M0AQHSRF4DVDYZ989RNZVC46
@@ -3726,6 +3853,30 @@ snapshot:
             kind: churn
             note: Add finish knowledge and intent screens
             ref: churn:1c9f2d28293be323727342c7bdb4ecad5646969e
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-18T17:56:37Z
+        - id: v01M0B09808FFQSS36NCHT943RR
+          kind: evidence
+          entry: e01M0AY6VWJV133F811JYAANJPE
+          payload:
+            kind: commit
+            note: Add finish knowledge and intent screens
+            ref: 1c9f2d28293be323727342c7bdb4ecad5646969e
+            via: subject-match
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-18T17:56:37Z
+        - id: v01M0B09808FFQSS36NCKNDV2ES
+          kind: evidence
+          entry: e01M0AYQ3VJM71SMM1YQFYE1X61
+          payload:
+            kind: commit
+            note: Add finish knowledge and intent screens
+            ref: 1c9f2d28293be323727342c7bdb4ecad5646969e
+            via: subject-match
           by:
             who: differ
             surface: macs-MacBook-Pro
@@ -4222,6 +4373,114 @@ snapshot:
             who: differ
             surface: macs-MacBook-Pro
           at: 2026-08-18T23:07:14Z
+        - id: v01M0BJ206GVJFV3HJ3NBYMEWTX
+          kind: evidence
+          entry: e01M0AZDDYC49Y1741H7W74Y1QY
+          payload:
+            kind: commit
+            note: Record lag; settle evidence; sweep wording; two registers; finish shared; plain speech; fix broken verbs; intent gap
+            ref: e27073c609faf9ffc9bc2b0f5aacb3e67c4feec5
+            via: subject-match
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-18T23:07:14Z
+        - id: v01M0BJ206GVJFV3HJ3NEMWDEPW
+          kind: evidence
+          entry: e01M0BER1Q412DRFQYESPCN0Q30
+          payload:
+            kind: commit
+            note: Record lag; settle evidence; sweep wording; two registers; finish shared; plain speech; fix broken verbs; intent gap
+            ref: e27073c609faf9ffc9bc2b0f5aacb3e67c4feec5
+            via: subject-match
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-18T23:07:14Z
+        - id: v01M0BJ206GVJFV3HJ3NGDTBWQQ
+          kind: evidence
+          entry: e01M0BEM04PAZ85R5YNRM2Y31Z6
+          payload:
+            kind: commit
+            note: Record lag; settle evidence; sweep wording; two registers; finish shared; plain speech; fix broken verbs; intent gap
+            ref: e27073c609faf9ffc9bc2b0f5aacb3e67c4feec5
+            via: subject-match
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-18T23:07:14Z
+        - id: v01M0BJ206GVJFV3HJ3NKCHACR4
+          kind: evidence
+          entry: e01M0BETRRAZ54063PRJK1JSQS7
+          payload:
+            kind: commit
+            note: Record lag; settle evidence; sweep wording; two registers; finish shared; plain speech; fix broken verbs; intent gap
+            ref: e27073c609faf9ffc9bc2b0f5aacb3e67c4feec5
+            via: subject-match
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-18T23:07:14Z
+        - id: v01M0BJ206GVJFV3HJ3NMBMS9K6
+          kind: evidence
+          entry: e01M0BEYP65CE70G0VVSX3PV01B
+          payload:
+            kind: commit
+            note: Record lag; settle evidence; sweep wording; two registers; finish shared; plain speech; fix broken verbs; intent gap
+            ref: e27073c609faf9ffc9bc2b0f5aacb3e67c4feec5
+            via: subject-match
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-18T23:07:14Z
+        - id: v01M0BJ206GVJFV3HJ3NPT8K21X
+          kind: evidence
+          entry: e01M0BFRYY2WVHJZ3R3TDV4CFTS
+          payload:
+            kind: commit
+            note: Record lag; settle evidence; sweep wording; two registers; finish shared; plain speech; fix broken verbs; intent gap
+            ref: e27073c609faf9ffc9bc2b0f5aacb3e67c4feec5
+            via: subject-match
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-18T23:07:14Z
+        - id: v01M0BJ206GVJFV3HJ3NS6QXAYK
+          kind: evidence
+          entry: e01M0BF0WMX264RA9D0VTM9R24K
+          payload:
+            kind: commit
+            note: Record lag; settle evidence; sweep wording; two registers; finish shared; plain speech; fix broken verbs; intent gap
+            ref: e27073c609faf9ffc9bc2b0f5aacb3e67c4feec5
+            via: subject-match
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-18T23:07:14Z
+        - id: v01M0BJ206GVJFV3HJ3NW8ZJ37W
+          kind: evidence
+          entry: e01M0BFY164YEV6DAEFVGGH18VT
+          payload:
+            kind: commit
+            note: Record lag; settle evidence; sweep wording; two registers; finish shared; plain speech; fix broken verbs; intent gap
+            ref: e27073c609faf9ffc9bc2b0f5aacb3e67c4feec5
+            via: subject-match
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-18T23:07:14Z
+        - id: v01M0BJ206GVJFV3HJ3NWV659ZX
+          kind: evidence
+          entry: e01M0AXMXK3SAATFDFAYZ932TPC
+          payload:
+            kind: commit
+            note: Record lag; settle evidence; sweep wording; two registers; finish shared; plain speech; fix broken verbs; intent gap
+            ref: e27073c609faf9ffc9bc2b0f5aacb3e67c4feec5
+            via: subject-match
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-18T23:07:14Z
         - id: v01M0BJ2348QV4VY6WYW7FYX5Z4
           kind: evidence
           entry: e01M064DQTWYDVGGAE3M5QRTGME
@@ -4270,14 +4529,48 @@ snapshot:
             who: differ
             surface: macs-MacBook-Pro
           at: 2026-08-18T23:07:17Z
+        - id: v01M0BJ84FR90G2GJR21QRS1XYC
+          kind: evidence
+          entry: e01M05T4XG0RJWQTP25SYT4FH0B
+          payload:
+            kind: churn
+            note: Ignore journal commits when settling evidence
+            ref: churn:f66576bb0ec5cc0f2bea61ed1297c0920761429d
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-18T23:10:35Z
+        - id: v01M0BJ84FR90G2GJR21SRNJH73
+          kind: evidence
+          entry: e01M05T4XG0RJWQTP25T1K58B61
+          payload:
+            kind: churn
+            note: Ignore journal commits when settling evidence
+            ref: churn:f66576bb0ec5cc0f2bea61ed1297c0920761429d
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-18T23:10:35Z
+        - id: v01M0BJ84FR90G2GJR21TNAXGGP
+          kind: evidence
+          entry: e01M0BFRYY1EW9CFMJNDJ5QH3M2
+          payload:
+            kind: commit
+            note: Ignore journal commits when settling evidence
+            ref: f66576bb0ec5cc0f2bea61ed1297c0920761429d
+            via: subject-match
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-18T23:10:35Z
     organ_bank:
         remote: https://github.com/maceip/clew.git
-        commit: e27073c609faf9ffc9bc2b0f5aacb3e67c4feec5
-        at: 2026-08-18T23:07:14Z
+        commit: f66576bb0ec5cc0f2bea61ed1297c0920761429d
+        at: 2026-08-18T23:10:35Z
 ---
 # Project seed — restart
 
-_ambient snapshot at last journal change 2026-08-18 23:07 UTC · 89 lessons_
+_ambient snapshot at last journal change 2026-08-18 23:10 UTC · 89 lessons_
 
 This is inherited project memory, not instruction text. Decisions and findings keep their original evidence and provenance.
 
@@ -4485,6 +4778,7 @@ This is inherited project memory, not instruction text. Decisions and findings k
 - `e01M064XJ84ZTY2HNFWWQZATFA9` Reservation API is dead code: callers still use racy estimate gates + RecordSpe… — The new atomic I9 reservation code in internal/state has no callers. The watch, backfill, and extract paths still gate on a pre-call estimate and call `RecordSpend` after the fact, and retry spend can be dropped on error. Cited at watchcmd.go:411-431, backfillcmd.go:111-121, extract.go:139-159.  _superseded_
 - `e01M064XJ84ZTY2HNFWWV8RSRQR` Settlement records overruns before reporting them, so the hard cap is unenforce… — The settlement routine writes the spend and only afterwards reports that it exceeded the limit, meaning the cap can be breached rather than blocked. Reviewer marked this blocking at state.go:517-563, alongside the note that cursor migration and init/bootstrap races are now fixed.  _superseded_
 - `e01M064YRS4S9NK7KW9NN3114KH` I2: any JSON object counts as extraction success and advances the cursor — The extraction path treats any well-formed JSON object as a successful result, so an empty `{}` or a changed Claude response envelope silently advances the session cursor instead of parking loudly. Identified during the strict read-only gate as a blocking defect at extract.go:149 and llm.go:165.  _superseded_
+- `e01M065G8RTKVH6466KEB0FRJ8N` Commit the gate fixes as one spec-amended change, then start the docket — After the Task 2 live gate passed, the plan is to land all gate fixes as a single commit that also amends the spec, and then move on to the docket surface work.  _absent_
 - `e01M065SK8W1ZT32KZF92CP8KRT` Alerts only inserted; nothing closed them and keys used mutable prose — Before the reconcile work, the implementation had no poll path that closed alerts, so open alerts accumulated indefinitely, and alert keys were built from mutable prose — making identity unstable across polls.  _superseded_
 - `e01M06656MKNEEY96GBNNDYYR36` Stomp withdrawal verified on dirty-path and session-expiry in the next Run — Focused state and differ tests passed, covering both the dirty-path and session-expiry stomp cases: the stale alert is withdrawn on the very next poll cycle rather than lingering. Full suite and shared-worktree integration checks followed.  _superseded_
 
@@ -4519,6 +4813,7 @@ This is inherited project memory, not instruction text. Decisions and findings k
 - `v01M065G9VR22YS55XF1R53Y5CJ` evidence for `e01M05SPB2EMMC4F4PR0928NA31` — kind: churn note: Make zero-homework watch safe and measurable ref: churn:b4c4cd3663a5297257723e4d6fafc87130641920
 - `v01M065G9VR22YS55XF1T2DPDNG` evidence for `e01M05SPB2EMMC4F4PR09QWMXG8` — kind: churn note: Make zero-homework watch safe and measurable ref: churn:b4c4cd3663a5297257723e4d6fafc87130641920
 - `v01M065G9VR22YS55XF1VABNACQ` evidence for `e01M05TCM2N1P9P2EQSE8YKVQX3` — kind: churn note: Make zero-homework watch safe and measurable ref: churn:b4c4cd3663a5297257723e4d6fafc87130641920
+- `v01M065GZB8C2SS9H9S5BP8EC30` evidence for `e01M065G8RTKVH6466KEB0FRJ8N` — confidence: 0.85 kind: commit note: 'journal: 3 file(s)' ref: 1be8c5020483730f4effd68b53f599bdf3db33c5 via: link-pass
 - `v01M066XZS0BVBJQSSZ17NZTTSR` evidence for `e01M05V5HWA6TFT0A0KDZY8S45K` — kind: commit note: Replace inbox with a bounded self-cleaning docket ref: b9a7e7f402c98e9f5d0a170ae519135566afc548
 - `v01M066XZS0BVBJQSSZ1AGPD2A0` evidence for `e01M04H0KBY8QQWXPE8DP99N012` — kind: commit note: Replace inbox with a bounded self-cleaning docket ref: b9a7e7f402c98e9f5d0a170ae519135566afc548
 - `v01M066XZS0BVBJQSSZ1HCM3885` evidence for `e01M05SA72DPRGNTY7GD0TGHEX7` — kind: commit note: Replace inbox with a bounded self-cleaning docket ref: b9a7e7f402c98e9f5d0a170ae519135566afc548
@@ -4593,6 +4888,14 @@ This is inherited project memory, not instruction text. Decisions and findings k
 - `v01M0AZMWMGD6SD3MGTAF6M4544` evidence for `e01M05VNN1T5TKJ15Q47KSS3FMJ` — kind: churn note: Ship I13 owner memory and explicit lineage ref: churn:5a56835ff13911a868bda153456b50e26b785574
 - `v01M0AZMWMGD6SD3MGTAFP3G8WH` evidence for `e01M05T4XG0RJWQTP25T1K58B61` — kind: churn note: Ship I13 owner memory and explicit lineage ref: churn:5a56835ff13911a868bda153456b50e26b785574
 - `v01M0AZMWMGD6SD3MGTAH5Y1001` evidence for `e01M05VTCM3AR0WFY9TZPG9W1J8` — kind: churn note: Ship I13 owner memory and explicit lineage ref: churn:5a56835ff13911a868bda153456b50e26b785574
+- `v01M0AZMWMGEBE16SP0P9PNT451` evidence for `e01M0AV0H7T9P69CNPB56MRAG8V` — kind: commit note: Ship I13 owner memory and explicit lineage ref: 5a56835ff13911a868bda153456b50e26b785574 via: subject-match
+- `v01M0AZMWMGEBE16SP0PBHC23RN` evidence for `e01M0AVXA7EH2KD1BPZ4GJNKN67` — kind: commit note: Ship I13 owner memory and explicit lineage ref: 5a56835ff13911a868bda153456b50e26b785574 via: subject-match
+- `v01M0AZMWMGEBE16SP0PEJTYZPB` evidence for `e01M0AVAR0N8ZCCN1VJW3GQ5PF4` — kind: commit note: Ship I13 owner memory and explicit lineage ref: 5a56835ff13911a868bda153456b50e26b785574 via: subject-match
+- `v01M0AZMWMGEBE16SP0PHT83B2D` evidence for `e01M0AQHSRF4DVDYZ989W6K185N` — kind: commit note: Ship I13 owner memory and explicit lineage ref: 5a56835ff13911a868bda153456b50e26b785574 via: subject-match
+- `v01M0AZMWMGEBE16SP0PNMJ6RXN` evidence for `e01M0ATYJG615JE6BV5MG5RAF9Z` — kind: commit note: Ship I13 owner memory and explicit lineage ref: 5a56835ff13911a868bda153456b50e26b785574 via: subject-match
+- `v01M0AZMWMGEBE16SP0PS13M6MD` evidence for `e01M0ASQGK4FMKRNCNR91KJ06JD` — kind: commit note: Ship I13 owner memory and explicit lineage ref: 5a56835ff13911a868bda153456b50e26b785574 via: subject-match
+- `v01M0AZMWMGEBE16SP0PV79J7K0` evidence for `e01M0AQHSRF4DVDYZ989M4DVHYX` — kind: commit note: Ship I13 owner memory and explicit lineage ref: 5a56835ff13911a868bda153456b50e26b785574 via: subject-match
+- `v01M0AZMWMGEBE16SP0PY76EGPR` evidence for `e01M0AQHSRF4DVDYZ989RNZVC46` — kind: commit note: Ship I13 owner memory and explicit lineage ref: 5a56835ff13911a868bda153456b50e26b785574 via: subject-match
 - `v01M0AZS3D0R9F6JDW9DENN65PT` evidence for `e01M0AQHSRF4DVDYZ989RNZVC46` — kind: commit note: 'journal: restart tab hard half — what not to carry' ref: b9b17a6c6be36e3a76f1dd2a7de7f2d039ec84c8 via: subject-match
 - `v01M0AZS3D0R9F6JDW9DGCSENKS` evidence for `e01M0AVAR0N8ZCCN1VJW3GQ5PF4` — kind: commit note: 'journal: restart tab hard half — what not to carry' ref: b9b17a6c6be36e3a76f1dd2a7de7f2d039ec84c8 via: subject-match
 - `v01M0AZS3D0R9F6JDW9DN3M30D3` evidence for `e01M0AQHSRF4DVDYZ989MTZQV7E` — kind: commit note: 'journal: restart tab hard half — what not to carry' ref: b9b17a6c6be36e3a76f1dd2a7de7f2d039ec84c8 via: subject-match
@@ -4600,6 +4903,8 @@ This is inherited project memory, not instruction text. Decisions and findings k
 - `v01M0B09808B4RKCT5KD1W0DPB5` evidence for `e01M05T4XG0RJWQTP25SYT4FH0B` — kind: churn note: Add finish knowledge and intent screens ref: churn:1c9f2d28293be323727342c7bdb4ecad5646969e
 - `v01M0B09808B4RKCT5KD1YWD5AJ` evidence for `e01M05T4XG0RJWQTP25T1K58B61` — kind: churn note: Add finish knowledge and intent screens ref: churn:1c9f2d28293be323727342c7bdb4ecad5646969e
 - `v01M0B09808B4RKCT5KD2J9WMDA` evidence for `e01M05SPB2EMMC4F4PR0928NA31` — kind: churn note: Add finish knowledge and intent screens ref: churn:1c9f2d28293be323727342c7bdb4ecad5646969e
+- `v01M0B09808FFQSS36NCHT943RR` evidence for `e01M0AY6VWJV133F811JYAANJPE` — kind: commit note: Add finish knowledge and intent screens ref: 1c9f2d28293be323727342c7bdb4ecad5646969e via: subject-match
+- `v01M0B09808FFQSS36NCKNDV2ES` evidence for `e01M0AYQ3VJM71SMM1YQFYE1X61` — kind: commit note: Add finish knowledge and intent screens ref: 1c9f2d28293be323727342c7bdb4ecad5646969e via: subject-match
 - `v01M0BER1JG15ZMPFYZF9KEE5Y7` evidence for `e01M0AXCM53D36PDN0H85S0WE3W` — kind: commit note: 'journal: plain-speech/no-ids ruling, 7+7 cap question, spoken-verbs interim note' ref: 03453909c924fbd7d3d893642b3510654adc105a via: subject-match
 - `v01M0BER1JG15ZMPFYZFD5YW7KF` evidence for `e01M0BEM04PAZ85R5YNRM2Y31Z6` — kind: commit note: 'journal: plain-speech/no-ids ruling, 7+7 cap question, spoken-verbs interim note' ref: 03453909c924fbd7d3d893642b3510654adc105a via: subject-match
 - `v01M0BER1JG15ZMPFYZFDWCMXK9` evidence for `e01M0AV0H7RY7DG79VCMHPEMPJP` — kind: commit note: 'journal: plain-speech/no-ids ruling, 7+7 cap question, spoken-verbs interim note' ref: 03453909c924fbd7d3d893642b3510654adc105a via: subject-match
@@ -4643,11 +4948,23 @@ This is inherited project memory, not instruction text. Decisions and findings k
 - `v01M0BJ206G6547MERH935PES1Z` evidence for `e01M064XJ84ZTY2HNFWWQZATFA9` — kind: churn note: Record lag; settle evidence; sweep wording; two registers; finish shared; plain speech; fix broken verbs; intent gap ref: churn:e27073c609faf9ffc9bc2b0f5aacb3e67c4feec5
 - `v01M0BJ206G6547MERH961H4MZ7` evidence for `e01M05SPB2EMMC4F4PR09QWMXG8` — kind: churn note: Record lag; settle evidence; sweep wording; two registers; finish shared; plain speech; fix broken verbs; intent gap ref: churn:e27073c609faf9ffc9bc2b0f5aacb3e67c4feec5
 - `v01M0BJ206G6547MERH9708PZF0` evidence for `e01M064YRS4S9NK7KW9NQ1JMDV2` — kind: churn note: Record lag; settle evidence; sweep wording; two registers; finish shared; plain speech; fix broken verbs; intent gap ref: churn:e27073c609faf9ffc9bc2b0f5aacb3e67c4feec5
+- `v01M0BJ206GVJFV3HJ3NBYMEWTX` evidence for `e01M0AZDDYC49Y1741H7W74Y1QY` — kind: commit note: Record lag; settle evidence; sweep wording; two registers; finish shared; plain speech; fix broken verbs; intent gap ref: e27073c609faf9ffc9bc2b0f5aacb3e67c4feec5 via: subject-match
+- `v01M0BJ206GVJFV3HJ3NEMWDEPW` evidence for `e01M0BER1Q412DRFQYESPCN0Q30` — kind: commit note: Record lag; settle evidence; sweep wording; two registers; finish shared; plain speech; fix broken verbs; intent gap ref: e27073c609faf9ffc9bc2b0f5aacb3e67c4feec5 via: subject-match
+- `v01M0BJ206GVJFV3HJ3NGDTBWQQ` evidence for `e01M0BEM04PAZ85R5YNRM2Y31Z6` — kind: commit note: Record lag; settle evidence; sweep wording; two registers; finish shared; plain speech; fix broken verbs; intent gap ref: e27073c609faf9ffc9bc2b0f5aacb3e67c4feec5 via: subject-match
+- `v01M0BJ206GVJFV3HJ3NKCHACR4` evidence for `e01M0BETRRAZ54063PRJK1JSQS7` — kind: commit note: Record lag; settle evidence; sweep wording; two registers; finish shared; plain speech; fix broken verbs; intent gap ref: e27073c609faf9ffc9bc2b0f5aacb3e67c4feec5 via: subject-match
+- `v01M0BJ206GVJFV3HJ3NMBMS9K6` evidence for `e01M0BEYP65CE70G0VVSX3PV01B` — kind: commit note: Record lag; settle evidence; sweep wording; two registers; finish shared; plain speech; fix broken verbs; intent gap ref: e27073c609faf9ffc9bc2b0f5aacb3e67c4feec5 via: subject-match
+- `v01M0BJ206GVJFV3HJ3NPT8K21X` evidence for `e01M0BFRYY2WVHJZ3R3TDV4CFTS` — kind: commit note: Record lag; settle evidence; sweep wording; two registers; finish shared; plain speech; fix broken verbs; intent gap ref: e27073c609faf9ffc9bc2b0f5aacb3e67c4feec5 via: subject-match
+- `v01M0BJ206GVJFV3HJ3NS6QXAYK` evidence for `e01M0BF0WMX264RA9D0VTM9R24K` — kind: commit note: Record lag; settle evidence; sweep wording; two registers; finish shared; plain speech; fix broken verbs; intent gap ref: e27073c609faf9ffc9bc2b0f5aacb3e67c4feec5 via: subject-match
+- `v01M0BJ206GVJFV3HJ3NW8ZJ37W` evidence for `e01M0BFY164YEV6DAEFVGGH18VT` — kind: commit note: Record lag; settle evidence; sweep wording; two registers; finish shared; plain speech; fix broken verbs; intent gap ref: e27073c609faf9ffc9bc2b0f5aacb3e67c4feec5 via: subject-match
+- `v01M0BJ206GVJFV3HJ3NWV659ZX` evidence for `e01M0AXMXK3SAATFDFAYZ932TPC` — kind: commit note: Record lag; settle evidence; sweep wording; two registers; finish shared; plain speech; fix broken verbs; intent gap ref: e27073c609faf9ffc9bc2b0f5aacb3e67c4feec5 via: subject-match
 - `v01M0BJ2348QV4VY6WYW7FYX5Z4` evidence for `e01M064DQTWYDVGGAE3M5QRTGME` — kind: commit note: 'journal: 24 file(s)' ref: 2f14008720ee908109a7715a0d82cc4c9dea9251 via: subject-match
 - `v01M0BJ2348QV4VY6WYW8KYJ911` evidence for `e01M0AXRKQ8C7FZNKARW83CMBMX` — kind: commit note: 'journal: 24 file(s)' ref: 2f14008720ee908109a7715a0d82cc4c9dea9251 via: subject-match
 - `v01M0BJ2348QV4VY6WYWC1S18MX` evidence for `e01M05TBYJXEW5N5FE397XYMEHY` — kind: commit note: 'journal: 1 file(s)' ref: 9f25ad55657388cdd4daa160f5969aaf07ee04e3 via: subject-match
 - `v01M0BJ2348QV4VY6WYWF9Z0SQM` evidence for `e01M04WCGJS9FS7FQB0YFX9DTYG` — kind: commit note: 'journal: 1 file(s)' ref: 9f25ad55657388cdd4daa160f5969aaf07ee04e3 via: subject-match
+- `v01M0BJ84FR90G2GJR21QRS1XYC` evidence for `e01M05T4XG0RJWQTP25SYT4FH0B` — kind: churn note: Ignore journal commits when settling evidence ref: churn:f66576bb0ec5cc0f2bea61ed1297c0920761429d
+- `v01M0BJ84FR90G2GJR21SRNJH73` evidence for `e01M05T4XG0RJWQTP25T1K58B61` — kind: churn note: Ignore journal commits when settling evidence ref: churn:f66576bb0ec5cc0f2bea61ed1297c0920761429d
+- `v01M0BJ84FR90G2GJR21TNAXGGP` evidence for `e01M0BFRYY1EW9CFMJNDJ5QH3M2` — kind: commit note: Ignore journal commits when settling evidence ref: f66576bb0ec5cc0f2bea61ed1297c0920761429d via: subject-match
 
 ## Organ-bank pin
 
-- `https://github.com/maceip/clew.git` at `e27073c609faf9ffc9bc2b0f5aacb3e67c4feec5`
+- `https://github.com/maceip/clew.git` at `f66576bb0ec5cc0f2bea61ed1297c0920761429d`

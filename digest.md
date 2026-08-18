@@ -8,7 +8,7 @@
 - e01M0BER1Q5W312NDD7GZ283RCM question/open Cap the two screens at 7+7; overflow policy is an open question
 - e01M0BER1Q412DRFQYESPCN0Q30 decision/active Lines are plain speech, no ids; near-duplicates fold; held items rest
 - e01M0BEM04PAZ85R5YNRM2Y31Z6 decision/active Broken states carry their verb: no unactionable warnings for humans
-- e01M0AZN6HJETV241AK5RSBDHNR intent/in_flight Held: a restart tab — stage selected drift into the next generation
+- e01M0AZN6HJETV241AK5RSBDHNR intent/proposed Held: a restart tab — stage selected drift into the next generation
 - e01M0AZDDYC49Y1741H7W74Y1QY decision/active Second tab: the intent gap — everything intended, not yet real
 - e01M0AZ7JBPJRNHFJQC6WEEQB9Y decision/active Silence is the signal: an absent merge means truly nothing new
 - e01M0AZ4BGF1VC0VSXA05VYVEQ3 decision/active Explain is live: the attending agent reads the entry and explains
@@ -22,7 +22,7 @@
 - e01M0AXRKQ8C7FZNKARW83CMBMX decision/active The five promises are the foundation (owner ratified)
 - e01M0AXMXK3SAATFDFAYZ932TPC decision/active Two registers, one memory: calm words for humans, hard words for agents
 - e01M0AXF5FM9RDFP817NF7QW5BN decision/active Human-facing surface must reduce to the desires it satisfies
-- e01M0AXCM561K3C5QXAVGVGT46T intent/in_flight Build the freshness ladder: one delta payload, five delivery layers
+- e01M0AXCM561K3C5QXAVGVGT46T intent/proposed Build the freshness ladder: one delta payload, five delivery layers
 - e01M0AXCM55N0QM9RCRYF48TQ6C finding/current Universal injection point: every model API call rebuilds the mind
 - e01M0AXCM54CDSPV84DBH1PWGWD finding/current Spec nudge matrix is stale: codex and gemini now ship injection hooks
 - e01M0AXCM53D36PDN0H85S0WE3W decision/active Mind-plane freshness is vendor-neutral; hooks accelerate, never carry it
