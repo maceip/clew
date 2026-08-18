@@ -1,0 +1,17 @@
+id: e01M0AQHSRF4DVDYZ989M4DVHYX
+type: decision
+title: Lineage inheritance is explicit; only promoted laws auto-carry
+body: 'clew will never auto-carry project lore into a new repo. Rationale: a wrong lineage guess poisons a fresh project worse than inheriting nothing at all. Owner laws are the sole exception and may be injected automatically, because the promotion step already certified each law as project-agnostic. This is the governing reason behind invariant I13.'
+quote: lore inheritance was made explicit because a wrong lineage guess poisons a fresh project worse than no inheritance at all — laws are safe to auto-carry precisely because promotion certified them project-agnostic.
+utterance_by: user
+source:
+    kind: session
+    ref: codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-24-00-01a01578-e6db-7833-9ab2-0457569af643.jsonl#L9
+    agent: codex
+    surface: macs-MacBook-Pro
+    at: 2026-08-18T15:24:00.143Z
+confidence: 0.95
+tags:
+    - .clew/**
+env: null
+affects: []

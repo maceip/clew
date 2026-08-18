@@ -1,0 +1,17 @@
+id: e01M0AQHSRF4DVDYZ989PVHGA7R
+type: intent
+title: 'Birth detection: auto-init a new repo with owner laws only'
+body: 'Build auto-init so that a fresh git init plus an agent session on a watched machine sets up watch, journal branch, and context.md carrying only the owner''s laws — no lore and no birth card required. Acceptance test: `mkdir x && git init && claude` yields a context containing the owner''s laws with zero clew commands typed.'
+quote: 'new git init + agent session on a watched machine → auto-init (watch, journal branch, context.md) with owner laws only. No lore, no card required. Acceptance: mkdir x && git init && claude yields a context containing the owner''s laws with zero clew commands typed.'
+utterance_by: user
+source:
+    kind: session
+    ref: codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-24-00-01a01578-e6db-7833-9ab2-0457569af643.jsonl#L9
+    agent: codex
+    surface: macs-MacBook-Pro
+    at: 2026-08-18T15:24:00.143Z
+confidence: 0.93
+tags:
+    - .clew/**
+env: null
+affects: []

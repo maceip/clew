@@ -1,0 +1,17 @@
+id: e01M0AQHSRF4DVDYZ989W6K185N
+type: decision
+title: Owner laws live in an owner-scope journal with a ≤1KB injection budget
+body: Laws are stored as an owner-scope journal synced like any other. Findings become laws through an explicit `clew journal promote <id>`, with the extractor proposing promotion when a finding's content is project-agnostic. The resulting law set is capped at a ≤1KB injection into every project's context, permanently.
+quote: an owner-scope journal synced like any other; findings promoted via clew journal promote <id>; extractor proposes promotion when a finding's content is project-agnostic; ≤1KB injection budget into every project's context, forever.
+utterance_by: user
+source:
+    kind: session
+    ref: codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-24-00-01a01578-e6db-7833-9ab2-0457569af643.jsonl#L9
+    agent: codex
+    surface: macs-MacBook-Pro
+    at: 2026-08-18T15:24:00.143Z
+confidence: 0.92
+tags:
+    - .clew/**
+env: null
+affects: []

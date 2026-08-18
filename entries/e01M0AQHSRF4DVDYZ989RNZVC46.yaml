@@ -1,0 +1,16 @@
+id: e01M0AQHSRF4DVDYZ989RNZVC46
+type: decision
+title: '`clew from` is the one explicit lineage command; never automatic'
+body: Pulling a predecessor's seed (decisions, findings, graveyard, exhibits, organ-bank pin) happens only via an explicit `clew from <repo>`; with no args it lists candidates ranked by recency and topic overlap, showing what each would carry. It can run at birth or later, un-carrying is recorded as a reject so carried entries keep provenance, and the birth card may only suggest `clew from X` on name/t…
+quote: Runnable at birth or any time later; un-carrying is a reject (carried entries keep provenance like everything else). Never automatic. The birth card may suggest clew from X on blatant name/topic overlap — suggest only, never act.
+utterance_by: user
+source:
+    kind: session
+    ref: codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-24-00-01a01578-e6db-7833-9ab2-0457569af643.jsonl#L9
+    agent: codex
+    surface: macs-MacBook-Pro
+    at: 2026-08-18T15:24:00.143Z
+confidence: 0.93
+tags: []
+env: null
+affects: []
