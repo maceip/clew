@@ -1,0 +1,11 @@
+id: v01M0BJV2Y0YVJPWQ65X6G2BV73
+kind: evidence
+entry: e01M05T4XG0RJWQTP25T1K58B61
+payload:
+    kind: churn
+    note: Calm remaining decision-register wording
+    ref: churn:8c1d91834c6a02065fddfc4ff3b801858b636a74
+by:
+    who: differ
+    surface: macs-MacBook-Pro
+at: 2026-08-18T23:20:56Z
