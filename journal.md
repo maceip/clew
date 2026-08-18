@@ -1,16 +1,16 @@
 # Journal
 
-_generated 2026-08-18 16:23 UTC · 73 live entries (21 decisions · 31 findings · 3 questions · 18 intents) · 93 total in history_
+_generated 2026-08-18 16:23 UTC · 74 live entries (22 decisions · 31 findings · 3 questions · 18 intents) · 94 total in history_
 
 ## DECIDED
 
+- `e01M0ATYJG615JE6BV5MG5RAF9Z` clew from must accept multiple parent projects, with strand selection — 1m · active
 - `e01M0ASQGJZPFJD3FSRT7P4HX44` Owner-configured cloud environments are full clew nodes — 25m · active
 - `e01M0AQHSRF4DVDYZ989W6K185N` Owner laws live in an owner-scope journal with a ≤1KB injection budget — 59m · possible-contradiction
 - `e01M0AQHSRF4DVDYZ989RNZVC46` `clew from` is the one explicit lineage command; never automatic — 59m · active
 - `e01M0AQHSRF4DVDYZ989MTZQV7E` SEED.md is watcher-maintained continuously, never generated on demand — 59m · possible-contradiction
 - `e01M0AQHSRF4DVDYZ989M4DVHYX` Lineage inheritance is explicit; only promoted laws auto-carry — 59m · possible-contradiction
 - `e01M068ECYE067WF6BH7F26VC3D` Cursor v1 stays CLI-only: desktop 0 vs CLI 44 in 7d — 1d · active
-- `e01M065T92NXY1ER6R73YCQNH84` Recover docket empty-state and withdrawal wording from Task 3 journal source — 1d · possible-contradiction
 
 ## LEARNED
 
@@ -50,6 +50,13 @@ _generated 2026-08-18 16:23 UTC · 73 live entries (21 decisions · 31 findings 
 | `e01M065G8RTKVH6466KEB0FRJ8N` Commit the gate fixes as one spec-amended change, then start the docket | 1d | 1 evidence | in_flight |
 
 ## Decisions
+
+### e01M0ATYJG615JE6BV5MG5RAF9Z — clew from must accept multiple parent projects, with strand selection  `active`
+> clew from needs to support _multiple_ projects as inputs, the human may want parts from multiple
+
+Owner ruling: inheritance is multi-parent. `clew from A B` unions seeds; `--tags <globs>` selects strands per parent; runnable repeatedly. Each carried entry keeps per-parent provenance; disagreements between parents surface as possible-contradiction cards for human arbitration, never silent merge. Genesis records multiple lineage links (the forest gains merge nodes).
+
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00_
 
 ### e01M0ASQGJZPFJD3FSRT7P4HX44 — Owner-configured cloud environments are full clew nodes  `active`
 > we have installable skills, MCP, and I can configure the environments cursor, codex, and claude agents run in the cloud which can absolutely include our golang services
