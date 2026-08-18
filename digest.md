@@ -1,7 +1,7 @@
 # Journal digest (live entries: id · type/status · title)
 - e01M0AQHSRF4DVDYZ989W6K185N decision/possible-contradiction Owner laws live in an owner-scope journal with a ≤1KB injection budget
 - e01M0AQHSRF4DVDYZ989RNZVC46 decision/active `clew from` is the one explicit lineage command; never automatic
-- e01M0AQHSRF4DVDYZ989PVHGA7R intent/proposed Birth detection: auto-init a new repo with owner laws only
+- e01M0AQHSRF4DVDYZ989PVHGA7R intent/in_flight Birth detection: auto-init a new repo with owner laws only
 - e01M0AQHSRF4DVDYZ989MTZQV7E decision/possible-contradiction SEED.md is watcher-maintained continuously, never generated on demand
 - e01M0AQHSRF4DVDYZ989M4DVHYX decision/possible-contradiction Lineage inheritance is explicit; only promoted laws auto-carry
 - e01M068FQH1ND9MM1WH851AF45M finding/current Task 6 gate: flags 0 writes; algebra, poller, manifest pass
