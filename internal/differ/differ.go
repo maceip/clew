@@ -96,6 +96,7 @@ func Run(db *state.DB, in *Input, now time.Time) (*Result, error) {
 	// decisions/intents that existed before the commit; everything ambiguous
 	// remains for the optional link pass.
 	linkedBySubject := subjectLinkPass(db, in, commits, addEvent)
+	linkedBySubject = append(linkedBySubject, repairCoordinationLinks(db, in, commits, addEvent)...)
 	res.Unmapped = subtract(res.Unmapped, linkedBySubject)
 
 	// ---- 7.1(2) LLM link pass: unmatched commits × unevidenced intents ----
@@ -129,7 +130,7 @@ func subjectLinkPass(db *state.DB, in *Input, commits []state.Commit, addEvent f
 		clauses := evidenceClauses(commit.Subject)
 		matched := false
 		for id, entry := range in.Journal.Entries {
-			if (entry.Type != model.Decision && entry.Type != model.Intent) || entry.Created().After(commit.At) || hasWorkEvidence(in.Journal, id) {
+			if !workEvidenceEntry(entry) || entry.Created().After(commit.At) || hasWorkEvidence(in.Journal, id) {
 				continue
 			}
 			entryWords := evidenceWords(entry.Title + " " + entry.Body)
@@ -148,6 +149,75 @@ func subjectLinkPass(db *state.DB, in *Input, commits []state.Commit, addEvent f
 		}
 	}
 	return linked
+}
+
+// repairCoordinationLinks replaces no evidence and rewrites no history. It
+// handles the narrow legacy case where a high-confidence link-pass selected a
+// clew/journal commit: exactly one real code commit must fall between the
+// entry's source time and that false event. Ambiguity leaves the work open.
+func repairCoordinationLinks(db *state.DB, in *Input, commits []state.Commit, addEvent func(model.EventKind, string, map[string]any, time.Time)) []string {
+	var linked []string
+	for id, entry := range in.Journal.Entries {
+		if !workEvidenceEntry(entry) || hasWorkEvidence(in.Journal, id) {
+			continue
+		}
+		for _, event := range in.Journal.EventsFor(id) {
+			if journal.CountsAsRealityEvidence(event) || event.Kind != model.EvEvidence || event.PStr("via") != "link-pass" || eventConfidence(event) < 0.8 {
+				continue
+			}
+			var candidates []state.Commit
+			for _, commit := range commits {
+				if strings.HasPrefix(strings.ToLower(strings.TrimSpace(commit.Subject)), "journal:") ||
+					commit.At.Before(entry.Created()) || commit.At.After(event.At) {
+					continue
+				}
+				candidates = append(candidates, commit)
+			}
+			if len(candidates) != 1 {
+				continue
+			}
+			commit := candidates[0]
+			addEvent(model.EvEvidence, id, map[string]any{
+				"kind": "commit", "ref": commit.SHA, "note": commit.Subject,
+				"via": "coordination-repair",
+			}, commit.At)
+			db.MarkCommitMapped(in.Repo, commit.SHA)
+			linked = append(linked, commit.SHA)
+			break
+		}
+	}
+	return linked
+}
+
+func workEvidenceEntry(entry *model.Entry) bool {
+	if entry == nil {
+		return false
+	}
+	if entry.Type == model.Decision || entry.Type == model.Intent {
+		return true
+	}
+	if entry.Type != model.Finding {
+		return false
+	}
+	text := strings.ToLower(entry.Title + " " + entry.Body)
+	return strings.Contains(text, "finished") && (strings.Contains(text, "stale") || strings.Contains(text, "uncommitted"))
+}
+
+func eventConfidence(event *model.Event) float64 {
+	if event == nil {
+		return 0
+	}
+	switch value := event.Payload["confidence"].(type) {
+	case float64:
+		return value
+	case float32:
+		return float64(value)
+	case int:
+		return float64(value)
+	case int64:
+		return float64(value)
+	}
+	return 0
 }
 
 func evidenceClauses(subject string) []map[string]bool {

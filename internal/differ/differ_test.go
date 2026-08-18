@@ -200,6 +200,35 @@ func TestJournalCommitSubjectNeverProvesCodeReality(t *testing.T) {
 	}
 }
 
+func TestUniqueCodeCommitRepairsHighConfidenceJournalLink(t *testing.T) {
+	db, err := state.Open(filepath.Join(t.TempDir(), "state.db"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer db.Close()
+	j := testJournal(t)
+	repo := filepath.Join(t.TempDir(), "repo")
+	now := time.Now().UTC().Truncate(time.Second)
+	entry := testEntry(t, j, model.Intent, "Commit gate fixes, then start the docket", now.Add(-time.Minute))
+	code := state.Commit{RepoPath: repo, SHA: strings.Repeat("c", 40), At: entry.Created().Add(2 * time.Second), Subject: "Make watcher safe"}
+	coordination := state.Commit{RepoPath: repo, SHA: strings.Repeat("d", 40), At: entry.Created().Add(20 * time.Second), Subject: "journal: one file"}
+	for _, commit := range []state.Commit{code, coordination} {
+		if err := db.AddCommit(commit); err != nil {
+			t.Fatal(err)
+		}
+	}
+	testEvent(t, j, model.EvEvidence, entry.ID, coordination.At, map[string]any{
+		"kind": "commit", "ref": coordination.SHA, "note": coordination.Subject,
+		"via": "link-pass", "confidence": 0.85,
+	})
+	if _, err := Run(db, &Input{Repo: repo, Journal: j, Snapshot: &poller.Snapshot{RepoPath: repo}}, now); err != nil {
+		t.Fatal(err)
+	}
+	if !j.HasEvent(model.EvEvidence, entry.ID, "ref", code.SHA) {
+		t.Fatal("unique code commit did not repair the journal-only evidence link")
+	}
+}
+
 func TestWorkspaceAlertsWithdrawWithinOnePoll(t *testing.T) {
 	tests := []struct {
 		name        string

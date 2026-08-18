@@ -92,7 +92,7 @@ func BuildMerge(j *journal.Journal, handled map[string]string) View {
 }
 
 func verifiedWork(j *journal.Journal, entry *model.Entry) bool {
-	if j == nil || entry == nil || (entry.Type != model.Decision && entry.Type != model.Intent) {
+	if j == nil || entry == nil || (entry.Type != model.Decision && entry.Type != model.Intent && entry.Type != model.Finding) {
 		return false
 	}
 	for _, event := range j.Events {
