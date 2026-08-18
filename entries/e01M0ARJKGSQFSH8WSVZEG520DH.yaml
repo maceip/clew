@@ -1,0 +1,15 @@
+id: e01M0ARJKGSQFSH8WSVZEG520DH
+type: finding
+title: phone surface intent placeholder
+body: phone surface intent placeholder
+quote: phone surface intent placeholder
+utterance_by: user
+source:
+    kind: human
+    ref: cli:note
+    surface: cursor
+    at: 2026-08-18T15:41:55.097678599Z
+confidence: 1
+tags: []
+env: null
+affects: []
