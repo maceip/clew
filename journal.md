@@ -1,14 +1,14 @@
 # Journal
 
-_generated 2026-08-18 17:14 UTC · 78 live entries (26 decisions · 31 findings · 3 questions · 18 intents) · 98 total in history_
+_generated 2026-08-18 17:15 UTC · 78 live entries (26 decisions · 31 findings · 3 questions · 18 intents) · 98 total in history_
 
 ## DECIDED
 
-- `e01M0AXRKQ8C7FZNKARW83CMBMX` The five promises are the foundation (owner ratified) — 2m · active
-- `e01M0AXF5FM9RDFP817NF7QW5BN` Human-facing surface must reduce to the desires it satisfies — 8m · active
-- `e01M0AXCM53D36PDN0H85S0WE3W` Mind-plane freshness is vendor-neutral; hooks accelerate, never carry it — 14m · active
-- `e01M0AVAR0N8ZCCN1VJW3GQ5PF4` Restart-with-mutation is the flagship advertised workflow, not a failure mode — 46m · active
-- `e01M0ATYJG615JE6BV5MG5RAF9Z` clew from must accept multiple parent projects, with strand selection — 52m · active
+- `e01M0AXRKQ8C7FZNKARW83CMBMX` The five promises are the foundation (owner ratified) — 3m · active
+- `e01M0AXF5FM9RDFP817NF7QW5BN` Human-facing surface must reduce to the desires it satisfies — 9m · active
+- `e01M0AXCM53D36PDN0H85S0WE3W` Mind-plane freshness is vendor-neutral; hooks accelerate, never carry it — 15m · active
+- `e01M0AVAR0N8ZCCN1VJW3GQ5PF4` Restart-with-mutation is the flagship advertised workflow, not a failure mode — 47m · active
+- `e01M0ATYJG615JE6BV5MG5RAF9Z` clew from must accept multiple parent projects, with strand selection — 53m · active
 - `e01M0ASQGJZPFJD3FSRT7P4HX44` Owner-configured cloud environments are full clew nodes — 1h · active
 - `e01M0AQHSRF4DVDYZ989W6K185N` Owner laws live in an owner-scope journal with a ≤1KB injection budget — 1h · possible-contradiction
 
