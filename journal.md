@@ -1,16 +1,16 @@
 # Journal
 
-_generated 2026-08-18 22:13 UTC · 114 live entries (45 decisions · 40 findings · 9 questions · 20 intents) · 134 total in history_
+_generated 2026-08-18 22:14 UTC · 115 live entries (46 decisions · 40 findings · 9 questions · 20 intents) · 135 total in history_
 
 ## DECIDED
 
-- `e01M0BEYP65CE70G0VVSX3PV01B` Finished means shared: work ends pushed or PR'd; local-only is an alarm — 2m · active
-- `e01M0BETRRAZ54063PRJK1JSQS7` The finish message is a surface: what exists, where it lives, my next move — 3m · active
-- `e01M0BER1Q412DRFQYESPCN0Q30` Lines are plain speech, no ids; near-duplicates fold; held items rest — 5m · active
-- `e01M0BEM04PAZ85R5YNRM2Y31Z6` Broken states carry their verb: no unactionable warnings for humans — 9m · active
+- `e01M0BF0WMX264RA9D0VTM9R24K` Entry ids are machine plumbing: never shown to or relayed through humans — 1m · active
+- `e01M0BEYP65CE70G0VVSX3PV01B` Finished means shared: work ends pushed or PR'd; local-only is an alarm — 3m · active
+- `e01M0BETRRAZ54063PRJK1JSQS7` The finish message is a surface: what exists, where it lives, my next move — 4m · active
+- `e01M0BER1Q412DRFQYESPCN0Q30` Lines are plain speech, no ids; near-duplicates fold; held items rest — 6m · active
+- `e01M0BEM04PAZ85R5YNRM2Y31Z6` Broken states carry their verb: no unactionable warnings for humans — 10m · active
 - `e01M0AZDDYC49Y1741H7W74Y1QY` Second tab: the intent gap — everything intended, not yet real — 4h · active
 - `e01M0AZ7JBPJRNHFJQC6WEEQB9Y` Silence is the signal: an absent merge means truly nothing new — 4h · active
-- `e01M0AZ4BGF1VC0VSXA05VYVEQ3` Explain is live: the attending agent reads the entry and explains — 4h · active
 
 ## LEARNED
 
@@ -24,7 +24,7 @@ _generated 2026-08-18 22:13 UTC · 114 live entries (45 decisions · 40 findings
 
 ## OPEN
 
-- `e01M0BER1Q5W312NDD7GZ283RCM` Cap the two screens at 7+7; overflow policy is an open question — 5m · open ★
+- `e01M0BER1Q5W312NDD7GZ283RCM` Cap the two screens at 7+7; overflow policy is an open question — 6m · open ★
 - `e01M0AY97K0AZHNJW0D87KTD7YH` Two-grade telling: block dependent tasks on unresolved drift? — 4h · open ★
 - `e01M0ASQGM2P07Z36KVZX6P8EH4` Adopt the complexity law: additions must be a verb, label, rendering, or config — 6h · open ★
 - `e01M0ASQGKZ9ZY4XRF6K7KRCT75` Adopt clew witness <transcript> as the cloud-session gap fix? — 6h · open ★
@@ -55,6 +55,13 @@ _generated 2026-08-18 22:13 UTC · 114 live entries (45 decisions · 40 findings
 | `e01M0AQHSRF4DVDYZ989PVHGA7R` Birth detection: auto-init a new repo with owner laws only | 6h | 1 evidence | in_flight |
 
 ## Decisions
+
+### e01M0BF0WMX264RA9D0VTM9R24K — Entry ids are machine plumbing: never shown to or relayed through humans  `active`
+> you should never print "e01M0BER1Q412DRFQYESPCN0Q30" i dont know what it means and its super long -- what is the intent of showing that to the human?
+
+Extension of plain-speech: the cloud agent printed raw ids in receipts and in prompts the human had to copy. The intent was verifiability — but verification is machine work, and agents holding the journal resolve plain words better than opaque codes. Rule: ids live in files, commits, and machine channels only; humans see words; agents are addressed in words and resolve entries themselves.
+
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00_
 
 ### e01M0BEYP65CE70G0VVSX3PV01B — Finished means shared: work ends pushed or PR'd; local-only is an alarm  `active`
 > why do i need to tell it to push? with all the journals and dockets and intents and knowledge that should never be the case?
