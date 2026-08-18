@@ -1,16 +1,16 @@
 # Journal
 
-_generated 2026-08-18 22:34 UTC · 118 live entries (49 decisions · 40 findings · 9 questions · 20 intents) · 138 total in history_
+_generated 2026-08-18 22:35 UTC · 118 live entries (49 decisions · 40 findings · 9 questions · 20 intents) · 138 total in history_
 
 ## DECIDED
 
-- `e01M0BFY164YEV6DAEFVGGH18VT` The limiter gates distillation timing, never sensing; failure is lag — 6m · active
-- `e01M0BFRYY2WVHJZ3R3TDV4CFTS` The wording sweep covers every fear-attached word; docket stays by name — 9m · active
-- `e01M0BFRYY1EW9CFMJNDJ5QH3M2` Evidence settles merge lines; apply is never asked for finished work — 9m · active
-- `e01M0BF0WMX264RA9D0VTM9R24K` Entry ids are machine plumbing: never shown to or relayed through humans — 21m · active
-- `e01M0BEYP65CE70G0VVSX3PV01B` Finished means shared: work ends pushed or PR'd; local-only is an alarm — 23m · active
-- `e01M0BETRRAZ54063PRJK1JSQS7` The finish message is a surface: what exists, where it lives, my next move — 24m · active
-- `e01M0BER1Q412DRFQYESPCN0Q30` Lines are plain speech, no ids; near-duplicates fold; held items rest — 26m · active
+- `e01M0BFY164YEV6DAEFVGGH18VT` The limiter gates distillation timing, never sensing; failure is lag — 7m · active
+- `e01M0BFRYY2WVHJZ3R3TDV4CFTS` The wording sweep covers every fear-attached word; docket stays by name — 10m · active
+- `e01M0BFRYY1EW9CFMJNDJ5QH3M2` Evidence settles merge lines; apply is never asked for finished work — 10m · active
+- `e01M0BF0WMX264RA9D0VTM9R24K` Entry ids are machine plumbing: never shown to or relayed through humans — 22m · active
+- `e01M0BEYP65CE70G0VVSX3PV01B` Finished means shared: work ends pushed or PR'd; local-only is an alarm — 24m · active
+- `e01M0BETRRAZ54063PRJK1JSQS7` The finish message is a surface: what exists, where it lives, my next move — 25m · active
+- `e01M0BER1Q412DRFQYESPCN0Q30` Lines are plain speech, no ids; near-duplicates fold; held items rest — 27m · active
 
 ## LEARNED
 
@@ -24,7 +24,7 @@ _generated 2026-08-18 22:34 UTC · 118 live entries (49 decisions · 40 findings
 
 ## OPEN
 
-- `e01M0BER1Q5W312NDD7GZ283RCM` Cap the two screens at 7+7; overflow policy is an open question — 26m · open ★
+- `e01M0BER1Q5W312NDD7GZ283RCM` Cap the two screens at 7+7; overflow policy is an open question — 27m · open ★
 - `e01M0AY97K0AZHNJW0D87KTD7YH` Two-grade telling: block dependent tasks on unresolved drift? — 5h · open ★
 - `e01M0ASQGM2P07Z36KVZX6P8EH4` Adopt the complexity law: additions must be a verb, label, rendering, or config — 6h · open ★
 - `e01M0ASQGKZ9ZY4XRF6K7KRCT75` Adopt clew witness <transcript> as the cloud-session gap fix? — 6h · open ★
