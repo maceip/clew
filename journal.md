@@ -1,10 +1,10 @@
 # Journal
 
-_generated 2026-08-18 22:07 UTC · 110 live entries (42 decisions · 40 findings · 8 questions · 20 intents) · 130 total in history_
+_generated 2026-08-18 22:08 UTC · 110 live entries (42 decisions · 40 findings · 8 questions · 20 intents) · 130 total in history_
 
 ## DECIDED
 
-- `e01M0BEM04PAZ85R5YNRM2Y31Z6` Broken states carry their verb: no unactionable warnings for humans — 3m · active
+- `e01M0BEM04PAZ85R5YNRM2Y31Z6` Broken states carry their verb: no unactionable warnings for humans — 4m · active
 - `e01M0AZDDYC49Y1741H7W74Y1QY` Second tab: the intent gap — everything intended, not yet real — 4h · active
 - `e01M0AZ7JBPJRNHFJQC6WEEQB9Y` Silence is the signal: an absent merge means truly nothing new — 4h · active
 - `e01M0AZ4BGF1VC0VSXA05VYVEQ3` Explain is live: the attending agent reads the entry and explains — 4h · active
