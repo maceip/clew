@@ -6,8 +6,8 @@ import (
 )
 
 func TestTextSweepsFearAttachedWordsButKeepsDocket(t *testing.T) {
-	got := Text("Owner-laws and owner laws govern state violations; enforcement keeps policy compliance, certification rules, failures, and alarms. Docket stays.")
-	for _, fear := range []string{"law", "govern", "state", "violation", "enforcement", "policy", "compliance", "certif", "rule", "failure", "alarm"} {
+	got := Text("Owner-laws and owner laws govern state violations; enforcement keeps policy compliance, certification rules, failures, alarms, ratified rulings, dispositions, admission, and promotions. Docket stays.")
+	for _, fear := range []string{"law", "govern", "state", "violation", "enforcement", "policy", "compliance", "certif", "rule", "failure", "alarm", "ratif", "ruling", "disposition", "admission", "promotion"} {
 		if strings.Contains(strings.ToLower(got), fear) {
 			t.Fatalf("%q survived calm rendering: %s", fear, got)
 		}

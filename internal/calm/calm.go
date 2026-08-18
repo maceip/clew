@@ -53,6 +53,16 @@ var humanWords = []replacement{
 	{regexp.MustCompile(`(?i)\bfailure\b`), "problem"},
 	{regexp.MustCompile(`(?i)\balarms\b`), "attention items"},
 	{regexp.MustCompile(`(?i)\balarm\b`), "attention item"},
+	{regexp.MustCompile(`(?i)\bratified\b`), "agreed"},
+	{regexp.MustCompile(`(?i)\bratify\b`), "agree"},
+	{regexp.MustCompile(`(?i)\brulings\b`), "decisions"},
+	{regexp.MustCompile(`(?i)\bruling\b`), "decision"},
+	{regexp.MustCompile(`(?i)\bdispositions\b`), "choices"},
+	{regexp.MustCompile(`(?i)\bdisposition\b`), "choice"},
+	{regexp.MustCompile(`(?i)\badmission\b`), "acceptance"},
+	{regexp.MustCompile(`(?i)\bpromotions\b`), "sharing"},
+	{regexp.MustCompile(`(?i)\bpromotion\b`), "sharing"},
+	{regexp.MustCompile(`(?i)\bpromoted\b`), "shared"},
 }
 
 // Text returns calm display prose without changing the stored source. Docket
