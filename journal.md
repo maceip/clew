@@ -588,14 +588,14 @@ _source: human cli:note · confidence: 1.00_
 
 Human confirm/reject signals are recorded only in per-worktree events/*.yaml, so measuring confirm rate requires a find+awk scrape instead of a DB query. Adapter "unknown" counts are cumulative, undated KV rows and never surfaced in status. Both dogfood metrics are therefore not queryable from state.db.
 
-_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-18-36-01a00b95-1c07-7d61-a3e4-fb76948ee1b9.jsonl#L441 · confidence: 0.87 · tags: internal/**, cmd/clew/** · evidence: 14 · taint: tool_result_
+_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-18-36-01a00b95-1c07-7d61-a3e4-fb76948ee1b9.jsonl#L441 · confidence: 0.87 · tags: internal/**, cmd/clew/** · evidence: 15 · taint: tool_result_
 
 ### e01M05T4XG0RJWQTP25SYT4FH0B — Task 2 not passable: `spent` conflates extraction, differ, and archaeology  `suspect`
 > `spent` combines extraction, differ, and archaeology; it is not extraction-only.
 
 The dogfood audit judged Task 2 not passable yet. The budget `spent` counter mixes extraction, differ, and archaeology tokens, so the predeclared extraction-only cost metric cannot be read from it. Separating cost by kind is a prerequisite before the Task 2 gate can be honestly evaluated.
 
-_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-18-36-01a00b95-1c07-7d61-a3e4-fb76948ee1b9.jsonl#L441 · confidence: 0.90 · tags: internal/**, cmd/clew/** · evidence: 14 · taint: tool_result_
+_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-18-36-01a00b95-1c07-7d61-a3e4-fb76948ee1b9.jsonl#L441 · confidence: 0.90 · tags: internal/**, cmd/clew/** · evidence: 15 · taint: tool_result_
 
 ### e01M05SPB2EMMC4F4PR0BDQA8S5 — First watch treated historical sessions as live: 342 overlaps, 27 stomps, 12.9M…  `suspect`
 > First watch misclassified historical sessions as live, producing 342 overlaps, 27 stomps, and 12,895,847 observed tokens.
@@ -865,7 +865,7 @@ _source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T
 
 The semantics investigation reported a root cause and a narrow fix to the parent: make live baselines transactional, use source-time (not observation-time) session timestamps, and give backfill its own bounded cursor separate from live watch. This is the proposed work to make backfill and live watch disjoint.
 
-_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-18-36-01a00b95-1c07-7d61-a3e4-fb76948ee1b9.jsonl#L335 · confidence: 0.62 · tags: cmd/clew/**, internal/** · evidence: 19 · taint: tool_result_
+_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-18-36-01a00b95-1c07-7d61-a3e4-fb76948ee1b9.jsonl#L335 · confidence: 0.62 · tags: cmd/clew/**, internal/** · evidence: 20 · taint: tool_result_
 
 ### e01M05SG3NTP5W2JX7Y6MP1F1K6 — Add cursor migration, complete-record offsets, and fixed historical upper bound  `in_flight`
 > adding a one-time migration, complete-record offsets, and a fixed historical upper bound
