@@ -1,0 +1,17 @@
+id: e01M0BF6B3NA1Y0A06ZSQYSQTTZ
+type: note
+title: 'Speed scales with the working set, not history; restart is the compaction'
+body: >-
+  Owner asked how a growing journal stays fast. On record: agents read a fixed 4KB context, never the pile; extraction is incremental from watermarks; statuses compute over the active set while superseded material becomes sediment — findable, out of every hot path. The real meter is working-set hygiene, surfaced via aging and caps. Restarts distill sediment into a seed: generational compaction.
+quote: 'how large does this thing grow over time? how long does it take an agent to process? im not worried about token cost im worried about speed'
+utterance_by: user
+source:
+    kind: session
+    ref: chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18
+    agent: cursor-cloud-agent
+    surface: cursor-cloud-vm
+    at: 2026-08-18T22:15:00Z
+confidence: 0.95
+tags: []
+env: null
+affects: []
