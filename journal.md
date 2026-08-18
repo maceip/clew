@@ -1,13 +1,13 @@
 # Journal
 
-_generated 2026-08-18 17:11 UTC · 77 live entries (25 decisions · 31 findings · 3 questions · 18 intents) · 97 total in history_
+_generated 2026-08-18 17:12 UTC · 77 live entries (25 decisions · 31 findings · 3 questions · 18 intents) · 97 total in history_
 
 ## DECIDED
 
-- `e01M0AXF5FM9RDFP817NF7QW5BN` Human-facing surface must reduce to the desires it satisfies — 5m · active
-- `e01M0AXCM53D36PDN0H85S0WE3W` Mind-plane freshness is vendor-neutral; hooks accelerate, never carry it — 11m · active
-- `e01M0AVAR0N8ZCCN1VJW3GQ5PF4` Restart-with-mutation is the flagship advertised workflow, not a failure mode — 43m · active
-- `e01M0ATYJG615JE6BV5MG5RAF9Z` clew from must accept multiple parent projects, with strand selection — 49m · active
+- `e01M0AXF5FM9RDFP817NF7QW5BN` Human-facing surface must reduce to the desires it satisfies — 6m · active
+- `e01M0AXCM53D36PDN0H85S0WE3W` Mind-plane freshness is vendor-neutral; hooks accelerate, never carry it — 12m · active
+- `e01M0AVAR0N8ZCCN1VJW3GQ5PF4` Restart-with-mutation is the flagship advertised workflow, not a failure mode — 44m · active
+- `e01M0ATYJG615JE6BV5MG5RAF9Z` clew from must accept multiple parent projects, with strand selection — 50m · active
 - `e01M0ASQGJZPFJD3FSRT7P4HX44` Owner-configured cloud environments are full clew nodes — 1h · active
 - `e01M0AQHSRF4DVDYZ989W6K185N` Owner laws live in an owner-scope journal with a ≤1KB injection budget — 1h · possible-contradiction
 - `e01M0AQHSRF4DVDYZ989RNZVC46` `clew from` is the one explicit lineage command; never automatic — 1h · active
