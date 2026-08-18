@@ -20,9 +20,11 @@
 - e01M067G2QY8BZNZXBE46QBEXEW finding/current Task 4 gate: 10ms, HTML 30s, ntfy 5/5
 - e01M067AZ3VJM73XP82REZEZ1QC finding/current Task 4 channel: ntfy 2383c10c…, card creation only
 - e01M066XWD8F1SAWQ8HVXGW4J4Z finding/current Task 3 docket gate: 8→1, FYI 0, withdrawal 1 poll
+- e01M066CV9W2WX7FZA44QYME204 finding/current Alert self-cleaning shipped: WithdrawWhen, ReconcileAlerts, six kinds withdrawn
 - e01M0664DX5WAZ01J6KJBCZP4QC intent/in_flight Add contract tests for docket invariants and failure modes
 - e01M0660RW03A1VSC6ENMH9M2J7 finding/current Parallel agent task killed by gpt-5.6-sol TPM rate limit
 - e01M065T92NXY1ER6R73YCQNH84 decision/possible-contradiction Recover docket empty-state and withdrawal wording from Task 3 journal source
+- e01M065SK8W1ZT32KZF8YGGTP7W decision/active Alerts self-clean via one scoped reconcile with an explicit withdrawal condition
 - e01M065G8RTKVH6466KEB0FRJ8N intent/in_flight Commit the gate fixes as one spec-amended change, then start the docket
 - e01M065G8RTKVH6466KE7GQREGX finding/current Task 2 passes its live gate on all five acceptance checks
 - e01M064YRS4S9NK7KW9NQ1JMDV2 finding/suspect Malformed or missing pinned timestamps silently fall back to ingest time
@@ -32,6 +34,4 @@
 - e01M064DHNTXFM29PNWCW0VBBF2 intent/in_flight Run a strict read-only gate proving each acceptance point with tests or state q…
 - e01M0642VRXV9PCGA4NDJF92E2Y intent/in_flight Wire atomic budget reservations into every LLM call
 - e01M0640H4ZAR0BQMS73R8QW9E7 finding/current Repaired watcher installed as launchd agent dev.clew.watch
-- e01M05VFAW9A783PMZZEER0G6FX intent/in_flight Second pass on rollover, double-settlement, migration; then run wider suite
-- e01M05V9MQWYX3BAX0VXZ70SHTD finding/current D2: cursor rewind replayed 58,754 bytes once
-… (71 more omitted for size)
+… (73 more omitted for size)

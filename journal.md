@@ -1,21 +1,21 @@
 # Journal
 
-_generated 2026-08-18 16:03 UTC · 71 live entries (20 decisions · 30 findings · 3 questions · 18 intents) · 89 total in history_
+_generated 2026-08-18 16:04 UTC · 73 live entries (21 decisions · 31 findings · 3 questions · 18 intents) · 93 total in history_
 
 ## DECIDED
 
-- `e01M0ASQGJZPFJD3FSRT7P4HX44` Owner-configured cloud environments are full clew nodes — 5m · active
-- `e01M0AQHSRF4DVDYZ989W6K185N` Owner laws live in an owner-scope journal with a ≤1KB injection budget — 39m · possible-contradiction
-- `e01M0AQHSRF4DVDYZ989RNZVC46` `clew from` is the one explicit lineage command; never automatic — 39m · active
-- `e01M0AQHSRF4DVDYZ989MTZQV7E` SEED.md is watcher-maintained continuously, never generated on demand — 39m · possible-contradiction
-- `e01M0AQHSRF4DVDYZ989M4DVHYX` Lineage inheritance is explicit; only promoted laws auto-carry — 39m · possible-contradiction
+- `e01M0ASQGJZPFJD3FSRT7P4HX44` Owner-configured cloud environments are full clew nodes — 6m · active
+- `e01M0AQHSRF4DVDYZ989W6K185N` Owner laws live in an owner-scope journal with a ≤1KB injection budget — 40m · possible-contradiction
+- `e01M0AQHSRF4DVDYZ989RNZVC46` `clew from` is the one explicit lineage command; never automatic — 40m · active
+- `e01M0AQHSRF4DVDYZ989MTZQV7E` SEED.md is watcher-maintained continuously, never generated on demand — 40m · possible-contradiction
+- `e01M0AQHSRF4DVDYZ989M4DVHYX` Lineage inheritance is explicit; only promoted laws auto-carry — 40m · possible-contradiction
 - `e01M068ECYE067WF6BH7F26VC3D` Cursor v1 stays CLI-only: desktop 0 vs CLI 44 in 7d — 1d · active
 - `e01M065T92NXY1ER6R73YCQNH84` Recover docket empty-state and withdrawal wording from Task 3 journal source — 1d · possible-contradiction
 
 ## LEARNED
 
-- `e01M0ASSNH1HP68M1QERV9AKG5A` Attachments bypass the secret scrub; GitHub push protection caught PATs — 1m · current
-- `e01M0ASQGKDZ8J6SQQK3BXKYAV5` module clew blocks go install by URL; release binaries or rename needed — 5m · current
+- `e01M0ASSNH1HP68M1QERV9AKG5A` Attachments bypass the secret scrub; GitHub push protection caught PATs — 2m · current
+- `e01M0ASQGKDZ8J6SQQK3BXKYAV5` module clew blocks go install by URL; release binaries or rename needed — 6m · current
 - `e01M069MQYJX6QVW3YCWWTAWV34` --help — 1d · current
 - `e01M068FQH1ND9MM1WH851AF45M` Task 6 gate: flags 0 writes; algebra, poller, manifest pass — 1d · current
 - `e01M06821D53QYHBJS1FEC2CK7G` Task 5 gate: 3 formats, 1 card, confirm boundary pass — 1d · current
@@ -24,8 +24,8 @@ _generated 2026-08-18 16:03 UTC · 71 live entries (20 decisions · 30 findings 
 
 ## OPEN
 
-- `e01M0ASQGKZ9ZY4XRF6K7KRCT75` Adopt clew witness <transcript> as the cloud-session gap fix? — 5m · open ★
-- `e01M0ASQGKX2F9THW496N79Z83F` Approve selfwatch + journal add + owner-laws relocation to a git-reachable repo — 5m · open ★
+- `e01M0ASQGKZ9ZY4XRF6K7KRCT75` Adopt clew witness <transcript> as the cloud-session gap fix? — 6m · open ★
+- `e01M0ASQGKX2F9THW496N79Z83F` Approve selfwatch + journal add + owner-laws relocation to a git-reachable repo — 6m · open ★
 
 ## ALERTS
 
@@ -34,19 +34,19 @@ _generated 2026-08-18 16:03 UTC · 71 live entries (20 decisions · 30 findings 
 - possible-contradiction `e01M05SA72DPRGNTY7GCQ2RASTP` Cards show verbatim quotes + clickable provenance, never extractor paraphrase — 1d
 - possible-contradiction `e01M05SA72DPRGNTY7GD0TGHEX7` Scope freeze: relay, TUI, team mode, adapters need a §11 trigger measurement — 1d
 - possible-contradiction `e01M065T92NXY1ER6R73YCQNH84` Recover docket empty-state and withdrawal wording from Task 3 journal source — 1d
-- possible-contradiction `e01M0AQHSRF4DVDYZ989M4DVHYX` Lineage inheritance is explicit; only promoted laws auto-carry — 39m
-- possible-contradiction `e01M0AQHSRF4DVDYZ989MTZQV7E` SEED.md is watcher-maintained continuously, never generated on demand — 39m
+- possible-contradiction `e01M0AQHSRF4DVDYZ989M4DVHYX` Lineage inheritance is explicit; only promoted laws auto-carry — 40m
+- possible-contradiction `e01M0AQHSRF4DVDYZ989MTZQV7E` SEED.md is watcher-maintained continuously, never generated on demand — 40m
 
 ## Intent × reality
 
 | Intent | Age | Reality | State |
 |---|---:|---:|---|
-| `e01M0ARJKGSQFSH8WSVZEG520DH` Surface coverage: phone reads the glance and receives decision cards | 25m | 0 evidence | proposed |
-| `e01M0ARJHKDP6Z6R1FKZSJ8AN4S` Surface coverage: laptop agents fully sensed with zero human effort | 25m | 0 evidence | proposed |
-| `e01M0ARJFTWEWY5H6JFJ17656W4` Surface coverage: PR-only cloud agents (Codex-app-class) contribute knowledge | 25m | 0 evidence | proposed |
-| `e01M0ARJE1XNN8Q45DJ36FP47YT` Surface coverage: repo-write cloud agents (Cursor-class) are full journal nodes | 25m | 0 evidence | proposed |
-| `e01M0AQHSRF4DVDYZ989PVHGA7R` Birth detection: auto-init a new repo with owner laws only | 39m | 1 evidence | in_flight |
-| `e01M0664DX5WAZ01J6KJBCZP4QC` Add contract tests for docket invariants and failure modes | 1d | 1 evidence | in_flight |
+| `e01M0ARJKGSQFSH8WSVZEG520DH` Surface coverage: phone reads the glance and receives decision cards | 26m | 0 evidence | proposed |
+| `e01M0ARJHKDP6Z6R1FKZSJ8AN4S` Surface coverage: laptop agents fully sensed with zero human effort | 26m | 0 evidence | proposed |
+| `e01M0ARJFTWEWY5H6JFJ17656W4` Surface coverage: PR-only cloud agents (Codex-app-class) contribute knowledge | 26m | 0 evidence | proposed |
+| `e01M0ARJE1XNN8Q45DJ36FP47YT` Surface coverage: repo-write cloud agents (Cursor-class) are full journal nodes | 26m | 0 evidence | proposed |
+| `e01M0AQHSRF4DVDYZ989PVHGA7R` Birth detection: auto-init a new repo with owner laws only | 40m | 1 evidence | in_flight |
+| `e01M0664DX5WAZ01J6KJBCZP4QC` Add contract tests for docket invariants and failure modes | 1d | 2 evidence | in_flight |
 | `e01M065G8RTKVH6466KEB0FRJ8N` Commit the gate fixes as one spec-amended change, then start the docket | 1d | 1 evidence | in_flight |
 
 ## Decisions
@@ -99,6 +99,13 @@ _source: human cli:note · confidence: 1.00_
 Rather than re-deriving the card semantics, the generated journal's Task 3 source pointer and fixed card decisions are used as the authoritative source to recover the missing empty-state wording and withdrawal semantics before the package API is locked.
 
 _source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T16-56-09-01a00c5c-48cc-7850-8fe0-e14bc4f7cc79.jsonl#L75 · confidence: 0.80 · tags: docket/** · pairs-with: e01M05SA72DPRGNTY7GCN1P7CED, e01M05SA72DPRGNTY7GCPEX9W2N, e01M05SA72DPRGNTY7GCQ2RASTP_
+
+### e01M065SK8W1ZT32KZF8YGGTP7W — Alerts self-clean via one scoped reconcile with an explicit withdrawal condition  `active`
+> I’m shaping this as one state-level reconcile operation: upsert the active alerts for a repo and auto-drop previously open differ-owned kinds that are absent from that poll, with an explicit withdrawal condition stored on each alert.
+
+Rather than only inserting alerts (which never closed) and keying them on mutable prose, alert handling became a single state-level reconcile: upsert the active alerts for a repo and auto-drop previously open differ-owned kinds absent from that poll, with each alert storing an explicit withdrawal condition.
+
+_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T16-56-13-01a00c5c-58e0-7613-935b-2b760a30e9a9.jsonl#L45 · confidence: 0.93 · tags: state/**, differ/**_
 
 ### e01M064DQTWYDVGGAE3M5QRTGME — Re-evaluate the current tree instead of carrying the prior gate verdict forward  `active`
 > The earlier gate’s three blockers are the right pressure points, but the checkout has moved: reservation callers and the neutral-workdir behavior now have new code and tests. I’m re-evaluating the present tree, including untracked test files, instead of carrying that verdict forward.
@@ -248,6 +255,13 @@ _source: human cli:note · confidence: 1.00_
 cards=8; render=1 overflow-failure; cap=7; synthetic-FYI-rendered=0; resolved-stomp-withdrawal=1 poll; pushes=0/0; full=pass; race=pass; vet=pass.
 
 _source: human cli:note · confidence: 1.00_
+
+### e01M066CV9W2WX7FZA44QYME204 — Alert self-cleaning shipped: WithdrawWhen, ReconcileAlerts, six kinds withdrawn  `current`
+> - Differ now withdraws stale contradiction, absence, aging, suspect, stomp, and overlap alerts each poll.
+
+Landed: Alert.WithdrawWhen with a legacy DB migration, ReconcileAlerts(repo, kinds, active), and differ withdrawal of stale contradiction, absence, aging, suspect, stomp, and overlap alerts on every poll. Resolved-stomp and status-resolution tests added; go test ./..., race tests, and vet all pass.
+
+_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T16-56-13-01a00c5c-58e0-7613-935b-2b760a30e9a9.jsonl#L263 · confidence: 0.88 · tags: state/**, differ/**_
 
 ### e01M0660RW03A1VSC6ENMH9M2J7 — Parallel agent task killed by gpt-5.6-sol TPM rate limit  `current`
 > stream disconnected before completion: Rate limit reached for gpt-5.6-sol in organization ‹redacted› on tokens per min (TPM): Limit 500000, Used 397298, Requested 204717.
@@ -468,7 +482,7 @@ _source: session codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T
 
 With the core package compiling, the plan is to write contract tests covering three hard invariants plus less visible failure modes: no paraphrase leakage, stale withdrawal, timer ordering, high-magnitude assumptions, exact provenance, event-bound defer, and empty/overflow rendering.
 
-_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T16-56-09-01a00c5c-48cc-7850-8fe0-e14bc4f7cc79.jsonl#L218 · confidence: 0.88 · tags: docket/** · evidence: 1_
+_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T16-56-09-01a00c5c-48cc-7850-8fe0-e14bc4f7cc79.jsonl#L218 · confidence: 0.88 · tags: docket/** · evidence: 2_
 
 ### e01M065G8RTKVH6466KEB0FRJ8N — Commit the gate fixes as one spec-amended change, then start the docket  `in_flight`
 > I’m committing the gate fixes as one spec-amended change, then moving to the docket.
