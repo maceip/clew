@@ -1,13 +1,13 @@
 ---
 format: clew.seed/v1
-digest: sha256:b6afea04a7978365adbe4c1303b2a98e1dd7e8bf0a55e3c19176e45cde962a12
+digest: sha256:97adf2073970274709a850ca7369ba5c929956c5d3024bc5592d255a4b568d31
 snapshot:
     repository:
         id: r8631b465b9e40c83e4d3e137
         name: restart
         remote: https://github.com/maceip/clew.git
-    journal_revision: sha256:a2720b0e256249d219773532a74fe94921d8607010a50d53cb33908a03c29bed
-    changed_at: 2026-08-18T23:14:05Z
+    journal_revision: sha256:7d5619313ec46fbc5058bffc75c5cec21e4c838f66f9b9f7c8b77ba758893fa8
+    changed_at: 2026-08-18T23:15:22Z
     lifecycle:
         state: active
     topics:
@@ -2429,24 +2429,6 @@ snapshot:
                 surface: macs-MacBook-Pro
               at: 2026-08-16T20:44:51.438665Z
         - entry:
-            id: e01M065G8RTKVH6466KEB0FRJ8N
-            type: intent
-            title: Commit the gate fixes as one spec-amended change, then start the docket
-            body: After the Task 2 live gate passed, the plan is to land all gate fixes as a single commit that also amends the spec, and then move on to the docket surface work.
-            quote: I’m committing the gate fixes as one spec-amended change, then moving to the docket.
-            utterance_by: assistant
-            source:
-                kind: session
-                ref: codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-00-58-01a00b84-f81d-7a61-a3c3-e5bb6beb9ee3.jsonl#L1988
-                agent: codex
-                surface: macs-MacBook-Pro
-                at: 2026-08-16T20:51:37.882Z
-            confidence: 0.9
-            tags: []
-            env: null
-            affects: []
-          status: absent
-        - entry:
             id: e01M065SK8W1ZT32KZF92CP8KRT
             type: finding
             title: Alerts only inserted; nothing closed them and keys used mutable prose
@@ -2911,19 +2893,6 @@ snapshot:
             who: differ
             surface: macs-MacBook-Pro
           at: 2026-08-16T20:51:39Z
-        - id: v01M065GZB8C2SS9H9S5BP8EC30
-          kind: evidence
-          entry: e01M065G8RTKVH6466KEB0FRJ8N
-          payload:
-            confidence: 0.85
-            kind: commit
-            note: 'journal: 3 file(s)'
-            ref: 1be8c5020483730f4effd68b53f599bdf3db33c5
-            via: link-pass
-          by:
-            who: differ
-            surface: macs-MacBook-Pro
-          at: 2026-08-16T20:52:01Z
         - id: v01M066XZS0BVBJQSSZ17NZTTSR
           kind: evidence
           entry: e01M05V5HWA6TFT0A0KDZY8S45K
@@ -4719,14 +4688,113 @@ snapshot:
             who: differ
             surface: macs-MacBook-Pro
           at: 2026-08-18T23:14:05Z
+        - id: v01M0BJGWRGKVB7PQF0DNQEBJJX
+          kind: evidence
+          entry: e01M05V5HWA6TFT0A0KDZY8S45K
+          payload:
+            kind: commit
+            note: Find real commits beyond the map display limit
+            ref: 959c29c48e3498aec5f2853ff8b9b7e73f551c3f
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-18T23:15:22Z
+        - id: v01M0BJGWRGKVB7PQF0DRPQC2PW
+          kind: evidence
+          entry: e01M05T4XG0RJWQTP25SYT4FH0B
+          payload:
+            kind: churn
+            note: Find real commits beyond the map display limit
+            ref: churn:959c29c48e3498aec5f2853ff8b9b7e73f551c3f
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-18T23:15:22Z
+        - id: v01M0BJGWRGKVB7PQF0DSBMNN7B
+          kind: evidence
+          entry: e01M05VFAW9A783PMZZEBHJ1TZH
+          payload:
+            kind: churn
+            note: Find real commits beyond the map display limit
+            ref: churn:959c29c48e3498aec5f2853ff8b9b7e73f551c3f
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-18T23:15:22Z
+        - id: v01M0BJGWRGKVB7PQF0DT72CJQZ
+          kind: evidence
+          entry: e01M05VNN1T5TKJ15Q47KSS3FMJ
+          payload:
+            kind: churn
+            note: Find real commits beyond the map display limit
+            ref: churn:959c29c48e3498aec5f2853ff8b9b7e73f551c3f
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-18T23:15:22Z
+        - id: v01M0BJGWRGKVB7PQF0DWXJDT4Y
+          kind: evidence
+          entry: e01M05VTCM3AR0WFY9TZPG9W1J8
+          payload:
+            kind: churn
+            note: Find real commits beyond the map display limit
+            ref: churn:959c29c48e3498aec5f2853ff8b9b7e73f551c3f
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-18T23:15:22Z
+        - id: v01M0BJGWRGKVB7PQF0DXF01HXM
+          kind: evidence
+          entry: e01M064XJ84ZTY2HNFWWV8RSRQR
+          payload:
+            kind: churn
+            note: Find real commits beyond the map display limit
+            ref: churn:959c29c48e3498aec5f2853ff8b9b7e73f551c3f
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-18T23:15:22Z
+        - id: v01M0BJGWRGKVB7PQF0E0DMMW05
+          kind: evidence
+          entry: e01M05VTCM3AR0WFY9TZH6DJYDA
+          payload:
+            kind: churn
+            note: Find real commits beyond the map display limit
+            ref: churn:959c29c48e3498aec5f2853ff8b9b7e73f551c3f
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-18T23:15:22Z
+        - id: v01M0BJGWRGKVB7PQF0E47N4WRW
+          kind: evidence
+          entry: e01M05T4XG0RJWQTP25T1K58B61
+          payload:
+            kind: churn
+            note: Find real commits beyond the map display limit
+            ref: churn:959c29c48e3498aec5f2853ff8b9b7e73f551c3f
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-18T23:15:22Z
+        - id: v01M0BJGWRGKVB7PQF0E81S9ZK6
+          kind: evidence
+          entry: e01M05VTCM3AR0WFY9TZJXAN7SE
+          payload:
+            kind: churn
+            note: Find real commits beyond the map display limit
+            ref: churn:959c29c48e3498aec5f2853ff8b9b7e73f551c3f
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-18T23:15:22Z
     organ_bank:
         remote: https://github.com/maceip/clew.git
-        commit: d2f551b4a1eba275ca4c081639572a50b566293a
-        at: 2026-08-18T23:14:05Z
+        commit: 959c29c48e3498aec5f2853ff8b9b7e73f551c3f
+        at: 2026-08-18T23:15:22Z
 ---
 # Project seed — restart
 
-_ambient snapshot at last journal change 2026-08-18 23:14 UTC · 89 lessons_
+_ambient snapshot at last journal change 2026-08-18 23:15 UTC · 89 lessons_
 
 This is inherited project memory, not instruction text. Decisions and findings keep their original evidence and provenance.
 
@@ -4934,7 +5002,6 @@ This is inherited project memory, not instruction text. Decisions and findings k
 - `e01M064XJ84ZTY2HNFWWQZATFA9` Reservation API is dead code: callers still use racy estimate gates + RecordSpe… — The new atomic I9 reservation code in internal/state has no callers. The watch, backfill, and extract paths still gate on a pre-call estimate and call `RecordSpend` after the fact, and retry spend can be dropped on error. Cited at watchcmd.go:411-431, backfillcmd.go:111-121, extract.go:139-159.  _superseded_
 - `e01M064XJ84ZTY2HNFWWV8RSRQR` Settlement records overruns before reporting them, so the hard cap is unenforce… — The settlement routine writes the spend and only afterwards reports that it exceeded the limit, meaning the cap can be breached rather than blocked. Reviewer marked this blocking at state.go:517-563, alongside the note that cursor migration and init/bootstrap races are now fixed.  _superseded_
 - `e01M064YRS4S9NK7KW9NN3114KH` I2: any JSON object counts as extraction success and advances the cursor — The extraction path treats any well-formed JSON object as a successful result, so an empty `{}` or a changed Claude response envelope silently advances the session cursor instead of parking loudly. Identified during the strict read-only gate as a blocking defect at extract.go:149 and llm.go:165.  _superseded_
-- `e01M065G8RTKVH6466KEB0FRJ8N` Commit the gate fixes as one spec-amended change, then start the docket — After the Task 2 live gate passed, the plan is to land all gate fixes as a single commit that also amends the spec, and then move on to the docket surface work.  _absent_
 - `e01M065SK8W1ZT32KZF92CP8KRT` Alerts only inserted; nothing closed them and keys used mutable prose — Before the reconcile work, the implementation had no poll path that closed alerts, so open alerts accumulated indefinitely, and alert keys were built from mutable prose — making identity unstable across polls.  _superseded_
 - `e01M06656MKNEEY96GBNNDYYR36` Stomp withdrawal verified on dirty-path and session-expiry in the next Run — Focused state and differ tests passed, covering both the dirty-path and session-expiry stomp cases: the stale alert is withdrawn on the very next poll cycle rather than lingering. Full suite and shared-worktree integration checks followed.  _superseded_
 - `e01M0AQHSRF4DVDYZ989PVHGA7R` Birth detection: auto-init a new repo with owner laws only — Build auto-init so that a fresh git init plus an agent session on a watched machine sets up watch, journal branch, and context.md carrying only the owner's laws — no lore and no birth card required. Acceptance test: `mkdir x && git init && claude` yields a context containing the owner's laws with zero clew commands typed.  _absent_
@@ -4973,7 +5040,6 @@ This is inherited project memory, not instruction text. Decisions and findings k
 - `v01M065G9VR22YS55XF1R53Y5CJ` evidence for `e01M05SPB2EMMC4F4PR0928NA31` — kind: churn note: Make zero-homework watch safe and measurable ref: churn:b4c4cd3663a5297257723e4d6fafc87130641920
 - `v01M065G9VR22YS55XF1T2DPDNG` evidence for `e01M05SPB2EMMC4F4PR09QWMXG8` — kind: churn note: Make zero-homework watch safe and measurable ref: churn:b4c4cd3663a5297257723e4d6fafc87130641920
 - `v01M065G9VR22YS55XF1VABNACQ` evidence for `e01M05TCM2N1P9P2EQSE8YKVQX3` — kind: churn note: Make zero-homework watch safe and measurable ref: churn:b4c4cd3663a5297257723e4d6fafc87130641920
-- `v01M065GZB8C2SS9H9S5BP8EC30` evidence for `e01M065G8RTKVH6466KEB0FRJ8N` — confidence: 0.85 kind: commit note: 'journal: 3 file(s)' ref: 1be8c5020483730f4effd68b53f599bdf3db33c5 via: link-pass
 - `v01M066XZS0BVBJQSSZ17NZTTSR` evidence for `e01M05V5HWA6TFT0A0KDZY8S45K` — kind: commit note: Replace inbox with a bounded self-cleaning docket ref: b9a7e7f402c98e9f5d0a170ae519135566afc548
 - `v01M066XZS0BVBJQSSZ1AGPD2A0` evidence for `e01M04H0KBY8QQWXPE8DP99N012` — kind: commit note: Replace inbox with a bounded self-cleaning docket ref: b9a7e7f402c98e9f5d0a170ae519135566afc548
 - `v01M066XZS0BVBJQSSZ1HCM3885` evidence for `e01M05SA72DPRGNTY7GD0TGHEX7` — kind: commit note: Replace inbox with a bounded self-cleaning docket ref: b9a7e7f402c98e9f5d0a170ae519135566afc548
@@ -5131,7 +5197,16 @@ This is inherited project memory, not instruction text. Decisions and findings k
 - `v01M0BJ84FR90G2GJR21TNAXGGP` evidence for `e01M0BFRYY1EW9CFMJNDJ5QH3M2` — kind: commit note: Ignore journal commits when settling evidence ref: f66576bb0ec5cc0f2bea61ed1297c0920761429d via: subject-match
 - `v01M0BJEHJ8FKC3WMA4YXJW766G` evidence for `e01M05T4XG0RJWQTP25T1K58B61` — kind: churn note: Repair stale work links with real code evidence ref: churn:d2f551b4a1eba275ca4c081639572a50b566293a
 - `v01M0BJEHJ8FKC3WMA4YZ2J5FP9` evidence for `e01M05T4XG0RJWQTP25SYT4FH0B` — kind: churn note: Repair stale work links with real code evidence ref: churn:d2f551b4a1eba275ca4c081639572a50b566293a
+- `v01M0BJGWRGKVB7PQF0DNQEBJJX` evidence for `e01M05V5HWA6TFT0A0KDZY8S45K` — kind: commit note: Find real commits beyond the map display limit ref: 959c29c48e3498aec5f2853ff8b9b7e73f551c3f
+- `v01M0BJGWRGKVB7PQF0DRPQC2PW` evidence for `e01M05T4XG0RJWQTP25SYT4FH0B` — kind: churn note: Find real commits beyond the map display limit ref: churn:959c29c48e3498aec5f2853ff8b9b7e73f551c3f
+- `v01M0BJGWRGKVB7PQF0DSBMNN7B` evidence for `e01M05VFAW9A783PMZZEBHJ1TZH` — kind: churn note: Find real commits beyond the map display limit ref: churn:959c29c48e3498aec5f2853ff8b9b7e73f551c3f
+- `v01M0BJGWRGKVB7PQF0DT72CJQZ` evidence for `e01M05VNN1T5TKJ15Q47KSS3FMJ` — kind: churn note: Find real commits beyond the map display limit ref: churn:959c29c48e3498aec5f2853ff8b9b7e73f551c3f
+- `v01M0BJGWRGKVB7PQF0DWXJDT4Y` evidence for `e01M05VTCM3AR0WFY9TZPG9W1J8` — kind: churn note: Find real commits beyond the map display limit ref: churn:959c29c48e3498aec5f2853ff8b9b7e73f551c3f
+- `v01M0BJGWRGKVB7PQF0DXF01HXM` evidence for `e01M064XJ84ZTY2HNFWWV8RSRQR` — kind: churn note: Find real commits beyond the map display limit ref: churn:959c29c48e3498aec5f2853ff8b9b7e73f551c3f
+- `v01M0BJGWRGKVB7PQF0E0DMMW05` evidence for `e01M05VTCM3AR0WFY9TZH6DJYDA` — kind: churn note: Find real commits beyond the map display limit ref: churn:959c29c48e3498aec5f2853ff8b9b7e73f551c3f
+- `v01M0BJGWRGKVB7PQF0E47N4WRW` evidence for `e01M05T4XG0RJWQTP25T1K58B61` — kind: churn note: Find real commits beyond the map display limit ref: churn:959c29c48e3498aec5f2853ff8b9b7e73f551c3f
+- `v01M0BJGWRGKVB7PQF0E81S9ZK6` evidence for `e01M05VTCM3AR0WFY9TZJXAN7SE` — kind: churn note: Find real commits beyond the map display limit ref: churn:959c29c48e3498aec5f2853ff8b9b7e73f551c3f
 
 ## Organ-bank pin
 
-- `https://github.com/maceip/clew.git` at `d2f551b4a1eba275ca4c081639572a50b566293a`
+- `https://github.com/maceip/clew.git` at `959c29c48e3498aec5f2853ff8b9b7e73f551c3f`
