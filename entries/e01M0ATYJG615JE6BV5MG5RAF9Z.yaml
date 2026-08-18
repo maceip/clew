@@ -1,0 +1,21 @@
+id: e01M0ATYJG615JE6BV5MG5RAF9Z
+type: decision
+title: clew from must accept multiple parent projects, with strand selection
+body: >-
+  Owner ruling: inheritance is multi-parent. `clew from A B` unions seeds; `--tags
+  <globs>` selects strands per parent; runnable repeatedly. Each carried entry keeps
+  per-parent provenance; disagreements between parents surface as possible-contradiction
+  cards for human arbitration, never silent merge. Genesis records multiple lineage
+  links (the forest gains merge nodes).
+quote: 'clew from needs to support _multiple_ projects as inputs, the human may want parts from multiple'
+utterance_by: user
+source:
+    kind: session
+    ref: chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18
+    agent: cursor-cloud-agent
+    surface: cursor-cloud-vm
+    at: 2026-08-18T16:22:00Z
+confidence: 1
+tags: []
+env: null
+affects: []
