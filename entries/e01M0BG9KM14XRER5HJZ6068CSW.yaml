@@ -1,0 +1,17 @@
+id: e01M0BG9KM14XRER5HJZ6068CSW
+type: note
+title: 'Courier role decomposes: sync and dispatch die, ranking moves to screens'
+body: >-
+  Owner asked if needing prompt help means the design is flawed. On record: the middleman job splits three ways — catch-up dies with the session-start hook; go dies when the gap build verb dispatches into a fresh session; ordering relocates to the screens, which already rank. Only rulings stay human, by design. Exit test: each loop needs less of the cloud agent; ask any agent what is next.
+quote: 'or are we just in some transient state getting to a place where i should never have to be asking you these questions?'
+utterance_by: user
+source:
+    kind: session
+    ref: chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18
+    agent: cursor-cloud-agent
+    surface: cursor-cloud-vm
+    at: 2026-08-18T22:35:00Z
+confidence: 0.95
+tags: []
+env: null
+affects: []
