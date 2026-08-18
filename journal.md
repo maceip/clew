@@ -1,22 +1,22 @@
 # Journal
 
-_generated 2026-08-18 23:02 UTC · 118 live entries (49 decisions · 40 findings · 9 questions · 20 intents) · 138 total in history_
+_generated 2026-08-18 23:03 UTC · 118 live entries (49 decisions · 40 findings · 9 questions · 20 intents) · 138 total in history_
 
 ## DECIDED
 
-- `e01M0BFY164YEV6DAEFVGGH18VT` The limiter gates distillation timing, never sensing; failure is lag — 34m · active
-- `e01M0BFRYY2WVHJZ3R3TDV4CFTS` The wording sweep covers every fear-attached word; docket stays by name — 37m · active
-- `e01M0BFRYY1EW9CFMJNDJ5QH3M2` Evidence settles merge lines; apply is never asked for finished work — 37m · active
-- `e01M0BF0WMX264RA9D0VTM9R24K` Entry ids are machine plumbing: never shown to or relayed through humans — 49m · active
-- `e01M0BEYP65CE70G0VVSX3PV01B` Finished means shared: work ends pushed or PR'd; local-only is an alarm — 51m · active
-- `e01M0BETRRAZ54063PRJK1JSQS7` The finish message is a surface: what exists, where it lives, my next move — 52m · active
-- `e01M0BER1Q412DRFQYESPCN0Q30` Lines are plain speech, no ids; near-duplicates fold; held items rest — 54m · active
+- `e01M0BFY164YEV6DAEFVGGH18VT` The limiter gates distillation timing, never sensing; failure is lag — 35m · active
+- `e01M0BFRYY2WVHJZ3R3TDV4CFTS` The wording sweep covers every fear-attached word; docket stays by name — 38m · active
+- `e01M0BFRYY1EW9CFMJNDJ5QH3M2` Evidence settles merge lines; apply is never asked for finished work — 38m · active
+- `e01M0BF0WMX264RA9D0VTM9R24K` Entry ids are machine plumbing: never shown to or relayed through humans — 50m · active
+- `e01M0BEYP65CE70G0VVSX3PV01B` Finished means shared: work ends pushed or PR'd; local-only is an alarm — 52m · active
+- `e01M0BETRRAZ54063PRJK1JSQS7` The finish message is a surface: what exists, where it lives, my next move — 53m · active
+- `e01M0BER1Q412DRFQYESPCN0Q30` Lines are plain speech, no ids; near-duplicates fold; held items rest — 55m · active
 
 ## LEARNED
 
 - `e01M0AYE066QK08QK8MTPX4XNFX` Codex finished I13 stale: tree uncommitted, law wording on human surfaces — 5h · current
 - `e01M0AXCM55N0QM9RCRYF48TQ6C` Universal injection point: every model API call rebuilds the mind — 5h · current
-- `e01M0AXCM54CDSPV84DBH1PWGWD` Spec nudge matrix is stale: codex and gemini now ship injection hooks — 5h · current
+- `e01M0AXCM54CDSPV84DBH1PWGWD` Spec nudge matrix is stale: codex and gemini now ship injection hooks — 6h · current
 - `e01M0ASSNH1HP68M1QERV9AKG5A` Attachments bypass the secret scrub; GitHub push protection caught PATs — 7h · current
 - `e01M0ASQGKMHGY4F7JBEQX1ZT3T` This chat became the supernode: 788 messages of unjournaled load-bearing context — 7h · current
 - `e01M0ASQGKJN308G4HVJTE4A4AB` note-then-edit has a limbo: placeholders auto-commit and leaked into a seed — 7h · current
@@ -24,7 +24,7 @@ _generated 2026-08-18 23:02 UTC · 118 live entries (49 decisions · 40 findings
 
 ## OPEN
 
-- `e01M0BER1Q5W312NDD7GZ283RCM` Cap the two screens at 7+7; overflow policy is an open question — 54m · open ★
+- `e01M0BER1Q5W312NDD7GZ283RCM` Cap the two screens at 7+7; overflow policy is an open question — 55m · open ★
 - `e01M0AY97K0AZHNJW0D87KTD7YH` Two-grade telling: block dependent tasks on unresolved drift? — 5h · open ★
 - `e01M0ASQGM2P07Z36KVZX6P8EH4` Adopt the complexity law: additions must be a verb, label, rendering, or config — 7h · open ★
 - `e01M0ASQGKZ9ZY4XRF6K7KRCT75` Adopt clew witness <transcript> as the cloud-session gap fix? — 7h · open ★
