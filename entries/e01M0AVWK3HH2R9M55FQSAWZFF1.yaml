@@ -1,0 +1,20 @@
+id: e01M0AVWK3HH2R9M55FQSAWZFF1
+type: decision
+title: I9 frugality replaced: listening completeness is the invariant, cost is a dial
+body: >-
+  Owner ruling: price sensitivity was an agent assumption, never stated. Replace the 2%
+  ratio with an owner-set ceiling plus a hard floor above the largest atomic request;
+  extraction must never deadlock. Spend stays a visible meter. This also resolves the
+  URGENT budget card's direction.
+quote: "you assume i'm price sensitive and are using token cost as being prohibitive but ive never mentioned we need to make this work cheaply"
+utterance_by: user
+source:
+    kind: session
+    ref: chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18
+    agent: cursor-cloud-agent
+    surface: cursor-cloud-vm
+    at: 2026-08-18T16:38:00Z
+confidence: 1
+tags: []
+env: null
+affects: []
