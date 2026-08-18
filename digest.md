@@ -1,4 +1,9 @@
 # Journal digest (live entries: id · type/status · title)
+- e01M0ASSNH1HP68M1QERV9AKG5A finding/current Attachments bypass the secret scrub; GitHub push protection caught PATs
+- e01M0ASQGKZ9ZY4XRF6K7KRCT75 question/open Adopt clew witness <transcript> as the cloud-session gap fix?
+- e01M0ASQGKX2F9THW496N79Z83F question/open Approve selfwatch + journal add + owner-laws relocation to a git-reachable repo
+- e01M0ASQGKDZ8J6SQQK3BXKYAV5 finding/current module clew blocks go install by URL; release binaries or rename needed
+- e01M0ASQGJZPFJD3FSRT7P4HX44 decision/active Owner-configured cloud environments are full clew nodes
 - e01M0ARJKGSQFSH8WSVZEG520DH intent/proposed Surface coverage: phone reads the glance and receives decision cards
 - e01M0ARJHKDP6Z6R1FKZSJ8AN4S intent/proposed Surface coverage: laptop agents fully sensed with zero human effort
 - e01M0ARJFTWEWY5H6JFJ17656W4 intent/proposed Surface coverage: PR-only cloud agents (Codex-app-class) contribute knowledge
@@ -29,9 +34,4 @@
 - e01M0640H4ZAR0BQMS73R8QW9E7 finding/current Repaired watcher installed as launchd agent dev.clew.watch
 - e01M05VFAW9A783PMZZEER0G6FX intent/in_flight Second pass on rollover, double-settlement, migration; then run wider suite
 - e01M05V9MQWYX3BAX0VXZ70SHTD finding/current D2: cursor rewind replayed 58,754 bytes once
-- e01M05V5HWA6TFT0A0KDZY8S45K decision/active Confine the cap/ratio admission fix to internal/state; no caller or spec changes
-- e01M05V5HWA6TFT0A0KDY1QV6C0 intent/in_flight Add transactional reservation + settlement accounting in internal/state with co…
-- e01M05V0G3Q9F41V62P6T44TC04 decision/active Cursor migration must be monotonic — never rewind an existing cursor
-- e01M05V0G3Q9F41V62P6R5QV53G intent/in_flight Fix migration monotonicity, restore from D1 boundary, rerun cycle before passin…
-- e01M05TX51R4VZHJMNM804YPMRT finding/current D1: 30 automatic entries; Codex metadata incident pinned
-… (66 more omitted for size)
+… (71 more omitted for size)

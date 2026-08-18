@@ -1,30 +1,31 @@
 # Journal
 
-_generated 2026-08-18 16:02 UTC · 66 live entries (19 decisions · 28 findings · 1 questions · 18 intents) · 84 total in history_
+_generated 2026-08-18 16:03 UTC · 71 live entries (20 decisions · 30 findings · 3 questions · 18 intents) · 89 total in history_
 
 ## DECIDED
 
-- `e01M0AQHSRF4DVDYZ989W6K185N` Owner laws live in an owner-scope journal with a ≤1KB injection budget — 38m · possible-contradiction
-- `e01M0AQHSRF4DVDYZ989RNZVC46` `clew from` is the one explicit lineage command; never automatic — 38m · active
-- `e01M0AQHSRF4DVDYZ989MTZQV7E` SEED.md is watcher-maintained continuously, never generated on demand — 38m · possible-contradiction
-- `e01M0AQHSRF4DVDYZ989M4DVHYX` Lineage inheritance is explicit; only promoted laws auto-carry — 38m · possible-contradiction
+- `e01M0ASQGJZPFJD3FSRT7P4HX44` Owner-configured cloud environments are full clew nodes — 5m · active
+- `e01M0AQHSRF4DVDYZ989W6K185N` Owner laws live in an owner-scope journal with a ≤1KB injection budget — 39m · possible-contradiction
+- `e01M0AQHSRF4DVDYZ989RNZVC46` `clew from` is the one explicit lineage command; never automatic — 39m · active
+- `e01M0AQHSRF4DVDYZ989MTZQV7E` SEED.md is watcher-maintained continuously, never generated on demand — 39m · possible-contradiction
+- `e01M0AQHSRF4DVDYZ989M4DVHYX` Lineage inheritance is explicit; only promoted laws auto-carry — 39m · possible-contradiction
 - `e01M068ECYE067WF6BH7F26VC3D` Cursor v1 stays CLI-only: desktop 0 vs CLI 44 in 7d — 1d · active
 - `e01M065T92NXY1ER6R73YCQNH84` Recover docket empty-state and withdrawal wording from Task 3 journal source — 1d · possible-contradiction
-- `e01M064DQTWYDVGGAE3M5QRTGME` Re-evaluate the current tree instead of carrying the prior gate verdict forward — 1d · active
 
 ## LEARNED
 
+- `e01M0ASSNH1HP68M1QERV9AKG5A` Attachments bypass the secret scrub; GitHub push protection caught PATs — 1m · current
+- `e01M0ASQGKDZ8J6SQQK3BXKYAV5` module clew blocks go install by URL; release binaries or rename needed — 5m · current
 - `e01M069MQYJX6QVW3YCWWTAWV34` --help — 1d · current
 - `e01M068FQH1ND9MM1WH851AF45M` Task 6 gate: flags 0 writes; algebra, poller, manifest pass — 1d · current
 - `e01M06821D53QYHBJS1FEC2CK7G` Task 5 gate: 3 formats, 1 card, confirm boundary pass — 1d · current
 - `e01M067G2QY8BZNZXBE46QBEXEW` Task 4 gate: 10ms, HTML 30s, ntfy 5/5 — 1d · current
 - `e01M067AZ3VJM73XP82REZEZ1QC` Task 4 channel: ntfy 2383c10c…, card creation only — 1d · current
-- `e01M066XWD8F1SAWQ8HVXGW4J4Z` Task 3 docket gate: 8→1, FYI 0, withdrawal 1 poll — 1d · current
-- `e01M0660RW03A1VSC6ENMH9M2J7` Parallel agent task killed by gpt-5.6-sol TPM rate limit — 1d · current
 
 ## OPEN
 
-_None._
+- `e01M0ASQGKZ9ZY4XRF6K7KRCT75` Adopt clew witness <transcript> as the cloud-session gap fix? — 5m · open ★
+- `e01M0ASQGKX2F9THW496N79Z83F` Approve selfwatch + journal add + owner-laws relocation to a git-reachable repo — 5m · open ★
 
 ## ALERTS
 
@@ -33,22 +34,29 @@ _None._
 - possible-contradiction `e01M05SA72DPRGNTY7GCQ2RASTP` Cards show verbatim quotes + clickable provenance, never extractor paraphrase — 1d
 - possible-contradiction `e01M05SA72DPRGNTY7GD0TGHEX7` Scope freeze: relay, TUI, team mode, adapters need a §11 trigger measurement — 1d
 - possible-contradiction `e01M065T92NXY1ER6R73YCQNH84` Recover docket empty-state and withdrawal wording from Task 3 journal source — 1d
-- possible-contradiction `e01M0AQHSRF4DVDYZ989M4DVHYX` Lineage inheritance is explicit; only promoted laws auto-carry — 38m
-- possible-contradiction `e01M0AQHSRF4DVDYZ989MTZQV7E` SEED.md is watcher-maintained continuously, never generated on demand — 38m
+- possible-contradiction `e01M0AQHSRF4DVDYZ989M4DVHYX` Lineage inheritance is explicit; only promoted laws auto-carry — 39m
+- possible-contradiction `e01M0AQHSRF4DVDYZ989MTZQV7E` SEED.md is watcher-maintained continuously, never generated on demand — 39m
 
 ## Intent × reality
 
 | Intent | Age | Reality | State |
 |---|---:|---:|---|
-| `e01M0ARJKGSQFSH8WSVZEG520DH` Surface coverage: phone reads the glance and receives decision cards | 24m | 0 evidence | proposed |
-| `e01M0ARJHKDP6Z6R1FKZSJ8AN4S` Surface coverage: laptop agents fully sensed with zero human effort | 24m | 0 evidence | proposed |
-| `e01M0ARJFTWEWY5H6JFJ17656W4` Surface coverage: PR-only cloud agents (Codex-app-class) contribute knowledge | 24m | 0 evidence | proposed |
-| `e01M0ARJE1XNN8Q45DJ36FP47YT` Surface coverage: repo-write cloud agents (Cursor-class) are full journal nodes | 24m | 0 evidence | proposed |
-| `e01M0AQHSRF4DVDYZ989PVHGA7R` Birth detection: auto-init a new repo with owner laws only | 38m | 1 evidence | in_flight |
+| `e01M0ARJKGSQFSH8WSVZEG520DH` Surface coverage: phone reads the glance and receives decision cards | 25m | 0 evidence | proposed |
+| `e01M0ARJHKDP6Z6R1FKZSJ8AN4S` Surface coverage: laptop agents fully sensed with zero human effort | 25m | 0 evidence | proposed |
+| `e01M0ARJFTWEWY5H6JFJ17656W4` Surface coverage: PR-only cloud agents (Codex-app-class) contribute knowledge | 25m | 0 evidence | proposed |
+| `e01M0ARJE1XNN8Q45DJ36FP47YT` Surface coverage: repo-write cloud agents (Cursor-class) are full journal nodes | 25m | 0 evidence | proposed |
+| `e01M0AQHSRF4DVDYZ989PVHGA7R` Birth detection: auto-init a new repo with owner laws only | 39m | 1 evidence | in_flight |
 | `e01M0664DX5WAZ01J6KJBCZP4QC` Add contract tests for docket invariants and failure modes | 1d | 1 evidence | in_flight |
 | `e01M065G8RTKVH6466KEB0FRJ8N` Commit the gate fixes as one spec-amended change, then start the docket | 1d | 1 evidence | in_flight |
 
 ## Decisions
+
+### e01M0ASQGJZPFJD3FSRT7P4HX44 — Owner-configured cloud environments are full clew nodes  `active`
+> we have installable skills, MCP, and I can configure the environments cursor, codex, and claude agents run in the cloud which can absolutely include our golang services
+
+Owner corrected the push-only sandbox assumption: cursor/codex/claude cloud environments are configurable (install scripts, MCP, skills) and can run the Go binary. Cloud write path = provision the environments you own. journal-proposal.yaml is PARKED (trigger-gated for unconfigurable third-party envs only).
+
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00_
 
 ### e01M0AQHSRF4DVDYZ989W6K185N — Owner laws live in an owner-scope journal with a ≤1KB injection budget  `possible-contradiction`
 > an owner-scope journal synced like any other; findings promoted via clew journal promote <id>; extractor proposes promotion when a finding's content is project-agnostic; ≤1KB injection budget into every project's context, forever.
@@ -184,6 +192,20 @@ Name = clew (owner). Alternatives considered: restart — verb collision, names 
 _source: human cli:note · confidence: 1.00_
 
 ## Findings
+
+### e01M0ASSNH1HP68M1QERV9AKG5A — Attachments bypass the secret scrub; GitHub push protection caught PATs  `current`
+> GITHUB PUSH PROTECTION - Push cannot contain secrets
+
+GitHub push protection blocked the journal push: two ephemeral PATs the owner pasted in chat were present verbatim in the attached raw transcript. The entries pipeline scrubs quotes/bodies (6.2) but attachments bypass the scrub entirely. Fix: run the same secret-scrub over transcripts/ (and any attachment) before commit; treat platform push-protection as backstop, never primary.
+
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00 · tags: internal/scrub/** · taint: tool_result_
+
+### e01M0ASQGKDZ8J6SQQK3BXKYAV5 — module clew blocks go install by URL; release binaries or rename needed  `current`
+> go 1.26.3
+
+go.mod declares 'module clew', not the repo path, so go install github.com/maceip/clew/... fails. Env recipes need git clone && go build until the module is renamed or release binaries ship. Blocks the one-line cloud env install.
+
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00 · tags: go.mod · taint: tool_result_
 
 ### e01M069MQYJX6QVW3YCWWTAWV34 — --help  `current`
 > --help
@@ -382,6 +404,20 @@ Lock-and-notary pitches fail for any team whose job isn't security — not just 
 _source: human cli:note · confidence: 1.00_
 
 ## Open questions
+
+### e01M0ASQGKZ9ZY4XRF6K7KRCT75 — Adopt clew witness <transcript> as the cloud-session gap fix?  `open`
+> lets think hard about a simple fix for it
+
+One verb: ingest an exported transcript as a session (adapter-parse, extract in budget, cloud provenance). Ritual line in each env/skill: at checkpoints and end, export + witness + push. No daemon/relay/protocol; reuses the whole pipeline; makes the volume-based 11 trigger moot for owned surfaces. Also rewrite that trigger density-based.
+
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 0.95_
+
+### e01M0ASQGKX2F9THW496N79Z83F — Approve selfwatch + journal add + owner-laws relocation to a git-reachable repo  `open`
+> i dont want the laptop to be the supernode here
+
+Cloud nodes need: selfwatch (poller+sync+context, no tailing), clew journal add <file> (validated ingestion, fixes note-limbo), self_extracted provenance label, and owner laws moved from ~/.clew scope to a git-reachable repo so cloud births inherit laws.
+
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 0.95_
 
 ### e01M04XVQEEZ38J9TC5NZNKC16B — Run the live fidelity gate (RealProvider) on a machine with provider keys  `answered`
 > If you cannot reach P>=0.9 / R>=0.75, stop all other work and report that the kill criterion fired — that outcome is a valid and useful result, and it is written down on purpose
