@@ -1,0 +1,20 @@
+id: e01M06656MKNEEY96GBNNDYYR36
+type: finding
+title: Stomp withdrawal verified on dirty-path and session-expiry in the next Run
+body: 'Focused state and differ tests passed, covering both the dirty-path and session-expiry stomp cases: the stale alert is withdrawn on the very next poll cycle rather than lingering. Full suite and shared-worktree integration checks followed.'
+quote: Focused state/differ tests pass, including both dirty-path and session-expiry stomp withdrawal in the very next `Run`.
+utterance_by: assistant
+source:
+    kind: session
+    ref: codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T16-56-13-01a00c5c-58e0-7613-935b-2b760a30e9a9.jsonl#L194
+    agent: codex
+    surface: macs-MacBook-Pro
+    at: 2026-08-16T21:03:03.827Z
+confidence: 0.9
+tags:
+    - state/**
+    - differ/**
+env: null
+affects:
+    - state/**
+    - differ/**

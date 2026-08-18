@@ -1,0 +1,18 @@
+id: e01M065SK8W1ZT32KZF8YGGTP7W
+type: decision
+title: Alerts self-clean via one scoped reconcile with an explicit withdrawal condition
+body: 'Rather than only inserting alerts (which never closed) and keying them on mutable prose, alert handling became a single state-level reconcile: upsert the active alerts for a repo and auto-drop previously open differ-owned kinds absent from that poll, with each alert storing an explicit withdrawal condition.'
+quote: 'I’m shaping this as one state-level reconcile operation: upsert the active alerts for a repo and auto-drop previously open differ-owned kinds that are absent from that poll, with an explicit withdrawal condition stored on each alert.'
+utterance_by: assistant
+source:
+    kind: session
+    ref: codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T16-56-13-01a00c5c-58e0-7613-935b-2b760a30e9a9.jsonl#L45
+    agent: codex
+    surface: macs-MacBook-Pro
+    at: 2026-08-16T20:56:43.548Z
+confidence: 0.93
+tags:
+    - state/**
+    - differ/**
+env: null
+affects: []

@@ -1,0 +1,20 @@
+id: e01M066CV9W2WX7FZA44QYME204
+type: finding
+title: 'Alert self-cleaning shipped: WithdrawWhen, ReconcileAlerts, six kinds withdrawn'
+body: 'Landed: Alert.WithdrawWhen with a legacy DB migration, ReconcileAlerts(repo, kinds, active), and differ withdrawal of stale contradiction, absence, aging, suspect, stomp, and overlap alerts on every poll. Resolved-stomp and status-resolution tests added; go test ./..., race tests, and vet all pass.'
+quote: '- Differ now withdraws stale contradiction, absence, aging, suspect, stomp, and overlap alerts each poll.'
+utterance_by: assistant
+source:
+    kind: session
+    ref: codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T16-56-13-01a00c5c-58e0-7613-935b-2b760a30e9a9.jsonl#L263
+    agent: codex
+    surface: macs-MacBook-Pro
+    at: 2026-08-16T21:07:14.364Z
+confidence: 0.88
+tags:
+    - state/**
+    - differ/**
+env: null
+affects:
+    - state/**
+    - differ/**

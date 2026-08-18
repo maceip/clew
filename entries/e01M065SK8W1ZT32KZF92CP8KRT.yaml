@@ -1,0 +1,20 @@
+id: e01M065SK8W1ZT32KZF92CP8KRT
+type: finding
+title: Alerts only inserted; nothing closed them and keys used mutable prose
+body: Before the reconcile work, the implementation had no poll path that closed alerts, so open alerts accumulated indefinitely, and alert keys were built from mutable prose — making identity unstable across polls.
+quote: The current implementation only inserts alerts; no poll ever closes them, and keys include mutable prose.
+utterance_by: assistant
+source:
+    kind: session
+    ref: codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T16-56-13-01a00c5c-58e0-7613-935b-2b760a30e9a9.jsonl#L45
+    agent: codex
+    surface: macs-MacBook-Pro
+    at: 2026-08-16T20:56:43.548Z
+confidence: 0.9
+tags:
+    - state/**
+    - differ/**
+env: null
+affects:
+    - state/**
+    - differ/**
