@@ -1,0 +1,11 @@
+id: v01M0BJQVGH074V2JBJAK9GF9M1
+kind: evidence-withdrawn
+entry: e01M0AQHSRF4DVDYZ989W6K185N
+payload:
+    reason: subject match no longer meets the evidence threshold
+    ref: 5a56835ff13911a868bda153456b50e26b785574
+    source_event: v01M0AZMWMGEBE16SP0PHT83B2D
+by:
+    who: differ
+    surface: macs-MacBook-Pro
+at: 2026-08-18T23:19:10.097911Z

@@ -1,0 +1,11 @@
+id: v01M0BJQMJR83XF4N7CVYMX74S9
+kind: evidence
+entry: e01M05T4XG0RJWQTP25SYT4FH0B
+payload:
+    kind: churn
+    note: Withdraw weak subject matches from reality evidence
+    ref: churn:52e07d9575cc2766d3c6f72c68ddf28c11eb9ac7
+by:
+    who: differ
+    surface: macs-MacBook-Pro
+at: 2026-08-18T23:19:03Z

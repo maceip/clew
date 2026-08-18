@@ -1,0 +1,11 @@
+id: v01M0BJQMJR83XF4N7CVVXKAQ07
+kind: evidence
+entry: e01M05SPB2EMMC4F4PR0BSPFZKZ
+payload:
+    kind: commit
+    note: Withdraw weak subject matches from reality evidence
+    ref: 52e07d9575cc2766d3c6f72c68ddf28c11eb9ac7
+by:
+    who: differ
+    surface: macs-MacBook-Pro
+at: 2026-08-18T23:19:03Z
