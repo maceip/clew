@@ -1,10 +1,10 @@
 # Journal
 
-_generated 2026-08-18 23:27 UTC · 118 live entries (49 decisions · 40 findings · 9 questions · 20 intents) · 138 total in history_
+_generated 2026-08-18 23:28 UTC · 118 live entries (49 decisions · 40 findings · 9 questions · 20 intents) · 138 total in history_
 
 ## DECIDED
 
-- `e01M0BFY164YEV6DAEFVGGH18VT` The limiter gates distillation timing, never sensing; failure is lag — 59m · active
+- `e01M0BFY164YEV6DAEFVGGH18VT` The limiter gates distillation timing, never sensing; failure is lag — 1h · active
 - `e01M0BFRYY2WVHJZ3R3TDV4CFTS` The wording sweep covers every fear-attached word; docket stays by name — 1h · active
 - `e01M0BFRYY1EW9CFMJNDJ5QH3M2` Evidence settles merge lines; apply is never asked for finished work — 1h · active
 - `e01M0BF0WMX264RA9D0VTM9R24K` Entry ids are machine plumbing: never shown to or relayed through humans — 1h · active
