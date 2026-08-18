@@ -96,7 +96,7 @@ func Run(db *state.DB, in *Input, now time.Time) (*Result, error) {
 	// decisions/intents that existed before the commit; everything ambiguous
 	// remains for the optional link pass.
 	linkedBySubject := subjectLinkPass(db, in, commits, addEvent)
-	linkedBySubject = append(linkedBySubject, repairCoordinationLinks(db, in, commits, addEvent)...)
+	linkedBySubject = append(linkedBySubject, repairCoordinationLinks(db, in, addEvent)...)
 	res.Unmapped = subtract(res.Unmapped, linkedBySubject)
 
 	// ---- 7.1(2) LLM link pass: unmatched commits × unevidenced intents ----
@@ -155,7 +155,7 @@ func subjectLinkPass(db *state.DB, in *Input, commits []state.Commit, addEvent f
 // handles the narrow legacy case where a high-confidence link-pass selected a
 // clew/journal commit: exactly one real code commit must fall between the
 // entry's source time and that false event. Ambiguity leaves the work open.
-func repairCoordinationLinks(db *state.DB, in *Input, commits []state.Commit, addEvent func(model.EventKind, string, map[string]any, time.Time)) []string {
+func repairCoordinationLinks(db *state.DB, in *Input, addEvent func(model.EventKind, string, map[string]any, time.Time)) []string {
 	var linked []string
 	for id, entry := range in.Journal.Entries {
 		if !workEvidenceEntry(entry) || hasWorkEvidence(in.Journal, id) {
@@ -166,7 +166,7 @@ func repairCoordinationLinks(db *state.DB, in *Input, commits []state.Commit, ad
 				continue
 			}
 			var candidates []state.Commit
-			for _, commit := range commits {
+			for _, commit := range db.CommitsBetween(in.Repo, entry.Created(), event.At) {
 				if strings.HasPrefix(strings.ToLower(strings.TrimSpace(commit.Subject)), "journal:") ||
 					commit.At.Before(entry.Created()) || commit.At.After(event.At) {
 					continue

@@ -521,6 +521,36 @@ func (d *DB) RecentCommits(repo string, since time.Time, onlyUnmapped bool) []Co
 	return out
 }
 
+// CommitsBetween returns every observed commit in a bounded interval. It is
+// intentionally not subject to the map view's 500-row display/work limit:
+// legacy coordination-link repair needs to see the one real commit even when
+// cached journal commits have crowded the recent list.
+func (d *DB) CommitsBetween(repo string, start, end time.Time) []Commit {
+	rows, err := d.Query(`SELECT repo_path, sha, author, at, subject, files, session_id, mapped
+		FROM commits_seen WHERE repo_path=? AND at>=? AND at<=? ORDER BY at`,
+		repo, start.UTC().Format(time.RFC3339), end.UTC().Format(time.RFC3339))
+	if err != nil {
+		return nil
+	}
+	defer rows.Close()
+	var out []Commit
+	for rows.Next() {
+		var c Commit
+		var at, files string
+		var mapped int
+		if rows.Scan(&c.RepoPath, &c.SHA, &c.Author, &at, &c.Subject, &files, &c.SessionID, &mapped) != nil {
+			continue
+		}
+		c.At, _ = time.Parse(time.RFC3339, at)
+		if files != "" {
+			c.Files = strings.Split(files, "\n")
+		}
+		c.Mapped = mapped == 1
+		out = append(out, c)
+	}
+	return out
+}
+
 // ---- alerts ----
 
 type Alert struct {
