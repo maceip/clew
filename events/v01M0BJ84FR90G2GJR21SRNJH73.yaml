@@ -1,0 +1,11 @@
+id: v01M0BJ84FR90G2GJR21SRNJH73
+kind: evidence
+entry: e01M05T4XG0RJWQTP25T1K58B61
+payload:
+    kind: churn
+    note: Ignore journal commits when settling evidence
+    ref: churn:f66576bb0ec5cc0f2bea61ed1297c0920761429d
+by:
+    who: differ
+    surface: macs-MacBook-Pro
+at: 2026-08-18T23:10:35Z
