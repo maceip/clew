@@ -1,0 +1,17 @@
+id: e01M0BEM04PAZ85R5YNRM2Y31Z6
+type: decision
+title: 'Broken states carry their verb: no unactionable warnings for humans'
+body: >-
+  Owner correction from the first real merge/gap run: could-not-check lines handed the human a problem with no action. Rule: a broken state shown to a human must carry its fix verb (usually hand to the attending agent) or name who is already fixing it; problems only machinery can fix route to agents, never to human eyes. Earned silence stands — broken arrives actionable, like everything else.
+quote: 'that is state the human cant immediately fix/help with'
+utterance_by: user
+source:
+    kind: session
+    ref: chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18
+    agent: cursor-cloud-agent
+    surface: cursor-cloud-vm
+    at: 2026-08-18T22:04:00Z
+confidence: 1
+tags: []
+env: null
+affects: []
