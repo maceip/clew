@@ -18,7 +18,7 @@ _generated 2026-08-18 15:54 UTC · 67 live entries (19 decisions · 33 findings 
 - `e01M0ARJHKDP6Z6R1FKZSJ8AN4S` laptop surface intent placeholder — 12m · current
 - `e01M0ARJFTWEWY5H6JFJ17656W4` cloud surface intent placeholder — 12m · current
 - `e01M0ARJE1XNN8Q45DJ36FP47YT` web surface intent placeholder — 12m · current
-- `e01M0ARJC3CMW89DH89FC3EW679` proposal ruling placeholder — 12m · current
+- `e01M0ARJC3CMW89DH89FC3EW679` proposal ruling placeholder — 13m · current
 - `e01M069MQYJX6QVW3YCWWTAWV34` --help — 1d · current
 - `e01M068FQH1ND9MM1WH851AF45M` Task 6 gate: flags 0 writes; algebra, poller, manifest pass — 1d · current
 
