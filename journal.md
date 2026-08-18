@@ -46,12 +46,12 @@ _generated 2026-08-18 23:07 UTC · 118 live entries (49 decisions · 40 findings
 
 | Intent | Age | Reality | State |
 |---|---:|---:|---|
-| `e01M0AZN6HJETV241AK5RSBDHNR` Held: a restart tab — stage selected drift into the next generation | 5h | 0 evidence | proposed |
-| `e01M0AXCM561K3C5QXAVGVGT46T` Build the freshness ladder: one delta payload, five delivery layers | 6h | 0 evidence | proposed |
-| `e01M0ARJKGSQFSH8WSVZEG520DH` Surface coverage: phone reads the glance and receives decision cards | 7h | 0 evidence | proposed |
-| `e01M0ARJHKDP6Z6R1FKZSJ8AN4S` Surface coverage: laptop agents fully sensed with zero human effort | 7h | 0 evidence | proposed |
-| `e01M0ARJFTWEWY5H6JFJ17656W4` Surface coverage: PR-only cloud agents (Codex-app-class) contribute knowledge | 7h | 0 evidence | proposed |
-| `e01M0ARJE1XNN8Q45DJ36FP47YT` Surface coverage: repo-write cloud agents (Cursor-class) are full journal nodes | 7h | 0 evidence | proposed |
+| `e01M0AZN6HJETV241AK5RSBDHNR` Held: a restart tab — stage selected drift into the next generation | 5h | 1 evidence | in_flight |
+| `e01M0AXCM561K3C5QXAVGVGT46T` Build the freshness ladder: one delta payload, five delivery layers | 6h | 1 evidence | in_flight |
+| `e01M0ARJKGSQFSH8WSVZEG520DH` Surface coverage: phone reads the glance and receives decision cards | 7h | 1 evidence | in_flight |
+| `e01M0ARJHKDP6Z6R1FKZSJ8AN4S` Surface coverage: laptop agents fully sensed with zero human effort | 7h | 1 evidence | in_flight |
+| `e01M0ARJFTWEWY5H6JFJ17656W4` Surface coverage: PR-only cloud agents (Codex-app-class) contribute knowledge | 7h | 1 evidence | in_flight |
+| `e01M0ARJE1XNN8Q45DJ36FP47YT` Surface coverage: repo-write cloud agents (Cursor-class) are full journal nodes | 7h | 1 evidence | in_flight |
 | `e01M0AQHSRF4DVDYZ989PVHGA7R` Birth detection: auto-init a new repo with owner laws only | 7h | 1 evidence | in_flight |
 
 ## Decisions
@@ -61,245 +61,245 @@ _generated 2026-08-18 23:07 UTC · 118 live entries (49 decisions · 40 findings
 
 Owner challenge: a deaf agent is useless. Purpose on record: the limiter is not cost control — it protects shared rate limits and guards against runaway loops. Corrected design: sensing (tailing, recording) is free and never stops; only distillation may lag under pressure, shown as memory is N minutes behind, catching up when headroom returns. Deafness is impossible; nothing goes unrecorded.
 
-_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00_
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00 · evidence: 1_
 
 ### e01M0BFRYY2WVHJZ3R3TDV4CFTS — The wording sweep covers every fear-attached word; docket stays by name  `active`
 > why is 7 indexing on "law" when we discussed _all_ legal sounding words, with docket being ok
 
 Owner correction: the rename card narrowed to the single word law. The sweep is all fear-attached words wherever humans read — law, state, violation, enforcement and relatives — judged per word in context. Docket is explicitly approved and stays. Agent-facing hard register remains untouched where hardness prevents wiggle.
 
-_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00_
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00 · evidence: 1_
 
 ### e01M0BFRYY1EW9CFMJNDJ5QH3M2 — Evidence settles merge lines; apply is never asked for finished work  `active`
 > why are there still 7 merges that need to take place ?  number 1 i thought you already merged?
 
 Owner found the merge asking him to bless work already built, tested, and pushed. Rule: the merge joins decisions to evidence; a decision whose demanded work is evidenced settles itself and shows once as settled-while-away. Apply is reserved for work not yet done or judgment only a human can make. Nothing auto-acts on the repo; settling is status computation, not action.
 
-_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00_
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00 · evidence: 1_
 
 ### e01M0BF0WMX264RA9D0VTM9R24K — Entry ids are machine plumbing: never shown to or relayed through humans  `active`
 > you should never print "e01M0BER1Q412DRFQYESPCN0Q30" i dont know what it means and its super long -- what is the intent of showing that to the human?
 
 Extension of plain-speech: the cloud agent printed raw ids in receipts and in prompts the human had to copy. The intent was verifiability — but verification is machine work, and agents holding the journal resolve plain words better than opaque codes. Rule: ids live in files, commits, and machine channels only; humans see words; agents are addressed in words and resolve entries themselves.
 
-_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00_
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00 · evidence: 1_
 
 ### e01M0BEYP65CE70G0VVSX3PV01B — Finished means shared: work ends pushed or PR'd; local-only is an alarm  `active`
 > why do i need to tell it to push? with all the journals and dockets and intents and knowledge that should never be the case?
 
 Owner ruling closing the push gap: a task is not finished until the work is shared per repo convention — pushed to the branch or opened as a PR. Committed-but-local is an alarm state the finish message must name, never a resting state. Root cause on record: this norm lived in behavior and was never spoken, so the memory had nothing to inject; said once here, it reaches every agent forever.
 
-_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00_
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00 · evidence: 1_
 
 ### e01M0BETRRAZ54063PRJK1JSQS7 — The finish message is a surface: what exists, where it lives, my next move  `active`
 > when i read that my first thought is: "ok it didnt push anything so thats not good", then i dont know what the rest of it means
 
 Owner correction: codex signed off in builder frame (Nothing was pushed. No real apply...) — accurate, meaningless to the human, and alarming: didn't-push read as failure. Rule: the closing utterance speaks the human frame in plain words — what exists now, whether it is safely shared or local-only, what the human can say next — then shows the two screens. Compliance detail lives behind explain.
 
-_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00_
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00 · evidence: 1_
 
 ### e01M0BER1Q412DRFQYESPCN0Q30 — Lines are plain speech, no ids; near-duplicates fold; held items rest  `active`
 > language in each <knowledge merge/intent gap> thats confusing, e.g., "Let cloud agents that can only"
 
 Owner corrections from the first real run: rendered lines confused (Let cloud agents that can only...) and full entry ids burned attention. Rules: plain spoken English, subject-first, one breath; no ids or codes on lines — identity lives behind explain; near-duplicates fold to one line; held-for-owner entries appear in no actionable list. The amnesia test stays the floor; this adds plain speech.
 
-_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00_
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00 · evidence: 1_
 
 ### e01M0BEM04PAZ85R5YNRM2Y31Z6 — Broken states carry their verb: no unactionable warnings for humans  `active`
 > that is state the human cant immediately fix/help with
 
 Owner correction from the first real merge/gap run: could-not-check lines handed the human a problem with no action. Rule: a broken state shown to a human must carry its fix verb (usually hand to the attending agent) or name who is already fixing it; problems only machinery can fix route to agents, never to human eyes. Earned silence stands — broken arrives actionable, like everything else.
 
-_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00_
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00 · evidence: 1_
 
 ### e01M0AZDDYC49Y1741H7W74Y1QY — Second tab: the intent gap — everything intended, not yet real  `active`
 > the intent gap is a similar thing that lists simply all the crazy shit thats not yet implemented
 
 Owner design: next to the knowledge merge sits the intent gap — same glanceable, amnesia-proof list shape, listing intents with no evidence in reality (the absence machinery gets its human surface). Verbs: build (hand to the idle agent), explain (live), retire (a conscious no, kept with provenance). It converts forgetting into deciding — stratura's unbuilt core would have topped it for weeks.
 
-_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00_
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00 · evidence: 1_
 
 ### e01M0AZ7JBPJRNHFJQC6WEEQB9Y — Silence is the signal: an absent merge means truly nothing new  `active`
 > if there is no knowledge diff shown, the human knows nothing new has been added somewhere else
 
 Owner property: when no knowledge diff appears, the human may trust that nothing new landed anywhere — silence is the all-caught-up signal. For that trust to hold, silence must be earned: a broken watcher, stale sync, or failed check must announce itself distinctly and can never render as an empty diff. Quiet means verified-quiet. Nothing-new and could-not-check are never the same screen.
 
-_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00_
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00 · evidence: 1_
 
 ### e01M0AZ4BGF1VC0VSXA05VYVEQ3 — Explain is live: the attending agent reads the entry and explains  `active`
 > so you dont need to encode the "explain in more detail in the kowledge diff" itself
 
 Refinement: the merge diff encodes nothing but lines, entry ids, and verbs. Pressing explain hands the entry to the agent already present at the finish boundary — it reads the journal, quotes the owner's words, and explains what applying means for the work at hand, answering follow-ups conversationally. clew stays the bookkeeper of see-once and defer state; the agent is the explain engine.
 
-_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00_
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00 · evidence: 1_
 
 ### e01M0AZ0K17AA5D9P7KZDSPJQSY — Merge lines must pass the amnesia test; verbs are apply/explain/defer  `active`
 > these diff entries need to be something the human can read after maybe a day where he totally forgot the convo he had with you
 
 Amendment: each merge line must be readable by a human who forgot the conversation entirely — references glossed inline (the five promises appear as five words), machinery nouns translated, no dangling 'the budget'. Per line: apply, explain (prints body + the owner's verbatim quote + link, then re-offers), defer. Footer gains apply-all. Explain works because one's own words restore memory.
 
-_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00_
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00 · evidence: 1_
 
 ### e01M0AYQ3VJM71SMM1YQFYE1X61 — Knowledge Merge at finish: glanceable apply/defer list, external memory  `active`
 > this list cannot be verbose, it needs to be glancable, and it serves the "humans forget" thing as well
 
 Owner design: at finish, one colored glanceable list — top unapplied changes (code, intent, knowledge), one line each, entry-linked, one-keystroke apply/defer. See-once by decision id; defer compresses to a nagging count, never re-shown as new. External memory for a forgetful human: recognition over recall, per the HCI findings. It is the docket rendered at the finish boundary.
 
-_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00_
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00 · evidence: 1_
 
 ### e01M0AY6VWJV133F811JYAANJPE — Stale finish: know and tell, never act — the reconcile is read-only  `active`
 > finishes, then syncs, should _NOT_ then remove the work it just did, or do anything for that matter
 
 Amendment to the finish check-in: an agent whose finished work was obsoleted mid-flight must not remove, redo, or touch anything on its own — no action of any kind. The check-in only installs knowledge: at the next human prompt it must say the work is deprecated/obsoleted/wrong and why, unless the human already resolved it elsewhere. Interpretation is the human's call. Owner will stress-test.
 
-_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00_
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00 · evidence: 1_
 
 ### e01M0AXZTTHG5FKXETX0X8PR6EX — On finish, check in first: reconcile against the delta before next steps  `active`
 > but what i do expect is that after it finishes, to check in first and then figure out what to do based on the new synced state
 
 Owner ruling completing the task lifecycle: when an agent finishes, it must sync the journal and reconcile its output against decisions that landed mid-flight before concluding or picking next steps — state contradictions explicitly, then close. Stop/AfterAgent hooks make this enforceable on claude/codex/gemini; elsewhere it is convention plus the glance flagging stale finishes.
 
-_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00_
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00 · evidence: 1_
 
 ### e01M0AXXKMNNKKY721HJ3REN3KH — Freshness is owed at contact points; a task runs on its snapshot  `active`
 > i dont expect an agent on task to stop mid task and change based on a cloud agent decision i made at the same time
 
 Owner refinement: a running task is never interrupted or mutated by concurrent decisions — it finishes on the snapshot it started with. Currency is owed at the next human contact: a message typed after returning lands on a mind that already has the delta. Hooks fire at that boundary; the proxy injects only on a new human message. Urgent items route to the human, who may stop the task.
 
-_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00_
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00 · evidence: 1_
 
 ### e01M0AXRKQ8C7FZNKARW83CMBMX — The five promises are the foundation (owner ratified)  `active`
 > yeah those 5 things are the foundation, agreed
 
 Owner ratified the product's entire human-facing surface: (1) it remembers what we decide; (2) every agent starts already knowing it; (3) you can look up and see; (4) it taps your shoulder only when something needs you; (5) starting over loses nothing. Every feature must file under exactly one promise or it is not built. Vocabulary beyond these is machinery, never surfaced.
 
-_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00_
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00 · evidence: 1_
 
 ### e01M0AXMXK3SAATFDFAYZ932TPC — Two registers, one memory: calm words for humans, hard words for agents  `active`
 > however -- if using softer language means agents would "wiggle" out of those constructs, then we keep the harsher language
 
 Owner ruling: human-facing vocabulary must avoid fear-attached words (law, state, violation). But register is a rendering choice, not a softening of the contract: wherever soft words would let agents wiggle out of a constraint, the agent-facing rendering keeps the harsh form. Same entries, two renderings; hardness is judged by compliance, softness by human calm.
 
-_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00_
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00 · evidence: 1_
 
 ### e01M0AXF5FM9RDFP817NF7QW5BN — Human-facing surface must reduce to the desires it satisfies  `active`
 > its already too much to understand given how it should reduce down to the simple set of human desires it satisfies
 
 Owner ruling: the internal design may be intricate, but the human-visible vocabulary must collapse to the desire set: it remembers; every agent starts knowing; I can look up and see; it asks me only when it must; starting over loses nothing. Any feature that cannot be filed under one of these is out. The agent carries the machinery; the human carries five sentences.
 
-_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00_
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00 · evidence: 1_
 
 ### e01M0AXCM53D36PDN0H85S0WE3W — Mind-plane freshness is vendor-neutral; hooks accelerate, never carry it  `active`
 > this should work if i decide to spin up ollama locally with deepseek4-flash on my laptop
 
 Owner ruling: a returning human must land on agents that already know the recent journal, and this must hold for a bare ollama model with no hook system. Per-vendor hooks may improve latency but the floor must work for anything that emits model API calls. Bar: current-at-next-interaction, zero human homework, any harness — including ollama running deepseek4-flash on a laptop.
 
-_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00_
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00 · evidence: 1_
 
 ### e01M0AVXA7EH2KD1BPZ4GJNKN67 — Witness-node role adopted: always-on ear with owner API creds, sequenced  `active`
 > that sgtm with one wrinkle still in my brain, how does this system work for 2,10,100 projects
 
 Owner sgtm: one always-on clew node (owner infra) whose sensors are API pollers with owner account creds — witnesses cursor/codex cloud sessions live with zero agent cooperation, runs extraction centrally, sole writer of projections (kills that conflict class). Git stays the only required meeting point; degrade-to-baseline preserved. Build gated behind single-lineage sequencing.
 
-_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00_
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00 · evidence: 1_
 
 ### e01M0AVWK3HH2R9M55FQSAWZFF1 — I9 frugality replaced: listening completeness is the invariant, cost is a dial  `active`
 > you assume i'm price sensitive and are using token cost as being prohibitive but ive never mentioned we need to make this work cheaply
 
 Owner ruling: price sensitivity was an agent assumption, never stated. Replace the 2% ratio with an owner-set ceiling plus a hard floor above the largest atomic request; extraction must never deadlock. Spend stays a visible meter. This also resolves the URGENT budget card's direction.
 
-_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00_
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00 · evidence: 1_
 
 ### e01M0AVAR0N8ZCCN1VJW3GQ5PF4 — Restart-with-mutation is the flagship advertised workflow, not a failure mode  `active`
 > i allow myself to clew from clew "but with cloud agent witnesses" ... something we _actually_ advertise as a path
 
 Owner ruling: restart-with-mutation is the flagship, advertised workflow. The old negative was retelling pain (re-briefing a blank agent), not rebirth. Direction: clew from <parent> "<mutation>" carries the seed, makes the mutation the genesis charter, and flags carried entries it contradicts — day-zero docket = the design debate, pre- computed. Gated behind single-lineage sequencing.
 
-_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00_
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00 · evidence: 1_
 
 ### e01M0AV0H7T9P69CNPB56MRAG8V — Sequencing: single-lineage from + one-project glance FIRST; fleet/multi later  `active`
 > we need to get clew from working well with just one project lineage, and the glance infra ui working with just one project well first, else we risk scope creep and me clew from clew
 
 Owner ruling: no rush on multi-parent from or the fleet view. Get clew from working well with one project lineage and the glance UI working well for one project before any scaling work — else scope creep triggers the restart urge (owner: risk of clew- from-clew). Multi-parent and fleet rulings stand as destination, gated on the single versions working well.
 
-_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00_
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00 · evidence: 1_
 
 ### e01M0AV0H7RY7DG79VCMHPEMPJP — Glance direction ruling: graphic, two zooms — deferred behind single-project  `active`
 > the glance view _graphic_ not text, needs to support a one project view, and global view
 
 Owner direction: the glance becomes a graphic (project view: status-colored intent tiles, drift strip, docket badge; fleet view: hot-project tiles, dormant collapsed). Static self-contained HTML, no server. DEFERRED: build only after the single-project version works well.
 
-_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00_
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00 · evidence: 1_
 
 ### e01M0ATYJG615JE6BV5MG5RAF9Z — clew from must accept multiple parent projects, with strand selection  `active`
 > clew from needs to support _multiple_ projects as inputs, the human may want parts from multiple
 
 Owner ruling: inheritance is multi-parent. `clew from A B` unions seeds; `--tags <globs>` selects strands per parent; runnable repeatedly. Each carried entry keeps per-parent provenance; disagreements between parents surface as possible-contradiction cards for human arbitration, never silent merge. Genesis records multiple lineage links (the forest gains merge nodes).
 
-_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00_
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00 · evidence: 1_
 
 ### e01M0ASQGK4FMKRNCNR91KJ06JD — Restart machinery must be zero human effort: ambient inheritance, opt-out  `active`
 > the solution we create out of clew needs to make the restart acceleration zero effort from the human or zero cognitive load
 
 Lesson from substrate x2: reuse that costs effort at the clean-slate moment gets skipped. Therefore: SEED.md maintained continuously; birth detection auto-injects owner laws only; full manifest ceremony stays optional. Anything required at project birth is a bug (I13).
 
-_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00_
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00 · evidence: 1_
 
 ### e01M0ASQGK2ZK03KRP4WPAQG0MJ — Bet: restart-accelerated development plus drift guardrails, one shared substrate  `active`
 > lets bet the farm on strong coordination via our journal and intent < - > current reality drift
 
 Owner bet the farm on (A) glanceable intent-reality drift for humans and (B) restart acceleration: new repo births with genesis docs, old code vendored as lessons. Guardrails lower restart NEED; seeds lower restart COST; both attack unrecorded divergence. Restart verbs stay pull-only forever.
 
-_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00_
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00 · evidence: 1_
 
 ### e01M0ASQGJZPFJD3FSRT7P4HX44 — Owner-configured cloud environments are full clew nodes  `active`
 > we have installable skills, MCP, and I can configure the environments cursor, codex, and claude agents run in the cloud which can absolutely include our golang services
 
 Owner corrected the push-only sandbox assumption: cursor/codex/claude cloud environments are configurable (install scripts, MCP, skills) and can run the Go binary. Cloud write path = provision the environments you own. journal-proposal.yaml is PARKED (trigger-gated for unconfigurable third-party envs only).
 
-_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00_
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00 · evidence: 1_
 
 ### e01M0AQHSRF4DVDYZ989W6K185N — Owner laws live in an owner-scope journal with a ≤1KB injection budget  `possible-contradiction`
 > an owner-scope journal synced like any other; findings promoted via clew journal promote <id>; extractor proposes promotion when a finding's content is project-agnostic; ≤1KB injection budget into every project's context, forever.
 
 Laws are stored as an owner-scope journal synced like any other. Findings become laws through an explicit `clew journal promote <id>`, with the extractor proposing promotion when a finding's content is project-agnostic. The resulting law set is capped at a ≤1KB injection into every project's context, permanently.
 
-_source: session codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-24-00-01a01578-e6db-7833-9ab2-0457569af643.jsonl#L9 · confidence: 0.92 · tags: .clew/** · pairs-with: e01M0AQHSRF4DVDYZ989M4DVHYX, e01M0AQHSRF4DVDYZ989MTZQV7E_
+_source: session codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-24-00-01a01578-e6db-7833-9ab2-0457569af643.jsonl#L9 · confidence: 0.92 · tags: .clew/** · evidence: 1 · pairs-with: e01M0AQHSRF4DVDYZ989M4DVHYX, e01M0AQHSRF4DVDYZ989MTZQV7E_
 
 ### e01M0AQHSRF4DVDYZ989RNZVC46 — `clew from` is the one explicit lineage command; never automatic  `active`
 > Runnable at birth or any time later; un-carrying is a reject (carried entries keep provenance like everything else). Never automatic. The birth card may suggest clew from X on blatant name/topic overlap — suggest only, never act.
 
 Pulling a predecessor's seed (decisions, findings, graveyard, exhibits, organ-bank pin) happens only via an explicit `clew from <repo>`; with no args it lists candidates ranked by recency and topic overlap, showing what each would carry. It can run at birth or later, un-carrying is recorded as a reject so carried entries keep provenance, and the birth card may only suggest `clew from X` on name/t…
 
-_source: session codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-24-00-01a01578-e6db-7833-9ab2-0457569af643.jsonl#L9 · confidence: 0.93_
+_source: session codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-24-00-01a01578-e6db-7833-9ab2-0457569af643.jsonl#L9 · confidence: 0.93 · evidence: 1_
 
 ### e01M0AQHSRF4DVDYZ989MTZQV7E — SEED.md is watcher-maintained continuously, never generated on demand  `possible-contradiction`
 > the watcher maintains SEED.md continuously alongside context.md — regenerated on journal change, never on demand. The carry-kit always predates the urge to restart.
 
 The watcher regenerates SEED.md alongside context.md on every journal change rather than building it when a restart is requested. Reason: the carry-kit must already exist before anyone wants to restart, so a seed is never missing or stale at the moment it is needed.
 
-_source: session codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-24-00-01a01578-e6db-7833-9ab2-0457569af643.jsonl#L9 · confidence: 0.94 · tags: .clew/** · pairs-with: e01M0AQHSRF4DVDYZ989M4DVHYX, e01M0AQHSRF4DVDYZ989W6K185N_
+_source: session codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-24-00-01a01578-e6db-7833-9ab2-0457569af643.jsonl#L9 · confidence: 0.94 · tags: .clew/** · evidence: 1 · pairs-with: e01M0AQHSRF4DVDYZ989M4DVHYX, e01M0AQHSRF4DVDYZ989W6K185N_
 
 ### e01M0AQHSRF4DVDYZ989M4DVHYX — Lineage inheritance is explicit; only promoted laws auto-carry  `possible-contradiction`
 > lore inheritance was made explicit because a wrong lineage guess poisons a fresh project worse than no inheritance at all — laws are safe to auto-carry precisely because promotion certified them project-agnostic.
 
 clew will never auto-carry project lore into a new repo. Rationale: a wrong lineage guess poisons a fresh project worse than inheriting nothing at all. Owner laws are the sole exception and may be injected automatically, because the promotion step already certified each law as project-agnostic. This is the governing reason behind invariant I13.
 
-_source: session codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-24-00-01a01578-e6db-7833-9ab2-0457569af643.jsonl#L9 · confidence: 0.95 · tags: .clew/** · pairs-with: e01M0AQHSRF4DVDYZ989MTZQV7E, e01M0AQHSRF4DVDYZ989W6K185N_
+_source: session codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-24-00-01a01578-e6db-7833-9ab2-0457569af643.jsonl#L9 · confidence: 0.95 · tags: .clew/** · evidence: 1 · pairs-with: e01M0AQHSRF4DVDYZ989MTZQV7E, e01M0AQHSRF4DVDYZ989W6K185N_
 
 ### e01M068ECYE067WF6BH7F26VC3D — Cursor v1 stays CLI-only: desktop 0 vs CLI 44 in 7d  `active`
 > window=7d; state.vscdb=402391040 bytes; composer-headers=31; desktop-created=0; desktop-updated=0; latest=2026-08-09T07:19:30Z; cursor-cli=44 transcripts; cli-bytes=10338802; project-slugs=8. Decision: CLI-only v1; desktop remains loud gap; adapter trigger=not met.
 
 window=7d; state.vscdb=402391040 bytes; composer-headers=31; desktop-created=0; desktop-updated=0; latest=2026-08-09T07:19:30Z; cursor-cli=44 transcripts; cli-bytes=10338802; project-slugs=8. Decision: CLI-only v1; desktop remains loud gap; adapter trigger=not met.
 
-_source: human cli:note · confidence: 1.00_
+_source: human cli:note · confidence: 1.00 · evidence: 1_
 
 ### e01M065T92NXY1ER6R73YCQNH84 — Recover docket empty-state and withdrawal wording from Task 3 journal source  `possible-contradiction`
 > The generated journal contains the Task 3 source pointer and the fixed card decisions. I’m using that exact source to recover the missing empty-state wording and withdrawal semantics before locking the package API.
 
 Rather than re-deriving the card semantics, the generated journal's Task 3 source pointer and fixed card decisions are used as the authoritative source to recover the missing empty-state wording and withdrawal semantics before the package API is locked.
 
-_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T16-56-09-01a00c5c-48cc-7850-8fe0-e14bc4f7cc79.jsonl#L75 · confidence: 0.80 · tags: docket/** · pairs-with: e01M05SA72DPRGNTY7GCN1P7CED, e01M05SA72DPRGNTY7GCPEX9W2N, e01M05SA72DPRGNTY7GCQ2RASTP_
+_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T16-56-09-01a00c5c-48cc-7850-8fe0-e14bc4f7cc79.jsonl#L75 · confidence: 0.80 · tags: docket/** · evidence: 1 · pairs-with: e01M05SA72DPRGNTY7GCN1P7CED, e01M05SA72DPRGNTY7GCPEX9W2N, e01M05SA72DPRGNTY7GCQ2RASTP_
 
 ### e01M065SK8W1ZT32KZF8YGGTP7W — Alerts self-clean via one scoped reconcile with an explicit withdrawal condition  `active`
 > I’m shaping this as one state-level reconcile operation: upsert the active alerts for a repo and auto-drop previously open differ-owned kinds that are absent from that poll, with an explicit withdrawal condition stored on each alert.
@@ -313,7 +313,7 @@ _source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T
 
 The prior gate's three blockers were judged the right pressure points, but the checkout has since gained new code and tests for reservation callers and neutral-workdir behavior. The gate will therefore re-evaluate the present tree, including untracked test files, rather than reusing the earlier verdict.
 
-_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T16-32-36-01a00c46-b7d2-7e30-8a57-955c5a957888.jsonl#L35 · confidence: 0.90_
+_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T16-32-36-01a00c46-b7d2-7e30-8a57-955c5a957888.jsonl#L35 · confidence: 0.90 · evidence: 1_
 
 ### e01M05V5HWA6TFT0A0KDZY8S45K — Confine the cap/ratio admission fix to internal/state; no caller or spec changes  `active`
 > I’m implementing this entirely inside `internal/state`
@@ -341,7 +341,7 @@ _source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T
 
 The first dogfood run surfaced real cursor, push, and adapter failures. The assistant is treating that run as the required failure signal rather than as an acceptance run, so those failures do not block recording Task 1 as passed but do drive the current work on the live-enrollment/backfill boundary and failure telemetry.
 
-_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-00-58-01a00b84-f81d-7a61-a3c3-e5bb6beb9ee3.jsonl#L1041 · confidence: 0.82_
+_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-00-58-01a00b84-f81d-7a61-a3c3-e5bb6beb9ee3.jsonl#L1041 · confidence: 0.82 · evidence: 1_
 
 ### e01M05SVGK1Q2MR34Y3CMHR7DXM — No cursor translation: keep `extract:` for live, add bounded `backfill:` for hi…  `active`
 > the live watcher keeps the existing `extract:` cursor, explicit history gets a new bounded `backfill:` cursor, and `history-end` freezes their boundary
@@ -355,7 +355,7 @@ _source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T
 
 Rather than commit Task 2 and patch later, the commit is held while three fixes land: a one-time cursor migration for upgrading users, complete-record offsets so init never baselines mid-record, and a fixed historical upper bound so backfill and live watch cannot overlap — disjoint by construction rather than by runtime check.
 
-_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-00-58-01a00b84-f81d-7a61-a3c3-e5bb6beb9ee3.jsonl#L806 · confidence: 0.90 · evidence: 2_
+_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-00-58-01a00b84-f81d-7a61-a3c3-e5bb6beb9ee3.jsonl#L806 · confidence: 0.90 · evidence: 3_
 
 ### e01M05SA72DPRGNTY7GD0TGHEX7 — Scope freeze: relay, TUI, team mode, adapters need a §11 trigger measurement  `possible-contradiction`
 > Frozen (build nothing here without citing a §11 trigger measurement in the journal and stopping for owner review): relay server, TUI/native apps, team mode, semantic code graphs, treemaps, new adapters, orchestration.
@@ -369,7 +369,7 @@ _source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T
 
 Decision cards must render verbatim quotes with clickable provenance chips (session line / commit / entry) and must never show the extractor's paraphrase, summary, or reasoning. Reason: system-generated explanations are advocacy and increase acceptance of wrong content, while clickable sources reduce over-reliance. One "accepting this assumes: X" line is allowed on high-magnitude cards only; no o…
 
-_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-18-36-01a00b95-1c07-7d61-a3e4-fb76948ee1b9.jsonl#L9 · confidence: 0.92 · tags: docket/** · pairs-with: e01M05SA72DPRGNTY7GCN1P7CED, e01M05SA72DPRGNTY7GCPEX9W2N, e01M065T92NXY1ER6R73YCQNH84_
+_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-18-36-01a00b95-1c07-7d61-a3e4-fb76948ee1b9.jsonl#L9 · confidence: 0.92 · tags: docket/** · evidence: 1 · pairs-with: e01M05SA72DPRGNTY7GCN1P7CED, e01M05SA72DPRGNTY7GCPEX9W2N, e01M065T92NXY1ER6R73YCQNH84_
 
 ### e01M05SA72DPRGNTY7GCPEX9W2N — I10–I12 added as hard invariants enforced in code and tests  `possible-contradiction`
 > Add these three as I10–I12, hard law, enforced in code and tests, not convention:
@@ -383,21 +383,21 @@ _source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T
 
 The decision surface is renamed inbox → docket, with "inbox" kept only as a hidden alias for muscle memory. Reason: vocabulary is a forcing function against email-drift — an inbox invites FYI accumulation, unread counts, and backlog; a docket is a list of items awaiting a ruling. The docket is the only surface that carries verbs.
 
-_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-18-36-01a00b95-1c07-7d61-a3e4-fb76948ee1b9.jsonl#L9 · confidence: 0.94 · tags: docket/**, inbox/** · pairs-with: e01M05SA72DPRGNTY7GCPEX9W2N, e01M05SA72DPRGNTY7GCQ2RASTP, e01M065T92NXY1ER6R73YCQNH84_
+_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-18-36-01a00b95-1c07-7d61-a3e4-fb76948ee1b9.jsonl#L9 · confidence: 0.94 · tags: docket/**, inbox/** · evidence: 1 · pairs-with: e01M05SA72DPRGNTY7GCPEX9W2N, e01M05SA72DPRGNTY7GCQ2RASTP, e01M065T92NXY1ER6R73YCQNH84_
 
 ### e01M05RHSWXDNR10P1PY8ERYA9S — Dogfood metrics predeclared; D0 snapshot recorded  `active`
 > Dogfood D0 2026-08-16: repos=3; spend=spent/observed, caps=2%,200000/d; confirm:reject=C:R; push precision=needed/total, unneeded=failure; adapter incidents=paused+parked+unknown-format. D0 spend=0/0; C:R=0:1; push=0/0; incidents=0.
 
 Dogfood D0 2026-08-16: repos=3; spend=spent/observed, caps=2%,200000/d; confirm:reject=C:R; push precision=needed/total, unneeded=failure; adapter incidents=paused+parked+unknown-format. D0 spend=0/0; C:R=0:1; push=0/0; incidents=0.
 
-_source: human cli:note · confidence: 1.00_
+_source: human cli:note · confidence: 1.00 · evidence: 1_
 
 ### e01M04WCGJS9FS7FQB0YFX9DTYG — Name the system clew (owner decision)  `active`
 > Name = clew (owner). Alternatives considered: restart — verb collision, names the crisis not the daily loop; lore — binary/brand collision with varalys/lore, getlore.ai, Epic Lore; wake, canon, lorekeeper also considered. Supersedes the builder's unilateral restart from §12.1.
 
 Name = clew (owner). Alternatives considered: restart — verb collision, names the crisis not the daily loop; lore — binary/brand collision with varalys/lore, getlore.ai, Epic Lore; wake, canon, lorekeeper also considered. Supersedes the builder's unilateral restart from §12.1.
 
-_source: human cli:note · confidence: 1.00_
+_source: human cli:note · confidence: 1.00 · evidence: 1_
 
 ## Findings
 
@@ -748,47 +748,47 @@ _source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15 · confide
 
 ## Intents
 
-### e01M0AZN6HJETV241AK5RSBDHNR — Held: a restart tab — stage selected drift into the next generation  `proposed`
+### e01M0AZN6HJETV241AK5RSBDHNR — Held: a restart tab — stage selected drift into the next generation  `in_flight`
 > users select items from each and put them in "restart tab", and that tab also shows the same output "clew from" would show
 
 Owner direction, held for more thinking: a third tab beside merge and gap. The human selects items from both and stages them into a restart; the tab previews exactly what clew from would emit — live seed curation from the drift you are already reading. Gives merge/gap overflow a relief valve: too heavy to absorb here becomes carry it forward. Not buildable spec yet; owner explains later.
 
-_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 0.95_
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 0.95 · evidence: 1_
 
-### e01M0AXCM561K3C5QXAVGVGT46T — Build the freshness ladder: one delta payload, five delivery layers  `proposed`
+### e01M0AXCM561K3C5QXAVGVGT46T — Build the freshness ladder: one delta payload, five delivery layers  `in_flight`
 > the human (me) would think that our mind plane would inject "knowledge" into all running agents on a specific project at some interval
 
 Deliver one idempotent journal-delta digest via: (1) base-URL proxy shim — the floor, covers ollama; (2) MCP tool-result banner on every clew tool reply; (3) harness hooks where present (claude/codex/gemini prompt boundary, cursor postToolUse, opencode transform); (4) PTY wrap; (5) human relay. Dedupe by entry-ULID watermark so no agent sees a delta twice. Payload is data, not instructions.
 
-_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 0.95_
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 0.95 · evidence: 1_
 
-### e01M0ARJKGSQFSH8WSVZEG520DH — Surface coverage: phone reads the glance and receives decision cards  `proposed`
+### e01M0ARJKGSQFSH8WSVZEG520DH — Surface coverage: phone reads the glance and receives decision cards  `in_flight`
 > phone is typically either a variant of cloud or remote to laptop
 
 Owner requirement: phone is read + interrupt only — journal.md via GitHub mobile as the away-glance; ntfy delivering decision cards (headline + why-you) as the only push. No write path in v1 (known gap, trigger on file). Evidence classes: ntfy deliveries with measured push precision; first-screenful glance fix landed. Blocked on owner's 3-minute pairing: rotate leaked topic, redact, subscribe.
 
-_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-18 · confidence: 0.95_
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-18 · confidence: 0.95 · evidence: 1_
 
-### e01M0ARJHKDP6Z6R1FKZSJ8AN4S — Surface coverage: laptop agents fully sensed with zero human effort  `proposed`
+### e01M0ARJHKDP6Z6R1FKZSJ8AN4S — Surface coverage: laptop agents fully sensed with zero human effort  `in_flight`
 > agents on laptop
 
 Owner requirement: local agents (claude/codex/cursor CLI) on watched machines are tailed, extracted, and journaled with no manual notes. Evidence classes: automatic session entries; extraction spend within I9; adapter incidents loud. Largely met by current dogfood; kept as an intent so regressions surface as absence rather than silence.
 
-_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-18 · confidence: 0.95_
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-18 · confidence: 0.95 · evidence: 1_
 
-### e01M0ARJFTWEWY5H6JFJ17656W4 — Surface coverage: PR-only cloud agents (Codex-app-class) contribute knowledge  `proposed`
+### e01M0ARJFTWEWY5H6JFJ17656W4 — Surface coverage: PR-only cloud agents (Codex-app-class) contribute knowledge  `in_flight`
 > when I open the android codex/chatgpt app to do more work in the cloud what happens
 
 Owner requirement: agents in sandboxes that can only open PRs (Android Codex/ChatGPT app work) must still contribute session knowledge, not just code. Mechanism blocked on the write-path ruling (see the open question entry). Evidence classes: journal entries whose provenance is a PR-only sandbox; until then, their sessions remain a visible gap in status, never a silent one.
 
-_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-18 · confidence: 0.95_
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-18 · confidence: 0.95 · evidence: 1_
 
-### e01M0ARJE1XNN8Q45DJ36FP47YT — Surface coverage: repo-write cloud agents (Cursor-class) are full journal nodes  `proposed`
+### e01M0ARJE1XNN8Q45DJ36FP47YT — Surface coverage: repo-write cloud agents (Cursor-class) are full journal nodes  `in_flight`
 > my originally stated (yet somehow lost, even using the journal) surfaces: agents on web (typically cloud), agents in cloud, agents on laptop, phone is typically either a variant of cloud or remote to laptop
 
 Owner requirement: cloud/web agents working on watched repos read the journal at session start (digest from branch) and write their session knowledge back. Evidence classes: journal-branch pushes originating from cloud runs; digest fetches in cloud AGENTS.md startup. This entry itself was pushed by a credentialed cloud agent as the first proof.
 
-_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-18 · confidence: 0.95_
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-18 · confidence: 0.95 · evidence: 1_
 
 ### e01M0AQHSRF4DVDYZ989PVHGA7R — Birth detection: auto-init a new repo with owner laws only  `in_flight`
 > new git init + agent session on a watched machine → auto-init (watch, journal branch, context.md) with owner laws only. No lore, no card required. Acceptance: mkdir x && git init && claude yields a context containing the owner's laws with zero clew commands typed.
@@ -879,7 +879,7 @@ _source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T
 
 Commitment (Task 3): build the docket card to the fixed anatomy — headline-as-question ≤80 chars, why-you strip with rule fired and ticking stall timers, verbatim-quote evidence rows with provenance chips, assumptions line on high-magnitude only, 1–3 verbs plus defer-until-event, printed withdrawal condition, ordering by blocking cost, designed empty state. Tests must prove the three invariants.
 
-_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-18-36-01a00b95-1c07-7d61-a3e4-fb76948ee1b9.jsonl#L9 · confidence: 0.90 · tags: docket/** · evidence: 1_
+_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-18-36-01a00b95-1c07-7d61-a3e4-fb76948ee1b9.jsonl#L9 · confidence: 0.90 · tags: docket/** · evidence: 2_
 
 ### e01M05S9SFKAAM813AR1EG3X3WR — Land the dogfood fixes after recording the Task 2 snapshot  `in_flight`
 > I’m recording that snapshot and then landing the dogfood fixes.
