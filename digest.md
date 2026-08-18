@@ -1,4 +1,5 @@
 # Journal digest (live entries: id · type/status · title)
+- e01M0AZ0K17AA5D9P7KZDSPJQSY decision/active Merge lines must pass the amnesia test; verbs are apply/explain/defer
 - e01M0AXXKMNNKKY721HJ3REN3KH decision/active Freshness is owed at contact points; a task runs on its snapshot
 - e01M0AXRKQ8C7FZNKARW83CMBMX decision/active The five promises are the foundation (owner ratified)
 - e01M0AXF5FM9RDFP817NF7QW5BN decision/active Human-facing surface must reduce to the desires it satisfies
@@ -33,5 +34,4 @@
 - e01M065SK8W1ZT32KZF8YGGTP7W decision/active Alerts self-clean via one scoped reconcile with an explicit withdrawal condition
 - e01M065G8RTKVH6466KEB0FRJ8N intent/in_flight Commit the gate fixes as one spec-amended change, then start the docket
 - e01M065G8RTKVH6466KE7GQREGX finding/current Task 2 passes its live gate on all five acceptance checks
-- e01M064YRS4S9NK7KW9NQ1JMDV2 finding/suspect Malformed or missing pinned timestamps silently fall back to ingest time
-… (79 more omitted for size)
+… (80 more omitted for size)

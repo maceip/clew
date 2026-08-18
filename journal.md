@@ -1,16 +1,16 @@
 # Journal
 
-_generated 2026-08-18 17:34 UTC · 79 live entries (27 decisions · 31 findings · 3 questions · 18 intents) · 99 total in history_
+_generated 2026-08-18 17:34 UTC · 80 live entries (28 decisions · 31 findings · 3 questions · 18 intents) · 100 total in history_
 
 ## DECIDED
 
+- `e01M0AZ0K17AA5D9P7KZDSPJQSY` Merge lines must pass the amnesia test; verbs are apply/explain/defer — 1m · active
 - `e01M0AXXKMNNKKY721HJ3REN3KH` Freshness is owed at contact points; a task runs on its snapshot — 20m · active
 - `e01M0AXRKQ8C7FZNKARW83CMBMX` The five promises are the foundation (owner ratified) — 22m · active
 - `e01M0AXF5FM9RDFP817NF7QW5BN` Human-facing surface must reduce to the desires it satisfies — 28m · active
 - `e01M0AXCM53D36PDN0H85S0WE3W` Mind-plane freshness is vendor-neutral; hooks accelerate, never carry it — 34m · active
 - `e01M0AVAR0N8ZCCN1VJW3GQ5PF4` Restart-with-mutation is the flagship advertised workflow, not a failure mode — 1h · active
 - `e01M0ATYJG615JE6BV5MG5RAF9Z` clew from must accept multiple parent projects, with strand selection — 1h · active
-- `e01M0ASQGJZPFJD3FSRT7P4HX44` Owner-configured cloud environments are full clew nodes — 1h · active
 
 ## LEARNED
 
@@ -50,6 +50,13 @@ _generated 2026-08-18 17:34 UTC · 79 live entries (27 decisions · 31 findings 
 | `e01M065G8RTKVH6466KEB0FRJ8N` Commit the gate fixes as one spec-amended change, then start the docket | 1d | 1 evidence | in_flight |
 
 ## Decisions
+
+### e01M0AZ0K17AA5D9P7KZDSPJQSY — Merge lines must pass the amnesia test; verbs are apply/explain/defer  `active`
+> these diff entries need to be something the human can read after maybe a day where he totally forgot the convo he had with you
+
+Amendment: each merge line must be readable by a human who forgot the conversation entirely — references glossed inline (the five promises appear as five words), machinery nouns translated, no dangling 'the budget'. Per line: apply, explain (prints body + the owner's verbatim quote + link, then re-offers), defer. Footer gains apply-all. Explain works because one's own words restore memory.
+
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00_
 
 ### e01M0AXXKMNNKKY721HJ3REN3KH — Freshness is owed at contact points; a task runs on its snapshot  `active`
 > i dont expect an agent on task to stop mid task and change based on a cloud agent decision i made at the same time
