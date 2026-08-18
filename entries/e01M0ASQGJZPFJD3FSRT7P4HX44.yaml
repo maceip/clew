@@ -1,0 +1,20 @@
+id: e01M0ASQGJZPFJD3FSRT7P4HX44
+type: decision
+title: Owner-configured cloud environments are full clew nodes
+body: >-
+  Owner corrected the push-only sandbox assumption: cursor/codex/claude cloud
+  environments are configurable (install scripts, MCP, skills) and can run the Go
+  binary. Cloud write path = provision the environments you own. journal-proposal.yaml
+  is PARKED (trigger-gated for unconfigurable third-party envs only).
+quote: 'we have installable skills, MCP, and I can configure the environments cursor, codex, and claude agents run in the cloud which can absolutely include our golang services'
+utterance_by: user
+source:
+    kind: session
+    ref: chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18
+    agent: cursor-cloud-agent
+    surface: cursor-cloud-vm
+    at: 2026-08-18T15:58:00Z
+confidence: 1
+tags: []
+env: null
+affects: []

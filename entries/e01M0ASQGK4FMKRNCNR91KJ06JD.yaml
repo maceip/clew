@@ -1,0 +1,20 @@
+id: e01M0ASQGK4FMKRNCNR91KJ06JD
+type: decision
+title: Restart machinery must be zero human effort: ambient inheritance, opt-out
+body: >-
+  Lesson from substrate x2: reuse that costs effort at the clean-slate moment gets
+  skipped. Therefore: SEED.md maintained continuously; birth detection auto-injects
+  owner laws only; full manifest ceremony stays optional. Anything required at project
+  birth is a bug (I13).
+quote: 'the solution we create out of clew needs to make the restart acceleration zero effort from the human or zero cognitive load'
+utterance_by: user
+source:
+    kind: session
+    ref: chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18
+    agent: cursor-cloud-agent
+    surface: cursor-cloud-vm
+    at: 2026-08-18T15:58:00Z
+confidence: 1
+tags: []
+env: null
+affects: []

@@ -1,0 +1,21 @@
+id: e01M0ASQGKPPZ4Y3H8P1RV88DZN
+type: question
+title: URGENT: approve budget-deadlock fix - floor rule or smaller extraction slices
+body: >-
+  Extraction is fully starved: single request (29-34k tokens) exceeds the 2% daily
+  budget (22.9k at 1.14M observed), so today's sessions are not being journaled.
+  Options: budget floor = max(2% observed, 1.5x max request); shrink slices; both. Needs
+  ruling before knowledge piles up unprocessed.
+quote: 'extraction paused: LLM budget reservation denied'
+utterance_by: tool_result
+source:
+    kind: session
+    ref: chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18
+    agent: cursor-cloud-agent
+    surface: cursor-cloud-vm
+    at: 2026-08-18T15:58:00Z
+confidence: 1
+tags: []
+env: null
+affects: []
+asks: human

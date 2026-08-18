@@ -1,0 +1,22 @@
+id: e01M0ASSNH1HP68M1QERV9AKG5A
+type: finding
+title: Attachments bypass the secret scrub; GitHub push protection caught PATs
+body: >-
+  GitHub push protection blocked the journal push: two ephemeral PATs the owner pasted
+  in chat were present verbatim in the attached raw transcript. The entries pipeline
+  scrubs quotes/bodies (6.2) but attachments bypass the scrub entirely. Fix: run the
+  same secret-scrub over transcripts/ (and any attachment) before commit; treat platform
+  push-protection as backstop, never primary.
+quote: 'GITHUB PUSH PROTECTION - Push cannot contain secrets'
+utterance_by: tool_result
+source:
+    kind: session
+    ref: chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18
+    agent: cursor-cloud-agent
+    surface: cursor-cloud-vm
+    at: 2026-08-18T16:02:00Z
+confidence: 1
+tags:
+    - internal/scrub/**
+env: null
+affects: []

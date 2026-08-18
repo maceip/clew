@@ -1,0 +1,20 @@
+id: e01M0ASQGKX2F9THW496N79Z83F
+type: question
+title: Approve selfwatch + journal add + owner-laws relocation to a git-reachable repo
+body: >-
+  Cloud nodes need: selfwatch (poller+sync+context, no tailing), clew journal add <file>
+  (validated ingestion, fixes note-limbo), self_extracted provenance label, and owner
+  laws moved from ~/.clew scope to a git-reachable repo so cloud births inherit laws.
+quote: 'i dont want the laptop to be the supernode here'
+utterance_by: user
+source:
+    kind: session
+    ref: chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18
+    agent: cursor-cloud-agent
+    surface: cursor-cloud-vm
+    at: 2026-08-18T15:58:00Z
+confidence: 0.95
+tags: []
+env: null
+affects: []
+asks: human

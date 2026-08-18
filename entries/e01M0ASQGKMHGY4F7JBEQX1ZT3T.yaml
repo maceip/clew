@@ -1,0 +1,21 @@
+id: e01M0ASQGKMHGY4F7JBEQX1ZT3T
+type: finding
+title: This chat became the supernode: 788 messages of unjournaled load-bearing context
+body: >-
+  The clew-design session ran 3 days on an uncovered surface; the owner became afraid to
+  close it - the exact single-point-of-failure clew abolishes. Exit kit: full raw
+  transcript attached at transcripts/ on this branch; distilled
+  decisions/findings/questions journaled; resumption works from any surface via branch
+  fetch.
+quote: 'i am afraid to leave this session with you because you have all the context (the exact thing clew is supposed to help with, funnily enough)'
+utterance_by: user
+source:
+    kind: session
+    ref: chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18
+    agent: cursor-cloud-agent
+    surface: cursor-cloud-vm
+    at: 2026-08-18T15:58:00Z
+confidence: 1
+tags: []
+env: null
+affects: []

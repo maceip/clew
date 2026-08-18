@@ -1,0 +1,20 @@
+id: e01M0ASQGK2ZK03KRP4WPAQG0MJ
+type: decision
+title: Bet: restart-accelerated development plus drift guardrails, one shared substrate
+body: >-
+  Owner bet the farm on (A) glanceable intent-reality drift for humans and (B) restart
+  acceleration: new repo births with genesis docs, old code vendored as lessons.
+  Guardrails lower restart NEED; seeds lower restart COST; both attack unrecorded
+  divergence. Restart verbs stay pull-only forever.
+quote: 'lets bet the farm on strong coordination via our journal and intent < - > current reality drift'
+utterance_by: user
+source:
+    kind: session
+    ref: chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18
+    agent: cursor-cloud-agent
+    surface: cursor-cloud-vm
+    at: 2026-08-18T15:58:00Z
+confidence: 1
+tags: []
+env: null
+affects: []

@@ -1,0 +1,21 @@
+id: e01M0ASQGK9TDRH9RHAJG9YDPME
+type: finding
+title: Census: security-substrate human-sealed in 1 day; stratura inherited nothing
+body: >-
+  security-substrate: born the day after substrate's tombstone, formally SEALED as
+  failed on day 2 with STOP packet and constitution - faster than any detector.
+  stratura: zero references to either predecessor (measured), then repeated the sealed
+  pathology (safety perimeter before usable core). Detection was never the bottleneck;
+  INHERITANCE was.
+quote: 'preserved as future MOSS input'
+utterance_by: tool_result
+source:
+    kind: session
+    ref: chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18
+    agent: cursor-cloud-agent
+    surface: cursor-cloud-vm
+    at: 2026-08-18T15:58:00Z
+confidence: 1
+tags: []
+env: null
+affects: []

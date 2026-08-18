@@ -1,0 +1,21 @@
+id: e01M0ASQGKVW3RPZ2M51J3WQ9G9
+type: question
+title: Approve cloud env recipes: install clew + wire MCP in cursor/codex/claude envs
+body: >-
+  Row 4 revised: (a) fix module path or ship release binaries; (b) document three env
+  recipes (cursor environment.json, codex cloud setup, claude cloud) installing clew +
+  clew mcp; (c) package the node ritual as an installable skill; (d) one-time test that
+  codex cloud creds can push clew/journal.
+quote: 'I can configure the environments cursor, codex, and claude agents run in the cloud'
+utterance_by: user
+source:
+    kind: session
+    ref: chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18
+    agent: cursor-cloud-agent
+    surface: cursor-cloud-vm
+    at: 2026-08-18T15:58:00Z
+confidence: 0.95
+tags: []
+env: null
+affects: []
+asks: human

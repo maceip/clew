@@ -1,0 +1,19 @@
+id: e01M0ASQGKRQBVSGHP3RCYNWYEG
+type: question
+title: Approve extractor over-firing tune: rollup >32KB and docket hit 8 cards
+body: >-
+  Both 3.3 tripwires fired. Proposed: raise confidence bar / tighten firing triggers;
+  never raise caps. Needs ruling.
+quote: "!! rollup exceeds 32KB - the extractor is over-firing (tune, don't scroll)"
+utterance_by: tool_result
+source:
+    kind: session
+    ref: chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18
+    agent: cursor-cloud-agent
+    surface: cursor-cloud-vm
+    at: 2026-08-18T15:58:00Z
+confidence: 1
+tags: []
+env: null
+affects: []
+asks: human

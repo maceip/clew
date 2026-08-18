@@ -1,0 +1,20 @@
+id: e01M0ASQGK6W0Y1NEDQW45KDECS
+type: finding
+title: Corpse census: substrate died in a 6-day burst; tombstone came 5 weeks late
+body: >-
+  substrate: 63/64 commits in week one (Jun 9-14), five weeks silence, final commit is
+  the failure confession (LIFECYCLE.md + README 'failed adoption'). The promised
+  compounding loop (scheduler/repair/steward/federated store) was never built -
+  confessed by its own docs. Zero tags, zero CI, zero adopters.
+quote: 'document adoption failure and harden project creation'
+utterance_by: tool_result
+source:
+    kind: session
+    ref: chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18
+    agent: cursor-cloud-agent
+    surface: cursor-cloud-vm
+    at: 2026-08-18T15:58:00Z
+confidence: 1
+tags: []
+env: null
+affects: []

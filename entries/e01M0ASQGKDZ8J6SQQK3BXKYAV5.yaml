@@ -1,0 +1,20 @@
+id: e01M0ASQGKDZ8J6SQQK3BXKYAV5
+type: finding
+title: module clew blocks go install by URL; release binaries or rename needed
+body: >-
+  go.mod declares 'module clew', not the repo path, so go install
+  github.com/maceip/clew/... fails. Env recipes need git clone && go build until the
+  module is renamed or release binaries ship. Blocks the one-line cloud env install.
+quote: 'go 1.26.3'
+utterance_by: tool_result
+source:
+    kind: session
+    ref: chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18
+    agent: cursor-cloud-agent
+    surface: cursor-cloud-vm
+    at: 2026-08-18T15:58:00Z
+confidence: 1
+tags:
+    - go.mod
+env: null
+affects: []

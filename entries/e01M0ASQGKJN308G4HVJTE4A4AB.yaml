@@ -1,0 +1,20 @@
+id: e01M0ASQGKJN308G4HVJTE4A4AB
+type: finding
+title: note-then-edit has a limbo: placeholders auto-commit and leaked into a seed
+body: >-
+  journal note commits placeholder text immediately; later file rewrites sit
+  uncommitted, so a manifest exported placeholders into gen-2. Fix direction: clew
+  journal add <file> for validated whole-entry ingestion (also needed by cloud self-
+  extraction). Until then notes must be final text.
+quote: 'phone surface intent placeholder'
+utterance_by: tool_result
+source:
+    kind: session
+    ref: chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18
+    agent: cursor-cloud-agent
+    surface: cursor-cloud-vm
+    at: 2026-08-18T15:58:00Z
+confidence: 1
+tags: []
+env: null
+affects: []

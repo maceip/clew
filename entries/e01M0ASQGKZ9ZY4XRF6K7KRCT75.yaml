@@ -1,0 +1,22 @@
+id: e01M0ASQGKZ9ZY4XRF6K7KRCT75
+type: question
+title: Adopt clew witness <transcript> as the cloud-session gap fix?
+body: >-
+  One verb: ingest an exported transcript as a session (adapter-parse, extract in
+  budget, cloud provenance). Ritual line in each env/skill: at checkpoints and end,
+  export + witness + push. No daemon/relay/protocol; reuses the whole pipeline; makes
+  the volume-based 11 trigger moot for owned surfaces. Also rewrite that trigger
+  density-based.
+quote: 'lets think hard about a simple fix for it'
+utterance_by: user
+source:
+    kind: session
+    ref: chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18
+    agent: cursor-cloud-agent
+    surface: cursor-cloud-vm
+    at: 2026-08-18T15:58:00Z
+confidence: 0.95
+tags: []
+env: null
+affects: []
+asks: human

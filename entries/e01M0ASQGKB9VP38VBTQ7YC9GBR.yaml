@@ -1,0 +1,20 @@
+id: e01M0ASQGKB9VP38VBTQ7YC9GBR
+type: finding
+title: Regime detector: composition and earned-state separate corpses from control
+body: >-
+  Cadence cannot distinguish clew from the corpses (all are burst-projects at day
+  scale). What separates: core-touch ratio (clew 50% vs 0-22%), earned state (passing
+  gates, live dogfood, metrics vs zero), and inheritance (clew is the first generation
+  that carried anything). n=4; the ~100-repo lineage census remains to be run.
+quote: 'my GitHub probably has a hundred or more examples'
+utterance_by: user
+source:
+    kind: session
+    ref: chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18
+    agent: cursor-cloud-agent
+    surface: cursor-cloud-vm
+    at: 2026-08-18T15:58:00Z
+confidence: 0.95
+tags: []
+env: null
+affects: []

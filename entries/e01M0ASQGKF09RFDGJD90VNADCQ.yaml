@@ -1,0 +1,21 @@
+id: e01M0ASQGKF09RFDGJD90VNADCQ
+type: finding
+title: Spawn test: 63/63 entries carried into scratch gen-2 with guardrails intact
+body: >-
+  init --carry into a fresh repo: full seed landed, carried provenance preserved,
+  newborn glance renders the constitution, context.md opens with the 6.5 injection
+  preamble before any agent typed. Cross-machine multi-hop proven: laptop decisions ->
+  branch -> cloud VM -> manifest -> gen-2. Differ re-flagged design-era contradictions
+  in the newborn.
+quote: 'carried 63, dropped 0 (dispositions journaled - the loss is deliberate and dated)'
+utterance_by: tool_result
+source:
+    kind: session
+    ref: chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18
+    agent: cursor-cloud-agent
+    surface: cursor-cloud-vm
+    at: 2026-08-18T15:58:00Z
+confidence: 1
+tags: []
+env: null
+affects: []

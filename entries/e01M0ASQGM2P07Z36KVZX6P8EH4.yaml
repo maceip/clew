@@ -1,0 +1,19 @@
+id: e01M0ASQGM2P07Z36KVZX6P8EH4
+type: question
+title: Adopt the complexity law: additions must be a verb, label, rendering, or config
+body: >-
+  Proposed governance line to stop subsystem sprawl: anything wanting its own process or
+  protocol is frozen by default. Needs explicit ratification.
+quote: 'i dont want to increase the complexity from here'
+utterance_by: user
+source:
+    kind: session
+    ref: chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18
+    agent: cursor-cloud-agent
+    surface: cursor-cloud-vm
+    at: 2026-08-18T15:58:00Z
+confidence: 0.95
+tags: []
+env: null
+affects: []
+asks: human
