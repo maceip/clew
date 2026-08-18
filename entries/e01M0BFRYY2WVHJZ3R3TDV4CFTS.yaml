@@ -1,0 +1,17 @@
+id: e01M0BFRYY2WVHJZ3R3TDV4CFTS
+type: decision
+title: 'The wording sweep covers every fear-attached word; docket stays by name'
+body: >-
+  Owner correction: the rename card narrowed to the single word law. The sweep is all fear-attached words wherever humans read — law, state, violation, enforcement and relatives — judged per word in context. Docket is explicitly approved and stays. Agent-facing hard register remains untouched where hardness prevents wiggle.
+quote: 'why is 7 indexing on "law" when we discussed _all_ legal sounding words, with docket being ok'
+utterance_by: user
+source:
+    kind: session
+    ref: chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18
+    agent: cursor-cloud-agent
+    surface: cursor-cloud-vm
+    at: 2026-08-18T22:25:00Z
+confidence: 1
+tags: []
+env: null
+affects: []

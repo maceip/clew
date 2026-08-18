@@ -1,0 +1,17 @@
+id: e01M0BFRYY1EW9CFMJNDJ5QH3M2
+type: decision
+title: 'Evidence settles merge lines; apply is never asked for finished work'
+body: >-
+  Owner found the merge asking him to bless work already built, tested, and pushed. Rule: the merge joins decisions to evidence; a decision whose demanded work is evidenced settles itself and shows once as settled-while-away. Apply is reserved for work not yet done or judgment only a human can make. Nothing auto-acts on the repo; settling is status computation, not action.
+quote: 'why are there still 7 merges that need to take place ?  number 1 i thought you already merged?'
+utterance_by: user
+source:
+    kind: session
+    ref: chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18
+    agent: cursor-cloud-agent
+    surface: cursor-cloud-vm
+    at: 2026-08-18T22:25:00Z
+confidence: 1
+tags: []
+env: null
+affects: []
