@@ -1,0 +1,17 @@
+id: e01M0BF0WMX264RA9D0VTM9R24K
+type: decision
+title: 'Entry ids are machine plumbing: never shown to or relayed through humans'
+body: >-
+  Extension of plain-speech: the cloud agent printed raw ids in receipts and in prompts the human had to copy. The intent was verifiability — but verification is machine work, and agents holding the journal resolve plain words better than opaque codes. Rule: ids live in files, commits, and machine channels only; humans see words; agents are addressed in words and resolve entries themselves.
+quote: 'you should never print "e01M0BER1Q412DRFQYESPCN0Q30" i dont know what it means and its super long -- what is the intent of showing that to the human?'
+utterance_by: user
+source:
+    kind: session
+    ref: chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18
+    agent: cursor-cloud-agent
+    surface: cursor-cloud-vm
+    at: 2026-08-18T22:13:00Z
+confidence: 1
+tags: []
+env: null
+affects: []
