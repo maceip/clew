@@ -49,6 +49,10 @@ var humanWords = []replacement{
 	{regexp.MustCompile(`(?i)\btainted\b`), "from an untrusted source"},
 	{regexp.MustCompile(`(?i)\btaint\b`), "source warning"},
 	{regexp.MustCompile(`(?i)\bwithheld\b`), "kept out"},
+	{regexp.MustCompile(`(?i)\bfailures\b`), "problems"},
+	{regexp.MustCompile(`(?i)\bfailure\b`), "problem"},
+	{regexp.MustCompile(`(?i)\balarms\b`), "attention items"},
+	{regexp.MustCompile(`(?i)\balarm\b`), "attention item"},
 }
 
 // Text returns calm display prose without changing the stored source. Docket

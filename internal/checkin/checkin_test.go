@@ -161,6 +161,21 @@ func TestVerifiedFindingSettlesInsteadOfRepeatingStaleWork(t *testing.T) {
 	}
 }
 
+func TestVerifiedDuplicateSettlesTheWholeFoldedLine(t *testing.T) {
+	base := time.Date(2026, 8, 18, 17, 0, 0, 0, time.UTC)
+	verified := testEntry(ids.NewEntry(base), model.Decision, "Merge lines must pass the amnesia test", base)
+	duplicate := testEntry(ids.NewEntry(base.Add(time.Minute)), model.Decision, "Knowledge merge at finish", base.Add(time.Minute))
+	j := &journal.Journal{Entries: map[string]*model.Entry{verified.ID: verified, duplicate.ID: duplicate}, Events: []*model.Event{{
+		ID: ids.NewEvent(base.Add(2 * time.Minute)), Kind: model.EvEvidence, Entry: verified.ID,
+		Payload: map[string]any{"kind": "commit", "ref": "code-sha"},
+		By:      model.By{Who: "differ"}, At: base.Add(2 * time.Minute),
+	}}}
+	view := BuildMerge(j, nil)
+	if len(view.Settled) != 1 || len(view.Items) != 0 || len(EntryIDs(view.Settled[0])) != 2 {
+		t.Fatalf("verified duplicate split across settlement boundary: %#v", view)
+	}
+}
+
 func TestMemoryLagAppearsOnBothScreens(t *testing.T) {
 	for _, screen := range []Screen{KnowledgeMerge, IntentGap} {
 		var out bytes.Buffer

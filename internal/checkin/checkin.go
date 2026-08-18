@@ -79,6 +79,18 @@ func BuildMerge(j *journal.Journal, handled map[string]string) View {
 		}
 		items = appendFolded(items, item)
 	}
+	// Equivalent source entries are one human line even when only one carries
+	// the code evidence. The verified member settles the whole folded change;
+	// never print the same line once as settled and again as actionable.
+	var unresolved []Item
+	for _, item := range items {
+		if foldedIndex(view.Settled, item.Line) < 0 {
+			unresolved = append(unresolved, item)
+			continue
+		}
+		view.Settled = appendFolded(view.Settled, item)
+	}
+	items = unresolved
 	sort.Slice(items, func(i, k int) bool { return items[i].ID > items[k].ID })
 	sort.Slice(view.Settled, func(i, k int) bool { return view.Settled[i].ID > view.Settled[k].ID })
 	if len(items) > MaxItems {
@@ -89,6 +101,16 @@ func BuildMerge(j *journal.Journal, handled map[string]string) View {
 	}
 	view.Items = items
 	return view
+}
+
+func foldedIndex(items []Item, line string) int {
+	key := foldKey(line)
+	for i := range items {
+		if foldKey(items[i].Line) == key {
+			return i
+		}
+	}
+	return -1
 }
 
 func verifiedWork(j *journal.Journal, entry *model.Entry) bool {
