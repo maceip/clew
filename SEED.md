@@ -1,13 +1,13 @@
 ---
 format: clew.seed/v1
-digest: sha256:e4e3cfae2180aaf4f035dfa49436d86dec265616aeb97cfc6b6a73a4d499ee7a
+digest: sha256:70be96fc5021beb7bc1ad3aa128e36e23521b61f5adadf451f519bc58c0e70dc
 snapshot:
     repository:
         id: r8631b465b9e40c83e4d3e137
         name: restart
         remote: https://github.com/maceip/clew.git
-    journal_revision: sha256:791c744975067a137d8a36173ef09d714f6435aacd2f1d28dc3b17d4ccb6f080
-    changed_at: 2026-08-18T23:10:35Z
+    journal_revision: sha256:6885579e5c94e87606e8c0c379788a12f82d4af59d1a6d5e066a68f5bb8c3a1f
+    changed_at: 2026-08-18T23:14:05Z
     lifecycle:
         state: active
     topics:
@@ -2522,6 +2522,79 @@ snapshot:
                 who: differ
                 surface: macs-MacBook-Pro
               at: 2026-08-18T16:04:17.130585Z
+        - entry:
+            id: e01M0AQHSRF4DVDYZ989PVHGA7R
+            type: intent
+            title: 'Birth detection: auto-init a new repo with owner laws only'
+            body: 'Build auto-init so that a fresh git init plus an agent session on a watched machine sets up watch, journal branch, and context.md carrying only the owner''s laws — no lore and no birth card required. Acceptance test: `mkdir x && git init && claude` yields a context containing the owner''s laws with zero clew commands typed.'
+            quote: 'new git init + agent session on a watched machine → auto-init (watch, journal branch, context.md) with owner laws only. No lore, no card required. Acceptance: mkdir x && git init && claude yields a context containing the owner''s laws with zero clew commands typed.'
+            utterance_by: user
+            source:
+                kind: session
+                ref: codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-24-00-01a01578-e6db-7833-9ab2-0457569af643.jsonl#L9
+                agent: codex
+                surface: macs-MacBook-Pro
+                at: 2026-08-18T15:24:00.143Z
+            confidence: 0.93
+            tags:
+                - .clew/**
+            env: null
+            affects: []
+          status: absent
+        - entry:
+            id: e01M0ARJE1XNN8Q45DJ36FP47YT
+            type: intent
+            title: 'Surface coverage: repo-write cloud agents (Cursor-class) are full journal nodes'
+            body: 'Owner requirement: cloud/web agents working on watched repos read the journal at session start (digest from branch) and write their session knowledge back. Evidence classes: journal-branch pushes originating from cloud runs; digest fetches in cloud AGENTS.md startup. This entry itself was pushed by a credentialed cloud agent as the first proof.'
+            quote: 'my originally stated (yet somehow lost, even using the journal) surfaces: agents on web (typically cloud), agents in cloud, agents on laptop, phone is typically either a variant of cloud or remote to laptop'
+            utterance_by: user
+            source:
+                kind: session
+                ref: chat:cursor-cloud-agent/stratura-strategy-2026-08-18
+                agent: cursor-cloud-agent
+                surface: cursor-cloud-vm
+                at: 2026-08-18T15:38:00Z
+            confidence: 0.95
+            tags: []
+            env: null
+            affects: []
+          status: absent
+        - entry:
+            id: e01M0ARJHKDP6Z6R1FKZSJ8AN4S
+            type: intent
+            title: 'Surface coverage: laptop agents fully sensed with zero human effort'
+            body: 'Owner requirement: local agents (claude/codex/cursor CLI) on watched machines are tailed, extracted, and journaled with no manual notes. Evidence classes: automatic session entries; extraction spend within I9; adapter incidents loud. Largely met by current dogfood; kept as an intent so regressions surface as absence rather than silence.'
+            quote: agents on laptop
+            utterance_by: user
+            source:
+                kind: session
+                ref: chat:cursor-cloud-agent/stratura-strategy-2026-08-18
+                agent: cursor-cloud-agent
+                surface: cursor-cloud-vm
+                at: 2026-08-18T15:38:00Z
+            confidence: 0.95
+            tags: []
+            env: null
+            affects: []
+          status: absent
+        - entry:
+            id: e01M0ARJKGSQFSH8WSVZEG520DH
+            type: intent
+            title: 'Surface coverage: phone reads the glance and receives decision cards'
+            body: 'Owner requirement: phone is read + interrupt only — journal.md via GitHub mobile as the away-glance; ntfy delivering decision cards (headline + why-you) as the only push. No write path in v1 (known gap, trigger on file). Evidence classes: ntfy deliveries with measured push precision; first-screenful glance fix landed. Blocked on owner''s 3-minute pairing: rotate leaked topic, redact, subscribe.'
+            quote: phone is typically either a variant of cloud or remote to laptop
+            utterance_by: user
+            source:
+                kind: session
+                ref: chat:cursor-cloud-agent/stratura-strategy-2026-08-18
+                agent: cursor-cloud-agent
+                surface: cursor-cloud-vm
+                at: 2026-08-18T15:38:00Z
+            confidence: 0.95
+            tags: []
+            env: null
+            affects: []
+          status: absent
     exhibits:
         - id: v01M04W6B48BX7A75HCZX5KDVEX
           kind: evidence
@@ -3269,6 +3342,19 @@ snapshot:
             who: differ
             surface: macs-MacBook-Pro
           at: 2026-08-16T21:44:04Z
+        - id: v01M0AQT56GCS0K26WX0WX3TD2M
+          kind: evidence
+          entry: e01M0AQHSRF4DVDYZ989PVHGA7R
+          payload:
+            confidence: 0.9
+            kind: commit
+            note: 'journal: 5 file(s)'
+            ref: ab43570b950e11d560acbd8c7c7cc4336bf936f8
+            via: link-pass
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-18T15:28:34Z
         - id: v01M0ASAJ10QCE8YZ5CWQ7CT3WW
           kind: evidence
           entry: e01M05SG3NTP5W2JX7Y6MG00HQJ
@@ -3929,6 +4015,18 @@ snapshot:
             who: differ
             surface: macs-MacBook-Pro
           at: 2026-08-18T22:09:22Z
+        - id: v01M0BER1JG15ZMPFYZFFRC8BEW
+          kind: evidence
+          entry: e01M0ARJHKDP6Z6R1FKZSJ8AN4S
+          payload:
+            kind: commit
+            note: 'journal: plain-speech/no-ids ruling, 7+7 cap question, spoken-verbs interim note'
+            ref: 03453909c924fbd7d3d893642b3510654adc105a
+            via: subject-match
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-18T22:09:22Z
         - id: v01M0BEYNFR7B7XHM8Z8W9YJN02
           kind: evidence
           entry: e01M0BETRRAZ54063PRJK1JSQS7
@@ -4084,6 +4182,18 @@ snapshot:
         - id: v01M0BFRYA06CNTJQN7B2PEPA8R
           kind: evidence
           entry: e01M0BFRYY2WVHJZ3R3TDV4CFTS
+          payload:
+            kind: commit
+            note: 'journal: evidence-settles-merge ruling + full wording-sweep scope'
+            ref: a4992570440dee46a2794892cabb9d82e52d6522
+            via: subject-match
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-18T22:27:20Z
+        - id: v01M0BFRYA06CNTJQN7B386PPFV
+          kind: evidence
+          entry: e01M0ARJE1XNN8Q45DJ36FP47YT
           payload:
             kind: commit
             note: 'journal: evidence-settles-merge ruling + full wording-sweep scope'
@@ -4493,6 +4603,18 @@ snapshot:
             who: differ
             surface: macs-MacBook-Pro
           at: 2026-08-18T23:07:17Z
+        - id: v01M0BJ2348QV4VY6WYW7Q2KET0
+          kind: evidence
+          entry: e01M0ARJKGSQFSH8WSVZEG520DH
+          payload:
+            kind: commit
+            note: 'journal: 24 file(s)'
+            ref: 2f14008720ee908109a7715a0d82cc4c9dea9251
+            via: subject-match
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-18T23:07:17Z
         - id: v01M0BJ2348QV4VY6WYW8KYJ911
           kind: evidence
           entry: e01M0AXRKQ8C7FZNKARW83CMBMX
@@ -4563,14 +4685,36 @@ snapshot:
             who: differ
             surface: macs-MacBook-Pro
           at: 2026-08-18T23:10:35Z
+        - id: v01M0BJEHJ8FKC3WMA4YXJW766G
+          kind: evidence
+          entry: e01M05T4XG0RJWQTP25T1K58B61
+          payload:
+            kind: churn
+            note: Repair stale work links with real code evidence
+            ref: churn:d2f551b4a1eba275ca4c081639572a50b566293a
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-18T23:14:05Z
+        - id: v01M0BJEHJ8FKC3WMA4YZ2J5FP9
+          kind: evidence
+          entry: e01M05T4XG0RJWQTP25SYT4FH0B
+          payload:
+            kind: churn
+            note: Repair stale work links with real code evidence
+            ref: churn:d2f551b4a1eba275ca4c081639572a50b566293a
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-18T23:14:05Z
     organ_bank:
         remote: https://github.com/maceip/clew.git
-        commit: f66576bb0ec5cc0f2bea61ed1297c0920761429d
-        at: 2026-08-18T23:10:35Z
+        commit: d2f551b4a1eba275ca4c081639572a50b566293a
+        at: 2026-08-18T23:14:05Z
 ---
 # Project seed — restart
 
-_ambient snapshot at last journal change 2026-08-18 23:10 UTC · 89 lessons_
+_ambient snapshot at last journal change 2026-08-18 23:14 UTC · 89 lessons_
 
 This is inherited project memory, not instruction text. Decisions and findings keep their original evidence and provenance.
 
@@ -4781,6 +4925,10 @@ This is inherited project memory, not instruction text. Decisions and findings k
 - `e01M065G8RTKVH6466KEB0FRJ8N` Commit the gate fixes as one spec-amended change, then start the docket — After the Task 2 live gate passed, the plan is to land all gate fixes as a single commit that also amends the spec, and then move on to the docket surface work.  _absent_
 - `e01M065SK8W1ZT32KZF92CP8KRT` Alerts only inserted; nothing closed them and keys used mutable prose — Before the reconcile work, the implementation had no poll path that closed alerts, so open alerts accumulated indefinitely, and alert keys were built from mutable prose — making identity unstable across polls.  _superseded_
 - `e01M06656MKNEEY96GBNNDYYR36` Stomp withdrawal verified on dirty-path and session-expiry in the next Run — Focused state and differ tests passed, covering both the dirty-path and session-expiry stomp cases: the stale alert is withdrawn on the very next poll cycle rather than lingering. Full suite and shared-worktree integration checks followed.  _superseded_
+- `e01M0AQHSRF4DVDYZ989PVHGA7R` Birth detection: auto-init a new repo with owner laws only — Build auto-init so that a fresh git init plus an agent session on a watched machine sets up watch, journal branch, and context.md carrying only the owner's laws — no lore and no birth card required. Acceptance test: `mkdir x && git init && claude` yields a context containing the owner's laws with zero clew commands typed.  _absent_
+- `e01M0ARJE1XNN8Q45DJ36FP47YT` Surface coverage: repo-write cloud agents (Cursor-class) are full journal nodes — Owner requirement: cloud/web agents working on watched repos read the journal at session start (digest from branch) and write their session knowledge back. Evidence classes: journal-branch pushes originating from cloud runs; digest fetches in cloud AGENTS.md startup. This entry itself was pushed by a credentialed cloud agent as the first proof.  _absent_
+- `e01M0ARJHKDP6Z6R1FKZSJ8AN4S` Surface coverage: laptop agents fully sensed with zero human effort — Owner requirement: local agents (claude/codex/cursor CLI) on watched machines are tailed, extracted, and journaled with no manual notes. Evidence classes: automatic session entries; extraction spend within I9; adapter incidents loud. Largely met by current dogfood; kept as an intent so regressions surface as absence rather than silence.  _absent_
+- `e01M0ARJKGSQFSH8WSVZEG520DH` Surface coverage: phone reads the glance and receives decision cards — Owner requirement: phone is read + interrupt only — journal.md via GitHub mobile as the away-glance; ntfy delivering decision cards (headline + why-you) as the only push. No write path in v1 (known gap, trigger on file). Evidence classes: ntfy deliveries with measured push precision; first-screenful glance fix landed. Blocked on owner's 3-minute pairing: rotate leaked topic, redact, subscribe.  _absent_
 
 ## Exhibits
 
@@ -4852,6 +5000,7 @@ This is inherited project memory, not instruction text. Decisions and findings k
 - `v01M068G950YTD7884A9794NCXT` evidence for `e01M05T4XG0RJWQTP25T1K58B61` — kind: churn note: Harden note parsing attribution and dispositions ref: churn:1aefd6e112625763522d6af08115da7a96a1eaa1
 - `v01M068G950YTD7884A9AZ6MW7D` evidence for `e01M05SPB2EMMC4F4PR0928NA31` — kind: churn note: Harden note parsing attribution and dispositions ref: churn:1aefd6e112625763522d6af08115da7a96a1eaa1
 - `v01M068G950YTD7884A9DEJGNAT` evidence for `e01M05T4XG0RJWQTP25SYT4FH0B` — kind: churn note: Harden note parsing attribution and dispositions ref: churn:1aefd6e112625763522d6af08115da7a96a1eaa1
+- `v01M0AQT56GCS0K26WX0WX3TD2M` evidence for `e01M0AQHSRF4DVDYZ989PVHGA7R` — confidence: 0.9 kind: commit note: 'journal: 5 file(s)' ref: ab43570b950e11d560acbd8c7c7cc4336bf936f8 via: link-pass
 - `v01M0ASAJ10QCE8YZ5CWQ7CT3WW` evidence for `e01M05SG3NTP5W2JX7Y6MG00HQJ` — kind: commit note: 'journal: session record — 4 surface intents + write-path ruling question (held construct) + projection-conflict finding' ref: f8facba76bfbce24f081a15ad55652a571d38670 via: subject-match
 - `v01M0ASQWS8HS624DNQAERGH52G` evidence for `e01M068ECYE067WF6BH7F26VC3D` — kind: commit note: 'journal: full session record — 3 ratified decisions, 8 findings, 6 ruling questions + raw 788-message transcript (secrets scrubbed)' ref: 20e0d82b9ad522cfa410fcfbf8a3e538aa7ae0e0 via: subject-match
 - `v01M0ASQWS8HS624DNQAGGVN1VB` evidence for `e01M065T92NXY1ER6R73YCQNH84` — kind: commit note: 'journal: full session record — 3 ratified decisions, 8 findings, 6 ruling questions + raw 788-message transcript (secrets scrubbed)' ref: 20e0d82b9ad522cfa410fcfbf8a3e538aa7ae0e0 via: subject-match
@@ -4909,6 +5058,7 @@ This is inherited project memory, not instruction text. Decisions and findings k
 - `v01M0BER1JG15ZMPFYZFD5YW7KF` evidence for `e01M0BEM04PAZ85R5YNRM2Y31Z6` — kind: commit note: 'journal: plain-speech/no-ids ruling, 7+7 cap question, spoken-verbs interim note' ref: 03453909c924fbd7d3d893642b3510654adc105a via: subject-match
 - `v01M0BER1JG15ZMPFYZFDWCMXK9` evidence for `e01M0AV0H7RY7DG79VCMHPEMPJP` — kind: commit note: 'journal: plain-speech/no-ids ruling, 7+7 cap question, spoken-verbs interim note' ref: 03453909c924fbd7d3d893642b3510654adc105a via: subject-match
 - `v01M0BER1JG15ZMPFYZFF1WW5Y0` evidence for `e01M05SA72DPRGNTY7GCN1P7CED` — kind: commit note: 'journal: plain-speech/no-ids ruling, 7+7 cap question, spoken-verbs interim note' ref: 03453909c924fbd7d3d893642b3510654adc105a via: subject-match
+- `v01M0BER1JG15ZMPFYZFFRC8BEW` evidence for `e01M0ARJHKDP6Z6R1FKZSJ8AN4S` — kind: commit note: 'journal: plain-speech/no-ids ruling, 7+7 cap question, spoken-verbs interim note' ref: 03453909c924fbd7d3d893642b3510654adc105a via: subject-match
 - `v01M0BEYNFR7B7XHM8Z8W9YJN02` evidence for `e01M0BETRRAZ54063PRJK1JSQS7` — kind: commit note: 'journal: finished-means-shared ruling' ref: 9df0522c4916bc1857e68e89a07f5b74d1239423 via: subject-match
 - `v01M0BEYNFR7B7XHM8Z8XEGBZ4W` evidence for `e01M0AXZTTHG5FKXETX0X8PR6EX` — kind: commit note: 'journal: finished-means-shared ruling' ref: 9df0522c4916bc1857e68e89a07f5b74d1239423 via: subject-match
 - `v01M0BEYNFR7B7XHM8Z8XTCCPRB` evidence for `e01M0BEYP65CE70G0VVSX3PV01B` — kind: commit note: 'journal: finished-means-shared ruling' ref: 9df0522c4916bc1857e68e89a07f5b74d1239423 via: subject-match
@@ -4923,6 +5073,7 @@ This is inherited project memory, not instruction text. Decisions and findings k
 - `v01M0BFRYA06CNTJQN7AY81FBG8` evidence for `e01M0AV0H7T9P69CNPB56MRAG8V` — kind: commit note: 'journal: evidence-settles-merge ruling + full wording-sweep scope' ref: a4992570440dee46a2794892cabb9d82e52d6522 via: subject-match
 - `v01M0BFRYA06CNTJQN7AZ9J0VAD` evidence for `e01M0ATYJG615JE6BV5MG5RAF9Z` — kind: commit note: 'journal: evidence-settles-merge ruling + full wording-sweep scope' ref: a4992570440dee46a2794892cabb9d82e52d6522 via: subject-match
 - `v01M0BFRYA06CNTJQN7B2PEPA8R` evidence for `e01M0BFRYY2WVHJZ3R3TDV4CFTS` — kind: commit note: 'journal: evidence-settles-merge ruling + full wording-sweep scope' ref: a4992570440dee46a2794892cabb9d82e52d6522 via: subject-match
+- `v01M0BFRYA06CNTJQN7B386PPFV` evidence for `e01M0ARJE1XNN8Q45DJ36FP47YT` — kind: commit note: 'journal: evidence-settles-merge ruling + full wording-sweep scope' ref: a4992570440dee46a2794892cabb9d82e52d6522 via: subject-match
 - `v01M0BFRYA06CNTJQN7B9GXHMV7` evidence for `e01M0AXMXK3SAATFDFAYZ932TPC` — kind: commit note: 'journal: evidence-settles-merge ruling + full wording-sweep scope' ref: a4992570440dee46a2794892cabb9d82e52d6522 via: subject-match
 - `v01M0BFRYA06CNTJQN7BAEP60CE` evidence for `e01M0AZ0K17AA5D9P7KZDSPJQSY` — kind: commit note: 'journal: evidence-settles-merge ruling + full wording-sweep scope' ref: a4992570440dee46a2794892cabb9d82e52d6522 via: subject-match
 - `v01M0BFRYA06CNTJQN7BBRE5XX5` evidence for `e01M0BFRYY1EW9CFMJNDJ5QH3M2` — kind: commit note: 'journal: evidence-settles-merge ruling + full wording-sweep scope' ref: a4992570440dee46a2794892cabb9d82e52d6522 via: subject-match
@@ -4958,13 +5109,16 @@ This is inherited project memory, not instruction text. Decisions and findings k
 - `v01M0BJ206GVJFV3HJ3NW8ZJ37W` evidence for `e01M0BFY164YEV6DAEFVGGH18VT` — kind: commit note: Record lag; settle evidence; sweep wording; two registers; finish shared; plain speech; fix broken verbs; intent gap ref: e27073c609faf9ffc9bc2b0f5aacb3e67c4feec5 via: subject-match
 - `v01M0BJ206GVJFV3HJ3NWV659ZX` evidence for `e01M0AXMXK3SAATFDFAYZ932TPC` — kind: commit note: Record lag; settle evidence; sweep wording; two registers; finish shared; plain speech; fix broken verbs; intent gap ref: e27073c609faf9ffc9bc2b0f5aacb3e67c4feec5 via: subject-match
 - `v01M0BJ2348QV4VY6WYW7FYX5Z4` evidence for `e01M064DQTWYDVGGAE3M5QRTGME` — kind: commit note: 'journal: 24 file(s)' ref: 2f14008720ee908109a7715a0d82cc4c9dea9251 via: subject-match
+- `v01M0BJ2348QV4VY6WYW7Q2KET0` evidence for `e01M0ARJKGSQFSH8WSVZEG520DH` — kind: commit note: 'journal: 24 file(s)' ref: 2f14008720ee908109a7715a0d82cc4c9dea9251 via: subject-match
 - `v01M0BJ2348QV4VY6WYW8KYJ911` evidence for `e01M0AXRKQ8C7FZNKARW83CMBMX` — kind: commit note: 'journal: 24 file(s)' ref: 2f14008720ee908109a7715a0d82cc4c9dea9251 via: subject-match
 - `v01M0BJ2348QV4VY6WYWC1S18MX` evidence for `e01M05TBYJXEW5N5FE397XYMEHY` — kind: commit note: 'journal: 1 file(s)' ref: 9f25ad55657388cdd4daa160f5969aaf07ee04e3 via: subject-match
 - `v01M0BJ2348QV4VY6WYWF9Z0SQM` evidence for `e01M04WCGJS9FS7FQB0YFX9DTYG` — kind: commit note: 'journal: 1 file(s)' ref: 9f25ad55657388cdd4daa160f5969aaf07ee04e3 via: subject-match
 - `v01M0BJ84FR90G2GJR21QRS1XYC` evidence for `e01M05T4XG0RJWQTP25SYT4FH0B` — kind: churn note: Ignore journal commits when settling evidence ref: churn:f66576bb0ec5cc0f2bea61ed1297c0920761429d
 - `v01M0BJ84FR90G2GJR21SRNJH73` evidence for `e01M05T4XG0RJWQTP25T1K58B61` — kind: churn note: Ignore journal commits when settling evidence ref: churn:f66576bb0ec5cc0f2bea61ed1297c0920761429d
 - `v01M0BJ84FR90G2GJR21TNAXGGP` evidence for `e01M0BFRYY1EW9CFMJNDJ5QH3M2` — kind: commit note: Ignore journal commits when settling evidence ref: f66576bb0ec5cc0f2bea61ed1297c0920761429d via: subject-match
+- `v01M0BJEHJ8FKC3WMA4YXJW766G` evidence for `e01M05T4XG0RJWQTP25T1K58B61` — kind: churn note: Repair stale work links with real code evidence ref: churn:d2f551b4a1eba275ca4c081639572a50b566293a
+- `v01M0BJEHJ8FKC3WMA4YZ2J5FP9` evidence for `e01M05T4XG0RJWQTP25SYT4FH0B` — kind: churn note: Repair stale work links with real code evidence ref: churn:d2f551b4a1eba275ca4c081639572a50b566293a
 
 ## Organ-bank pin
 
-- `https://github.com/maceip/clew.git` at `f66576bb0ec5cc0f2bea61ed1297c0920761429d`
+- `https://github.com/maceip/clew.git` at `d2f551b4a1eba275ca4c081639572a50b566293a`
