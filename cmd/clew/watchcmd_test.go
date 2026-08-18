@@ -8,6 +8,10 @@ import (
 	"unicode/utf8"
 
 	"clew/internal/adapters"
+	"clew/internal/config"
+	"clew/internal/ids"
+	"clew/internal/journal"
+	"clew/internal/model"
 	"clew/internal/state"
 )
 
@@ -257,6 +261,101 @@ func TestExtractionFailureBacksOffAndIsVisible(t *testing.T) {
 	w.failExtraction("/tmp/session.jsonl", p, os.ErrPermission)
 	if !p.retryAt.After(firstRetry) {
 		t.Fatalf("retry did not back off: first=%s second=%s", firstRetry, p.retryAt)
+	}
+}
+
+func TestPromotionAlertRebuildsFromDurableFindingFlag(t *testing.T) {
+	dbPath := filepath.Join(t.TempDir(), "state.db")
+	db, err := state.Open(dbPath)
+	if err != nil {
+		t.Fatal(err)
+	}
+	j, err := journal.Load(t.TempDir())
+	if err != nil {
+		t.Fatal(err)
+	}
+	now := time.Now().UTC()
+	e := &model.Entry{
+		ID: ids.NewEntry(now), Type: model.Finding,
+		Title: "Verify affected state", Body: "Useful across unrelated projects.",
+		Quote:       "verify the affected state before declaring completion",
+		UtteranceBy: model.ByUser, Source: model.Source{Kind: model.SrcSession, Ref: "session#L1", At: now},
+		Confidence: .9, PromotionCandidate: true,
+	}
+	if err := j.AddEntry(e); err != nil {
+		t.Fatal(err)
+	}
+	w := &watcher{a: &app{cfg: config.Default(), db: db}}
+	if err := w.refreshPromotionAlerts("/repo", j); err != nil {
+		t.Fatal(err)
+	}
+	if got := db.OpenAlerts("/repo", true); len(got) != 1 || got[0].Key != "promotion:"+e.ID {
+		t.Fatalf("initial promotion alerts = %#v", got)
+	}
+	db.Close()
+	if err := w.refreshPromotionAlerts("/repo", j); err == nil {
+		t.Fatal("promotion alert indexing failure was silently ignored")
+	}
+
+	// state.db is only an index. A fresh database reconstructs the same card
+	// from the immutable journal entry, without replaying extraction.
+	freshPath := filepath.Join(t.TempDir(), "state.db")
+	fresh, err := state.Open(freshPath)
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer fresh.Close()
+	w.a.db = fresh
+	if err := w.refreshPromotionAlerts("/repo", j); err != nil {
+		t.Fatal(err)
+	}
+	if got := fresh.OpenAlerts("/repo", true); len(got) != 1 || got[0].EntryIDs != e.ID {
+		t.Fatalf("rebuilt promotion alerts = %#v", got)
+	}
+
+	if err := j.AddEvent(&model.Event{
+		ID: ids.NewEvent(now.Add(time.Minute)), Kind: model.EvDisposition, Entry: e.ID,
+		Payload: map[string]any{"ack": "promotion:" + e.ID, "verb": "drop"},
+		By:      model.By{Who: "human"}, At: now.Add(time.Minute),
+	}); err != nil {
+		t.Fatal(err)
+	}
+	if err := w.refreshPromotionAlerts("/repo", j); err != nil {
+		t.Fatal(err)
+	}
+	if got := fresh.OpenAlerts("/repo", true); len(got) != 0 {
+		t.Fatalf("human-rulled proposal remained open: %#v", got)
+	}
+}
+
+func TestOwnerLawRefreshFailureNeverClearsLastKnownBlock(t *testing.T) {
+	homeFile := filepath.Join(t.TempDir(), "not-a-directory")
+	if err := os.WriteFile(homeFile, []byte("blocked"), 0o600); err != nil {
+		t.Fatal(err)
+	}
+	t.Setenv("CLEW_HOME", homeFile)
+	db, err := state.Open(filepath.Join(t.TempDir(), "state.db"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer db.Close()
+	w := &watcher{
+		a:         &app{cfg: config.Default(), db: db},
+		ownerLaws: "previously loaded ambient law block", ownerLawsLoaded: true,
+	}
+	if err := w.refreshOwnerLaws(false, time.Now()); err == nil {
+		t.Fatal("owner refresh unexpectedly succeeded through a non-directory CLEW_HOME")
+	}
+	if w.ownerLaws != "previously loaded ambient law block" || !w.ownerLawsLoaded {
+		t.Fatalf("failed refresh destroyed last-known laws: loaded=%v laws=%q", w.ownerLawsLoaded, w.ownerLaws)
+	}
+
+	fresh := &watcher{a: w.a}
+	if err := fresh.refreshOwnerLaws(false, time.Now()); err == nil {
+		t.Fatal("initial owner refresh unexpectedly succeeded")
+	}
+	if fresh.ownerLawsLoaded {
+		t.Fatal("failed initial refresh was mistaken for a valid empty owner journal")
 	}
 }
 

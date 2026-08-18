@@ -347,6 +347,16 @@ func alertCard(alert state.Alert, j *journal.Journal, computed map[string]*journ
 		card.Open = &Verb{Name: "open", Label: "open batch diff", Target: alert.EntryIDs}
 		card.Defer = eventDeferral("alert:"+atom(alert.Key)+":proposal-change", alert.Key)
 		card.Withdrawal.Text = "the proposal is accepted, rejected, or replaced"
+	case "promotion":
+		if len(ids) != 1 || j == nil || j.Entries[ids[0]] == nil ||
+			j.Entries[ids[0]].Type != model.Finding || !journal.Live(computed[ids[0]].Status) {
+			return Card{}, false
+		}
+		card.Headline = "Should this finding become an ambient owner law?"
+		card.Why = WhyYou{RuleCode: "project-agnostic-finding", Rule: "the extractor found a cross-project law candidate", CostOfDelay: "future project births will not receive the law", Since: since, Class: CostWaiting}
+		card.Answers = []Verb{{Name: "promote", Target: ids[0]}, {Name: "keep-local", Target: ids[0]}}
+		card.Defer = eventDeferral("alert:"+atom(alert.Key)+":owner-ruling", alert.Key)
+		card.Withdrawal.Text = "the finding is promoted or kept project-local"
 	default:
 		return Card{}, false // unknown and FYI-shaped alerts belong to the glance
 	}

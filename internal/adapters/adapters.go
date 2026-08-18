@@ -164,6 +164,16 @@ func home() string {
 	return h
 }
 
+func claudeConfigDir() string {
+	if dir := os.Getenv("CLAUDE_CONFIG_DIR"); dir != "" {
+		if abs, err := filepath.Abs(dir); err == nil {
+			return abs
+		}
+		return filepath.Clean(dir)
+	}
+	return filepath.Join(home(), ".claude")
+}
+
 // An Adapter can discover session files for a repo and parse new content.
 type Adapter interface {
 	ID() string
@@ -210,7 +220,7 @@ var knownClaudeTypes = map[string]bool{
 }
 
 func (a *Claude) Discover(repoPath string) []string {
-	dir := filepath.Join(home(), ".claude", "projects", slugify(repoPath))
+	dir := filepath.Join(claudeConfigDir(), "projects", slugify(repoPath))
 	m, _ := filepath.Glob(filepath.Join(dir, "*.jsonl"))
 	return m
 }

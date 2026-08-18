@@ -49,6 +49,36 @@ func TestRenderRequiresOneToThreeDiscreteAnswers(t *testing.T) {
 	}
 }
 
+func TestBuildPromotionCandidateIsDecisionShaped(t *testing.T) {
+	j, err := journal.Load(t.TempDir())
+	if err != nil {
+		t.Fatal(err)
+	}
+	e := &model.Entry{
+		ID: ids.NewEntry(testNow), Type: model.Finding,
+		Title: "Verify completion directly", Body: "A durable cross-project rule.",
+		Quote:       "verify the affected state before declaring completion",
+		UtteranceBy: model.ByUser, Confidence: .9,
+		Source: model.Source{Kind: model.SrcSession, Ref: "session#L7", At: testNow},
+	}
+	if err := j.AddEntry(e); err != nil {
+		t.Fatal(err)
+	}
+	cards := Build(Input{Journal: j, Now: testNow.Add(time.Minute), Alerts: []state.Alert{{
+		Key: "promotion:" + e.ID, Kind: "promotion", EntryIDs: e.ID, Blocking: true, CreatedAt: testNow,
+		WithdrawWhen: "promotion:" + e.ID + ":ruled",
+	}}})
+	if len(cards) != 1 {
+		t.Fatalf("promotion cards = %d, want 1", len(cards))
+	}
+	if err := cards[0].Validate(); err != nil {
+		t.Fatalf("promotion card invalid: %v", err)
+	}
+	if cards[0].Answers[0].Name != "promote" || cards[0].Answers[1].Name != "keep-local" {
+		t.Fatalf("promotion verbs = %#v", cards[0].Answers)
+	}
+}
+
 func TestRenderEighthCardBecomesOneOverflowFailure(t *testing.T) {
 	cards := make([]Card, 8)
 	for i := range cards {

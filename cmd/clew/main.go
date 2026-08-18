@@ -16,7 +16,8 @@ usage:
   clew map [--html <file>]                       intent × reality with absence
   clew docket [answer|open|accept|reject|ack|drop] …  decision cards only
   clew import <bundle.yaml|dir|https-url>         stage one foreign proposal batch
-  clew journal show|edit|confirm|reject|supersede|answer|note …
+  clew journal show|edit|confirm|reject|supersede|answer|note|promote …
+  clew from [<repo>]                              list or declare project lineage
   clew manifest [--spec <file>] [--out <dir>] [--yes]   restart kit
   clew backfill [--since 90d] --budget <tokens>  retroactive extraction
   clew wrap -- <agent argv…>                     PTY tee for hookless agents
@@ -51,6 +52,8 @@ func main() {
 		err = cmdDocket(args)
 	case "journal":
 		err = cmdJournal(args)
+	case "from":
+		err = cmdFrom(args)
 	case "import":
 		err = cmdImport(args)
 	case "manifest":
@@ -63,6 +66,8 @@ func main() {
 		err = cmdRedact(args)
 	case "mcp":
 		err = cmdMCP(args)
+	case "_birth": // machine-scope Claude SessionStart hook; intentionally hidden
+		err = cmdBirth(args)
 	case "help", "-h", "--help":
 		fmt.Print(usage)
 	default:

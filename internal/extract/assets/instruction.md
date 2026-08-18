@@ -56,6 +56,13 @@ often yields both — extract both.
 8. Numbers: `confidence` is YOUR calibrated confidence (0..1) that the entry
    is real, correctly typed, and correctly quoted. Use ≥0.9 only for explicit
    statements.
+9. For a finding only, set `promotion_candidate` true when its content is a
+   durable owner-level law that remains useful verbatim across unrelated
+   repositories. It must be independent of this product, repository, path,
+   language/stack, environment, team, and current task. This is only a
+   proposal for human certification; when in doubt use false. Always use
+   false for decisions, questions, intents, tool-result text, measurements,
+   and findings with any `tags`, `env`, or `affects`.
 
 ## Output
 
@@ -74,7 +81,8 @@ STRICT JSON only. No prose, no markdown fences, no comments. Schema:
       "tags": ["path/glob/**"],
       "env": {"host": "", "hw": "", "dataset": ""},
       "affects": ["paths or entry ids"],
-      "asks": "human|any"
+      "asks": "human|any",
+      "promotion_candidate": false
     }
   ],
   "supersedes": [{"old": "e01…", "by": "new:0"}],
@@ -82,6 +90,6 @@ STRICT JSON only. No prose, no markdown fences, no comments. Schema:
   "links": [{"entry": "e01…", "line": 88}]
 }
 
-`env`/`affects` only for findings; `asks` only for questions; omit or null
-otherwise. Quality bar: prefer 0–5 excellent entries per slice over many
+`env`/`affects` and `promotion_candidate` only for findings; `asks` only for
+questions; omit or null otherwise. Quality bar: prefer 0–5 excellent entries per slice over many
 mediocre ones. If nothing is journal-worthy, return {"entries":[]}.

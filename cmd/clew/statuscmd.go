@@ -182,6 +182,12 @@ func statusMachine(a *app) error {
 	if v := a.db.Get("watch-provider-error"); v != "" {
 		fmt.Printf("!! watcher provider unavailable: %s\n", clipStr(v, 120))
 	}
+	if v := a.db.Get("owner-sync-error"); v != "" {
+		fmt.Printf("!! owner journal sync: %s\n", clipStr(v, 120))
+	}
+	if v := a.db.Get("owner-law-overflow"); v != "" {
+		fmt.Printf("!! owner law budget: %s\n", clipStr(v, 120))
+	}
 	statusKVIssues(a, "extract-error:", "extraction")
 	statusKVIssues(a, "llm-error:", "LLM")
 	statusKVIssues(a, "llm-disabled:", "LLM disabled")
@@ -190,6 +196,9 @@ func statusMachine(a *app) error {
 	statusKVIssues(a, "unknown:", "unknown format count")
 	statusKVIssues(a, "system-failure:", "system failure")
 	statusKVIssues(a, "glance-error:", "glance HTML")
+	statusKVIssues(a, "materialize-error:", "materialization")
+	statusKVIssues(a, "birth-error:", "automatic birth")
+	statusKVIssues(a, "birth-hook-error:", "birth nudge hook")
 	discoveryIssues := adapters.CodexDiscoveryIssues()
 	for i, issue := range discoveryIssues {
 		if i >= 2 {

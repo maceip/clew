@@ -21,6 +21,7 @@ import (
 	"clew/internal/journal"
 	"clew/internal/llm"
 	"clew/internal/materialize"
+	"clew/internal/model"
 	"clew/internal/poller"
 	"clew/internal/push"
 	"clew/internal/state"
@@ -101,15 +102,24 @@ type watcher struct {
 	pend         map[string]*pendState
 	syncDue      map[string]time.Time
 	journals     map[string]*journal.Journal
+	ownerLaws    string
+	// ownerLawsLoaded distinguishes a valid empty owner journal from a failed
+	// initial load. Until the first successful load, materialization preserves
+	// the existing context rather than stripping an ambient law block.
+	ownerLawsLoaded bool
+	birthSince      time.Time
+	birthPending    map[string]adapters.BirthCandidate
 }
 
 func newWatcher(a *app) *watcher {
 	p, note := a.provider()
 	return &watcher{
 		a: a, provider: p, providerNote: note,
-		pend:     map[string]*pendState{},
-		syncDue:  map[string]time.Time{},
-		journals: map[string]*journal.Journal{},
+		pend:         map[string]*pendState{},
+		syncDue:      map[string]time.Time{},
+		journals:     map[string]*journal.Journal{},
+		birthPending: map[string]adapters.BirthCandidate{},
+		birthSince:   time.Now().Add(-5 * time.Second),
 	}
 }
 
@@ -137,6 +147,7 @@ func (w *watcher) repos() []string {
 // ---- 2s tick: tails + extraction triggers ----
 
 func (w *watcher) tailAll() {
+	w.discoverBirths()
 	for _, repo := range w.repos() {
 		for _, ad := range adapters.All() {
 			for _, file := range ad.Discover(repo) {
@@ -144,6 +155,41 @@ func (w *watcher) tailAll() {
 				w.maybeExtract(repo, ad, file)
 			}
 		}
+	}
+}
+
+// discoverBirths is the daemon fallback for agent surfaces without a
+// synchronous SessionStart hook. Claude uses the hook so its first prompt can
+// receive context; Codex and clew-wrap are enrolled on the next two-second
+// watcher tick. Discovery never guesses lineage or runs archaeology.
+func (w *watcher) discoverBirths() {
+	now := time.Now()
+	candidates := adapters.BirthCandidates(w.birthSince)
+	// Keep a small overlap for filesystem timestamp granularity. Exact repo
+	// registration and the per-repo birth lock make repeat observations cheap.
+	w.birthSince = now.Add(-5 * time.Second)
+	for _, candidate := range candidates {
+		if !gitx.IsRepo(candidate.CWD) {
+			continue
+		}
+		root, err := gitx.Root(candidate.CWD)
+		if err != nil || birthInternalRepo(root) {
+			continue
+		}
+		candidate.CWD = root
+		w.birthPending[root] = candidate
+	}
+	for root, candidate := range w.birthPending {
+		key := "birth-error:" + root
+		err := withBirthMachineLock(func() error {
+			return autoBirthFromCandidate(w.a, root, &candidate)
+		})
+		if err != nil {
+			_ = w.a.db.Set(key, fmt.Sprintf("%s session %s: %v", candidate.Adapter, candidate.File, err))
+			continue
+		}
+		_ = w.a.db.Set(key, "")
+		delete(w.birthPending, root)
 	}
 }
 
@@ -450,6 +496,14 @@ func (w *watcher) maybeExtract(repo string, ad adapters.Adapter, file string) {
 	for i := 0; i < out.Redactions; i++ {
 		db.Incr("redactions")
 	}
+	if err := w.refreshPromotionAlerts(repo, j); err != nil {
+		// The extraction cursor may advance because the proposal bit is durable
+		// in the journal. Make the local indexing failure loud; every later poll
+		// retries reconstruction from that immutable entry.
+		_ = db.Set(promotionAlertErrorKey(repo), err.Error())
+	} else {
+		_ = db.Set(promotionAlertErrorKey(repo), "")
+	}
 	delete(w.pend, file)
 	if len(out.Entries) > 0 || len(out.Events) > 0 {
 		w.syncDue[repo] = time.Now().Add(5 * time.Second) // §4 debounce
@@ -482,6 +536,7 @@ func (w *watcher) failExtraction(file string, p *pendState, err error) {
 // ---- 30s tick: poller + differ + sync + materialize + push ----
 
 func (w *watcher) pollAll() {
+	_ = w.refreshOwnerLaws(true, time.Now())
 	for _, repo := range w.repos() {
 		w.pollOne(repo)
 	}
@@ -552,7 +607,7 @@ func (w *watcher) dueSyncs() {
 
 func (w *watcher) syncRepo(repo string) {
 	db := w.a.db
-	res, err := gitx.Sync(repo, regen)
+	res, err := gitx.Sync(repo, regenFor(repo))
 	if err != nil {
 		db.Set("sync-error:"+repo, err.Error())
 		return
@@ -568,7 +623,22 @@ func (w *watcher) syncRepo(repo string) {
 	j.Reload()
 	now := time.Now()
 	st := journal.Compute(j, now)
-	materialize.Write(repo, j, st, db, now)
+	if err := w.refreshPromotionAlerts(repo, j); err != nil {
+		_ = db.Set(promotionAlertErrorKey(repo), err.Error())
+	} else {
+		_ = db.Set(promotionAlertErrorKey(repo), "")
+	}
+	if !w.ownerLawsLoaded {
+		if err := w.refreshOwnerLaws(false, now); err != nil {
+			_ = db.Set("materialize-error:"+repo, "owner laws unavailable; preserved existing context: "+err.Error())
+			return
+		}
+	}
+	if err := materialize.WriteWithOwner(repo, j, st, db, w.ownerLaws, now); err != nil {
+		db.Set("materialize-error:"+repo, err.Error())
+		return
+	}
+	db.Set("materialize-error:"+repo, "")
 	// Cross-machine ack propagation: disposition events carrying ack keys.
 	for _, v := range j.Events {
 		if v.Kind == "disposition" {
@@ -591,6 +661,66 @@ func (w *watcher) syncRepo(repo string) {
 	}
 }
 
+func (w *watcher) refreshOwnerLaws(sync bool, now time.Time) error {
+	laws, err := w.a.ownerLawBlock(sync, now)
+	if err != nil {
+		return err
+	}
+	w.ownerLaws = laws
+	w.ownerLawsLoaded = true // an empty, successfully loaded owner journal is valid
+	return nil
+}
+
+// refreshPromotionAlerts reconstructs extractor proposals from durable entry
+// flags. Reconciliation makes local state.db a disposable index: a failed
+// insert, deleted database, or proposal arriving through journal sync is
+// recovered on the next watcher pass.
+func (w *watcher) refreshPromotionAlerts(repo string, j *journal.Journal) error {
+	if w == nil || w.a == nil || w.a.db == nil || j == nil {
+		return fmt.Errorf("promotion alert reconstruction unavailable")
+	}
+	computed := journal.Compute(j, time.Now())
+	alerts := make([]state.Alert, 0)
+	for id, entry := range j.Entries {
+		st := computed[id]
+		if entry == nil || entry.Type != model.Finding || !entry.PromotionCandidate ||
+			st == nil || !journal.Live(st.Status) || st.Tainted || journal.Imperative(entry) ||
+			len(entry.Tags) != 0 || entry.Env != nil || len(entry.Affects) != 0 ||
+			promotionRuled(j, id) {
+			continue
+		}
+		alerts = append(alerts, state.Alert{
+			Key:          "promotion:" + id,
+			RepoPath:     repo,
+			Kind:         "promotion",
+			Body:         fmt.Sprintf("project-agnostic finding proposed for owner-law certification: %s — `clew journal promote %s`", entry.Title, id),
+			EntryIDs:     id,
+			Blocking:     true,
+			WithdrawWhen: "promotion:" + id + ":ruled",
+		})
+	}
+	_, err := w.a.db.ReconcileAlerts(repo, []string{"promotion"}, alerts)
+	return err
+}
+
+func promotionAlertErrorKey(repo string) string {
+	return "system-failure:promotion-alert:" + repo
+}
+
+func promotionRuled(j *journal.Journal, id string) bool {
+	key := "promotion:" + id
+	for _, event := range j.EventsFor(id) {
+		if event.By.Who != "human" || event.Kind != model.EvDisposition {
+			continue
+		}
+		if event.PBool("redacted") || event.PStr("ack") == key ||
+			(event.PStr("scope") == "owner" && event.PStr("action") != "") {
+			return true
+		}
+	}
+	return false
+}
+
 func cardCreatedByAlert(cards []docket.Card, alert state.Alert) (docket.Card, bool) {
 	want := "alert:" + alert.Key
 	for _, card := range cards {
@@ -608,6 +738,12 @@ func docketPushMessage(card docket.Card) (string, string) {
 // ---- supervision install (§2: launchd / systemd-user) ----
 
 func watchInstall() error {
+	// Complete cold SQLite migration and owner-journal bootstrap before the
+	// SessionStart hook becomes visible. Supervisor launch success alone is not
+	// a readiness signal, and the first two births must not race initialization.
+	if err := primeBirthMachine(); err != nil {
+		return fmt.Errorf("prime birth machine: %w", err)
+	}
 	bin, err := os.Executable()
 	if err != nil {
 		return err
@@ -618,18 +754,22 @@ func watchInstall() error {
 	case "darwin":
 		home, _ := os.UserHomeDir()
 		launchPath := supervisorPATH(bin)
+		claudeEnv := ""
+		if dir := os.Getenv("CLAUDE_CONFIG_DIR"); dir != "" {
+			claudeEnv = "<key>CLAUDE_CONFIG_DIR</key><string>" + xmlText(dir) + "</string>"
+		}
 		plist := fmt.Sprintf(`<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0"><dict>
   <key>Label</key><string>dev.clew.watch</string>
   <key>ProgramArguments</key><array><string>%s</string><string>watch</string></array>
-  <key>EnvironmentVariables</key><dict><key>PATH</key><string>%s</string></dict>
+  <key>EnvironmentVariables</key><dict><key>PATH</key><string>%s</string>%s</dict>
   <key>RunAtLoad</key><true/>
   <key>KeepAlive</key><true/>
   <key>StandardOutPath</key><string>%s/watch.log</string>
   <key>StandardErrorPath</key><string>%s/watch.log</string>
 </dict></plist>
-`, xmlText(bin), xmlText(launchPath), xmlText(logDir), xmlText(logDir))
+`, xmlText(bin), xmlText(launchPath), claudeEnv, xmlText(logDir), xmlText(logDir))
 		p := filepath.Join(home, "Library", "LaunchAgents", "dev.clew.watch.plist")
 		if err := os.MkdirAll(filepath.Dir(p), 0o755); err != nil {
 			return err
@@ -641,21 +781,29 @@ func watchInstall() error {
 		if out, err := exec.Command("launchctl", "load", "-w", p).CombinedOutput(); err != nil {
 			return fmt.Errorf("launchctl load: %v: %s", err, out)
 		}
+		if err := installClaudeBirthHook(bin); err != nil {
+			return fmt.Errorf("install Claude SessionStart birth hook: %w", err)
+		}
 		fmt.Println("installed launchd agent dev.clew.watch (log:", logDir+"/watch.log)")
+		fmt.Println("installed machine-scope Claude SessionStart birth hook")
 		return nil
 	case "linux":
 		home, _ := os.UserHomeDir()
+		claudeEnv := ""
+		if dir := os.Getenv("CLAUDE_CONFIG_DIR"); dir != "" {
+			claudeEnv = "Environment=\"CLAUDE_CONFIG_DIR=" + systemdQuote(dir) + "\"\n"
+		}
 		unit := fmt.Sprintf(`[Unit]
 Description=clew journal watcher
 
 [Service]
 ExecStart=%s watch
-Restart=always
+%sRestart=always
 RestartSec=5
 
 [Install]
 WantedBy=default.target
-`, bin)
+`, bin, claudeEnv)
 		dir := filepath.Join(home, ".config", "systemd", "user")
 		if err := os.MkdirAll(dir, 0o755); err != nil {
 			return err
@@ -667,7 +815,11 @@ WantedBy=default.target
 		if out, err := exec.Command("systemctl", "--user", "enable", "--now", "clew-watch.service").CombinedOutput(); err != nil {
 			return fmt.Errorf("systemctl: %v: %s (unit written to %s)", err, out, p)
 		}
+		if err := installClaudeBirthHook(bin); err != nil {
+			return fmt.Errorf("install Claude SessionStart birth hook: %w", err)
+		}
 		fmt.Println("installed systemd user unit clew-watch.service")
+		fmt.Println("installed machine-scope Claude SessionStart birth hook")
 		return nil
 	default:
 		return fmt.Errorf("no supervisor template for %s — run `clew watch` under your own supervisor", runtime.GOOS)
@@ -692,6 +844,10 @@ func xmlText(s string) string {
 	return strings.NewReplacer("&", "&amp;", "<", "&lt;", ">", "&gt;").Replace(s)
 }
 
+func systemdQuote(s string) string {
+	return strings.NewReplacer(`\`, `\\`, `"`, `\"`, "\n", `\n`).Replace(s)
+}
+
 func watchUninstall() error {
 	switch runtime.GOOS {
 	case "darwin":
@@ -706,6 +862,14 @@ func watchUninstall() error {
 		os.Remove(filepath.Join(home, ".config", "systemd", "user", "clew-watch.service"))
 		fmt.Println("removed systemd user unit")
 	}
+	bin, err := os.Executable()
+	if err != nil {
+		return err
+	}
+	if err := removeClaudeBirthHook(bin); err != nil {
+		return fmt.Errorf("remove Claude SessionStart birth hook: %w", err)
+	}
+	fmt.Println("removed machine-scope Claude SessionStart birth hook")
 	return nil
 }
 
@@ -728,18 +892,35 @@ func lockAlive(lock string) (int, bool) {
 // the check-then-write race between two watcher starts and between a legacy
 // cursor migration and explicit backfill.
 func claimWatchLock(lock string) (int, bool, error) {
-	for attempt := 0; attempt < 2; attempt++ {
-		f, err := os.OpenFile(lock, os.O_WRONLY|os.O_CREATE|os.O_EXCL, 0o644)
+	if err := os.MkdirAll(filepath.Dir(lock), 0o755); err != nil {
+		return 0, false, err
+	}
+	for attempt := 0; attempt < 4; attempt++ {
+		// Populate a private inode first, then hard-link it into place. Unlike
+		// O_EXCL followed by Write, another process can never observe an empty
+		// lock and incorrectly reap a live owner.
+		f, err := os.CreateTemp(filepath.Dir(lock), "."+filepath.Base(lock)+".claim-*")
+		if err != nil {
+			return 0, false, err
+		}
+		tmp := f.Name()
+		if chmodErr := f.Chmod(0o644); chmodErr != nil {
+			f.Close()
+			os.Remove(tmp)
+			return 0, false, chmodErr
+		}
+		_, writeErr := f.WriteString(strconv.Itoa(os.Getpid()))
+		closeErr := f.Close()
+		if writeErr != nil || closeErr != nil {
+			os.Remove(tmp)
+			if writeErr != nil {
+				return 0, false, writeErr
+			}
+			return 0, false, closeErr
+		}
+		err = os.Link(tmp, lock)
+		os.Remove(tmp)
 		if err == nil {
-			if _, err := f.WriteString(strconv.Itoa(os.Getpid())); err != nil {
-				f.Close()
-				os.Remove(lock)
-				return 0, false, err
-			}
-			if err := f.Close(); err != nil {
-				os.Remove(lock)
-				return 0, false, err
-			}
 			return 0, false, nil
 		}
 		if !os.IsExist(err) {

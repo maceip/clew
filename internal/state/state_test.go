@@ -54,6 +54,124 @@ func TestOpenMigratesLegacyAlertWithdrawalColumn(t *testing.T) {
 	}
 }
 
+func TestResetRepoIncarnationIsTransactionalAndScoped(t *testing.T) {
+	db, err := Open(filepath.Join(t.TempDir(), "state.db"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer db.Close()
+
+	target := "/repos/new_%_incarnation"
+	survivor := "/repos/other"
+	now := time.Now().UTC().Truncate(time.Second)
+	for _, repo := range []string{target, survivor} {
+		if err := db.RegisterRepo(repo, "origin"); err != nil {
+			t.Fatal(err)
+		}
+		if _, err := db.InitWatermark("tail:"+repo, "test", repo, 17); err != nil {
+			t.Fatal(err)
+		}
+		sessionID := "session:" + repo
+		if err := db.UpsertSession(Session{
+			ID: sessionID, Adapter: "test", RepoPath: repo,
+			StartedAt: now.Add(-time.Minute), LastActivity: now,
+		}); err != nil {
+			t.Fatal(err)
+		}
+		if err := db.AddFootprints(sessionID, []string{"tracked/file.go"}); err != nil {
+			t.Fatal(err)
+		}
+		if err := db.AddCommit(Commit{RepoPath: repo, SHA: "commit:" + repo, At: now}); err != nil {
+			t.Fatal(err)
+		}
+		if _, err := db.UpsertAlert(Alert{
+			Key: "alert:" + repo, RepoPath: repo, Kind: "stomp", Blocking: true,
+			WithdrawWhen: "test:resolved",
+		}); err != nil {
+			t.Fatal(err)
+		}
+		if err := db.Set("sync-error:"+repo, "failure"); err != nil {
+			t.Fatal(err)
+		}
+	}
+	for _, prefix := range []string{
+		"birth-error:", "birth-hook-error:", "differ-error:", "push-error:",
+		"materialize-error:", "overfire:", "glance-error:", "unmapped:",
+		"system-failure:promotion-alert:",
+	} {
+		if err := db.Set(prefix+target, "predecessor status"); err != nil {
+			t.Fatal(err)
+		}
+	}
+	if err := db.Set("glance-repo", target); err != nil {
+		t.Fatal(err)
+	}
+	if err := db.Set("owner-sync-error", "machine status survives"); err != nil {
+		t.Fatal(err)
+	}
+
+	// Force a failure after earlier DELETE statements have executed. Every
+	// table must remain intact, proving the reset is a single transaction.
+	if _, err := db.Exec(`CREATE TRIGGER reject_target_alert_delete
+		BEFORE DELETE ON alerts WHEN OLD.repo_path='` + target + `'
+		BEGIN SELECT RAISE(ABORT, 'injected reset failure'); END`); err != nil {
+		t.Fatal(err)
+	}
+	if err := db.ResetRepoIncarnation(target); err == nil {
+		t.Fatal("injected reset failure was ignored")
+	}
+	if !db.RepoRegistered(target) || len(db.LiveSessions(target, time.Hour)) != 1 ||
+		len(db.Footprints("session:"+target)) != 1 || db.Get("sync-error:"+target) == "" {
+		t.Fatal("failed reset partially deleted predecessor state")
+	}
+	if _, err := db.Exec(`DROP TRIGGER reject_target_alert_delete`); err != nil {
+		t.Fatal(err)
+	}
+
+	if err := db.ResetRepoIncarnation(target); err != nil {
+		t.Fatal(err)
+	}
+	if db.RepoRegistered(target) {
+		t.Fatal("predecessor registration survived reset")
+	}
+	if _, ok := db.WatermarkOK("tail:" + target); ok {
+		t.Fatal("predecessor watermark survived reset")
+	}
+	if sessions := db.LiveSessions(target, time.Hour); len(sessions) != 0 {
+		t.Fatalf("predecessor sessions survived reset: %#v", sessions)
+	}
+	if footprints := db.Footprints("session:" + target); len(footprints) != 0 {
+		t.Fatalf("predecessor footprints survived reset: %#v", footprints)
+	}
+	if db.CommitSeen(target, "commit:"+target) {
+		t.Fatal("predecessor commit survived reset")
+	}
+	if alerts := db.OpenAlerts(target, false); len(alerts) != 0 {
+		t.Fatalf("predecessor alerts survived reset: %#v", alerts)
+	}
+	for _, prefix := range []string{
+		"sync-error:", "birth-error:", "birth-hook-error:", "differ-error:",
+		"push-error:", "materialize-error:", "overfire:", "glance-error:",
+		"unmapped:", "system-failure:promotion-alert:",
+	} {
+		if got := db.Get(prefix + target); got != "" {
+			t.Errorf("predecessor status %q survived reset: %q", prefix+target, got)
+		}
+	}
+	if got := db.Get("glance-repo"); got != "" {
+		t.Fatalf("predecessor glance selection survived reset: %q", got)
+	}
+
+	if !db.RepoRegistered(survivor) || len(db.LiveSessions(survivor, time.Hour)) != 1 ||
+		len(db.Footprints("session:"+survivor)) != 1 || !db.CommitSeen(survivor, "commit:"+survivor) ||
+		len(db.OpenAlerts(survivor, false)) != 1 || db.Get("sync-error:"+survivor) == "" {
+		t.Fatal("reset changed state belonging to another repository")
+	}
+	if got := db.Get("owner-sync-error"); got != "machine status survives" {
+		t.Fatalf("reset changed machine status: %q", got)
+	}
+}
+
 func TestReconcileAlertsWithdrawsOnlyStaleAlertsInScope(t *testing.T) {
 	db, err := Open(filepath.Join(t.TempDir(), "state.db"))
 	if err != nil {

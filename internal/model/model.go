@@ -78,6 +78,11 @@ type Entry struct {
 	Asks string `yaml:"asks,omitempty"`
 	// Supersedes chains findings to the measurement they replace (§3.3).
 	Supersedes string `yaml:"supersedes,omitempty"`
+	// PromotionCandidate is a durable extractor proposal, never promotion
+	// authority. Watchers can reconstruct the human docket card from the
+	// journal after a state-db loss; only a human owner-scope disposition can
+	// make the finding ambient.
+	PromotionCandidate bool `yaml:"promotion_candidate,omitempty"`
 }
 
 // Created is the entry's creation instant: the source timestamp when present
@@ -137,6 +142,9 @@ func (e *Entry) Validate() error {
 	}
 	if e.Type != Finding && (e.Env != nil || len(e.Affects) > 0) {
 		return fmt.Errorf("entry %s: env/affects are findings-only", e.ID)
+	}
+	if e.PromotionCandidate && e.Type != Finding {
+		return fmt.Errorf("entry %s: promotion_candidate is findings-only", e.ID)
 	}
 	if e.Type != Question && e.Asks != "" {
 		return fmt.Errorf("entry %s: asks is questions-only", e.ID)

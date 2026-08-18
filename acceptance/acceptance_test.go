@@ -1,5 +1,6 @@
-// Package acceptance implements JOURNAL_SPEC §10: the three load-bearing
-// acceptance tests, no ceremony.
+// Package acceptance implements JOURNAL_SPEC §10's original three
+// load-bearing gates. The I13 birth and lineage gates live beside the command
+// and domain seams they exercise; `go test ./...` runs all five.
 package acceptance
 
 import (

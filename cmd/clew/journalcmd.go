@@ -22,7 +22,7 @@ import (
 // every verb is an append-only event (or a new entry), never a mutation.
 func cmdJournal(args []string) error {
 	if len(args) == 0 {
-		return fmt.Errorf("usage: clew journal show|edit|confirm|reject|supersede|answer|note …")
+		return fmt.Errorf("usage: clew journal show|edit|confirm|reject|supersede|answer|note|promote …")
 	}
 	a, err := load()
 	if err != nil {
@@ -92,6 +92,11 @@ func cmdJournal(args []string) error {
 			return fmt.Errorf("usage: clew journal edit <entry-id>")
 		}
 		return journalEdit(a, repo, rest[0])
+	case "promote":
+		if len(rest) != 1 {
+			return fmt.Errorf("usage: clew journal promote <finding-id>")
+		}
+		return journalPromote(a, repo, rest[0])
 	default:
 		return fmt.Errorf("unknown journal verb %q", verb)
 	}

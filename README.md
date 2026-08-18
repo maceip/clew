@@ -9,7 +9,7 @@ the human — where intent and reality diverge, including the work that was
 never built.
 
 This is the faithful implementation of [`JOURNAL_SPEC.md`](JOURNAL_SPEC.md)
-(the founding spec; invariants I1–I9 in §1 are the constitution of this
+(the founding spec; invariants I1–I13 in §1 are the constitution of this
 repository). The spec's working name `stratura` was a placeholder to rename
 before first tag; the owner named the system **clew** (§12.1 is closed — the
 decision is journaled). Making restarts lossless remains the co-lead
@@ -29,10 +29,14 @@ clew help
 ## Quickstart
 
 ```bash
-cd your-project            # any git repo (empty or ancient)
-clew init               # register; archaeology; installs CLAUDE.md/AGENTS.md
-                           #   include + Claude nudge hook + .gitignore entry
-clew watch install      # launchd/systemd-user supervised watcher
+clew watch install      # once per machine: watcher + Claude SessionStart birth hook
+
+# A new repo is born without a clew ceremony:
+mkdir your-project && cd your-project && git init
+claude                  # auto-registers; first context has owner laws, no lore
+
+# Existing/ancient repos may still request archaeology explicitly:
+clew init               # register; archaeology; install agent includes + nudge hook
 clew                    # calm glance: DECIDED·LEARNED·OPEN·MAP·DOCKET
 clew status             # diagnostic expansion
 clew glance --html      # ~/.clew/glance.html, 30s refresh, pinned-tab status light
@@ -47,7 +51,9 @@ pinned to observed versions — unknown line classes are parked and counted,
 never guess-parsed), polls registered repos, extracts journal entries with
 your own agent subscription (`claude -p` → `codex exec` → OpenAI-compatible,
 first available; configurable in `~/.clew/config.yaml`), and syncs the
-journal branch through the repo's own remote. No server, no new credentials.
+journal branch through the repo's own remote. It also keeps `.clew/SEED.md`
+current whenever the durable journal changes and synchronizes the owner's
+separate project-agnostic law journal. No server, no new credentials.
 Optional phone delivery uses a unique ntfy topic (or plain webhook) configured in
 `~/.clew/config.yaml`; only newly created docket cards push, with headline + why-you.
 
@@ -55,31 +61,85 @@ For agents with no session store: `clew wrap -- gemini …` (PTY tee).
 Optional MCP surface: `clew mcp` (journal_search / journal_get /
 journal_note).
 
-## The restart moment (§9)
+Claude installations relocated with `CLAUDE_CONFIG_DIR` are honored by both
+the hook installer and transcript discovery; the supervisor persists that
+directory in its environment.
+
+## Ambient birth and declared lineage (I13)
+
+Birth carries only laws that a human has certified as project-agnostic:
 
 ```bash
-clew manifest                    # disposition pass → MANIFEST.md
+clew journal promote <finding-id>   # certify its exact quoted evidence in owner scope
+```
+
+The owner-law block is injected before project lore in every `context.md`, is
+independently capped at 1 KiB, and remains inside the existing 4 KiB total
+context cap. The extractor can mark a project-agnostic finding for a human
+docket ruling, but that proposal/card does not promote anything and never
+enters an agent surface; the finding itself remains ordinary project-local
+memory. The ambient law text is the exact Quote the docket showed, never the
+extractor-authored Title or Body.
+When `owner.remote` is configured, promotion requires a current remote budget
+view; an offline fetch or deferred push refuses certification instead of
+guessing that the global 1 KiB set still has room.
+
+Project lore has the opposite boundary: lineage is never guessed or carried
+automatically. Every watched repo already has a digest-checked ambient seed
+containing its decisions, findings, graveyard, exhibits, and organ-bank pin.
+
+```bash
+clew from              # ranked by topic overlap + recency; read-only
+clew from ../substrate # explicit import + durable lineage link
+```
+
+Carried entries retain their original quote, source ref, timestamp, and event
+provenance. Graveyard entries also receive a durable human lineage-status
+marker: derived absence, expiry, disposition-drop, and supersession cannot
+accidentally become live merely because their source derivation was outside
+the seed. New successor evidence can still revive an absent intent. To
+un-carry one, reject it normally with
+`clew journal reject <entry-id>`; the rejection is append-only and a repeated
+`clew from` cannot resurrect it. A blatant name/topic match may be suggested
+to the human, but is never acted on.
+
+## The deliberate big-restart ceremony (§9)
+
+```bash
+clew manifest                    # explicit pull-only disposition pass → MANIFEST.md
 $EDITOR .../MANIFEST.md             # human pass: mark [carry] / [drop]
 clew manifest --out ./kit       # SEED.md (≤4KB) + genesis/ + journaled dispositions
 cd ../successor && git init && clew init --carry ../old/kit/genesis
 ```
 
-The successor's first `context.md` already contains the predecessor's earned
-knowledge, provenance intact — restart becomes a compile from source instead
-of amnesia.
+The manifest path remains useful when a human wants to disposition active work
+and assemble a larger restart kit. It is never a prerequisite for ambient
+`SEED.md`, costless birth, or `clew from`.
 
 ## Storage model (§4)
 
 - Orphan branch `clew/journal` in the project's own remote; worktree
-  checkout under `~/.clew/worktrees/<id>`.
-- `entries/<ulid>.yaml` + `events/<ulid>.yaml`, both immutable once written;
+  checkout under `~/.clew/worktrees/<id>`. Reusing a path for a fresh
+  `git init` allocates a persistent new incarnation for both the worktree and
+  the newborn's local-only seed identity, leaving the moved predecessor
+  available only through explicit lineage.
+- `entries/<ulid>.yaml` + `events/<ulid>.yaml` + explicit
+  `lineage/<ulid>.yaml`, all immutable once written;
   every writer only ever adds files → conflict-free by construction.
-  `journal.md`/`digest.md` are regenerated projections (races harmless).
+  `journal.md`/`digest.md`/`SEED.md` are regenerated projections (races
+  harmless; seed bytes change only with the durable journal revision, which
+  includes every canonical lineage link ID and selected seed digest).
+- Owner laws live in a separate normal git repository at `~/.clew/owner`
+  (optional `owner.remote`), never in the project registry or session scanner.
 - Statuses are computed by each watcher from entries+events and **never
   persisted** (§3.2) — that is what makes the conflict-freedom claim true.
 - `clew redact <id>` is the one sanctioned rewrite: scrub-in-place, fresh
-  root, force-push; other watchers adopt the new root and cannot resurrect
-  the secret (their re-add pass only restores files the remote *lacks*).
+  root, and force-with-lease against the exact pre-redaction sync tip. A
+  concurrent append causes a bounded resync/re-scrub/retry, never erasure of
+  unseen journal data. Other watchers adopt the accepted new root and cannot
+  resurrect the secret (their re-add pass only restores files the remote
+  *lacks*). If the entry was promoted, the owner journal is rewritten first
+  and every reachable context is refreshed without that law.
 - Machine-local working state in SQLite (`~/.clew/state.db`); never the
   source of truth.
 
@@ -102,7 +162,7 @@ everyone else proposes.
 ## Acceptance (§10)
 
 ```bash
-go test ./...                        # includes the three §10 gates (hermetic)
+go test ./...                        # all five §10 gates across domain + command integration tests
 CLEW_FIDELITY=1 go test ./acceptance -run RealProvider -v   # live extraction gate
 ```
 
@@ -119,6 +179,14 @@ CLEW_FIDELITY=1 go test ./acceptance -run RealProvider -v   # live extraction ga
 3. **Restart round-trip** — 12 live entries → manifest (2 dropped, journaled)
    → `init --carry` into an empty repo → 100% of carried decisions/findings
    in the new `context.md`, provenance and timestamps intact.
+4. **Costless birth** — in an isolated machine home, a certified owner law
+   followed by `mkdir x && git init && claude`'s SessionStart hook produces a
+   registered project and a first `context.md` containing that law, with zero
+   project lore and zero clew commands typed for the project.
+5. **Declared lineage** — ambient seeds round-trip with digest and provenance;
+   ranking is deterministic; an explicit import carries lessons, graveyard,
+   exhibits, and pin, records transitive ancestry, rejects cycles, and cannot
+   resurrect an entry the successor rejected.
 
 ## Spec review — resolutions baked into this implementation
 
@@ -142,13 +210,15 @@ resolved (all within the spec's own invariants):
 | 13 | §9.2 manifest human pass | `[carry]`/`[drop]` marks in `MANIFEST.md`; `--yes` for non-interactive carry-all; spec-`covered` entries default to `[drop]` |
 | 14 | journal `edit` vs immutable entries (§3.2) | `edit` opens a copy in `$EDITOR`, writes a **new** human entry + supersede event — append-only law preserved |
 | 15 | §6 numbering (6.5 sits between 6.2 and 6.3) | noted; no action needed |
+| 16 | I13 birth safety | owner laws are a separate certified journal layer (1 KiB); ambient project seeds are watcher-maintained; project lore crosses repos only through explicit `clew from` because a wrong lineage guess is more poisonous than no inheritance |
 
 Everything else is as written: 4 entry types with computed statuses, the
 absence rule with K=5 eligible siblings and the archaeology eligibility
 guard, env-scoped finding supersession, 45d question expiry, 7d aging
 alerts, 100KB slice cap with middle-elision, 4KB digest, 4KB context with
 the fixed injection preamble + tainted-quote data fences + imperative
-withholding, 2%/200k budget with loud pause, the delivery matrix (Claude
+withholding, owner-law certification and its 1 KiB sub-cap, 2%/200k budget
+with loud pause, the delivery matrix (Claude
 hook / human-routed / PTY injection), ≤7 lines per glance section, 32KB
 rollup over-fire flag, and the honesty lines in `status` (cursor desktop
 fidelity, cloud-session gap).
@@ -156,7 +226,7 @@ fidelity, cloud-session gap).
 ## Layout
 
 ```
-cmd/clew/          CLI: init watch status map docket journal manifest
+cmd/clew/          CLI: init watch status map docket journal from manifest
                       backfill wrap redact mcp
 internal/model        entry/event schema + validation (§3)
 internal/journal      store, status algebra, rollup/digest (§3, §7.1.3)
@@ -165,10 +235,13 @@ internal/adapters     claude/codex/cursor/wrap sensors + adapter law (§5.1)
 internal/poller       repo poller + commit attribution (§5.2)
 internal/extract      triggers, provider call, schema+I7 gate, budget (§6)
 internal/differ       mapping, auto-supersession, alerts, overlap radar (§7)
-internal/materialize  context.md/nudge.md/journal.md (§8.1)
+internal/materialize  context.md/SEED.md/nudge.md/journal.md (§8.1, I13)
+internal/owner        certified project-agnostic owner journal + 1 KiB renderer
+internal/seed         self-contained ambient seed, journal-revision gated
+internal/lineage      ranking, provenance-preserving import, durable links
 internal/manifest     MANIFEST/SEED/genesis/carry (§9)
 internal/archaeology  cold-start distillation (§5.3)
 internal/{llm,mcp,scrub,state,push,wrapx,globx,ids,config}
 fixtures/             Appendix-A ground truth (awaiting human ratification)
-acceptance/           the three §10 gates
+acceptance/           original absence/extraction/restart gates; I13 gates live by their seams
 ```

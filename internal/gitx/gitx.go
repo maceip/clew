@@ -5,8 +5,10 @@
 package gitx
 
 import (
+	"crypto/rand"
 	"crypto/sha1"
 	"encoding/hex"
+	"errors"
 	"fmt"
 	"os"
 	"os/exec"
@@ -78,19 +80,181 @@ func Home() string {
 
 // WorktreeDir is where the journal branch is checked out for a repo.
 func WorktreeDir(repoPath string) string {
-	return filepath.Join(Home(), "worktrees", RepoID(repoPath))
+	id := RepoID(repoPath)
+	if configured := ConfiguredJournalID(repoPath); configured != "" {
+		id = configured
+	}
+	return filepath.Join(Home(), "worktrees", id)
+}
+
+// ConfiguredJournalID returns the validated, persistent journal incarnation
+// selected when a fresh git repository reuses a previously enrolled path. It
+// is empty for the ordinary path-derived namespace. The value lives in the
+// repository's local git config, so ambient seed identity can distinguish
+// incarnations without consulting machine state or the predecessor worktree.
+func ConfiguredJournalID(repoPath string) string {
+	configured, err := Run(repoPath, "config", "--local", "--get", "clew.journal-id")
+	if err != nil || !validJournalID(configured) {
+		return ""
+	}
+	return configured
+}
+
+func validJournalID(id string) bool {
+	if id == "" || id == "." || id == ".." {
+		return false
+	}
+	for _, r := range id {
+		if (r >= 'a' && r <= 'z') || (r >= 'A' && r <= 'Z') ||
+			(r >= '0' && r <= '9') || r == '-' || r == '_' || r == '.' {
+			continue
+		}
+		return false
+	}
+	return true
+}
+
+// JournalReady proves that the external journal worktree belongs to the
+// current checkout incarnation. A pathname alone is not repository identity:
+// a directory can be moved away and replaced by a fresh `git init` at the
+// same path. Birth must never bind that newborn to the predecessor's lore.
+func JournalReady(repoPath string) bool {
+	if !IsRepo(repoPath) {
+		return false
+	}
+	wt := WorktreeDir(repoPath)
+	if _, err := os.Stat(filepath.Join(wt, ".git")); err != nil {
+		return false
+	}
+	repoCommon, err := gitCommonDir(repoPath)
+	if err != nil {
+		return false
+	}
+	worktreeCommon, err := gitCommonDir(wt)
+	return err == nil && samePath(repoCommon, worktreeCommon)
+}
+
+// BirthReady is the local, network-free proof used by SessionStart. The
+// marker is written only after registration and first atomic materialization;
+// pairing it with JournalReady prevents a fresh repo at a reused path from
+// consuming the predecessor's context.
+func BirthReady(repoPath string) bool {
+	if !JournalReady(repoPath) {
+		return false
+	}
+	value, err := Run(repoPath, "config", "--local", "--get", "clew.birth-ready")
+	return err == nil && value == "true"
+}
+
+// HasBirthIncarnation reports whether the current .git contains any durable
+// evidence that clew has already enrolled this repository incarnation. It is
+// deliberately independent of the external worktree's health: a missing or
+// damaged worktree is a repair case, not proof that the path now names a new
+// repository whose disposable machine state should be reset.
+func HasBirthIncarnation(repoPath string) bool {
+	if !IsRepo(repoPath) {
+		return false
+	}
+	for _, key := range []string{"clew.birth-ready", "clew.journal-id"} {
+		if _, err := Run(repoPath, "config", "--local", "--get", key); err == nil {
+			return true
+		}
+	}
+	_, err := Run(repoPath, "show-ref", "--verify", "--quiet", "refs/heads/"+Branch)
+	return err == nil
+}
+
+func MarkBirthReady(repoPath string) error {
+	_, err := Run(repoPath, "config", "--local", "clew.birth-ready", "true")
+	return err
+}
+
+func gitCommonDir(dir string) (string, error) {
+	out, err := Run(dir, "rev-parse", "--path-format=absolute", "--git-common-dir")
+	if err != nil {
+		return "", err
+	}
+	if !filepath.IsAbs(out) {
+		out = filepath.Join(dir, out)
+	}
+	abs, err := filepath.Abs(out)
+	if err != nil {
+		return "", err
+	}
+	if resolved, resolveErr := filepath.EvalSymlinks(abs); resolveErr == nil {
+		abs = resolved
+	}
+	return filepath.Clean(abs), nil
+}
+
+func samePath(a, b string) bool {
+	ai, aerr := os.Stat(a)
+	bi, berr := os.Stat(b)
+	if aerr == nil && berr == nil {
+		return os.SameFile(ai, bi)
+	}
+	return filepath.Clean(a) == filepath.Clean(b)
+}
+
+func chooseFreshJournalID(repoPath string) (string, error) {
+	for attempt := 0; attempt < 8; attempt++ {
+		var nonce [6]byte
+		if _, err := rand.Read(nonce[:]); err != nil {
+			return "", fmt.Errorf("journal incarnation id: %w", err)
+		}
+		id := RepoID(repoPath) + "-" + hex.EncodeToString(nonce[:])
+		if _, err := os.Stat(filepath.Join(Home(), "worktrees", id)); os.IsNotExist(err) {
+			if _, err := Run(repoPath, "config", "--local", "clew.journal-id", id); err != nil {
+				return "", err
+			}
+			return id, nil
+		}
+	}
+	return "", fmt.Errorf("could not allocate a journal worktree id for %s", repoPath)
+}
+
+// AssignFreshJournalIncarnation persists a new external-worktree namespace in
+// the current repository. Birth calls this only after proving that a
+// registered pathname now contains a fresh git repository. Keeping the
+// assignment explicit means the newborn receives a distinct seed identity
+// even when the predecessor worktree has already been manually removed.
+func AssignFreshJournalIncarnation(repoPath string) (string, error) {
+	if !IsRepo(repoPath) {
+		return "", fmt.Errorf("%s is not a git repository", repoPath)
+	}
+	return chooseFreshJournalID(repoPath)
+}
+
+// lookupRemoteBranch returns the remote journal tip. An empty result means the
+// branch is absent; transport/authentication failures remain distinguishable.
+func lookupRemoteBranch(repoPath, remote string) (string, error) {
+	if remote == "" {
+		return "", nil
+	}
+	out, err := Run(repoPath, "ls-remote", remote, "refs/heads/"+Branch)
+	if err != nil {
+		return "", err
+	}
+	if out == "" {
+		return "", nil
+	}
+	fields := strings.Fields(out)
+	if len(fields) == 0 {
+		return "", fmt.Errorf("git ls-remote %s returned no journal tip", remote)
+	}
+	return fields[0], nil
 }
 
 // remoteBranchSHA returns the remote journal tip, or "" if absent/no remote.
+// Bootstrap deliberately treats an unavailable remote like an absent one so
+// the journal remains useful offline; destructive rewrites use the strict
+// lookup above through their verified-sync lease instead.
 func remoteBranchSHA(repoPath, remote string) string {
-	if remote == "" {
+	sha, err := lookupRemoteBranch(repoPath, remote)
+	if err != nil {
 		return ""
 	}
-	out, err := Run(repoPath, "ls-remote", remote, "refs/heads/"+Branch)
-	if err != nil || out == "" {
-		return ""
-	}
-	return strings.Fields(out)[0]
+	return sha
 }
 
 // genesisCommit creates the orphan root commit via plumbing (works even in a
@@ -145,7 +309,15 @@ func EnsureJournal(repoPath string) (string, error) {
 	}
 	wt := WorktreeDir(repoPath)
 	if _, err := os.Stat(filepath.Join(wt, ".git")); err == nil {
-		return wt, nil
+		if JournalReady(repoPath) {
+			return wt, nil
+		}
+		// Preserve the stale predecessor worktree as an explicit future
+		// lineage candidate; allocate a new namespace for this incarnation.
+		if _, err := AssignFreshJournalIncarnation(repoPath); err != nil {
+			return "", err
+		}
+		wt = WorktreeDir(repoPath)
 	}
 	remote := RemoteName(repoPath)
 
@@ -193,6 +365,14 @@ type SyncResult struct {
 	Pulled    bool
 	Adopted   bool // unrelated remote root adopted (init race or redaction)
 	Notes     []string
+
+	// Remote/RemoteURL identify the wire endpoint used by this sync. RemoteTip
+	// is populated only when that endpoint's journal tip was observed and all
+	// required local commits were successfully published. Root rewrites bind a
+	// force-with-lease to this exact observation.
+	Remote    string
+	RemoteURL string
+	RemoteTip string
 }
 
 // Sync commits local additions, reconciles with the remote (pull --rebase +
@@ -206,11 +386,24 @@ func Sync(repoPath string, regenerate func(wt string) error) (*SyncResult, error
 	if err := commitAll(wt, res); err != nil {
 		return res, err
 	}
+	// Maintain the local journal projection before any network operation. An
+	// offline fetch is normal, and must not leave SEED.md one journal change
+	// behind merely because the remote could not be contacted.
+	if regenerate != nil {
+		if err := regenerate(wt); err != nil {
+			return res, err
+		}
+		if err := commitAll(wt, res); err != nil {
+			return res, err
+		}
+	}
 	remote := RemoteName(repoPath)
+	res.Remote = remote
 	if remote == "" {
 		res.Notes = append(res.Notes, "no remote: journal is local-only")
 		return res, nil
 	}
+	res.RemoteURL, _ = Run(repoPath, "remote", "get-url", remote)
 	if _, err := Run(wt, "fetch", "-q", remote, Branch); err != nil {
 		res.Notes = append(res.Notes, "fetch failed: "+firstLine(err.Error()))
 		return res, nil // offline is normal operation, not degraded (§4.1)
@@ -244,10 +437,16 @@ func Sync(repoPath string, regenerate func(wt string) error) (*SyncResult, error
 	if ahead != "0" && ahead != "" {
 		if _, err := Run(wt, "push", "-q", remote, Branch+":"+Branch); err != nil {
 			res.Notes = append(res.Notes, "push deferred: "+firstLine(err.Error()))
+			return res, nil
 		} else {
 			res.Pushed = true
 		}
+		fetched, err = Run(wt, "rev-parse", "HEAD")
+		if err != nil {
+			return res, err
+		}
 	}
+	res.RemoteTip = fetched
 	return res, nil
 }
 
@@ -283,7 +482,7 @@ func rebaseUnion(wt string, res *SyncResult) error {
 		}
 		for _, f := range strings.Split(conflicts, "\n") {
 			base := filepath.Base(f)
-			if base != "journal.md" && base != "digest.md" && base != "MANIFEST.md" {
+			if base != "journal.md" && base != "digest.md" && base != "SEED.md" && base != "MANIFEST.md" {
 				Run(wt, "rebase", "--abort")
 				return fmt.Errorf("unexpected conflict on %s (append-only law violated?)", f)
 			}
@@ -305,7 +504,7 @@ func rebaseUnion(wt string, res *SyncResult) error {
 // which is what keeps a redacted secret from resurrecting.
 func adoptRemote(wt string, res *SyncResult) error {
 	local := map[string][]byte{}
-	for _, sub := range []string{"entries", "events"} {
+	for _, sub := range []string{"entries", "events", "lineage"} {
 		files, _ := os.ReadDir(filepath.Join(wt, sub))
 		for _, f := range files {
 			if f.IsDir() {
@@ -337,12 +536,101 @@ func adoptRemote(wt string, res *SyncResult) error {
 	return commitAll(wt, res)
 }
 
+// RewriteLease binds a destructive root rewrite to the exact remote journal
+// tip observed by a completed Sync. Its fields are intentionally opaque: a
+// caller must obtain one through RewriteLeaseFromSync rather than guessing at
+// whatever tip happens to exist immediately before the force-push.
+type RewriteLease struct {
+	remote    string
+	remoteURL string
+	expected  string
+}
+
+// RewriteLeaseError means the remote advanced after the sync that authorized
+// a root rewrite. The caller must re-sync the append-only union, re-apply its
+// scrub to that union, and derive a fresh lease before retrying.
+type RewriteLeaseError struct {
+	Remote   string
+	Expected string
+	Actual   string
+	Err      error
+}
+
+func (e *RewriteLeaseError) Error() string {
+	actual := e.Actual
+	if actual == "" {
+		actual = "<absent>"
+	}
+	return fmt.Sprintf("journal root rewrite lease rejected: remote %s advanced from %s to %s; re-sync and re-scrub before retrying: %v",
+		e.Remote, e.Expected, actual, e.Err)
+}
+
+func (e *RewriteLeaseError) Unwrap() error { return e.Err }
+
+// IsRewriteLeaseError reports the one retryable RewriteRoot failure. Other
+// failures (including inability to verify the remote after a failed push) are
+// deliberately loud and must not be treated as a concurrency retry.
+func IsRewriteLeaseError(err error) bool {
+	var target *RewriteLeaseError
+	return errors.As(err, &target)
+}
+
+// RewriteLeaseFromSync turns a fully published/observed sync result into the
+// compare-and-swap token required by RewriteRoot. Local-only journals receive
+// a valid empty lease; configured remotes require an exact endpoint and tip.
+func RewriteLeaseFromSync(repoPath string, synced *SyncResult) (RewriteLease, error) {
+	if synced == nil {
+		return RewriteLease{}, fmt.Errorf("journal root rewrite requires a completed sync")
+	}
+	remote := RemoteName(repoPath)
+	if remote == "" {
+		if synced.Remote != "" {
+			return RewriteLease{}, fmt.Errorf("journal remote changed after sync: observed %s, now local-only", synced.Remote)
+		}
+		return RewriteLease{}, nil
+	}
+	if synced.Remote != remote {
+		return RewriteLease{}, fmt.Errorf("journal remote changed after sync: observed %s, now %s", synced.Remote, remote)
+	}
+	remoteURL, err := Run(repoPath, "remote", "get-url", remote)
+	if err != nil {
+		return RewriteLease{}, fmt.Errorf("verify journal remote before root rewrite: %w", err)
+	}
+	if synced.RemoteURL == "" || synced.RemoteURL != remoteURL {
+		return RewriteLease{}, fmt.Errorf("journal remote URL changed after sync: observed %q, now %q", synced.RemoteURL, remoteURL)
+	}
+	if synced.RemoteTip == "" {
+		return RewriteLease{}, fmt.Errorf("journal root rewrite requires verified remote state; the last sync did not publish or observe a usable journal tip")
+	}
+	return RewriteLease{remote: remote, remoteURL: remoteURL, expected: synced.RemoteTip}, nil
+}
+
 // RewriteRoot creates a fresh single-commit root of the worktree's current
 // content and force-pushes it — the one sanctioned rewrite (§4, redaction).
-func RewriteRoot(repoPath, msg string) error {
+// The force is a compare-and-swap against lease: a concurrent append can never
+// be discarded. The local branch is reset only after the remote accepts the
+// new root, leaving a rejected caller on its related pre-rewrite history so a
+// normal Sync can recover the union before the caller re-scrubs and retries.
+func RewriteRoot(repoPath, msg string, lease RewriteLease) error {
 	wt, err := EnsureJournal(repoPath)
 	if err != nil {
 		return err
+	}
+	remote := RemoteName(repoPath)
+	if remote != lease.remote {
+		return fmt.Errorf("journal remote changed after rewrite lease was issued: leased %s, now %s", lease.remote, remote)
+	}
+	if remote != "" {
+		remoteURL, err := Run(repoPath, "remote", "get-url", remote)
+		if err != nil {
+			return fmt.Errorf("verify journal rewrite remote: %w", err)
+		}
+		if remoteURL != lease.remoteURL {
+			return fmt.Errorf("journal remote URL changed after rewrite lease was issued: leased %q, now %q", lease.remoteURL, remoteURL)
+		}
+		if lease.expected == "" {
+			return fmt.Errorf("journal root rewrite refused: configured remote has no verified expected tip")
+		}
 	}
 	if _, err := Run(wt, "add", "-A"); err != nil {
 		return err
@@ -355,13 +643,22 @@ func RewriteRoot(repoPath, msg string) error {
 	if err != nil {
 		return err
 	}
-	if _, err := Run(wt, "reset", "--hard", sha); err != nil {
-		return err
-	}
-	if remote := RemoteName(repoPath); remote != "" {
-		if _, err := Run(wt, "push", "-q", "--force", remote, Branch+":"+Branch); err != nil {
-			return fmt.Errorf("redaction force-push failed (secret still on remote!): %w", err)
+	if remote != "" {
+		ref := "refs/heads/" + Branch
+		_, pushErr := Run(wt, "push", "-q", "--force-with-lease="+ref+":"+lease.expected, remote, sha+":"+ref)
+		if pushErr != nil {
+			actual, lookupErr := lookupRemoteBranch(repoPath, remote)
+			if lookupErr == nil && actual != lease.expected {
+				return &RewriteLeaseError{Remote: remote, Expected: lease.expected, Actual: actual, Err: pushErr}
+			}
+			if lookupErr != nil {
+				return fmt.Errorf("redaction force-with-lease failed and remote state could not be verified (secret still on remote!): %w; verify remote: %v", pushErr, lookupErr)
+			}
+			return fmt.Errorf("redaction force-with-lease failed (secret still on remote!): %w", pushErr)
 		}
+	}
+	if _, err := Run(wt, "reset", "--hard", sha); err != nil {
+		return fmt.Errorf("root rewrite was accepted but the local journal could not reset to it: %w", err)
 	}
 	return nil
 }

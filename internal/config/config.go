@@ -16,6 +16,13 @@ type Push struct {
 	URL  string `yaml:"url"`
 }
 
+// Owner configures the owner's project-agnostic law journal. The local store
+// always works without a remote; when Remote is set it uses the same git sync
+// protocol and credentials as project journals.
+type Owner struct {
+	Remote string `yaml:"remote"`
+}
+
 type Extractor struct {
 	// Provider: auto | claude | codex | openai | command | off.
 	// auto picks the first available of claude → codex → openai (§6.3:
@@ -36,6 +43,7 @@ type Extractor struct {
 type Config struct {
 	Surface   string    `yaml:"surface"` // machine label
 	Push      Push      `yaml:"push"`
+	Owner     Owner     `yaml:"owner"`
 	Extractor Extractor `yaml:"extractor"`
 	// LinkPass enables the batched LLM link pass (§7.1.2).
 	LinkPass bool `yaml:"link_pass"`

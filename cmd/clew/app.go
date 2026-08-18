@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"strings"
 	"time"
 
 	"clew/internal/config"
@@ -11,6 +12,8 @@ import (
 	"clew/internal/journal"
 	"clew/internal/llm"
 	"clew/internal/materialize"
+	"clew/internal/owner"
+	"clew/internal/seed"
 	"clew/internal/state"
 )
 
@@ -76,19 +79,74 @@ func (a *app) openJournal(repo string) (*journal.Journal, error) {
 	return journal.Load(wt)
 }
 
-// regen is the projection regenerator passed to gitx.Sync.
-func regen(wt string) error {
-	j, err := journal.Load(wt)
-	if err != nil {
+// regenFor is the projection regenerator passed to project git sync. The
+// ambient SEED.md is written on every journal union, so the carry-kit exists
+// before a restart is contemplated. Owner laws are intentionally excluded.
+func regenFor(repo string) func(string) error {
+	return func(wt string) error {
+		j, err := journal.Load(wt)
+		if err != nil {
+			return err
+		}
+		now := time.Now()
+		st := journal.Compute(j, now)
+		if err := journal.WriteProjections(j, st, now); err != nil {
+			return err
+		}
+		snapshot, err := materialize.BuildSeedForRepo(repo, j, st)
+		if err != nil {
+			return err
+		}
+		_, err = seed.WriteOnJournalChange(filepath.Join(wt, "SEED.md"), snapshot)
 		return err
 	}
-	st := journal.Compute(j, time.Now())
-	return journal.WriteProjections(j, st, time.Now())
+}
+
+// ownerLawBlock loads or synchronizes the owner journal and returns the exact
+// independently capped injection block. A concurrent remote overflow is
+// rendered deterministically and made loud; it is never silently accepted.
+func (a *app) ownerLawBlock(sync bool, now time.Time) (string, error) {
+	store := owner.Default(a.cfg.Owner.Remote)
+	var (
+		j          *journal.Journal
+		syncResult *gitx.SyncResult
+		err        error
+	)
+	if sync {
+		j, syncResult, err = store.Sync()
+	} else {
+		j, err = store.Open()
+	}
+	if err != nil {
+		_ = a.db.Set("owner-sync-error", err.Error())
+		return "", err
+	}
+	if sync {
+		if err := store.RequireVerifiedSync(syncResult, "sync owner laws"); err != nil {
+			_ = a.db.Set("owner-sync-error", err.Error())
+			return "", err
+		}
+		if err := store.MarkVerifiedCache(); err != nil {
+			_ = a.db.Set("owner-sync-error", err.Error())
+			return "", err
+		}
+		_ = a.db.Set("owner-sync-error", "")
+	} else if err := store.RequireVerifiedCache("load cached owner laws"); err != nil {
+		_ = a.db.Set("owner-sync-error", err.Error())
+		return "", err
+	}
+	rendered := owner.Render(j, now)
+	if rendered.Overflow {
+		_ = a.db.Set("owner-law-overflow", fmt.Sprintf("owner laws require %d bytes; cap=%d; omitted=%s", rendered.RequiredBytes, owner.LawCap, strings.Join(rendered.Omitted, ",")))
+	} else {
+		_ = a.db.Set("owner-law-overflow", "")
+	}
+	return rendered.Markdown, nil
 }
 
 // syncAndMaterialize pushes/pulls the journal and refreshes .clew/.
 func (a *app) syncAndMaterialize(repo string) (*gitx.SyncResult, error) {
-	res, err := gitx.Sync(repo, regen)
+	res, err := gitx.Sync(repo, regenFor(repo))
 	if err != nil {
 		return res, err
 	}
@@ -98,7 +156,11 @@ func (a *app) syncAndMaterialize(repo string) (*gitx.SyncResult, error) {
 	}
 	now := time.Now()
 	st := journal.Compute(j, now)
-	if err := materialize.Write(repo, j, st, a.db, now); err != nil {
+	laws, err := a.ownerLawBlock(true, now)
+	if err != nil {
+		return res, err
+	}
+	if err := materialize.WriteWithOwner(repo, j, st, a.db, laws, now); err != nil {
 		return res, err
 	}
 	return res, nil

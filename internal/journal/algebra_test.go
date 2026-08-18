@@ -217,6 +217,33 @@ func TestHumanEditsAreFirstClass(t *testing.T) {
 	}
 }
 
+func TestLineageStatusMarkerRequiresHumanAndTypeCompatibility(t *testing.T) {
+	j := mkJournal(t)
+	decision := entry(t, j, model.Decision, "retain terminal carry state", now.Add(-time.Hour))
+	payload := map[string]any{
+		"lineage_status":          string(StSuperseded),
+		"lineage_from_repository": "repo:old",
+		"lineage_seed_revision":   "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+	}
+	event(t, j, model.EvDisposition, decision.ID, now, payload, "watcher")
+	if got := Compute(j, now)[decision.ID].Status; got != StActive {
+		t.Fatalf("machine-authored lineage marker changed status: %s", got)
+	}
+	bad := map[string]any{}
+	for key, value := range payload {
+		bad[key] = value
+	}
+	bad["lineage_status"] = string(StAbsent)
+	event(t, j, model.EvDisposition, decision.ID, now.Add(time.Second), bad, "human")
+	if got := Compute(j, now.Add(time.Second))[decision.ID].Status; got != StActive {
+		t.Fatalf("type-incompatible lineage marker changed status: %s", got)
+	}
+	event(t, j, model.EvDisposition, decision.ID, now.Add(2*time.Second), payload, "human")
+	if got := Compute(j, now.Add(2*time.Second))[decision.ID].Status; got != StSuperseded {
+		t.Fatalf("valid human lineage marker was ignored: %s", got)
+	}
+}
+
 func TestTaintAndWithhold(t *testing.T) {
 	j := mkJournal(t)
 	web := entry(t, j, model.Finding, "benchmark from a blog", now, func(e *model.Entry) {

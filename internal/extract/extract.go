@@ -37,31 +37,37 @@ const (
 
 // Outcome reports one extraction call's results.
 type Outcome struct {
-	Entries        []*model.Entry
-	Events         []*model.Event
-	Rejected       int // entries rejected by validation (fabricated quote etc.)
-	Redactions     int
-	Tokens         int
-	ObservedTokens int // transcript tokens consumed (byte estimate), for backfill metering
-	Parked         bool
-	ParkReason     string
-	NewOffset      int64
+	Entries []*model.Entry
+	// PromotionCandidates are accepted findings the extractor judged useful
+	// across unrelated projects. They are proposals only: the watcher may put
+	// them in the owner's docket, but only `clew journal promote` can copy one
+	// into the owner-scope law journal.
+	PromotionCandidates []*model.Entry
+	Events              []*model.Event
+	Rejected            int // entries rejected by validation (fabricated quote etc.)
+	Redactions          int
+	Tokens              int
+	ObservedTokens      int // transcript tokens consumed (byte estimate), for backfill metering
+	Parked              bool
+	ParkReason          string
+	NewOffset           int64
 }
 
 // wire mirrors the strict output schema of the instruction.
 type wire struct {
 	Entries []struct {
-		Type        string     `json:"type"`
-		Title       string     `json:"title"`
-		Body        string     `json:"body"`
-		Quote       string     `json:"quote"`
-		Line        int        `json:"line"`
-		UtteranceBy string     `json:"utterance_by"`
-		Confidence  float64    `json:"confidence"`
-		Tags        []string   `json:"tags"`
-		Env         *model.Env `json:"env"`
-		Affects     []string   `json:"affects"`
-		Asks        string     `json:"asks"`
+		Type               string     `json:"type"`
+		Title              string     `json:"title"`
+		Body               string     `json:"body"`
+		Quote              string     `json:"quote"`
+		Line               int        `json:"line"`
+		UtteranceBy        string     `json:"utterance_by"`
+		Confidence         float64    `json:"confidence"`
+		Tags               []string   `json:"tags"`
+		Env                *model.Env `json:"env"`
+		Affects            []string   `json:"affects"`
+		Asks               string     `json:"asks"`
+		PromotionCandidate bool       `json:"promotion_candidate"`
 	} `json:"entries"`
 	Supersedes []struct{ Old, By string }      `json:"supersedes"`
 	Answers    []struct{ Question, By string } `json:"answers"`
@@ -180,12 +186,25 @@ func run(j *journal.Journal, p llm.Provider, a adapters.Adapter, file string, of
 		out.Redactions += n
 		e.Title, n = scrub.Scrub(e.Title)
 		out.Redactions += n
+		// Persist the proposal bit on the immutable project finding. It is not
+		// authority: it only lets any watcher rebuild the owner's ruling card if
+		// local state is lost. Keep the mechanical boundary deliberately narrow.
+		e.PromotionCandidate = we.PromotionCandidate && e.Type == model.Finding &&
+			e.UtteranceBy != model.ByToolResult && e.Confidence >= 0.8 &&
+			len(e.Tags) == 0 && e.Env == nil && len(e.Affects) == 0 &&
+			!journal.Imperative(e)
 		if err := j.AddEntry(e); err != nil {
 			out.Rejected++
 			continue
 		}
 		newIDs[i] = e.ID
 		out.Entries = append(out.Entries, e)
+		// A provider flag is never authority to create an ambient law. Keep the
+		// proposal boundary narrow and reject obviously project/environment-bound
+		// candidates mechanically before the watcher surfaces them to the owner.
+		if e.PromotionCandidate {
+			out.PromotionCandidates = append(out.PromotionCandidates, e)
+		}
 	}
 
 	resolve := func(ref string) string {

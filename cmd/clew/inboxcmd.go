@@ -3,9 +3,11 @@ package main
 import (
 	"fmt"
 	"os"
+	"strings"
 	"time"
 
 	"clew/internal/docket"
+	"clew/internal/gitx"
 	"clew/internal/ids"
 	"clew/internal/journal"
 	"clew/internal/model"
@@ -43,8 +45,18 @@ func cmdDocket(args []string) error {
 			return fmt.Errorf("usage: clew docket %s <proposal-id>", args[0])
 		}
 		return docketProposalAction(a, repo, args[0], proposalBatchID(args[1]))
+	case "promote":
+		if len(args) != 2 {
+			return fmt.Errorf("usage: clew docket promote <finding-id>")
+		}
+		return journalPromote(a, repo, args[1])
+	case "keep-local":
+		if len(args) != 2 {
+			return fmt.Errorf("usage: clew docket keep-local <finding-id>")
+		}
+		return docketDismiss(a, repo, "promotion:"+args[1], "drop")
 	default:
-		return fmt.Errorf("unknown docket verb %q (answer|open|accept|reject|ack|drop)", args[0])
+		return fmt.Errorf("unknown docket verb %q (answer|open|accept|reject|promote|keep-local|ack|drop)", args[0])
 	}
 }
 
@@ -129,31 +141,72 @@ func docketMetrics(j *journal.Journal, now time.Time) (time.Time, int) {
 // journal so the ruling propagates to every other machine's docket.
 func docketDismiss(a *app, repo, key, verb string) error {
 	entry := "alert:" + key
-	for _, al := range a.db.OpenAlerts(repo, false) {
-		if al.Key == key && al.EntryIDs != "" {
-			entry = al.EntryIDs
-			break
+	if id, ok := strings.CutPrefix(key, "promotion:"); ok && id != "" {
+		// Promotion keys are typed and already contain the durable journal
+		// target. state.db is a disposable index and must not be required for a
+		// keep-local ruling to survive or propagate.
+		entry = id
+	} else {
+		for _, al := range a.db.OpenAlerts(repo, false) {
+			if al.Key == key && al.EntryIDs != "" {
+				entry = al.EntryIDs
+				break
+			}
 		}
-	}
-	col := "acked_at"
-	if verb == "drop" {
-		col = "dropped_at"
-	}
-	if err := a.db.MarkAlert(key, col); err != nil {
-		return err
 	}
 	j, err := a.openJournal(repo)
 	if err != nil {
 		return err
 	}
-	j.AddEvent(&model.Event{
-		ID: ids.NewEvent(time.Now()), Kind: model.EvDisposition, Entry: entry,
-		Payload: map[string]any{"ack": key, "verb": verb},
-		By:      model.By{Who: "human", Surface: a.cfg.Surface}, At: time.Now().UTC(),
-	})
+	stamp := time.Now().UTC()
+	if !docketDispositionRecorded(j, key, verb) {
+		payload := map[string]any{"ack": key, "verb": verb}
+		if strings.HasPrefix(key, "promotion:") && verb == "drop" {
+			payload["scope"] = "owner"
+			payload["action"] = "keep-local"
+		}
+		if err := j.AddEvent(&model.Event{
+			ID: ids.NewEvent(stamp), Kind: model.EvDisposition, Entry: entry,
+			Payload: payload,
+			By:      model.By{Who: "human", Surface: a.cfg.Surface}, At: stamp,
+		}); err != nil {
+			return err
+		}
+	}
+	// Commit/sync the disposition without materializing yet. The alert remains
+	// locally open until this succeeds, but delaying materialization also keeps
+	// an already-ruled alert from being appended to nudge.md on the way out.
+	if _, err := gitx.Sync(repo, regenFor(repo)); err != nil {
+		return err
+	}
+	col := "acked_at"
+	word := "acked"
+	if verb == "drop" {
+		col = "dropped_at"
+		word = "dropped"
+	}
+	// The disposable local index is updated only after the human ruling is
+	// durable in the journal. A failed event write or sync can therefore never
+	// make a proposal disappear permanently on this machine.
+	if err := a.db.MarkAlert(key, col); err != nil {
+		return err
+	}
 	if _, err := a.syncAndMaterialize(repo); err != nil {
 		return err
 	}
-	fmt.Printf("%sed %s\n", verb, key)
+	fmt.Printf("%s %s\n", word, key)
 	return nil
+}
+
+func docketDispositionRecorded(j *journal.Journal, key, verb string) bool {
+	if j == nil {
+		return false
+	}
+	for _, event := range j.Events {
+		if event.Kind == model.EvDisposition && event.By.Who == "human" &&
+			event.PStr("ack") == key && event.PStr("verb") == verb {
+			return true
+		}
+	}
+	return false
 }

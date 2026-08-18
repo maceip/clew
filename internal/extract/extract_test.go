@@ -91,6 +91,64 @@ func TestRunValidQuoteAndFabricationGate(t *testing.T) {
 	}
 }
 
+func TestRunPromotionCandidateIsProposalOnlyAndMechanicallyNarrowed(t *testing.T) {
+	j, _ := journal.Load(t.TempDir())
+	resp := map[string]any{"entries": []map[string]any{
+		{
+			"type": "finding", "title": "Verify before declaring completion",
+			"body":  "Completion claims need direct verification.",
+			"quote": "we will push over polling because battery drain killed us",
+			"line":  1, "utterance_by": "user", "confidence": 0.9,
+			"promotion_candidate": true,
+		},
+		{
+			"type": "decision", "title": "Push over polling",
+			"body":  "Project choice.",
+			"quote": "we will push over polling because battery drain killed us",
+			"line":  1, "utterance_by": "user", "confidence": 0.95,
+			"promotion_candidate": true,
+		},
+		{
+			"type": "finding", "title": "Environment-bound number",
+			"body":  "Measured here only.",
+			"quote": "the emulator run shows p95 = 340ms",
+			"line":  2, "utterance_by": "assistant", "confidence": 0.9,
+			"env":                 map[string]any{"host": "emulator"},
+			"promotion_candidate": true,
+		},
+		{
+			"type": "finding", "title": "Tagged project convention",
+			"body":  "A tag makes this project-scoped.",
+			"quote": "we will push over polling because battery drain killed us",
+			"line":  1, "utterance_by": "user", "confidence": 0.9,
+			"tags": []string{"transport"}, "promotion_candidate": true,
+		},
+	}}
+	b, _ := json.Marshal(resp)
+	a, f := mkSession(t)
+	out, err := Run(j, &stub{out: string(b)}, a, f, 0, "test", time.Now())
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(out.Entries) != 4 {
+		t.Fatalf("accepted entries = %d, want 4", len(out.Entries))
+	}
+	if len(out.PromotionCandidates) != 1 || out.PromotionCandidates[0].Title != "Verify before declaring completion" {
+		t.Fatalf("promotion candidates = %#v, want only generic finding", out.PromotionCandidates)
+	}
+	if !out.PromotionCandidates[0].PromotionCandidate {
+		t.Fatal("promotion proposal was not persisted on the immutable finding")
+	}
+	for _, entry := range out.Entries[1:] {
+		if entry.PromotionCandidate {
+			t.Fatalf("mechanically scoped entry persisted as promotion candidate: %+v", entry)
+		}
+	}
+	if len(j.Entries) != 4 {
+		t.Fatal("candidate signaling must not create a separate owner-law entry")
+	}
+}
+
 func TestRunParksOnSchemaFailure(t *testing.T) {
 	j, _ := journal.Load(t.TempDir())
 	p := &stub{out: "I'm sorry, I can't produce JSON today."}

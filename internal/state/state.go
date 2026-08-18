@@ -130,6 +130,47 @@ func (d *DB) RepoRegistered(path string) bool {
 	return n > 0
 }
 
+// ResetRepoIncarnation removes the disposable machine index associated with
+// one repository path in a single transaction. Callers must first prove from
+// the repository's own .git that the path names a new incarnation; a broken
+// external journal worktree alone is not sufficient evidence.
+func (d *DB) ResetRepoIncarnation(path string) error {
+	if strings.TrimSpace(path) == "" {
+		return fmt.Errorf("reset repository incarnation: empty path")
+	}
+	tx, err := d.Begin()
+	if err != nil {
+		return err
+	}
+	defer tx.Rollback()
+
+	statements := []string{
+		`DELETE FROM footprints WHERE session_id IN (SELECT id FROM sessions WHERE repo_path=?)`,
+		`DELETE FROM sessions WHERE repo_path=?`,
+		`DELETE FROM watermarks WHERE repo_path=?`,
+		`DELETE FROM commits_seen WHERE repo_path=?`,
+		`DELETE FROM alerts WHERE repo_path=?`,
+		`DELETE FROM repos WHERE path=?`,
+	}
+	for _, statement := range statements {
+		if _, err := tx.Exec(statement, path); err != nil {
+			return err
+		}
+	}
+
+	// Repo-status keys consistently end in ":<absolute repo path>". Match
+	// the literal suffix rather than LIKE so '%' and '_' in valid paths keep
+	// their ordinary meaning. glance-repo stores the path in its value.
+	suffix := ":" + path
+	if _, err := tx.Exec(`DELETE FROM kv WHERE substr(k, -length(?))=?`, suffix, suffix); err != nil {
+		return err
+	}
+	if _, err := tx.Exec(`DELETE FROM kv WHERE k='glance-repo' AND v=?`, path); err != nil {
+		return err
+	}
+	return tx.Commit()
+}
+
 func (d *DB) Repos() ([]Repo, error) {
 	rows, err := d.Query(`SELECT path, remote FROM repos ORDER BY path`)
 	if err != nil {

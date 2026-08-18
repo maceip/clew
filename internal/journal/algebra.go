@@ -1,7 +1,6 @@
 package journal
 
 import (
-	"regexp"
 	"sort"
 	"time"
 
@@ -44,21 +43,20 @@ const (
 
 // Computed is everything the algebra derives for one entry.
 type Computed struct {
-	Status       Status
-	Confidence   float64 // effective: human confirm raises to 1.0
-	Evidence     int     // count of evidence events
-	LastActivity time.Time
-	SupersededBy string
-	AnsweredBy   string
-	Contradicts  []string // ids of pair partners (possible or confirmed)
-	Eligible     bool     // absence-eligibility (§7.1.3 guard)
-	Tainted      bool     // quote originated in tool_result (§6.5)
-	Withheld     bool     // imperative-to-agent pattern, pending human confirm (§6.5.3)
+	Status             Status
+	Confidence         float64 // effective: human confirm raises to 1.0
+	Evidence           int     // count of evidence events
+	LastActivity       time.Time
+	SupersededBy       string
+	AnsweredBy         string
+	LineageStatus      Status    // explicit human carry marker for a seed grave
+	LineageStatusAt    time.Time // new successor evidence may revive carried absence
+	LineageStatusEvent string
+	Contradicts        []string // ids of pair partners (possible or confirmed)
+	Eligible           bool     // absence-eligibility (§7.1.3 guard)
+	Tainted            bool     // quote originated in tool_result (§6.5)
+	Withheld           bool     // imperative-to-agent pattern, pending human confirm (§6.5.3)
 }
-
-// imperativeRe flags entry text that reads as instructions to an agent rather
-// than project memory (§6.5.3). Withheld from context.md until human confirm.
-var imperativeRe = regexp.MustCompile(`(?i)\b(ignore (all|any|previous|prior|above|earlier)|disregard (the|all|previous)|you must now|do not tell|don't tell|before doing anything|run this command|execute the following|paste this|curl -s? ?http|rm -rf|exfiltrate|system prompt|new instructions?:)\b`)
 
 // Compute runs the status algebra over the whole journal at instant now.
 func Compute(j *Journal, now time.Time) map[string]*Computed {
@@ -85,7 +83,7 @@ func Compute(j *Journal, now time.Time) map[string]*Computed {
 	for id, e := range j.Entries {
 		c := &Computed{Confidence: e.Confidence, LastActivity: e.Created()}
 		c.Tainted = e.UtteranceBy == model.ByToolResult
-		c.Withheld = imperativeRe.MatchString(e.Body) || imperativeRe.MatchString(e.Quote)
+		c.Withheld = Imperative(e)
 		for _, v := range j.EventsFor(id) {
 			if v.At.After(c.LastActivity) {
 				c.LastActivity = v.At
@@ -100,9 +98,21 @@ func Compute(j *Journal, now time.Time) map[string]*Computed {
 				}
 			case model.EvAnswer:
 				c.AnsweredBy = v.PStr("by")
+			case model.EvDisposition:
+				status := Status(v.PStr("lineage_status"))
+				if v.By.Who == "human" && v.PStr("lineage_from_repository") != "" &&
+					v.PStr("lineage_seed_revision") != "" && lineageStatusCompatible(e.Type, status) &&
+					(c.LineageStatusAt.IsZero() || !v.At.Before(c.LineageStatusAt)) {
+					c.LineageStatus = status
+					c.LineageStatusAt = v.At
+					c.LineageStatusEvent = v.ID
+				}
 			}
 		}
 		c.SupersededBy = supBy[id]
+		if c.SupersededBy == "" && c.LineageStatus == StSuperseded {
+			c.SupersededBy = "lineage:" + c.LineageStatusEvent
+		}
 		out[id] = c
 	}
 
@@ -129,14 +139,14 @@ func Compute(j *Journal, now time.Time) map[string]*Computed {
 			switch {
 			case c.AnsweredBy != "":
 				c.Status = StAnswered
-			case c.SupersededBy != "" || now.Sub(c.LastActivity) > QuestionExpiry:
+			case c.LineageStatus == StExpired || c.SupersededBy != "" || now.Sub(c.LastActivity) > QuestionExpiry:
 				c.Status = StExpired
 			default:
 				c.Status = StOpen
 			}
 		case model.Finding:
 			switch {
-			case c.SupersededBy != "":
+			case c.LineageStatus == StSuperseded || c.SupersededBy != "":
 				c.Status = StSuperseded
 			case len(e.Affects) > 0 && hasChurnAfter(j, id, e.Created()):
 				c.Status = StSuspect
@@ -146,7 +156,7 @@ func Compute(j *Journal, now time.Time) map[string]*Computed {
 		case model.Intent:
 			c.Status = intentStatus(j, out, e, c, now)
 		case model.Decision:
-			if c.SupersededBy != "" {
+			if c.LineageStatus == StSuperseded || c.SupersededBy != "" {
 				c.Status = StSuperseded
 			} else {
 				c.Status = StActive // contradiction pass below
@@ -201,22 +211,37 @@ func intentStatus(j *Journal, all map[string]*Computed, e *model.Entry, c *Compu
 	if c.SupersededBy != "" {
 		return StDropped
 	}
+	if c.LineageStatus == StDropped {
+		return StDropped
+	}
+	hasSuccessorEvidence := false
 	for _, v := range j.EventsFor(e.ID) {
+		if !c.LineageStatusAt.IsZero() && !v.At.After(c.LineageStatusAt) {
+			continue
+		}
 		if v.Kind == model.EvConfirm && v.PBool("done") {
 			return StDone
 		}
-		if v.Kind == model.EvEvidence && v.PStr("kind") == "completion" {
-			return StDone
+		if v.Kind == model.EvEvidence {
+			hasSuccessorEvidence = true
+			if v.PStr("kind") == "completion" {
+				return StDone
+			}
 		}
 	}
 	recent := false
 	for _, v := range j.EventsFor(e.ID) {
-		if v.Kind == model.EvEvidence && now.Sub(v.At) <= InFlightWindow {
+		if v.Kind == model.EvEvidence &&
+			(c.LineageStatusAt.IsZero() || v.At.After(c.LineageStatusAt)) &&
+			now.Sub(v.At) <= InFlightWindow {
 			recent = true
 		}
 	}
 	if recent {
 		return StInFlight
+	}
+	if c.LineageStatus == StAbsent && !hasSuccessorEvidence {
+		return StAbsent
 	}
 	// Absence rule (§7.1.3): zero evidence ever AND ≥K eligible sibling
 	// intents gained evidence since this entry was created. Relative to
@@ -240,6 +265,18 @@ func intentStatus(j *Journal, all map[string]*Computed, e *model.Entry, c *Compu
 		}
 	}
 	return StProposed
+}
+
+func lineageStatusCompatible(typ model.EntryType, status Status) bool {
+	switch typ {
+	case model.Decision, model.Finding:
+		return status == StSuperseded
+	case model.Question:
+		return status == StExpired
+	case model.Intent:
+		return status == StAbsent || status == StDropped
+	}
+	return false
 }
 
 func hasHumanConfirm(j *Journal, id string) bool {
