@@ -1,6 +1,6 @@
 # Journal
 
-_generated 2026-08-18 23:57 UTC · 118 live entries (49 decisions · 40 findings · 9 questions · 20 intents) · 138 total in history_
+_generated 2026-08-18 23:58 UTC · 118 live entries (49 decisions · 40 findings · 9 questions · 20 intents) · 138 total in history_
 
 ## DECIDED
 
@@ -18,19 +18,19 @@ _generated 2026-08-18 23:57 UTC · 118 live entries (49 decisions · 40 findings
 - `e01M0AXCM55N0QM9RCRYF48TQ6C` Universal injection point: every model API call rebuilds the mind — 6h · current
 - `e01M0AXCM54CDSPV84DBH1PWGWD` Spec nudge matrix is stale: codex and gemini now ship injection hooks — 6h · current
 - `e01M0ASSNH1HP68M1QERV9AKG5A` Attachments bypass the secret scrub; GitHub push protection caught PATs — 7h · current
-- `e01M0ASQGKMHGY4F7JBEQX1ZT3T` This chat became the supernode: 788 messages of unjournaled load-bearing context — 7h · current
-- `e01M0ASQGKJN308G4HVJTE4A4AB` note-then-edit has a limbo: placeholders auto-commit and leaked into a seed — 7h · current
-- `e01M0ASQGKF09RFDGJD90VNADCQ` Spawn test: 63/63 entries carried into scratch gen-2 with guardrails intact — 7h · current
+- `e01M0ASQGKMHGY4F7JBEQX1ZT3T` This chat became the supernode: 788 messages of unjournaled load-bearing context — 8h · current
+- `e01M0ASQGKJN308G4HVJTE4A4AB` note-then-edit has a limbo: placeholders auto-commit and leaked into a seed — 8h · current
+- `e01M0ASQGKF09RFDGJD90VNADCQ` Spawn test: 63/63 entries carried into scratch gen-2 with guardrails intact — 8h · current
 
 ## OPEN
 
 - `e01M0BER1Q5W312NDD7GZ283RCM` Cap the two screens at 7+7; overflow policy is an open question — 1h · open ★
 - `e01M0AY97K0AZHNJW0D87KTD7YH` Two-grade telling: block dependent tasks on unresolved drift? — 6h · open ★
-- `e01M0ASQGM2P07Z36KVZX6P8EH4` Adopt the complexity law: additions must be a verb, label, rendering, or config — 7h · open ★
-- `e01M0ASQGKZ9ZY4XRF6K7KRCT75` Adopt clew witness <transcript> as the cloud-session gap fix? — 7h · open ★
-- `e01M0ASQGKX2F9THW496N79Z83F` Approve selfwatch + journal add + owner-laws relocation to a git-reachable repo — 7h · open ★
-- `e01M0ASQGKVW3RPZ2M51J3WQ9G9` Approve cloud env recipes: install clew + wire MCP in cursor/codex/claude envs — 7h · open ★
-- `e01M0ASQGKRQBVSGHP3RCYNWYEG` Approve extractor over-firing tune: rollup >32KB and docket hit 8 cards — 7h · open ★
+- `e01M0ASQGM2P07Z36KVZX6P8EH4` Adopt the complexity law: additions must be a verb, label, rendering, or config — 8h · open ★
+- `e01M0ASQGKZ9ZY4XRF6K7KRCT75` Adopt clew witness <transcript> as the cloud-session gap fix? — 8h · open ★
+- `e01M0ASQGKX2F9THW496N79Z83F` Approve selfwatch + journal add + owner-laws relocation to a git-reachable repo — 8h · open ★
+- `e01M0ASQGKVW3RPZ2M51J3WQ9G9` Approve cloud env recipes: install clew + wire MCP in cursor/codex/claude envs — 8h · open ★
+- `e01M0ASQGKRQBVSGHP3RCYNWYEG` Approve extractor over-firing tune: rollup >32KB and docket hit 8 cards — 8h · open ★
 
 ## ALERTS
 
