@@ -1,4 +1,5 @@
 # Journal digest (live entries: id · type/status · title)
+- e01M0ARJHKDP6Z6R1FKZSJ8AN4S finding/current laptop surface intent placeholder
 - e01M0ARJFTWEWY5H6JFJ17656W4 finding/current cloud surface intent placeholder
 - e01M0ARJE1XNN8Q45DJ36FP47YT finding/current web surface intent placeholder
 - e01M0ARJC3CMW89DH89FC3EW679 finding/current proposal ruling placeholder
@@ -34,4 +35,4 @@
 - e01M05TBYJXEW5N5FE398NJ4RD7 intent/in_flight Tighten live-enrollment/backfill boundary and add failure telemetry
 - e01M05TBYJXEW5N5FE397XYMEHY decision/active Treat first dogfood run's cursor/push/adapter failures as required failure sign…
 - e01M05T4XG0RJWQTP25T1K58B61 finding/suspect Confirm/reject only in event YAML; adapter unknowns undated, absent from status
-… (61 more omitted for size)
+… (62 more omitted for size)

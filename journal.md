@@ -1,6 +1,6 @@
 # Journal
 
-_generated 2026-08-18 15:41 UTC · 61 live entries (18 decisions · 29 findings · 1 questions · 13 intents) · 79 total in history_
+_generated 2026-08-18 15:41 UTC · 62 live entries (18 decisions · 30 findings · 1 questions · 13 intents) · 80 total in history_
 
 ## DECIDED
 
@@ -14,13 +14,13 @@ _generated 2026-08-18 15:41 UTC · 61 live entries (18 decisions · 29 findings 
 
 ## LEARNED
 
+- `e01M0ARJHKDP6Z6R1FKZSJ8AN4S` laptop surface intent placeholder — 0m · current
 - `e01M0ARJFTWEWY5H6JFJ17656W4` cloud surface intent placeholder — 0m · current
 - `e01M0ARJE1XNN8Q45DJ36FP47YT` web surface intent placeholder — 0m · current
 - `e01M0ARJC3CMW89DH89FC3EW679` proposal ruling placeholder — 0m · current
 - `e01M068FQH1ND9MM1WH851AF45M` Task 6 gate: flags 0 writes; algebra, poller, manifest pass — 1d · current
 - `e01M06821D53QYHBJS1FEC2CK7G` Task 5 gate: 3 formats, 1 card, confirm boundary pass — 1d · current
 - `e01M067G2QY8BZNZXBE46QBEXEW` Task 4 gate: 10ms, HTML 30s, ntfy 5/5 — 1d · current
-- `e01M067AZ3VJM73XP82REZEZ1QC` Task 4 channel: ntfy 2383c10c…, card creation only — 1d · current
 
 ## OPEN
 
@@ -177,6 +177,13 @@ Name = clew (owner). Alternatives considered: restart — verb collision, names 
 _source: human cli:note · confidence: 1.00_
 
 ## Findings
+
+### e01M0ARJHKDP6Z6R1FKZSJ8AN4S — laptop surface intent placeholder  `current`
+> laptop surface intent placeholder
+
+laptop surface intent placeholder
+
+_source: human cli:note · confidence: 1.00_
 
 ### e01M0ARJFTWEWY5H6JFJ17656W4 — cloud surface intent placeholder  `current`
 > cloud surface intent placeholder
