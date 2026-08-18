@@ -1,0 +1,17 @@
+id: e01M0AZ0K17AA5D9P7KZDSPJQSY
+type: decision
+title: Merge lines must pass the amnesia test; verbs are apply/explain/defer
+body: >-
+  Amendment: each merge line must be readable by a human who forgot the conversation entirely — references glossed inline (the five promises appear as five words), machinery nouns translated, no dangling 'the budget'. Per line: apply, explain (prints body + the owner's verbatim quote + link, then re-offers), defer. Footer gains apply-all. Explain works because one's own words restore memory.
+quote: 'these diff entries need to be something the human can read after maybe a day where he totally forgot the convo he had with you'
+utterance_by: user
+source:
+    kind: session
+    ref: chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18
+    agent: cursor-cloud-agent
+    surface: cursor-cloud-vm
+    at: 2026-08-18T17:33:00Z
+confidence: 1
+tags: []
+env: null
+affects: []
