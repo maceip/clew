@@ -1,0 +1,17 @@
+id: e01M0AZ7JBPJRNHFJQC6WEEQB9Y
+type: decision
+title: Silence is the signal: an absent merge means truly nothing new
+body: >-
+  Owner property: when no knowledge diff appears, the human may trust that nothing new landed anywhere — silence is the all-caught-up signal. For that trust to hold, silence must be earned: a broken watcher, stale sync, or failed check must announce itself distinctly and can never render as an empty diff. Quiet means verified-quiet. Nothing-new and could-not-check are never the same screen.
+quote: 'if there is no knowledge diff shown, the human knows nothing new has been added somewhere else'
+utterance_by: user
+source:
+    kind: session
+    ref: chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18
+    agent: cursor-cloud-agent
+    surface: cursor-cloud-vm
+    at: 2026-08-18T17:37:00Z
+confidence: 1
+tags: []
+env: null
+affects: []
