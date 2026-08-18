@@ -1,0 +1,21 @@
+id: e01M0AVAR0N8ZCCN1VJW3GQ5PF4
+type: decision
+title: Restart-with-mutation is the flagship advertised workflow, not a failure mode
+body: >-
+  Owner ruling: restart-with-mutation is the flagship, advertised workflow. The old
+  negative was retelling pain (re-briefing a blank agent), not rebirth. Direction: clew
+  from <parent> "<mutation>" carries the seed, makes the mutation the genesis charter,
+  and flags carried entries it contradicts — day-zero docket = the design debate, pre-
+  computed. Gated behind single-lineage sequencing.
+quote: 'i allow myself to clew from clew "but with cloud agent witnesses" ... something we _actually_ advertise as a path'
+utterance_by: user
+source:
+    kind: session
+    ref: chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18
+    agent: cursor-cloud-agent
+    surface: cursor-cloud-vm
+    at: 2026-08-18T16:28:00Z
+confidence: 1
+tags: []
+env: null
+affects: []
