@@ -406,7 +406,7 @@ _source: human cli:note · confidence: 1.00_
 
 Manual check-in of the first stale finish: I13 complete and tests green but uncommitted — it exists only in the laptop working tree, invisible to the join. Confirmed conflict: owner-law vocabulary on human surfaces (README, cards, listings) vs the two-register ruling; the feature stands, only surface wording renames. Aligned: single-lineage from, SessionStart birth. Reconcile due at next contact.
 
-_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 0.95_
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 0.95 · evidence: 1_
 
 ### e01M0AXCM55N0QM9RCRYF48TQ6C — Universal injection point: every model API call rebuilds the mind  `current`
 > It intercepts every chat request, injects relevant memories into the system prompt, and forwards the enriched request to Ollama — all without any changes to your client code.

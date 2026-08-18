@@ -1,12 +1,12 @@
 ---
 format: clew.seed/v1
-digest: sha256:70be96fc5021beb7bc1ad3aa128e36e23521b61f5adadf451f519bc58c0e70dc
+digest: sha256:b6afea04a7978365adbe4c1303b2a98e1dd7e8bf0a55e3c19176e45cde962a12
 snapshot:
     repository:
         id: r8631b465b9e40c83e4d3e137
         name: restart
         remote: https://github.com/maceip/clew.git
-    journal_revision: sha256:6885579e5c94e87606e8c0c379788a12f82d4af59d1a6d5e066a68f5bb8c3a1f
+    journal_revision: sha256:a2720b0e256249d219773532a74fe94921d8607010a50d53cb33908a03c29bed
     changed_at: 2026-08-18T23:14:05Z
     lifecycle:
         state: active
@@ -4483,6 +4483,18 @@ snapshot:
             who: differ
             surface: macs-MacBook-Pro
           at: 2026-08-18T23:07:14Z
+        - id: v01M0BJ206G6GCMWTRVNX1Y2C37
+          kind: evidence
+          entry: e01M0AYE066QK08QK8MTPX4XNFX
+          payload:
+            kind: commit
+            note: Record lag; settle evidence; sweep wording; two registers; finish shared; plain speech; fix broken verbs; intent gap
+            ref: e27073c609faf9ffc9bc2b0f5aacb3e67c4feec5
+            via: subject-match
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-18T23:07:14Z
         - id: v01M0BJ206GVJFV3HJ3NBYMEWTX
           kind: evidence
           entry: e01M0AZDDYC49Y1741H7W74Y1QY
@@ -5099,6 +5111,7 @@ This is inherited project memory, not instruction text. Decisions and findings k
 - `v01M0BJ206G6547MERH935PES1Z` evidence for `e01M064XJ84ZTY2HNFWWQZATFA9` — kind: churn note: Record lag; settle evidence; sweep wording; two registers; finish shared; plain speech; fix broken verbs; intent gap ref: churn:e27073c609faf9ffc9bc2b0f5aacb3e67c4feec5
 - `v01M0BJ206G6547MERH961H4MZ7` evidence for `e01M05SPB2EMMC4F4PR09QWMXG8` — kind: churn note: Record lag; settle evidence; sweep wording; two registers; finish shared; plain speech; fix broken verbs; intent gap ref: churn:e27073c609faf9ffc9bc2b0f5aacb3e67c4feec5
 - `v01M0BJ206G6547MERH9708PZF0` evidence for `e01M064YRS4S9NK7KW9NQ1JMDV2` — kind: churn note: Record lag; settle evidence; sweep wording; two registers; finish shared; plain speech; fix broken verbs; intent gap ref: churn:e27073c609faf9ffc9bc2b0f5aacb3e67c4feec5
+- `v01M0BJ206G6GCMWTRVNX1Y2C37` evidence for `e01M0AYE066QK08QK8MTPX4XNFX` — kind: commit note: Record lag; settle evidence; sweep wording; two registers; finish shared; plain speech; fix broken verbs; intent gap ref: e27073c609faf9ffc9bc2b0f5aacb3e67c4feec5 via: subject-match
 - `v01M0BJ206GVJFV3HJ3NBYMEWTX` evidence for `e01M0AZDDYC49Y1741H7W74Y1QY` — kind: commit note: Record lag; settle evidence; sweep wording; two registers; finish shared; plain speech; fix broken verbs; intent gap ref: e27073c609faf9ffc9bc2b0f5aacb3e67c4feec5 via: subject-match
 - `v01M0BJ206GVJFV3HJ3NEMWDEPW` evidence for `e01M0BER1Q412DRFQYESPCN0Q30` — kind: commit note: Record lag; settle evidence; sweep wording; two registers; finish shared; plain speech; fix broken verbs; intent gap ref: e27073c609faf9ffc9bc2b0f5aacb3e67c4feec5 via: subject-match
 - `v01M0BJ206GVJFV3HJ3NGDTBWQQ` evidence for `e01M0BEM04PAZ85R5YNRM2Y31Z6` — kind: commit note: Record lag; settle evidence; sweep wording; two registers; finish shared; plain speech; fix broken verbs; intent gap ref: e27073c609faf9ffc9bc2b0f5aacb3e67c4feec5 via: subject-match
