@@ -1,10 +1,10 @@
 # Journal
 
-_generated 2026-08-18 18:23 UTC · 80 live entries (28 decisions · 31 findings · 3 questions · 18 intents) · 100 total in history_
+_generated 2026-08-18 18:24 UTC · 80 live entries (28 decisions · 31 findings · 3 questions · 18 intents) · 100 total in history_
 
 ## DECIDED
 
-- `e01M0AZ0K17AA5D9P7KZDSPJQSY` Merge lines must pass the amnesia test; verbs are apply/explain/defer — 50m · active
+- `e01M0AZ0K17AA5D9P7KZDSPJQSY` Merge lines must pass the amnesia test; verbs are apply/explain/defer — 51m · active
 - `e01M0AXXKMNNKKY721HJ3REN3KH` Freshness is owed at contact points; a task runs on its snapshot — 1h · active
 - `e01M0AXRKQ8C7FZNKARW83CMBMX` The five promises are the foundation (owner ratified) — 1h · active
 - `e01M0AXF5FM9RDFP817NF7QW5BN` Human-facing surface must reduce to the desires it satisfies — 1h · active
@@ -34,8 +34,8 @@ _generated 2026-08-18 18:23 UTC · 80 live entries (28 decisions · 31 findings 
 - possible-contradiction `e01M05SA72DPRGNTY7GCQ2RASTP` Cards show verbatim quotes + clickable provenance, never extractor paraphrase — 2d
 - possible-contradiction `e01M05SA72DPRGNTY7GD0TGHEX7` Scope freeze: relay, TUI, team mode, adapters need a §11 trigger measurement — 2d
 - possible-contradiction `e01M065T92NXY1ER6R73YCQNH84` Recover docket empty-state and withdrawal wording from Task 3 journal source — 1d
-- possible-contradiction `e01M0AQHSRF4DVDYZ989M4DVHYX` Lineage inheritance is explicit; only promoted laws auto-carry — 2h
-- possible-contradiction `e01M0AQHSRF4DVDYZ989MTZQV7E` SEED.md is watcher-maintained continuously, never generated on demand — 2h
+- possible-contradiction `e01M0AQHSRF4DVDYZ989M4DVHYX` Lineage inheritance is explicit; only promoted laws auto-carry — 3h
+- possible-contradiction `e01M0AQHSRF4DVDYZ989MTZQV7E` SEED.md is watcher-maintained continuously, never generated on demand — 3h
 
 ## Intent × reality
 
@@ -45,7 +45,7 @@ _generated 2026-08-18 18:23 UTC · 80 live entries (28 decisions · 31 findings 
 | `e01M0ARJHKDP6Z6R1FKZSJ8AN4S` Surface coverage: laptop agents fully sensed with zero human effort | 2h | 0 evidence | proposed |
 | `e01M0ARJFTWEWY5H6JFJ17656W4` Surface coverage: PR-only cloud agents (Codex-app-class) contribute knowledge | 2h | 0 evidence | proposed |
 | `e01M0ARJE1XNN8Q45DJ36FP47YT` Surface coverage: repo-write cloud agents (Cursor-class) are full journal nodes | 2h | 0 evidence | proposed |
-| `e01M0AQHSRF4DVDYZ989PVHGA7R` Birth detection: auto-init a new repo with owner laws only | 2h | 1 evidence | in_flight |
+| `e01M0AQHSRF4DVDYZ989PVHGA7R` Birth detection: auto-init a new repo with owner laws only | 3h | 1 evidence | in_flight |
 | `e01M0664DX5WAZ01J6KJBCZP4QC` Add contract tests for docket invariants and failure modes | 1d | 2 evidence | in_flight |
 | `e01M065G8RTKVH6466KEB0FRJ8N` Commit the gate fixes as one spec-amended change, then start the docket | 1d | 1 evidence | in_flight |
 
