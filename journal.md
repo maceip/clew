@@ -1,16 +1,16 @@
 # Journal
 
-_generated 2026-08-18 17:10 UTC · 75 live entries (23 decisions · 31 findings · 3 questions · 18 intents) · 95 total in history_
+_generated 2026-08-18 17:11 UTC · 77 live entries (25 decisions · 31 findings · 3 questions · 18 intents) · 97 total in history_
 
 ## DECIDED
 
-- `e01M0AVAR0N8ZCCN1VJW3GQ5PF4` Restart-with-mutation is the flagship advertised workflow, not a failure mode — 42m · active
-- `e01M0ATYJG615JE6BV5MG5RAF9Z` clew from must accept multiple parent projects, with strand selection — 48m · active
+- `e01M0AXF5FM9RDFP817NF7QW5BN` Human-facing surface must reduce to the desires it satisfies — 5m · active
+- `e01M0AXCM53D36PDN0H85S0WE3W` Mind-plane freshness is vendor-neutral; hooks accelerate, never carry it — 11m · active
+- `e01M0AVAR0N8ZCCN1VJW3GQ5PF4` Restart-with-mutation is the flagship advertised workflow, not a failure mode — 43m · active
+- `e01M0ATYJG615JE6BV5MG5RAF9Z` clew from must accept multiple parent projects, with strand selection — 49m · active
 - `e01M0ASQGJZPFJD3FSRT7P4HX44` Owner-configured cloud environments are full clew nodes — 1h · active
 - `e01M0AQHSRF4DVDYZ989W6K185N` Owner laws live in an owner-scope journal with a ≤1KB injection budget — 1h · possible-contradiction
 - `e01M0AQHSRF4DVDYZ989RNZVC46` `clew from` is the one explicit lineage command; never automatic — 1h · active
-- `e01M0AQHSRF4DVDYZ989MTZQV7E` SEED.md is watcher-maintained continuously, never generated on demand — 1h · possible-contradiction
-- `e01M0AQHSRF4DVDYZ989M4DVHYX` Lineage inheritance is explicit; only promoted laws auto-carry — 1h · possible-contradiction
 
 ## LEARNED
 
@@ -50,6 +50,20 @@ _generated 2026-08-18 17:10 UTC · 75 live entries (23 decisions · 31 findings 
 | `e01M065G8RTKVH6466KEB0FRJ8N` Commit the gate fixes as one spec-amended change, then start the docket | 1d | 1 evidence | in_flight |
 
 ## Decisions
+
+### e01M0AXF5FM9RDFP817NF7QW5BN — Human-facing surface must reduce to the desires it satisfies  `active`
+> its already too much to understand given how it should reduce down to the simple set of human desires it satisfies
+
+Owner ruling: the internal design may be intricate, but the human-visible vocabulary must collapse to the desire set: it remembers; every agent starts knowing; I can look up and see; it asks me only when it must; starting over loses nothing. Any feature that cannot be filed under one of these is out. The agent carries the machinery; the human carries five sentences.
+
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00_
+
+### e01M0AXCM53D36PDN0H85S0WE3W — Mind-plane freshness is vendor-neutral; hooks accelerate, never carry it  `active`
+> this should work if i decide to spin up ollama locally with deepseek4-flash on my laptop
+
+Owner ruling: a returning human must land on agents that already know the recent journal, and this must hold for a bare ollama model with no hook system. Per-vendor hooks may improve latency but the floor must work for anything that emits model API calls. Bar: current-at-next-interaction, zero human homework, any harness — including ollama running deepseek4-flash on a laptop.
+
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00_
 
 ### e01M0AVAR0N8ZCCN1VJW3GQ5PF4 — Restart-with-mutation is the flagship advertised workflow, not a failure mode  `active`
 > i allow myself to clew from clew "but with cloud agent witnesses" ... something we _actually_ advertise as a path

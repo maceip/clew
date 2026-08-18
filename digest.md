@@ -1,4 +1,6 @@
 # Journal digest (live entries: id · type/status · title)
+- e01M0AXF5FM9RDFP817NF7QW5BN decision/active Human-facing surface must reduce to the desires it satisfies
+- e01M0AXCM53D36PDN0H85S0WE3W decision/active Mind-plane freshness is vendor-neutral; hooks accelerate, never carry it
 - e01M0AVAR0N8ZCCN1VJW3GQ5PF4 decision/active Restart-with-mutation is the flagship advertised workflow, not a failure mode
 - e01M0ATYJG615JE6BV5MG5RAF9Z decision/active clew from must accept multiple parent projects, with strand selection
 - e01M0ASSNH1HP68M1QERV9AKG5A finding/current Attachments bypass the secret scrub; GitHub push protection caught PATs
@@ -32,6 +34,4 @@
 - e01M064YRS4S9NK7KW9NQ1JMDV2 finding/suspect Malformed or missing pinned timestamps silently fall back to ingest time
 - e01M064YRS4S9NK7KW9NN351FQF finding/suspect I9: Claude settlement ignores cache token fields, letting spend exceed caps
 - e01M064K88F7SDMHA1SPAB51HK7 finding/current D2 final: 52 automatic entries; live extraction 0.631%
-- e01M064DQTWYDVGGAE3M5QRTGME decision/active Re-evaluate the current tree instead of carrying the prior gate verdict forward
-- e01M064DHNTXFM29PNWCW0VBBF2 intent/in_flight Run a strict read-only gate proving each acceptance point with tests or state q…
-… (75 more omitted for size)
+… (77 more omitted for size)
