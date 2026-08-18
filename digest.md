@@ -1,4 +1,5 @@
 # Journal digest (live entries: id · type/status · title)
+- e01M0ARJE1XNN8Q45DJ36FP47YT finding/current web surface intent placeholder
 - e01M0ARJC3CMW89DH89FC3EW679 finding/current proposal ruling placeholder
 - e01M0AQHSRF4DVDYZ989W6K185N decision/possible-contradiction Owner laws live in an owner-scope journal with a ≤1KB injection budget
 - e01M0AQHSRF4DVDYZ989RNZVC46 decision/active `clew from` is the one explicit lineage command; never automatic
@@ -33,4 +34,4 @@
 - e01M05TBYJXEW5N5FE397XYMEHY decision/active Treat first dogfood run's cursor/push/adapter failures as required failure sign…
 - e01M05T4XG0RJWQTP25T1K58B61 finding/suspect Confirm/reject only in event YAML; adapter unknowns undated, absent from status
 - e01M05T4XG0RJWQTP25SYT4FH0B finding/suspect Task 2 not passable: `spent` conflates extraction, differ, and archaeology
-… (59 more omitted for size)
+… (60 more omitted for size)
