@@ -1,4 +1,5 @@
 # Journal digest (live entries: id · type/status · title)
+- e01M0AVAR0N8ZCCN1VJW3GQ5PF4 decision/active Restart-with-mutation is the flagship advertised workflow, not a failure mode
 - e01M0ATYJG615JE6BV5MG5RAF9Z decision/active clew from must accept multiple parent projects, with strand selection
 - e01M0ASSNH1HP68M1QERV9AKG5A finding/current Attachments bypass the secret scrub; GitHub push protection caught PATs
 - e01M0ASQGKZ9ZY4XRF6K7KRCT75 question/open Adopt clew witness <transcript> as the cloud-session gap fix?
@@ -33,5 +34,4 @@
 - e01M064K88F7SDMHA1SPAB51HK7 finding/current D2 final: 52 automatic entries; live extraction 0.631%
 - e01M064DQTWYDVGGAE3M5QRTGME decision/active Re-evaluate the current tree instead of carrying the prior gate verdict forward
 - e01M064DHNTXFM29PNWCW0VBBF2 intent/in_flight Run a strict read-only gate proving each acceptance point with tests or state q…
-- e01M0642VRXV9PCGA4NDJF92E2Y intent/in_flight Wire atomic budget reservations into every LLM call
-… (74 more omitted for size)
+… (75 more omitted for size)

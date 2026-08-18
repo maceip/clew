@@ -1,21 +1,21 @@
 # Journal
 
-_generated 2026-08-18 16:29 UTC · 74 live entries (22 decisions · 31 findings · 3 questions · 18 intents) · 94 total in history_
+_generated 2026-08-18 16:30 UTC · 75 live entries (23 decisions · 31 findings · 3 questions · 18 intents) · 95 total in history_
 
 ## DECIDED
 
-- `e01M0ATYJG615JE6BV5MG5RAF9Z` clew from must accept multiple parent projects, with strand selection — 7m · active
-- `e01M0ASQGJZPFJD3FSRT7P4HX44` Owner-configured cloud environments are full clew nodes — 31m · active
+- `e01M0AVAR0N8ZCCN1VJW3GQ5PF4` Restart-with-mutation is the flagship advertised workflow, not a failure mode — 2m · active
+- `e01M0ATYJG615JE6BV5MG5RAF9Z` clew from must accept multiple parent projects, with strand selection — 8m · active
+- `e01M0ASQGJZPFJD3FSRT7P4HX44` Owner-configured cloud environments are full clew nodes — 32m · active
 - `e01M0AQHSRF4DVDYZ989W6K185N` Owner laws live in an owner-scope journal with a ≤1KB injection budget — 1h · possible-contradiction
 - `e01M0AQHSRF4DVDYZ989RNZVC46` `clew from` is the one explicit lineage command; never automatic — 1h · active
 - `e01M0AQHSRF4DVDYZ989MTZQV7E` SEED.md is watcher-maintained continuously, never generated on demand — 1h · possible-contradiction
 - `e01M0AQHSRF4DVDYZ989M4DVHYX` Lineage inheritance is explicit; only promoted laws auto-carry — 1h · possible-contradiction
-- `e01M068ECYE067WF6BH7F26VC3D` Cursor v1 stays CLI-only: desktop 0 vs CLI 44 in 7d — 1d · active
 
 ## LEARNED
 
-- `e01M0ASSNH1HP68M1QERV9AKG5A` Attachments bypass the secret scrub; GitHub push protection caught PATs — 27m · current
-- `e01M0ASQGKDZ8J6SQQK3BXKYAV5` module clew blocks go install by URL; release binaries or rename needed — 31m · current
+- `e01M0ASSNH1HP68M1QERV9AKG5A` Attachments bypass the secret scrub; GitHub push protection caught PATs — 28m · current
+- `e01M0ASQGKDZ8J6SQQK3BXKYAV5` module clew blocks go install by URL; release binaries or rename needed — 32m · current
 - `e01M069MQYJX6QVW3YCWWTAWV34` --help — 1d · current
 - `e01M068FQH1ND9MM1WH851AF45M` Task 6 gate: flags 0 writes; algebra, poller, manifest pass — 1d · current
 - `e01M06821D53QYHBJS1FEC2CK7G` Task 5 gate: 3 formats, 1 card, confirm boundary pass — 1d · current
@@ -24,8 +24,8 @@ _generated 2026-08-18 16:29 UTC · 74 live entries (22 decisions · 31 findings 
 
 ## OPEN
 
-- `e01M0ASQGKZ9ZY4XRF6K7KRCT75` Adopt clew witness <transcript> as the cloud-session gap fix? — 31m · open ★
-- `e01M0ASQGKX2F9THW496N79Z83F` Approve selfwatch + journal add + owner-laws relocation to a git-reachable repo — 31m · open ★
+- `e01M0ASQGKZ9ZY4XRF6K7KRCT75` Adopt clew witness <transcript> as the cloud-session gap fix? — 32m · open ★
+- `e01M0ASQGKX2F9THW496N79Z83F` Approve selfwatch + journal add + owner-laws relocation to a git-reachable repo — 32m · open ★
 
 ## ALERTS
 
@@ -41,15 +41,22 @@ _generated 2026-08-18 16:29 UTC · 74 live entries (22 decisions · 31 findings 
 
 | Intent | Age | Reality | State |
 |---|---:|---:|---|
-| `e01M0ARJKGSQFSH8WSVZEG520DH` Surface coverage: phone reads the glance and receives decision cards | 51m | 0 evidence | proposed |
-| `e01M0ARJHKDP6Z6R1FKZSJ8AN4S` Surface coverage: laptop agents fully sensed with zero human effort | 51m | 0 evidence | proposed |
-| `e01M0ARJFTWEWY5H6JFJ17656W4` Surface coverage: PR-only cloud agents (Codex-app-class) contribute knowledge | 51m | 0 evidence | proposed |
-| `e01M0ARJE1XNN8Q45DJ36FP47YT` Surface coverage: repo-write cloud agents (Cursor-class) are full journal nodes | 51m | 0 evidence | proposed |
+| `e01M0ARJKGSQFSH8WSVZEG520DH` Surface coverage: phone reads the glance and receives decision cards | 52m | 0 evidence | proposed |
+| `e01M0ARJHKDP6Z6R1FKZSJ8AN4S` Surface coverage: laptop agents fully sensed with zero human effort | 52m | 0 evidence | proposed |
+| `e01M0ARJFTWEWY5H6JFJ17656W4` Surface coverage: PR-only cloud agents (Codex-app-class) contribute knowledge | 52m | 0 evidence | proposed |
+| `e01M0ARJE1XNN8Q45DJ36FP47YT` Surface coverage: repo-write cloud agents (Cursor-class) are full journal nodes | 52m | 0 evidence | proposed |
 | `e01M0AQHSRF4DVDYZ989PVHGA7R` Birth detection: auto-init a new repo with owner laws only | 1h | 1 evidence | in_flight |
 | `e01M0664DX5WAZ01J6KJBCZP4QC` Add contract tests for docket invariants and failure modes | 1d | 2 evidence | in_flight |
 | `e01M065G8RTKVH6466KEB0FRJ8N` Commit the gate fixes as one spec-amended change, then start the docket | 1d | 1 evidence | in_flight |
 
 ## Decisions
+
+### e01M0AVAR0N8ZCCN1VJW3GQ5PF4 — Restart-with-mutation is the flagship advertised workflow, not a failure mode  `active`
+> i allow myself to clew from clew "but with cloud agent witnesses" ... something we _actually_ advertise as a path
+
+Owner ruling: restart-with-mutation is the flagship, advertised workflow. The old negative was retelling pain (re-briefing a blank agent), not rebirth. Direction: clew from <parent> "<mutation>" carries the seed, makes the mutation the genesis charter, and flags carried entries it contradicts — day-zero docket = the design debate, pre- computed. Gated behind single-lineage sequencing.
+
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00_
 
 ### e01M0ATYJG615JE6BV5MG5RAF9Z — clew from must accept multiple parent projects, with strand selection  `active`
 > clew from needs to support _multiple_ projects as inputs, the human may want parts from multiple
