@@ -1,12 +1,12 @@
 # Journal
 
-_generated 2026-08-18 23:18 UTC · 118 live entries (49 decisions · 40 findings · 9 questions · 20 intents) · 138 total in history_
+_generated 2026-08-18 23:19 UTC · 118 live entries (49 decisions · 40 findings · 9 questions · 20 intents) · 138 total in history_
 
 ## DECIDED
 
-- `e01M0BFY164YEV6DAEFVGGH18VT` The limiter gates distillation timing, never sensing; failure is lag — 50m · active
-- `e01M0BFRYY2WVHJZ3R3TDV4CFTS` The wording sweep covers every fear-attached word; docket stays by name — 53m · active
-- `e01M0BFRYY1EW9CFMJNDJ5QH3M2` Evidence settles merge lines; apply is never asked for finished work — 53m · active
+- `e01M0BFY164YEV6DAEFVGGH18VT` The limiter gates distillation timing, never sensing; failure is lag — 51m · active
+- `e01M0BFRYY2WVHJZ3R3TDV4CFTS` The wording sweep covers every fear-attached word; docket stays by name — 54m · active
+- `e01M0BFRYY1EW9CFMJNDJ5QH3M2` Evidence settles merge lines; apply is never asked for finished work — 54m · active
 - `e01M0BF0WMX264RA9D0VTM9R24K` Entry ids are machine plumbing: never shown to or relayed through humans — 1h · active
 - `e01M0BEYP65CE70G0VVSX3PV01B` Finished means shared: work ends pushed or PR'd; local-only is an alarm — 1h · active
 - `e01M0BETRRAZ54063PRJK1JSQS7` The finish message is a surface: what exists, where it lives, my next move — 1h · active
@@ -34,13 +34,13 @@ _generated 2026-08-18 23:18 UTC · 118 live entries (49 decisions · 40 findings
 
 ## ALERTS
 
-- **ABSENT** `e01M0AQHSRF4DVDYZ989PVHGA7R` Birth detection: auto-init a new repo with owner laws only — 7h
-- **ABSENT** `e01M0ARJE1XNN8Q45DJ36FP47YT` Surface coverage: repo-write cloud agents (Cursor-class) are full journal nodes — 7h
-- **ABSENT** `e01M0ARJHKDP6Z6R1FKZSJ8AN4S` Surface coverage: laptop agents fully sensed with zero human effort — 7h
-- **ABSENT** `e01M0ARJKGSQFSH8WSVZEG520DH` Surface coverage: phone reads the glance and receives decision cards — 7h
 - possible-contradiction `e01M05SA72DPRGNTY7GCN1P7CED` Rename the inbox surface to "docket"; keep inbox as hidden alias — 2d
 - possible-contradiction `e01M05SA72DPRGNTY7GCPEX9W2N` I10–I12 added as hard invariants enforced in code and tests — 2d
 - possible-contradiction `e01M05SA72DPRGNTY7GCQ2RASTP` Cards show verbatim quotes + clickable provenance, never extractor paraphrase — 2d
+- possible-contradiction `e01M05SA72DPRGNTY7GD0TGHEX7` Scope freeze: relay, TUI, team mode, adapters need a §11 trigger measurement — 2d
+- possible-contradiction `e01M065T92NXY1ER6R73YCQNH84` Recover docket empty-state and withdrawal wording from Task 3 journal source — 2d
+- possible-contradiction `e01M0AQHSRF4DVDYZ989M4DVHYX` Lineage inheritance is explicit; only promoted laws auto-carry — 7h
+- possible-contradiction `e01M0AQHSRF4DVDYZ989MTZQV7E` SEED.md is watcher-maintained continuously, never generated on demand — 7h
 
 ## Intent × reality
 
@@ -48,11 +48,11 @@ _generated 2026-08-18 23:18 UTC · 118 live entries (49 decisions · 40 findings
 |---|---:|---:|---|
 | `e01M0AZN6HJETV241AK5RSBDHNR` Held: a restart tab — stage selected drift into the next generation | 5h | 0 evidence | proposed |
 | `e01M0AXCM561K3C5QXAVGVGT46T` Build the freshness ladder: one delta payload, five delivery layers | 6h | 0 evidence | proposed |
-| `e01M0ARJKGSQFSH8WSVZEG520DH` Surface coverage: phone reads the glance and receives decision cards | 7h | 0 evidence | **ABSENT** |
-| `e01M0ARJHKDP6Z6R1FKZSJ8AN4S` Surface coverage: laptop agents fully sensed with zero human effort | 7h | 0 evidence | **ABSENT** |
-| `e01M0ARJFTWEWY5H6JFJ17656W4` Surface coverage: PR-only cloud agents (Codex-app-class) contribute knowledge | 7h | 1 evidence | in_flight |
-| `e01M0ARJE1XNN8Q45DJ36FP47YT` Surface coverage: repo-write cloud agents (Cursor-class) are full journal nodes | 7h | 0 evidence | **ABSENT** |
-| `e01M0AQHSRF4DVDYZ989PVHGA7R` Birth detection: auto-init a new repo with owner laws only | 7h | 0 evidence | **ABSENT** |
+| `e01M0ARJKGSQFSH8WSVZEG520DH` Surface coverage: phone reads the glance and receives decision cards | 7h | 0 evidence | proposed |
+| `e01M0ARJHKDP6Z6R1FKZSJ8AN4S` Surface coverage: laptop agents fully sensed with zero human effort | 7h | 0 evidence | proposed |
+| `e01M0ARJFTWEWY5H6JFJ17656W4` Surface coverage: PR-only cloud agents (Codex-app-class) contribute knowledge | 7h | 0 evidence | proposed |
+| `e01M0ARJE1XNN8Q45DJ36FP47YT` Surface coverage: repo-write cloud agents (Cursor-class) are full journal nodes | 7h | 0 evidence | proposed |
+| `e01M0AQHSRF4DVDYZ989PVHGA7R` Birth detection: auto-init a new repo with owner laws only | 7h | 0 evidence | proposed |
 
 ## Decisions
 
@@ -152,7 +152,7 @@ _source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · c
 
 Amendment to the finish check-in: an agent whose finished work was obsoleted mid-flight must not remove, redo, or touch anything on its own — no action of any kind. The check-in only installs knowledge: at the next human prompt it must say the work is deprecated/obsoleted/wrong and why, unless the human already resolved it elsewhere. Interpretation is the human's call. Owner will stress-test.
 
-_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00 · evidence: 1_
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00_
 
 ### e01M0AXZTTHG5FKXETX0X8PR6EX — On finish, check in first: reconcile against the delta before next steps  `active`
 > but what i do expect is that after it finishes, to check in first and then figure out what to do based on the new synced state
@@ -201,7 +201,7 @@ _source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · c
 
 Owner sgtm: one always-on clew node (owner infra) whose sensors are API pollers with owner account creds — witnesses cursor/codex cloud sessions live with zero agent cooperation, runs extraction centrally, sole writer of projections (kills that conflict class). Git stays the only required meeting point; degrade-to-baseline preserved. Build gated behind single-lineage sequencing.
 
-_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00 · evidence: 1_
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00_
 
 ### e01M0AVWK3HH2R9M55FQSAWZFF1 — I9 frugality replaced: listening completeness is the invariant, cost is a dial  `active`
 > you assume i'm price sensitive and are using token cost as being prohibitive but ive never mentioned we need to make this work cheaply
@@ -215,14 +215,14 @@ _source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · c
 
 Owner ruling: restart-with-mutation is the flagship, advertised workflow. The old negative was retelling pain (re-briefing a blank agent), not rebirth. Direction: clew from <parent> "<mutation>" carries the seed, makes the mutation the genesis charter, and flags carried entries it contradicts — day-zero docket = the design debate, pre- computed. Gated behind single-lineage sequencing.
 
-_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00 · evidence: 1_
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00_
 
 ### e01M0AV0H7T9P69CNPB56MRAG8V — Sequencing: single-lineage from + one-project glance FIRST; fleet/multi later  `active`
 > we need to get clew from working well with just one project lineage, and the glance infra ui working with just one project well first, else we risk scope creep and me clew from clew
 
 Owner ruling: no rush on multi-parent from or the fleet view. Get clew from working well with one project lineage and the glance UI working well for one project before any scaling work — else scope creep triggers the restart urge (owner: risk of clew- from-clew). Multi-parent and fleet rulings stand as destination, gated on the single versions working well.
 
-_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00 · evidence: 1_
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00_
 
 ### e01M0AV0H7RY7DG79VCMHPEMPJP — Glance direction ruling: graphic, two zooms — deferred behind single-project  `active`
 > the glance view _graphic_ not text, needs to support a one project view, and global view
@@ -236,14 +236,14 @@ _source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · c
 
 Owner ruling: inheritance is multi-parent. `clew from A B` unions seeds; `--tags <globs>` selects strands per parent; runnable repeatedly. Each carried entry keeps per-parent provenance; disagreements between parents surface as possible-contradiction cards for human arbitration, never silent merge. Genesis records multiple lineage links (the forest gains merge nodes).
 
-_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00 · evidence: 1_
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00_
 
 ### e01M0ASQGK4FMKRNCNR91KJ06JD — Restart machinery must be zero human effort: ambient inheritance, opt-out  `active`
 > the solution we create out of clew needs to make the restart acceleration zero effort from the human or zero cognitive load
 
 Lesson from substrate x2: reuse that costs effort at the clean-slate moment gets skipped. Therefore: SEED.md maintained continuously; birth detection auto-injects owner laws only; full manifest ceremony stays optional. Anything required at project birth is a bug (I13).
 
-_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00 · evidence: 1_
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00_
 
 ### e01M0ASQGK2ZK03KRP4WPAQG0MJ — Bet: restart-accelerated development plus drift guardrails, one shared substrate  `active`
 > lets bet the farm on strong coordination via our journal and intent < - > current reality drift
@@ -264,14 +264,14 @@ _source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · c
 
 Laws are stored as an owner-scope journal synced like any other. Findings become laws through an explicit `clew journal promote <id>`, with the extractor proposing promotion when a finding's content is project-agnostic. The resulting law set is capped at a ≤1KB injection into every project's context, permanently.
 
-_source: session codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-24-00-01a01578-e6db-7833-9ab2-0457569af643.jsonl#L9 · confidence: 0.92 · tags: .clew/** · evidence: 1 · pairs-with: e01M0AQHSRF4DVDYZ989M4DVHYX, e01M0AQHSRF4DVDYZ989MTZQV7E_
+_source: session codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-24-00-01a01578-e6db-7833-9ab2-0457569af643.jsonl#L9 · confidence: 0.92 · tags: .clew/** · pairs-with: e01M0AQHSRF4DVDYZ989M4DVHYX, e01M0AQHSRF4DVDYZ989MTZQV7E_
 
 ### e01M0AQHSRF4DVDYZ989RNZVC46 — `clew from` is the one explicit lineage command; never automatic  `active`
 > Runnable at birth or any time later; un-carrying is a reject (carried entries keep provenance like everything else). Never automatic. The birth card may suggest clew from X on blatant name/topic overlap — suggest only, never act.
 
 Pulling a predecessor's seed (decisions, findings, graveyard, exhibits, organ-bank pin) happens only via an explicit `clew from <repo>`; with no args it lists candidates ranked by recency and topic overlap, showing what each would carry. It can run at birth or later, un-carrying is recorded as a reject so carried entries keep provenance, and the birth card may only suggest `clew from X` on name/t…
 
-_source: session codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-24-00-01a01578-e6db-7833-9ab2-0457569af643.jsonl#L9 · confidence: 0.93 · evidence: 1_
+_source: session codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-24-00-01a01578-e6db-7833-9ab2-0457569af643.jsonl#L9 · confidence: 0.93_
 
 ### e01M0AQHSRF4DVDYZ989MTZQV7E — SEED.md is watcher-maintained continuously, never generated on demand  `possible-contradiction`
 > the watcher maintains SEED.md continuously alongside context.md — regenerated on journal change, never on demand. The carry-kit always predates the urge to restart.
@@ -588,14 +588,14 @@ _source: human cli:note · confidence: 1.00_
 
 Human confirm/reject signals are recorded only in per-worktree events/*.yaml, so measuring confirm rate requires a find+awk scrape instead of a DB query. Adapter "unknown" counts are cumulative, undated KV rows and never surfaced in status. Both dogfood metrics are therefore not queryable from state.db.
 
-_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-18-36-01a00b95-1c07-7d61-a3e4-fb76948ee1b9.jsonl#L441 · confidence: 0.87 · tags: internal/**, cmd/clew/** · evidence: 13 · taint: tool_result_
+_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-18-36-01a00b95-1c07-7d61-a3e4-fb76948ee1b9.jsonl#L441 · confidence: 0.87 · tags: internal/**, cmd/clew/** · evidence: 14 · taint: tool_result_
 
 ### e01M05T4XG0RJWQTP25SYT4FH0B — Task 2 not passable: `spent` conflates extraction, differ, and archaeology  `suspect`
 > `spent` combines extraction, differ, and archaeology; it is not extraction-only.
 
 The dogfood audit judged Task 2 not passable yet. The budget `spent` counter mixes extraction, differ, and archaeology tokens, so the predeclared extraction-only cost metric cannot be read from it. Separating cost by kind is a prerequisite before the Task 2 gate can be honestly evaluated.
 
-_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-18-36-01a00b95-1c07-7d61-a3e4-fb76948ee1b9.jsonl#L441 · confidence: 0.90 · tags: internal/**, cmd/clew/** · evidence: 13 · taint: tool_result_
+_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-18-36-01a00b95-1c07-7d61-a3e4-fb76948ee1b9.jsonl#L441 · confidence: 0.90 · tags: internal/**, cmd/clew/** · evidence: 14 · taint: tool_result_
 
 ### e01M05SPB2EMMC4F4PR0BDQA8S5 — First watch treated historical sessions as live: 342 overlaps, 27 stomps, 12.9M…  `suspect`
 > First watch misclassified historical sessions as live, producing 342 overlaps, 27 stomps, and 12,895,847 observed tokens.
@@ -762,35 +762,35 @@ Deliver one idempotent journal-delta digest via: (1) base-URL proxy shim — the
 
 _source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 0.95_
 
-### e01M0ARJKGSQFSH8WSVZEG520DH — Surface coverage: phone reads the glance and receives decision cards  `absent`
+### e01M0ARJKGSQFSH8WSVZEG520DH — Surface coverage: phone reads the glance and receives decision cards  `proposed`
 > phone is typically either a variant of cloud or remote to laptop
 
 Owner requirement: phone is read + interrupt only — journal.md via GitHub mobile as the away-glance; ntfy delivering decision cards (headline + why-you) as the only push. No write path in v1 (known gap, trigger on file). Evidence classes: ntfy deliveries with measured push precision; first-screenful glance fix landed. Blocked on owner's 3-minute pairing: rotate leaked topic, redact, subscribe.
 
 _source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-18 · confidence: 0.95_
 
-### e01M0ARJHKDP6Z6R1FKZSJ8AN4S — Surface coverage: laptop agents fully sensed with zero human effort  `absent`
+### e01M0ARJHKDP6Z6R1FKZSJ8AN4S — Surface coverage: laptop agents fully sensed with zero human effort  `proposed`
 > agents on laptop
 
 Owner requirement: local agents (claude/codex/cursor CLI) on watched machines are tailed, extracted, and journaled with no manual notes. Evidence classes: automatic session entries; extraction spend within I9; adapter incidents loud. Largely met by current dogfood; kept as an intent so regressions surface as absence rather than silence.
 
 _source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-18 · confidence: 0.95_
 
-### e01M0ARJFTWEWY5H6JFJ17656W4 — Surface coverage: PR-only cloud agents (Codex-app-class) contribute knowledge  `in_flight`
+### e01M0ARJFTWEWY5H6JFJ17656W4 — Surface coverage: PR-only cloud agents (Codex-app-class) contribute knowledge  `proposed`
 > when I open the android codex/chatgpt app to do more work in the cloud what happens
 
 Owner requirement: agents in sandboxes that can only open PRs (Android Codex/ChatGPT app work) must still contribute session knowledge, not just code. Mechanism blocked on the write-path ruling (see the open question entry). Evidence classes: journal entries whose provenance is a PR-only sandbox; until then, their sessions remain a visible gap in status, never a silent one.
 
-_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-18 · confidence: 0.95 · evidence: 1_
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-18 · confidence: 0.95_
 
-### e01M0ARJE1XNN8Q45DJ36FP47YT — Surface coverage: repo-write cloud agents (Cursor-class) are full journal nodes  `absent`
+### e01M0ARJE1XNN8Q45DJ36FP47YT — Surface coverage: repo-write cloud agents (Cursor-class) are full journal nodes  `proposed`
 > my originally stated (yet somehow lost, even using the journal) surfaces: agents on web (typically cloud), agents in cloud, agents on laptop, phone is typically either a variant of cloud or remote to laptop
 
 Owner requirement: cloud/web agents working on watched repos read the journal at session start (digest from branch) and write their session knowledge back. Evidence classes: journal-branch pushes originating from cloud runs; digest fetches in cloud AGENTS.md startup. This entry itself was pushed by a credentialed cloud agent as the first proof.
 
 _source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-18 · confidence: 0.95_
 
-### e01M0AQHSRF4DVDYZ989PVHGA7R — Birth detection: auto-init a new repo with owner laws only  `absent`
+### e01M0AQHSRF4DVDYZ989PVHGA7R — Birth detection: auto-init a new repo with owner laws only  `proposed`
 > new git init + agent session on a watched machine → auto-init (watch, journal branch, context.md) with owner laws only. No lore, no card required. Acceptance: mkdir x && git init && claude yields a context containing the owner's laws with zero clew commands typed.
 
 Build auto-init so that a fresh git init plus an agent session on a watched machine sets up watch, journal branch, and context.md carrying only the owner's laws — no lore and no birth card required. Acceptance test: `mkdir x && git init && claude` yields a context containing the owner's laws with zero clew commands typed.
@@ -865,7 +865,7 @@ _source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T
 
 The semantics investigation reported a root cause and a narrow fix to the parent: make live baselines transactional, use source-time (not observation-time) session timestamps, and give backfill its own bounded cursor separate from live watch. This is the proposed work to make backfill and live watch disjoint.
 
-_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-18-36-01a00b95-1c07-7d61-a3e4-fb76948ee1b9.jsonl#L335 · confidence: 0.62 · tags: cmd/clew/**, internal/** · evidence: 18 · taint: tool_result_
+_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-18-36-01a00b95-1c07-7d61-a3e4-fb76948ee1b9.jsonl#L335 · confidence: 0.62 · tags: cmd/clew/**, internal/** · evidence: 19 · taint: tool_result_
 
 ### e01M05SG3NTP5W2JX7Y6MP1F1K6 — Add cursor migration, complete-record offsets, and fixed historical upper bound  `in_flight`
 > adding a one-time migration, complete-record offsets, and a fixed historical upper bound
