@@ -1,6 +1,6 @@
 # Journal
 
-_generated 2026-08-18 20:27 UTC · 80 live entries (28 decisions · 31 findings · 3 questions · 18 intents) · 100 total in history_
+_generated 2026-08-18 20:28 UTC · 80 live entries (28 decisions · 31 findings · 3 questions · 18 intents) · 100 total in history_
 
 ## DECIDED
 
@@ -9,7 +9,7 @@ _generated 2026-08-18 20:27 UTC · 80 live entries (28 decisions · 31 findings 
 - `e01M0AXRKQ8C7FZNKARW83CMBMX` The five promises are the foundation (owner ratified) — 3h · active
 - `e01M0AXF5FM9RDFP817NF7QW5BN` Human-facing surface must reduce to the desires it satisfies — 3h · active
 - `e01M0AXCM53D36PDN0H85S0WE3W` Mind-plane freshness is vendor-neutral; hooks accelerate, never carry it — 3h · active
-- `e01M0AVAR0N8ZCCN1VJW3GQ5PF4` Restart-with-mutation is the flagship advertised workflow, not a failure mode — 3h · active
+- `e01M0AVAR0N8ZCCN1VJW3GQ5PF4` Restart-with-mutation is the flagship advertised workflow, not a failure mode — 4h · active
 - `e01M0ATYJG615JE6BV5MG5RAF9Z` clew from must accept multiple parent projects, with strand selection — 4h · active
 
 ## LEARNED
