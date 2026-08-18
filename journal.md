@@ -1,11 +1,11 @@
 # Journal
 
-_generated 2026-08-18 17:00 UTC · 75 live entries (23 decisions · 31 findings · 3 questions · 18 intents) · 95 total in history_
+_generated 2026-08-18 17:01 UTC · 75 live entries (23 decisions · 31 findings · 3 questions · 18 intents) · 95 total in history_
 
 ## DECIDED
 
-- `e01M0AVAR0N8ZCCN1VJW3GQ5PF4` Restart-with-mutation is the flagship advertised workflow, not a failure mode — 32m · active
-- `e01M0ATYJG615JE6BV5MG5RAF9Z` clew from must accept multiple parent projects, with strand selection — 38m · active
+- `e01M0AVAR0N8ZCCN1VJW3GQ5PF4` Restart-with-mutation is the flagship advertised workflow, not a failure mode — 33m · active
+- `e01M0ATYJG615JE6BV5MG5RAF9Z` clew from must accept multiple parent projects, with strand selection — 39m · active
 - `e01M0ASQGJZPFJD3FSRT7P4HX44` Owner-configured cloud environments are full clew nodes — 1h · active
 - `e01M0AQHSRF4DVDYZ989W6K185N` Owner laws live in an owner-scope journal with a ≤1KB injection budget — 1h · possible-contradiction
 - `e01M0AQHSRF4DVDYZ989RNZVC46` `clew from` is the one explicit lineage command; never automatic — 1h · active
@@ -14,7 +14,7 @@ _generated 2026-08-18 17:00 UTC · 75 live entries (23 decisions · 31 findings 
 
 ## LEARNED
 
-- `e01M0ASSNH1HP68M1QERV9AKG5A` Attachments bypass the secret scrub; GitHub push protection caught PATs — 58m · current
+- `e01M0ASSNH1HP68M1QERV9AKG5A` Attachments bypass the secret scrub; GitHub push protection caught PATs — 59m · current
 - `e01M0ASQGKDZ8J6SQQK3BXKYAV5` module clew blocks go install by URL; release binaries or rename needed — 1h · current
 - `e01M069MQYJX6QVW3YCWWTAWV34` --help — 1d · current
 - `e01M068FQH1ND9MM1WH851AF45M` Task 6 gate: flags 0 writes; algebra, poller, manifest pass — 1d · current
