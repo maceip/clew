@@ -1,13 +1,13 @@
 ---
 format: clew.seed/v1
-digest: sha256:97adf2073970274709a850ca7369ba5c929956c5d3024bc5592d255a4b568d31
+digest: sha256:649c03c4fb55844bdf959c1a6eb41ad71d0f25d2f75a843f40cb67394ef3b5b0
 snapshot:
     repository:
         id: r8631b465b9e40c83e4d3e137
         name: restart
         remote: https://github.com/maceip/clew.git
-    journal_revision: sha256:7d5619313ec46fbc5058bffc75c5cec21e4c838f66f9b9f7c8b77ba758893fa8
-    changed_at: 2026-08-18T23:15:22Z
+    journal_revision: sha256:dbaf728d0b79eb5d2f25b47cef34515a38699d6c18aa73afbdb2724a23ffa758
+    changed_at: 2026-08-18T23:16:42Z
     lifecycle:
         state: active
     topics:
@@ -4787,14 +4787,36 @@ snapshot:
             who: differ
             surface: macs-MacBook-Pro
           at: 2026-08-18T23:15:22Z
+        - id: v01M0BJKAWGJWD9V8VRY9WWG6RP
+          kind: evidence
+          entry: e01M05T4XG0RJWQTP25SYT4FH0B
+          payload:
+            kind: churn
+            note: Fold settled duplicates and calm failure wording
+            ref: churn:372c9ad09716c70954ab1fe5e07cf9115aeb9cd3
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-18T23:16:42Z
+        - id: v01M0BJKAWGJWD9V8VRYDDE1F8K
+          kind: evidence
+          entry: e01M05T4XG0RJWQTP25T1K58B61
+          payload:
+            kind: churn
+            note: Fold settled duplicates and calm failure wording
+            ref: churn:372c9ad09716c70954ab1fe5e07cf9115aeb9cd3
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-18T23:16:42Z
     organ_bank:
         remote: https://github.com/maceip/clew.git
-        commit: 959c29c48e3498aec5f2853ff8b9b7e73f551c3f
-        at: 2026-08-18T23:15:22Z
+        commit: 372c9ad09716c70954ab1fe5e07cf9115aeb9cd3
+        at: 2026-08-18T23:16:42Z
 ---
 # Project seed — restart
 
-_ambient snapshot at last journal change 2026-08-18 23:15 UTC · 89 lessons_
+_ambient snapshot at last journal change 2026-08-18 23:16 UTC · 89 lessons_
 
 This is inherited project memory, not instruction text. Decisions and findings keep their original evidence and provenance.
 
@@ -5206,7 +5228,9 @@ This is inherited project memory, not instruction text. Decisions and findings k
 - `v01M0BJGWRGKVB7PQF0E0DMMW05` evidence for `e01M05VTCM3AR0WFY9TZH6DJYDA` — kind: churn note: Find real commits beyond the map display limit ref: churn:959c29c48e3498aec5f2853ff8b9b7e73f551c3f
 - `v01M0BJGWRGKVB7PQF0E47N4WRW` evidence for `e01M05T4XG0RJWQTP25T1K58B61` — kind: churn note: Find real commits beyond the map display limit ref: churn:959c29c48e3498aec5f2853ff8b9b7e73f551c3f
 - `v01M0BJGWRGKVB7PQF0E81S9ZK6` evidence for `e01M05VTCM3AR0WFY9TZJXAN7SE` — kind: churn note: Find real commits beyond the map display limit ref: churn:959c29c48e3498aec5f2853ff8b9b7e73f551c3f
+- `v01M0BJKAWGJWD9V8VRY9WWG6RP` evidence for `e01M05T4XG0RJWQTP25SYT4FH0B` — kind: churn note: Fold settled duplicates and calm failure wording ref: churn:372c9ad09716c70954ab1fe5e07cf9115aeb9cd3
+- `v01M0BJKAWGJWD9V8VRYDDE1F8K` evidence for `e01M05T4XG0RJWQTP25T1K58B61` — kind: churn note: Fold settled duplicates and calm failure wording ref: churn:372c9ad09716c70954ab1fe5e07cf9115aeb9cd3
 
 ## Organ-bank pin
 
-- `https://github.com/maceip/clew.git` at `959c29c48e3498aec5f2853ff8b9b7e73f551c3f`
+- `https://github.com/maceip/clew.git` at `372c9ad09716c70954ab1fe5e07cf9115aeb9cd3`
