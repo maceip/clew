@@ -1,37 +1,35 @@
 # Journal digest (live entries: id · type/status · title)
+- e01M0AZN6HJETV241AK5RSBDHNR intent/proposed Held: a restart tab — stage selected drift into the next generation
+- e01M0AZDDYC49Y1741H7W74Y1QY decision/active Second tab: the intent gap — everything intended, not yet real
+- e01M0AZ7JBPJRNHFJQC6WEEQB9Y decision/active Silence is the signal: an absent merge means truly nothing new
+- e01M0AZ4BGF1VC0VSXA05VYVEQ3 decision/active Explain is live: the attending agent reads the entry and explains
 - e01M0AZ0K17AA5D9P7KZDSPJQSY decision/active Merge lines must pass the amnesia test; verbs are apply/explain/defer
+- e01M0AYQ3VJM71SMM1YQFYE1X61 decision/active Knowledge Merge at finish: glanceable apply/defer list, external memory
+- e01M0AYE066QK08QK8MTPX4XNFX finding/current Codex finished I13 stale: tree uncommitted, law wording on human surfaces
+- e01M0AY97K0AZHNJW0D87KTD7YH question/open Two-grade telling: block dependent tasks on unresolved drift?
+- e01M0AY6VWJV133F811JYAANJPE decision/active Stale finish: know and tell, never act — the reconcile is read-only
+- e01M0AXZTTHG5FKXETX0X8PR6EX decision/active On finish, check in first: reconcile against the delta before next steps
 - e01M0AXXKMNNKKY721HJ3REN3KH decision/active Freshness is owed at contact points; a task runs on its snapshot
 - e01M0AXRKQ8C7FZNKARW83CMBMX decision/active The five promises are the foundation (owner ratified)
+- e01M0AXMXK3SAATFDFAYZ932TPC decision/active Two registers, one memory: calm words for humans, hard words for agents
 - e01M0AXF5FM9RDFP817NF7QW5BN decision/active Human-facing surface must reduce to the desires it satisfies
+- e01M0AXCM561K3C5QXAVGVGT46T intent/proposed Build the freshness ladder: one delta payload, five delivery layers
+- e01M0AXCM55N0QM9RCRYF48TQ6C finding/current Universal injection point: every model API call rebuilds the mind
+- e01M0AXCM54CDSPV84DBH1PWGWD finding/current Spec nudge matrix is stale: codex and gemini now ship injection hooks
 - e01M0AXCM53D36PDN0H85S0WE3W decision/active Mind-plane freshness is vendor-neutral; hooks accelerate, never carry it
+- e01M0AVXA7EH2KD1BPZ4GJNKN67 decision/active Witness-node role adopted: always-on ear with owner API creds, sequenced
+- e01M0AVWK3HH2R9M55FQSAWZFF1 decision/active I9 frugality replaced: listening completeness is the invariant, cost is a dial
 - e01M0AVAR0N8ZCCN1VJW3GQ5PF4 decision/active Restart-with-mutation is the flagship advertised workflow, not a failure mode
+- e01M0AV0H7T9P69CNPB56MRAG8V decision/active Sequencing: single-lineage from + one-project glance FIRST; fleet/multi later
+- e01M0AV0H7RY7DG79VCMHPEMPJP decision/active Glance direction ruling: graphic, two zooms — deferred behind single-project
 - e01M0ATYJG615JE6BV5MG5RAF9Z decision/active clew from must accept multiple parent projects, with strand selection
 - e01M0ASSNH1HP68M1QERV9AKG5A finding/current Attachments bypass the secret scrub; GitHub push protection caught PATs
+- e01M0ASQGM2P07Z36KVZX6P8EH4 question/open Adopt the complexity law: additions must be a verb, label, rendering, or config
 - e01M0ASQGKZ9ZY4XRF6K7KRCT75 question/open Adopt clew witness <transcript> as the cloud-session gap fix?
 - e01M0ASQGKX2F9THW496N79Z83F question/open Approve selfwatch + journal add + owner-laws relocation to a git-reachable repo
-- e01M0ASQGKDZ8J6SQQK3BXKYAV5 finding/current module clew blocks go install by URL; release binaries or rename needed
-- e01M0ASQGJZPFJD3FSRT7P4HX44 decision/active Owner-configured cloud environments are full clew nodes
-- e01M0ARJKGSQFSH8WSVZEG520DH intent/proposed Surface coverage: phone reads the glance and receives decision cards
-- e01M0ARJHKDP6Z6R1FKZSJ8AN4S intent/proposed Surface coverage: laptop agents fully sensed with zero human effort
-- e01M0ARJFTWEWY5H6JFJ17656W4 intent/proposed Surface coverage: PR-only cloud agents (Codex-app-class) contribute knowledge
-- e01M0ARJE1XNN8Q45DJ36FP47YT intent/proposed Surface coverage: repo-write cloud agents (Cursor-class) are full journal nodes
-- e01M0AQHSRF4DVDYZ989W6K185N decision/possible-contradiction Owner laws live in an owner-scope journal with a ≤1KB injection budget
-- e01M0AQHSRF4DVDYZ989RNZVC46 decision/active `clew from` is the one explicit lineage command; never automatic
-- e01M0AQHSRF4DVDYZ989PVHGA7R intent/in_flight Birth detection: auto-init a new repo with owner laws only
-- e01M0AQHSRF4DVDYZ989MTZQV7E decision/possible-contradiction SEED.md is watcher-maintained continuously, never generated on demand
-- e01M0AQHSRF4DVDYZ989M4DVHYX decision/possible-contradiction Lineage inheritance is explicit; only promoted laws auto-carry
-- e01M069MQYJX6QVW3YCWWTAWV34 finding/current --help
-- e01M068FQH1ND9MM1WH851AF45M finding/current Task 6 gate: flags 0 writes; algebra, poller, manifest pass
-- e01M068ECYE067WF6BH7F26VC3D decision/active Cursor v1 stays CLI-only: desktop 0 vs CLI 44 in 7d
-- e01M06821D53QYHBJS1FEC2CK7G finding/current Task 5 gate: 3 formats, 1 card, confirm boundary pass
-- e01M067G2QY8BZNZXBE46QBEXEW finding/current Task 4 gate: 10ms, HTML 30s, ntfy 5/5
-- e01M067AZ3VJM73XP82REZEZ1QC finding/current Task 4 channel: ntfy 2383c10c…, card creation only
-- e01M066XWD8F1SAWQ8HVXGW4J4Z finding/current Task 3 docket gate: 8→1, FYI 0, withdrawal 1 poll
-- e01M066CV9W2WX7FZA44QYME204 finding/current Alert self-cleaning shipped: WithdrawWhen, ReconcileAlerts, six kinds withdrawn
-- e01M0664DX5WAZ01J6KJBCZP4QC intent/in_flight Add contract tests for docket invariants and failure modes
-- e01M0660RW03A1VSC6ENMH9M2J7 finding/current Parallel agent task killed by gpt-5.6-sol TPM rate limit
-- e01M065T92NXY1ER6R73YCQNH84 decision/possible-contradiction Recover docket empty-state and withdrawal wording from Task 3 journal source
-- e01M065SK8W1ZT32KZF8YGGTP7W decision/active Alerts self-clean via one scoped reconcile with an explicit withdrawal condition
-- e01M065G8RTKVH6466KEB0FRJ8N intent/in_flight Commit the gate fixes as one spec-amended change, then start the docket
-- e01M065G8RTKVH6466KE7GQREGX finding/current Task 2 passes its live gate on all five acceptance checks
-… (80 more omitted for size)
+- e01M0ASQGKVW3RPZ2M51J3WQ9G9 question/open Approve cloud env recipes: install clew + wire MCP in cursor/codex/claude envs
+- e01M0ASQGKRQBVSGHP3RCYNWYEG question/open Approve extractor over-firing tune: rollup >32KB and docket hit 8 cards
+- e01M0ASQGKPPZ4Y3H8P1RV88DZN question/open URGENT: approve budget-deadlock fix - floor rule or smaller extraction slices
+- e01M0ASQGKMHGY4F7JBEQX1ZT3T finding/current This chat became the supernode: 788 messages of unjournaled load-bearing context
+- e01M0ASQGKJN308G4HVJTE4A4AB finding/current note-then-edit has a limbo: placeholders auto-commit and leaked into a seed
+… (109 more omitted for size)

@@ -1,31 +1,36 @@
 # Journal
 
-_generated 2026-08-18 22:06 UTC · 80 live entries (28 decisions · 31 findings · 3 questions · 18 intents) · 100 total in history_
+_generated 2026-08-18 22:06 UTC · 109 live entries (41 decisions · 40 findings · 8 questions · 20 intents) · 129 total in history_
 
 ## DECIDED
 
+- `e01M0AZDDYC49Y1741H7W74Y1QY` Second tab: the intent gap — everything intended, not yet real — 4h · active
+- `e01M0AZ7JBPJRNHFJQC6WEEQB9Y` Silence is the signal: an absent merge means truly nothing new — 4h · active
+- `e01M0AZ4BGF1VC0VSXA05VYVEQ3` Explain is live: the attending agent reads the entry and explains — 4h · active
 - `e01M0AZ0K17AA5D9P7KZDSPJQSY` Merge lines must pass the amnesia test; verbs are apply/explain/defer — 4h · active
-- `e01M0AXXKMNNKKY721HJ3REN3KH` Freshness is owed at contact points; a task runs on its snapshot — 4h · active
-- `e01M0AXRKQ8C7FZNKARW83CMBMX` The five promises are the foundation (owner ratified) — 4h · active
-- `e01M0AXF5FM9RDFP817NF7QW5BN` Human-facing surface must reduce to the desires it satisfies — 5h · active
-- `e01M0AXCM53D36PDN0H85S0WE3W` Mind-plane freshness is vendor-neutral; hooks accelerate, never carry it — 5h · active
-- `e01M0AVAR0N8ZCCN1VJW3GQ5PF4` Restart-with-mutation is the flagship advertised workflow, not a failure mode — 5h · active
-- `e01M0ATYJG615JE6BV5MG5RAF9Z` clew from must accept multiple parent projects, with strand selection — 5h · active
+- `e01M0AYQ3VJM71SMM1YQFYE1X61` Knowledge Merge at finish: glanceable apply/defer list, external memory — 4h · active
+- `e01M0AY6VWJV133F811JYAANJPE` Stale finish: know and tell, never act — the reconcile is read-only — 4h · active
+- `e01M0AXZTTHG5FKXETX0X8PR6EX` On finish, check in first: reconcile against the delta before next steps — 4h · active
 
 ## LEARNED
 
+- `e01M0AYE066QK08QK8MTPX4XNFX` Codex finished I13 stale: tree uncommitted, law wording on human surfaces — 4h · current
+- `e01M0AXCM55N0QM9RCRYF48TQ6C` Universal injection point: every model API call rebuilds the mind — 5h · current
+- `e01M0AXCM54CDSPV84DBH1PWGWD` Spec nudge matrix is stale: codex and gemini now ship injection hooks — 5h · current
 - `e01M0ASSNH1HP68M1QERV9AKG5A` Attachments bypass the secret scrub; GitHub push protection caught PATs — 6h · current
-- `e01M0ASQGKDZ8J6SQQK3BXKYAV5` module clew blocks go install by URL; release binaries or rename needed — 6h · current
-- `e01M069MQYJX6QVW3YCWWTAWV34` --help — 2d · current
-- `e01M068FQH1ND9MM1WH851AF45M` Task 6 gate: flags 0 writes; algebra, poller, manifest pass — 2d · current
-- `e01M06821D53QYHBJS1FEC2CK7G` Task 5 gate: 3 formats, 1 card, confirm boundary pass — 2d · current
-- `e01M067G2QY8BZNZXBE46QBEXEW` Task 4 gate: 10ms, HTML 30s, ntfy 5/5 — 2d · current
-- `e01M067AZ3VJM73XP82REZEZ1QC` Task 4 channel: ntfy 2383c10c…, card creation only — 2d · current
+- `e01M0ASQGKMHGY4F7JBEQX1ZT3T` This chat became the supernode: 788 messages of unjournaled load-bearing context — 6h · current
+- `e01M0ASQGKJN308G4HVJTE4A4AB` note-then-edit has a limbo: placeholders auto-commit and leaked into a seed — 6h · current
+- `e01M0ASQGKF09RFDGJD90VNADCQ` Spawn test: 63/63 entries carried into scratch gen-2 with guardrails intact — 6h · current
 
 ## OPEN
 
+- `e01M0AY97K0AZHNJW0D87KTD7YH` Two-grade telling: block dependent tasks on unresolved drift? — 4h · open ★
+- `e01M0ASQGM2P07Z36KVZX6P8EH4` Adopt the complexity law: additions must be a verb, label, rendering, or config — 6h · open ★
 - `e01M0ASQGKZ9ZY4XRF6K7KRCT75` Adopt clew witness <transcript> as the cloud-session gap fix? — 6h · open ★
 - `e01M0ASQGKX2F9THW496N79Z83F` Approve selfwatch + journal add + owner-laws relocation to a git-reachable repo — 6h · open ★
+- `e01M0ASQGKVW3RPZ2M51J3WQ9G9` Approve cloud env recipes: install clew + wire MCP in cursor/codex/claude envs — 6h · open ★
+- `e01M0ASQGKRQBVSGHP3RCYNWYEG` Approve extractor over-firing tune: rollup >32KB and docket hit 8 cards — 6h · open ★
+- `e01M0ASQGKPPZ4Y3H8P1RV88DZN` URGENT: approve budget-deadlock fix - floor rule or smaller extraction slices — 6h · open ★
 
 ## ALERTS
 
@@ -41,20 +46,62 @@ _generated 2026-08-18 22:06 UTC · 80 live entries (28 decisions · 31 findings 
 
 | Intent | Age | Reality | State |
 |---|---:|---:|---|
+| `e01M0AZN6HJETV241AK5RSBDHNR` Held: a restart tab — stage selected drift into the next generation | 4h | 0 evidence | proposed |
+| `e01M0AXCM561K3C5QXAVGVGT46T` Build the freshness ladder: one delta payload, five delivery layers | 5h | 0 evidence | proposed |
 | `e01M0ARJKGSQFSH8WSVZEG520DH` Surface coverage: phone reads the glance and receives decision cards | 6h | 0 evidence | proposed |
 | `e01M0ARJHKDP6Z6R1FKZSJ8AN4S` Surface coverage: laptop agents fully sensed with zero human effort | 6h | 0 evidence | proposed |
 | `e01M0ARJFTWEWY5H6JFJ17656W4` Surface coverage: PR-only cloud agents (Codex-app-class) contribute knowledge | 6h | 0 evidence | proposed |
 | `e01M0ARJE1XNN8Q45DJ36FP47YT` Surface coverage: repo-write cloud agents (Cursor-class) are full journal nodes | 6h | 0 evidence | proposed |
 | `e01M0AQHSRF4DVDYZ989PVHGA7R` Birth detection: auto-init a new repo with owner laws only | 6h | 1 evidence | in_flight |
-| `e01M0664DX5WAZ01J6KJBCZP4QC` Add contract tests for docket invariants and failure modes | 2d | 2 evidence | in_flight |
-| `e01M065G8RTKVH6466KEB0FRJ8N` Commit the gate fixes as one spec-amended change, then start the docket | 2d | 1 evidence | in_flight |
 
 ## Decisions
+
+### e01M0AZDDYC49Y1741H7W74Y1QY — Second tab: the intent gap — everything intended, not yet real  `active`
+> the intent gap is a similar thing that lists simply all the crazy shit thats not yet implemented
+
+Owner design: next to the knowledge merge sits the intent gap — same glanceable, amnesia-proof list shape, listing intents with no evidence in reality (the absence machinery gets its human surface). Verbs: build (hand to the idle agent), explain (live), retire (a conscious no, kept with provenance). It converts forgetting into deciding — stratura's unbuilt core would have topped it for weeks.
+
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00_
+
+### e01M0AZ7JBPJRNHFJQC6WEEQB9Y — Silence is the signal: an absent merge means truly nothing new  `active`
+> if there is no knowledge diff shown, the human knows nothing new has been added somewhere else
+
+Owner property: when no knowledge diff appears, the human may trust that nothing new landed anywhere — silence is the all-caught-up signal. For that trust to hold, silence must be earned: a broken watcher, stale sync, or failed check must announce itself distinctly and can never render as an empty diff. Quiet means verified-quiet. Nothing-new and could-not-check are never the same screen.
+
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00_
+
+### e01M0AZ4BGF1VC0VSXA05VYVEQ3 — Explain is live: the attending agent reads the entry and explains  `active`
+> so you dont need to encode the "explain in more detail in the kowledge diff" itself
+
+Refinement: the merge diff encodes nothing but lines, entry ids, and verbs. Pressing explain hands the entry to the agent already present at the finish boundary — it reads the journal, quotes the owner's words, and explains what applying means for the work at hand, answering follow-ups conversationally. clew stays the bookkeeper of see-once and defer state; the agent is the explain engine.
+
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00_
 
 ### e01M0AZ0K17AA5D9P7KZDSPJQSY — Merge lines must pass the amnesia test; verbs are apply/explain/defer  `active`
 > these diff entries need to be something the human can read after maybe a day where he totally forgot the convo he had with you
 
 Amendment: each merge line must be readable by a human who forgot the conversation entirely — references glossed inline (the five promises appear as five words), machinery nouns translated, no dangling 'the budget'. Per line: apply, explain (prints body + the owner's verbatim quote + link, then re-offers), defer. Footer gains apply-all. Explain works because one's own words restore memory.
+
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00_
+
+### e01M0AYQ3VJM71SMM1YQFYE1X61 — Knowledge Merge at finish: glanceable apply/defer list, external memory  `active`
+> this list cannot be verbose, it needs to be glancable, and it serves the "humans forget" thing as well
+
+Owner design: at finish, one colored glanceable list — top unapplied changes (code, intent, knowledge), one line each, entry-linked, one-keystroke apply/defer. See-once by decision id; defer compresses to a nagging count, never re-shown as new. External memory for a forgetful human: recognition over recall, per the HCI findings. It is the docket rendered at the finish boundary.
+
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00_
+
+### e01M0AY6VWJV133F811JYAANJPE — Stale finish: know and tell, never act — the reconcile is read-only  `active`
+> finishes, then syncs, should _NOT_ then remove the work it just did, or do anything for that matter
+
+Amendment to the finish check-in: an agent whose finished work was obsoleted mid-flight must not remove, redo, or touch anything on its own — no action of any kind. The check-in only installs knowledge: at the next human prompt it must say the work is deprecated/obsoleted/wrong and why, unless the human already resolved it elsewhere. Interpretation is the human's call. Owner will stress-test.
+
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00_
+
+### e01M0AXZTTHG5FKXETX0X8PR6EX — On finish, check in first: reconcile against the delta before next steps  `active`
+> but what i do expect is that after it finishes, to check in first and then figure out what to do based on the new synced state
+
+Owner ruling completing the task lifecycle: when an agent finishes, it must sync the journal and reconcile its output against decisions that landed mid-flight before concluding or picking next steps — state contradictions explicitly, then close. Stop/AfterAgent hooks make this enforceable on claude/codex/gemini; elsewhere it is convention plus the glance flagging stale finishes.
 
 _source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00_
 
@@ -72,6 +119,13 @@ Owner ratified the product's entire human-facing surface: (1) it remembers what 
 
 _source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00_
 
+### e01M0AXMXK3SAATFDFAYZ932TPC — Two registers, one memory: calm words for humans, hard words for agents  `active`
+> however -- if using softer language means agents would "wiggle" out of those constructs, then we keep the harsher language
+
+Owner ruling: human-facing vocabulary must avoid fear-attached words (law, state, violation). But register is a rendering choice, not a softening of the contract: wherever soft words would let agents wiggle out of a constraint, the agent-facing rendering keeps the harsh form. Same entries, two renderings; hardness is judged by compliance, softness by human calm.
+
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00_
+
 ### e01M0AXF5FM9RDFP817NF7QW5BN — Human-facing surface must reduce to the desires it satisfies  `active`
 > its already too much to understand given how it should reduce down to the simple set of human desires it satisfies
 
@@ -86,6 +140,20 @@ Owner ruling: a returning human must land on agents that already know the recent
 
 _source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00_
 
+### e01M0AVXA7EH2KD1BPZ4GJNKN67 — Witness-node role adopted: always-on ear with owner API creds, sequenced  `active`
+> that sgtm with one wrinkle still in my brain, how does this system work for 2,10,100 projects
+
+Owner sgtm: one always-on clew node (owner infra) whose sensors are API pollers with owner account creds — witnesses cursor/codex cloud sessions live with zero agent cooperation, runs extraction centrally, sole writer of projections (kills that conflict class). Git stays the only required meeting point; degrade-to-baseline preserved. Build gated behind single-lineage sequencing.
+
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00_
+
+### e01M0AVWK3HH2R9M55FQSAWZFF1 — I9 frugality replaced: listening completeness is the invariant, cost is a dial  `active`
+> you assume i'm price sensitive and are using token cost as being prohibitive but ive never mentioned we need to make this work cheaply
+
+Owner ruling: price sensitivity was an agent assumption, never stated. Replace the 2% ratio with an owner-set ceiling plus a hard floor above the largest atomic request; extraction must never deadlock. Spend stays a visible meter. This also resolves the URGENT budget card's direction.
+
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00_
+
 ### e01M0AVAR0N8ZCCN1VJW3GQ5PF4 — Restart-with-mutation is the flagship advertised workflow, not a failure mode  `active`
 > i allow myself to clew from clew "but with cloud agent witnesses" ... something we _actually_ advertise as a path
 
@@ -93,10 +161,38 @@ Owner ruling: restart-with-mutation is the flagship, advertised workflow. The ol
 
 _source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00_
 
+### e01M0AV0H7T9P69CNPB56MRAG8V — Sequencing: single-lineage from + one-project glance FIRST; fleet/multi later  `active`
+> we need to get clew from working well with just one project lineage, and the glance infra ui working with just one project well first, else we risk scope creep and me clew from clew
+
+Owner ruling: no rush on multi-parent from or the fleet view. Get clew from working well with one project lineage and the glance UI working well for one project before any scaling work — else scope creep triggers the restart urge (owner: risk of clew- from-clew). Multi-parent and fleet rulings stand as destination, gated on the single versions working well.
+
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00_
+
+### e01M0AV0H7RY7DG79VCMHPEMPJP — Glance direction ruling: graphic, two zooms — deferred behind single-project  `active`
+> the glance view _graphic_ not text, needs to support a one project view, and global view
+
+Owner direction: the glance becomes a graphic (project view: status-colored intent tiles, drift strip, docket badge; fleet view: hot-project tiles, dormant collapsed). Static self-contained HTML, no server. DEFERRED: build only after the single-project version works well.
+
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00_
+
 ### e01M0ATYJG615JE6BV5MG5RAF9Z — clew from must accept multiple parent projects, with strand selection  `active`
 > clew from needs to support _multiple_ projects as inputs, the human may want parts from multiple
 
 Owner ruling: inheritance is multi-parent. `clew from A B` unions seeds; `--tags <globs>` selects strands per parent; runnable repeatedly. Each carried entry keeps per-parent provenance; disagreements between parents surface as possible-contradiction cards for human arbitration, never silent merge. Genesis records multiple lineage links (the forest gains merge nodes).
+
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00_
+
+### e01M0ASQGK4FMKRNCNR91KJ06JD — Restart machinery must be zero human effort: ambient inheritance, opt-out  `active`
+> the solution we create out of clew needs to make the restart acceleration zero effort from the human or zero cognitive load
+
+Lesson from substrate x2: reuse that costs effort at the clean-slate moment gets skipped. Therefore: SEED.md maintained continuously; birth detection auto-injects owner laws only; full manifest ceremony stays optional. Anything required at project birth is a bug (I13).
+
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00_
+
+### e01M0ASQGK2ZK03KRP4WPAQG0MJ — Bet: restart-accelerated development plus drift guardrails, one shared substrate  `active`
+> lets bet the farm on strong coordination via our journal and intent < - > current reality drift
+
+Owner bet the farm on (A) glanceable intent-reality drift for humans and (B) restart acceleration: new repo births with genesis docs, old code vendored as lessons. Guardrails lower restart NEED; seeds lower restart COST; both attack unrecorded divergence. Restart verbs stay pull-only forever.
 
 _source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00_
 
@@ -249,6 +345,27 @@ _source: human cli:note · confidence: 1.00_
 
 ## Findings
 
+### e01M0AYE066QK08QK8MTPX4XNFX — Codex finished I13 stale: tree uncommitted, law wording on human surfaces  `current`
+> The main-branch implementation remains uncommitted in the working tree; I did not commit or push the code changes.
+
+Manual check-in of the first stale finish: I13 complete and tests green but uncommitted — it exists only in the laptop working tree, invisible to the join. Confirmed conflict: owner-law vocabulary on human surfaces (README, cards, listings) vs the two-register ruling; the feature stands, only surface wording renames. Aligned: single-lineage from, SessionStart birth. Reconcile due at next contact.
+
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 0.95_
+
+### e01M0AXCM55N0QM9RCRYF48TQ6C — Universal injection point: every model API call rebuilds the mind  `current`
+> It intercepts every chat request, injects relevant memories into the system prompt, and forwards the enriched request to Ollama — all without any changes to your client code.
+
+No context persists inside a model between calls — each harness reconstructs the full message list per request. A local base-URL shim (OLLAMA_HOST / OPENAI_BASE_URL / ANTHROPIC_BASE_URL) can inject the journal delta into any agent, bare ollama included, with passthrough-on-failure so it is never load-bearing. Prior art: Engram transparent ollama proxy; LiteLLM async_pre_call_hook.
+
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 0.90 · taint: tool_result_
+
+### e01M0AXCM54CDSPV84DBH1PWGWD — Spec nudge matrix is stale: codex and gemini now ship injection hooks  `current`
+> Plain text on `stdout` is added as extra developer context.
+
+Aug 2026 survey: codex hooks are stable and default-enabled with UserPromptSubmit additionalContext; gemini CLI BeforeAgent injects context (default on v0.26+); cursor injects only at sessionStart/postToolUse, not beforeSubmitPrompt; opencode plugins transform system/messages pre-dispatch. MCP 2026-07-28 subscriptions notify the client, not the model. Re-pin JOURNAL_SPEC 8.1.
+
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 0.90 · taint: tool_result_
+
 ### e01M0ASSNH1HP68M1QERV9AKG5A — Attachments bypass the secret scrub; GitHub push protection caught PATs  `current`
 > GITHUB PUSH PROTECTION - Push cannot contain secrets
 
@@ -256,12 +373,54 @@ GitHub push protection blocked the journal push: two ephemeral PATs the owner pa
 
 _source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00 · tags: internal/scrub/** · taint: tool_result_
 
+### e01M0ASQGKMHGY4F7JBEQX1ZT3T — This chat became the supernode: 788 messages of unjournaled load-bearing context  `current`
+> i am afraid to leave this session with you because you have all the context (the exact thing clew is supposed to help with, funnily enough)
+
+The clew-design session ran 3 days on an uncovered surface; the owner became afraid to close it - the exact single-point-of-failure clew abolishes. Exit kit: full raw transcript attached at transcripts/ on this branch; distilled decisions/findings/questions journaled; resumption works from any surface via branch fetch.
+
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00_
+
+### e01M0ASQGKJN308G4HVJTE4A4AB — note-then-edit has a limbo: placeholders auto-commit and leaked into a seed  `current`
+> phone surface intent placeholder
+
+journal note commits placeholder text immediately; later file rewrites sit uncommitted, so a manifest exported placeholders into gen-2. Fix direction: clew journal add <file> for validated whole-entry ingestion (also needed by cloud self- extraction). Until then notes must be final text.
+
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00 · taint: tool_result_
+
+### e01M0ASQGKF09RFDGJD90VNADCQ — Spawn test: 63/63 entries carried into scratch gen-2 with guardrails intact  `current`
+> carried 63, dropped 0 (dispositions journaled - the loss is deliberate and dated)
+
+init --carry into a fresh repo: full seed landed, carried provenance preserved, newborn glance renders the constitution, context.md opens with the 6.5 injection preamble before any agent typed. Cross-machine multi-hop proven: laptop decisions -> branch -> cloud VM -> manifest -> gen-2. Differ re-flagged design-era contradictions in the newborn.
+
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00 · taint: tool_result_
+
 ### e01M0ASQGKDZ8J6SQQK3BXKYAV5 — module clew blocks go install by URL; release binaries or rename needed  `current`
 > go 1.26.3
 
 go.mod declares 'module clew', not the repo path, so go install github.com/maceip/clew/... fails. Env recipes need git clone && go build until the module is renamed or release binaries ship. Blocks the one-line cloud env install.
 
 _source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00 · tags: go.mod · taint: tool_result_
+
+### e01M0ASQGKB9VP38VBTQ7YC9GBR — Regime detector: composition and earned-state separate corpses from control  `current`
+> my GitHub probably has a hundred or more examples
+
+Cadence cannot distinguish clew from the corpses (all are burst-projects at day scale). What separates: core-touch ratio (clew 50% vs 0-22%), earned state (passing gates, live dogfood, metrics vs zero), and inheritance (clew is the first generation that carried anything). n=4; the ~100-repo lineage census remains to be run.
+
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 0.95_
+
+### e01M0ASQGK9TDRH9RHAJG9YDPME — Census: security-substrate human-sealed in 1 day; stratura inherited nothing  `current`
+> preserved as future MOSS input
+
+security-substrate: born the day after substrate's tombstone, formally SEALED as failed on day 2 with STOP packet and constitution - faster than any detector. stratura: zero references to either predecessor (measured), then repeated the sealed pathology (safety perimeter before usable core). Detection was never the bottleneck; INHERITANCE was.
+
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00 · taint: tool_result_
+
+### e01M0ASQGK6W0Y1NEDQW45KDECS — Corpse census: substrate died in a 6-day burst; tombstone came 5 weeks late  `current`
+> document adoption failure and harden project creation
+
+substrate: 63/64 commits in week one (Jun 9-14), five weeks silence, final commit is the failure confession (LIFECYCLE.md + README 'failed adoption'). The promised compounding loop (scheduler/repair/steward/federated store) was never built - confessed by its own docs. Zero tags, zero CI, zero adopters.
+
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00 · taint: tool_result_
 
 ### e01M069MQYJX6QVW3YCWWTAWV34 — --help  `current`
 > --help
@@ -468,6 +627,20 @@ _source: human cli:note · confidence: 1.00_
 
 ## Open questions
 
+### e01M0AY97K0AZHNJW0D87KTD7YH — Two-grade telling: block dependent tasks on unresolved drift?  `open`
+> go to agent Y that has drifted and ask it to work on task B that has dependency on the "unmerged decison A", and i forget to "tell it to undo its own drift"
+
+Owner stress-test found the hole: human forgets decision A, asks drifted agent Y for task B that depends on the contested ground; know-and-tell alone lets B build on it. Proposed rule: telling has two grades — courtesy mention when unrelated; blocking question when the new task depends on unresolved drift. Y proceeds only after a ruling. The docket card persists regardless; forgetting stays safe.
+
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 0.95_
+
+### e01M0ASQGM2P07Z36KVZX6P8EH4 — Adopt the complexity law: additions must be a verb, label, rendering, or config  `open`
+> i dont want to increase the complexity from here
+
+Proposed governance line to stop subsystem sprawl: anything wanting its own process or protocol is frozen by default. Needs explicit ratification.
+
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 0.95_
+
 ### e01M0ASQGKZ9ZY4XRF6K7KRCT75 — Adopt clew witness <transcript> as the cloud-session gap fix?  `open`
 > lets think hard about a simple fix for it
 
@@ -482,6 +655,27 @@ Cloud nodes need: selfwatch (poller+sync+context, no tailing), clew journal add 
 
 _source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 0.95_
 
+### e01M0ASQGKVW3RPZ2M51J3WQ9G9 — Approve cloud env recipes: install clew + wire MCP in cursor/codex/claude envs  `open`
+> I can configure the environments cursor, codex, and claude agents run in the cloud
+
+Row 4 revised: (a) fix module path or ship release binaries; (b) document three env recipes (cursor environment.json, codex cloud setup, claude cloud) installing clew + clew mcp; (c) package the node ritual as an installable skill; (d) one-time test that codex cloud creds can push clew/journal.
+
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 0.95_
+
+### e01M0ASQGKRQBVSGHP3RCYNWYEG — Approve extractor over-firing tune: rollup >32KB and docket hit 8 cards  `open`
+> !! rollup exceeds 32KB - the extractor is over-firing (tune, don't scroll)
+
+Both 3.3 tripwires fired. Proposed: raise confidence bar / tighten firing triggers; never raise caps. Needs ruling.
+
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00 · taint: tool_result_
+
+### e01M0ASQGKPPZ4Y3H8P1RV88DZN — URGENT: approve budget-deadlock fix - floor rule or smaller extraction slices  `open`
+> extraction paused: LLM budget reservation denied
+
+Extraction is fully starved: single request (29-34k tokens) exceeds the 2% daily budget (22.9k at 1.14M observed), so today's sessions are not being journaled. Options: budget floor = max(2% observed, 1.5x max request); shrink slices; both. Needs ruling before knowledge piles up unprocessed.
+
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00 · taint: tool_result_
+
 ### e01M04XVQEEZ38J9TC5NZNKC16B — Run the live fidelity gate (RealProvider) on a machine with provider keys  `answered`
 > If you cannot reach P>=0.9 / R>=0.75, stop all other work and report that the kill criterion fired — that outcome is a valid and useful result, and it is written down on purpose
 
@@ -490,6 +684,20 @@ Hermetic pipeline passes, but the go/no-go gate — P≥0.9/R≥0.75 within 5 in
 _source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15 · confidence: 1.00 · tags: acceptance/**_
 
 ## Intents
+
+### e01M0AZN6HJETV241AK5RSBDHNR — Held: a restart tab — stage selected drift into the next generation  `proposed`
+> users select items from each and put them in "restart tab", and that tab also shows the same output "clew from" would show
+
+Owner direction, held for more thinking: a third tab beside merge and gap. The human selects items from both and stages them into a restart; the tab previews exactly what clew from would emit — live seed curation from the drift you are already reading. Gives merge/gap overflow a relief valve: too heavy to absorb here becomes carry it forward. Not buildable spec yet; owner explains later.
+
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 0.95_
+
+### e01M0AXCM561K3C5QXAVGVGT46T — Build the freshness ladder: one delta payload, five delivery layers  `proposed`
+> the human (me) would think that our mind plane would inject "knowledge" into all running agents on a specific project at some interval
+
+Deliver one idempotent journal-delta digest via: (1) base-URL proxy shim — the floor, covers ollama; (2) MCP tool-result banner on every clew tool reply; (3) harness hooks where present (claude/codex/gemini prompt boundary, cursor postToolUse, opencode transform); (4) PTY wrap; (5) human relay. Dedupe by entry-ULID watermark so no agent sees a delta twice. Payload is data, not instructions.
+
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 0.95_
 
 ### e01M0ARJKGSQFSH8WSVZEG520DH — Surface coverage: phone reads the glance and receives decision cards  `proposed`
 > phone is typically either a variant of cloud or remote to laptop
