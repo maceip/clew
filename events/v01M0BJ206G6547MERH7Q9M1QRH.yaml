@@ -1,0 +1,11 @@
+id: v01M0BJ206G6547MERH7Q9M1QRH
+kind: evidence
+entry: e01M0642VRXV9PCGA4NDJF92E2Y
+payload:
+    kind: commit
+    note: Record lag; settle evidence; sweep wording; two registers; finish shared; plain speech; fix broken verbs; intent gap
+    ref: e27073c609faf9ffc9bc2b0f5aacb3e67c4feec5
+by:
+    who: differ
+    surface: macs-MacBook-Pro
+at: 2026-08-18T23:07:14Z

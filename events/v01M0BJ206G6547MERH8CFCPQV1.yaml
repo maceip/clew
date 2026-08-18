@@ -1,0 +1,11 @@
+id: v01M0BJ206G6547MERH8CFCPQV1
+kind: evidence
+entry: e01M05T4XG0RJWQTP25T1K58B61
+payload:
+    kind: churn
+    note: Record lag; settle evidence; sweep wording; two registers; finish shared; plain speech; fix broken verbs; intent gap
+    ref: churn:e27073c609faf9ffc9bc2b0f5aacb3e67c4feec5
+by:
+    who: differ
+    surface: macs-MacBook-Pro
+at: 2026-08-18T23:07:14Z
