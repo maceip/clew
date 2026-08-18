@@ -1,6 +1,6 @@
 # Journal
 
-_generated 2026-08-18 15:41 UTC · 58 live entries (18 decisions · 26 findings · 1 questions · 13 intents) · 76 total in history_
+_generated 2026-08-18 15:41 UTC · 59 live entries (18 decisions · 27 findings · 1 questions · 13 intents) · 77 total in history_
 
 ## DECIDED
 
@@ -14,13 +14,13 @@ _generated 2026-08-18 15:41 UTC · 58 live entries (18 decisions · 26 findings 
 
 ## LEARNED
 
+- `e01M0ARJC3CMW89DH89FC3EW679` proposal ruling placeholder — 0m · current
 - `e01M068FQH1ND9MM1WH851AF45M` Task 6 gate: flags 0 writes; algebra, poller, manifest pass — 1d · current
 - `e01M06821D53QYHBJS1FEC2CK7G` Task 5 gate: 3 formats, 1 card, confirm boundary pass — 1d · current
 - `e01M067G2QY8BZNZXBE46QBEXEW` Task 4 gate: 10ms, HTML 30s, ntfy 5/5 — 1d · current
 - `e01M067AZ3VJM73XP82REZEZ1QC` Task 4 channel: ntfy 2383c10c…, card creation only — 1d · current
 - `e01M066XWD8F1SAWQ8HVXGW4J4Z` Task 3 docket gate: 8→1, FYI 0, withdrawal 1 poll — 1d · current
 - `e01M065G8RTKVH6466KE7GQREGX` Task 2 passes its live gate on all five acceptance checks — 1d · current
-- `e01M064YRS4S9NK7KW9NQ1JMDV2` Malformed or missing pinned timestamps silently fall back to ingest time — 1d · suspect
 
 ## OPEN
 
@@ -177,6 +177,13 @@ Name = clew (owner). Alternatives considered: restart — verb collision, names 
 _source: human cli:note · confidence: 1.00_
 
 ## Findings
+
+### e01M0ARJC3CMW89DH89FC3EW679 — proposal ruling placeholder  `current`
+> proposal ruling placeholder
+
+proposal ruling placeholder
+
+_source: human cli:note · confidence: 1.00_
 
 ### e01M068FQH1ND9MM1WH851AF45M — Task 6 gate: flags 0 writes; algebra, poller, manifest pass  `current`
 > note-help entries=69→69; absence-threshold=4 proposed/5 absent; ineligible=proposed; human-confirm=absent; contradiction nonhuman=possible/human=contradicted; env different=current/current, same=superseded/current; poller best-overlap=pass/no-overlap=none/out-of-window=none; manifest rerun events=2→2; full=pass; race=pass; vet=pass.
