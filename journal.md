@@ -1,16 +1,16 @@
 # Journal
 
-_generated 2026-08-18 17:15 UTC · 78 live entries (26 decisions · 31 findings · 3 questions · 18 intents) · 98 total in history_
+_generated 2026-08-18 17:15 UTC · 79 live entries (27 decisions · 31 findings · 3 questions · 18 intents) · 99 total in history_
 
 ## DECIDED
 
+- `e01M0AXXKMNNKKY721HJ3REN3KH` Freshness is owed at contact points; a task runs on its snapshot — 1m · active
 - `e01M0AXRKQ8C7FZNKARW83CMBMX` The five promises are the foundation (owner ratified) — 3m · active
 - `e01M0AXF5FM9RDFP817NF7QW5BN` Human-facing surface must reduce to the desires it satisfies — 9m · active
 - `e01M0AXCM53D36PDN0H85S0WE3W` Mind-plane freshness is vendor-neutral; hooks accelerate, never carry it — 15m · active
 - `e01M0AVAR0N8ZCCN1VJW3GQ5PF4` Restart-with-mutation is the flagship advertised workflow, not a failure mode — 47m · active
 - `e01M0ATYJG615JE6BV5MG5RAF9Z` clew from must accept multiple parent projects, with strand selection — 53m · active
 - `e01M0ASQGJZPFJD3FSRT7P4HX44` Owner-configured cloud environments are full clew nodes — 1h · active
-- `e01M0AQHSRF4DVDYZ989W6K185N` Owner laws live in an owner-scope journal with a ≤1KB injection budget — 1h · possible-contradiction
 
 ## LEARNED
 
@@ -50,6 +50,13 @@ _generated 2026-08-18 17:15 UTC · 78 live entries (26 decisions · 31 findings 
 | `e01M065G8RTKVH6466KEB0FRJ8N` Commit the gate fixes as one spec-amended change, then start the docket | 1d | 1 evidence | in_flight |
 
 ## Decisions
+
+### e01M0AXXKMNNKKY721HJ3REN3KH — Freshness is owed at contact points; a task runs on its snapshot  `active`
+> i dont expect an agent on task to stop mid task and change based on a cloud agent decision i made at the same time
+
+Owner refinement: a running task is never interrupted or mutated by concurrent decisions — it finishes on the snapshot it started with. Currency is owed at the next human contact: a message typed after returning lands on a mind that already has the delta. Hooks fire at that boundary; the proxy injects only on a new human message. Urgent items route to the human, who may stop the task.
+
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00_
 
 ### e01M0AXRKQ8C7FZNKARW83CMBMX — The five promises are the foundation (owner ratified)  `active`
 > yeah those 5 things are the foundation, agreed
