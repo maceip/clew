@@ -1,15 +1,20 @@
 id: e01M0ARJHKDP6Z6R1FKZSJ8AN4S
-type: finding
-title: laptop surface intent placeholder
-body: laptop surface intent placeholder
-quote: laptop surface intent placeholder
+type: intent
+title: "Surface coverage: laptop agents fully sensed with zero human effort"
+body: >-
+  Owner requirement: local agents (claude/codex/cursor CLI) on watched machines are tailed,
+  extracted, and journaled with no manual notes. Evidence classes: automatic session
+  entries; extraction spend within I9; adapter incidents loud. Largely met by current
+  dogfood; kept as an intent so regressions surface as absence rather than silence.
+quote: "agents on laptop"
 utterance_by: user
 source:
-    kind: human
-    ref: cli:note
-    surface: cursor
-    at: 2026-08-18T15:41:53.133957177Z
-confidence: 1
+    kind: session
+    ref: chat:cursor-cloud-agent/stratura-strategy-2026-08-18
+    agent: cursor-cloud-agent
+    surface: cursor-cloud-vm
+    at: 2026-08-18T15:38:00Z
+confidence: 0.95
 tags: []
 env: null
 affects: []

@@ -1,15 +1,23 @@
 id: e01M0ARJC3CMW89DH89FC3EW679
-type: finding
-title: proposal ruling placeholder
-body: proposal ruling placeholder
-quote: proposal ruling placeholder
+type: question
+title: "Rule on PR-only cloud write path: direct-push, proposal-file, or echo-only"
+body: >-
+  journal-proposal.yaml (entries carried in PRs) was introduced by the cloud agent WITHOUT
+  owner approval and is ON HOLD — local agent should not build it yet. Options: (A) test
+  whether PR-capable sandboxes can push clew/journal directly (an agent that opens PRs has
+  pushed a branch; if not task-branch-locked, no new construct is needed); (B) the
+  proposal-file convention; (C) echo-only. Recommended: A, then C; adopt B only if a real
+  sandbox proves branch-locked.
+quote: "you just added this journal-propose.yaml construct which we hadnt discussed and i hadnt approved"
 utterance_by: user
 source:
-    kind: human
-    ref: cli:note
-    surface: cursor
-    at: 2026-08-18T15:41:47.500645423Z
+    kind: session
+    ref: chat:cursor-cloud-agent/stratura-strategy-2026-08-18
+    agent: cursor-cloud-agent
+    surface: cursor-cloud-vm
+    at: 2026-08-18T15:38:00Z
 confidence: 1
 tags: []
 env: null
 affects: []
+asks: human

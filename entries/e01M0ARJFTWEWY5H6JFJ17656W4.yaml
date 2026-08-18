@@ -1,15 +1,21 @@
 id: e01M0ARJFTWEWY5H6JFJ17656W4
-type: finding
-title: cloud surface intent placeholder
-body: cloud surface intent placeholder
-quote: cloud surface intent placeholder
+type: intent
+title: "Surface coverage: PR-only cloud agents (Codex-app-class) contribute knowledge"
+body: >-
+  Owner requirement: agents in sandboxes that can only open PRs (Android Codex/ChatGPT app
+  work) must still contribute session knowledge, not just code. Mechanism blocked on the
+  write-path ruling (see the open question entry). Evidence classes: journal entries whose
+  provenance is a PR-only sandbox; until then, their sessions remain a visible gap in
+  status, never a silent one.
+quote: "when I open the android codex/chatgpt app to do more work in the cloud what happens"
 utterance_by: user
 source:
-    kind: human
-    ref: cli:note
-    surface: cursor
-    at: 2026-08-18T15:41:51.32410932Z
-confidence: 1
+    kind: session
+    ref: chat:cursor-cloud-agent/stratura-strategy-2026-08-18
+    agent: cursor-cloud-agent
+    surface: cursor-cloud-vm
+    at: 2026-08-18T15:38:00Z
+confidence: 0.95
 tags: []
 env: null
 affects: []

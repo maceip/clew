@@ -1,15 +1,20 @@
 id: e01M0ARJE1XNN8Q45DJ36FP47YT
-type: finding
-title: web surface intent placeholder
-body: web surface intent placeholder
-quote: web surface intent placeholder
+type: intent
+title: "Surface coverage: repo-write cloud agents (Cursor-class) are full journal nodes"
+body: >-
+  Owner requirement: cloud/web agents working on watched repos read the journal at session
+  start (digest from branch) and write their session knowledge back. Evidence classes:
+  journal-branch pushes originating from cloud runs; digest fetches in cloud AGENTS.md
+  startup. This entry itself was pushed by a credentialed cloud agent as the first proof.
+quote: "my originally stated (yet somehow lost, even using the journal) surfaces: agents on web (typically cloud), agents in cloud, agents on laptop, phone is typically either a variant of cloud or remote to laptop"
 utterance_by: user
 source:
-    kind: human
-    ref: cli:note
-    surface: cursor
-    at: 2026-08-18T15:41:49.501740162Z
-confidence: 1
+    kind: session
+    ref: chat:cursor-cloud-agent/stratura-strategy-2026-08-18
+    agent: cursor-cloud-agent
+    surface: cursor-cloud-vm
+    at: 2026-08-18T15:38:00Z
+confidence: 0.95
 tags: []
 env: null
 affects: []

@@ -1,0 +1,23 @@
+id: e01M0ASAJYH0MQE1WERKHNBKJ5Q
+type: finding
+title: Committed projections conflict under multi-writer sync; entries merge clean
+body: >-
+  First two-writer rebase on clew/journal: entry/event files merged conflict-free (the
+  ULID append-only law held), but the committed projections journal.md and digest.md
+  conflicted — both writers regenerate them and git cannot know they are derived. Spec §4
+  hand-waved this ("rebase regenerates"). Fix options: stop committing projections;
+  .gitattributes union/ours strategy; or sync path auto-resolves by regenerating. Until
+  fixed, multi-writer pushes should be entries-only.
+quote: "CONFLICT (content): Merge conflict in digest.md / Auto-merging journal.md"
+utterance_by: tool_result
+source:
+    kind: session
+    ref: chat:cursor-cloud-agent/stratura-strategy-2026-08-18
+    agent: cursor-cloud-agent
+    surface: cursor-cloud-vm
+    at: 2026-08-18T15:52:00Z
+confidence: 1
+tags:
+    - internal/journal/**
+env: null
+affects: []
