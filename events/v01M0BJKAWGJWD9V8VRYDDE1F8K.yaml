@@ -1,0 +1,11 @@
+id: v01M0BJKAWGJWD9V8VRYDDE1F8K
+kind: evidence
+entry: e01M05T4XG0RJWQTP25T1K58B61
+payload:
+    kind: churn
+    note: Fold settled duplicates and calm failure wording
+    ref: churn:372c9ad09716c70954ab1fe5e07cf9115aeb9cd3
+by:
+    who: differ
+    surface: macs-MacBook-Pro
+at: 2026-08-18T23:16:42Z
