@@ -1,6 +1,6 @@
 # Journal
 
-_generated 2026-08-18 22:03 UTC · 80 live entries (28 decisions · 31 findings · 3 questions · 18 intents) · 100 total in history_
+_generated 2026-08-18 22:04 UTC · 80 live entries (28 decisions · 31 findings · 3 questions · 18 intents) · 100 total in history_
 
 ## DECIDED
 
@@ -16,7 +16,7 @@ _generated 2026-08-18 22:03 UTC · 80 live entries (28 decisions · 31 findings 
 
 - `e01M0ASSNH1HP68M1QERV9AKG5A` Attachments bypass the secret scrub; GitHub push protection caught PATs — 6h · current
 - `e01M0ASQGKDZ8J6SQQK3BXKYAV5` module clew blocks go install by URL; release binaries or rename needed — 6h · current
-- `e01M069MQYJX6QVW3YCWWTAWV34` --help — 1d · current
+- `e01M069MQYJX6QVW3YCWWTAWV34` --help — 2d · current
 - `e01M068FQH1ND9MM1WH851AF45M` Task 6 gate: flags 0 writes; algebra, poller, manifest pass — 2d · current
 - `e01M06821D53QYHBJS1FEC2CK7G` Task 5 gate: 3 formats, 1 card, confirm boundary pass — 2d · current
 - `e01M067G2QY8BZNZXBE46QBEXEW` Task 4 gate: 10ms, HTML 30s, ntfy 5/5 — 2d · current
