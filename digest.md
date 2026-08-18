@@ -9,6 +9,7 @@
 - e01M0AQHSRF4DVDYZ989PVHGA7R intent/in_flight Birth detection: auto-init a new repo with owner laws only
 - e01M0AQHSRF4DVDYZ989MTZQV7E decision/possible-contradiction SEED.md is watcher-maintained continuously, never generated on demand
 - e01M0AQHSRF4DVDYZ989M4DVHYX decision/possible-contradiction Lineage inheritance is explicit; only promoted laws auto-carry
+- e01M069MQYJX6QVW3YCWWTAWV34 finding/current --help
 - e01M068FQH1ND9MM1WH851AF45M finding/current Task 6 gate: flags 0 writes; algebra, poller, manifest pass
 - e01M068ECYE067WF6BH7F26VC3D decision/active Cursor v1 stays CLI-only: desktop 0 vs CLI 44 in 7d
 - e01M06821D53QYHBJS1FEC2CK7G finding/current Task 5 gate: 3 formats, 1 card, confirm boundary pass
@@ -35,4 +36,4 @@
 - e01M05V0G3Q9F41V62P6R5QV53G intent/in_flight Fix migration monotonicity, restore from D1 boundary, rerun cycle before passin…
 - e01M05TX51R4VZHJMNM804YPMRT finding/current D1: 30 automatic entries; Codex metadata incident pinned
 - e01M05TPA9ZK4C8RGC3KBPV2MRF intent/in_flight Re-run the live gate: install binary, normalize spend category, restart watcher
-… (66 more omitted for size)
+… (67 more omitted for size)
