@@ -1,16 +1,16 @@
 # Journal
 
-_generated 2026-08-18 22:57 UTC · 118 live entries (49 decisions · 40 findings · 9 questions · 20 intents) · 138 total in history_
+_generated 2026-08-18 22:58 UTC · 118 live entries (49 decisions · 40 findings · 9 questions · 20 intents) · 138 total in history_
 
 ## DECIDED
 
-- `e01M0BFY164YEV6DAEFVGGH18VT` The limiter gates distillation timing, never sensing; failure is lag — 29m · active
-- `e01M0BFRYY2WVHJZ3R3TDV4CFTS` The wording sweep covers every fear-attached word; docket stays by name — 32m · active
-- `e01M0BFRYY1EW9CFMJNDJ5QH3M2` Evidence settles merge lines; apply is never asked for finished work — 32m · active
-- `e01M0BF0WMX264RA9D0VTM9R24K` Entry ids are machine plumbing: never shown to or relayed through humans — 44m · active
-- `e01M0BEYP65CE70G0VVSX3PV01B` Finished means shared: work ends pushed or PR'd; local-only is an alarm — 46m · active
-- `e01M0BETRRAZ54063PRJK1JSQS7` The finish message is a surface: what exists, where it lives, my next move — 47m · active
-- `e01M0BER1Q412DRFQYESPCN0Q30` Lines are plain speech, no ids; near-duplicates fold; held items rest — 49m · active
+- `e01M0BFY164YEV6DAEFVGGH18VT` The limiter gates distillation timing, never sensing; failure is lag — 30m · active
+- `e01M0BFRYY2WVHJZ3R3TDV4CFTS` The wording sweep covers every fear-attached word; docket stays by name — 33m · active
+- `e01M0BFRYY1EW9CFMJNDJ5QH3M2` Evidence settles merge lines; apply is never asked for finished work — 33m · active
+- `e01M0BF0WMX264RA9D0VTM9R24K` Entry ids are machine plumbing: never shown to or relayed through humans — 45m · active
+- `e01M0BEYP65CE70G0VVSX3PV01B` Finished means shared: work ends pushed or PR'd; local-only is an alarm — 47m · active
+- `e01M0BETRRAZ54063PRJK1JSQS7` The finish message is a surface: what exists, where it lives, my next move — 48m · active
+- `e01M0BER1Q412DRFQYESPCN0Q30` Lines are plain speech, no ids; near-duplicates fold; held items rest — 50m · active
 
 ## LEARNED
 
@@ -18,19 +18,19 @@ _generated 2026-08-18 22:57 UTC · 118 live entries (49 decisions · 40 findings
 - `e01M0AXCM55N0QM9RCRYF48TQ6C` Universal injection point: every model API call rebuilds the mind — 5h · current
 - `e01M0AXCM54CDSPV84DBH1PWGWD` Spec nudge matrix is stale: codex and gemini now ship injection hooks — 5h · current
 - `e01M0ASSNH1HP68M1QERV9AKG5A` Attachments bypass the secret scrub; GitHub push protection caught PATs — 6h · current
-- `e01M0ASQGKMHGY4F7JBEQX1ZT3T` This chat became the supernode: 788 messages of unjournaled load-bearing context — 6h · current
-- `e01M0ASQGKJN308G4HVJTE4A4AB` note-then-edit has a limbo: placeholders auto-commit and leaked into a seed — 6h · current
-- `e01M0ASQGKF09RFDGJD90VNADCQ` Spawn test: 63/63 entries carried into scratch gen-2 with guardrails intact — 6h · current
+- `e01M0ASQGKMHGY4F7JBEQX1ZT3T` This chat became the supernode: 788 messages of unjournaled load-bearing context — 7h · current
+- `e01M0ASQGKJN308G4HVJTE4A4AB` note-then-edit has a limbo: placeholders auto-commit and leaked into a seed — 7h · current
+- `e01M0ASQGKF09RFDGJD90VNADCQ` Spawn test: 63/63 entries carried into scratch gen-2 with guardrails intact — 7h · current
 
 ## OPEN
 
-- `e01M0BER1Q5W312NDD7GZ283RCM` Cap the two screens at 7+7; overflow policy is an open question — 49m · open ★
+- `e01M0BER1Q5W312NDD7GZ283RCM` Cap the two screens at 7+7; overflow policy is an open question — 50m · open ★
 - `e01M0AY97K0AZHNJW0D87KTD7YH` Two-grade telling: block dependent tasks on unresolved drift? — 5h · open ★
-- `e01M0ASQGM2P07Z36KVZX6P8EH4` Adopt the complexity law: additions must be a verb, label, rendering, or config — 6h · open ★
-- `e01M0ASQGKZ9ZY4XRF6K7KRCT75` Adopt clew witness <transcript> as the cloud-session gap fix? — 6h · open ★
-- `e01M0ASQGKX2F9THW496N79Z83F` Approve selfwatch + journal add + owner-laws relocation to a git-reachable repo — 6h · open ★
-- `e01M0ASQGKVW3RPZ2M51J3WQ9G9` Approve cloud env recipes: install clew + wire MCP in cursor/codex/claude envs — 6h · open ★
-- `e01M0ASQGKRQBVSGHP3RCYNWYEG` Approve extractor over-firing tune: rollup >32KB and docket hit 8 cards — 6h · open ★
+- `e01M0ASQGM2P07Z36KVZX6P8EH4` Adopt the complexity law: additions must be a verb, label, rendering, or config — 7h · open ★
+- `e01M0ASQGKZ9ZY4XRF6K7KRCT75` Adopt clew witness <transcript> as the cloud-session gap fix? — 7h · open ★
+- `e01M0ASQGKX2F9THW496N79Z83F` Approve selfwatch + journal add + owner-laws relocation to a git-reachable repo — 7h · open ★
+- `e01M0ASQGKVW3RPZ2M51J3WQ9G9` Approve cloud env recipes: install clew + wire MCP in cursor/codex/claude envs — 7h · open ★
+- `e01M0ASQGKRQBVSGHP3RCYNWYEG` Approve extractor over-firing tune: rollup >32KB and docket hit 8 cards — 7h · open ★
 
 ## ALERTS
 
