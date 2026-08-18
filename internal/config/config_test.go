@@ -17,7 +17,7 @@ func TestLoadOwnerRemoteAndLegacyCompatibility(t *testing.T) {
 		if got.Owner.Remote != "" {
 			t.Fatalf("legacy owner remote = %q, want local-only", got.Owner.Remote)
 		}
-		if got.Extractor.DailyCapTokens != 200_000 || got.Extractor.SessionPct != 2.0 {
+		if got.Extractor.DailyCapTokens != 200_000 {
 			t.Fatalf("legacy defaults lost: %+v", got.Extractor)
 		}
 	})

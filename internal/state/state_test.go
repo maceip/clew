@@ -71,6 +71,9 @@ func TestResetRepoIncarnationIsTransactionalAndScoped(t *testing.T) {
 		if _, err := db.InitWatermark("tail:"+repo, "test", repo, 17); err != nil {
 			t.Fatal(err)
 		}
+		if err := db.MarkDistillationPending("session:"+repo, repo, now.Add(-time.Minute)); err != nil {
+			t.Fatal(err)
+		}
 		sessionID := "session:" + repo
 		if err := db.UpsertSession(Session{
 			ID: sessionID, Adapter: "test", RepoPath: repo,
@@ -136,6 +139,13 @@ func TestResetRepoIncarnationIsTransactionalAndScoped(t *testing.T) {
 	}
 	if _, ok := db.WatermarkOK("tail:" + target); ok {
 		t.Fatal("predecessor watermark survived reset")
+	}
+	var lagRows int
+	if err := db.QueryRow(`SELECT COUNT(*) FROM distillation_lag WHERE repo_path=?`, target).Scan(&lagRows); err != nil {
+		t.Fatal(err)
+	}
+	if lagRows != 0 {
+		t.Fatalf("predecessor distillation lag survived reset: %d row(s)", lagRows)
 	}
 	if sessions := db.LiveSessions(target, time.Hour); len(sessions) != 0 {
 		t.Fatalf("predecessor sessions survived reset: %#v", sessions)
@@ -315,6 +325,62 @@ func TestKVPrefixReturnsOnlyNonEmptyMatches(t *testing.T) {
 	got := db.KVPrefix("unknown:")
 	if len(got) != 1 || got[0].Key != "unknown:codex:item:a" || got[0].Value != "2" {
 		t.Fatalf("KVPrefix = %#v", got)
+	}
+}
+
+func TestMemoryLagPersistsUntilExtractionCatchesUp(t *testing.T) {
+	db, err := Open(filepath.Join(t.TempDir(), "state.db"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer db.Close()
+	repo, file := "/repo", "/sessions/live.jsonl"
+	now := time.Date(2026, 8, 18, 22, 30, 0, 0, time.UTC)
+	if err := db.SetWatermark("tail:"+file, "fixture", repo, 200); err != nil {
+		t.Fatal(err)
+	}
+	if err := db.SetWatermark("extract:"+file, "fixture", repo, 100); err != nil {
+		t.Fatal(err)
+	}
+	if err := db.MarkDistillationPending(file, repo, now.Add(-7*time.Minute)); err != nil {
+		t.Fatal(err)
+	}
+	if got := db.MemoryLag(repo, now); got != 7*time.Minute {
+		t.Fatalf("memory lag = %s, want 7m", got)
+	}
+	if err := db.SetWatermark("tail:"+file, "fixture", repo, 300); err != nil {
+		t.Fatal(err)
+	}
+	if err := db.MarkDistillationPending(file, repo, now); err != nil {
+		t.Fatal(err)
+	}
+	if got := db.MemoryLag(repo, now); got != 7*time.Minute {
+		t.Fatalf("later recording reset oldest lag to %s", got)
+	}
+	if err := db.SetWatermark("extract:"+file, "fixture", repo, 300); err != nil {
+		t.Fatal(err)
+	}
+	if got := db.MemoryLag(repo, now); got != 0 {
+		t.Fatalf("caught-up memory still reports %s lag", got)
+	}
+}
+
+func TestMemoryLagSurvivesBeforeExtractionCursorExists(t *testing.T) {
+	db, err := Open(filepath.Join(t.TempDir(), "state.db"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer db.Close()
+	repo, file := "/repo", "/sessions/new.jsonl"
+	now := time.Date(2026, 8, 18, 22, 30, 0, 0, time.UTC)
+	if err := db.SetWatermark("tail:"+file, "fixture", repo, 200); err != nil {
+		t.Fatal(err)
+	}
+	if err := db.MarkDistillationPending(file, repo, now.Add(-3*time.Minute)); err != nil {
+		t.Fatal(err)
+	}
+	if got := db.MemoryLag(repo, now); got != 3*time.Minute {
+		t.Fatalf("memory lag without extraction cursor = %s, want 3m", got)
 	}
 }
 

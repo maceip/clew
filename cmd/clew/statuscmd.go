@@ -8,6 +8,7 @@ import (
 	"time"
 
 	"clew/internal/adapters"
+	"clew/internal/calm"
 	"clew/internal/journal"
 	"clew/internal/model"
 	"clew/internal/poller"
@@ -49,6 +50,9 @@ func statusRepo(a *app, repo string) error {
 	snap, _ := poller.Poll(a.db, repo)
 
 	fmt.Printf("── %s ──\n", repoBase(repo))
+	if lag := a.db.MemoryLag(repo, now); lag > 0 {
+		fmt.Printf("memory is %d minutes behind\n", memoryLagMinutes(lag))
+	}
 
 	// SESSIONS: agent · surface · repo · branch · behind-by · live footprint
 	fmt.Println("SESSIONS")
@@ -103,9 +107,9 @@ func statusRepo(a *app, repo string) error {
 		func(e *model.Entry, c *journal.Computed) string {
 			flag := ""
 			if c.Status != journal.StActive {
-				flag = "  ⚠ " + string(c.Status)
+				flag = "  ⚠ " + calm.Text(string(c.Status))
 			}
-			return fmt.Sprintf("%s %s%s", e.ID, e.Title, flag)
+			return fmt.Sprintf("%s %s%s", e.ID, calm.Text(e.Title), flag)
 		})
 	section("LEARNED", model.Finding,
 		func(s journal.Status) bool { return s == journal.StCurrent || s == journal.StSuspect },
@@ -114,7 +118,7 @@ func statusRepo(a *app, repo string) error {
 			if c.Status == journal.StSuspect {
 				flag = "  ⚠ suspect"
 			}
-			return fmt.Sprintf("%s %s%s", e.ID, e.Title, flag)
+			return fmt.Sprintf("%s %s%s", e.ID, calm.Text(e.Title), flag)
 		})
 	section("OPEN", model.Question,
 		func(s journal.Status) bool { return s == journal.StOpen },
@@ -124,7 +128,7 @@ func statusRepo(a *app, repo string) error {
 				star = " ★"
 			}
 			age := int(now.Sub(e.Created()).Hours() / 24)
-			return fmt.Sprintf("%s %s · %dd%s", e.ID, e.Title, age, star)
+			return fmt.Sprintf("%s %s · %dd%s", e.ID, calm.Text(e.Title), age, star)
 		})
 
 	fmt.Println("ALERTS")
@@ -137,7 +141,7 @@ func statusRepo(a *app, repo string) error {
 			fmt.Printf("  … %d more (clew docket)\n", len(alerts)-7)
 			break
 		}
-		fmt.Printf("  [%s] %s\n", al.Kind, clipStr(al.Body, 110))
+		fmt.Printf("  [%s] %s\n", calm.Text(al.Kind), clipStr(calm.Text(al.Body), 110))
 	}
 
 	// Repo-level degradations (I2: loud lines, never silence).
@@ -164,15 +168,11 @@ func statusMachine(a *app) error {
 	p, note := a.provider()
 	observed, spent := a.db.TokensToday("observed"), a.db.TokensToday("spent")
 	extractionSpent := a.db.TokensToday("extraction-spent")
-	pctBudget := int(a.cfg.Extractor.SessionPct / 100 * float64(observed))
-	fmt.Printf("session extraction: %s · spent %s of %s (2%% rule) · observed %s today\n",
-		providerName(p, note), kTok(extractionSpent), kTok(pctBudget), kTok(observed))
+	fmt.Printf("memory distillation: %s · spent %s · recording observed %s today\n",
+		providerName(p, note), kTok(extractionSpent), kTok(observed))
 	fmt.Printf("all LLM: spent %s of %s daily cap · backfill %s · archaeology %s · differ %s\n",
 		kTok(spent), kTok(a.cfg.Extractor.DailyCapTokens), kTok(a.db.TokensToday("backfill-spent")),
 		kTok(a.db.TokensToday("archaeology-spent")), kTok(a.db.TokensToday("differ-spent")))
-	if v := a.db.Get("extract-paused"); v != "" {
-		fmt.Printf("!! extraction paused: %s\n", v)
-	}
 	if v := a.db.Get("differ-paused"); v != "" {
 		fmt.Printf("!! LLM differ paused: %s\n", v)
 	}
@@ -186,7 +186,7 @@ func statusMachine(a *app) error {
 		fmt.Printf("!! owner journal sync: %s\n", clipStr(v, 120))
 	}
 	if v := a.db.Get("owner-law-overflow"); v != "" {
-		fmt.Printf("!! owner law budget: %s\n", clipStr(v, 120))
+		fmt.Printf("!! owner guidance limit: %s\n", clipStr(calm.Text(v), 120))
 	}
 	statusKVIssues(a, "extract-error:", "extraction")
 	statusKVIssues(a, "llm-error:", "LLM")
@@ -227,6 +227,14 @@ func statusMachine(a *app) error {
 	// Cloud-session honesty (§11): visible gap, never a silent one.
 	fmt.Println("cloud sessions (claude web / codex cloud): no sensor in v1 — those sessions are a visible gap here")
 	return nil
+}
+
+func memoryLagMinutes(lag time.Duration) int {
+	minutes := int((lag + time.Minute - 1) / time.Minute)
+	if minutes < 1 {
+		return 1
+	}
+	return minutes
 }
 
 func statusKVIssues(a *app, prefix, label string) {

@@ -45,6 +45,8 @@ CREATE TABLE IF NOT EXISTS repos(
   path TEXT PRIMARY KEY, remote TEXT, registered_at TEXT);
 CREATE TABLE IF NOT EXISTS watermarks(
   file TEXT PRIMARY KEY, adapter TEXT, repo_path TEXT, offset INTEGER, updated_at TEXT);
+CREATE TABLE IF NOT EXISTS distillation_lag(
+  file TEXT PRIMARY KEY, repo_path TEXT NOT NULL, since TEXT NOT NULL);
 CREATE TABLE IF NOT EXISTS sessions(
   id TEXT PRIMARY KEY, adapter TEXT, agent TEXT, file TEXT, repo_path TEXT,
   surface TEXT, title TEXT, ctl_sock TEXT, started_at TEXT, last_activity TEXT);
@@ -72,7 +74,20 @@ CREATE TABLE IF NOT EXISTS kv(k TEXT PRIMARY KEY, v TEXT);
 	if err != nil {
 		return err
 	}
-	return migrateAlertWithdrawal(db)
+	if err := migrateAlertWithdrawal(db); err != nil {
+		return err
+	}
+	// Budget pressure delays distillation; it is no longer a human decision
+	// card or a stopped-listener condition. Retire rows produced by older
+	// binaries while preserving the machine accounting behind them.
+	stamp := time.Now().UTC().Format(time.RFC3339)
+	if _, err := db.Exec(`UPDATE alerts SET dropped_at=?
+		WHERE kind='budget' AND acked_at IS NULL AND dropped_at IS NULL`, stamp); err != nil {
+		return err
+	}
+	_, err = db.Exec(`INSERT INTO kv(k,v) VALUES('extract-paused','')
+		ON CONFLICT(k) DO UPDATE SET v=''`)
+	return err
 }
 
 // migrateAlertWithdrawal preserves databases created before alert withdrawal
@@ -147,6 +162,7 @@ func (d *DB) ResetRepoIncarnation(path string) error {
 	statements := []string{
 		`DELETE FROM footprints WHERE session_id IN (SELECT id FROM sessions WHERE repo_path=?)`,
 		`DELETE FROM sessions WHERE repo_path=?`,
+		`DELETE FROM distillation_lag WHERE repo_path=?`,
 		`DELETE FROM watermarks WHERE repo_path=?`,
 		`DELETE FROM commits_seen WHERE repo_path=?`,
 		`DELETE FROM alerts WHERE repo_path=?`,
@@ -265,6 +281,109 @@ func (d *DB) InitWatermarks(inits ...WatermarkInit) (int, error) {
 		return added, err
 	}
 	return added, nil
+}
+
+// MarkDistillationPending remembers when the oldest still-undistilled bytes
+// first appeared. INSERT OR IGNORE preserves that age across watcher restarts
+// and across later transcript growth.
+func (d *DB) MarkDistillationPending(file, repo string, since time.Time) error {
+	if since.IsZero() {
+		since = time.Now()
+	}
+	_, err := d.Exec(`INSERT OR IGNORE INTO distillation_lag(file, repo_path, since)
+		VALUES(?,?,?)`, file, repo, since.UTC().Format(time.RFC3339))
+	return err
+}
+
+func (d *DB) MarkDistillationCurrent(file string) error {
+	_, err := d.Exec(`DELETE FROM distillation_lag WHERE file=?`, file)
+	return err
+}
+
+// ReconcileDistillationLag reconstructs the disposable lag index from durable
+// watermarks. Existing rows keep their original age; pre-upgrade backlogs use
+// the last successful extraction time as a conservative starting point.
+func (d *DB) ReconcileDistillationLag(repo string, current time.Time) error {
+	rows, err := d.Query(`SELECT substr(t.file, 6), t.offset,
+		COALESCE(e.offset, 0), COALESCE(e.updated_at, t.updated_at)
+		FROM watermarks t LEFT JOIN watermarks e ON e.file='extract:' || substr(t.file, 6)
+		WHERE t.repo_path=? AND t.file LIKE 'tail:%'`, repo)
+	if err != nil {
+		return err
+	}
+	type pendingRow struct {
+		file  string
+		tail  int64
+		ex    int64
+		since string
+	}
+	var pairs []pendingRow
+	for rows.Next() {
+		var pair pendingRow
+		if err := rows.Scan(&pair.file, &pair.tail, &pair.ex, &pair.since); err != nil {
+			rows.Close()
+			return err
+		}
+		pairs = append(pairs, pair)
+	}
+	if err := rows.Close(); err != nil {
+		return err
+	}
+	pending := make(map[string]bool)
+	for _, pair := range pairs {
+		if pair.tail <= pair.ex {
+			continue
+		}
+		pending[pair.file] = true
+		since, err := time.Parse(time.RFC3339, pair.since)
+		if err != nil || since.IsZero() || since.After(current) {
+			since = current
+		}
+		if err := d.MarkDistillationPending(pair.file, repo, since); err != nil {
+			return err
+		}
+	}
+	lagRows, err := d.Query(`SELECT file FROM distillation_lag WHERE repo_path=?`, repo)
+	if err != nil {
+		return err
+	}
+	var stale []string
+	for lagRows.Next() {
+		var file string
+		if err := lagRows.Scan(&file); err != nil {
+			lagRows.Close()
+			return err
+		}
+		if !pending[file] {
+			stale = append(stale, file)
+		}
+	}
+	if err := lagRows.Close(); err != nil {
+		return err
+	}
+	for _, file := range stale {
+		if err := d.MarkDistillationCurrent(file); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+// MemoryLag is the age of the oldest undistilled recording in a repository.
+// Zero means every recorded byte has reached the extraction cursor.
+func (d *DB) MemoryLag(repo string, current time.Time) time.Duration {
+	if err := d.ReconcileDistillationLag(repo, current); err != nil {
+		return 0
+	}
+	var raw string
+	if err := d.QueryRow(`SELECT COALESCE(MIN(since),'') FROM distillation_lag WHERE repo_path=?`, repo).Scan(&raw); err != nil || raw == "" {
+		return 0
+	}
+	since, err := time.Parse(time.RFC3339, raw)
+	if err != nil || !current.After(since) {
+		return 0
+	}
+	return current.Sub(since)
 }
 
 // ---- sessions ----

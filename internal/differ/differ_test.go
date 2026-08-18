@@ -138,6 +138,46 @@ func TestJournalAlertsWithdrawWhenStatusesResolve(t *testing.T) {
 	}
 }
 
+func TestCommitSubjectSettlesMatchingDecisionWithoutModelCall(t *testing.T) {
+	db, err := state.Open(filepath.Join(t.TempDir(), "state.db"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer db.Close()
+	j := testJournal(t)
+	repo := filepath.Join(t.TempDir(), "repo")
+	now := time.Now().UTC().Truncate(time.Second)
+	matched := testEntry(t, j, model.Decision, "Evidence settles merge lines for verified work", now.Add(-time.Hour))
+	unrelated := testEntry(t, j, model.Decision, "The tablet shows decision cards", now.Add(-time.Hour))
+	crossClause := testEntry(t, j, model.Decision, "Verified phone status", now.Add(-time.Hour))
+	tagged := testEntry(t, j, model.Decision, "Store the current machine index", now.Add(-time.Hour), func(e *model.Entry) {
+		e.Tags = []string{"internal/state/**"}
+	})
+	commit := state.Commit{
+		RepoPath: repo, SHA: strings.Repeat("a", 40), Author: "test", At: now,
+		Subject: "Settle verified evidence in the merge; update phone card", Files: []string{"internal/state/state.go"},
+	}
+	if err := db.AddCommit(commit); err != nil {
+		t.Fatal(err)
+	}
+	res, err := Run(db, &Input{Repo: repo, Journal: j, Snapshot: &poller.Snapshot{RepoPath: repo}}, now)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if res.EventsAdded != 2 || !j.HasEvent(model.EvEvidence, matched.ID, "ref", commit.SHA) {
+		t.Fatalf("matching decision did not receive commit evidence: result=%+v events=%#v", res, j.Events)
+	}
+	if !j.HasEvent(model.EvEvidence, tagged.ID, "ref", commit.SHA) {
+		t.Fatal("subject matching was skipped after a glob match mapped the commit")
+	}
+	if j.HasEvent(model.EvEvidence, unrelated.ID, "ref", commit.SHA) {
+		t.Fatal("unrelated decision received guessed evidence")
+	}
+	if j.HasEvent(model.EvEvidence, crossClause.ID, "ref", commit.SHA) {
+		t.Fatal("words split across commit clauses guessed evidence")
+	}
+}
+
 func TestWorkspaceAlertsWithdrawWithinOnePoll(t *testing.T) {
 	tests := []struct {
 		name        string

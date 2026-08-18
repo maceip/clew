@@ -59,7 +59,7 @@ func cmdBackfill(args []string) error {
 	if provider == nil {
 		return fmt.Errorf("no extraction provider: %s", note)
 	}
-	metered := newBudgetedProvider(provider, a.db, a.cfg, "backfill", false, *budget)
+	metered := newBudgetedProvider(provider, a.db, a.cfg, "backfill", *budget)
 	provider = metered
 	j, err := a.openJournal(repo)
 	if err != nil {

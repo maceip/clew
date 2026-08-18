@@ -77,21 +77,14 @@ type wire struct {
 	} `json:"links"`
 }
 
-// Gate enforces the unattended-live I9 budget: extraction tokens ≤
-// session_pct% of observed session tokens today AND under the absolute daily
-// cap. Cap hit = pause loudly; sensors keep recording.
+// Gate enforces the owner's daily distillation ceiling. Recording is outside
+// this gate and never stops; a denied call leaves the extraction cursor behind
+// the tail cursor until headroom returns.
 func Gate(db *state.DB, cfg *config.Config, estimate int) (bool, string) {
 	spent := db.TokensToday("spent")
-	observed := db.TokensToday("observed")
 	cap := cfg.Extractor.DailyCapTokens
 	if spent+estimate > cap {
 		return false, fmt.Sprintf("daily cap: spent %d + est %d > %d", spent, estimate, cap)
-	}
-	sessionSpent := db.TokensToday("extraction-spent")
-	pctBudget := int(cfg.Extractor.SessionPct / 100 * float64(observed))
-	if sessionSpent+estimate > pctBudget {
-		return false, fmt.Sprintf("2%%-rule: spent %d + est %d > %d (%.0f%% of %d observed)",
-			sessionSpent, estimate, pctBudget, cfg.Extractor.SessionPct, observed)
 	}
 	return true, ""
 }
@@ -99,11 +92,7 @@ func Gate(db *state.DB, cfg *config.Config, estimate int) (bool, string) {
 // GateDaily applies the absolute machine-wide LLM cap to non-session calls,
 // which have no honest session-token denominator (archaeology and differ).
 func GateDaily(db *state.DB, cfg *config.Config, estimate int) (bool, string) {
-	spent := db.TokensToday("spent")
-	if spent+estimate > cfg.Extractor.DailyCapTokens {
-		return false, fmt.Sprintf("daily cap: spent %d + est %d > %d", spent, estimate, cfg.Extractor.DailyCapTokens)
-	}
-	return true, ""
+	return Gate(db, cfg, estimate)
 }
 
 // Run extracts from one session file starting at the extraction watermark.

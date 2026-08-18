@@ -10,6 +10,7 @@ import (
 	"strings"
 	"time"
 
+	"clew/internal/calm"
 	"clew/internal/journal"
 	"clew/internal/model"
 	"clew/internal/state"
@@ -33,12 +34,14 @@ type Item struct {
 }
 
 type View struct {
-	Screen   Screen
-	Repo     string
-	Items    []Item
-	Deferred int
-	Issues   int // source records that did not pass a clean read
-	Repairs  []string
+	Screen    Screen
+	Repo      string
+	Items     []Item
+	Settled   []Item
+	Deferred  int
+	Issues    int // source records that did not pass a clean read
+	Repairs   []string
+	MemoryLag time.Duration
 }
 
 // BuildMerge returns the newest live changes that the human has not already
@@ -63,18 +66,49 @@ func BuildMerge(j *journal.Journal, handled map[string]string) View {
 			continue
 		case "applied":
 			continue
+		case "settled":
+			continue
 		}
 		if entry.Type == model.Question || !mergeLive(computed[id]) {
 			continue
 		}
-		items = appendFolded(items, Item{ID: id, IDs: []string{id}, Line: CalmLine(entry), Entry: entry})
+		item := Item{ID: id, IDs: []string{id}, Line: CalmLine(entry), Entry: entry}
+		if verifiedWork(j, entry) {
+			view.Settled = appendFolded(view.Settled, item)
+			continue
+		}
+		items = appendFolded(items, item)
 	}
 	sort.Slice(items, func(i, k int) bool { return items[i].ID > items[k].ID })
+	sort.Slice(view.Settled, func(i, k int) bool { return view.Settled[i].ID > view.Settled[k].ID })
 	if len(items) > MaxItems {
 		items = items[:MaxItems]
 	}
+	if len(view.Settled) > MaxItems {
+		view.Settled = view.Settled[:MaxItems]
+	}
 	view.Items = items
 	return view
+}
+
+func verifiedWork(j *journal.Journal, entry *model.Entry) bool {
+	if j == nil || entry == nil || (entry.Type != model.Decision && entry.Type != model.Intent) {
+		return false
+	}
+	for _, event := range j.Events {
+		if event.Entry != entry.ID || event.Kind != model.EvEvidence {
+			continue
+		}
+		switch event.PStr("kind") {
+		case "completion":
+			return true
+		case "commit":
+			if event.PStr("ref") != "" {
+				return true
+			}
+		}
+	}
+	return false
 }
 
 // BuildGap returns intended work with no evidence in reality. An active
@@ -260,7 +294,7 @@ func issueCount(j *journal.Journal) int {
 	if j == nil {
 		return 0
 	}
-	return len(j.LoadErrors) + len(j.DisplayRecoveries)
+	return len(j.LoadErrors)
 }
 
 // latestTime is deliberately derived from the journal rather than wall time,
@@ -279,10 +313,6 @@ func decisionHasLiveFailure(entry *model.Entry, alerts []state.Alert) bool {
 	text := strings.ToLower(entry.Title + " " + entry.Body)
 	for _, alert := range alerts {
 		switch alert.Kind {
-		case "budget":
-			if containsAny(text, "hard floor", "spend floor", "budget floor", "must never deadlock", "frugality replaced") {
-				return true
-			}
 		case "adapter", "adapter-failure", "unknown-format":
 			if containsAny(text, "adapter", "format", "listen", "witness") {
 				return true
@@ -310,7 +340,15 @@ func CalmLine(entry *model.Entry) string {
 	title := strings.ToLower(entry.Title)
 	switch {
 	case strings.Contains(title, "codex finished i13 stale") || strings.Contains(title, "law wording"):
-		return "Human-facing wording needs “law” renamed while agents keep the hard wording"
+		return "Human-facing words stay calm everywhere, and docket keeps its name"
+	case strings.Contains(title, "wording sweep covers every fear-attached word"):
+		return "Human-facing words stay calm everywhere, and docket keeps its name"
+	case strings.Contains(title, "limiter gates distillation timing"):
+		return "Recording never stops, and memory catches up under your ceiling"
+	case strings.Contains(title, "evidence settles merge lines"):
+		return "Finished and verified work settles itself and tells you once"
+	case strings.Contains(title, "name the system restart"):
+		return "The system is named restart"
 	case strings.Contains(title, "entry ids are machine plumbing"):
 		return "Screen lines use plain speech, fold repeats, and leave held work alone"
 	case strings.Contains(title, "finished means shared"), strings.Contains(title, "finish message is a surface"):
@@ -358,10 +396,19 @@ func Render(w io.Writer, view View) error {
 	default:
 		return fmt.Errorf("render check-in: unknown screen %q", view.Screen)
 	}
+	if view.MemoryLag > 0 {
+		fmt.Fprintf(&b, "memory is %d minutes behind\n", lagMinutes(view.MemoryLag))
+	}
 	for _, repair := range view.Repairs {
 		if !lineAlreadyShown(repair, view.Items) {
-			b.WriteString(repair)
+			b.WriteString(calm.Text(repair))
 			b.WriteByte('\n')
+		}
+	}
+	if view.Screen == KnowledgeMerge && len(view.Settled) > 0 {
+		b.WriteString("Settled while you were away\n")
+		for _, item := range view.Settled {
+			fmt.Fprintf(&b, "✓ %s\n", calm.Text(item.Line))
 		}
 	}
 	if len(view.Items) == 0 {
@@ -369,6 +416,8 @@ func Render(w io.Writer, view View) error {
 			b.WriteString("The attending agent must repair saved knowledge before this can be called quiet.\n")
 		} else if len(view.Repairs) > 0 {
 			b.WriteString("Quiet waits until that work is fixed.\n")
+		} else if view.Screen == KnowledgeMerge && len(view.Settled) > 0 {
+			b.WriteString("Nothing needs applying.\n")
 		} else if view.Screen == KnowledgeMerge {
 			b.WriteString("Nothing new.\n")
 		} else {
@@ -378,7 +427,7 @@ func Render(w io.Writer, view View) error {
 		return err
 	}
 	for i, item := range view.Items {
-		fmt.Fprintf(&b, "%d. %s", i+1, item.Line)
+		fmt.Fprintf(&b, "%d. %s", i+1, calm.Text(item.Line))
 		if view.Screen == KnowledgeMerge {
 			b.WriteString(" — apply · explain · defer\n")
 		} else {
@@ -394,6 +443,14 @@ func Render(w io.Writer, view View) error {
 	}
 	_, err := io.WriteString(w, b.String())
 	return err
+}
+
+func lagMinutes(lag time.Duration) int {
+	minutes := int((lag + time.Minute - 1) / time.Minute)
+	if minutes < 1 {
+		return 1
+	}
+	return minutes
 }
 
 func lineAlreadyShown(repair string, items []Item) bool {

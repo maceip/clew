@@ -15,6 +15,7 @@ import (
 	"time"
 	"unicode/utf8"
 
+	"clew/internal/calm"
 	"clew/internal/journal"
 	"clew/internal/model"
 	"clew/internal/state"
@@ -382,10 +383,7 @@ func alertEvidence(alert state.Alert, ids []string, j *journal.Journal) []Eviden
 		}
 	}
 	if len(out) == 0 {
-		text := alert.EntryIDs
-		if text == "" {
-			text = alert.Key
-		}
+		text := "The watcher found this while checking current work"
 		out = append(out, Evidence{
 			Text: text, Verbatim: true,
 			Provenance: Provenance{Kind: "state", Ref: "alert:" + alert.Key},
@@ -636,24 +634,20 @@ func Render(w io.Writer, view View) error {
 }
 
 func renderCard(out *strings.Builder, card Card, now time.Time) {
-	fmt.Fprintf(out, "┌─ DECIDE ─ blocking %s · %s ─\n", card.Why.RuleCode, elapsed(now, card.Why.Since))
-	fmt.Fprintf(out, "│ %s\n", card.Headline)
+	fmt.Fprintf(out, "┌─ DECIDE · %s ─\n", elapsed(now, card.Why.Since))
+	fmt.Fprintf(out, "│ %s\n", calm.Text(card.Headline))
 	stall := ""
 	if card.Why.RunningAgents > 0 {
 		stall = fmt.Sprintf(" · %d running agents stalled", card.Why.RunningAgents)
 	}
-	fmt.Fprintf(out, "│ why you: %s fired · cost of delay: %s%s\n", card.Why.Rule, card.Why.CostOfDelay, stall)
+	fmt.Fprintf(out, "│ why you: %s · cost of delay: %s%s\n", calm.Text(card.Why.Rule), calm.Text(card.Why.CostOfDelay), stall)
 	out.WriteString("│\n")
 	for _, row := range card.Evidence {
-		fmt.Fprintf(out, "│ ▸ %s   [%s · %s", strconv.Quote(row.Text), row.Provenance.Kind, row.Provenance.Ref)
-		if row.Provenance.EntryID != "" {
-			fmt.Fprintf(out, " · entry %s", row.Provenance.EntryID)
-		}
-		out.WriteString(" ↗]\n")
+		fmt.Fprintf(out, "│ ▸ %s   [%s ↗]\n", strconv.Quote(row.Text), calm.Text(row.Provenance.Kind))
 	}
 	if card.Magnitude == HighMagnitude {
 		out.WriteString("│\n")
-		fmt.Fprintf(out, "│ accepting this assumes: %s\n", card.Assumption)
+		fmt.Fprintf(out, "│ accepting this assumes: %s\n", calm.Text(card.Assumption))
 	}
 	out.WriteString("│\n│ ")
 	for i, answer := range card.Answers {
@@ -666,22 +660,22 @@ func renderCard(out *strings.Builder, card Card, now time.Time) {
 		fmt.Fprintf(out, " [%s]", verbLabel(*card.Redirect))
 	}
 	if card.Defer != nil {
-		fmt.Fprintf(out, " [%s → %s]", verbLabel(card.Defer.Verb), card.Defer.Until)
+		fmt.Fprintf(out, " [%s]", verbLabel(card.Defer.Verb))
 	}
 	if card.Open != nil {
 		fmt.Fprintf(out, " [enter] %s", verbLabel(*card.Open))
 	}
 	out.WriteByte('\n')
-	fmt.Fprintf(out, "│ withdraws itself if %s [when=%s]\n", card.Withdrawal.Text, card.Withdrawal.When)
+	fmt.Fprintf(out, "│ leaves when %s\n", calm.Text(card.Withdrawal.Text))
 	out.WriteString("└─\n")
 }
 
 func renderOverflow(out *strings.Builder, n int, precision *PushPrecision) {
-	out.WriteString("┌─ SYSTEM FAILURE ─ I12 docket overflow ─\n")
+	out.WriteString("┌─ TOO MUCH NEEDS YOU · docket overflow ─\n")
 	fmt.Fprintf(out, "│ %d more items — the system is misconfigured; push-precision report attached\n", n)
 	fmt.Fprintf(out, "│ %s\n", pushPrecisionText(precision))
-	out.WriteString("│ [inspect-config]\n")
-	out.WriteString("│ withdraws itself if the decision-card count returns to seven or fewer [when=docket:card-count<=7]\n")
+	out.WriteString("│ inspect settings\n")
+	out.WriteString("│ leaves when the decision-card count returns to seven or fewer\n")
 	out.WriteString("└─\n")
 }
 

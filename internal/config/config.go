@@ -36,8 +36,7 @@ type Extractor struct {
 	OpenAIKeyEnv string `yaml:"openai_key_env,omitempty"`
 
 	// Budget (I9, §6.4).
-	DailyCapTokens int     `yaml:"daily_cap_tokens"`
-	SessionPct     float64 `yaml:"session_pct"`
+	DailyCapTokens int `yaml:"daily_cap_tokens"`
 }
 
 type Config struct {
@@ -61,8 +60,7 @@ func Default() *Config {
 		Extractor: Extractor{
 			Provider:       "auto",
 			OpenAIKeyEnv:   "OPENAI_API_KEY",
-			DailyCapTokens: 200_000, // §6.4 default
-			SessionPct:     2.0,     // I9: ≤2% of observed session tokens
+			DailyCapTokens: 200_000, // owner ceiling; recording itself is unmetered
 		},
 		LinkPass: true,
 	}
@@ -77,9 +75,6 @@ func Load() *Config {
 	_ = yaml.Unmarshal(b, c)
 	if c.Extractor.DailyCapTokens <= 0 {
 		c.Extractor.DailyCapTokens = 200_000
-	}
-	if c.Extractor.SessionPct <= 0 {
-		c.Extractor.SessionPct = 2.0
 	}
 	if c.Extractor.OpenAIKeyEnv == "" {
 		c.Extractor.OpenAIKeyEnv = "OPENAI_API_KEY"

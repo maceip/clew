@@ -11,6 +11,7 @@ import (
 	"strings"
 	"time"
 
+	"clew/internal/calm"
 	"clew/internal/docket"
 	"clew/internal/gitx"
 	"clew/internal/journal"
@@ -87,8 +88,8 @@ func buildGlance(a *app, repo string, j *journal.Journal, now time.Time) glanceV
 				break
 			}
 			items = append(items, glanceItem{
-				ID: entry.ID, Title: entry.Title, Age: glanceAge(now, entry.Created()),
-				Status: string(st[entry.ID].Status), Star: entry.Type == model.Question && entry.Asks == "human",
+				ID: entry.ID, Title: calm.Text(entry.Title), Age: glanceAge(now, entry.Created()),
+				Status: calm.Text(string(st[entry.ID].Status)), Star: entry.Type == model.Question && entry.Asks == "human",
 			})
 		}
 		view.Sections = append(view.Sections, glanceSection{Name: name, Items: items})

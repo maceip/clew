@@ -29,8 +29,8 @@ func TestKnowledgeMergeIsBoundedAmnesiaProofAndHasExactVerbs(t *testing.T) {
 	if len(view.Items) != MaxItems {
 		t.Fatalf("merge items = %d, want %d", len(view.Items), MaxItems)
 	}
-	if got := view.Items[0].Line; !strings.Contains(got, "Human-facing wording needs “law” renamed") || strings.Contains(got, "tree uncommitted") {
-		t.Fatalf("law item did not pass the amnesia translation: %q", got)
+	if got := view.Items[0].Line; !strings.Contains(got, "Human-facing words stay calm everywhere") || strings.Contains(got, "tree uncommitted") {
+		t.Fatalf("wording item did not pass the amnesia translation: %q", got)
 	}
 	var out bytes.Buffer
 	view.Repo = "restart"
@@ -58,14 +58,15 @@ func TestIntentGapIncludesHookWiringAndLiveSpendFailureWithoutBuildAll(t *testin
 	}}
 
 	view := BuildGap(j, []state.Alert{{Kind: "budget", Body: "extraction paused"}})
-	if len(view.Items) != 2 {
-		t.Fatalf("gap items = %#v, want hook and spend only", view.Items)
+	if len(view.Items) != 1 {
+		t.Fatalf("gap items = %#v, want only the unfinished hook wiring", view.Items)
 	}
-	lines := view.Items[0].Line + "\n" + view.Items[1].Line
-	for _, want := range []string{"spend floor above one full request", "Every agent needs new decisions"} {
-		if !strings.Contains(lines, want) {
-			t.Fatalf("gap missing %q:\n%s", want, lines)
-		}
+	lines := view.Items[0].Line
+	if !strings.Contains(lines, "Every agent needs new decisions") {
+		t.Fatalf("gap missing hook wiring:\n%s", lines)
+	}
+	if strings.Contains(lines, "spend floor") {
+		t.Fatalf("finished listener work remained in the gap:\n%s", lines)
 	}
 	var out bytes.Buffer
 	view.Repo = "restart"
@@ -100,6 +101,47 @@ func TestEmptyAndBrokenAreNeverTheSameScreen(t *testing.T) {
 				t.Fatalf("wrong state:\n%s", got)
 			}
 		})
+	}
+}
+
+func TestVerifiedWorkSettlesAndOnlyShowsOnce(t *testing.T) {
+	base := time.Date(2026, 8, 18, 17, 0, 0, 0, time.UTC)
+	done := testEntry(ids.NewEntry(base), model.Decision, "Name the system restart", base)
+	pending := testEntry(ids.NewEntry(base.Add(time.Minute)), model.Decision, "Choose the next color", base.Add(time.Minute))
+	j := &journal.Journal{Entries: map[string]*model.Entry{done.ID: done, pending.ID: pending}}
+	evidence := &model.Event{
+		ID: ids.NewEvent(base.Add(2 * time.Minute)), Kind: model.EvEvidence, Entry: done.ID,
+		Payload: map[string]any{"kind": "commit", "ref": "abc123"}, By: model.By{Who: "differ"}, At: base.Add(2 * time.Minute),
+	}
+	j.Events = []*model.Event{evidence}
+
+	first := BuildMerge(j, nil)
+	if len(first.Settled) != 1 || len(first.Items) != 1 || EntryIDs(first.Settled[0])[0] != done.ID {
+		t.Fatalf("first merge = settled %#v actionable %#v", first.Settled, first.Items)
+	}
+	var out bytes.Buffer
+	first.Repo = "restart"
+	if err := Render(&out, first); err != nil {
+		t.Fatal(err)
+	}
+	if got := out.String(); !strings.Contains(got, "Settled while you were away") || strings.Contains(got, "The system is named restart — apply") {
+		t.Fatalf("settled work was actionable or silent:\n%s", got)
+	}
+	second := BuildMerge(j, map[string]string{done.ID: "settled"})
+	if len(second.Settled) != 0 || len(second.Items) != 1 {
+		t.Fatalf("settled receipt repeated: %#v", second)
+	}
+}
+
+func TestMemoryLagAppearsOnBothScreens(t *testing.T) {
+	for _, screen := range []Screen{KnowledgeMerge, IntentGap} {
+		var out bytes.Buffer
+		if err := Render(&out, View{Screen: screen, Repo: "restart", MemoryLag: 91 * time.Second}); err != nil {
+			t.Fatal(err)
+		}
+		if got := out.String(); !strings.Contains(got, "memory is 2 minutes behind") || strings.Contains(got, "paused") {
+			t.Fatalf("lag wording for %s:\n%s", screen, got)
+		}
 	}
 }
 

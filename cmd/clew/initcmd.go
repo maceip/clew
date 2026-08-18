@@ -105,7 +105,7 @@ func cmdInit(args []string) error {
 	if !*noArch {
 		p, note := a.provider()
 		if p != nil {
-			p = newBudgetedProvider(p, a.db, a.cfg, "archaeology", false, 0)
+			p = newBudgetedProvider(p, a.db, a.cfg, "archaeology", 0)
 		}
 		if p == nil {
 			fmt.Printf("archaeology: %s\n", note)

@@ -97,10 +97,13 @@ func TestCardCreatedByAlertNeverSelectsUnrelatedOrFYICard(t *testing.T) {
 func TestDocketPushMessageIsHeadlinePlusWhyStrip(t *testing.T) {
 	card := docket.Card{
 		Headline: "Which owner should keep the file?",
-		Why:      docket.WhyYou{RuleCode: "dirty-same-file-overlap", CostOfDelay: "continued edits risk lost work"},
+		Why: docket.WhyYou{
+			RuleCode: "dirty-same-file-overlap", Rule: "running sessions overlap on a dirty file",
+			CostOfDelay: "continued edits risk lost work",
+		},
 	}
 	title, body := docketPushMessage(card)
-	if title != card.Headline || body != "dirty-same-file-overlap fired · cost of delay: continued edits risk lost work" {
+	if title != card.Headline || body != "running sessions overlap on a dirty file · cost of delay: continued edits risk lost work" {
 		t.Fatalf("push = %q / %q", title, body)
 	}
 }

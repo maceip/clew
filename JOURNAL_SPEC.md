@@ -71,7 +71,7 @@ policy language. One binary + one git branch.
 | I6 | **The human is a node.** Human edits are first-class entries; status is displayed, never interviewed. | §8 edit verbs; glance spec | "Did you fetch from main?" interviews |
 | I7 | **No entry without evidence of utterance.** Every extracted entry carries a verbatim (redacted) quote and a source pointer. No quote → no entry. | Extraction schema validation | Hallucinated journal rot — the product dies if the glance can't be trusted |
 | I8 | **Bounded attention.** Push only for human-blocking items; every pushed item names why it blocks. Glance ≤ 7 items per section. | §8 ranking gate | Dashboard/feed fatigue |
-| I9 | **Bounded cost.** Extraction spend ≤ 2% of observed session tokens, hard daily cap, live meter in `status`. | §6.4 budget | Token runaway; silent bill shock |
+| I9 | **Recording never stops.** Session bytes are always recorded. Distillation runs under the owner's daily ceiling and exposes its oldest lag while catching up. | §6.4 ceiling + durable tail/extraction lag clock | Deaf agents; token runaway; silent backlog |
 | I10 | **Decision-shaped only.** The docket (formerly `inbox`) contains exclusively items answerable by 1–3 discrete verbs. Nothing FYI-shaped may render there; information belongs to the glance. One import is one card; a session's findings are zero cards. | Typed card builder rejects zero-verb, >3-verb, and non-blocking inputs | Email/feed drift; human review as clerical work |
 | I11 | **Self-cleaning.** Every card carries a machine-checkable withdrawal condition, printed on the card and evaluated continuously. Stomps withdraw when their dirty overlap clears, contradictions on supersession/ruling, questions on answer/expiry. The docket describes now; it has no history, unread count, or badge. | Poll reconciliation + render-time journal status check | Backlog accumulation; stale intervention theater |
 | I12 | **Volume is a system-failure signal.** At most seven cards render and there is no scrolling. Overflow becomes one misconfiguration card with push precision attached. Sustained >7 cards/day or any push that did not truly need the human is logged as a system failure, never user workload. | Hard renderer cap + failure meter | Normalizing over-firing as human workload |
@@ -391,16 +391,13 @@ PATH-resolved, and file arguments must be absolute; invalid relative paths fail 
 
 ### 6.4 Budget (I9)
 
-Spend meter per day per machine. Rule: extraction tokens ≤ 2% of observed session tokens that
-day, with an absolute daily cap (default 200k tokens). Backfill runs only inside explicit
-`--budget` bounds. Meter shown in `status`; cap hit = extraction pauses loudly, sensors keep
-recording (nothing is lost — extraction catches up later; watermarks make this safe).
-
-The 2% ratio gates unattended **live session extraction**. Explicit one-time archaeology and
-`backfill --budget` share the absolute daily LLM cap but do not consume that ratio; backfill is
-additionally bounded by its required command-line budget. Archaeology, backfill, and optional LLM
-differ passes are metered separately. This preserves §5.3 cold start without inventing session
-observations that did not occur, while every autonomous or explicit provider call remains capped.
+Session recording is outside the spend meter and never stops. Distillation runs only while
+aggregate LLM spend remains under `daily_cap_tokens` (default 200k), the owner's ceiling.
+When headroom is unavailable, the extraction cursor remains behind the tail cursor and human
+screens say `memory is N minutes behind`; catch-up resumes automatically when headroom returns.
+Explicit one-time `backfill --budget` remains inside the same daily ceiling and also requires its
+own command-line budget. Archaeology, backfill, and optional LLM differ passes are metered
+separately, while every autonomous or explicit provider call remains capped.
 
 Before every provider call, clew atomically reserves a conservative upper bound: prompt bytes,
 fixed envelope overhead, and a 16 KB output contract. Concurrent watcher/backfill calls therefore

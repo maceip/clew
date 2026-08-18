@@ -18,17 +18,16 @@ const (
 )
 
 type budgetedProvider struct {
-	base      llm.Provider
-	db        *state.DB
-	cfg       *config.Config
-	kind      string
-	liveRatio bool
-	runCap    int // zero means only the machine limits apply
-	charged   int
+	base    llm.Provider
+	db      *state.DB
+	cfg     *config.Config
+	kind    string
+	runCap  int // zero means only the machine limits apply
+	charged int
 }
 
-func newBudgetedProvider(base llm.Provider, db *state.DB, cfg *config.Config, kind string, liveRatio bool, runCap int) *budgetedProvider {
-	return &budgetedProvider{base: base, db: db, cfg: cfg, kind: kind, liveRatio: liveRatio, runCap: runCap}
+func newBudgetedProvider(base llm.Provider, db *state.DB, cfg *config.Config, kind string, runCap int) *budgetedProvider {
+	return &budgetedProvider{base: base, db: db, cfg: cfg, kind: kind, runCap: runCap}
 }
 
 func (p *budgetedProvider) Name() string { return p.base.Name() }
@@ -48,9 +47,6 @@ func (p *budgetedProvider) Call(prompt string) (*llm.Result, error) {
 		return nil, err
 	}
 	limits := state.LLMBudgetLimits{DailyCapTokens: p.cfg.Extractor.DailyCapTokens}
-	if p.liveRatio {
-		limits.LiveSessionPct = p.cfg.Extractor.SessionPct
-	}
 	claim, err := p.db.ReserveLLMBudget(p.kind, reserve, limits)
 	if err != nil {
 		p.db.Set("llm-error:"+p.kind, err.Error())

@@ -5,6 +5,7 @@ import (
 	"strings"
 	"time"
 
+	"clew/internal/calm"
 	"clew/internal/ids"
 	"clew/internal/journal"
 	"clew/internal/materialize"
@@ -64,7 +65,7 @@ func journalPromote(a *app, repo, id string) error {
 	if !result.CertificationAdded {
 		action = "already certified"
 	}
-	fmt.Printf("%s: %s as an ambient owner law (%d/%d bytes)\n", id, action, result.Render.RequiredBytes, owner.LawCap)
+	fmt.Printf("%s: %s as shared owner guidance (%d/%d bytes)\n", id, calm.Text(action), result.Render.RequiredBytes, owner.LawCap)
 	return nil
 }
 

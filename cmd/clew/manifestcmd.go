@@ -40,7 +40,7 @@ func cmdManifest(args []string) error {
 	if *out == "" {
 		p, _ := a.provider()
 		if p != nil {
-			p = newBudgetedProvider(p, a.db, a.cfg, "manifest", false, 0)
+			p = newBudgetedProvider(p, a.db, a.cfg, "manifest", 0)
 		}
 		path, err := manifest.Generate(j, st, *spec, p, now)
 		if err != nil {
@@ -53,7 +53,7 @@ func cmdManifest(args []string) error {
 	if _, err := os.Stat(mpath); os.IsNotExist(err) || *yes {
 		p, _ := a.provider()
 		if p != nil {
-			p = newBudgetedProvider(p, a.db, a.cfg, "manifest", false, 0)
+			p = newBudgetedProvider(p, a.db, a.cfg, "manifest", 0)
 		}
 		if _, err := manifest.Generate(j, st, *spec, p, now); err != nil {
 			return err

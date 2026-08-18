@@ -285,21 +285,16 @@ func TestBudgetGate(t *testing.T) {
 	}
 	defer db.Close()
 	cfg := config.Default()
-	db.AddTokens("observed", 100_000)
 	db.AddTokens("spent", 1_000)
-	db.AddTokens("extraction-spent", 1_000)
 	if ok, _ := Gate(db, cfg, 500); !ok {
-		t.Error("1500 < 2% of 100k: should pass")
+		t.Error("distillation below the owner ceiling should pass")
 	}
-	if ok, reason := Gate(db, cfg, 2_000); ok {
-		t.Error("3000 > 2000 (2% of 100k): must pause")
-	} else if reason == "" {
-		t.Error("pause must carry a reason (loud, I2)")
+	if ok, reason := Gate(db, cfg, 2_000); !ok {
+		t.Fatalf("distillation below the owner ceiling was delayed: %s", reason)
 	}
-	db.AddTokens("observed", 100_000_000)
 	db.AddTokens("spent", 198_000)
 	if ok, _ := Gate(db, cfg, 5_000); ok {
-		t.Error("absolute daily cap must hold even with huge observed volume")
+		t.Error("the owner ceiling must delay distillation")
 	}
 }
 

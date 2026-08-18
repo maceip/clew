@@ -24,7 +24,17 @@ func cmdMerge(args []string) error {
 		return err
 	}
 	if len(args) == 0 {
-		return checkin.Render(os.Stdout, view)
+		if err := checkin.Render(os.Stdout, view); err != nil {
+			return err
+		}
+		for _, item := range view.Settled {
+			for _, id := range checkin.EntryIDs(item) {
+				if err := a.db.Set(mergeStateKey(repo, id), "settled"); err != nil {
+					return err
+				}
+			}
+		}
+		return nil
 	}
 	if len(args) == 2 && args[0] == "apply" && args[1] == "all" {
 		args = []string{"apply-all"}
@@ -133,13 +143,14 @@ func knowledgeMergeView(a *app) (string, *journal.Journal, checkin.View, error) 
 	if err != nil {
 		return "", nil, checkin.View{}, err
 	}
-	j, err := journal.LoadForDisplay(gitx.WorktreeDir(repo))
+	j, err := journal.Load(gitx.WorktreeDir(repo))
 	if err != nil {
 		return "", nil, checkin.View{}, err
 	}
 	view := checkin.BuildMerge(j, mergeStates(a, repo))
 	view.Repo = repoBase(repo)
 	view.Repairs = checkinFailureRepairs(a, repo)
+	view.MemoryLag = a.db.MemoryLag(repo, time.Now())
 	return repo, j, view, nil
 }
 
@@ -148,13 +159,14 @@ func intentGapView(a *app) (string, *journal.Journal, checkin.View, error) {
 	if err != nil {
 		return "", nil, checkin.View{}, err
 	}
-	j, err := journal.LoadForDisplay(gitx.WorktreeDir(repo))
+	j, err := journal.Load(gitx.WorktreeDir(repo))
 	if err != nil {
 		return "", nil, checkin.View{}, err
 	}
 	view := checkin.BuildGap(j, a.db.OpenAlerts(repo, false))
 	view.Repo = repoBase(repo)
 	view.Repairs = checkinFailureRepairs(a, repo)
+	view.MemoryLag = a.db.MemoryLag(repo, time.Now())
 	return repo, j, view, nil
 }
 
@@ -174,20 +186,15 @@ func checkinFailureRepairs(a *app, repo string) []string {
 		"sync-error:" + repo,
 		"differ-error:" + repo,
 		"materialize-error:" + repo,
-		"extract-paused",
 		"differ-paused",
 		"watch-provider-error",
 		"owner-sync-error",
 	}
 	n := 0
-	spendFloor := false
 	for _, key := range keys {
 		value := a.db.Get(key)
 		if value != "" {
 			n++
-			if key == "extract-paused" && strings.Contains(strings.ToLower(value), "budget") {
-				spendFloor = true
-			}
 		}
 	}
 	for _, prefix := range []string{"extract-error:", "adapter-error:", "adapter-paused:", "birth-error:", "birth-hook-error:"} {
@@ -198,10 +205,6 @@ func checkinFailureRepairs(a *app, repo string) []string {
 		}
 	}
 	var repairs []string
-	if spendFloor {
-		repairs = append(repairs, "Listening is paused until the spend floor is built — build")
-		n--
-	}
 	if n == 1 {
 		repairs = append(repairs, "The attending agent must fix one live check")
 	} else if n > 1 {

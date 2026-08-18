@@ -88,6 +88,12 @@ func Run(db *state.DB, in *Input, now time.Time) (*Result, error) {
 			res.Unmapped = append(res.Unmapped, c.SHA)
 		}
 	}
+	// Plain commit subjects can prove recently requested work without spending
+	// a model call. Require two distinctive shared words and only consider
+	// decisions/intents that existed before the commit; everything ambiguous
+	// remains for the optional link pass.
+	linkedBySubject := subjectLinkPass(db, in, commits, addEvent)
+	res.Unmapped = subtract(res.Unmapped, linkedBySubject)
 
 	// ---- 7.1(2) LLM link pass: unmatched commits × unevidenced intents ----
 	if in.LinkPass && in.Provider != nil && len(res.Unmapped) > 0 {
@@ -109,6 +115,111 @@ func Run(db *state.DB, in *Input, now time.Time) (*Result, error) {
 		return nil, err
 	}
 	return res, nil
+}
+
+func subjectLinkPass(db *state.DB, in *Input, commits []state.Commit, addEvent func(model.EventKind, string, map[string]any, time.Time)) []string {
+	var linked []string
+	for _, commit := range commits {
+		clauses := evidenceClauses(commit.Subject)
+		matched := false
+		for id, entry := range in.Journal.Entries {
+			if (entry.Type != model.Decision && entry.Type != model.Intent) || entry.Created().After(commit.At) || hasWorkEvidence(in.Journal, id) {
+				continue
+			}
+			entryWords := evidenceWords(entry.Title + " " + entry.Body)
+			if !clauseMatches(clauses, entryWords) {
+				continue
+			}
+			addEvent(model.EvEvidence, id, map[string]any{
+				"kind": "commit", "ref": commit.SHA, "note": commit.Subject,
+				"via": "subject-match",
+			}, commit.At)
+			matched = true
+		}
+		if matched {
+			db.MarkCommitMapped(in.Repo, commit.SHA)
+			linked = append(linked, commit.SHA)
+		}
+	}
+	return linked
+}
+
+func evidenceClauses(subject string) []map[string]bool {
+	parts := strings.Split(subject, ";")
+	out := make([]map[string]bool, 0, len(parts))
+	for _, part := range parts {
+		if words := evidenceWords(part); len(words) > 0 {
+			out = append(out, words)
+		}
+	}
+	return out
+}
+
+func clauseMatches(clauses []map[string]bool, entryWords map[string]bool) bool {
+	for _, clause := range clauses {
+		if sharedWordCount(clause, entryWords) >= 2 {
+			return true
+		}
+	}
+	return false
+}
+
+func hasWorkEvidence(j *journal.Journal, id string) bool {
+	for _, event := range j.EventsFor(id) {
+		if event.Kind == model.EvEvidence && (event.PStr("kind") == "commit" || event.PStr("kind") == "completion") {
+			return true
+		}
+	}
+	return false
+}
+
+func evidenceWords(text string) map[string]bool {
+	var b strings.Builder
+	for _, r := range strings.ToLower(text) {
+		if r >= 'a' && r <= 'z' || r >= '0' && r <= '9' {
+			b.WriteRune(r)
+		} else {
+			b.WriteByte(' ')
+		}
+	}
+	stop := map[string]bool{
+		"a": true, "an": true, "and": true, "as": true, "at": true, "by": true,
+		"for": true, "from": true, "in": true, "is": true, "it": true, "never": true,
+		"of": true, "on": true, "or": true, "the": true, "to": true, "under": true,
+		"while": true, "with": true,
+		// Common commit scaffolding is not evidence. Matches must come from the
+		// subject matter inside one clause, not generic project vocabulary.
+		"add": true, "agent": true, "entry": true, "fix": true, "human": true,
+		"journal": true, "keep": true, "make": true, "memory": true, "screen": true,
+		"surface": true, "system": true, "update": true, "work": true,
+	}
+	out := make(map[string]bool)
+	for _, word := range strings.Fields(b.String()) {
+		if stop[word] {
+			continue
+		}
+		for _, suffix := range []string{"ing", "ied", "ed", "s"} {
+			if strings.HasSuffix(word, suffix) && len(word) > len(suffix)+3 {
+				word = strings.TrimSuffix(word, suffix)
+				if suffix == "ied" {
+					word += "y"
+				}
+				break
+			}
+		}
+		out[word] = true
+	}
+	return out
+}
+
+func sharedWordCount(a, b map[string]bool) int {
+	n := 0
+	for word := range a {
+		if b[word] {
+			n++
+		}
+	}
+	return n
 }
 
 // autoSupersede pairs findings sharing a tag with equal env; the newer

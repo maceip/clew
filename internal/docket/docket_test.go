@@ -96,8 +96,8 @@ func TestRenderEighthCardBecomesOneOverflowFailure(t *testing.T) {
 	if !strings.Contains(got, "push precision: 75.0% (3 needed / 4 total; 1 unneeded failure)") {
 		t.Fatalf("missing attached precision: %s", got)
 	}
-	if !strings.Contains(got, "[when=docket:card-count<=7]") {
-		t.Fatalf("overflow withdrawal is not printed: %s", got)
+	if !strings.Contains(got, "leaves when the decision-card count returns to seven or fewer") || strings.Contains(got, "when=") {
+		t.Fatalf("overflow withdrawal leaked its machine condition: %s", got)
 	}
 	for i := range cards {
 		if strings.Contains(got, cards[i].Headline) {
@@ -178,11 +178,14 @@ func TestBuildAndRenderNeverReadJournalOrAlertParaphrases(t *testing.T) {
 			t.Fatalf("paraphrase %q leaked:\n%s", forbidden, got)
 		}
 	}
-	if !strings.Contains(got, strconv.Quote(question.Quote)) || !strings.Contains(got, question.Source.Ref) {
-		t.Fatalf("exact quote/provenance missing: %s", got)
+	if !strings.Contains(got, strconv.Quote(question.Quote)) {
+		t.Fatalf("exact quote missing: %s", got)
 	}
-	if !strings.Contains(got, strconv.Quote("adapter:/tmp/session.jsonl")) {
-		t.Fatalf("exact state identity missing: %s", got)
+	if strings.Contains(got, question.Source.Ref) || strings.Contains(got, "adapter:/tmp/session.jsonl") {
+		t.Fatalf("machine provenance leaked: %s", got)
+	}
+	if !strings.Contains(got, strconv.Quote("The watcher found this while checking current work")) {
+		t.Fatalf("calm watcher evidence missing: %s", got)
 	}
 }
 
@@ -315,11 +318,11 @@ func TestDeferralIsEventBoundAndWithdrawalIsPrintedMachineReadable(t *testing.T)
 	}
 	card = validCard("withdraw")
 	got := renderString(t, View{Cards: []Card{card}, Now: testNow})
-	if !strings.Contains(got, "[defer → entry:e1:next-event]") {
-		t.Fatalf("event-bound defer not printed: %s", got)
+	if !strings.Contains(got, "[defer]") || strings.Contains(got, "entry:e1:next-event") {
+		t.Fatalf("human defer verb missing or machine condition leaked: %s", got)
 	}
-	if !strings.Contains(got, "[when=entry:e1:status!=open]") {
-		t.Fatalf("machine withdrawal not printed: %s", got)
+	if !strings.Contains(got, "leaves when") || strings.Contains(got, "when=") {
+		t.Fatalf("human withdrawal line leaked its machine condition: %s", got)
 	}
 }
 
@@ -439,8 +442,8 @@ func TestAlertWithdrawalTokenIsPreservedExactly(t *testing.T) {
 		t.Fatalf("withdrawal = %q, want %q", card.Withdrawal.When, alert.WithdrawWhen)
 	}
 	got := renderString(t, View{Cards: []Card{card}, Now: testNow})
-	if !strings.Contains(got, "[when="+alert.WithdrawWhen+"]") {
-		t.Fatalf("withdrawal not printed exactly: %s", got)
+	if !strings.Contains(got, "leaves when") || strings.Contains(got, alert.WithdrawWhen) {
+		t.Fatalf("human withdrawal line leaked its machine condition: %s", got)
 	}
 }
 

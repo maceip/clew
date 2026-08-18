@@ -14,6 +14,7 @@ import (
 	"time"
 
 	"clew/internal/adapters"
+	"clew/internal/calm"
 	"clew/internal/differ"
 	"clew/internal/docket"
 	"clew/internal/extract"
@@ -277,6 +278,12 @@ func (w *watcher) tail(repo string, ad adapters.Adapter, file string) {
 	}
 	db.Set("adapter-error:"+file, "")
 	db.AddTokens("observed", d.Bytes/4)
+	startedAt, lastActivity := deltaTimes(d, fi.ModTime())
+	if db.Watermark("extract:"+file) < d.NewOffset {
+		if err := db.MarkDistillationPending(file, repo, startedAt); err != nil {
+			db.Set("extract-error:"+file, "lag clock failed: "+err.Error())
+		}
+	}
 	if d.Bytes == 0 {
 		return
 	}
@@ -290,7 +297,6 @@ func (w *watcher) tail(repo string, ad adapters.Adapter, file string) {
 			break
 		}
 	}
-	startedAt, lastActivity := deltaTimes(d, fi.ModTime())
 	db.UpsertSession(state.Session{
 		ID: ad.ID() + ":" + d.SessionID, Adapter: ad.ID(), Agent: d.Agent,
 		File: file, RepoPath: repo, Surface: w.a.cfg.Surface, Title: title,
@@ -460,23 +466,20 @@ func (w *watcher) maybeExtract(repo string, ad adapters.Adapter, file string) {
 		w.failExtraction(file, p, fmt.Errorf("journal unavailable"))
 		return
 	}
-	metered := newBudgetedProvider(w.provider, db, w.a.cfg, "extraction", true, 0)
+	metered := newBudgetedProvider(w.provider, db, w.a.cfg, "extraction", 0)
 	out, err := extract.Run(j, metered, ad, file, exOff, w.a.cfg.Surface, time.Now())
 	if err != nil {
 		var limit *state.LLMBudgetLimitError
 		if errors.As(err, &limit) {
-			db.Set("extract-paused", limit.Error())
-			db.UpsertAlert(state.Alert{
-				Key: "budget:" + time.Now().UTC().Format("2006-01-02"), RepoPath: repo,
-				Kind: "budget", Body: "extraction paused: " + limit.Error() + " — sensors keep recording; catch-up is automatic (I9)",
-				Blocking: false,
-			})
+			db.Set("extract-paused", "")
+			db.Set("distillation-waiting", limit.Error())
 			return
 		}
 		w.failExtraction(file, p, err)
 		return
 	}
 	db.Set("extract-paused", "")
+	db.Set("distillation-waiting", "")
 	if out.Parked {
 		if err := extract.ParkRawRange(db, ad, file, exOff, tailOff, out.ParkReason); err != nil {
 			w.failExtraction(file, p, fmt.Errorf("park failed: %w", err))
@@ -489,6 +492,12 @@ func (w *watcher) maybeExtract(repo string, ad adapters.Adapter, file string) {
 	} else {
 		if err := db.SetWatermark("extract:"+file, ad.ID(), repo, out.NewOffset); err != nil {
 			w.failExtraction(file, p, fmt.Errorf("watermark failed: %w", err))
+			return
+		}
+	}
+	if db.Watermark("extract:"+file) >= db.Watermark("tail:"+file) {
+		if err := db.MarkDistillationCurrent(file); err != nil {
+			w.failExtraction(file, p, fmt.Errorf("lag clock failed after catch-up: %w", err))
 			return
 		}
 	}
@@ -552,7 +561,7 @@ func (w *watcher) pollOne(repo string) {
 	differProvider := w.provider
 	linkPass := w.a.cfg.LinkPass
 	if linkPass && differProvider != nil {
-		differProvider = newBudgetedProvider(differProvider, db, w.a.cfg, "differ", false, 0)
+		differProvider = newBudgetedProvider(differProvider, db, w.a.cfg, "differ", 0)
 	}
 	res, err := differ.Run(db, &differ.Input{
 		Repo: repo, Journal: j, Snapshot: snap, Surface: w.a.cfg.Surface,
@@ -732,7 +741,7 @@ func cardCreatedByAlert(cards []docket.Card, alert state.Alert) (docket.Card, bo
 }
 
 func docketPushMessage(card docket.Card) (string, string) {
-	return card.Headline, fmt.Sprintf("%s fired · cost of delay: %s", card.Why.RuleCode, card.Why.CostOfDelay)
+	return calm.Text(card.Headline), fmt.Sprintf("%s · cost of delay: %s", calm.Text(card.Why.Rule), calm.Text(card.Why.CostOfDelay))
 }
 
 // ---- supervision install (§2: launchd / systemd-user) ----

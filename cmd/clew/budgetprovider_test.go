@@ -48,7 +48,7 @@ func budgetTestDB(t *testing.T) *state.DB {
 func TestBudgetedProviderSettlesActualAtomically(t *testing.T) {
 	db := budgetTestDB(t)
 	cfg := config.Default()
-	p := newBudgetedProvider(&budgetProviderStub{result: &llm.Result{Text: `{}`, Tokens: 37}}, db, cfg, "differ", false, 0)
+	p := newBudgetedProvider(&budgetProviderStub{result: &llm.Result{Text: `{}`, Tokens: 37}}, db, cfg, "differ", 0)
 	if _, err := p.Call("small prompt"); err != nil {
 		t.Fatal(err)
 	}
@@ -60,7 +60,7 @@ func TestBudgetedProviderSettlesActualAtomically(t *testing.T) {
 func TestBudgetedProviderChargesReservationOnUnknownFailure(t *testing.T) {
 	db := budgetTestDB(t)
 	cfg := config.Default()
-	p := newBudgetedProvider(&budgetProviderStub{err: errors.New("transport broke")}, db, cfg, "extraction", false, 0)
+	p := newBudgetedProvider(&budgetProviderStub{err: errors.New("transport broke")}, db, cfg, "extraction", 0)
 	_, err := p.Call("small prompt")
 	if err == nil || !strings.Contains(err.Error(), "charged") {
 		t.Fatalf("failure = %v, want loud conservative charge", err)
@@ -74,7 +74,7 @@ func TestBudgetedProviderHonorsExplicitRunCapBeforeCall(t *testing.T) {
 	db := budgetTestDB(t)
 	cfg := config.Default()
 	base := &budgetProviderStub{result: &llm.Result{Text: `{}`, Tokens: 1}}
-	p := newBudgetedProvider(base, db, cfg, "backfill", false, 100)
+	p := newBudgetedProvider(base, db, cfg, "backfill", 100)
 	if _, err := p.Call("prompt"); err == nil || !strings.Contains(err.Error(), "explicit run budget") {
 		t.Fatalf("small run cap admitted call: %v", err)
 	}
@@ -93,7 +93,7 @@ func TestExtractorRetryFailureStillChargesFirstAttemptAndFailedReservation(t *te
 		{result: &llm.Result{Text: "not json", Tokens: 10}},
 		{err: errors.New("second attempt transport failure")},
 	}}
-	p := newBudgetedProvider(base, db, cfg, "backfill", false, 100_000)
+	p := newBudgetedProvider(base, db, cfg, "backfill", 100_000)
 	file := filepath.Join(t.TempDir(), "session.jsonl")
 	raw := `{"type":"user","message":{"role":"user","content":"remember this"},"timestamp":"2026-08-16T12:00:00Z","cwd":"/repo","sessionId":"s1"}` + "\n"
 	if err := os.WriteFile(file, []byte(raw), 0o600); err != nil {

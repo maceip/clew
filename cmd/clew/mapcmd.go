@@ -9,6 +9,7 @@ import (
 	"strings"
 	"time"
 
+	"clew/internal/calm"
 	"clew/internal/journal"
 	"clew/internal/model"
 )
@@ -64,8 +65,8 @@ func cmdMap(args []string) error {
 			}
 		}
 		rows = append(rows, mapRow{
-			ID: id, Title: e.Title, Tags: strings.Join(e.Tags, ","),
-			Status: string(c.Status), Evidence: c.Evidence,
+			ID: id, Title: calm.Text(e.Title), Tags: strings.Join(e.Tags, ","),
+			Status: calm.Text(string(c.Status)), Evidence: c.Evidence,
 			LastAct: c.LastActivity.Format("2006-01-02"), Session: attributed,
 		})
 	}
@@ -108,7 +109,7 @@ func cmdMap(args []string) error {
 	if len(expired) > 0 {
 		fmt.Printf("\nEXPIRED QUESTIONS (%d — aged out after 45d, §3.3)\n", len(expired))
 		for _, e := range expired {
-			fmt.Printf("  %s %s\n", e.ID, e.Title)
+			fmt.Printf("  %s %s\n", e.ID, calm.Text(e.Title))
 		}
 	}
 	if len(unmapped) > 0 {
@@ -123,7 +124,7 @@ func cmdMap(args []string) error {
 	}
 	for _, al := range a.db.OpenAlerts(repo, false) {
 		if al.Kind == "overlap" {
-			fmt.Printf("\nOVERLAP: %s\n", al.Body)
+			fmt.Printf("\nOVERLAP: %s\n", calm.Text(al.Body))
 		}
 	}
 	return nil
