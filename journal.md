@@ -14,11 +14,11 @@ _generated 2026-08-18 15:48 UTC · 66 live entries (19 decisions · 32 findings 
 
 ## LEARNED
 
-- `e01M0ARJKGSQFSH8WSVZEG520DH` phone surface intent placeholder — 6m · current
-- `e01M0ARJHKDP6Z6R1FKZSJ8AN4S` laptop surface intent placeholder — 6m · current
-- `e01M0ARJFTWEWY5H6JFJ17656W4` cloud surface intent placeholder — 6m · current
-- `e01M0ARJE1XNN8Q45DJ36FP47YT` web surface intent placeholder — 6m · current
-- `e01M0ARJC3CMW89DH89FC3EW679` proposal ruling placeholder — 6m · current
+- `e01M0ARJKGSQFSH8WSVZEG520DH` phone surface intent placeholder — 7m · current
+- `e01M0ARJHKDP6Z6R1FKZSJ8AN4S` laptop surface intent placeholder — 7m · current
+- `e01M0ARJFTWEWY5H6JFJ17656W4` cloud surface intent placeholder — 7m · current
+- `e01M0ARJE1XNN8Q45DJ36FP47YT` web surface intent placeholder — 7m · current
+- `e01M0ARJC3CMW89DH89FC3EW679` proposal ruling placeholder — 7m · current
 - `e01M068FQH1ND9MM1WH851AF45M` Task 6 gate: flags 0 writes; algebra, poller, manifest pass — 1d · current
 - `e01M06821D53QYHBJS1FEC2CK7G` Task 5 gate: 3 formats, 1 card, confirm boundary pass — 1d · current
 
@@ -41,7 +41,7 @@ _None._
 | Intent | Age | Reality | State |
 |---|---:|---:|---|
 | `e01M0AQHSRF4DVDYZ989PVHGA7R` Birth detection: auto-init a new repo with owner laws only | 24m | 1 evidence | in_flight |
-| `e01M0664DX5WAZ01J6KJBCZP4QC` Add contract tests for docket invariants and failure modes | 1d | 0 evidence | proposed |
+| `e01M0664DX5WAZ01J6KJBCZP4QC` Add contract tests for docket invariants and failure modes | 1d | 1 evidence | in_flight |
 | `e01M065G8RTKVH6466KEB0FRJ8N` Commit the gate fixes as one spec-amended change, then start the docket | 1d | 1 evidence | in_flight |
 | `e01M064DHNTXFM29PNWCW0VBBF2` Run a strict read-only gate proving each acceptance point with tests or state q… | 1d | 3 evidence | in_flight |
 | `e01M0642VRXV9PCGA4NDJF92E2Y` Wire atomic budget reservations into every LLM call | 1d | 5 evidence | in_flight |
@@ -427,12 +427,12 @@ Build auto-init so that a fresh git init plus an agent session on a watched mach
 
 _source: session codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-24-00-01a01578-e6db-7833-9ab2-0457569af643.jsonl#L9 · confidence: 0.93 · tags: .clew/** · evidence: 1_
 
-### e01M0664DX5WAZ01J6KJBCZP4QC — Add contract tests for docket invariants and failure modes  `proposed`
+### e01M0664DX5WAZ01J6KJBCZP4QC — Add contract tests for docket invariants and failure modes  `in_flight`
 > The core package now compiles. I’m adding contract tests around the three hard invariants plus the less visible failure modes: no paraphrase leakage, stale withdrawal, timer ordering, high-magnitude assumptions, exact provenance, event-bound defer, and empty/overflow rendering.
 
 With the core package compiling, the plan is to write contract tests covering three hard invariants plus less visible failure modes: no paraphrase leakage, stale withdrawal, timer ordering, high-magnitude assumptions, exact provenance, event-bound defer, and empty/overflow rendering.
 
-_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T16-56-09-01a00c5c-48cc-7850-8fe0-e14bc4f7cc79.jsonl#L218 · confidence: 0.88 · tags: docket/**_
+_source: session codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T16-56-09-01a00c5c-48cc-7850-8fe0-e14bc4f7cc79.jsonl#L218 · confidence: 0.88 · tags: docket/** · evidence: 1_
 
 ### e01M065G8RTKVH6466KEB0FRJ8N — Commit the gate fixes as one spec-amended change, then start the docket  `in_flight`
 > I’m committing the gate fixes as one spec-amended change, then moving to the docket.

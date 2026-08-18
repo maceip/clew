@@ -15,7 +15,7 @@
 - e01M067G2QY8BZNZXBE46QBEXEW finding/current Task 4 gate: 10ms, HTML 30s, ntfy 5/5
 - e01M067AZ3VJM73XP82REZEZ1QC finding/current Task 4 channel: ntfy 2383c10c…, card creation only
 - e01M066XWD8F1SAWQ8HVXGW4J4Z finding/current Task 3 docket gate: 8→1, FYI 0, withdrawal 1 poll
-- e01M0664DX5WAZ01J6KJBCZP4QC intent/proposed Add contract tests for docket invariants and failure modes
+- e01M0664DX5WAZ01J6KJBCZP4QC intent/in_flight Add contract tests for docket invariants and failure modes
 - e01M0660RW03A1VSC6ENMH9M2J7 finding/current Parallel agent task killed by gpt-5.6-sol TPM rate limit
 - e01M065T92NXY1ER6R73YCQNH84 decision/possible-contradiction Recover docket empty-state and withdrawal wording from Task 3 journal source
 - e01M065G8RTKVH6466KEB0FRJ8N intent/in_flight Commit the gate fixes as one spec-amended change, then start the docket
