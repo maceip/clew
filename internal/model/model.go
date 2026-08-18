@@ -158,12 +158,13 @@ func (e *Entry) Validate() error {
 type EventKind string
 
 const (
-	EvEvidence    EventKind = "evidence"
-	EvConfirm     EventKind = "confirm"
-	EvReject      EventKind = "reject"
-	EvSupersede   EventKind = "supersede"
-	EvAnswer      EventKind = "answer"
-	EvDisposition EventKind = "disposition"
+	EvEvidence          EventKind = "evidence"
+	EvConfirm           EventKind = "confirm"
+	EvReject            EventKind = "reject"
+	EvSupersede         EventKind = "supersede"
+	EvAnswer            EventKind = "answer"
+	EvDisposition       EventKind = "disposition"
+	EvEvidenceWithdrawn EventKind = "evidence-withdrawn"
 )
 
 type By struct {
@@ -185,7 +186,7 @@ func (v *Event) Validate() error {
 		return fmt.Errorf("event %q: invalid id", v.ID)
 	}
 	switch v.Kind {
-	case EvEvidence, EvConfirm, EvReject, EvSupersede, EvAnswer, EvDisposition:
+	case EvEvidence, EvConfirm, EvReject, EvSupersede, EvAnswer, EvDisposition, EvEvidenceWithdrawn:
 	default:
 		return fmt.Errorf("event %s: unknown kind %q", v.ID, v.Kind)
 	}

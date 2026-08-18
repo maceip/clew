@@ -95,6 +95,7 @@ func Run(db *state.DB, in *Input, now time.Time) (*Result, error) {
 	// a model call. Require two distinctive shared words and only consider
 	// decisions/intents that existed before the commit; everything ambiguous
 	// remains for the optional link pass.
+	reconcileSubjectEvidence(in.Journal, addEvent, now)
 	linkedBySubject := subjectLinkPass(db, in, commits, addEvent)
 	linkedBySubject = append(linkedBySubject, repairCoordinationLinks(db, in, addEvent)...)
 	res.Unmapped = subtract(res.Unmapped, linkedBySubject)
@@ -162,7 +163,7 @@ func repairCoordinationLinks(db *state.DB, in *Input, addEvent func(model.EventK
 			continue
 		}
 		for _, event := range in.Journal.EventsFor(id) {
-			if journal.CountsAsRealityEvidence(event) || event.Kind != model.EvEvidence || event.PStr("via") != "link-pass" || eventConfidence(event) < 0.8 {
+			if journal.IsRealityEvidence(in.Journal, id, event) || event.Kind != model.EvEvidence || event.PStr("via") != "link-pass" || eventConfidence(event) < 0.8 {
 				continue
 			}
 			var candidates []state.Commit
@@ -233,7 +234,11 @@ func evidenceClauses(subject string) []map[string]bool {
 
 func clauseMatches(clauses []map[string]bool, entryWords map[string]bool) bool {
 	for _, clause := range clauses {
-		if sharedWordCount(clause, entryWords) >= 2 {
+		needed := 2
+		if len(clause) > 3 {
+			needed = 3
+		}
+		if sharedWordCount(clause, entryWords) >= needed {
 			return true
 		}
 	}
@@ -242,11 +247,31 @@ func clauseMatches(clauses []map[string]bool, entryWords map[string]bool) bool {
 
 func hasWorkEvidence(j *journal.Journal, id string) bool {
 	for _, event := range j.EventsFor(id) {
-		if journal.CountsAsRealityEvidence(event) && (event.PStr("kind") == "commit" || event.PStr("kind") == "completion") {
+		if journal.IsRealityEvidence(j, id, event) && (event.PStr("kind") == "commit" || event.PStr("kind") == "completion") {
 			return true
 		}
 	}
 	return false
+}
+
+func reconcileSubjectEvidence(j *journal.Journal, addEvent func(model.EventKind, string, map[string]any, time.Time), now time.Time) {
+	if j == nil {
+		return
+	}
+	for id, entry := range j.Entries {
+		entryWords := evidenceWords(entry.Title + " " + entry.Body)
+		for _, event := range j.EventsFor(id) {
+			if event.Kind != model.EvEvidence || event.PStr("via") != "subject-match" ||
+				!journal.CountsAsRealityEvidence(event) || j.HasEvent(model.EvEvidenceWithdrawn, id, "ref", event.PStr("ref")) ||
+				clauseMatches(evidenceClauses(event.PStr("note")), entryWords) {
+				continue
+			}
+			addEvent(model.EvEvidenceWithdrawn, id, map[string]any{
+				"ref": event.PStr("ref"), "source_event": event.ID,
+				"reason": "subject match no longer meets the evidence threshold",
+			}, now)
+		}
+	}
 }
 
 func evidenceWords(text string) map[string]bool {

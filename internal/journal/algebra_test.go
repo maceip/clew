@@ -72,6 +72,23 @@ func TestJournalCommitIsNotRealityEvidence(t *testing.T) {
 	}
 }
 
+func TestWithdrawnSubjectEvidenceStopsCountingWithoutDeletingHistory(t *testing.T) {
+	j := mkJournal(t)
+	e := entry(t, j, model.Intent, "cloud agents contribute code evidence", now.Add(-24*time.Hour))
+	ref := "code-sha"
+	event(t, j, model.EvEvidence, e.ID, now.Add(-2*time.Hour), map[string]any{
+		"kind": "commit", "ref": ref, "note": "Repair stale links with real code evidence", "via": "subject-match",
+	}, "differ")
+	if got := Compute(j, now)[e.ID].Evidence; got != 1 {
+		t.Fatalf("evidence before withdrawal = %d, want 1", got)
+	}
+	event(t, j, model.EvEvidenceWithdrawn, e.ID, now.Add(-time.Hour), map[string]any{"ref": ref}, "differ")
+	computed := Compute(j, now)[e.ID]
+	if computed.Evidence != 0 || computed.Status != StProposed || len(j.EventsFor(e.ID)) != 2 {
+		t.Fatalf("withdrawal deleted history or left false reality: %+v events=%d", computed, len(j.EventsFor(e.ID)))
+	}
+}
+
 func TestIntentDone(t *testing.T) {
 	j := mkJournal(t)
 	e := entry(t, j, model.Intent, "ship the runner", now.Add(-10*24*time.Hour))

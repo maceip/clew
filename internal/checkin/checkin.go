@@ -118,7 +118,7 @@ func verifiedWork(j *journal.Journal, entry *model.Entry) bool {
 		return false
 	}
 	for _, event := range j.Events {
-		if event.Entry != entry.ID || !journal.CountsAsRealityEvidence(event) {
+		if event.Entry != entry.ID || !journal.IsRealityEvidence(j, entry.ID, event) {
 			continue
 		}
 		switch event.PStr("kind") {

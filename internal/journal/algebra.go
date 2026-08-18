@@ -91,7 +91,7 @@ func Compute(j *Journal, now time.Time) map[string]*Computed {
 			}
 			switch v.Kind {
 			case model.EvEvidence:
-				if CountsAsRealityEvidence(v) {
+				if IsRealityEvidence(j, id, v) {
 					c.Evidence++
 				}
 			case model.EvConfirm:
@@ -225,7 +225,7 @@ func intentStatus(j *Journal, all map[string]*Computed, e *model.Entry, c *Compu
 		if v.Kind == model.EvConfirm && v.PBool("done") {
 			return StDone
 		}
-		if CountsAsRealityEvidence(v) {
+		if IsRealityEvidence(j, e.ID, v) {
 			hasSuccessorEvidence = true
 			if v.PStr("kind") == "completion" {
 				return StDone
@@ -234,7 +234,7 @@ func intentStatus(j *Journal, all map[string]*Computed, e *model.Entry, c *Compu
 	}
 	recent := false
 	for _, v := range j.EventsFor(e.ID) {
-		if CountsAsRealityEvidence(v) &&
+		if IsRealityEvidence(j, e.ID, v) &&
 			(c.LineageStatusAt.IsZero() || v.At.After(c.LineageStatusAt)) &&
 			now.Sub(v.At) <= InFlightWindow {
 			recent = true
@@ -257,7 +257,7 @@ func intentStatus(j *Journal, all map[string]*Computed, e *model.Entry, c *Compu
 				continue
 			}
 			for _, v := range j.EventsFor(oid) {
-				if CountsAsRealityEvidence(v) && v.At.After(created) {
+				if IsRealityEvidence(j, oid, v) && v.At.After(created) {
 					siblings++
 					break
 				}
@@ -280,6 +280,17 @@ func CountsAsRealityEvidence(event *model.Event) bool {
 		return false
 	}
 	return event.PStr("kind") != "commit" || !strings.HasPrefix(strings.ToLower(strings.TrimSpace(event.PStr("note"))), "journal:")
+}
+
+// IsRealityEvidence also applies append-only corrections written when a
+// previously accepted subject match no longer passes the current conservative
+// matcher. The original event remains available as provenance.
+func IsRealityEvidence(j *Journal, entryID string, event *model.Event) bool {
+	if !CountsAsRealityEvidence(event) || j == nil {
+		return false
+	}
+	ref := event.PStr("ref")
+	return ref == "" || !j.HasEvent(model.EvEvidenceWithdrawn, entryID, "ref", ref)
 }
 
 func lineageStatusCompatible(typ model.EntryType, status Status) bool {

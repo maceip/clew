@@ -229,6 +229,31 @@ func TestUniqueCodeCommitRepairsHighConfidenceJournalLink(t *testing.T) {
 	}
 }
 
+func TestWeakLongSubjectMatchIsWithdrawnAppendOnly(t *testing.T) {
+	db, err := state.Open(filepath.Join(t.TempDir(), "state.db"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer db.Close()
+	j := testJournal(t)
+	repo := filepath.Join(t.TempDir(), "repo")
+	now := time.Now().UTC().Truncate(time.Second)
+	entry := testEntry(t, j, model.Intent, "Cloud agents contribute code evidence", now.Add(-time.Hour))
+	ref := strings.Repeat("e", 40)
+	testEvent(t, j, model.EvEvidence, entry.ID, now.Add(-time.Minute), map[string]any{
+		"kind": "commit", "ref": ref, "note": "Repair stale work links with real code evidence", "via": "subject-match",
+	})
+	if _, err := Run(db, &Input{Repo: repo, Journal: j, Snapshot: &poller.Snapshot{RepoPath: repo}}, now); err != nil {
+		t.Fatal(err)
+	}
+	if !j.HasEvent(model.EvEvidenceWithdrawn, entry.ID, "ref", ref) {
+		t.Fatal("weak historical subject match was not withdrawn")
+	}
+	if computed := journal.Compute(j, now); computed[entry.ID].Evidence != 0 {
+		t.Fatalf("withdrawn match still counts as reality: %+v", computed[entry.ID])
+	}
+}
+
 func TestWorkspaceAlertsWithdrawWithinOnePoll(t *testing.T) {
 	tests := []struct {
 		name        string
