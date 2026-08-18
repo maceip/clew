@@ -1,9 +1,8 @@
 # Journal digest (live entries: id · type/status · title)
-- e01M0ARJKGSQFSH8WSVZEG520DH finding/current phone surface intent placeholder
-- e01M0ARJHKDP6Z6R1FKZSJ8AN4S finding/current laptop surface intent placeholder
-- e01M0ARJFTWEWY5H6JFJ17656W4 finding/current cloud surface intent placeholder
-- e01M0ARJE1XNN8Q45DJ36FP47YT finding/current web surface intent placeholder
-- e01M0ARJC3CMW89DH89FC3EW679 finding/current proposal ruling placeholder
+- e01M0ARJKGSQFSH8WSVZEG520DH intent/proposed Surface coverage: phone reads the glance and receives decision cards
+- e01M0ARJHKDP6Z6R1FKZSJ8AN4S intent/proposed Surface coverage: laptop agents fully sensed with zero human effort
+- e01M0ARJFTWEWY5H6JFJ17656W4 intent/proposed Surface coverage: PR-only cloud agents (Codex-app-class) contribute knowledge
+- e01M0ARJE1XNN8Q45DJ36FP47YT intent/proposed Surface coverage: repo-write cloud agents (Cursor-class) are full journal nodes
 - e01M0AQHSRF4DVDYZ989W6K185N decision/possible-contradiction Owner laws live in an owner-scope journal with a ≤1KB injection budget
 - e01M0AQHSRF4DVDYZ989RNZVC46 decision/active `clew from` is the one explicit lineage command; never automatic
 - e01M0AQHSRF4DVDYZ989PVHGA7R intent/in_flight Birth detection: auto-init a new repo with owner laws only
@@ -35,5 +34,4 @@
 - e01M05V0G3Q9F41V62P6T44TC04 decision/active Cursor migration must be monotonic — never rewind an existing cursor
 - e01M05V0G3Q9F41V62P6R5QV53G intent/in_flight Fix migration monotonicity, restore from D1 boundary, rerun cycle before passin…
 - e01M05TX51R4VZHJMNM804YPMRT finding/current D1: 30 automatic entries; Codex metadata incident pinned
-- e01M05TPA9ZK4C8RGC3KBPV2MRF intent/in_flight Re-run the live gate: install binary, normalize spend category, restart watcher
-… (67 more omitted for size)
+… (66 more omitted for size)

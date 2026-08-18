@@ -1,6 +1,6 @@
 # Journal
 
-_generated 2026-08-18 15:55 UTC · 67 live entries (19 decisions · 33 findings · 1 questions · 14 intents) · 85 total in history_
+_generated 2026-08-18 15:55 UTC · 66 live entries (19 decisions · 28 findings · 1 questions · 18 intents) · 84 total in history_
 
 ## DECIDED
 
@@ -14,13 +14,13 @@ _generated 2026-08-18 15:55 UTC · 67 live entries (19 decisions · 33 findings 
 
 ## LEARNED
 
-- `e01M0ARJKGSQFSH8WSVZEG520DH` phone surface intent placeholder — 13m · current
-- `e01M0ARJHKDP6Z6R1FKZSJ8AN4S` laptop surface intent placeholder — 13m · current
-- `e01M0ARJFTWEWY5H6JFJ17656W4` cloud surface intent placeholder — 13m · current
-- `e01M0ARJE1XNN8Q45DJ36FP47YT` web surface intent placeholder — 13m · current
-- `e01M0ARJC3CMW89DH89FC3EW679` proposal ruling placeholder — 13m · current
 - `e01M069MQYJX6QVW3YCWWTAWV34` --help — 1d · current
 - `e01M068FQH1ND9MM1WH851AF45M` Task 6 gate: flags 0 writes; algebra, poller, manifest pass — 1d · current
+- `e01M06821D53QYHBJS1FEC2CK7G` Task 5 gate: 3 formats, 1 card, confirm boundary pass — 1d · current
+- `e01M067G2QY8BZNZXBE46QBEXEW` Task 4 gate: 10ms, HTML 30s, ntfy 5/5 — 1d · current
+- `e01M067AZ3VJM73XP82REZEZ1QC` Task 4 channel: ntfy 2383c10c…, card creation only — 1d · current
+- `e01M066XWD8F1SAWQ8HVXGW4J4Z` Task 3 docket gate: 8→1, FYI 0, withdrawal 1 poll — 1d · current
+- `e01M0660RW03A1VSC6ENMH9M2J7` Parallel agent task killed by gpt-5.6-sol TPM rate limit — 1d · current
 
 ## OPEN
 
@@ -40,13 +40,13 @@ _None._
 
 | Intent | Age | Reality | State |
 |---|---:|---:|---|
+| `e01M0ARJKGSQFSH8WSVZEG520DH` Surface coverage: phone reads the glance and receives decision cards | 17m | 0 evidence | proposed |
+| `e01M0ARJHKDP6Z6R1FKZSJ8AN4S` Surface coverage: laptop agents fully sensed with zero human effort | 17m | 0 evidence | proposed |
+| `e01M0ARJFTWEWY5H6JFJ17656W4` Surface coverage: PR-only cloud agents (Codex-app-class) contribute knowledge | 17m | 0 evidence | proposed |
+| `e01M0ARJE1XNN8Q45DJ36FP47YT` Surface coverage: repo-write cloud agents (Cursor-class) are full journal nodes | 17m | 0 evidence | proposed |
 | `e01M0AQHSRF4DVDYZ989PVHGA7R` Birth detection: auto-init a new repo with owner laws only | 31m | 1 evidence | in_flight |
 | `e01M0664DX5WAZ01J6KJBCZP4QC` Add contract tests for docket invariants and failure modes | 1d | 1 evidence | in_flight |
 | `e01M065G8RTKVH6466KEB0FRJ8N` Commit the gate fixes as one spec-amended change, then start the docket | 1d | 1 evidence | in_flight |
-| `e01M064DHNTXFM29PNWCW0VBBF2` Run a strict read-only gate proving each acceptance point with tests or state q… | 1d | 3 evidence | in_flight |
-| `e01M0642VRXV9PCGA4NDJF92E2Y` Wire atomic budget reservations into every LLM call | 1d | 5 evidence | in_flight |
-| `e01M05VFAW9A783PMZZEER0G6FX` Second pass on rollover, double-settlement, migration; then run wider suite | 1d | 4 evidence | in_flight |
-| `e01M05V5HWA6TFT0A0KDY1QV6C0` Add transactional reservation + settlement accounting in internal/state with co… | 1d | 9 evidence | in_flight |
 
 ## Decisions
 
@@ -184,41 +184,6 @@ Name = clew (owner). Alternatives considered: restart — verb collision, names 
 _source: human cli:note · confidence: 1.00_
 
 ## Findings
-
-### e01M0ARJKGSQFSH8WSVZEG520DH — phone surface intent placeholder  `current`
-> phone surface intent placeholder
-
-phone surface intent placeholder
-
-_source: human cli:note · confidence: 1.00_
-
-### e01M0ARJHKDP6Z6R1FKZSJ8AN4S — laptop surface intent placeholder  `current`
-> laptop surface intent placeholder
-
-laptop surface intent placeholder
-
-_source: human cli:note · confidence: 1.00_
-
-### e01M0ARJFTWEWY5H6JFJ17656W4 — cloud surface intent placeholder  `current`
-> cloud surface intent placeholder
-
-cloud surface intent placeholder
-
-_source: human cli:note · confidence: 1.00_
-
-### e01M0ARJE1XNN8Q45DJ36FP47YT — web surface intent placeholder  `current`
-> web surface intent placeholder
-
-web surface intent placeholder
-
-_source: human cli:note · confidence: 1.00_
-
-### e01M0ARJC3CMW89DH89FC3EW679 — proposal ruling placeholder  `current`
-> proposal ruling placeholder
-
-proposal ruling placeholder
-
-_source: human cli:note · confidence: 1.00_
 
 ### e01M069MQYJX6QVW3YCWWTAWV34 — --help  `current`
 > --help
@@ -426,6 +391,34 @@ Hermetic pipeline passes, but the go/no-go gate — P≥0.9/R≥0.75 within 5 in
 _source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15 · confidence: 1.00 · tags: acceptance/**_
 
 ## Intents
+
+### e01M0ARJKGSQFSH8WSVZEG520DH — Surface coverage: phone reads the glance and receives decision cards  `proposed`
+> phone is typically either a variant of cloud or remote to laptop
+
+Owner requirement: phone is read + interrupt only — journal.md via GitHub mobile as the away-glance; ntfy delivering decision cards (headline + why-you) as the only push. No write path in v1 (known gap, trigger on file). Evidence classes: ntfy deliveries with measured push precision; first-screenful glance fix landed. Blocked on owner's 3-minute pairing: rotate leaked topic, redact, subscribe.
+
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-18 · confidence: 0.95_
+
+### e01M0ARJHKDP6Z6R1FKZSJ8AN4S — Surface coverage: laptop agents fully sensed with zero human effort  `proposed`
+> agents on laptop
+
+Owner requirement: local agents (claude/codex/cursor CLI) on watched machines are tailed, extracted, and journaled with no manual notes. Evidence classes: automatic session entries; extraction spend within I9; adapter incidents loud. Largely met by current dogfood; kept as an intent so regressions surface as absence rather than silence.
+
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-18 · confidence: 0.95_
+
+### e01M0ARJFTWEWY5H6JFJ17656W4 — Surface coverage: PR-only cloud agents (Codex-app-class) contribute knowledge  `proposed`
+> when I open the android codex/chatgpt app to do more work in the cloud what happens
+
+Owner requirement: agents in sandboxes that can only open PRs (Android Codex/ChatGPT app work) must still contribute session knowledge, not just code. Mechanism blocked on the write-path ruling (see the open question entry). Evidence classes: journal entries whose provenance is a PR-only sandbox; until then, their sessions remain a visible gap in status, never a silent one.
+
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-18 · confidence: 0.95_
+
+### e01M0ARJE1XNN8Q45DJ36FP47YT — Surface coverage: repo-write cloud agents (Cursor-class) are full journal nodes  `proposed`
+> my originally stated (yet somehow lost, even using the journal) surfaces: agents on web (typically cloud), agents in cloud, agents on laptop, phone is typically either a variant of cloud or remote to laptop
+
+Owner requirement: cloud/web agents working on watched repos read the journal at session start (digest from branch) and write their session knowledge back. Evidence classes: journal-branch pushes originating from cloud runs; digest fetches in cloud AGENTS.md startup. This entry itself was pushed by a credentialed cloud agent as the first proof.
+
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-18 · confidence: 0.95_
 
 ### e01M0AQHSRF4DVDYZ989PVHGA7R — Birth detection: auto-init a new repo with owner laws only  `in_flight`
 > new git init + agent session on a watched machine → auto-init (watch, journal branch, context.md) with owner laws only. No lore, no card required. Acceptance: mkdir x && git init && claude yields a context containing the owner's laws with zero clew commands typed.
