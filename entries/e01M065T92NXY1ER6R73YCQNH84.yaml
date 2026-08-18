@@ -1,0 +1,17 @@
+id: e01M065T92NXY1ER6R73YCQNH84
+type: decision
+title: Recover docket empty-state and withdrawal wording from Task 3 journal source
+body: Rather than re-deriving the card semantics, the generated journal's Task 3 source pointer and fixed card decisions are used as the authoritative source to recover the missing empty-state wording and withdrawal semantics before the package API is locked.
+quote: The generated journal contains the Task 3 source pointer and the fixed card decisions. I’m using that exact source to recover the missing empty-state wording and withdrawal semantics before locking the package API.
+utterance_by: assistant
+source:
+    kind: session
+    ref: codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T16-56-09-01a00c5c-48cc-7850-8fe0-e14bc4f7cc79.jsonl#L75
+    agent: codex
+    surface: macs-MacBook-Pro
+    at: 2026-08-16T20:57:05.877Z
+confidence: 0.8
+tags:
+    - docket/**
+env: null
+affects: []

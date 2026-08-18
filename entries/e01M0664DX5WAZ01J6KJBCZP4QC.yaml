@@ -1,0 +1,17 @@
+id: e01M0664DX5WAZ01J6KJBCZP4QC
+type: intent
+title: Add contract tests for docket invariants and failure modes
+body: 'With the core package compiling, the plan is to write contract tests covering three hard invariants plus less visible failure modes: no paraphrase leakage, stale withdrawal, timer ordering, high-magnitude assumptions, exact provenance, event-bound defer, and empty/overflow rendering.'
+quote: 'The core package now compiles. I’m adding contract tests around the three hard invariants plus the less visible failure modes: no paraphrase leakage, stale withdrawal, timer ordering, high-magnitude assumptions, exact provenance, event-bound defer, and empty/overflow rendering.'
+utterance_by: assistant
+source:
+    kind: session
+    ref: codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T16-56-09-01a00c5c-48cc-7850-8fe0-e14bc4f7cc79.jsonl#L218
+    agent: codex
+    surface: macs-MacBook-Pro
+    at: 2026-08-16T21:02:38.501Z
+confidence: 0.88
+tags:
+    - docket/**
+env: null
+affects: []

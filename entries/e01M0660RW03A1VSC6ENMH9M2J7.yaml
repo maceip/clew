@@ -1,0 +1,19 @@
+id: e01M0660RW03A1VSC6ENMH9M2J7
+type: finding
+title: Parallel agent task killed by gpt-5.6-sol TPM rate limit
+body: 'The task2_final agent errored with "stream disconnected before completion" due to an OpenAI org-level tokens-per-minute limit for gpt-5.6-sol: limit 500000, used 397298, requested 204717. Running several agents concurrently can exceed the TPM ceiling and drop in-flight work.'
+quote: 'stream disconnected before completion: Rate limit reached for gpt-5.6-sol in organization ‹redacted› on tokens per min (TPM): Limit 500000, Used 397298, Requested 204717.'
+utterance_by: tool_result
+source:
+    kind: session
+    ref: codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T16-56-09-01a00c5c-48cc-7850-8fe0-e14bc4f7cc79.jsonl#L160
+    agent: codex
+    surface: macs-MacBook-Pro
+    at: 2026-08-16T21:00:38.656Z
+confidence: 0.85
+tags: []
+env:
+    host: openai api
+    dataset: gpt-5.6-sol
+affects:
+    - task2_final
