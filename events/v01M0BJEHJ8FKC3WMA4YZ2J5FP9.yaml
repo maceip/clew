@@ -1,0 +1,11 @@
+id: v01M0BJEHJ8FKC3WMA4YZ2J5FP9
+kind: evidence
+entry: e01M05T4XG0RJWQTP25SYT4FH0B
+payload:
+    kind: churn
+    note: Repair stale work links with real code evidence
+    ref: churn:d2f551b4a1eba275ca4c081639572a50b566293a
+by:
+    who: differ
+    surface: macs-MacBook-Pro
+at: 2026-08-18T23:14:05Z
