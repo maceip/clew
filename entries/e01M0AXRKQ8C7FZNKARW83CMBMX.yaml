@@ -1,0 +1,17 @@
+id: e01M0AXRKQ8C7FZNKARW83CMBMX
+type: decision
+title: The five promises are the foundation (owner ratified)
+body: >-
+  Owner ratified the product's entire human-facing surface: (1) it remembers what we decide; (2) every agent starts already knowing it; (3) you can look up and see; (4) it taps your shoulder only when something needs you; (5) starting over loses nothing. Every feature must file under exactly one promise or it is not built. Vocabulary beyond these is machinery, never surfaced.
+quote: 'yeah those 5 things are the foundation, agreed'
+utterance_by: user
+source:
+    kind: session
+    ref: chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18
+    agent: cursor-cloud-agent
+    surface: cursor-cloud-vm
+    at: 2026-08-18T17:12:00Z
+confidence: 1
+tags: []
+env: null
+affects: []
