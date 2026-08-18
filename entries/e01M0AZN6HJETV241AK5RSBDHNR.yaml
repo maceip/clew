@@ -1,0 +1,17 @@
+id: e01M0AZN6HJETV241AK5RSBDHNR
+type: intent
+title: Held: a restart tab — stage selected drift into the next generation
+body: >-
+  Owner direction, held for more thinking: a third tab beside merge and gap. The human selects items from both and stages them into a restart; the tab previews exactly what clew from would emit — live seed curation from the drift you are already reading. Gives merge/gap overflow a relief valve: too heavy to absorb here becomes carry it forward. Not buildable spec yet; owner explains later.
+quote: 'users select items from each and put them in "restart tab", and that tab also shows the same output "clew from" would show'
+utterance_by: user
+source:
+    kind: session
+    ref: chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18
+    agent: cursor-cloud-agent
+    surface: cursor-cloud-vm
+    at: 2026-08-18T17:44:00Z
+confidence: 0.95
+tags: []
+env: null
+affects: []
