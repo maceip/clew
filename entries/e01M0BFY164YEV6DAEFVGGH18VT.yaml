@@ -1,0 +1,17 @@
+id: e01M0BFY164YEV6DAEFVGGH18VT
+type: decision
+title: 'The limiter gates distillation timing, never sensing; failure is lag'
+body: >-
+  Owner challenge: a deaf agent is useless. Purpose on record: the limiter is not cost control — it protects shared rate limits and guards against runaway loops. Corrected design: sensing (tailing, recording) is free and never stops; only distillation may lag under pressure, shown as memory is N minutes behind, catching up when headroom returns. Deafness is impossible; nothing goes unrecorded.
+quote: 'a deaf agent is useless and will lead to more problems for me to deal with later?'
+utterance_by: user
+source:
+    kind: session
+    ref: chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18
+    agent: cursor-cloud-agent
+    surface: cursor-cloud-vm
+    at: 2026-08-18T22:28:00Z
+confidence: 1
+tags: []
+env: null
+affects: []
