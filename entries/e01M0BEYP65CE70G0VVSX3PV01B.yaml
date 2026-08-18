@@ -1,0 +1,17 @@
+id: e01M0BEYP65CE70G0VVSX3PV01B
+type: decision
+title: 'Finished means shared: work ends pushed or PR''d; local-only is an alarm'
+body: >-
+  Owner ruling closing the push gap: a task is not finished until the work is shared per repo convention — pushed to the branch or opened as a PR. Committed-but-local is an alarm state the finish message must name, never a resting state. Root cause on record: this norm lived in behavior and was never spoken, so the memory had nothing to inject; said once here, it reaches every agent forever.
+quote: 'why do i need to tell it to push? with all the journals and dockets and intents and knowledge that should never be the case?'
+utterance_by: user
+source:
+    kind: session
+    ref: chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18
+    agent: cursor-cloud-agent
+    surface: cursor-cloud-vm
+    at: 2026-08-18T22:11:00Z
+confidence: 1
+tags: []
+env: null
+affects: []
