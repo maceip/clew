@@ -1,0 +1,20 @@
+id: e01M0AV0H7RY7DG79VCMHPEMPJP
+type: decision
+title: Glance direction ruling: graphic, two zooms — deferred behind single-project
+body: >-
+  Owner direction: the glance becomes a graphic (project view: status-colored intent
+  tiles, drift strip, docket badge; fleet view: hot-project tiles, dormant collapsed).
+  Static self-contained HTML, no server. DEFERRED: build only after the single-project
+  version works well.
+quote: 'the glance view _graphic_ not text, needs to support a one project view, and global view'
+utterance_by: user
+source:
+    kind: session
+    ref: chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18
+    agent: cursor-cloud-agent
+    surface: cursor-cloud-vm
+    at: 2026-08-18T16:23:00Z
+confidence: 1
+tags: []
+env: null
+affects: []

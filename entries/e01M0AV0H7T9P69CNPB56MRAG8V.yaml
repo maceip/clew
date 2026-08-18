@@ -1,0 +1,21 @@
+id: e01M0AV0H7T9P69CNPB56MRAG8V
+type: decision
+title: Sequencing: single-lineage from + one-project glance FIRST; fleet/multi later
+body: >-
+  Owner ruling: no rush on multi-parent from or the fleet view. Get clew from working
+  well with one project lineage and the glance UI working well for one project before
+  any scaling work — else scope creep triggers the restart urge (owner: risk of clew-
+  from-clew). Multi-parent and fleet rulings stand as destination, gated on the single
+  versions working well.
+quote: 'we need to get clew from working well with just one project lineage, and the glance infra ui working with just one project well first, else we risk scope creep and me clew from clew'
+utterance_by: user
+source:
+    kind: session
+    ref: chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18
+    agent: cursor-cloud-agent
+    surface: cursor-cloud-vm
+    at: 2026-08-18T16:23:00Z
+confidence: 1
+tags: []
+env: null
+affects: []
