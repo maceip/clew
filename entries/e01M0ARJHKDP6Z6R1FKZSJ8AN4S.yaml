@@ -1,0 +1,15 @@
+id: e01M0ARJHKDP6Z6R1FKZSJ8AN4S
+type: finding
+title: laptop surface intent placeholder
+body: laptop surface intent placeholder
+quote: laptop surface intent placeholder
+utterance_by: user
+source:
+    kind: human
+    ref: cli:note
+    surface: cursor
+    at: 2026-08-18T15:41:53.133957177Z
+confidence: 1
+tags: []
+env: null
+affects: []
