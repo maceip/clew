@@ -1,6 +1,6 @@
 id: e01M0AYE066QK08QK8MTPX4XNFX
 type: finding
-title: Codex finished I13 stale: tree uncommitted, law wording on human surfaces
+title: 'Codex finished I13 stale: tree uncommitted, law wording on human surfaces'
 body: >-
   Manual check-in of the first stale finish: I13 complete and tests green but uncommitted — it exists only in the laptop working tree, invisible to the join. Confirmed conflict: owner-law vocabulary on human surfaces (README, cards, listings) vs the two-register ruling; the feature stands, only surface wording renames. Aligned: single-lineage from, SessionStart birth. Reconcile due at next contact.
 quote: 'The main-branch implementation remains uncommitted in the working tree; I did not commit or push the code changes.'

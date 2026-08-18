@@ -1,6 +1,6 @@
 id: e01M0AXZTTHG5FKXETX0X8PR6EX
 type: decision
-title: On finish, check in first: reconcile against the delta before next steps
+title: 'On finish, check in first: reconcile against the delta before next steps'
 body: >-
   Owner ruling completing the task lifecycle: when an agent finishes, it must sync the journal and reconcile its output against decisions that landed mid-flight before concluding or picking next steps — state contradictions explicitly, then close. Stop/AfterAgent hooks make this enforceable on claude/codex/gemini; elsewhere it is convention plus the glance flagging stale finishes.
 quote: 'but what i do expect is that after it finishes, to check in first and then figure out what to do based on the new synced state'

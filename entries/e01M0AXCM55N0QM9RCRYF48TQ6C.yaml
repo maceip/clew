@@ -1,6 +1,6 @@
 id: e01M0AXCM55N0QM9RCRYF48TQ6C
 type: finding
-title: Universal injection point: every model API call rebuilds the mind
+title: 'Universal injection point: every model API call rebuilds the mind'
 body: >-
   No context persists inside a model between calls — each harness reconstructs the full message list per request. A local base-URL shim (OLLAMA_HOST / OPENAI_BASE_URL / ANTHROPIC_BASE_URL) can inject the journal delta into any agent, bare ollama included, with passthrough-on-failure so it is never load-bearing. Prior art: Engram transparent ollama proxy; LiteLLM async_pre_call_hook.
 quote: 'It intercepts every chat request, injects relevant memories into the system prompt, and forwards the enriched request to Ollama — all without any changes to your client code.'

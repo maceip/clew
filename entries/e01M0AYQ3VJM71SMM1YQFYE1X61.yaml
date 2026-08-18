@@ -1,6 +1,6 @@
 id: e01M0AYQ3VJM71SMM1YQFYE1X61
 type: decision
-title: Knowledge Merge at finish: glanceable apply/defer list, external memory
+title: 'Knowledge Merge at finish: glanceable apply/defer list, external memory'
 body: >-
   Owner design: at finish, one colored glanceable list — top unapplied changes (code, intent, knowledge), one line each, entry-linked, one-keystroke apply/defer. See-once by decision id; defer compresses to a nagging count, never re-shown as new. External memory for a forgetful human: recognition over recall, per the HCI findings. It is the docket rendered at the finish boundary.
 quote: 'this list cannot be verbose, it needs to be glancable, and it serves the "humans forget" thing as well'

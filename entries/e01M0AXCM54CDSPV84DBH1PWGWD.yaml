@@ -1,6 +1,6 @@
 id: e01M0AXCM54CDSPV84DBH1PWGWD
 type: finding
-title: Spec nudge matrix is stale: codex and gemini now ship injection hooks
+title: 'Spec nudge matrix is stale: codex and gemini now ship injection hooks'
 body: >-
   Aug 2026 survey: codex hooks are stable and default-enabled with UserPromptSubmit additionalContext; gemini CLI BeforeAgent injects context (default on v0.26+); cursor injects only at sessionStart/postToolUse, not beforeSubmitPrompt; opencode plugins transform system/messages pre-dispatch. MCP 2026-07-28 subscriptions notify the client, not the model. Re-pin JOURNAL_SPEC 8.1.
 quote: 'Plain text on `stdout` is added as extra developer context.'

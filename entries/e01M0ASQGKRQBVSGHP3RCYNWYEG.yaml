@@ -1,6 +1,6 @@
 id: e01M0ASQGKRQBVSGHP3RCYNWYEG
 type: question
-title: Approve extractor over-firing tune: rollup >32KB and docket hit 8 cards
+title: 'Approve extractor over-firing tune: rollup >32KB and docket hit 8 cards'
 body: >-
   Both 3.3 tripwires fired. Proposed: raise confidence bar / tighten firing triggers;
   never raise caps. Needs ruling.

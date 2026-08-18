@@ -1,6 +1,6 @@
 id: e01M0ASQGKPPZ4Y3H8P1RV88DZN
 type: question
-title: URGENT: approve budget-deadlock fix - floor rule or smaller extraction slices
+title: 'URGENT: approve budget-deadlock fix - floor rule or smaller extraction slices'
 body: >-
   Extraction is fully starved: single request (29-34k tokens) exceeds the 2% daily
   budget (22.9k at 1.14M observed), so today's sessions are not being journaled.

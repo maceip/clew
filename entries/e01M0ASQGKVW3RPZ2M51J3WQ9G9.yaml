@@ -1,6 +1,6 @@
 id: e01M0ASQGKVW3RPZ2M51J3WQ9G9
 type: question
-title: Approve cloud env recipes: install clew + wire MCP in cursor/codex/claude envs
+title: 'Approve cloud env recipes: install clew + wire MCP in cursor/codex/claude envs'
 body: >-
   Row 4 revised: (a) fix module path or ship release binaries; (b) document three env
   recipes (cursor environment.json, codex cloud setup, claude cloud) installing clew +

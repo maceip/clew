@@ -1,6 +1,6 @@
 id: e01M0ASQGK4FMKRNCNR91KJ06JD
 type: decision
-title: Restart machinery must be zero human effort: ambient inheritance, opt-out
+title: 'Restart machinery must be zero human effort: ambient inheritance, opt-out'
 body: >-
   Lesson from substrate x2: reuse that costs effort at the clean-slate moment gets
   skipped. Therefore: SEED.md maintained continuously; birth detection auto-injects

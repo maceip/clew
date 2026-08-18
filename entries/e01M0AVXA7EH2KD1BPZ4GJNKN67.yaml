@@ -1,6 +1,6 @@
 id: e01M0AVXA7EH2KD1BPZ4GJNKN67
 type: decision
-title: Witness-node role adopted: always-on ear with owner API creds, sequenced
+title: 'Witness-node role adopted: always-on ear with owner API creds, sequenced'
 body: >-
   Owner sgtm: one always-on clew node (owner infra) whose sensors are API pollers with
   owner account creds — witnesses cursor/codex cloud sessions live with zero agent

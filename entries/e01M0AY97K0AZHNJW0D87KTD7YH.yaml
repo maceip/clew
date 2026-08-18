@@ -1,6 +1,6 @@
 id: e01M0AY97K0AZHNJW0D87KTD7YH
 type: question
-title: Two-grade telling: block dependent tasks on unresolved drift?
+title: 'Two-grade telling: block dependent tasks on unresolved drift?'
 body: >-
   Owner stress-test found the hole: human forgets decision A, asks drifted agent Y for task B that depends on the contested ground; know-and-tell alone lets B build on it. Proposed rule: telling has two grades — courtesy mention when unrelated; blocking question when the new task depends on unresolved drift. Y proceeds only after a ruling. The docket card persists regardless; forgetting stays safe.
 quote: 'go to agent Y that has drifted and ask it to work on task B that has dependency on the "unmerged decison A", and i forget to "tell it to undo its own drift"'

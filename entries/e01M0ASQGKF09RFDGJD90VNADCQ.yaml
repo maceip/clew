@@ -1,6 +1,6 @@
 id: e01M0ASQGKF09RFDGJD90VNADCQ
 type: finding
-title: Spawn test: 63/63 entries carried into scratch gen-2 with guardrails intact
+title: 'Spawn test: 63/63 entries carried into scratch gen-2 with guardrails intact'
 body: >-
   init --carry into a fresh repo: full seed landed, carried provenance preserved,
   newborn glance renders the constitution, context.md opens with the 6.5 injection

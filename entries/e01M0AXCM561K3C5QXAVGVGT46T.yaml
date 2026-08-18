@@ -1,6 +1,6 @@
 id: e01M0AXCM561K3C5QXAVGVGT46T
 type: intent
-title: Build the freshness ladder: one delta payload, five delivery layers
+title: 'Build the freshness ladder: one delta payload, five delivery layers'
 body: >-
   Deliver one idempotent journal-delta digest via: (1) base-URL proxy shim — the floor, covers ollama; (2) MCP tool-result banner on every clew tool reply; (3) harness hooks where present (claude/codex/gemini prompt boundary, cursor postToolUse, opencode transform); (4) PTY wrap; (5) human relay. Dedupe by entry-ULID watermark so no agent sees a delta twice. Payload is data, not instructions.
 quote: 'the human (me) would think that our mind plane would inject "knowledge" into all running agents on a specific project at some interval'

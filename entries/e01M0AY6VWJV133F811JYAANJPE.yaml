@@ -1,6 +1,6 @@
 id: e01M0AY6VWJV133F811JYAANJPE
 type: decision
-title: Stale finish: know and tell, never act — the reconcile is read-only
+title: 'Stale finish: know and tell, never act — the reconcile is read-only'
 body: >-
   Amendment to the finish check-in: an agent whose finished work was obsoleted mid-flight must not remove, redo, or touch anything on its own — no action of any kind. The check-in only installs knowledge: at the next human prompt it must say the work is deprecated/obsoleted/wrong and why, unless the human already resolved it elsewhere. Interpretation is the human's call. Owner will stress-test.
 quote: 'finishes, then syncs, should _NOT_ then remove the work it just did, or do anything for that matter'
