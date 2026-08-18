@@ -1,0 +1,12 @@
+id: v01M065G9VRBCNQ3P473GA5N8CP
+kind: evidence
+entry: e01M065G8RTKVH6466KEB0FRJ8N
+payload:
+    kind: commit
+    note: Make zero-homework watch safe and measurable
+    ref: b4c4cd3663a5297257723e4d6fafc87130641920
+    via: coordination-repair
+by:
+    who: differ
+    surface: macs-MacBook-Pro
+at: 2026-08-16T20:51:39Z

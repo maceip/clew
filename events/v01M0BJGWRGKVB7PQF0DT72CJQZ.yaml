@@ -1,0 +1,11 @@
+id: v01M0BJGWRGKVB7PQF0DT72CJQZ
+kind: evidence
+entry: e01M05VNN1T5TKJ15Q47KSS3FMJ
+payload:
+    kind: churn
+    note: Find real commits beyond the map display limit
+    ref: churn:959c29c48e3498aec5f2853ff8b9b7e73f551c3f
+by:
+    who: differ
+    surface: macs-MacBook-Pro
+at: 2026-08-18T23:15:22Z

@@ -1,0 +1,11 @@
+id: v01M0BJGWRGKVB7PQF0DQJ5EQA9
+kind: evidence
+entry: e01M05SPB2EMMC4F4PR0BSPFZKZ
+payload:
+    kind: commit
+    note: Find real commits beyond the map display limit
+    ref: 959c29c48e3498aec5f2853ff8b9b7e73f551c3f
+by:
+    who: differ
+    surface: macs-MacBook-Pro
+at: 2026-08-18T23:15:22Z
