@@ -1,23 +1,23 @@
 # Journal
 
-_generated 2026-08-18 15:52 UTC · 66 live entries (19 decisions · 32 findings · 1 questions · 14 intents) · 84 total in history_
+_generated 2026-08-18 15:53 UTC · 66 live entries (19 decisions · 32 findings · 1 questions · 14 intents) · 84 total in history_
 
 ## DECIDED
 
-- `e01M0AQHSRF4DVDYZ989W6K185N` Owner laws live in an owner-scope journal with a ≤1KB injection budget — 28m · possible-contradiction
-- `e01M0AQHSRF4DVDYZ989RNZVC46` `clew from` is the one explicit lineage command; never automatic — 28m · active
-- `e01M0AQHSRF4DVDYZ989MTZQV7E` SEED.md is watcher-maintained continuously, never generated on demand — 28m · possible-contradiction
-- `e01M0AQHSRF4DVDYZ989M4DVHYX` Lineage inheritance is explicit; only promoted laws auto-carry — 28m · possible-contradiction
+- `e01M0AQHSRF4DVDYZ989W6K185N` Owner laws live in an owner-scope journal with a ≤1KB injection budget — 29m · possible-contradiction
+- `e01M0AQHSRF4DVDYZ989RNZVC46` `clew from` is the one explicit lineage command; never automatic — 29m · active
+- `e01M0AQHSRF4DVDYZ989MTZQV7E` SEED.md is watcher-maintained continuously, never generated on demand — 29m · possible-contradiction
+- `e01M0AQHSRF4DVDYZ989M4DVHYX` Lineage inheritance is explicit; only promoted laws auto-carry — 29m · possible-contradiction
 - `e01M068ECYE067WF6BH7F26VC3D` Cursor v1 stays CLI-only: desktop 0 vs CLI 44 in 7d — 1d · active
 - `e01M065T92NXY1ER6R73YCQNH84` Recover docket empty-state and withdrawal wording from Task 3 journal source — 1d · possible-contradiction
 - `e01M064DQTWYDVGGAE3M5QRTGME` Re-evaluate the current tree instead of carrying the prior gate verdict forward — 1d · active
 
 ## LEARNED
 
-- `e01M0ARJKGSQFSH8WSVZEG520DH` phone surface intent placeholder — 10m · current
-- `e01M0ARJHKDP6Z6R1FKZSJ8AN4S` laptop surface intent placeholder — 10m · current
-- `e01M0ARJFTWEWY5H6JFJ17656W4` cloud surface intent placeholder — 10m · current
-- `e01M0ARJE1XNN8Q45DJ36FP47YT` web surface intent placeholder — 10m · current
+- `e01M0ARJKGSQFSH8WSVZEG520DH` phone surface intent placeholder — 11m · current
+- `e01M0ARJHKDP6Z6R1FKZSJ8AN4S` laptop surface intent placeholder — 11m · current
+- `e01M0ARJFTWEWY5H6JFJ17656W4` cloud surface intent placeholder — 11m · current
+- `e01M0ARJE1XNN8Q45DJ36FP47YT` web surface intent placeholder — 11m · current
 - `e01M0ARJC3CMW89DH89FC3EW679` proposal ruling placeholder — 11m · current
 - `e01M068FQH1ND9MM1WH851AF45M` Task 6 gate: flags 0 writes; algebra, poller, manifest pass — 1d · current
 - `e01M06821D53QYHBJS1FEC2CK7G` Task 5 gate: 3 formats, 1 card, confirm boundary pass — 1d · current
@@ -33,14 +33,14 @@ _None._
 - possible-contradiction `e01M05SA72DPRGNTY7GCQ2RASTP` Cards show verbatim quotes + clickable provenance, never extractor paraphrase — 1d
 - possible-contradiction `e01M05SA72DPRGNTY7GD0TGHEX7` Scope freeze: relay, TUI, team mode, adapters need a §11 trigger measurement — 1d
 - possible-contradiction `e01M065T92NXY1ER6R73YCQNH84` Recover docket empty-state and withdrawal wording from Task 3 journal source — 1d
-- possible-contradiction `e01M0AQHSRF4DVDYZ989M4DVHYX` Lineage inheritance is explicit; only promoted laws auto-carry — 28m
-- possible-contradiction `e01M0AQHSRF4DVDYZ989MTZQV7E` SEED.md is watcher-maintained continuously, never generated on demand — 28m
+- possible-contradiction `e01M0AQHSRF4DVDYZ989M4DVHYX` Lineage inheritance is explicit; only promoted laws auto-carry — 29m
+- possible-contradiction `e01M0AQHSRF4DVDYZ989MTZQV7E` SEED.md is watcher-maintained continuously, never generated on demand — 29m
 
 ## Intent × reality
 
 | Intent | Age | Reality | State |
 |---|---:|---:|---|
-| `e01M0AQHSRF4DVDYZ989PVHGA7R` Birth detection: auto-init a new repo with owner laws only | 28m | 1 evidence | in_flight |
+| `e01M0AQHSRF4DVDYZ989PVHGA7R` Birth detection: auto-init a new repo with owner laws only | 29m | 1 evidence | in_flight |
 | `e01M0664DX5WAZ01J6KJBCZP4QC` Add contract tests for docket invariants and failure modes | 1d | 1 evidence | in_flight |
 | `e01M065G8RTKVH6466KEB0FRJ8N` Commit the gate fixes as one spec-amended change, then start the docket | 1d | 1 evidence | in_flight |
 | `e01M064DHNTXFM29PNWCW0VBBF2` Run a strict read-only gate proving each acceptance point with tests or state q… | 1d | 3 evidence | in_flight |
