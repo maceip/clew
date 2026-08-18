@@ -1,16 +1,16 @@
 # Journal
 
-_generated 2026-08-18 22:27 UTC · 115 live entries (46 decisions · 40 findings · 9 questions · 20 intents) · 135 total in history_
+_generated 2026-08-18 22:27 UTC · 117 live entries (48 decisions · 40 findings · 9 questions · 20 intents) · 137 total in history_
 
 ## DECIDED
 
+- `e01M0BFRYY2WVHJZ3R3TDV4CFTS` The wording sweep covers every fear-attached word; docket stays by name — 2m · active
+- `e01M0BFRYY1EW9CFMJNDJ5QH3M2` Evidence settles merge lines; apply is never asked for finished work — 2m · active
 - `e01M0BF0WMX264RA9D0VTM9R24K` Entry ids are machine plumbing: never shown to or relayed through humans — 14m · active
 - `e01M0BEYP65CE70G0VVSX3PV01B` Finished means shared: work ends pushed or PR'd; local-only is an alarm — 16m · active
 - `e01M0BETRRAZ54063PRJK1JSQS7` The finish message is a surface: what exists, where it lives, my next move — 17m · active
 - `e01M0BER1Q412DRFQYESPCN0Q30` Lines are plain speech, no ids; near-duplicates fold; held items rest — 19m · active
 - `e01M0BEM04PAZ85R5YNRM2Y31Z6` Broken states carry their verb: no unactionable warnings for humans — 23m · active
-- `e01M0AZDDYC49Y1741H7W74Y1QY` Second tab: the intent gap — everything intended, not yet real — 4h · active
-- `e01M0AZ7JBPJRNHFJQC6WEEQB9Y` Silence is the signal: an absent merge means truly nothing new — 4h · active
 
 ## LEARNED
 
@@ -55,6 +55,20 @@ _generated 2026-08-18 22:27 UTC · 115 live entries (46 decisions · 40 findings
 | `e01M0AQHSRF4DVDYZ989PVHGA7R` Birth detection: auto-init a new repo with owner laws only | 7h | 1 evidence | in_flight |
 
 ## Decisions
+
+### e01M0BFRYY2WVHJZ3R3TDV4CFTS — The wording sweep covers every fear-attached word; docket stays by name  `active`
+> why is 7 indexing on "law" when we discussed _all_ legal sounding words, with docket being ok
+
+Owner correction: the rename card narrowed to the single word law. The sweep is all fear-attached words wherever humans read — law, state, violation, enforcement and relatives — judged per word in context. Docket is explicitly approved and stays. Agent-facing hard register remains untouched where hardness prevents wiggle.
+
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00_
+
+### e01M0BFRYY1EW9CFMJNDJ5QH3M2 — Evidence settles merge lines; apply is never asked for finished work  `active`
+> why are there still 7 merges that need to take place ?  number 1 i thought you already merged?
+
+Owner found the merge asking him to bless work already built, tested, and pushed. Rule: the merge joins decisions to evidence; a decision whose demanded work is evidenced settles itself and shows once as settled-while-away. Apply is reserved for work not yet done or judgment only a human can make. Nothing auto-acts on the repo; settling is status computation, not action.
+
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00_
 
 ### e01M0BF0WMX264RA9D0VTM9R24K — Entry ids are machine plumbing: never shown to or relayed through humans  `active`
 > you should never print "e01M0BER1Q412DRFQYESPCN0Q30" i dont know what it means and its super long -- what is the intent of showing that to the human?

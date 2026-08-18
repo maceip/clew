@@ -1,4 +1,6 @@
 # Journal digest (live entries: id · type/status · title)
+- e01M0BFRYY2WVHJZ3R3TDV4CFTS decision/active The wording sweep covers every fear-attached word; docket stays by name
+- e01M0BFRYY1EW9CFMJNDJ5QH3M2 decision/active Evidence settles merge lines; apply is never asked for finished work
 - e01M0BF0WMX264RA9D0VTM9R24K decision/active Entry ids are machine plumbing: never shown to or relayed through humans
 - e01M0BEYP65CE70G0VVSX3PV01B decision/active Finished means shared: work ends pushed or PR'd; local-only is an alarm
 - e01M0BETRRAZ54063PRJK1JSQS7 decision/active The finish message is a surface: what exists, where it lives, my next move
@@ -31,6 +33,4 @@
 - e01M0ATYJG615JE6BV5MG5RAF9Z decision/active clew from must accept multiple parent projects, with strand selection
 - e01M0ASSNH1HP68M1QERV9AKG5A finding/current Attachments bypass the secret scrub; GitHub push protection caught PATs
 - e01M0ASQGM2P07Z36KVZX6P8EH4 question/open Adopt the complexity law: additions must be a verb, label, rendering, or config
-- e01M0ASQGKZ9ZY4XRF6K7KRCT75 question/open Adopt clew witness <transcript> as the cloud-session gap fix?
-- e01M0ASQGKX2F9THW496N79Z83F question/open Approve selfwatch + journal add + owner-laws relocation to a git-reachable repo
-… (115 more omitted for size)
+… (117 more omitted for size)
