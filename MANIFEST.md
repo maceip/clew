@@ -1,0 +1,319 @@
+# Restart manifest — 2026-08-18
+
+Mark each entry `[carry]` or `[drop]`, then run `clew manifest --out <dir>`.
+
+## e01M04TDKJ79MEGBWTCSD8HTE5M — Lock-and-notary pitches fail for any team whose job isn't security — not just … (finding, current)
+disposition: [carry]
+> Lock-and-notary pitches fail for any team whose job isn't security — not just solo devs. Evidence framing must lead with anti-forgetting/throughput, never audit.
+Lock-and-notary pitches fail for any team whose job isn't security — not just solo devs. Evidence framing must lead with anti-forgetting/throughput, never audit.
+
+## e01M04WCGJS9FS7FQB0YFX9DTYG — Name the system clew (owner decision) (decision, active)
+disposition: [carry]
+> Name = clew (owner). Alternatives considered: restart — verb collision, names the crisis not the daily loop; lore — binary/brand collision with varalys/lore, getlore.ai, Epic Lore; wake, canon, lo…
+Name = clew (owner). Alternatives considered: restart — verb collision, names the crisis not the daily loop; lore — binary/brand collision with varalys/lore, getlore.ai, Epic Lore; wake, canon, lorekeeper also considered. Supersedes the builder's unilateral restart from §12.1.
+
+## e01M04XVNN32W4FTFKKSKJSN01V — varalys/lore owns session-provenance + git-sync; clew's edge is diff + absence (finding, current)
+disposition: [carry]
+> lore is retrospective provenance — whole-session storage answering "why does this line exist." Restart is prospective state — distilled typed entries answering "what's true about this project righ…
+varalys/lore ships session recording linked to commits, serverless git-remote sync, cross-tool memory over MCP; installs `lore` via brew/cargo. Same plumbing independently derived — commodity layer. Unoccupied, core to clew: typed distillation, intent×reality diff with absence, human steering surface, restart manifest. getlore.ai + Epic Lore make the name unownable.
+
+## e01M04XVP9QBE041XCK43C78BVP — Decision-dense sessions live on uncovered surfaces; manual notes = homework (finding, current)
+disposition: [carry]
+> ok not sure im liking this me needing to add to the journal each time a file in a repo is edited let me think about this
+clew was designed in phone/cloud chats no watcher covers. An agent bridging that gap with prescribed manual notes made the product read as homework — an I1-violation smell, correctly caught. Non-discipline fixes: one export+backfill per key conversation; decisions echo into covered sessions, caught on first echo. §11 cloud-sensor trigger fires now for phone-heavy owners.
+
+## e01M04XVPW5H5JCPS92CFQ4EBY3 — Independent verify: clean clone green; differ/poller/manifest lack unit tests (finding, current)
+disposition: [carry]
+> --- PASS: TestAcceptance1_AbsenceDetection / TestAcceptance2_ExtractionFidelityPipeline / TestAcceptance3_RestartRoundTrip; SKIP: TestAcceptance2_RealProvider
+Second agent+machine, Go 1.26.3: build clean; full suite green; gates 1, 2-hermetic, 3 PASS; RealProvider SKIPs without keys; init push-deferral loud per spec. Gaps: no package tests for differ, poller, manifest, archaeology — coverage rides acceptance alone. Footgun: `journal note --help` ingested the flag as literal entry text; cleaned via reject.
+
+## e01M04XVQEEZ38J9TC5NZNKC16B — Run the live fidelity gate (RealProvider) on a machine with provider keys (question, answered)
+disposition: [carry]
+> If you cannot reach P>=0.9 / R>=0.75, stop all other work and report that the kill criterion fired — that outcome is a valid and useful result, and it is written down on purpose
+Hermetic pipeline passes, but the go/no-go gate — P≥0.9/R≥0.75 within 5 instruction iterations vs ratified labels — has never run against a live provider. Until it does, extraction quality (the stated existential risk) is unmeasured; the kill criterion is theoretical. Needs claude/codex CLI or OpenAI-compatible key; env flag was RESTART_FIDELITY=1 pre-rename — verify.
+
+## e01M04YAQN85TF6YQDP33VB4JQ0 — Foreign agents can read the journal but not write; contribution path unbuilt (finding, current)
+disposition: [carry]
+> so if you cant even push to the public clew directory does that mean our first real test failed?
+cursor[bot] was denied push to maceip/clew — correct posture: journal write = repo write, else anyone could poison context.md (§6.5 amplifier). But there is no sanctioned path for non-credentialed contributors; tonight's delivery was a hand-rolled bundle. Options: document fork-PR onto clew/journal, or a `clew import <bundle>` verb landing entries pending human confirm.
+
+## e01M05REDJZAERAWRQG7349E7Y1 — Live fidelity gate passed on iteration 1 (finding, current)
+disposition: [carry]
+> Live fidelity gate iteration 1: P=0.91; R=0.83; decisions=6/7; findings=4/5; rejected=0; provider=claude; PASS.
+Live fidelity gate iteration 1: P=0.91; R=0.83; decisions=6/7; findings=4/5; rejected=0; provider=claude; PASS.
+
+## e01M05RF74PBCZVAPRY49GCVM7H — answer: Run the live fidelity gate (RealProvider) on a machine with provider ke… (finding, current)
+disposition: [carry]
+> P=.91 R=.83; D=6/7 F=4/5; reject=0; claude; iter=1; PASS
+P=.91 R=.83; D=6/7 F=4/5; reject=0; claude; iter=1; PASS
+
+## e01M05RHSWXDNR10P1PY8ERYA9S — Dogfood metrics predeclared; D0 snapshot recorded (decision, active)
+disposition: [carry]
+> Dogfood D0 2026-08-16: repos=3; spend=spent/observed, caps=2%,200000/d; confirm:reject=C:R; push precision=needed/total, unneeded=failure; adapter incidents=paused+parked+unknown-format. D0 spend=0/0;…
+Dogfood D0 2026-08-16: repos=3; spend=spent/observed, caps=2%,200000/d; confirm:reject=C:R; push precision=needed/total, unneeded=failure; adapter incidents=paused+parked+unknown-format. D0 spend=0/0; C:R=0:1; push=0/0; incidents=0.
+
+## e01M05S9SFKAAM813AR1AY96QWH — Final Task 2 dogfood snapshot: 0.113% extraction, 0:1 confirm:reject, 0 pushes (finding, current)
+disposition: [carry]
+> Final Task 2 snapshot is: 6 automatic entries; extraction 5,057 / 4,491,713 observed = 0.113%; confirm:reject 0:1; actual pushes 0/0; adapter incidents 1 (the journaled D0 storm); parked 0.
+Final Task 2 dogfood measurement of clew: 6 automatic entries produced; 5,057 of 4,491,713 observed bytes extracted (0.113%); confirm-to-reject ratio 0:1; actual pushes 0 of 0; 1 adapter incident (the previously journaled D0 session storm); 0 parked items. Recorded after the Codex-format detection and watcher baseline repairs.
+
+## e01M05S9SFKAAM813AR1B8DXEYW — Codex format now detected; watcher tracks only post-baseline bytes (finding, current)
+disposition: [carry]
+> The current Codex format is now detected: re-init found 3 large-metadata sessions, and the watcher is tracking only post-baseline bytes with source time.
+After repair, clew detects the current Codex session format: re-initialization found 3 sessions with large metadata, and the watcher now tracks only bytes written after the baseline, using source time rather than ingest time. This addresses the historical-session storm seen in dogfood D0.
+
+## e01M05S9SFKAAM813AR1EG3X3WR — Land the dogfood fixes after recording the Task 2 snapshot (intent, in_flight)
+disposition: [carry]
+> I’m recording that snapshot and then landing the dogfood fixes.
+Commitment to record the final Task 2 dogfood snapshot and then land the outstanding dogfood fixes in the codebase.
+
+## e01M05SA72DPRGNTY7GCN1P7CED — Rename the inbox surface to "docket"; keep inbox as hidden alias (decision, possible-contradiction)
+disposition: [carry]
+> Rename the surface — vocabulary is a forcing function against email-drift. It's a docket of decision cards (clew docket, with inbox as a hidden alias for muscle memory).
+The decision surface is renamed inbox → docket, with "inbox" kept only as a hidden alias for muscle memory. Reason: vocabulary is a forcing function against email-drift — an inbox invites FYI accumulation, unread counts, and backlog; a docket is a list of items awaiting a ruling. The docket is the only surface that carries verbs.
+
+## e01M05SA72DPRGNTY7GCPEX9W2N — I10–I12 added as hard invariants enforced in code and tests (decision, possible-contradiction)
+disposition: [carry]
+> Add these three as I10–I12, hard law, enforced in code and tests, not convention:
+Three new spec invariants, ranking as hard law rather than convention: I10 docket holds only items answerable by 1–3 discrete verbs (nothing FYI-shaped); I11 every card carries a machine-checkable, printed withdrawal condition and the docket keeps no history/counts/badges; I12 hard cap of seven cards, and sustained volume or an unneeded push is logged as system failure, never user workload.
+
+## e01M05SA72DPRGNTY7GCQ2RASTP — Cards show verbatim quotes + clickable provenance, never extractor paraphrase (decision, possible-contradiction)
+disposition: [carry]
+> Design consequences: cards show verbatim quotes + clickable provenance, never the extractor's paraphrase or reasoning; high-magnitude cards carry one assumptions line; no other friction, ever.
+Decision cards must render verbatim quotes with clickable provenance chips (session line / commit / entry) and must never show the extractor's paraphrase, summary, or reasoning. Reason: system-generated explanations are advocacy and increase acceptance of wrong content, while clickable sources reduce over-reliance. One "accepting this assumes: X" line is allowed on high-magnitude cards only; no o�…
+
+## e01M05SA72DPRGNTY7GCV0CBDK7 — Assumptions prompt cut over-reliance 42%→22%; stacked/delay friction backfired (finding, current)
+disposition: [carry]
+> the assumptions prompt ("accepting this assumes X") reduced over-reliance from 42%→22% without added cognitive load, while stacked/delay-based friction backfired
+From the over-reliance literature (Buçinca cognitive-forcing lineage through Ghosh et al. 2026, n=214): an "accepting this assumes X" prompt reduced over-reliance from 42% to 22% with no added cognitive load, while delay-based and stacked friction backfired. This is why the assumptions line is the single permitted forcing function on clew cards and why no other friction is added.
+
+## e01M05SA72DPRGNTY7GCXARNKYH — Implement the decision card and enforce I10–I12 in renderer and tests (intent, in_flight)
+disposition: [carry]
+> Enforce I10–I12 in the renderer and in tests: a synthetic FYI item must be unrenderable; an 8th card must collapse to the overflow-failure card; a resolved stomp must withdraw within one poll cycle.
+Commitment (Task 3): build the docket card to the fixed anatomy — headline-as-question ≤80 chars, why-you strip with rule fired and ticking stall timers, verbatim-quote evidence rows with provenance chips, assumptions line on high-magnitude only, 1–3 verbs plus defer-until-event, printed withdrawal condition, ordering by blocking cost, designed empty state. Tests must prove the three invaria…
+
+## e01M05SA72DPRGNTY7GD0TGHEX7 — Scope freeze: relay, TUI, team mode, adapters need a §11 trigger measurement (decision, possible-contradiction)
+disposition: [carry]
+> Frozen (build nothing here without citing a §11 trigger measurement in the journal and stopping for owner review): relay server, TUI/native apps, team mode, semantic code graphs, treemaps, new adapte…
+Relay server, TUI/native apps, team mode, semantic code graphs, treemaps, new adapters, and orchestration are frozen. Building any of them requires first citing a §11 trigger measurement in the journal and stopping for owner review — measurement, not enthusiasm, unfreezes scope.
+
+## e01M05SG3NTP5W2JX7Y6KZD5N6P — Pre-commit review found three Task 2 blockers: cursor migration, backfill overl… (finding, current)
+disposition: [carry]
+> Pre-commit review found three real blockers: upgrade users lacked cursor migration, backfill could overlap live suffixes, and init could baseline inside a partial JSONL record.
+A pre-commit review of the Task 2 work surfaced three real blockers: users upgrading had no cursor migration path; backfill could overlap with live suffixes; and init could baseline in the middle of a partial JSONL record, producing a corrupt offset.
+
+## e01M05SG3NTP5W2JX7Y6MG00HQJ — Hold the Task 2 commit; make backfill and live watch disjoint by construction (decision, active)
+disposition: [carry]
+> I’m holding the Task 2 commit and adding a one-time migration, complete-record offsets, and a fixed historical upper bound so backfill and live watch are disjoint by construction.
+Rather than commit Task 2 and patch later, the commit is held while three fixes land: a one-time cursor migration for upgrading users, complete-record offsets so init never baselines mid-record, and a fixed historical upper bound so backfill and live watch cannot overlap — disjoint by construction rather than by runtime check.
+
+## e01M05SG3NTP5W2JX7Y6MP1F1K6 — Add cursor migration, complete-record offsets, and fixed historical upper bound (intent, in_flight)
+disposition: [carry]
+> adding a one-time migration, complete-record offsets, and a fixed historical upper bound
+Committed follow-up work before the Task 2 commit can land: a one-time cursor migration for existing installs, offsets that always fall on complete JSONL record boundaries, and a fixed upper bound on the historical backfill range.
+
+## e01M05SPB2EMMC4F4PR0BDQA8S5 — First watch treated historical sessions as live: 342 overlaps, 27 stomps, 12.9M… (finding, suspect)
+disposition: [carry]
+> First watch misclassified historical sessions as live, producing 342 overlaps, 27 stomps, and 12,895,847 observed tokens.
+Measured fallout of the first watch run misclassifying pre-existing historical sessions as live: 342 overlaps, 27 stomps, and 12,895,847 observed tokens. This quantifies the historical-session storm previously recorded qualitatively as an I12 failure.
+
+## e01M05SPB2EMMC4F4PR0BSPFZKZ — Narrow fix for the watch storm: transactional baselines, source-time, bounded c… (intent, in_flight)
+disposition: [carry]
+> Root cause and narrow fix sent to parent: transactional live baselines, source-time sessions, and bounded separate backfill cursor.
+The semantics investigation reported a root cause and a narrow fix to the parent: make live baselines transactional, use source-time (not observation-time) session timestamps, and give backfill its own bounded cursor separate from live watch. This is the proposed work to make backfill and live watch disjoint.
+
+## e01M05SVGK1Q2MR34Y3CMHR7DXM — No cursor translation: keep `extract:` for live, add bounded `backfill:` for hi… (decision, active)
+disposition: [carry]
+> the live watcher keeps the existing `extract:` cursor, explicit history gets a new bounded `backfill:` cursor, and `history-end` freezes their boundary
+Instead of migrating or stacking cursors, the live watcher retains the existing `extract:` cursor while explicit history backfill gets a separate bounded `backfill:` cursor, with `history-end` freezing the boundary between them. Chosen because it preserves v1 pending work across upgrade, keeps live and history from overlapping, and eliminates the risky cursor translation step.
+
+## e01M05T4XG0RJWQTP25SYT4FH0B — Task 2 not passable: `spent` conflates extraction, differ, and archaeology (finding, suspect)
+disposition: [carry]
+> `spent` combines extraction, differ, and archaeology; it is not extraction-only.
+The dogfood audit judged Task 2 not passable yet. The budget `spent` counter mixes extraction, differ, and archaeology tokens, so the predeclared extraction-only cost metric cannot be read from it. Separating cost by kind is a prerequisite before the Task 2 gate can be honestly evaluated.
+
+## e01M05T4XG0RJWQTP25T1K58B61 — Confirm/reject only in event YAML; adapter unknowns undated, absent from status (finding, suspect)
+disposition: [carry]
+> Confirm/reject exists only in journal event YAML.
+Human confirm/reject signals are recorded only in per-worktree events/*.yaml, so measuring confirm rate requires a find+awk scrape instead of a DB query. Adapter "unknown" counts are cumulative, undated KV rows and never surfaced in status. Both dogfood metrics are therefore not queryable from state.db.
+
+## e01M05TBYJXEW5N5FE397XYMEHY — Treat first dogfood run's cursor/push/adapter failures as required failure sign… (decision, active)
+disposition: [carry]
+> the first dogfood run exposed real cursor, push, and adapter failures, so I’m treating that run as the required failure signal—not as acceptance
+The first dogfood run surfaced real cursor, push, and adapter failures. The assistant is treating that run as the required failure signal rather than as an acceptance run, so those failures do not block recording Task 1 as passed but do drive the current work on the live-enrollment/backfill boundary and failure telemetry.
+
+## e01M05TBYJXEW5N5FE398NJ4RD7 — Tighten live-enrollment/backfill boundary and add failure telemetry (intent, in_flight)
+disposition: [carry]
+> I’m tightening the live-enrollment/backfill boundary and failure telemetry now
+Work in progress to harden the boundary between live enrollment and backfill, and to add telemetry for failures. This follows the recorded pass of Task 1 and the cursor/push/adapter failures observed in the first dogfood run.
+
+## e01M05TG628KAGZ9HCBQSAG562P — Separate session-extraction budget from one-time archaeology budget (decision, active)
+disposition: [carry]
+> I’m also separating session-extraction budget from one-time archaeology, because applying a session-token ratio to cold-start docs makes archaeology mathematically impossible at zero observed sessio…
+Extraction budget for live sessions is now tracked separately from the one-time historical archaeology budget. Reason: deriving the archaeology allowance as a ratio of observed session tokens yields zero budget at cold start (zero observed sessions), making backfill of historical docs mathematically impossible. Sits alongside the pre-/post-enrollment byte boundary.
+
+## e01M05TPA9ZK4C8RGC3KBPV2MRF — Re-run the live gate: install binary, normalize spend category, restart watcher (intent, in_flight)
+disposition: [carry]
+> I’m moving back to the live gate now: install this exact binary, normalize the one dogfood spend category, restart the watcher, then verify one full tail/poll cycle has no historical replay, false s…
+Next step after the unit path went green is a live-gate run: install the exact built binary, normalize the single dogfood spend category, restart the watcher, then observe one complete tail/poll cycle. Acceptance is negative evidence — no historical replay, no false sessions, no false pushes in that cycle.
+
+## e01M05TX51R4VZHJMNM804YPMRT — D1: 30 automatic entries; Codex metadata incident pinned (finding, current)
+disposition: [carry]
+> D1 live dogfood: 30 session entries appeared from 1 real Codex session with 0 manual notes; observed=5549571, live+backfill extraction=30184, all-LLM=39091, pushes delivered=0/0, open alerts=10; 46 re…
+D1 live dogfood: 30 session entries appeared from 1 real Codex session with 0 manual notes; observed=5549571, live+backfill extraction=30184, all-LLM=39091, pushes delivered=0/0, open alerts=10; 46 records in 3 newly observed multi-agent metadata classes were pinned as non-utterance adapter metadata.
+
+## e01M05V0G3Q9F41V62P6R5QV53G — Fix migration monotonicity, restore from D1 boundary, rerun cycle before passin… (intent, in_flight)
+disposition: [carry]
+> restoring from the D1 boundary, and will rerun the cycle before calling Task 2 passed.
+After the first upgraded live cycle exposed a cursor-rewind defect, the watcher was stopped. Committed follow-up work: correct the cursor migration, restore state from the D1 boundary, and rerun the live cycle. Task 2 will not be declared passed until that rerun is clean.
+
+## e01M05V0G3Q9F41V62P6T44TC04 — Cursor migration must be monotonic — never rewind an existing cursor (decision, active)
+disposition: [carry]
+> I’m correcting the migration to be monotonic
+A divergent legacy cursor was rewound during migration, causing one duplicate re-extraction. The fix chosen is to make the migration monotonic so a migrated cursor can only move forward, closing off any migration path that repositions a cursor backward and replays already-extracted bytes.
+
+## e01M05V5HWA6TFT0A0KDY1QV6C0 — Add transactional reservation + settlement accounting in internal/state with co… (intent, in_flight)
+disposition: [carry]
+> a transactional reservation record plus settlement accounting, with contention tests that prove the cap/ratio cannot be over-admitted
+Commitment to implement a transactional reservation record plus settlement accounting inside internal/state, accompanied by contention tests that demonstrate the cap/ratio cannot be over-admitted under concurrent access.
+
+## e01M05V5HWA6TFT0A0KDZY8S45K — Confine the cap/ratio admission fix to internal/state; no caller or spec changes (decision, active)
+disposition: [carry]
+> I’m implementing this entirely inside `internal/state`
+The reservation/settlement work is scoped entirely to internal/state rather than changing call sites or the specification. This keeps the enforcement change contained and closes off the alternative of reshaping the caller-facing API or amending the spec to fix over-admission.
+
+## e01M05V9MQWYX3BAX0VXZ70SHTD — D2: cursor rewind replayed 58,754 bytes once (finding, current)
+disposition: [carry]
+> D2 migration failure: split cursor rewind replayed 58754 bytes and spent 1815 extraction tokens once; delivered pushes=0. Fix is monotonic max(extract, watch-extract), with divergent-cursor regression…
+D2 migration failure: split cursor rewind replayed 58754 bytes and spent 1815 extraction tokens once; delivered pushes=0. Fix is monotonic max(extract, watch-extract), with divergent-cursor regression. State backup: state.db.d1-20260816T1748Z.bak.
+
+## e01M05VFAW9A783PMZZEER0G6FX — Second pass on rollover, double-settlement, migration; then run wider suite (intent, in_flight)
+disposition: [carry]
+> I’m doing a second pass for rollover, double-settlement, and migration behavior before running the wider suite.
+Before treating the internal/state reservation/settlement work as done, do a second review pass covering rollover, double-settlement, and migration behavior, then run the wider test suite beyond the state package.
+
+## e01M0640H4ZAR0BQMS73R8QW9E7 — Repaired watcher installed as launchd agent dev.clew.watch (finding, current)
+disposition: [carry]
+> installed launchd agent dev.clew.watch (log: /Users/mac/.clew/logs/watch.log)
+After journaling the D2 cursor-rewind finding, the fixed watcher was installed as a launchd agent named dev.clew.watch on the dev Mac, writing to /Users/mac/.clew/logs/watch.log. That log path is where watcher behaviour for subsequent live runs can be inspected.
+
+## e01M0642VRXV9PCGA4NDJF92E2Y — Wire atomic budget reservations into every LLM call (intent, in_flight)
+disposition: [carry]
+> I’m wiring the new atomic budget reservations into every LLM call next; this closes the remaining race where live extraction and backfill could both spend against the same allowance.
+Next step: route every LLM call through the new atomic budget reservations, so live extraction and backfill can no longer both spend against the same allowance. Closing this race is the stated purpose of the change.
+
+## e01M064DHNTXFM29PNWCW0VBBF2 — Run a strict read-only gate proving each acceptance point with tests or state q… (intent, in_flight)
+disposition: [carry]
+> I’m doing a strict read-only gate: first loading Clew’s generated context and relevant prior memory, then I’ll inspect the current diff and prove each acceptance point with tests or direct state…
+Plan for this session: load Clew's generated context and prior memory, inspect the current diff, and prove each acceptance point via tests or direct state queries — reporting only a blocker or a PASS with exact evidence, making no writes.
+
+## e01M064DQTWYDVGGAE3M5QRTGME — Re-evaluate the current tree instead of carrying the prior gate verdict forward (decision, active)
+disposition: [carry]
+> The earlier gate’s three blockers are the right pressure points, but the checkout has moved: reservation callers and the neutral-workdir behavior now have new code and tests. I’m re-evaluating the…
+The prior gate's three blockers were judged the right pressure points, but the checkout has since gained new code and tests for reservation callers and neutral-workdir behavior. The gate will therefore re-evaluate the present tree, including untracked test files, rather than reusing the earlier verdict.
+
+## e01M064K88F7SDMHA1SPAB51HK7 — D2 final: 52 automatic entries; live extraction 0.631% (finding, current)
+disposition: [carry]
+> D2-final: repos=3; automatic-session-entries=52; observed=6779248; live-extraction=42803 (0.631%); backfill=5057; all-LLM=67936/200000; C:R=0:1; pushes=0 delivered/0 unneeded (precision=N/A); adapter/…
+D2-final: repos=3; automatic-session-entries=52; observed=6779248; live-extraction=42803 (0.631%); backfill=5057; all-LLM=67936/200000; C:R=0:1; pushes=0 delivered/0 unneeded (precision=N/A); adapter/system incidents=4; parked=0; active-reservations=0; live-sessions=6.
+
+## e01M064YRS4S9NK7KW9NN351FQF — I9: Claude settlement ignores cache token fields, letting spend exceed caps (finding, suspect)
+disposition: [carry]
+> I9: Claude settlement ignores `cache_creation_input_tokens` and `cache_read_input_tokens`, permitting cumulative spend beyond caps.
+Settlement of Claude LLM calls counts only the non-cache token fields, ignoring `cache_creation_input_tokens` and `cache_read_input_tokens`. Cumulative spend is therefore undercounted and can run past the configured budget caps. Found at llm.go:158 during the read-only gate.
+
+## e01M064YRS4S9NK7KW9NQ1JMDV2 — Malformed or missing pinned timestamps silently fall back to ingest time (finding, suspect)
+disposition: [carry]
+> Source time: malformed/missing pinned timestamps silently become ingest `now`.
+When a source record's pinned timestamp is missing or malformed, the adapter/extract path substitutes the ingest-time `now` without signalling, so entries get fabricated source times. Located at adapters.go:151 and extract.go:264; flagged as a gate blocker.
+
+## e01M065G8RTKVH6466KE7GQREGX — Task 2 passes its live gate on all five acceptance checks (finding, current)
+disposition: [carry]
+> Task 2 now passes its live gate: 52 automatic session entries, 0 delivered/unneeded pushes, monotonic cursors, exact installed binary, and no active adapter/LLM errors.
+A live gate run on Task 2 passed: 52 automatic session entries recorded, 0 delivered-but-unneeded pushes, cursors monotonic, the exact installed binary in use, and no active adapter or LLM errors. This is the verdict that unblocked committing the gate fixes.
+
+## e01M065G8RTKVH6466KEB0FRJ8N — Commit the gate fixes as one spec-amended change, then start the docket (intent, in_flight)
+disposition: [carry]
+> I’m committing the gate fixes as one spec-amended change, then moving to the docket.
+After the Task 2 live gate passed, the plan is to land all gate fixes as a single commit that also amends the spec, and then move on to the docket surface work.
+
+## e01M066XWD8F1SAWQ8HVXGW4J4Z — Task 3 docket gate: 8→1, FYI 0, withdrawal 1 poll (finding, current)
+disposition: [carry]
+> cards=8; render=1 overflow-failure; cap=7; synthetic-FYI-rendered=0; resolved-stomp-withdrawal=1 poll; pushes=0/0; full=pass; race=pass; vet=pass.
+cards=8; render=1 overflow-failure; cap=7; synthetic-FYI-rendered=0; resolved-stomp-withdrawal=1 poll; pushes=0/0; full=pass; race=pass; vet=pass.
+
+## e01M067AZ3VJM73XP82REZEZ1QC — Task 4 channel: ntfy 2383c10c…, card creation only (finding, current)
+disposition: [carry]
+> ntfy-topic=https://ntfy.sh/2383c10ce6438813da9969532f2df2f7; push-trigger=docket-card-creation-only; payload=headline+why-you; html-refresh=30s.
+ntfy-topic=https://ntfy.sh/2383c10ce6438813da9969532f2df2f7; push-trigger=docket-card-creation-only; payload=headline+why-you; html-refresh=30s.
+
+## e01M067G2QY8BZNZXBE46QBEXEW — Task 4 gate: 10ms, HTML 30s, ntfy 5/5 (finding, current)
+disposition: [carry]
+> bare-clew=10ms x5; dashboard-sections=5; html-refresh=30s; title-light=nonempty-only; ntfy-delivered=5; payload-valid=5/5; full=pass; race=pass; vet=pass.
+bare-clew=10ms x5; dashboard-sections=5; html-refresh=30s; title-light=nonempty-only; ntfy-delivered=5; payload-valid=5/5; full=pass; race=pass; vet=pass.
+
+## e01M06821D53QYHBJS1FEC2CK7G — Task 5 gate: 3 formats, 1 card, confirm boundary pass (finding, current)
+disposition: [carry]
+> formats=bundle+dir+https; schema-invalid=reject; quote-missing=reject; batch=1 card; live-stage=1 entry; live-open=pass; live-reject=0 journal writes; accept=1 foreign entry+1 human confirm; branch-pu…
+formats=bundle+dir+https; schema-invalid=reject; quote-missing=reject; batch=1 card; live-stage=1 entry; live-open=pass; live-reject=0 journal writes; accept=1 foreign entry+1 human confirm; branch-push=pass x2 idempotent; full=pass; race=pass; vet=pass.
+
+## e01M068ECYE067WF6BH7F26VC3D — Cursor v1 stays CLI-only: desktop 0 vs CLI 44 in 7d (decision, active)
+disposition: [carry]
+> window=7d; state.vscdb=402391040 bytes; composer-headers=31; desktop-created=0; desktop-updated=0; latest=2026-08-09T07:19:30Z; cursor-cli=44 transcripts; cli-bytes=10338802; project-slugs=8. Decision…
+window=7d; state.vscdb=402391040 bytes; composer-headers=31; desktop-created=0; desktop-updated=0; latest=2026-08-09T07:19:30Z; cursor-cli=44 transcripts; cli-bytes=10338802; project-slugs=8. Decision: CLI-only v1; desktop remains loud gap; adapter trigger=not met.
+
+## e01M068FQH1ND9MM1WH851AF45M — Task 6 gate: flags 0 writes; algebra, poller, manifest pass (finding, current)
+disposition: [carry]
+> note-help entries=69→69; absence-threshold=4 proposed/5 absent; ineligible=proposed; human-confirm=absent; contradiction nonhuman=possible/human=contradicted; env different=current/current, same=sup…
+note-help entries=69→69; absence-threshold=4 proposed/5 absent; ineligible=proposed; human-confirm=absent; contradiction nonhuman=possible/human=contradicted; env different=current/current, same=superseded/current; poller best-overlap=pass/no-overlap=none/out-of-window=none; manifest rerun events=2→2; full=pass; race=pass; vet=pass.
+
+## e01M0AQHSRF4DVDYZ989M4DVHYX — Lineage inheritance is explicit; only promoted laws auto-carry (decision, possible-contradiction)
+disposition: [carry]
+> lore inheritance was made explicit because a wrong lineage guess poisons a fresh project worse than no inheritance at all — laws are safe to auto-carry precisely because promotion certified them pro…
+clew will never auto-carry project lore into a new repo. Rationale: a wrong lineage guess poisons a fresh project worse than inheriting nothing at all. Owner laws are the sole exception and may be injected automatically, because the promotion step already certified each law as project-agnostic. This is the governing reason behind invariant I13.
+
+## e01M0AQHSRF4DVDYZ989MTZQV7E — SEED.md is watcher-maintained continuously, never generated on demand (decision, possible-contradiction)
+disposition: [carry]
+> the watcher maintains SEED.md continuously alongside context.md — regenerated on journal change, never on demand. The carry-kit always predates the urge to restart.
+The watcher regenerates SEED.md alongside context.md on every journal change rather than building it when a restart is requested. Reason: the carry-kit must already exist before anyone wants to restart, so a seed is never missing or stale at the moment it is needed.
+
+## e01M0AQHSRF4DVDYZ989PVHGA7R — Birth detection: auto-init a new repo with owner laws only (intent, in_flight)
+disposition: [carry]
+> new git init + agent session on a watched machine → auto-init (watch, journal branch, context.md) with owner laws only. No lore, no card required. Acceptance: mkdir x && git init && claude yields a …
+Build auto-init so that a fresh git init plus an agent session on a watched machine sets up watch, journal branch, and context.md carrying only the owner's laws — no lore and no birth card required. Acceptance test: `mkdir x && git init && claude` yields a context containing the owner's laws with zero clew commands typed.
+
+## e01M0AQHSRF4DVDYZ989RNZVC46 — `clew from` is the one explicit lineage command; never automatic (decision, active)
+disposition: [carry]
+> Runnable at birth or any time later; un-carrying is a reject (carried entries keep provenance like everything else). Never automatic. The birth card may suggest clew from X on blatant name/topic overl…
+Pulling a predecessor's seed (decisions, findings, graveyard, exhibits, organ-bank pin) happens only via an explicit `clew from <repo>`; with no args it lists candidates ranked by recency and topic overlap, showing what each would carry. It can run at birth or later, un-carrying is recorded as a reject so carried entries keep provenance, and the birth card may only suggest `clew from X` on name/t�…
+
+## e01M0AQHSRF4DVDYZ989W6K185N — Owner laws live in an owner-scope journal with a ≤1KB injection budget (decision, possible-contradiction)
+disposition: [carry]
+> an owner-scope journal synced like any other; findings promoted via clew journal promote <id>; extractor proposes promotion when a finding's content is project-agnostic; ≤1KB injection budget into e…
+Laws are stored as an owner-scope journal synced like any other. Findings become laws through an explicit `clew journal promote <id>`, with the extractor proposing promotion when a finding's content is project-agnostic. The resulting law set is capped at a ≤1KB injection into every project's context, permanently.
+
+## e01M0ARJC3CMW89DH89FC3EW679 — proposal ruling placeholder (finding, current)
+disposition: [carry]
+> proposal ruling placeholder
+proposal ruling placeholder
+
+## e01M0ARJE1XNN8Q45DJ36FP47YT — web surface intent placeholder (finding, current)
+disposition: [carry]
+> web surface intent placeholder
+web surface intent placeholder
+
+## e01M0ARJFTWEWY5H6JFJ17656W4 — cloud surface intent placeholder (finding, current)
+disposition: [carry]
+> cloud surface intent placeholder
+cloud surface intent placeholder
+
+## e01M0ARJHKDP6Z6R1FKZSJ8AN4S — laptop surface intent placeholder (finding, current)
+disposition: [carry]
+> laptop surface intent placeholder
+laptop surface intent placeholder
+
+## e01M0ARJKGSQFSH8WSVZEG520DH — phone surface intent placeholder (finding, current)
+disposition: [carry]
+> phone surface intent placeholder
+phone surface intent placeholder
+
