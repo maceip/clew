@@ -1,0 +1,17 @@
+id: e01M0BER1Q412DRFQYESPCN0Q30
+type: decision
+title: 'Lines are plain speech, no ids; near-duplicates fold; held items rest'
+body: >-
+  Owner corrections from the first real run: rendered lines confused (Let cloud agents that can only...) and full entry ids burned attention. Rules: plain spoken English, subject-first, one breath; no ids or codes on lines — identity lives behind explain; near-duplicates fold to one line; held-for-owner entries appear in no actionable list. The amnesia test stays the floor; this adds plain speech.
+quote: 'language in each <knowledge merge/intent gap> thats confusing, e.g., "Let cloud agents that can only"'
+utterance_by: user
+source:
+    kind: session
+    ref: chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18
+    agent: cursor-cloud-agent
+    surface: cursor-cloud-vm
+    at: 2026-08-18T22:08:00Z
+confidence: 1
+tags: []
+env: null
+affects: []

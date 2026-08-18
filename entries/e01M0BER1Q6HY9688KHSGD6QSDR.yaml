@@ -1,0 +1,17 @@
+id: e01M0BER1Q6HY9688KHSGD6QSDR
+type: note
+title: 'Known gap, deprioritized: screens print and exit; verbs are spoken for now'
+body: >-
+  The first run printed both lists and left an empty prompt — no way to press the verbs. Owner: interactivity arrives later via a skill or UI embed; least of concerns now. Interim contract: the attending agent is the interaction layer — the human speaks the verb in chat (apply the readme rename, explain the spend floor) and the agent records it. The print is a display, not the interface.
+quote: 'for the fix we will embed some sort of skill or ui fix to make these things interactive -- that is the least of my concerns atm'
+utterance_by: user
+source:
+    kind: session
+    ref: chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18
+    agent: cursor-cloud-agent
+    surface: cursor-cloud-vm
+    at: 2026-08-18T22:08:00Z
+confidence: 1
+tags: []
+env: null
+affects: []

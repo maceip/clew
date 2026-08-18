@@ -1,0 +1,18 @@
+id: e01M0BER1Q5W312NDD7GZ283RCM
+type: question
+title: 'Cap the two screens at 7+7; overflow policy is an open question'
+body: >-
+  Owner bound: seven merge plus seven gap — fourteen decisions — is probably the most a human should ever face at once. Unresolved: what happens when more exist. Candidates on record: rank by stakes and fold the rest into one waiting line; treat sustained overflow as restart pressure feeding the held restart tab. Owner has not ruled.
+quote: '7 merge, 7 diff decisions => 14 decisions is probably the max we should allow, although not sure what to do if there are more than that'
+utterance_by: user
+source:
+    kind: session
+    ref: chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18
+    agent: cursor-cloud-agent
+    surface: cursor-cloud-vm
+    at: 2026-08-18T22:08:00Z
+confidence: 0.95
+tags: []
+env: null
+affects: []
+asks: human
