@@ -1,0 +1,17 @@
+id: e01M0AXXKMNNKKY721HJ3REN3KH
+type: decision
+title: Freshness is owed at contact points; a task runs on its snapshot
+body: >-
+  Owner refinement: a running task is never interrupted or mutated by concurrent decisions — it finishes on the snapshot it started with. Currency is owed at the next human contact: a message typed after returning lands on a mind that already has the delta. Hooks fire at that boundary; the proxy injects only on a new human message. Urgent items route to the human, who may stop the task.
+quote: 'i dont expect an agent on task to stop mid task and change based on a cloud agent decision i made at the same time'
+utterance_by: user
+source:
+    kind: session
+    ref: chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18
+    agent: cursor-cloud-agent
+    surface: cursor-cloud-vm
+    at: 2026-08-18T17:14:00Z
+confidence: 1
+tags: []
+env: null
+affects: []
