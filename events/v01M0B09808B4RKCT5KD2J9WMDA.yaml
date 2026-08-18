@@ -1,0 +1,11 @@
+id: v01M0B09808B4RKCT5KD2J9WMDA
+kind: evidence
+entry: e01M05SPB2EMMC4F4PR0928NA31
+payload:
+    kind: churn
+    note: Add finish knowledge and intent screens
+    ref: churn:1c9f2d28293be323727342c7bdb4ecad5646969e
+by:
+    who: differ
+    surface: macs-MacBook-Pro
+at: 2026-08-18T17:56:37Z

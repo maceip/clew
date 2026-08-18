@@ -1,0 +1,11 @@
+id: v01M0B09808B4RKCT5KCXRXXCDK
+kind: evidence
+entry: e01M04H0KBY8QQWXPE8DP99N012
+payload:
+    kind: commit
+    note: Add finish knowledge and intent screens
+    ref: 1c9f2d28293be323727342c7bdb4ecad5646969e
+by:
+    who: differ
+    surface: macs-MacBook-Pro
+at: 2026-08-18T17:56:37Z
