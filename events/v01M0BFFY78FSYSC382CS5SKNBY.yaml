@@ -1,0 +1,11 @@
+id: v01M0BFFY78FSYSC382CS5SKNBY
+kind: evidence
+entry: e01M05T4XG0RJWQTP25T1K58B61
+payload:
+    kind: churn
+    note: Make finish screens plain and spoken
+    ref: churn:b734c7e16971a7c67a901e5467e651a774eb313a
+by:
+    who: differ
+    surface: macs-MacBook-Pro
+at: 2026-08-18T22:22:25Z
