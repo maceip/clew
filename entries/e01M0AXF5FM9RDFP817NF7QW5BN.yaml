@@ -1,0 +1,17 @@
+id: e01M0AXF5FM9RDFP817NF7QW5BN
+type: decision
+title: Human-facing surface must reduce to the desires it satisfies
+body: >-
+  Owner ruling: the internal design may be intricate, but the human-visible vocabulary must collapse to the desire set: it remembers; every agent starts knowing; I can look up and see; it asks me only when it must; starting over loses nothing. Any feature that cannot be filed under one of these is out. The agent carries the machinery; the human carries five sentences.
+quote: 'its already too much to understand given how it should reduce down to the simple set of human desires it satisfies'
+utterance_by: user
+source:
+    kind: session
+    ref: chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18
+    agent: cursor-cloud-agent
+    surface: cursor-cloud-vm
+    at: 2026-08-18T17:06:00Z
+confidence: 1
+tags: []
+env: null
+affects: []

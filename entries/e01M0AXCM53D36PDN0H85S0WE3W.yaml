@@ -1,0 +1,17 @@
+id: e01M0AXCM53D36PDN0H85S0WE3W
+type: decision
+title: Mind-plane freshness is vendor-neutral; hooks accelerate, never carry it
+body: >-
+  Owner ruling: a returning human must land on agents that already know the recent journal, and this must hold for a bare ollama model with no hook system. Per-vendor hooks may improve latency but the floor must work for anything that emits model API calls. Bar: current-at-next-interaction, zero human homework, any harness — including ollama running deepseek4-flash on a laptop.
+quote: 'this should work if i decide to spin up ollama locally with deepseek4-flash on my laptop'
+utterance_by: user
+source:
+    kind: session
+    ref: chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18
+    agent: cursor-cloud-agent
+    surface: cursor-cloud-vm
+    at: 2026-08-18T17:00:00Z
+confidence: 1
+tags: []
+env: null
+affects: []
