@@ -1,11 +1,11 @@
 # Journal
 
-_generated 2026-08-18 17:02 UTC · 75 live entries (23 decisions · 31 findings · 3 questions · 18 intents) · 95 total in history_
+_generated 2026-08-18 17:03 UTC · 75 live entries (23 decisions · 31 findings · 3 questions · 18 intents) · 95 total in history_
 
 ## DECIDED
 
-- `e01M0AVAR0N8ZCCN1VJW3GQ5PF4` Restart-with-mutation is the flagship advertised workflow, not a failure mode — 34m · active
-- `e01M0ATYJG615JE6BV5MG5RAF9Z` clew from must accept multiple parent projects, with strand selection — 40m · active
+- `e01M0AVAR0N8ZCCN1VJW3GQ5PF4` Restart-with-mutation is the flagship advertised workflow, not a failure mode — 35m · active
+- `e01M0ATYJG615JE6BV5MG5RAF9Z` clew from must accept multiple parent projects, with strand selection — 41m · active
 - `e01M0ASQGJZPFJD3FSRT7P4HX44` Owner-configured cloud environments are full clew nodes — 1h · active
 - `e01M0AQHSRF4DVDYZ989W6K185N` Owner laws live in an owner-scope journal with a ≤1KB injection budget — 1h · possible-contradiction
 - `e01M0AQHSRF4DVDYZ989RNZVC46` `clew from` is the one explicit lineage command; never automatic — 1h · active
