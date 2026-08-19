@@ -18,6 +18,7 @@
 - e01M0AY97K0AZHNJW0D87KTD7YH question/open Two-grade telling: block dependent tasks on unresolved drift?
 - e01M0AY6VWJV133F811JYAANJPE decision/active Stale finish: know and tell, never act — the reconcile is read-only
 - e01M0AXZTTHG5FKXETX0X8PR6EX decision/active On finish, check in first: reconcile against the delta before next steps
+- e01M0AXZ5DEXRWRGD3GT1HYEYSD decision/possible-contradiction Redaction and secret handling are deferred: no monkey-patching without team inp…
 - e01M0AXXKMNNKKY721HJ3REN3KH decision/active Freshness is owed at contact points; a task runs on its snapshot
 - e01M0AXRKQ8C7FZNKARW83CMBMX decision/active The five promises are the foundation (owner ratified)
 - e01M0AXMXK3SAATFDFAYZ932TPC decision/active Two registers, one memory: calm words for humans, hard words for agents
@@ -26,11 +27,9 @@
 - e01M0AXCM55N0QM9RCRYF48TQ6C finding/current Universal injection point: every model API call rebuilds the mind
 - e01M0AXCM54CDSPV84DBH1PWGWD finding/current Spec nudge matrix is stale: codex and gemini now ship injection hooks
 - e01M0AXCM53D36PDN0H85S0WE3W decision/active Mind-plane freshness is vendor-neutral; hooks accelerate, never carry it
+- e01M0AWM6188V135JTTP4S3MQAA decision/possible-contradiction Incarnation reset needs all three facts; any Clew marker protects the repo
 - e01M0AVXA7EH2KD1BPZ4GJNKN67 decision/active Witness-node role adopted: always-on ear with owner API creds, sequenced
 - e01M0AVWK3HH2R9M55FQSAWZFF1 decision/active I9 frugality replaced: listening completeness is the invariant, cost is a dial
 - e01M0AVAR0N8ZCCN1VJW3GQ5PF4 decision/active Restart-with-mutation is the flagship advertised workflow, not a failure mode
-- e01M0AV0H7T9P69CNPB56MRAG8V decision/active Sequencing: single-lineage from + one-project glance FIRST; fleet/multi later
-- e01M0AV0H7RY7DG79VCMHPEMPJP decision/active Glance direction ruling: graphic, two zooms — deferred behind single-project
-- e01M0ATYJG615JE6BV5MG5RAF9Z decision/active clew from must accept multiple parent projects, with strand selection
-- e01M0ASSNH1HP68M1QERV9AKG5A finding/current Attachments bypass the secret scrub; GitHub push protection caught PATs
-… (118 more omitted for size)
+- e01M0AV5721XB0ZFQW42241YJ4A finding/current Daemon fallback birth discarded the triggering session's first prompt
+… (152 more omitted for size)

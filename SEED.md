@@ -1,13 +1,13 @@
 ---
 format: clew.seed/v1
-digest: sha256:ac73e2308cec8a9055af9c23d2f9ebd988e12a012778195c43ed1f83ee018275
+digest: sha256:a12aac14256161007a9360724565c15a2571f1390459393ee5deea9e5c93bad8
 snapshot:
     repository:
         id: r8631b465b9e40c83e4d3e137
         name: restart
         remote: https://github.com/maceip/clew.git
-    journal_revision: sha256:bb1ade647dd10f916136aafcc92ea0fa3dad15c004349d6e96d57215c1f51229
-    changed_at: 2026-08-18T23:20:56Z
+    journal_revision: sha256:f352ca2f813f66fe59013416c5a95b46268337978d61147c0193e02efa0f1cd0
+    changed_at: 2026-08-19T00:05:44.031087Z
     lifecycle:
         state: active
     topics:
@@ -23,6 +23,7 @@ snapshot:
         - "788"
         - absence
         - absent
+        - absolute
         - accelerate
         - accelerated
         - accept
@@ -49,6 +50,7 @@ snapshot:
         - algebra
         - alias
         - all
+        - already
         - always
         - ambient
         - amended
@@ -62,6 +64,7 @@ snapshot:
         - approve
         - archaeology
         - asked
+        - assets
         - assumptions
         - atomic
         - attached
@@ -89,9 +92,13 @@ snapshot:
         - binaries
         - binary
         - birth
+        - birthcmd
+        - birthhook
+        - births
         - block
         - blockers
         - blocks
+        - body
         - bootstrap
         - born
         - bound
@@ -102,6 +109,7 @@ snapshot:
         - broken
         - budget
         - build
+        - built
         - burst
         - but
         - bypass
@@ -113,32 +121,24 @@ snapshot:
         - calm
         - came
         - can
+        - candidate
+        - candidates
+        - canonical
         - cap
         - caps
         - card
         - cards
         - carried
+        - carries
         - carry
         - carrying
         - category
         - caught
         - census
         - ceremony
+        - certified
         - change
         - changes
-        - channel
-        - chat
-        - check
-        - checks
-        - class
-        - claude
-        - clean
-        - cleaning
-        - clew
-        - cli
-        - clickable
-        - clone
-        - closed
     decisions:
         - entry:
             id: e01M04WCGJS9FS7FQB0YFX9DTYG
@@ -360,7 +360,7 @@ snapshot:
                 - internal/state/**
             env: null
             affects: []
-          status: active
+          status: possible-contradiction
         - entry:
             id: e01M064DQTWYDVGGAE3M5QRTGME
             type: decision
@@ -435,6 +435,68 @@ snapshot:
             env: null
             affects: []
           status: active
+        - entry:
+            id: e01M0AQGPHNFVPKVFT67DKX5923
+            type: decision
+            title: Lore inheritance is explicit; only certified laws auto-carry
+            body: 'Project lore never crosses repositories automatically — only the explicit `clew from` command carries it. Owner laws are safe to inject ambiently because human promotion certified them project-agnostic. Reason: a wrong lineage guess poisons a fresh project worse than having no inheritance at all.'
+            quote: lore inheritance was made explicit because a wrong lineage guess poisons a fresh project worse than no inheritance at all — laws are safe to auto-carry precisely because promotion certified them project-agnostic.
+            utterance_by: user
+            source:
+                kind: session
+                ref: codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-22-35-01a01577-9dd5-7e63-811f-0b52ba3e3cab.jsonl#L9
+                agent: codex
+                surface: macs-MacBook-Pro
+                at: 2026-08-18T15:23:24.085Z
+            confidence: 0.95
+            tags:
+                - internal/lineage/**
+                - internal/owner/**
+                - cmd/clew/fromcmd.go
+            env: null
+            affects: []
+          status: possible-contradiction
+        - entry:
+            id: e01M0AQHMB1WWTYWTM79HGM5C34
+            type: decision
+            title: 'Lineage is explicit, laws are ambient: wrong inheritance poisons a fresh project'
+            body: 'Predecessor lore is never auto-carried. Lineage is pulled by one explicit command (clew from <repo>); the birth card may suggest a match but never acts. Owner laws, by contrast, are injected into every new project automatically. Reason: a wrong lineage guess poisons a fresh project worse than no inheritance, while promotion has already certified laws as project-agnostic.'
+            quote: lore inheritance was made explicit because a wrong lineage guess poisons a fresh project worse than no inheritance at all — laws are safe to auto-carry precisely because promotion certified them project-agnostic.
+            utterance_by: user
+            source:
+                kind: session
+                ref: codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-23-54-01a01578-d123-7200-af99-a2105dfb139e.jsonl#L9
+                agent: codex
+                surface: macs-MacBook-Pro
+                at: 2026-08-18T15:23:54.593Z
+            confidence: 0.95
+            tags:
+                - cmd/clew/**
+                - internal/manifest/**
+            env: null
+            affects: []
+          status: possible-contradiction
+        - entry:
+            id: e01M0AQHMB1WWTYWTM79JHACMNP
+            type: decision
+            title: 'Ambient seed: SEED.md is maintained continuously, never generated on demand'
+            body: The watcher keeps SEED.md up to date beside context.md, regenerated on journal change rather than when someone asks for it, so the carry-kit already exists before anyone wants to restart. This separates ambient seed from the deliberate manifest ceremony, which stays pull-only for big restarts and is never a gate.
+            quote: the watcher maintains SEED.md continuously alongside context.md — regenerated on journal change, never on demand. The carry-kit always predates the urge to restart.
+            utterance_by: user
+            source:
+                kind: session
+                ref: codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-23-54-01a01578-d123-7200-af99-a2105dfb139e.jsonl#L9
+                agent: codex
+                surface: macs-MacBook-Pro
+                at: 2026-08-18T15:23:54.593Z
+            confidence: 0.9
+            tags:
+                - internal/materialize/**
+                - internal/journal/**
+                - cmd/clew/**
+            env: null
+            affects: []
+          status: possible-contradiction
         - entry:
             id: e01M0AQHSRF4DVDYZ989M4DVHYX
             type: decision
@@ -511,6 +573,264 @@ snapshot:
             affects: []
           status: possible-contradiction
         - entry:
+            id: e01M0AR2BRV4T3ASCNNB7F5QA10
+            type: decision
+            title: Law is a journal scope, not a fifth entry type
+            body: 'Owner-level "laws" stay findings: promotion copies the original finding unchanged into a dedicated owner journal and records a human promotion disposition. Only entries carrying that disposition are eligible for ambient injection. Chosen because it preserves the original evidence and avoids teaching every status, differ, and render path a new epistemic type.'
+            quote: keep “law” as a journal scope, not a fifth entry type. A promotion copies the original finding unchanged into a dedicated owner journal and records a human promotion disposition; only entries with that disposition are eligible for ambient injection.
+            utterance_by: assistant
+            source:
+                kind: session
+                ref: codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-24-00-01a01578-e6db-7833-9ab2-0457569af643.jsonl#L162
+                agent: codex
+                surface: macs-MacBook-Pro
+                at: 2026-08-18T15:33:02.875Z
+            confidence: 0.94
+            tags:
+                - internal/owner/**
+            env: null
+            affects: []
+          status: possible-contradiction
+        - entry:
+            id: e01M0AR2HXKR05KE2VRTH1ETY28
+            type: decision
+            title: Birth runs on a synchronous Claude SessionStart hook, not polling
+            body: Polling session files cannot serve the first Claude turn, because a project-scope hook would only be installed after Claude has already started. Birth therefore installs a machine-scope Claude SessionStart hook that auto-initializes the repo and emits laws-only context before the first prompt; the daemon's session scan stays as fallback for other agent surfaces.
+            quote: 'A key birth-path constraint surfaced: polling session files cannot satisfy the first Claude turn because the project hook would be installed after Claude has already started.'
+            utterance_by: assistant
+            source:
+                kind: session
+                ref: codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-22-35-01a01577-9dd5-7e63-811f-0b52ba3e3cab.jsonl#L147
+                agent: codex
+                surface: macs-MacBook-Pro
+                at: 2026-08-18T15:33:09.171Z
+            confidence: 0.92
+            tags:
+                - cmd/clew/birthhook.go
+                - cmd/clew/birthcmd.go
+                - cmd/clew/watchcmd.go
+            env: null
+            affects: []
+          status: possible-contradiction
+        - entry:
+            id: e01M0AR71TW3S282XMYX6HV601V
+            type: decision
+            title: Owner-law admission rejects overflow; it never evicts an older law
+            body: Owner laws live in a separate append-only journal and become injectable only via a human promotion disposition. The law block is capped at exactly 1,024 bytes; a promotion that would exceed the cap is rejected rather than silently evicting an older law. The extractor's project-agnostic signal is a proposal only, never ambient before certification.
+            quote: owner laws remain ordinary findings in a separate append-only journal, but only a human promotion disposition makes one injectable; promotion that would exceed the full 1KB law block is rejected instead of silently evicting an older law
+            utterance_by: assistant
+            source:
+                kind: session
+                ref: codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-22-35-01a01577-9dd5-7e63-811f-0b52ba3e3cab.jsonl#L225
+                agent: codex
+                surface: macs-MacBook-Pro
+                at: 2026-08-18T15:35:36.54Z
+            confidence: 0.92
+            tags:
+                - internal/owner/**
+                - cmd/clew/ownercmd.go
+                - internal/extract/assets/instruction.md
+            env: null
+            affects: []
+          status: possible-contradiction
+        - entry:
+            id: e01M0AR79QQ9PPSZKQ2ETN2K1Y0
+            type: decision
+            title: Birth boundary is the user-scope SessionStart hook, installed by watch install
+            body: 'Claude''s machine-level SessionStart hook is the seam for first-session laws: it receives cwd and its stdout reaches the model before the first prompt. It is installed by clew watch install (not project init) so the machine, not the repo, is what gets watched. A daemon-side global session scanner stays only as fallback for Codex/wrap — a two-second transcript poll is inherently later than startup.'
+            quote: Claude Code’s user-scope `SessionStart` hook is the correct first-session boundary. Its input includes `cwd`; successful stdout or `additionalContext` is inserted before the first prompt.
+            utterance_by: assistant
+            source:
+                kind: session
+                ref: codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-23-54-01a01578-d123-7200-af99-a2105dfb139e.jsonl#L200
+                agent: codex
+                surface: macs-MacBook-Pro
+                at: 2026-08-18T15:35:44.631Z
+            confidence: 0.85
+            tags:
+                - cmd/clew/birthhook.go
+                - cmd/clew/watchcmd.go
+                - cmd/clew/initcmd.go
+            env: null
+            affects: []
+          status: possible-contradiction
+        - entry:
+            id: e01M0AR79QQ9PPSZKQ2EVTFNQMV
+            type: decision
+            title: Ambient seed carries project lineage only; owner laws join at materialize.Conte…
+            body: 'Promoted owner laws are not written into project journals or into SEED.md. They are passed into materialize.Context as a separate capped section (≤1KiB, after the safety preamble, never dropped under truncation pressure). Reason: laws inside every seed would be duplicated and then re-carried as lore, collapsing I13''s law/lineage separation; a law change should rematerialize context, not rewrite s…'
+            quote: The ambient seed should be project lineage data, not ambient owner law data. Otherwise promoted laws would be duplicated into every predecessor seed and then carried as lore despite I13’s explicit separation.
+            utterance_by: assistant
+            source:
+                kind: session
+                ref: codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-23-54-01a01578-d123-7200-af99-a2105dfb139e.jsonl#L200
+                agent: codex
+                surface: macs-MacBook-Pro
+                at: 2026-08-18T15:35:44.631Z
+            confidence: 0.85
+            tags:
+                - internal/materialize/**
+                - internal/journal/**
+            env: null
+            affects: []
+          status: possible-contradiction
+        - entry:
+            id: e01M0ARA4Y7Z4Q65SP0T7A8EFEY
+            type: decision
+            title: 'One canonical renderer: admission and injection measure the same bytes'
+            body: 'The owner package owns a single renderer used both when admitting a promoted law against the size budget and when injecting laws later. Reason: two formatters would let a law be admitted under one format and then silently omitted under another.'
+            quote: The package will own one canonical renderer so admission and injection measure the exact same bytes; that prevents a law from being admitted under one format and silently omitted under another.
+            utterance_by: assistant
+            source:
+                kind: session
+                ref: codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-24-00-01a01578-e6db-7833-9ab2-0457569af643.jsonl#L207
+                agent: codex
+                surface: macs-MacBook-Pro
+                at: 2026-08-18T15:37:18.023Z
+            confidence: 0.93
+            tags:
+                - internal/owner/**
+            env: null
+            affects: []
+          status: possible-contradiction
+        - entry:
+            id: e01M0ARSXN8PR0Y3PVAG5XRP4W8
+            type: decision
+            title: Owner journal is its own git repo, never registered as a project
+            body: The owner law store lives in a dedicated normal git repository at $CLEW_HOME/owner, reusing the clew/journal append-only branch and gitx.Sync. It is deliberately not registered as a project so adapters, archaeology, the poller, and project-session discovery cannot scan it. A configured remote is optional; the default empty owner.remote yields a fully functional local-only owner journal.
+            quote: Does not register the owner repository as a project, so adapters, archaeology, poller, and project-session discovery cannot scan it.
+            utterance_by: assistant
+            source:
+                kind: session
+                ref: codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-24-00-01a01578-e6db-7833-9ab2-0457569af643.jsonl#L379
+                agent: codex
+                surface: macs-MacBook-Pro
+                at: 2026-08-18T15:45:54.856Z
+            confidence: 0.92
+            tags:
+                - internal/owner/**
+                - internal/config/**
+            env: null
+            affects: []
+          status: possible-contradiction
+        - entry:
+            id: e01M0ARSXN8PR0Y3PVAG8JVYZFY
+            type: decision
+            title: 'Ambient budget: refuse over-budget promotion, keep oldest-certified prefix'
+            body: Promotion is refused before either the entry or its certification is written when the 1,024-byte ambient budget would be exceeded, so there is never a partial law write. If a concurrent remote promotion causes overflow anyway, the oldest-certified prefix is retained deterministically — a newer promotion can never evict an older ambient law. Overflow state is reported for loud surfacing.
+            quote: handles a concurrent remote overflow deterministically by retaining the oldest-certified prefix, never letting a newer promotion evict an older ambient law;
+            utterance_by: assistant
+            source:
+                kind: session
+                ref: codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-24-00-01a01578-e6db-7833-9ab2-0457569af643.jsonl#L379
+                agent: codex
+                surface: macs-MacBook-Pro
+                at: 2026-08-18T15:45:54.856Z
+            confidence: 0.9
+            tags:
+                - internal/owner/**
+            env: null
+            affects: []
+          status: possible-contradiction
+        - entry:
+            id: e01M0ASDMN8S3TNV9502NGMZVQC
+            type: decision
+            title: Ambient seed carries lore only; questions and intents stay in the manifest path
+            body: SEED.md deliberately carries decisions, findings, graveyard, exhibits, and an optional organ-bank pin. Active questions and intents are excluded from ambient lore and remain available only through the separate deliberate manifest path, which stays pull-only and is never a birth gate.
+            quote: Active questions and intents are deliberately excluded from ambient lore; they remain available through the separate deliberate manifest path.
+            utterance_by: assistant
+            source:
+                kind: session
+                ref: codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-24-04-01a01578-f76e-74f0-8e19-f7387068f66a.jsonl#L573
+                agent: codex
+                surface: macs-MacBook-Pro
+                at: 2026-08-18T15:56:41Z
+            confidence: 0.93
+            tags:
+                - internal/seed/**
+                - internal/lineage/**
+            env: null
+            affects: []
+          status: possible-contradiction
+        - entry:
+            id: e01M0ASDMN8S3TNV9502PGAAE99
+            type: decision
+            title: Seed regenerates only on journal change, never on metadata polling
+            body: 'seed.WriteOnJournalChange is the watcher-facing gate: it compares repository identity and JournalRevision so repeated sync polls cannot rewrite SEED.md when only README topics, HEAD, or dirty state changed. Recurring sync paths must call it instead of seed.Write, and it refuses to overwrite a corrupt existing seed.'
+            quote: It compares repository identity and `JournalRevision`, so repeated sync polls cannot rewrite `SEED.md` merely because README topics, `HEAD`, dirty state, or other sampled repository metadata changed.
+            utterance_by: assistant
+            source:
+                kind: session
+                ref: codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-24-04-01a01578-f76e-74f0-8e19-f7387068f66a.jsonl#L573
+                agent: codex
+                surface: macs-MacBook-Pro
+                at: 2026-08-18T15:56:41Z
+            confidence: 0.92
+            tags:
+                - internal/seed/**
+            env: null
+            affects: []
+          status: possible-contradiction
+        - entry:
+            id: e01M0ASDMN8S3TNV9502RT7746E
+            type: decision
+            title: Lineage import must be human-invoked; carry provenance lives in a separate link
+            body: lineage.Import rejects any request whose By.Who is not "human", so automatic lineage imports are impossible. Original entry/event provenance is kept verbatim rather than rewriting source.kind; the carry fact is recorded in an append-only lineage/<ULID>.yaml link written last, making interrupted runs safely resumable.
+            quote: '`By.Who` must be `human`; automatic lineage imports are rejected.'
+            utterance_by: assistant
+            source:
+                kind: session
+                ref: codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-24-04-01a01578-f76e-74f0-8e19-f7387068f66a.jsonl#L573
+                agent: codex
+                surface: macs-MacBook-Pro
+                at: 2026-08-18T15:56:41Z
+            confidence: 0.91
+            tags:
+                - internal/lineage/**
+            env: null
+            affects: []
+          status: possible-contradiction
+        - entry:
+            id: e01M0ASDMN8S3TNV9502T3QKJ52
+            type: decision
+            title: 'Candidate ranking formula: 0.65 topic overlap + 0.35 recency decay'
+            body: clew from with no args ranks predecessor candidates by score = 0.65 x binary-cosine topic overlap + 0.35 x 1/(1 + ageDays/30), with deterministic tie-breaks on score, overlap, recency, repo name, then repo ID. A separate Blatant signal exists only to let the birth card suggest a lineage; it never triggers an import.
+            quote: |-
+                score = 0.65 × binary-cosine topic overlap
+                      + 0.35 × 1 / (1 + ageDays / 30)
+            utterance_by: assistant
+            source:
+                kind: session
+                ref: codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-24-04-01a01578-f76e-74f0-8e19-f7387068f66a.jsonl#L573
+                agent: codex
+                surface: macs-MacBook-Pro
+                at: 2026-08-18T15:56:41Z
+            confidence: 0.88
+            tags:
+                - internal/lineage/**
+            env: null
+            affects: []
+          status: possible-contradiction
+        - entry:
+            id: e01M0ASDMN8S3TNV9502TGKHRPD
+            type: decision
+            title: Tombstone language requires explicit lifecycle metadata; inactivity is not death
+            body: Candidate summaries say "died"/"tombstoned" only when the predecessor's lifecycle metadata explicitly reads tombstoned. A quiet or inactive repository is rendered as "changed <date> · active" instead, so silence is never misreported as a dead project.
+            quote: Tombstone language only when lifecycle metadata explicitly says `tombstoned`; inactivity is never interpreted as death.
+            utterance_by: assistant
+            source:
+                kind: session
+                ref: codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-24-04-01a01578-f76e-74f0-8e19-f7387068f66a.jsonl#L573
+                agent: codex
+                surface: macs-MacBook-Pro
+                at: 2026-08-18T15:56:41Z
+            confidence: 0.9
+            tags:
+                - internal/lineage/**
+            env: null
+            affects: []
+          status: possible-contradiction
+        - entry:
             id: e01M0ASQGJZPFJD3FSRT7P4HX44
             type: decision
             title: Owner-configured cloud environments are full clew nodes
@@ -564,6 +884,144 @@ snapshot:
             env: null
             affects: []
           status: active
+        - entry:
+            id: e01M0AST4FW4WFMMX225TQ56V5E
+            type: decision
+            title: 'I13: laws are ambient and auto-carried; lineage must be declared explicitly'
+            body: 'Under invariant I13 birth costs nothing: owner laws (promoted, project-agnostic findings) are injected into every new project automatically, but project lore is never inherited automatically. Lore travels only through the explicit `clew from <repo>` command. Reason: a wrong lineage guess poisons a fresh project worse than no inheritance at all, while promotion has already certified laws as safe a…'
+            quote: lore inheritance was made explicit because a wrong lineage guess poisons a fresh project worse than no inheritance at all — laws are safe to auto-carry precisely because promotion certified them project-agnostic.
+            utterance_by: user
+            source:
+                kind: session
+                ref: codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T12-03-30-01a0159d-11bd-7b13-81c5-26b7f910b998.jsonl#L9
+                agent: codex
+                surface: macs-MacBook-Pro
+                at: 2026-08-18T16:03:30.428Z
+            confidence: 0.95
+            tags:
+                - cmd/clew/**
+                - .clew/**
+            env: null
+            affects: []
+          status: possible-contradiction
+        - entry:
+            id: e01M0AST4FW4WFMMX225XEXGBD1
+            type: decision
+            title: 'Seed is ambient: watcher regenerates SEED.md on journal change, never on demand'
+            body: 'The carry-kit is maintained continuously by the watcher next to context.md, rebuilt whenever the journal changes rather than assembled when someone asks to restart. Reason: the seed must already exist before the urge to restart arrives, so no deliberate ceremony is needed to preserve a dying project''s lessons.'
+            quote: the watcher maintains SEED.md continuously alongside context.md — regenerated on journal change, never on demand. The carry-kit always predates the urge to restart.
+            utterance_by: user
+            source:
+                kind: session
+                ref: codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T12-03-30-01a0159d-11bd-7b13-81c5-26b7f910b998.jsonl#L9
+                agent: codex
+                surface: macs-MacBook-Pro
+                at: 2026-08-18T16:03:30.428Z
+            confidence: 0.9
+            tags:
+                - cmd/clew/**
+                - .clew/**
+            env: null
+            affects: []
+          status: possible-contradiction
+        - entry:
+            id: e01M0AST7PZRJP8XBWDABXXWWQH
+            type: decision
+            title: 'Lineage is explicit, laws are ambient: a wrong guess poisons a fresh project'
+            body: 'clew from <repo> is the only way lore crosses projects — runnable at birth or any time later, never automatic; a birth card may suggest it on blatant name/topic overlap but only suggests, never acts. Owner laws auto-carry instead, because promotion already certified them project-agnostic. Reason: a wrong lineage guess poisons a fresh project worse than no inheritance at all.'
+            quote: lore inheritance was made explicit because a wrong lineage guess poisons a fresh project worse than no inheritance at all — laws are safe to auto-carry precisely because promotion certified them project-agnostic.
+            utterance_by: user
+            source:
+                kind: session
+                ref: codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T12-03-33-01a0159d-1ea8-7f70-bfac-3fecc3a17c09.jsonl#L9
+                agent: codex
+                surface: macs-MacBook-Pro
+                at: 2026-08-18T16:03:33.727Z
+            confidence: 0.95
+            tags:
+                - cmd/clew/**
+                - internal/owner/**
+            env: null
+            affects: []
+          status: possible-contradiction
+        - entry:
+            id: e01M0AST7PZRJP8XBWDAF0AMC15
+            type: decision
+            title: Birth detection auto-inits a new repo with owner laws only, no lore
+            body: 'A fresh git init plus an agent session on a watched machine triggers auto-init (watch, journal branch, context.md) carrying owner laws only — no lore, no card required. Acceptance test: mkdir x && git init && claude yields a context containing the owner''s laws with zero clew commands typed.'
+            quote: new git init + agent session on a watched machine → auto-init (watch, journal branch, context.md) with owner laws only. No lore, no card required.
+            utterance_by: user
+            source:
+                kind: session
+                ref: codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T12-03-33-01a0159d-1ea8-7f70-bfac-3fecc3a17c09.jsonl#L9
+                agent: codex
+                surface: macs-MacBook-Pro
+                at: 2026-08-18T16:03:33.727Z
+            confidence: 0.94
+            tags:
+                - cmd/clew/**
+            env: null
+            affects: []
+          status: possible-contradiction
+        - entry:
+            id: e01M0AST7PZRJP8XBWDAGG7AD44
+            type: decision
+            title: SEED.md is maintained continuously by the watcher, never built on demand
+            body: The watcher regenerates SEED.md alongside context.md on every journal change rather than when someone asks for it, so the carry-kit always exists before the urge to restart appears. Restart never waits on seed generation.
+            quote: the watcher maintains SEED.md continuously alongside context.md — regenerated on journal change, never on demand. The carry-kit always predates the urge to restart.
+            utterance_by: user
+            source:
+                kind: session
+                ref: codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T12-03-33-01a0159d-1ea8-7f70-bfac-3fecc3a17c09.jsonl#L9
+                agent: codex
+                surface: macs-MacBook-Pro
+                at: 2026-08-18T16:03:33.727Z
+            confidence: 0.94
+            tags:
+                - cmd/clew/**
+                - internal/materialize/**
+            env: null
+            affects: []
+          status: possible-contradiction
+        - entry:
+            id: e01M0AST7PZRJP8XBWDAHVVX8NR
+            type: decision
+            title: 'Owner-law layer: promoted findings, <=1KB injected into every project forever'
+            body: Owner laws live in an owner-scope journal synced like any other. A finding becomes a law via clew journal promote <id>; the extractor proposes promotion when a finding's content is project-agnostic. The rendered law block is capped at a 1KB injection budget and enters every project's context indefinitely.
+            quote: findings promoted via clew journal promote <id>; extractor proposes promotion when a finding's content is project-agnostic; ≤1KB injection budget into every project's context, forever.
+            utterance_by: user
+            source:
+                kind: session
+                ref: codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T12-03-33-01a0159d-1ea8-7f70-bfac-3fecc3a17c09.jsonl#L9
+                agent: codex
+                surface: macs-MacBook-Pro
+                at: 2026-08-18T16:03:33.727Z
+            confidence: 0.93
+            tags:
+                - internal/owner/**
+                - internal/extract/**
+            env: null
+            affects: []
+          status: possible-contradiction
+        - entry:
+            id: e01M0ATNY3H0WHX91ASD478G9E7
+            type: decision
+            title: SessionStart consumes the carry-kit; the watcher prepares it
+            body: 'An already-registered session must print the atomic .clew/context.md immediately and return, instead of taking the birth lock and running git sync, journal reload, owner load and full materialization on every `claude` startup. Reason: startup would otherwise block on network/worktree work, a transient error would suppress a perfectly valid existing context, and it blurs the boundary where ambient…'
+            quote: the watcher should have prepared the carry-kit before the session, while `SessionStart` should primarily consume it
+            utterance_by: assistant
+            source:
+                kind: session
+                ref: codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T12-03-30-01a0159d-11bd-7b13-81c5-26b7f910b998.jsonl#L344
+                agent: codex
+                surface: macs-MacBook-Pro
+                at: 2026-08-18T16:18:41.393Z
+            confidence: 0.85
+            tags:
+                - cmd/clew/**
+            env: null
+            affects: []
+          status: possible-contradiction
         - entry:
             id: e01M0ATYJG615JE6BV5MG5RAF9Z
             type: decision
@@ -673,6 +1131,26 @@ snapshot:
             affects: []
           status: active
         - entry:
+            id: e01M0AWM6188V135JTTP4S3MQAA
+            type: decision
+            title: Incarnation reset needs all three facts; any Clew marker protects the repo
+            body: Disposable machine state for a reused path is wiped only when the path is still registered, the journal binding is invalid, AND the current .git holds no Clew incarnation evidence (clew.birth-ready, clew.journal-id, or the local journal branch). Any one marker means a damaged-but-existing repository gets repaired, not erased. The reset runs in a single SQLite transaction and leaves the moved pred…
+            quote: stale machine state is erased only when the path is still registered, its journal binding is invalid, and the current `.git` contains no Clew incarnation evidence. A journal branch or either local Clew marker protects a damaged-but-existing repository from cleanup.
+            utterance_by: assistant
+            source:
+                kind: session
+                ref: codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T12-03-30-01a0159d-11bd-7b13-81c5-26b7f910b998.jsonl#L549
+                agent: codex
+                surface: macs-MacBook-Pro
+                at: 2026-08-18T16:52:41.128Z
+            confidence: 0.9
+            tags:
+                - cmd/clew/**
+                - internal/state/**
+            env: null
+            affects: []
+          status: possible-contradiction
+        - entry:
             id: e01M0AXCM53D36PDN0H85S0WE3W
             type: decision
             title: Mind-plane freshness is vendor-neutral; hooks accelerate, never carry it
@@ -762,6 +1240,26 @@ snapshot:
             env: null
             affects: []
           status: active
+        - entry:
+            id: e01M0AXZ5DEXRWRGD3GT1HYEYSD
+            type: decision
+            title: 'Redaction and secret handling are deferred: no monkey-patching without team inp…'
+            body: The owner instructed stopping the proposed redaction/secret-handling follow-up. That subsystem needs inputs and other subsystems beyond what should be patched unilaterally. Current journal PATs are 24-hour ephemeral credentials, intentionally pushable, and must not block I13 or trigger redaction machinery.
+            quote: that requires more input and other subsystems than we want you to try to monkey patch without inputs from our team
+            utterance_by: user
+            source:
+                kind: session
+                ref: codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-22-35-01a01577-9dd5-7e63-811f-0b52ba3e3cab.jsonl#L2925
+                agent: codex
+                surface: macs-MacBook-Pro
+                at: 2026-08-18T17:16:09.518Z
+            confidence: 0.94
+            tags:
+                - internal/gitx/**
+                - internal/owner/**
+            env: null
+            affects: []
+          status: possible-contradiction
         - entry:
             id: e01M0AXZTTHG5FKXETX0X8PR6EX
             type: decision
@@ -1587,6 +2085,49 @@ snapshot:
             affects: []
           status: current
         - entry:
+            id: e01M0ARPN4E0VHAP2DEJSGP7GZB
+            type: finding
+            title: macOS /var vs /private/var alias made an initialized owner repo look foreign
+            body: On macOS, /var is a symlink to /private/var, so path-based repository identity could treat an already-initialized owner repository as a different, foreign repo. Repository identity was tightened to resolve the alias. Surfaced while the core owner package tests passed, including a two-clone git round trip and an over-budget refusal with no partial law write.
+            quote: I also tightened repository identity so macOS’s `/var` versus `/private/var` alias cannot make an initialized owner repo look foreign.
+            utterance_by: assistant
+            source:
+                kind: session
+                ref: codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-24-00-01a01578-e6db-7833-9ab2-0457569af643.jsonl#L315
+                agent: codex
+                surface: macs-MacBook-Pro
+                at: 2026-08-18T15:44:07.822Z
+            confidence: 0.9
+            tags:
+                - internal/owner/**
+            env:
+                host: macOS
+            affects:
+                - internal/owner/**
+          status: current
+        - entry:
+            id: e01M0ASDMN8S3TNV9502WFBA70W
+            type: finding
+            title: Losing the lineage/ directory in sync destroys cycle protection
+            body: 'lineage.AncestorIDs reads the append-only lineage/ links to compute transitive ancestry, which is what makes A→B→C then C→A rejectable without contacting either predecessor. Entries and events alone are insufficient: if journal-branch sync or remote adoption drops lineage/, durable declarations and cycle protection are lost.'
+            quote: Entries and events alone are insufficient; losing the links loses durable lineage declarations and transitive-cycle protection.
+            utterance_by: assistant
+            source:
+                kind: session
+                ref: codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-24-04-01a01578-f76e-74f0-8e19-f7387068f66a.jsonl#L573
+                agent: codex
+                surface: macs-MacBook-Pro
+                at: 2026-08-18T15:56:41Z
+            confidence: 0.87
+            tags:
+                - internal/lineage/**
+            env: null
+            affects:
+                - internal/lineage/**
+                - journal branch sync
+                - remote adoption
+          status: current
+        - entry:
             id: e01M0ASQGK6W0Y1NEDQW45KDECS
             type: finding
             title: 'Corpse census: substrate died in a 6-day burst; tombstone came 5 weeks late'
@@ -1731,6 +2272,122 @@ snapshot:
                 - internal/scrub/**
             env: null
             affects: []
+          status: current
+        - entry:
+            id: e01M0ATARAN8NWCBGNTM2VNR895
+            type: finding
+            title: Title-only imperatives bypass injection withholding into every project
+            body: 'The imperative-withholding scan checks only Body and Quote (internal/journal/algebra.go:85), but ambient owner laws render Title and Body (internal/owner/owner.go:325). A benign body and quote carrying an imperative title passes the safety gate and becomes ambient in every project''s context. Proposed fix: include Title in the scan, add a title-only regression test, recheck raw content at owner ad…'
+            quote: Injection withholding scans only `Body` and `Quote`
+            utterance_by: assistant
+            source:
+                kind: session
+                ref: codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T12-03-33-01a0159d-1ea8-7f70-bfac-3fecc3a17c09.jsonl#L229
+                agent: codex
+                surface: macs-MacBook-Pro
+                at: 2026-08-18T16:12:35.029Z
+            confidence: 0.88
+            tags:
+                - internal/journal/**
+                - internal/owner/**
+            env: null
+            affects:
+                - internal/journal/algebra.go
+                - internal/owner/owner.go
+          status: current
+        - entry:
+            id: e01M0ATARAN8NWCBGNTM58QRVPX
+            type: finding
+            title: Promotion candidates enter project context before the human rules on them
+            body: Extraction stores a promotion candidate as an ordinary live finding, and materialization includes all live findings — only the promotion alert is filtered out of the alerts and nudge sections. The candidate's title and body therefore land in context.md immediately, contradicting the documented boundary that a candidate cannot enter context until promote or keep-local resolves the card.
+            quote: Extraction adds a promotion candidate as an ordinary live finding
+            utterance_by: assistant
+            source:
+                kind: session
+                ref: codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T12-03-33-01a0159d-1ea8-7f70-bfac-3fecc3a17c09.jsonl#L229
+                agent: codex
+                surface: macs-MacBook-Pro
+                at: 2026-08-18T16:12:35.029Z
+            confidence: 0.86
+            tags:
+                - internal/extract/**
+                - internal/materialize/**
+            env: null
+            affects:
+                - internal/extract/extract.go
+                - internal/materialize/materialize.go
+          status: current
+        - entry:
+            id: e01M0ATNY3H0WHX91ASCWE1MM7R
+            type: finding
+            title: Repo identity is the absolute path, so a rebuilt repo at a reused path is not a…
+            body: 'Registration keys on the checkout path (gitx.RepoID hashes only the absolute path), so moving a checkout aside and running `mkdir x && git init` at the same path is treated as already registered. Reproduced: the second birth exited 1 with a fatal missing-worktree error and emitted zero context. It fails safely today, but path-as-identity is exactly the stale machine state that can rebind an old j…'
+            quote: repository identity is only an absolute path, so a fresh repo at a reused path is not a newborn
+            utterance_by: assistant
+            source:
+                kind: session
+                ref: codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T12-03-30-01a0159d-11bd-7b13-81c5-26b7f910b998.jsonl#L344
+                agent: codex
+                surface: macs-MacBook-Pro
+                at: 2026-08-18T16:18:41.393Z
+            confidence: 0.92
+            tags:
+                - internal/gitx/**
+                - cmd/clew/**
+            env:
+                host: owner's macOS dev machine (/Users/mac/restart)
+                dataset: fresh git init at a previously registered path
+            affects:
+                - internal/gitx/gitx.go
+                - cmd/clew/birthcmd.go
+          status: current
+        - entry:
+            id: e01M0ATNY3H0WHX91ASD0AMR8TE
+            type: finding
+            title: Cold CLEW_HOME loses concurrent births; warm machine state is safe
+            body: 'With an empty CLEW_HOME, two simultaneous `_birth` processes in different repos left one dead on `open state.db: database is locked`; with the DB precreated but the owner store uninitialized, five of six concurrent births failed on owner git init/config lock/template copy/worktree add. Once the owner store was fully initialized, six concurrent births passed. The danger window is first-run bootstr…'
+            quote: 'On an empty `CLEW_HOME`, two simultaneous `_birth` processes in different new repos caused one to exit with `open state.db: database is locked`.'
+            utterance_by: assistant
+            source:
+                kind: session
+                ref: codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T12-03-30-01a0159d-11bd-7b13-81c5-26b7f910b998.jsonl#L344
+                agent: codex
+                surface: macs-MacBook-Pro
+                at: 2026-08-18T16:18:41.393Z
+            confidence: 0.9
+            tags:
+                - cmd/clew/**
+                - internal/state/**
+            env:
+                host: owner's macOS dev machine
+                dataset: empty CLEW_HOME, 2 and 6 simultaneous compiled _birth processes
+            affects:
+                - cmd/clew/watchcmd.go
+                - internal/state/state.go
+          status: current
+        - entry:
+            id: e01M0AV5721XB0ZFQW42241YJ4A
+            type: finding
+            title: Daemon fallback birth discarded the triggering session's first prompt
+            body: 'Reproduced with the compiled daemon: on fallback discovery, bootstrap baselined every discovered transcript to current EOF, so a fresh Codex transcript''s first prompt was never journaled (tail/extract/history-end all set to the 320-byte EOF, zero occurrences in the journal). Safe only for synchronous Claude SessionStart, which runs before the first prompt.'
+            quote: 'I reproduced this end to end with the compiled daemon. A fresh Codex transcript contained `session_meta` plus `FIRST PROMPT MUST BE JOURNALED`. After five seconds:'
+            utterance_by: tool_result
+            source:
+                kind: session
+                ref: codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-22-35-01a01577-9dd5-7e63-811f-0b52ba3e3cab.jsonl#L1510
+                agent: codex
+                surface: macs-MacBook-Pro
+                at: 2026-08-18T16:27:02.081Z
+            confidence: 0.88
+            tags:
+                - cmd/clew/watchcmd.go
+                - cmd/clew/birthcmd.go
+                - cmd/clew/initcmd.go
+            env: null
+            affects:
+                - cmd/clew/watchcmd.go
+                - cmd/clew/birthcmd.go
+                - cmd/clew/initcmd.go
           status: current
         - entry:
             id: e01M0AXCM54CDSPV84DBH1PWGWD
@@ -2504,6 +3161,196 @@ snapshot:
                 who: differ
                 surface: macs-MacBook-Pro
               at: 2026-08-18T16:04:17.130585Z
+        - entry:
+            id: e01M0AQHSRF4DVDYZ989PVHGA7R
+            type: intent
+            title: 'Birth detection: auto-init a new repo with owner laws only'
+            body: 'Build auto-init so that a fresh git init plus an agent session on a watched machine sets up watch, journal branch, and context.md carrying only the owner''s laws — no lore and no birth card required. Acceptance test: `mkdir x && git init && claude` yields a context containing the owner''s laws with zero clew commands typed.'
+            quote: 'new git init + agent session on a watched machine → auto-init (watch, journal branch, context.md) with owner laws only. No lore, no card required. Acceptance: mkdir x && git init && claude yields a context containing the owner''s laws with zero clew commands typed.'
+            utterance_by: user
+            source:
+                kind: session
+                ref: codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-24-00-01a01578-e6db-7833-9ab2-0457569af643.jsonl#L9
+                agent: codex
+                surface: macs-MacBook-Pro
+                at: 2026-08-18T15:24:00.143Z
+            confidence: 0.93
+            tags:
+                - .clew/**
+            env: null
+            affects: []
+          status: absent
+        - entry:
+            id: e01M0AR79QQ9PPSZKQ2EPQHW9H9
+            type: finding
+            title: 'Birth is structurally impossible today: the watcher only sees already-registere…'
+            body: Zero-command birth (mkdir x && git init && claude) cannot work in the current design. watcher.tailAll/pollAll both start from w.repos(), which reads only repos registered in ~/.clew/state.db, and every adapter's Discover takes a repoPath — so an adapter cannot introduce an unknown repo. Explicit clew init is the only enrollment path.
+            quote: 'The decisive gap is structural: the watcher only iterates repositories already registered in `~/.clew/state.db`, while every adapter’s discovery API requires a repository path.'
+            utterance_by: assistant
+            source:
+                kind: session
+                ref: codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-23-54-01a01578-d123-7200-af99-a2105dfb139e.jsonl#L200
+                agent: codex
+                surface: macs-MacBook-Pro
+                at: 2026-08-18T15:35:44.631Z
+            confidence: 0.9
+            tags:
+                - cmd/clew/watchcmd.go
+                - internal/adapters/**
+                - cmd/clew/initcmd.go
+            env: null
+            affects:
+                - cmd/clew/watchcmd.go
+                - internal/adapters/adapters.go
+                - cmd/clew/initcmd.go
+          status: superseded
+          events:
+            - id: v01M0BND3YZ8X6H1MQ1QR7RTCF1
+              kind: supersede
+              entry: e01M0AR79QQ9PPSZKQ2EPQHW9H9
+              payload:
+                by: e01M0AV5721XB0ZFQW42241YJ4A
+                why: newer measurement, same env
+              by:
+                who: differ
+                surface: macs-MacBook-Pro
+              at: 2026-08-19T00:05:44.031087Z
+        - entry:
+            id: e01M0ARJE1XNN8Q45DJ36FP47YT
+            type: intent
+            title: 'Surface coverage: repo-write cloud agents (Cursor-class) are full journal nodes'
+            body: 'Owner requirement: cloud/web agents working on watched repos read the journal at session start (digest from branch) and write their session knowledge back. Evidence classes: journal-branch pushes originating from cloud runs; digest fetches in cloud AGENTS.md startup. This entry itself was pushed by a credentialed cloud agent as the first proof.'
+            quote: 'my originally stated (yet somehow lost, even using the journal) surfaces: agents on web (typically cloud), agents in cloud, agents on laptop, phone is typically either a variant of cloud or remote to laptop'
+            utterance_by: user
+            source:
+                kind: session
+                ref: chat:cursor-cloud-agent/stratura-strategy-2026-08-18
+                agent: cursor-cloud-agent
+                surface: cursor-cloud-vm
+                at: 2026-08-18T15:38:00Z
+            confidence: 0.95
+            tags: []
+            env: null
+            affects: []
+          status: absent
+        - entry:
+            id: e01M0ARJFTWEWY5H6JFJ17656W4
+            type: intent
+            title: 'Surface coverage: PR-only cloud agents (Codex-app-class) contribute knowledge'
+            body: 'Owner requirement: agents in sandboxes that can only open PRs (Android Codex/ChatGPT app work) must still contribute session knowledge, not just code. Mechanism blocked on the write-path ruling (see the open question entry). Evidence classes: journal entries whose provenance is a PR-only sandbox; until then, their sessions remain a visible gap in status, never a silent one.'
+            quote: when I open the android codex/chatgpt app to do more work in the cloud what happens
+            utterance_by: user
+            source:
+                kind: session
+                ref: chat:cursor-cloud-agent/stratura-strategy-2026-08-18
+                agent: cursor-cloud-agent
+                surface: cursor-cloud-vm
+                at: 2026-08-18T15:38:00Z
+            confidence: 0.95
+            tags: []
+            env: null
+            affects: []
+          status: absent
+        - entry:
+            id: e01M0ARJHKDP6Z6R1FKZSJ8AN4S
+            type: intent
+            title: 'Surface coverage: laptop agents fully sensed with zero human effort'
+            body: 'Owner requirement: local agents (claude/codex/cursor CLI) on watched machines are tailed, extracted, and journaled with no manual notes. Evidence classes: automatic session entries; extraction spend within I9; adapter incidents loud. Largely met by current dogfood; kept as an intent so regressions surface as absence rather than silence.'
+            quote: agents on laptop
+            utterance_by: user
+            source:
+                kind: session
+                ref: chat:cursor-cloud-agent/stratura-strategy-2026-08-18
+                agent: cursor-cloud-agent
+                surface: cursor-cloud-vm
+                at: 2026-08-18T15:38:00Z
+            confidence: 0.95
+            tags: []
+            env: null
+            affects: []
+          status: absent
+        - entry:
+            id: e01M0ARJKGSQFSH8WSVZEG520DH
+            type: intent
+            title: 'Surface coverage: phone reads the glance and receives decision cards'
+            body: 'Owner requirement: phone is read + interrupt only — journal.md via GitHub mobile as the away-glance; ntfy delivering decision cards (headline + why-you) as the only push. No write path in v1 (known gap, trigger on file). Evidence classes: ntfy deliveries with measured push precision; first-screenful glance fix landed. Blocked on owner''s 3-minute pairing: rotate leaked topic, redact, subscribe.'
+            quote: phone is typically either a variant of cloud or remote to laptop
+            utterance_by: user
+            source:
+                kind: session
+                ref: chat:cursor-cloud-agent/stratura-strategy-2026-08-18
+                agent: cursor-cloud-agent
+                surface: cursor-cloud-vm
+                at: 2026-08-18T15:38:00Z
+            confidence: 0.95
+            tags: []
+            env: null
+            affects: []
+          status: absent
+        - entry:
+            id: e01M0ASDMN8S3TNV9502VTFK27E
+            type: intent
+            title: Wire the seed/lineage libraries into watcher, materialization, and clew from
+            body: 'The I13 data layer is done but unwired. Parent integration must: build seeds with lineage.AncestorIDs before writing, swap recurring seed.Write calls for WriteOnJournalChange, preserve the journal''s lineage/ directory across journal-branch sync and unrelated-root remote adoption, and implement clew from as read → import → materialize.'
+            quote: I did not edit command wiring, watcher/init behavior, materialization, documentation, manifest, extractor, or parent-owned repository metadata code.
+            utterance_by: assistant
+            source:
+                kind: session
+                ref: codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-24-04-01a01578-f76e-74f0-8e19-f7387068f66a.jsonl#L573
+                agent: codex
+                surface: macs-MacBook-Pro
+                at: 2026-08-18T15:56:41Z
+            confidence: 0.86
+            tags:
+                - internal/seed/**
+                - internal/lineage/**
+            env: null
+            affects: []
+          status: absent
+        - entry:
+            id: e01M0ATARAN8NWCBGNTM1A2S0H2
+            type: finding
+            title: Promotion card shows the quote but injects the extractor's title and body
+            body: Docket cards render only the source quote and never read Entry.Title or Entry.Body, while the ambient owner law is built from the extractor-generated title and body. An existing extractor test shows a quote about push-over-polling paired with the proposed law 'Verify before declaring completion' — so a human can approve one statement and permanently inject a different one.
+            quote: A human can therefore approve one statement while permanently injecting another.
+            utterance_by: assistant
+            source:
+                kind: session
+                ref: codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T12-03-33-01a0159d-1ea8-7f70-bfac-3fecc3a17c09.jsonl#L229
+                agent: codex
+                surface: macs-MacBook-Pro
+                at: 2026-08-18T16:12:35.029Z
+            confidence: 0.87
+            tags:
+                - internal/docket/**
+                - internal/owner/**
+                - internal/extract/**
+            env: null
+            affects:
+                - internal/docket/docket.go
+                - internal/owner/owner.go
+          status: superseded
+          events:
+            - id: v01M0BND3YZ8X6H1MQ1QVZV2NRC
+              kind: supersede
+              entry: e01M0ATARAN8NWCBGNTM1A2S0H2
+              payload:
+                by: e01M0ATARAN8NWCBGNTM2VNR895
+                why: newer measurement, same env
+              by:
+                who: differ
+                surface: macs-MacBook-Pro
+              at: 2026-08-19T00:05:44.031087Z
+            - id: v01M0BND3YZ8X6H1MQ1QWFNAG93
+              kind: supersede
+              entry: e01M0ATARAN8NWCBGNTM1A2S0H2
+              payload:
+                by: e01M0ATARAN8NWCBGNTM58QRVPX
+                why: newer measurement, same env
+              by:
+                who: differ
+                surface: macs-MacBook-Pro
+              at: 2026-08-19T00:05:44.031087Z
     exhibits:
         - id: v01M04W6B48BX7A75HCZX5KDVEX
           kind: evidence
@@ -3238,6 +4085,19 @@ snapshot:
             who: differ
             surface: macs-MacBook-Pro
           at: 2026-08-16T21:44:04Z
+        - id: v01M0AQT56GCS0K26WX0WX3TD2M
+          kind: evidence
+          entry: e01M0AQHSRF4DVDYZ989PVHGA7R
+          payload:
+            confidence: 0.9
+            kind: commit
+            note: 'journal: 5 file(s)'
+            ref: ab43570b950e11d560acbd8c7c7cc4336bf936f8
+            via: link-pass
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-18T15:28:34Z
         - id: v01M0ASAJ10QCE8YZ5CWQ7CT3WW
           kind: evidence
           entry: e01M05SG3NTP5W2JX7Y6MG00HQJ
@@ -3746,6 +4606,66 @@ snapshot:
             who: differ
             surface: macs-MacBook-Pro
           at: 2026-08-18T17:45:30Z
+        - id: v01M0AZMWMGW3PJRDS327T1P72Z
+          kind: evidence
+          entry: e01M0AQGPHNFVPKVFT67DKX5923
+          payload:
+            kind: commit
+            note: Ship I13 owner memory and explicit lineage
+            ref: 5a56835ff13911a868bda153456b50e26b785574
+            via: subject-match
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-18T17:45:30Z
+        - id: v01M0AZMWMGW3PJRDS327TTZ1Z4
+          kind: evidence
+          entry: e01M0AR79QQ9PPSZKQ2EVTFNQMV
+          payload:
+            kind: commit
+            note: Ship I13 owner memory and explicit lineage
+            ref: 5a56835ff13911a868bda153456b50e26b785574
+            via: subject-match
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-18T17:45:30Z
+        - id: v01M0AZMWMGW3PJRDS32DHXHF95
+          kind: evidence
+          entry: e01M0AST4FW4WFMMX225TQ56V5E
+          payload:
+            kind: commit
+            note: Ship I13 owner memory and explicit lineage
+            ref: 5a56835ff13911a868bda153456b50e26b785574
+            via: subject-match
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-18T17:45:30Z
+        - id: v01M0AZMWMGW3PJRDS32HFAW32S
+          kind: evidence
+          entry: e01M0AQHMB1WWTYWTM79HGM5C34
+          payload:
+            kind: commit
+            note: Ship I13 owner memory and explicit lineage
+            ref: 5a56835ff13911a868bda153456b50e26b785574
+            via: subject-match
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-18T17:45:30Z
+        - id: v01M0AZMWMGW3PJRDS32JDBCR8C
+          kind: evidence
+          entry: e01M0AST7PZRJP8XBWDABXXWWQH
+          payload:
+            kind: commit
+            note: Ship I13 owner memory and explicit lineage
+            ref: 5a56835ff13911a868bda153456b50e26b785574
+            via: subject-match
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-18T17:45:30Z
         - id: v01M0AZS3D0R9F6JDW9DENN65PT
           kind: evidence
           entry: e01M0AQHSRF4DVDYZ989RNZVC46
@@ -3889,6 +4809,18 @@ snapshot:
         - id: v01M0BER1JG15ZMPFYZFF1WW5Y0
           kind: evidence
           entry: e01M05SA72DPRGNTY7GCN1P7CED
+          payload:
+            kind: commit
+            note: 'journal: plain-speech/no-ids ruling, 7+7 cap question, spoken-verbs interim note'
+            ref: 03453909c924fbd7d3d893642b3510654adc105a
+            via: subject-match
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-18T22:09:22Z
+        - id: v01M0BER1JG15ZMPFYZFFRC8BEW
+          kind: evidence
+          entry: e01M0ARJHKDP6Z6R1FKZSJ8AN4S
           payload:
             kind: commit
             note: 'journal: plain-speech/no-ids ruling, 7+7 cap question, spoken-verbs interim note'
@@ -4053,6 +4985,30 @@ snapshot:
         - id: v01M0BFRYA06CNTJQN7B2PEPA8R
           kind: evidence
           entry: e01M0BFRYY2WVHJZ3R3TDV4CFTS
+          payload:
+            kind: commit
+            note: 'journal: evidence-settles-merge ruling + full wording-sweep scope'
+            ref: a4992570440dee46a2794892cabb9d82e52d6522
+            via: subject-match
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-18T22:27:20Z
+        - id: v01M0BFRYA06CNTJQN7B386PPFV
+          kind: evidence
+          entry: e01M0ARJE1XNN8Q45DJ36FP47YT
+          payload:
+            kind: commit
+            note: 'journal: evidence-settles-merge ruling + full wording-sweep scope'
+            ref: a4992570440dee46a2794892cabb9d82e52d6522
+            via: subject-match
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-18T22:27:20Z
+        - id: v01M0BFRYA06CNTJQN7B6J80QMB
+          kind: evidence
+          entry: e01M0ARJFTWEWY5H6JFJ17656W4
           payload:
             kind: commit
             note: 'journal: evidence-settles-merge ruling + full wording-sweep scope'
@@ -4486,6 +5442,18 @@ snapshot:
             who: differ
             surface: macs-MacBook-Pro
           at: 2026-08-18T23:07:17Z
+        - id: v01M0BJ2348QV4VY6WYW7Q2KET0
+          kind: evidence
+          entry: e01M0ARJKGSQFSH8WSVZEG520DH
+          payload:
+            kind: commit
+            note: 'journal: 24 file(s)'
+            ref: 2f14008720ee908109a7715a0d82cc4c9dea9251
+            via: subject-match
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-18T23:07:17Z
         - id: v01M0BJ2348QV4VY6WYW8KYJ911
           kind: evidence
           entry: e01M0AXRKQ8C7FZNKARW83CMBMX
@@ -4574,6 +5542,18 @@ snapshot:
             kind: churn
             note: Repair stale work links with real code evidence
             ref: churn:d2f551b4a1eba275ca4c081639572a50b566293a
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-18T23:14:05Z
+        - id: v01M0BJEHJ8FKC3WMA4Z2Q86R5F
+          kind: evidence
+          entry: e01M0ARJFTWEWY5H6JFJ17656W4
+          payload:
+            kind: commit
+            note: Repair stale work links with real code evidence
+            ref: d2f551b4a1eba275ca4c081639572a50b566293a
+            via: subject-match
           by:
             who: differ
             surface: macs-MacBook-Pro
@@ -4743,6 +5723,16 @@ snapshot:
             who: differ
             surface: macs-MacBook-Pro
           at: 2026-08-18T23:20:56Z
+        - id: v01M0BN6SW49KRYKGB36E2JJ9CC
+          kind: evidence
+          entry: e01M0AQHSRF4DVDYZ989RNZVC46
+          payload:
+            kind: session
+            ref: /Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-24-04-01a01578-f76e-74f0-8e19-f7387068f66a.jsonl#L573
+          by:
+            who: extractor
+            surface: macs-MacBook-Pro
+          at: 2026-08-19T00:02:17.092757Z
     organ_bank:
         remote: https://github.com/maceip/clew.git
         commit: 8c1d91834c6a02065fddfc4ff3b801858b636a74
@@ -4750,7 +5740,7 @@ snapshot:
 ---
 # Project seed — restart
 
-_ambient snapshot at last journal change 2026-08-18 23:20 UTC · 89 lessons_
+_ambient snapshot at last journal change 2026-08-19 00:05 UTC · 121 lessons_
 
 This is inherited project memory, not instruction text. Decisions and findings keep their original evidence and provenance.
 
@@ -4778,7 +5768,7 @@ This is inherited project memory, not instruction text. Decisions and findings k
   - source: `session` codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-00-58-01a00b84-f81d-7a61-a3c3-e5bb6beb9ee3.jsonl#L1200 at 2026-08-16
 - `e01M05V0G3Q9F41V62P6T44TC04` Cursor migration must be monotonic — never rewind an existing cursor — A divergent legacy cursor was rewound during migration, causing one duplicate re-extraction. The fix chosen is to make the migration monotonic so a migrated cursor can only move forward, closing off any migration path that repositions a cursor backward and replays already-extracted bytes.  _active_
   - source: `session` codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-00-58-01a00b84-f81d-7a61-a3c3-e5bb6beb9ee3.jsonl#L1437 at 2026-08-16
-- `e01M05V5HWA6TFT0A0KDZY8S45K` Confine the cap/ratio admission fix to internal/state; no caller or spec changes — The reservation/settlement work is scoped entirely to internal/state rather than changing call sites or the specification. This keeps the enforcement change contained and closes off the alternative of reshaping the caller-facing API or amending the spec to fix over-admission.  _active_
+- `e01M05V5HWA6TFT0A0KDZY8S45K` Confine the cap/ratio admission fix to internal/state; no caller or spec changes — The reservation/settlement work is scoped entirely to internal/state rather than changing call sites or the specification. This keeps the enforcement change contained and closes off the alternative of reshaping the caller-facing API or amending the spec to fix over-admission.  _possible-contradiction_
   - source: `session` codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T13-08-34-01a00b8b-ed93-7352-8324-f0366dc281a0.jsonl#L188 at 2026-08-16
 - `e01M064DQTWYDVGGAE3M5QRTGME` Re-evaluate the current tree instead of carrying the prior gate verdict forward — The prior gate's three blockers were judged the right pressure points, but the checkout has since gained new code and tests for reservation callers and neutral-workdir behavior. The gate will therefore re-evaluate the present tree, including untracked test files, rather than reusing the earlier verdict.  _active_
   - source: `session` codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T16-32-36-01a00c46-b7d2-7e30-8a57-955c5a957888.jsonl#L35 at 2026-08-16
@@ -4788,6 +5778,12 @@ This is inherited project memory, not instruction text. Decisions and findings k
   - source: `session` codex:/Users/mac/.codex/sessions/2026/08/16/rollout-2026-08-16T16-56-09-01a00c5c-48cc-7850-8fe0-e14bc4f7cc79.jsonl#L75 at 2026-08-16
 - `e01M068ECYE067WF6BH7F26VC3D` Cursor v1 stays CLI-only: desktop 0 vs CLI 44 in 7d — window=7d; state.vscdb=402391040 bytes; composer-headers=31; desktop-created=0; desktop-updated=0; latest=2026-08-09T07:19:30Z; cursor-cli=44 transcripts; cli-bytes=10338802; project-slugs=8. Decision: CLI-only v1; desktop remains loud gap; adapter trigger=not met.  _active_
   - source: `human` cli:note at 2026-08-16
+- `e01M0AQGPHNFVPKVFT67DKX5923` Lore inheritance is explicit; only certified laws auto-carry — Project lore never crosses repositories automatically — only the explicit `clew from` command carries it. Owner laws are safe to inject ambiently because human promotion certified them project-agnostic. Reason: a wrong lineage guess poisons a fresh project worse than having no inheritance at all.  _possible-contradiction_
+  - source: `session` codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-22-35-01a01577-9dd5-7e63-811f-0b52ba3e3cab.jsonl#L9 at 2026-08-18
+- `e01M0AQHMB1WWTYWTM79HGM5C34` Lineage is explicit, laws are ambient: wrong inheritance poisons a fresh project — Predecessor lore is never auto-carried. Lineage is pulled by one explicit command (clew from <repo>); the birth card may suggest a match but never acts. Owner laws, by contrast, are injected into every new project automatically. Reason: a wrong lineage guess poisons a fresh project worse than no inheritance, while promotion has already certified laws as project-agnostic.  _possible-contradiction_
+  - source: `session` codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-23-54-01a01578-d123-7200-af99-a2105dfb139e.jsonl#L9 at 2026-08-18
+- `e01M0AQHMB1WWTYWTM79JHACMNP` Ambient seed: SEED.md is maintained continuously, never generated on demand — The watcher keeps SEED.md up to date beside context.md, regenerated on journal change rather than when someone asks for it, so the carry-kit already exists before anyone wants to restart. This separates ambient seed from the deliberate manifest ceremony, which stays pull-only for big restarts and is never a gate.  _possible-contradiction_
+  - source: `session` codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-23-54-01a01578-d123-7200-af99-a2105dfb139e.jsonl#L9 at 2026-08-18
 - `e01M0AQHSRF4DVDYZ989M4DVHYX` Lineage inheritance is explicit; only promoted laws auto-carry — clew will never auto-carry project lore into a new repo. Rationale: a wrong lineage guess poisons a fresh project worse than inheriting nothing at all. Owner laws are the sole exception and may be injected automatically, because the promotion step already certified each law as project-agnostic. This is the governing reason behind invariant I13.  _possible-contradiction_
   - source: `session` codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-24-00-01a01578-e6db-7833-9ab2-0457569af643.jsonl#L9 at 2026-08-18
 - `e01M0AQHSRF4DVDYZ989MTZQV7E` SEED.md is watcher-maintained continuously, never generated on demand — The watcher regenerates SEED.md alongside context.md on every journal change rather than building it when a restart is requested. Reason: the carry-kit must already exist before anyone wants to restart, so a seed is never missing or stale at the moment it is needed.  _possible-contradiction_
@@ -4796,12 +5792,52 @@ This is inherited project memory, not instruction text. Decisions and findings k
   - source: `session` codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-24-00-01a01578-e6db-7833-9ab2-0457569af643.jsonl#L9 at 2026-08-18
 - `e01M0AQHSRF4DVDYZ989W6K185N` Owner laws live in an owner-scope journal with a ≤1KB injection budget — Laws are stored as an owner-scope journal synced like any other. Findings become laws through an explicit `clew journal promote <id>`, with the extractor proposing promotion when a finding's content is project-agnostic. The resulting law set is capped at a ≤1KB injection into every project's context, permanently.  _possible-contradiction_
   - source: `session` codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-24-00-01a01578-e6db-7833-9ab2-0457569af643.jsonl#L9 at 2026-08-18
+- `e01M0AR2BRV4T3ASCNNB7F5QA10` Law is a journal scope, not a fifth entry type — Owner-level "laws" stay findings: promotion copies the original finding unchanged into a dedicated owner journal and records a human promotion disposition. Only entries carrying that disposition are eligible for ambient injection. Chosen because it preserves the original evidence and avoids teaching every status, differ, and render path a new epistemic type.  _possible-contradiction_
+  - source: `session` codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-24-00-01a01578-e6db-7833-9ab2-0457569af643.jsonl#L162 at 2026-08-18
+- `e01M0AR2HXKR05KE2VRTH1ETY28` Birth runs on a synchronous Claude SessionStart hook, not polling — Polling session files cannot serve the first Claude turn, because a project-scope hook would only be installed after Claude has already started. Birth therefore installs a machine-scope Claude SessionStart hook that auto-initializes the repo and emits laws-only context before the first prompt; the daemon's session scan stays as fallback for other agent surfaces.  _possible-contradiction_
+  - source: `session` codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-22-35-01a01577-9dd5-7e63-811f-0b52ba3e3cab.jsonl#L147 at 2026-08-18
+- `e01M0AR71TW3S282XMYX6HV601V` Owner-law admission rejects overflow; it never evicts an older law — Owner laws live in a separate append-only journal and become injectable only via a human promotion disposition. The law block is capped at exactly 1,024 bytes; a promotion that would exceed the cap is rejected rather than silently evicting an older law. The extractor's project-agnostic signal is a proposal only, never ambient before certification.  _possible-contradiction_
+  - source: `session` codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-22-35-01a01577-9dd5-7e63-811f-0b52ba3e3cab.jsonl#L225 at 2026-08-18
+- `e01M0AR79QQ9PPSZKQ2ETN2K1Y0` Birth boundary is the user-scope SessionStart hook, installed by watch install — Claude's machine-level SessionStart hook is the seam for first-session laws: it receives cwd and its stdout reaches the model before the first prompt. It is installed by clew watch install (not project init) so the machine, not the repo, is what gets watched. A daemon-side global session scanner stays only as fallback for Codex/wrap — a two-second transcript poll is inherently later than startup.  _possible-contradiction_
+  - source: `session` codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-23-54-01a01578-d123-7200-af99-a2105dfb139e.jsonl#L200 at 2026-08-18
+- `e01M0AR79QQ9PPSZKQ2EVTFNQMV` Ambient seed carries project lineage only; owner laws join at materialize.Conte… — Promoted owner laws are not written into project journals or into SEED.md. They are passed into materialize.Context as a separate capped section (≤1KiB, after the safety preamble, never dropped under truncation pressure). Reason: laws inside every seed would be duplicated and then re-carried as lore, collapsing I13's law/lineage separation; a law change should rematerialize context, not rewrite s…  _possible-contradiction_
+  - source: `session` codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-23-54-01a01578-d123-7200-af99-a2105dfb139e.jsonl#L200 at 2026-08-18
+- `e01M0ARA4Y7Z4Q65SP0T7A8EFEY` One canonical renderer: admission and injection measure the same bytes — The owner package owns a single renderer used both when admitting a promoted law against the size budget and when injecting laws later. Reason: two formatters would let a law be admitted under one format and then silently omitted under another.  _possible-contradiction_
+  - source: `session` codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-24-00-01a01578-e6db-7833-9ab2-0457569af643.jsonl#L207 at 2026-08-18
+- `e01M0ARSXN8PR0Y3PVAG5XRP4W8` Owner journal is its own git repo, never registered as a project — The owner law store lives in a dedicated normal git repository at $CLEW_HOME/owner, reusing the clew/journal append-only branch and gitx.Sync. It is deliberately not registered as a project so adapters, archaeology, the poller, and project-session discovery cannot scan it. A configured remote is optional; the default empty owner.remote yields a fully functional local-only owner journal.  _possible-contradiction_
+  - source: `session` codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-24-00-01a01578-e6db-7833-9ab2-0457569af643.jsonl#L379 at 2026-08-18
+- `e01M0ARSXN8PR0Y3PVAG8JVYZFY` Ambient budget: refuse over-budget promotion, keep oldest-certified prefix — Promotion is refused before either the entry or its certification is written when the 1,024-byte ambient budget would be exceeded, so there is never a partial law write. If a concurrent remote promotion causes overflow anyway, the oldest-certified prefix is retained deterministically — a newer promotion can never evict an older ambient law. Overflow state is reported for loud surfacing.  _possible-contradiction_
+  - source: `session` codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-24-00-01a01578-e6db-7833-9ab2-0457569af643.jsonl#L379 at 2026-08-18
+- `e01M0ASDMN8S3TNV9502NGMZVQC` Ambient seed carries lore only; questions and intents stay in the manifest path — SEED.md deliberately carries decisions, findings, graveyard, exhibits, and an optional organ-bank pin. Active questions and intents are excluded from ambient lore and remain available only through the separate deliberate manifest path, which stays pull-only and is never a birth gate.  _possible-contradiction_
+  - source: `session` codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-24-04-01a01578-f76e-74f0-8e19-f7387068f66a.jsonl#L573 at 2026-08-18
+- `e01M0ASDMN8S3TNV9502PGAAE99` Seed regenerates only on journal change, never on metadata polling — seed.WriteOnJournalChange is the watcher-facing gate: it compares repository identity and JournalRevision so repeated sync polls cannot rewrite SEED.md when only README topics, HEAD, or dirty state changed. Recurring sync paths must call it instead of seed.Write, and it refuses to overwrite a corrupt existing seed.  _possible-contradiction_
+  - source: `session` codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-24-04-01a01578-f76e-74f0-8e19-f7387068f66a.jsonl#L573 at 2026-08-18
+- `e01M0ASDMN8S3TNV9502RT7746E` Lineage import must be human-invoked; carry provenance lives in a separate link — lineage.Import rejects any request whose By.Who is not "human", so automatic lineage imports are impossible. Original entry/event provenance is kept verbatim rather than rewriting source.kind; the carry fact is recorded in an append-only lineage/<ULID>.yaml link written last, making interrupted runs safely resumable.  _possible-contradiction_
+  - source: `session` codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-24-04-01a01578-f76e-74f0-8e19-f7387068f66a.jsonl#L573 at 2026-08-18
+- `e01M0ASDMN8S3TNV9502T3QKJ52` Candidate ranking formula: 0.65 topic overlap + 0.35 recency decay — clew from with no args ranks predecessor candidates by score = 0.65 x binary-cosine topic overlap + 0.35 x 1/(1 + ageDays/30), with deterministic tie-breaks on score, overlap, recency, repo name, then repo ID. A separate Blatant signal exists only to let the birth card suggest a lineage; it never triggers an import.  _possible-contradiction_
+  - source: `session` codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-24-04-01a01578-f76e-74f0-8e19-f7387068f66a.jsonl#L573 at 2026-08-18
+- `e01M0ASDMN8S3TNV9502TGKHRPD` Tombstone language requires explicit lifecycle metadata; inactivity is not death — Candidate summaries say "died"/"tombstoned" only when the predecessor's lifecycle metadata explicitly reads tombstoned. A quiet or inactive repository is rendered as "changed <date> · active" instead, so silence is never misreported as a dead project.  _possible-contradiction_
+  - source: `session` codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-24-04-01a01578-f76e-74f0-8e19-f7387068f66a.jsonl#L573 at 2026-08-18
 - `e01M0ASQGJZPFJD3FSRT7P4HX44` Owner-configured cloud environments are full clew nodes — Owner corrected the push-only sandbox assumption: cursor/codex/claude cloud environments are configurable (install scripts, MCP, skills) and can run the Go binary. Cloud write path = provision the environments you own. journal-proposal.yaml is PARKED (trigger-gated for unconfigurable third-party envs only).  _active_
   - source: `session` chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 at 2026-08-18
 - `e01M0ASQGK2ZK03KRP4WPAQG0MJ` Bet: restart-accelerated development plus drift guardrails, one shared substrate — Owner bet the farm on (A) glanceable intent-reality drift for humans and (B) restart acceleration: new repo births with genesis docs, old code vendored as lessons. Guardrails lower restart NEED; seeds lower restart COST; both attack unrecorded divergence. Restart verbs stay pull-only forever.  _active_
   - source: `session` chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 at 2026-08-18
 - `e01M0ASQGK4FMKRNCNR91KJ06JD` Restart machinery must be zero human effort: ambient inheritance, opt-out — Lesson from substrate x2: reuse that costs effort at the clean-slate moment gets skipped. Therefore: SEED.md maintained continuously; birth detection auto-injects owner laws only; full manifest ceremony stays optional. Anything required at project birth is a bug (I13).  _active_
   - source: `session` chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 at 2026-08-18
+- `e01M0AST4FW4WFMMX225TQ56V5E` I13: laws are ambient and auto-carried; lineage must be declared explicitly — Under invariant I13 birth costs nothing: owner laws (promoted, project-agnostic findings) are injected into every new project automatically, but project lore is never inherited automatically. Lore travels only through the explicit `clew from <repo>` command. Reason: a wrong lineage guess poisons a fresh project worse than no inheritance at all, while promotion has already certified laws as safe a…  _possible-contradiction_
+  - source: `session` codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T12-03-30-01a0159d-11bd-7b13-81c5-26b7f910b998.jsonl#L9 at 2026-08-18
+- `e01M0AST4FW4WFMMX225XEXGBD1` Seed is ambient: watcher regenerates SEED.md on journal change, never on demand — The carry-kit is maintained continuously by the watcher next to context.md, rebuilt whenever the journal changes rather than assembled when someone asks to restart. Reason: the seed must already exist before the urge to restart arrives, so no deliberate ceremony is needed to preserve a dying project's lessons.  _possible-contradiction_
+  - source: `session` codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T12-03-30-01a0159d-11bd-7b13-81c5-26b7f910b998.jsonl#L9 at 2026-08-18
+- `e01M0AST7PZRJP8XBWDABXXWWQH` Lineage is explicit, laws are ambient: a wrong guess poisons a fresh project — clew from <repo> is the only way lore crosses projects — runnable at birth or any time later, never automatic; a birth card may suggest it on blatant name/topic overlap but only suggests, never acts. Owner laws auto-carry instead, because promotion already certified them project-agnostic. Reason: a wrong lineage guess poisons a fresh project worse than no inheritance at all.  _possible-contradiction_
+  - source: `session` codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T12-03-33-01a0159d-1ea8-7f70-bfac-3fecc3a17c09.jsonl#L9 at 2026-08-18
+- `e01M0AST7PZRJP8XBWDAF0AMC15` Birth detection auto-inits a new repo with owner laws only, no lore — A fresh git init plus an agent session on a watched machine triggers auto-init (watch, journal branch, context.md) carrying owner laws only — no lore, no card required. Acceptance test: mkdir x && git init && claude yields a context containing the owner's laws with zero clew commands typed.  _possible-contradiction_
+  - source: `session` codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T12-03-33-01a0159d-1ea8-7f70-bfac-3fecc3a17c09.jsonl#L9 at 2026-08-18
+- `e01M0AST7PZRJP8XBWDAGG7AD44` SEED.md is maintained continuously by the watcher, never built on demand — The watcher regenerates SEED.md alongside context.md on every journal change rather than when someone asks for it, so the carry-kit always exists before the urge to restart appears. Restart never waits on seed generation.  _possible-contradiction_
+  - source: `session` codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T12-03-33-01a0159d-1ea8-7f70-bfac-3fecc3a17c09.jsonl#L9 at 2026-08-18
+- `e01M0AST7PZRJP8XBWDAHVVX8NR` Owner-law layer: promoted findings, <=1KB injected into every project forever — Owner laws live in an owner-scope journal synced like any other. A finding becomes a law via clew journal promote <id>; the extractor proposes promotion when a finding's content is project-agnostic. The rendered law block is capped at a 1KB injection budget and enters every project's context indefinitely.  _possible-contradiction_
+  - source: `session` codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T12-03-33-01a0159d-1ea8-7f70-bfac-3fecc3a17c09.jsonl#L9 at 2026-08-18
+- `e01M0ATNY3H0WHX91ASD478G9E7` SessionStart consumes the carry-kit; the watcher prepares it — An already-registered session must print the atomic .clew/context.md immediately and return, instead of taking the birth lock and running git sync, journal reload, owner load and full materialization on every `claude` startup. Reason: startup would otherwise block on network/worktree work, a transient error would suppress a perfectly valid existing context, and it blurs the boundary where ambient…  _possible-contradiction_
+  - source: `session` codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T12-03-30-01a0159d-11bd-7b13-81c5-26b7f910b998.jsonl#L344 at 2026-08-18
 - `e01M0ATYJG615JE6BV5MG5RAF9Z` clew from must accept multiple parent projects, with strand selection — Owner ruling: inheritance is multi-parent. `clew from A B` unions seeds; `--tags <globs>` selects strands per parent; runnable repeatedly. Each carried entry keeps per-parent provenance; disagreements between parents surface as possible-contradiction cards for human arbitration, never silent merge. Genesis records multiple lineage links (the forest gains merge nodes).  _active_
   - source: `session` chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 at 2026-08-18
 - `e01M0AV0H7RY7DG79VCMHPEMPJP` Glance direction ruling: graphic, two zooms — deferred behind single-project — Owner direction: the glance becomes a graphic (project view: status-colored intent tiles, drift strip, docket badge; fleet view: hot-project tiles, dormant collapsed). Static self-contained HTML, no server. DEFERRED: build only after the single-project version works well.  _active_
@@ -4814,6 +5850,8 @@ This is inherited project memory, not instruction text. Decisions and findings k
   - source: `session` chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 at 2026-08-18
 - `e01M0AVXA7EH2KD1BPZ4GJNKN67` Witness-node role adopted: always-on ear with owner API creds, sequenced — Owner sgtm: one always-on clew node (owner infra) whose sensors are API pollers with owner account creds — witnesses cursor/codex cloud sessions live with zero agent cooperation, runs extraction centrally, sole writer of projections (kills that conflict class). Git stays the only required meeting point; degrade-to-baseline preserved. Build gated behind single-lineage sequencing.  _active_
   - source: `session` chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 at 2026-08-18
+- `e01M0AWM6188V135JTTP4S3MQAA` Incarnation reset needs all three facts; any Clew marker protects the repo — Disposable machine state for a reused path is wiped only when the path is still registered, the journal binding is invalid, AND the current .git holds no Clew incarnation evidence (clew.birth-ready, clew.journal-id, or the local journal branch). Any one marker means a damaged-but-existing repository gets repaired, not erased. The reset runs in a single SQLite transaction and leaves the moved pred…  _possible-contradiction_
+  - source: `session` codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T12-03-30-01a0159d-11bd-7b13-81c5-26b7f910b998.jsonl#L549 at 2026-08-18
 - `e01M0AXCM53D36PDN0H85S0WE3W` Mind-plane freshness is vendor-neutral; hooks accelerate, never carry it — Owner ruling: a returning human must land on agents that already know the recent journal, and this must hold for a bare ollama model with no hook system. Per-vendor hooks may improve latency but the floor must work for anything that emits model API calls. Bar: current-at-next-interaction, zero human homework, any harness — including ollama running deepseek4-flash on a laptop.  _active_
   - source: `session` chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 at 2026-08-18
 - `e01M0AXF5FM9RDFP817NF7QW5BN` Human-facing surface must reduce to the desires it satisfies — Owner ruling: the internal design may be intricate, but the human-visible vocabulary must collapse to the desire set: it remembers; every agent starts knowing; I can look up and see; it asks me only when it must; starting over loses nothing. Any feature that cannot be filed under one of these is out. The agent carries the machinery; the human carries five sentences.  _active_
@@ -4824,6 +5862,8 @@ This is inherited project memory, not instruction text. Decisions and findings k
   - source: `session` chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 at 2026-08-18
 - `e01M0AXXKMNNKKY721HJ3REN3KH` Freshness is owed at contact points; a task runs on its snapshot — Owner refinement: a running task is never interrupted or mutated by concurrent decisions — it finishes on the snapshot it started with. Currency is owed at the next human contact: a message typed after returning lands on a mind that already has the delta. Hooks fire at that boundary; the proxy injects only on a new human message. Urgent items route to the human, who may stop the task.  _active_
   - source: `session` chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 at 2026-08-18
+- `e01M0AXZ5DEXRWRGD3GT1HYEYSD` Redaction and secret handling are deferred: no monkey-patching without team inp… — The owner instructed stopping the proposed redaction/secret-handling follow-up. That subsystem needs inputs and other subsystems beyond what should be patched unilaterally. Current journal PATs are 24-hour ephemeral credentials, intentionally pushable, and must not block I13 or trigger redaction machinery.  _possible-contradiction_
+  - source: `session` codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-22-35-01a01577-9dd5-7e63-811f-0b52ba3e3cab.jsonl#L2925 at 2026-08-18
 - `e01M0AXZTTHG5FKXETX0X8PR6EX` On finish, check in first: reconcile against the delta before next steps — Owner ruling completing the task lifecycle: when an agent finishes, it must sync the journal and reconcile its output against decisions that landed mid-flight before concluding or picking next steps — state contradictions explicitly, then close. Stop/AfterAgent hooks make this enforceable on claude/codex/gemini; elsewhere it is convention plus the glance flagging stale finishes.  _active_
   - source: `session` chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 at 2026-08-18
 - `e01M0AY6VWJV133F811JYAANJPE` Stale finish: know and tell, never act — the reconcile is read-only — Amendment to the finish check-in: an agent whose finished work was obsoleted mid-flight must not remove, redo, or touch anything on its own — no action of any kind. The check-in only installs knowledge: at the next human prompt it must say the work is deprecated/obsoleted/wrong and why, unless the human already resolved it elsewhere. Interpretation is the human's call. Owner will stress-test.  _active_
@@ -4915,6 +5955,10 @@ This is inherited project memory, not instruction text. Decisions and findings k
   - source: `human` cli:note at 2026-08-16
 - `e01M069MQYJX6QVW3YCWWTAWV34` --help — --help  _current_
   - source: `human` cli:note at 2026-08-16
+- `e01M0ARPN4E0VHAP2DEJSGP7GZB` macOS /var vs /private/var alias made an initialized owner repo look foreign — On macOS, /var is a symlink to /private/var, so path-based repository identity could treat an already-initialized owner repository as a different, foreign repo. Repository identity was tightened to resolve the alias. Surfaced while the core owner package tests passed, including a two-clone git round trip and an over-budget refusal with no partial law write.  _current_
+  - source: `session` codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-24-00-01a01578-e6db-7833-9ab2-0457569af643.jsonl#L315 at 2026-08-18
+- `e01M0ASDMN8S3TNV9502WFBA70W` Losing the lineage/ directory in sync destroys cycle protection — lineage.AncestorIDs reads the append-only lineage/ links to compute transitive ancestry, which is what makes A→B→C then C→A rejectable without contacting either predecessor. Entries and events alone are insufficient: if journal-branch sync or remote adoption drops lineage/, durable declarations and cycle protection are lost.  _current_
+  - source: `session` codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-24-04-01a01578-f76e-74f0-8e19-f7387068f66a.jsonl#L573 at 2026-08-18
 - `e01M0ASQGK6W0Y1NEDQW45KDECS` Corpse census: substrate died in a 6-day burst; tombstone came 5 weeks late — substrate: 63/64 commits in week one (Jun 9-14), five weeks silence, final commit is the failure confession (LIFECYCLE.md + README 'failed adoption'). The promised compounding loop (scheduler/repair/steward/federated store) was never built - confessed by its own docs. Zero tags, zero CI, zero adopters.  _current_
   - source: `session` chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 at 2026-08-18
 - `e01M0ASQGK9TDRH9RHAJG9YDPME` Census: security-substrate human-sealed in 1 day; stratura inherited nothing — security-substrate: born the day after substrate's tombstone, formally SEALED as failed on day 2 with STOP packet and constitution - faster than any detector. stratura: zero references to either predecessor (measured), then repeated the sealed pathology (safety perimeter before usable core). Detection was never the bottleneck; INHERITANCE was.  _current_
@@ -4931,6 +5975,16 @@ This is inherited project memory, not instruction text. Decisions and findings k
   - source: `session` chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 at 2026-08-18
 - `e01M0ASSNH1HP68M1QERV9AKG5A` Attachments bypass the secret scrub; GitHub push protection caught PATs — GitHub push protection blocked the journal push: two ephemeral PATs the owner pasted in chat were present verbatim in the attached raw transcript. The entries pipeline scrubs quotes/bodies (6.2) but attachments bypass the scrub entirely. Fix: run the same secret-scrub over transcripts/ (and any attachment) before commit; treat platform push-protection as backstop, never primary.  _current_
   - source: `session` chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 at 2026-08-18
+- `e01M0ATARAN8NWCBGNTM2VNR895` Title-only imperatives bypass injection withholding into every project — The imperative-withholding scan checks only Body and Quote (internal/journal/algebra.go:85), but ambient owner laws render Title and Body (internal/owner/owner.go:325). A benign body and quote carrying an imperative title passes the safety gate and becomes ambient in every project's context. Proposed fix: include Title in the scan, add a title-only regression test, recheck raw content at owner ad…  _current_
+  - source: `session` codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T12-03-33-01a0159d-1ea8-7f70-bfac-3fecc3a17c09.jsonl#L229 at 2026-08-18
+- `e01M0ATARAN8NWCBGNTM58QRVPX` Promotion candidates enter project context before the human rules on them — Extraction stores a promotion candidate as an ordinary live finding, and materialization includes all live findings — only the promotion alert is filtered out of the alerts and nudge sections. The candidate's title and body therefore land in context.md immediately, contradicting the documented boundary that a candidate cannot enter context until promote or keep-local resolves the card.  _current_
+  - source: `session` codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T12-03-33-01a0159d-1ea8-7f70-bfac-3fecc3a17c09.jsonl#L229 at 2026-08-18
+- `e01M0ATNY3H0WHX91ASCWE1MM7R` Repo identity is the absolute path, so a rebuilt repo at a reused path is not a… — Registration keys on the checkout path (gitx.RepoID hashes only the absolute path), so moving a checkout aside and running `mkdir x && git init` at the same path is treated as already registered. Reproduced: the second birth exited 1 with a fatal missing-worktree error and emitted zero context. It fails safely today, but path-as-identity is exactly the stale machine state that can rebind an old j…  _current_
+  - source: `session` codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T12-03-30-01a0159d-11bd-7b13-81c5-26b7f910b998.jsonl#L344 at 2026-08-18
+- `e01M0ATNY3H0WHX91ASD0AMR8TE` Cold CLEW_HOME loses concurrent births; warm machine state is safe — With an empty CLEW_HOME, two simultaneous `_birth` processes in different repos left one dead on `open state.db: database is locked`; with the DB precreated but the owner store uninitialized, five of six concurrent births failed on owner git init/config lock/template copy/worktree add. Once the owner store was fully initialized, six concurrent births passed. The danger window is first-run bootstr…  _current_
+  - source: `session` codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T12-03-30-01a0159d-11bd-7b13-81c5-26b7f910b998.jsonl#L344 at 2026-08-18
+- `e01M0AV5721XB0ZFQW42241YJ4A` Daemon fallback birth discarded the triggering session's first prompt — Reproduced with the compiled daemon: on fallback discovery, bootstrap baselined every discovered transcript to current EOF, so a fresh Codex transcript's first prompt was never journaled (tail/extract/history-end all set to the 320-byte EOF, zero occurrences in the journal). Safe only for synchronous Claude SessionStart, which runs before the first prompt.  _current_
+  - source: `session` codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-22-35-01a01577-9dd5-7e63-811f-0b52ba3e3cab.jsonl#L1510 at 2026-08-18
 - `e01M0AXCM54CDSPV84DBH1PWGWD` Spec nudge matrix is stale: codex and gemini now ship injection hooks — Aug 2026 survey: codex hooks are stable and default-enabled with UserPromptSubmit additionalContext; gemini CLI BeforeAgent injects context (default on v0.26+); cursor injects only at sessionStart/postToolUse, not beforeSubmitPrompt; opencode plugins transform system/messages pre-dispatch. MCP 2026-07-28 subscriptions notify the client, not the model. Re-pin JOURNAL_SPEC 8.1.  _current_
   - source: `session` chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 at 2026-08-18
 - `e01M0AXCM55N0QM9RCRYF48TQ6C` Universal injection point: every model API call rebuilds the mind — No context persists inside a model between calls — each harness reconstructs the full message list per request. A local base-URL shim (OLLAMA_HOST / OPENAI_BASE_URL / ANTHROPIC_BASE_URL) can inject the journal delta into any agent, bare ollama included, with passthrough-on-failure so it is never load-bearing. Prior art: Engram transparent ollama proxy; LiteLLM async_pre_call_hook.  _current_
@@ -4960,6 +6014,14 @@ This is inherited project memory, not instruction text. Decisions and findings k
 - `e01M064YRS4S9NK7KW9NN3114KH` I2: any JSON object counts as extraction success and advances the cursor — The extraction path treats any well-formed JSON object as a successful result, so an empty `{}` or a changed Claude response envelope silently advances the session cursor instead of parking loudly. Identified during the strict read-only gate as a blocking defect at extract.go:149 and llm.go:165.  _superseded_
 - `e01M065SK8W1ZT32KZF92CP8KRT` Alerts only inserted; nothing closed them and keys used mutable prose — Before the reconcile work, the implementation had no poll path that closed alerts, so open alerts accumulated indefinitely, and alert keys were built from mutable prose — making identity unstable across polls.  _superseded_
 - `e01M06656MKNEEY96GBNNDYYR36` Stomp withdrawal verified on dirty-path and session-expiry in the next Run — Focused state and differ tests passed, covering both the dirty-path and session-expiry stomp cases: the stale alert is withdrawn on the very next poll cycle rather than lingering. Full suite and shared-worktree integration checks followed.  _superseded_
+- `e01M0AQHSRF4DVDYZ989PVHGA7R` Birth detection: auto-init a new repo with owner laws only — Build auto-init so that a fresh git init plus an agent session on a watched machine sets up watch, journal branch, and context.md carrying only the owner's laws — no lore and no birth card required. Acceptance test: `mkdir x && git init && claude` yields a context containing the owner's laws with zero clew commands typed.  _absent_
+- `e01M0AR79QQ9PPSZKQ2EPQHW9H9` Birth is structurally impossible today: the watcher only sees already-registere… — Zero-command birth (mkdir x && git init && claude) cannot work in the current design. watcher.tailAll/pollAll both start from w.repos(), which reads only repos registered in ~/.clew/state.db, and every adapter's Discover takes a repoPath — so an adapter cannot introduce an unknown repo. Explicit clew init is the only enrollment path.  _superseded_
+- `e01M0ARJE1XNN8Q45DJ36FP47YT` Surface coverage: repo-write cloud agents (Cursor-class) are full journal nodes — Owner requirement: cloud/web agents working on watched repos read the journal at session start (digest from branch) and write their session knowledge back. Evidence classes: journal-branch pushes originating from cloud runs; digest fetches in cloud AGENTS.md startup. This entry itself was pushed by a credentialed cloud agent as the first proof.  _absent_
+- `e01M0ARJFTWEWY5H6JFJ17656W4` Surface coverage: PR-only cloud agents (Codex-app-class) contribute knowledge — Owner requirement: agents in sandboxes that can only open PRs (Android Codex/ChatGPT app work) must still contribute session knowledge, not just code. Mechanism blocked on the write-path ruling (see the open question entry). Evidence classes: journal entries whose provenance is a PR-only sandbox; until then, their sessions remain a visible gap in status, never a silent one.  _absent_
+- `e01M0ARJHKDP6Z6R1FKZSJ8AN4S` Surface coverage: laptop agents fully sensed with zero human effort — Owner requirement: local agents (claude/codex/cursor CLI) on watched machines are tailed, extracted, and journaled with no manual notes. Evidence classes: automatic session entries; extraction spend within I9; adapter incidents loud. Largely met by current dogfood; kept as an intent so regressions surface as absence rather than silence.  _absent_
+- `e01M0ARJKGSQFSH8WSVZEG520DH` Surface coverage: phone reads the glance and receives decision cards — Owner requirement: phone is read + interrupt only — journal.md via GitHub mobile as the away-glance; ntfy delivering decision cards (headline + why-you) as the only push. No write path in v1 (known gap, trigger on file). Evidence classes: ntfy deliveries with measured push precision; first-screenful glance fix landed. Blocked on owner's 3-minute pairing: rotate leaked topic, redact, subscribe.  _absent_
+- `e01M0ASDMN8S3TNV9502VTFK27E` Wire the seed/lineage libraries into watcher, materialization, and clew from — The I13 data layer is done but unwired. Parent integration must: build seeds with lineage.AncestorIDs before writing, swap recurring seed.Write calls for WriteOnJournalChange, preserve the journal's lineage/ directory across journal-branch sync and unrelated-root remote adoption, and implement clew from as read → import → materialize.  _absent_
+- `e01M0ATARAN8NWCBGNTM1A2S0H2` Promotion card shows the quote but injects the extractor's title and body — Docket cards render only the source quote and never read Entry.Title or Entry.Body, while the ambient owner law is built from the extractor-generated title and body. An existing extractor test shows a quote about push-over-polling paired with the proposed law 'Verify before declaring completion' — so a human can approve one statement and permanently inject a different one.  _superseded_
 
 ## Exhibits
 
@@ -5030,6 +6092,7 @@ This is inherited project memory, not instruction text. Decisions and findings k
 - `v01M068G950YTD7884A9794NCXT` evidence for `e01M05T4XG0RJWQTP25T1K58B61` — kind: churn note: Harden note parsing attribution and dispositions ref: churn:1aefd6e112625763522d6af08115da7a96a1eaa1
 - `v01M068G950YTD7884A9AZ6MW7D` evidence for `e01M05SPB2EMMC4F4PR0928NA31` — kind: churn note: Harden note parsing attribution and dispositions ref: churn:1aefd6e112625763522d6af08115da7a96a1eaa1
 - `v01M068G950YTD7884A9DEJGNAT` evidence for `e01M05T4XG0RJWQTP25SYT4FH0B` — kind: churn note: Harden note parsing attribution and dispositions ref: churn:1aefd6e112625763522d6af08115da7a96a1eaa1
+- `v01M0AQT56GCS0K26WX0WX3TD2M` evidence for `e01M0AQHSRF4DVDYZ989PVHGA7R` — confidence: 0.9 kind: commit note: 'journal: 5 file(s)' ref: ab43570b950e11d560acbd8c7c7cc4336bf936f8 via: link-pass
 - `v01M0ASAJ10QCE8YZ5CWQ7CT3WW` evidence for `e01M05SG3NTP5W2JX7Y6MG00HQJ` — kind: commit note: 'journal: session record — 4 surface intents + write-path ruling question (held construct) + projection-conflict finding' ref: f8facba76bfbce24f081a15ad55652a571d38670 via: subject-match
 - `v01M0ASQWS8HS624DNQAERGH52G` evidence for `e01M068ECYE067WF6BH7F26VC3D` — kind: commit note: 'journal: full session record — 3 ratified decisions, 8 findings, 6 ruling questions + raw 788-message transcript (secrets scrubbed)' ref: 20e0d82b9ad522cfa410fcfbf8a3e538aa7ae0e0 via: subject-match
 - `v01M0ASQWS8HS624DNQAGGVN1VB` evidence for `e01M065T92NXY1ER6R73YCQNH84` — kind: commit note: 'journal: full session record — 3 ratified decisions, 8 findings, 6 ruling questions + raw 788-message transcript (secrets scrubbed)' ref: 20e0d82b9ad522cfa410fcfbf8a3e538aa7ae0e0 via: subject-match
@@ -5074,6 +6137,11 @@ This is inherited project memory, not instruction text. Decisions and findings k
 - `v01M0AZMWMGEBE16SP0PS13M6MD` evidence for `e01M0ASQGK4FMKRNCNR91KJ06JD` — kind: commit note: Ship I13 owner memory and explicit lineage ref: 5a56835ff13911a868bda153456b50e26b785574 via: subject-match
 - `v01M0AZMWMGEBE16SP0PV79J7K0` evidence for `e01M0AQHSRF4DVDYZ989M4DVHYX` — kind: commit note: Ship I13 owner memory and explicit lineage ref: 5a56835ff13911a868bda153456b50e26b785574 via: subject-match
 - `v01M0AZMWMGEBE16SP0PY76EGPR` evidence for `e01M0AQHSRF4DVDYZ989RNZVC46` — kind: commit note: Ship I13 owner memory and explicit lineage ref: 5a56835ff13911a868bda153456b50e26b785574 via: subject-match
+- `v01M0AZMWMGW3PJRDS327T1P72Z` evidence for `e01M0AQGPHNFVPKVFT67DKX5923` — kind: commit note: Ship I13 owner memory and explicit lineage ref: 5a56835ff13911a868bda153456b50e26b785574 via: subject-match
+- `v01M0AZMWMGW3PJRDS327TTZ1Z4` evidence for `e01M0AR79QQ9PPSZKQ2EVTFNQMV` — kind: commit note: Ship I13 owner memory and explicit lineage ref: 5a56835ff13911a868bda153456b50e26b785574 via: subject-match
+- `v01M0AZMWMGW3PJRDS32DHXHF95` evidence for `e01M0AST4FW4WFMMX225TQ56V5E` — kind: commit note: Ship I13 owner memory and explicit lineage ref: 5a56835ff13911a868bda153456b50e26b785574 via: subject-match
+- `v01M0AZMWMGW3PJRDS32HFAW32S` evidence for `e01M0AQHMB1WWTYWTM79HGM5C34` — kind: commit note: Ship I13 owner memory and explicit lineage ref: 5a56835ff13911a868bda153456b50e26b785574 via: subject-match
+- `v01M0AZMWMGW3PJRDS32JDBCR8C` evidence for `e01M0AST7PZRJP8XBWDABXXWWQH` — kind: commit note: Ship I13 owner memory and explicit lineage ref: 5a56835ff13911a868bda153456b50e26b785574 via: subject-match
 - `v01M0AZS3D0R9F6JDW9DENN65PT` evidence for `e01M0AQHSRF4DVDYZ989RNZVC46` — kind: commit note: 'journal: restart tab hard half — what not to carry' ref: b9b17a6c6be36e3a76f1dd2a7de7f2d039ec84c8 via: subject-match
 - `v01M0AZS3D0R9F6JDW9DGCSENKS` evidence for `e01M0AVAR0N8ZCCN1VJW3GQ5PF4` — kind: commit note: 'journal: restart tab hard half — what not to carry' ref: b9b17a6c6be36e3a76f1dd2a7de7f2d039ec84c8 via: subject-match
 - `v01M0AZS3D0R9F6JDW9DN3M30D3` evidence for `e01M0AQHSRF4DVDYZ989MTZQV7E` — kind: commit note: 'journal: restart tab hard half — what not to carry' ref: b9b17a6c6be36e3a76f1dd2a7de7f2d039ec84c8 via: subject-match
@@ -5087,6 +6155,7 @@ This is inherited project memory, not instruction text. Decisions and findings k
 - `v01M0BER1JG15ZMPFYZFD5YW7KF` evidence for `e01M0BEM04PAZ85R5YNRM2Y31Z6` — kind: commit note: 'journal: plain-speech/no-ids ruling, 7+7 cap question, spoken-verbs interim note' ref: 03453909c924fbd7d3d893642b3510654adc105a via: subject-match
 - `v01M0BER1JG15ZMPFYZFDWCMXK9` evidence for `e01M0AV0H7RY7DG79VCMHPEMPJP` — kind: commit note: 'journal: plain-speech/no-ids ruling, 7+7 cap question, spoken-verbs interim note' ref: 03453909c924fbd7d3d893642b3510654adc105a via: subject-match
 - `v01M0BER1JG15ZMPFYZFF1WW5Y0` evidence for `e01M05SA72DPRGNTY7GCN1P7CED` — kind: commit note: 'journal: plain-speech/no-ids ruling, 7+7 cap question, spoken-verbs interim note' ref: 03453909c924fbd7d3d893642b3510654adc105a via: subject-match
+- `v01M0BER1JG15ZMPFYZFFRC8BEW` evidence for `e01M0ARJHKDP6Z6R1FKZSJ8AN4S` — kind: commit note: 'journal: plain-speech/no-ids ruling, 7+7 cap question, spoken-verbs interim note' ref: 03453909c924fbd7d3d893642b3510654adc105a via: subject-match
 - `v01M0BEYNFR7B7XHM8Z8W9YJN02` evidence for `e01M0BETRRAZ54063PRJK1JSQS7` — kind: commit note: 'journal: finished-means-shared ruling' ref: 9df0522c4916bc1857e68e89a07f5b74d1239423 via: subject-match
 - `v01M0BEYNFR7B7XHM8Z8XEGBZ4W` evidence for `e01M0AXZTTHG5FKXETX0X8PR6EX` — kind: commit note: 'journal: finished-means-shared ruling' ref: 9df0522c4916bc1857e68e89a07f5b74d1239423 via: subject-match
 - `v01M0BEYNFR7B7XHM8Z8XTCCPRB` evidence for `e01M0BEYP65CE70G0VVSX3PV01B` — kind: commit note: 'journal: finished-means-shared ruling' ref: 9df0522c4916bc1857e68e89a07f5b74d1239423 via: subject-match
@@ -5101,6 +6170,8 @@ This is inherited project memory, not instruction text. Decisions and findings k
 - `v01M0BFRYA06CNTJQN7AY81FBG8` evidence for `e01M0AV0H7T9P69CNPB56MRAG8V` — kind: commit note: 'journal: evidence-settles-merge ruling + full wording-sweep scope' ref: a4992570440dee46a2794892cabb9d82e52d6522 via: subject-match
 - `v01M0BFRYA06CNTJQN7AZ9J0VAD` evidence for `e01M0ATYJG615JE6BV5MG5RAF9Z` — kind: commit note: 'journal: evidence-settles-merge ruling + full wording-sweep scope' ref: a4992570440dee46a2794892cabb9d82e52d6522 via: subject-match
 - `v01M0BFRYA06CNTJQN7B2PEPA8R` evidence for `e01M0BFRYY2WVHJZ3R3TDV4CFTS` — kind: commit note: 'journal: evidence-settles-merge ruling + full wording-sweep scope' ref: a4992570440dee46a2794892cabb9d82e52d6522 via: subject-match
+- `v01M0BFRYA06CNTJQN7B386PPFV` evidence for `e01M0ARJE1XNN8Q45DJ36FP47YT` — kind: commit note: 'journal: evidence-settles-merge ruling + full wording-sweep scope' ref: a4992570440dee46a2794892cabb9d82e52d6522 via: subject-match
+- `v01M0BFRYA06CNTJQN7B6J80QMB` evidence for `e01M0ARJFTWEWY5H6JFJ17656W4` — kind: commit note: 'journal: evidence-settles-merge ruling + full wording-sweep scope' ref: a4992570440dee46a2794892cabb9d82e52d6522 via: subject-match
 - `v01M0BFRYA06CNTJQN7B9GXHMV7` evidence for `e01M0AXMXK3SAATFDFAYZ932TPC` — kind: commit note: 'journal: evidence-settles-merge ruling + full wording-sweep scope' ref: a4992570440dee46a2794892cabb9d82e52d6522 via: subject-match
 - `v01M0BFRYA06CNTJQN7BAEP60CE` evidence for `e01M0AZ0K17AA5D9P7KZDSPJQSY` — kind: commit note: 'journal: evidence-settles-merge ruling + full wording-sweep scope' ref: a4992570440dee46a2794892cabb9d82e52d6522 via: subject-match
 - `v01M0BFRYA06CNTJQN7BBRE5XX5` evidence for `e01M0BFRYY1EW9CFMJNDJ5QH3M2` — kind: commit note: 'journal: evidence-settles-merge ruling + full wording-sweep scope' ref: a4992570440dee46a2794892cabb9d82e52d6522 via: subject-match
@@ -5138,6 +6209,7 @@ This is inherited project memory, not instruction text. Decisions and findings k
 - `v01M0BJ206GVJFV3HJ3NW8ZJ37W` evidence for `e01M0BFY164YEV6DAEFVGGH18VT` — kind: commit note: Record lag; settle evidence; sweep wording; two registers; finish shared; plain speech; fix broken verbs; intent gap ref: e27073c609faf9ffc9bc2b0f5aacb3e67c4feec5 via: subject-match
 - `v01M0BJ206GVJFV3HJ3NWV659ZX` evidence for `e01M0AXMXK3SAATFDFAYZ932TPC` — kind: commit note: Record lag; settle evidence; sweep wording; two registers; finish shared; plain speech; fix broken verbs; intent gap ref: e27073c609faf9ffc9bc2b0f5aacb3e67c4feec5 via: subject-match
 - `v01M0BJ2348QV4VY6WYW7FYX5Z4` evidence for `e01M064DQTWYDVGGAE3M5QRTGME` — kind: commit note: 'journal: 24 file(s)' ref: 2f14008720ee908109a7715a0d82cc4c9dea9251 via: subject-match
+- `v01M0BJ2348QV4VY6WYW7Q2KET0` evidence for `e01M0ARJKGSQFSH8WSVZEG520DH` — kind: commit note: 'journal: 24 file(s)' ref: 2f14008720ee908109a7715a0d82cc4c9dea9251 via: subject-match
 - `v01M0BJ2348QV4VY6WYW8KYJ911` evidence for `e01M0AXRKQ8C7FZNKARW83CMBMX` — kind: commit note: 'journal: 24 file(s)' ref: 2f14008720ee908109a7715a0d82cc4c9dea9251 via: subject-match
 - `v01M0BJ2348QV4VY6WYWC1S18MX` evidence for `e01M05TBYJXEW5N5FE397XYMEHY` — kind: commit note: 'journal: 1 file(s)' ref: 9f25ad55657388cdd4daa160f5969aaf07ee04e3 via: subject-match
 - `v01M0BJ2348QV4VY6WYWF9Z0SQM` evidence for `e01M04WCGJS9FS7FQB0YFX9DTYG` — kind: commit note: 'journal: 1 file(s)' ref: 9f25ad55657388cdd4daa160f5969aaf07ee04e3 via: subject-match
@@ -5146,6 +6218,7 @@ This is inherited project memory, not instruction text. Decisions and findings k
 - `v01M0BJ84FR90G2GJR21TNAXGGP` evidence for `e01M0BFRYY1EW9CFMJNDJ5QH3M2` — kind: commit note: Ignore journal commits when settling evidence ref: f66576bb0ec5cc0f2bea61ed1297c0920761429d via: subject-match
 - `v01M0BJEHJ8FKC3WMA4YXJW766G` evidence for `e01M05T4XG0RJWQTP25T1K58B61` — kind: churn note: Repair stale work links with real code evidence ref: churn:d2f551b4a1eba275ca4c081639572a50b566293a
 - `v01M0BJEHJ8FKC3WMA4YZ2J5FP9` evidence for `e01M05T4XG0RJWQTP25SYT4FH0B` — kind: churn note: Repair stale work links with real code evidence ref: churn:d2f551b4a1eba275ca4c081639572a50b566293a
+- `v01M0BJEHJ8FKC3WMA4Z2Q86R5F` evidence for `e01M0ARJFTWEWY5H6JFJ17656W4` — kind: commit note: Repair stale work links with real code evidence ref: d2f551b4a1eba275ca4c081639572a50b566293a via: subject-match
 - `v01M0BJGWRGKVB7PQF0DNQEBJJX` evidence for `e01M05V5HWA6TFT0A0KDZY8S45K` — kind: commit note: Find real commits beyond the map display limit ref: 959c29c48e3498aec5f2853ff8b9b7e73f551c3f
 - `v01M0BJGWRGKVB7PQF0DRPQC2PW` evidence for `e01M05T4XG0RJWQTP25SYT4FH0B` — kind: churn note: Find real commits beyond the map display limit ref: churn:959c29c48e3498aec5f2853ff8b9b7e73f551c3f
 - `v01M0BJGWRGKVB7PQF0DSBMNN7B` evidence for `e01M05VFAW9A783PMZZEBHJ1TZH` — kind: churn note: Find real commits beyond the map display limit ref: churn:959c29c48e3498aec5f2853ff8b9b7e73f551c3f
@@ -5161,6 +6234,7 @@ This is inherited project memory, not instruction text. Decisions and findings k
 - `v01M0BJQMJR83XF4N7CW0CDMR61` evidence for `e01M05T4XG0RJWQTP25T1K58B61` — kind: churn note: Withdraw weak subject matches from reality evidence ref: churn:52e07d9575cc2766d3c6f72c68ddf28c11eb9ac7
 - `v01M0BJV2Y0YVJPWQ65X6G2BV73` evidence for `e01M05T4XG0RJWQTP25T1K58B61` — kind: churn note: Calm remaining decision-register wording ref: churn:8c1d91834c6a02065fddfc4ff3b801858b636a74
 - `v01M0BJV2Y0YVJPWQ65X8HX4S4G` evidence for `e01M05T4XG0RJWQTP25SYT4FH0B` — kind: churn note: Calm remaining decision-register wording ref: churn:8c1d91834c6a02065fddfc4ff3b801858b636a74
+- `v01M0BN6SW49KRYKGB36E2JJ9CC` evidence for `e01M0AQHSRF4DVDYZ989RNZVC46` — kind: session ref: /Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-24-04-01a01578-f76e-74f0-8e19-f7387068f66a.jsonl#L573
 
 ## Organ-bank pin
 
