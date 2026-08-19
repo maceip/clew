@@ -1,0 +1,17 @@
+id: e01M0C2W05JE4DEJMKHTW331KMB
+type: note
+title: 'Owner ended clew at 3:59am: rm -rf, blank v2, floor declined'
+body: >-
+  Final verdict: blind leading the blind; too much failure. The floor kit was declined; v2 starts blank by explicit order. Remote branches survive until the owner deletes them. Inheritance handed over in chat: wire the pulse first; one file beats a system; verify load-bearing facts same-day; caution needs an owner quote; write three sentences before deleting a dead project.
+quote: 'ok never mind im going to start from scrach and rm -rf clew this is like the blind leading the blind and i cant let it go on any longer. lets hope v2 is better! thanks for all the tokens.'
+utterance_by: user
+source:
+    kind: session
+    ref: chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18
+    agent: cursor-cloud-agent
+    surface: cursor-cloud-vm
+    at: 2026-08-19T03:59:00Z
+confidence: 1
+tags: []
+env: null
+affects: []
