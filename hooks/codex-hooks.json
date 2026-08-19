@@ -1,0 +1,10 @@
+{
+  "hooks": {
+    "SessionStart": [
+      { "hooks": [ { "type": "command", "command": "./hooks/decisions-context.sh", "timeoutSec": 15 } ] }
+    ],
+    "UserPromptSubmit": [
+      { "hooks": [ { "type": "command", "command": "./hooks/decisions-context.sh", "timeoutSec": 15 } ] }
+    ]
+  }
+}
