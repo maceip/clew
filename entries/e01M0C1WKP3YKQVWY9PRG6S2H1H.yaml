@@ -1,0 +1,17 @@
+id: e01M0C1WKP3YKQVWY9PRG6S2H1H
+type: finding
+title: 'Owner verdict: as built, the five promises fail; restart with seed advised'
+body: >-
+  Scorecard: remembers, partial (core held, listener deaf, writer dropped entries); agents start knowing, failed (wiring unbuilt); look and see, failed (flood, silent caps); taps only when needed, inverted (owner was the error queue); restart loses nothing, built and untested. Memory core held all night; the shell failed. Recommendation: clew from clew carrying tonight's constitution; never blank.
+quote: 'im still convinced even with these fixes this system fails to do the basic 5 rules we set out to roll into a product, every fsilure recorded in this session chat is proof in that directoion'
+utterance_by: user
+source:
+    kind: session
+    ref: chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18
+    agent: cursor-cloud-agent
+    surface: cursor-cloud-vm
+    at: 2026-08-19T03:41:00Z
+confidence: 1
+tags: []
+env: null
+affects: []
