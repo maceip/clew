@@ -1,0 +1,11 @@
+id: v01M0C2MCVGV0RXPYST1P1C5H7D
+kind: evidence
+entry: e01M04H0KBY8QQWXPE8DP99N012
+payload:
+    kind: commit
+    note: Verify laptop session sensing; return Cursor cloud session knowledge; return cloud PR knowledge; verify owner laws birth; invert gap build all
+    ref: 8cab577ed96d011a070fe7a675bbd8c825c0ffcd
+by:
+    who: differ
+    surface: macs-MacBook-Pro
+at: 2026-08-19T03:56:54Z
