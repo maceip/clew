@@ -1,6 +1,6 @@
 # Journal
 
-_generated 2026-08-19 03:32 UTC · 154 live entries (75 decisions · 48 findings · 9 questions · 22 intents) · 176 total in history_
+_generated 2026-08-19 03:32 UTC · 155 live entries (75 decisions · 49 findings · 9 questions · 22 intents) · 177 total in history_
 
 ## DECIDED
 
@@ -14,13 +14,13 @@ _generated 2026-08-19 03:32 UTC · 154 live entries (75 decisions · 48 findings
 
 ## LEARNED
 
+- `e01M0C17FED9YSHX94BPF39M039` One root cause: unbuilt contact-point wiring made every failure tonight — 3m · current
 - `e01M0C0S7EQJYH00K7KGY9ZWV2S` The 88 was a symptom: catch-up burst, ambient misclassified, settling unbuilt — 10m · current
 - `e01M0AYE066QK08QK8MTPX4XNFX` Codex finished I13 stale: tree uncommitted, law wording on human surfaces — 10h · current
 - `e01M0AXCM55N0QM9RCRYF48TQ6C` Universal injection point: every model API call rebuilds the mind — 10h · current
 - `e01M0AXCM54CDSPV84DBH1PWGWD` Spec nudge matrix is stale: codex and gemini now ship injection hooks — 10h · current
 - `e01M0AV5721XB0ZFQW42241YJ4A` Daemon fallback birth discarded the triggering session's first prompt — 11h · current
 - `e01M0ATNY3H0WHX91ASD0AMR8TE` Cold CLEW_HOME loses concurrent births; warm machine state is safe — 11h · current
-- `e01M0ATNY3H0WHX91ASCWE1MM7R` Repo identity is the absolute path, so a rebuilt repo at a reused path is not a… — 11h · current
 
 ## OPEN
 
@@ -582,6 +582,13 @@ Name = clew (owner). Alternatives considered: restart — verb collision, names 
 _source: human cli:note · confidence: 1.00_
 
 ## Findings
+
+### e01M0C17FED9YSHX94BPF39M039 — One root cause: unbuilt contact-point wiring made every failure tonight  `current`
+> why did i have to tell it to do that? that seems like another failure of our system, as human users should never have to tell it that
+
+Codex finishing stale, claude enforcing a superseded rule, the owner relaying sync commands at 3am — one missing part: nothing hands an agent fresh decisions at the next human message. With the wiring built, build-all would have arrived carrying the inversion ruling; nothing to refuse. Not many failures — one unbuilt part, many costumes.
+
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 0.95_
 
 ### e01M0C0S7EQJYH00K7KGY9ZWV2S — The 88 was a symptom: catch-up burst, ambient misclassified, settling unbuilt  `current`
 > how can there be 88 line items of knowledge to merge

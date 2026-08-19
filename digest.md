@@ -1,4 +1,5 @@
 # Journal digest (live entries: id · type/status · title)
+- e01M0C17FED9YSHX94BPF39M039 finding/current One root cause: unbuilt contact-point wiring made every failure tonight
 - e01M0C0S7EQJYH00K7KGY9ZWV2S finding/current The 88 was a symptom: catch-up burst, ambient misclassified, settling unbuilt
 - e01M0C0S7EP6Q5421VRRPJPC60M decision/active Inversion: auto-absorb knowledge, auto-build gaps; humans see exceptions
 - e01M0BFY164YEV6DAEFVGGH18VT decision/active The limiter gates distillation timing, never sensing; failure is lag
@@ -32,4 +33,4 @@
 - e01M0AWM6188V135JTTP4S3MQAA decision/possible-contradiction Incarnation reset needs all three facts; any Clew marker protects the repo
 - e01M0AVXA7EH2KD1BPZ4GJNKN67 decision/active Witness-node role adopted: always-on ear with owner API creds, sequenced
 - e01M0AVWK3HH2R9M55FQSAWZFF1 decision/active I9 frugality replaced: listening completeness is the invariant, cost is a dial
-… (154 more omitted for size)
+… (155 more omitted for size)

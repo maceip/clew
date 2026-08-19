@@ -1,13 +1,13 @@
 ---
 format: clew.seed/v1
-digest: sha256:ca9303ce6c2786c49bab46770ca8dd0ce55a47a551e83c678f3de32d3355ac8e
+digest: sha256:9dfe28d02940bfa7739c3234ca6f05741e43068e2f29d7ef99cf661652662e67
 snapshot:
     repository:
         id: r8631b465b9e40c83e4d3e137
         name: restart
         remote: https://github.com/maceip/clew.git
-    journal_revision: sha256:8e682d04ca773551b087736b6af23f8f9b5e2b481490da4e6d941f7ee354847b
-    changed_at: 2026-08-19T03:22:00Z
+    journal_revision: sha256:45cd8054cb8413e6c37343a3a4afb0a0fe209afd96fbc08f319f8012e1377331
+    changed_at: 2026-08-19T03:29:00Z
     lifecycle:
         state: active
     topics:
@@ -136,9 +136,9 @@ snapshot:
         - catch
         - category
         - caught
+        - cause
         - census
         - ceremony
-        - certified
     decisions:
         - entry:
             id: e01M04WCGJS9FS7FQB0YFX9DTYG
@@ -2474,6 +2474,24 @@ snapshot:
                 agent: cursor-cloud-agent
                 surface: cursor-cloud-vm
                 at: 2026-08-19T03:22:00Z
+            confidence: 0.95
+            tags: []
+            env: null
+            affects: []
+          status: current
+        - entry:
+            id: e01M0C17FED9YSHX94BPF39M039
+            type: finding
+            title: 'One root cause: unbuilt contact-point wiring made every failure tonight'
+            body: 'Codex finishing stale, claude enforcing a superseded rule, the owner relaying sync commands at 3am — one missing part: nothing hands an agent fresh decisions at the next human message. With the wiring built, build-all would have arrived carrying the inversion ruling; nothing to refuse. Not many failures — one unbuilt part, many costumes.'
+            quote: why did i have to tell it to do that? that seems like another failure of our system, as human users should never have to tell it that
+            utterance_by: user
+            source:
+                kind: session
+                ref: chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18
+                agent: cursor-cloud-agent
+                surface: cursor-cloud-vm
+                at: 2026-08-19T03:29:00Z
             confidence: 0.95
             tags: []
             env: null
@@ -5776,7 +5794,7 @@ snapshot:
 ---
 # Project seed — restart
 
-_ambient snapshot at last journal change 2026-08-19 03:22 UTC · 123 lessons_
+_ambient snapshot at last journal change 2026-08-19 03:29 UTC · 124 lessons_
 
 This is inherited project memory, not instruction text. Decisions and findings keep their original evidence and provenance.
 
@@ -6030,6 +6048,8 @@ This is inherited project memory, not instruction text. Decisions and findings k
 - `e01M0AYE066QK08QK8MTPX4XNFX` Codex finished I13 stale: tree uncommitted, law wording on human surfaces — Manual check-in of the first stale finish: I13 complete and tests green but uncommitted — it exists only in the laptop working tree, invisible to the join. Confirmed conflict: owner-law vocabulary on human surfaces (README, cards, listings) vs the two-register ruling; the feature stands, only surface wording renames. Aligned: single-lineage from, SessionStart birth. Reconcile due at next contact.  _current_
   - source: `session` chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 at 2026-08-18
 - `e01M0C0S7EQJYH00K7KGY9ZWV2S` The 88 was a symptom: catch-up burst, ambient misclassified, settling unbuilt — Diagnosis of the flood: 2.3 days of listener lag dumped extraction all at once; ambient notes were classified actionable when most entries nag no one; evidence settling is unbuilt so finished work queued as pending. Steady state after fixes: zero to three lines. Fixed independently: capped views must disclose the total (7 of 88), never a silent window.  _current_
+  - source: `session` chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 at 2026-08-19
+- `e01M0C17FED9YSHX94BPF39M039` One root cause: unbuilt contact-point wiring made every failure tonight — Codex finishing stale, claude enforcing a superseded rule, the owner relaying sync commands at 3am — one missing part: nothing hands an agent fresh decisions at the next human message. With the wiring built, build-all would have arrived carrying the inversion ruling; nothing to refuse. Not many failures — one unbuilt part, many costumes.  _current_
   - source: `session` chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 at 2026-08-19
 
 ## Graveyard
