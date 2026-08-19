@@ -1,4 +1,6 @@
 # Journal digest (live entries: id · type/status · title)
+- e01M0C0S7EQJYH00K7KGY9ZWV2S finding/current The 88 was a symptom: catch-up burst, ambient misclassified, settling unbuilt
+- e01M0C0S7EP6Q5421VRRPJPC60M decision/active Inversion: auto-absorb knowledge, auto-build gaps; humans see exceptions
 - e01M0BFY164YEV6DAEFVGGH18VT decision/active The limiter gates distillation timing, never sensing; failure is lag
 - e01M0BFRYY2WVHJZ3R3TDV4CFTS decision/active The wording sweep covers every fear-attached word; docket stays by name
 - e01M0BFRYY1EW9CFMJNDJ5QH3M2 decision/active Evidence settles merge lines; apply is never asked for finished work
@@ -30,6 +32,4 @@
 - e01M0AWM6188V135JTTP4S3MQAA decision/possible-contradiction Incarnation reset needs all three facts; any Clew marker protects the repo
 - e01M0AVXA7EH2KD1BPZ4GJNKN67 decision/active Witness-node role adopted: always-on ear with owner API creds, sequenced
 - e01M0AVWK3HH2R9M55FQSAWZFF1 decision/active I9 frugality replaced: listening completeness is the invariant, cost is a dial
-- e01M0AVAR0N8ZCCN1VJW3GQ5PF4 decision/active Restart-with-mutation is the flagship advertised workflow, not a failure mode
-- e01M0AV5721XB0ZFQW42241YJ4A finding/current Daemon fallback birth discarded the triggering session's first prompt
-… (152 more omitted for size)
+… (154 more omitted for size)

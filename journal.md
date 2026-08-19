@@ -1,26 +1,26 @@
 # Journal
 
-_generated 2026-08-19 03:24 UTC · 152 live entries (74 decisions · 47 findings · 9 questions · 22 intents) · 174 total in history_
+_generated 2026-08-19 03:25 UTC · 154 live entries (75 decisions · 48 findings · 9 questions · 22 intents) · 176 total in history_
 
 ## DECIDED
 
+- `e01M0C0S7EP6Q5421VRRPJPC60M` Inversion: auto-absorb knowledge, auto-build gaps; humans see exceptions — 3m · active
 - `e01M0BFY164YEV6DAEFVGGH18VT` The limiter gates distillation timing, never sensing; failure is lag — 4h · active
-- `e01M0BFRYY2WVHJZ3R3TDV4CFTS` The wording sweep covers every fear-attached word; docket stays by name — 4h · active
-- `e01M0BFRYY1EW9CFMJNDJ5QH3M2` Evidence settles merge lines; apply is never asked for finished work — 4h · active
+- `e01M0BFRYY2WVHJZ3R3TDV4CFTS` The wording sweep covers every fear-attached word; docket stays by name — 5h · active
+- `e01M0BFRYY1EW9CFMJNDJ5QH3M2` Evidence settles merge lines; apply is never asked for finished work — 5h · active
 - `e01M0BF0WMX264RA9D0VTM9R24K` Entry ids are machine plumbing: never shown to or relayed through humans — 5h · active
 - `e01M0BEYP65CE70G0VVSX3PV01B` Finished means shared: work ends pushed or PR'd; local-only is an alarm — 5h · active
 - `e01M0BETRRAZ54063PRJK1JSQS7` The finish message is a surface: what exists, where it lives, my next move — 5h · active
-- `e01M0BER1Q412DRFQYESPCN0Q30` Lines are plain speech, no ids; near-duplicates fold; held items rest — 5h · active
 
 ## LEARNED
 
+- `e01M0C0S7EQJYH00K7KGY9ZWV2S` The 88 was a symptom: catch-up burst, ambient misclassified, settling unbuilt — 3m · current
 - `e01M0AYE066QK08QK8MTPX4XNFX` Codex finished I13 stale: tree uncommitted, law wording on human surfaces — 10h · current
 - `e01M0AXCM55N0QM9RCRYF48TQ6C` Universal injection point: every model API call rebuilds the mind — 10h · current
 - `e01M0AXCM54CDSPV84DBH1PWGWD` Spec nudge matrix is stale: codex and gemini now ship injection hooks — 10h · current
 - `e01M0AV5721XB0ZFQW42241YJ4A` Daemon fallback birth discarded the triggering session's first prompt — 10h · current
 - `e01M0ATNY3H0WHX91ASD0AMR8TE` Cold CLEW_HOME loses concurrent births; warm machine state is safe — 11h · current
 - `e01M0ATNY3H0WHX91ASCWE1MM7R` Repo identity is the absolute path, so a rebuilt repo at a reused path is not a… — 11h · current
-- `e01M0ATARAN8NWCBGNTM58QRVPX` Promotion candidates enter project context before the human rules on them — 11h · current
 
 ## OPEN
 
@@ -55,6 +55,13 @@ _generated 2026-08-19 03:24 UTC · 152 live entries (74 decisions · 47 findings
 | `e01M0ARJFTWEWY5H6JFJ17656W4` Surface coverage: PR-only cloud agents (Codex-app-class) contribute knowledge | 11h | 0 evidence | **ABSENT** |
 
 ## Decisions
+
+### e01M0C0S7EP6Q5421VRRPJPC60M — Inversion: auto-absorb knowledge, auto-build gaps; humans see exceptions  `active`
+> it should auto-merge all incoming knoweldge items and build all pending intent gaps
+
+Owner ruling after 88 items flooded the merge: absorption is the default — non-conflicting knowledge merges itself; pending intents auto-build in dependency order. Human eyes get exceptions only: gated by owner sequencing, contradicted by a live decision, oversized blast radius, or weak provenance. Screens become a flight log plus exception report. Supersedes nothing-auto-acts and no-build-all.
+
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00_
 
 ### e01M0BFY164YEV6DAEFVGGH18VT — The limiter gates distillation timing, never sensing; failure is lag  `active`
 > a deaf agent is useless and will lead to more problems for me to deal with later?
@@ -575,6 +582,13 @@ Name = clew (owner). Alternatives considered: restart — verb collision, names 
 _source: human cli:note · confidence: 1.00_
 
 ## Findings
+
+### e01M0C0S7EQJYH00K7KGY9ZWV2S — The 88 was a symptom: catch-up burst, ambient misclassified, settling unbuilt  `current`
+> how can there be 88 line items of knowledge to merge
+
+Diagnosis of the flood: 2.3 days of listener lag dumped extraction all at once; ambient notes were classified actionable when most entries nag no one; evidence settling is unbuilt so finished work queued as pending. Steady state after fixes: zero to three lines. Fixed independently: capped views must disclose the total (7 of 88), never a silent window.
+
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 0.95_
 
 ### e01M0AYE066QK08QK8MTPX4XNFX — Codex finished I13 stale: tree uncommitted, law wording on human surfaces  `current`
 > The main-branch implementation remains uncommitted in the working tree; I did not commit or push the code changes.

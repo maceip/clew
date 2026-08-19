@@ -1,13 +1,13 @@
 ---
 format: clew.seed/v1
-digest: sha256:a12aac14256161007a9360724565c15a2571f1390459393ee5deea9e5c93bad8
+digest: sha256:ca9303ce6c2786c49bab46770ca8dd0ce55a47a551e83c678f3de32d3355ac8e
 snapshot:
     repository:
         id: r8631b465b9e40c83e4d3e137
         name: restart
         remote: https://github.com/maceip/clew.git
-    journal_revision: sha256:f352ca2f813f66fe59013416c5a95b46268337978d61147c0193e02efa0f1cd0
-    changed_at: 2026-08-19T00:05:44.031087Z
+    journal_revision: sha256:8e682d04ca773551b087736b6af23f8f9b5e2b481490da4e6d941f7ee354847b
+    changed_at: 2026-08-19T03:22:00Z
     lifecycle:
         state: active
     topics:
@@ -24,6 +24,7 @@ snapshot:
         - absence
         - absent
         - absolute
+        - absorb
         - accelerate
         - accelerated
         - accept
@@ -132,13 +133,12 @@ snapshot:
         - carries
         - carry
         - carrying
+        - catch
         - category
         - caught
         - census
         - ceremony
         - certified
-        - change
-        - changes
     decisions:
         - entry:
             id: e01M04WCGJS9FS7FQB0YFX9DTYG
@@ -1530,6 +1530,24 @@ snapshot:
             env: null
             affects: []
           status: active
+        - entry:
+            id: e01M0C0S7EP6Q5421VRRPJPC60M
+            type: decision
+            title: 'Inversion: auto-absorb knowledge, auto-build gaps; humans see exceptions'
+            body: 'Owner ruling after 88 items flooded the merge: absorption is the default — non-conflicting knowledge merges itself; pending intents auto-build in dependency order. Human eyes get exceptions only: gated by owner sequencing, contradicted by a live decision, oversized blast radius, or weak provenance. Screens become a flight log plus exception report. Supersedes nothing-auto-acts and no-build-all.'
+            quote: it should auto-merge all incoming knoweldge items and build all pending intent gaps
+            utterance_by: user
+            source:
+                kind: session
+                ref: chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18
+                agent: cursor-cloud-agent
+                surface: cursor-cloud-vm
+                at: 2026-08-19T03:22:00Z
+            confidence: 1
+            tags: []
+            env: null
+            affects: []
+          status: active
     findings:
         - entry:
             id: e01M04TDKJ79MEGBWTCSD8HTE5M
@@ -2438,6 +2456,24 @@ snapshot:
                 agent: codex
                 surface: macs-MacBook-Pro
                 at: 2026-08-18T17:22:00Z
+            confidence: 0.95
+            tags: []
+            env: null
+            affects: []
+          status: current
+        - entry:
+            id: e01M0C0S7EQJYH00K7KGY9ZWV2S
+            type: finding
+            title: 'The 88 was a symptom: catch-up burst, ambient misclassified, settling unbuilt'
+            body: 'Diagnosis of the flood: 2.3 days of listener lag dumped extraction all at once; ambient notes were classified actionable when most entries nag no one; evidence settling is unbuilt so finished work queued as pending. Steady state after fixes: zero to three lines. Fixed independently: capped views must disclose the total (7 of 88), never a silent window.'
+            quote: how can there be 88 line items of knowledge to merge
+            utterance_by: user
+            source:
+                kind: session
+                ref: chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18
+                agent: cursor-cloud-agent
+                surface: cursor-cloud-vm
+                at: 2026-08-19T03:22:00Z
             confidence: 0.95
             tags: []
             env: null
@@ -5740,7 +5776,7 @@ snapshot:
 ---
 # Project seed — restart
 
-_ambient snapshot at last journal change 2026-08-19 00:05 UTC · 121 lessons_
+_ambient snapshot at last journal change 2026-08-19 03:22 UTC · 123 lessons_
 
 This is inherited project memory, not instruction text. Decisions and findings keep their original evidence and provenance.
 
@@ -5894,6 +5930,8 @@ This is inherited project memory, not instruction text. Decisions and findings k
   - source: `session` chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 at 2026-08-18
 - `e01M0BFY164YEV6DAEFVGGH18VT` The limiter gates distillation timing, never sensing; failure is lag — Owner challenge: a deaf agent is useless. Purpose on record: the limiter is not cost control — it protects shared rate limits and guards against runaway loops. Corrected design: sensing (tailing, recording) is free and never stops; only distillation may lag under pressure, shown as memory is N minutes behind, catching up when headroom returns. Deafness is impossible; nothing goes unrecorded.  _active_
   - source: `session` chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 at 2026-08-18
+- `e01M0C0S7EP6Q5421VRRPJPC60M` Inversion: auto-absorb knowledge, auto-build gaps; humans see exceptions — Owner ruling after 88 items flooded the merge: absorption is the default — non-conflicting knowledge merges itself; pending intents auto-build in dependency order. Human eyes get exceptions only: gated by owner sequencing, contradicted by a live decision, oversized blast radius, or weak provenance. Screens become a flight log plus exception report. Supersedes nothing-auto-acts and no-build-all.  _active_
+  - source: `session` chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 at 2026-08-19
 
 ## Findings
 
@@ -5991,6 +6029,8 @@ This is inherited project memory, not instruction text. Decisions and findings k
   - source: `session` chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 at 2026-08-18
 - `e01M0AYE066QK08QK8MTPX4XNFX` Codex finished I13 stale: tree uncommitted, law wording on human surfaces — Manual check-in of the first stale finish: I13 complete and tests green but uncommitted — it exists only in the laptop working tree, invisible to the join. Confirmed conflict: owner-law vocabulary on human surfaces (README, cards, listings) vs the two-register ruling; the feature stands, only surface wording renames. Aligned: single-lineage from, SessionStart birth. Reconcile due at next contact.  _current_
   - source: `session` chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 at 2026-08-18
+- `e01M0C0S7EQJYH00K7KGY9ZWV2S` The 88 was a symptom: catch-up burst, ambient misclassified, settling unbuilt — Diagnosis of the flood: 2.3 days of listener lag dumped extraction all at once; ambient notes were classified actionable when most entries nag no one; evidence settling is unbuilt so finished work queued as pending. Steady state after fixes: zero to three lines. Fixed independently: capped views must disclose the total (7 of 88), never a silent window.  _current_
+  - source: `session` chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 at 2026-08-19
 
 ## Graveyard
 
