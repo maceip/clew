@@ -1,0 +1,19 @@
+id: e01M0ARPN4E0VHAP2DEJSGP7GZB
+type: finding
+title: macOS /var vs /private/var alias made an initialized owner repo look foreign
+body: On macOS, /var is a symlink to /private/var, so path-based repository identity could treat an already-initialized owner repository as a different, foreign repo. Repository identity was tightened to resolve the alias. Surfaced while the core owner package tests passed, including a two-clone git round trip and an over-budget refusal with no partial law write.
+quote: I also tightened repository identity so macOS’s `/var` versus `/private/var` alias cannot make an initialized owner repo look foreign.
+utterance_by: assistant
+source:
+    kind: session
+    ref: codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-24-00-01a01578-e6db-7833-9ab2-0457569af643.jsonl#L315
+    agent: codex
+    surface: macs-MacBook-Pro
+    at: 2026-08-18T15:44:07.822Z
+confidence: 0.9
+tags:
+    - internal/owner/**
+env:
+    host: macOS
+affects:
+    - internal/owner/**

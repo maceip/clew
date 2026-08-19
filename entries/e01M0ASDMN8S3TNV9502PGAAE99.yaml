@@ -1,0 +1,17 @@
+id: e01M0ASDMN8S3TNV9502PGAAE99
+type: decision
+title: Seed regenerates only on journal change, never on metadata polling
+body: 'seed.WriteOnJournalChange is the watcher-facing gate: it compares repository identity and JournalRevision so repeated sync polls cannot rewrite SEED.md when only README topics, HEAD, or dirty state changed. Recurring sync paths must call it instead of seed.Write, and it refuses to overwrite a corrupt existing seed.'
+quote: It compares repository identity and `JournalRevision`, so repeated sync polls cannot rewrite `SEED.md` merely because README topics, `HEAD`, dirty state, or other sampled repository metadata changed.
+utterance_by: assistant
+source:
+    kind: session
+    ref: codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-24-04-01a01578-f76e-74f0-8e19-f7387068f66a.jsonl#L573
+    agent: codex
+    surface: macs-MacBook-Pro
+    at: 2026-08-18T15:56:41Z
+confidence: 0.92
+tags:
+    - internal/seed/**
+env: null
+affects: []

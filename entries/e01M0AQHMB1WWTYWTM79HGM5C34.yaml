@@ -1,0 +1,18 @@
+id: e01M0AQHMB1WWTYWTM79HGM5C34
+type: decision
+title: 'Lineage is explicit, laws are ambient: wrong inheritance poisons a fresh project'
+body: 'Predecessor lore is never auto-carried. Lineage is pulled by one explicit command (clew from <repo>); the birth card may suggest a match but never acts. Owner laws, by contrast, are injected into every new project automatically. Reason: a wrong lineage guess poisons a fresh project worse than no inheritance, while promotion has already certified laws as project-agnostic.'
+quote: lore inheritance was made explicit because a wrong lineage guess poisons a fresh project worse than no inheritance at all — laws are safe to auto-carry precisely because promotion certified them project-agnostic.
+utterance_by: user
+source:
+    kind: session
+    ref: codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-23-54-01a01578-d123-7200-af99-a2105dfb139e.jsonl#L9
+    agent: codex
+    surface: macs-MacBook-Pro
+    at: 2026-08-18T15:23:54.593Z
+confidence: 0.95
+tags:
+    - cmd/clew/**
+    - internal/manifest/**
+env: null
+affects: []

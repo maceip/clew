@@ -1,0 +1,19 @@
+id: e01M0AR79QQ9PPSZKQ2ETN2K1Y0
+type: decision
+title: Birth boundary is the user-scope SessionStart hook, installed by watch install
+body: 'Claude''s machine-level SessionStart hook is the seam for first-session laws: it receives cwd and its stdout reaches the model before the first prompt. It is installed by clew watch install (not project init) so the machine, not the repo, is what gets watched. A daemon-side global session scanner stays only as fallback for Codex/wrap — a two-second transcript poll is inherently later than startup.'
+quote: Claude Code’s user-scope `SessionStart` hook is the correct first-session boundary. Its input includes `cwd`; successful stdout or `additionalContext` is inserted before the first prompt.
+utterance_by: assistant
+source:
+    kind: session
+    ref: codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-23-54-01a01578-d123-7200-af99-a2105dfb139e.jsonl#L200
+    agent: codex
+    surface: macs-MacBook-Pro
+    at: 2026-08-18T15:35:44.631Z
+confidence: 0.85
+tags:
+    - cmd/clew/birthhook.go
+    - cmd/clew/watchcmd.go
+    - cmd/clew/initcmd.go
+env: null
+affects: []

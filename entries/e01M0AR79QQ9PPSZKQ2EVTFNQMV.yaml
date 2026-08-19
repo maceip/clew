@@ -1,0 +1,18 @@
+id: e01M0AR79QQ9PPSZKQ2EVTFNQMV
+type: decision
+title: Ambient seed carries project lineage only; owner laws join at materialize.Conte…
+body: 'Promoted owner laws are not written into project journals or into SEED.md. They are passed into materialize.Context as a separate capped section (≤1KiB, after the safety preamble, never dropped under truncation pressure). Reason: laws inside every seed would be duplicated and then re-carried as lore, collapsing I13''s law/lineage separation; a law change should rematerialize context, not rewrite s…'
+quote: The ambient seed should be project lineage data, not ambient owner law data. Otherwise promoted laws would be duplicated into every predecessor seed and then carried as lore despite I13’s explicit separation.
+utterance_by: assistant
+source:
+    kind: session
+    ref: codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-23-54-01a01578-d123-7200-af99-a2105dfb139e.jsonl#L200
+    agent: codex
+    surface: macs-MacBook-Pro
+    at: 2026-08-18T15:35:44.631Z
+confidence: 0.85
+tags:
+    - internal/materialize/**
+    - internal/journal/**
+env: null
+affects: []

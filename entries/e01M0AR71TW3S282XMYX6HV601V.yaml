@@ -1,0 +1,19 @@
+id: e01M0AR71TW3S282XMYX6HV601V
+type: decision
+title: Owner-law admission rejects overflow; it never evicts an older law
+body: Owner laws live in a separate append-only journal and become injectable only via a human promotion disposition. The law block is capped at exactly 1,024 bytes; a promotion that would exceed the cap is rejected rather than silently evicting an older law. The extractor's project-agnostic signal is a proposal only, never ambient before certification.
+quote: owner laws remain ordinary findings in a separate append-only journal, but only a human promotion disposition makes one injectable; promotion that would exceed the full 1KB law block is rejected instead of silently evicting an older law
+utterance_by: assistant
+source:
+    kind: session
+    ref: codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-22-35-01a01577-9dd5-7e63-811f-0b52ba3e3cab.jsonl#L225
+    agent: codex
+    surface: macs-MacBook-Pro
+    at: 2026-08-18T15:35:36.54Z
+confidence: 0.92
+tags:
+    - internal/owner/**
+    - cmd/clew/ownercmd.go
+    - internal/extract/assets/instruction.md
+env: null
+affects: []

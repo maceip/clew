@@ -1,0 +1,18 @@
+id: e01M0AXZ5DEXRWRGD3GT1HYEYSD
+type: decision
+title: 'Redaction and secret handling are deferred: no monkey-patching without team inp…'
+body: The owner instructed stopping the proposed redaction/secret-handling follow-up. That subsystem needs inputs and other subsystems beyond what should be patched unilaterally. Current journal PATs are 24-hour ephemeral credentials, intentionally pushable, and must not block I13 or trigger redaction machinery.
+quote: that requires more input and other subsystems than we want you to try to monkey patch without inputs from our team
+utterance_by: user
+source:
+    kind: session
+    ref: codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-22-35-01a01577-9dd5-7e63-811f-0b52ba3e3cab.jsonl#L2925
+    agent: codex
+    surface: macs-MacBook-Pro
+    at: 2026-08-18T17:16:09.518Z
+confidence: 0.94
+tags:
+    - internal/gitx/**
+    - internal/owner/**
+env: null
+affects: []

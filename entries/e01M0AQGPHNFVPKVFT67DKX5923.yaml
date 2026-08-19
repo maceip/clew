@@ -1,0 +1,19 @@
+id: e01M0AQGPHNFVPKVFT67DKX5923
+type: decision
+title: Lore inheritance is explicit; only certified laws auto-carry
+body: 'Project lore never crosses repositories automatically — only the explicit `clew from` command carries it. Owner laws are safe to inject ambiently because human promotion certified them project-agnostic. Reason: a wrong lineage guess poisons a fresh project worse than having no inheritance at all.'
+quote: lore inheritance was made explicit because a wrong lineage guess poisons a fresh project worse than no inheritance at all — laws are safe to auto-carry precisely because promotion certified them project-agnostic.
+utterance_by: user
+source:
+    kind: session
+    ref: codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-22-35-01a01577-9dd5-7e63-811f-0b52ba3e3cab.jsonl#L9
+    agent: codex
+    surface: macs-MacBook-Pro
+    at: 2026-08-18T15:23:24.085Z
+confidence: 0.95
+tags:
+    - internal/lineage/**
+    - internal/owner/**
+    - cmd/clew/fromcmd.go
+env: null
+affects: []

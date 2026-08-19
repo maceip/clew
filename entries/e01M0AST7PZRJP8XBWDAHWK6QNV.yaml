@@ -1,0 +1,19 @@
+id: e01M0AST7PZRJP8XBWDAHWK6QNV
+type: intent
+title: 'Build invariant I13: ambient seed, birth detection, owner laws, clew from'
+body: 'Commitment to implement I13 ''birth costs nothing'': continuous SEED.md, auto-init at repo birth with laws-only injection, an owner-scope law journal with promote, and clew from <repo> for declared lineage (no-arg form lists candidates ranked by recency and topic overlap, each line showing what would be carried). The manifest ceremony stays pull-only and never a gate.'
+quote: 'invariant I13 — birth costs nothing; laws are ambient, lineage is declared. Build:'
+utterance_by: user
+source:
+    kind: session
+    ref: codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T12-03-33-01a0159d-1ea8-7f70-bfac-3fecc3a17c09.jsonl#L9
+    agent: codex
+    surface: macs-MacBook-Pro
+    at: 2026-08-18T16:03:33.727Z
+confidence: 0.92
+tags:
+    - cmd/clew/**
+    - internal/owner/**
+    - internal/extract/**
+env: null
+affects: []

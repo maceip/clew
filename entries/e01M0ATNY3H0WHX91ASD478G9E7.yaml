@@ -1,0 +1,17 @@
+id: e01M0ATNY3H0WHX91ASD478G9E7
+type: decision
+title: SessionStart consumes the carry-kit; the watcher prepares it
+body: 'An already-registered session must print the atomic .clew/context.md immediately and return, instead of taking the birth lock and running git sync, journal reload, owner load and full materialization on every `claude` startup. Reason: startup would otherwise block on network/worktree work, a transient error would suppress a perfectly valid existing context, and it blurs the boundary where ambient…'
+quote: the watcher should have prepared the carry-kit before the session, while `SessionStart` should primarily consume it
+utterance_by: assistant
+source:
+    kind: session
+    ref: codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T12-03-30-01a0159d-11bd-7b13-81c5-26b7f910b998.jsonl#L344
+    agent: codex
+    surface: macs-MacBook-Pro
+    at: 2026-08-18T16:18:41.393Z
+confidence: 0.85
+tags:
+    - cmd/clew/**
+env: null
+affects: []

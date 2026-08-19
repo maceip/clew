@@ -1,0 +1,17 @@
+id: e01M0ARSXN8PR0Y3PVAG8JVYZFY
+type: decision
+title: 'Ambient budget: refuse over-budget promotion, keep oldest-certified prefix'
+body: Promotion is refused before either the entry or its certification is written when the 1,024-byte ambient budget would be exceeded, so there is never a partial law write. If a concurrent remote promotion causes overflow anyway, the oldest-certified prefix is retained deterministically — a newer promotion can never evict an older ambient law. Overflow state is reported for loud surfacing.
+quote: handles a concurrent remote overflow deterministically by retaining the oldest-certified prefix, never letting a newer promotion evict an older ambient law;
+utterance_by: assistant
+source:
+    kind: session
+    ref: codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-24-00-01a01578-e6db-7833-9ab2-0457569af643.jsonl#L379
+    agent: codex
+    surface: macs-MacBook-Pro
+    at: 2026-08-18T15:45:54.856Z
+confidence: 0.9
+tags:
+    - internal/owner/**
+env: null
+affects: []

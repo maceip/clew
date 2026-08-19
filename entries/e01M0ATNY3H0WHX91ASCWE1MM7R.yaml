@@ -1,0 +1,22 @@
+id: e01M0ATNY3H0WHX91ASCWE1MM7R
+type: finding
+title: Repo identity is the absolute path, so a rebuilt repo at a reused path is not a…
+body: 'Registration keys on the checkout path (gitx.RepoID hashes only the absolute path), so moving a checkout aside and running `mkdir x && git init` at the same path is treated as already registered. Reproduced: the second birth exited 1 with a fatal missing-worktree error and emitted zero context. It fails safely today, but path-as-identity is exactly the stale machine state that can rebind an old j…'
+quote: repository identity is only an absolute path, so a fresh repo at a reused path is not a newborn
+utterance_by: assistant
+source:
+    kind: session
+    ref: codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T12-03-30-01a0159d-11bd-7b13-81c5-26b7f910b998.jsonl#L344
+    agent: codex
+    surface: macs-MacBook-Pro
+    at: 2026-08-18T16:18:41.393Z
+confidence: 0.92
+tags:
+    - internal/gitx/**
+    - cmd/clew/**
+env:
+    host: owner's macOS dev machine (/Users/mac/restart)
+    dataset: fresh git init at a previously registered path
+affects:
+    - internal/gitx/gitx.go
+    - cmd/clew/birthcmd.go

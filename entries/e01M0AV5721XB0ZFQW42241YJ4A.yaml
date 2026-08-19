@@ -1,0 +1,22 @@
+id: e01M0AV5721XB0ZFQW42241YJ4A
+type: finding
+title: Daemon fallback birth discarded the triggering session's first prompt
+body: 'Reproduced with the compiled daemon: on fallback discovery, bootstrap baselined every discovered transcript to current EOF, so a fresh Codex transcript''s first prompt was never journaled (tail/extract/history-end all set to the 320-byte EOF, zero occurrences in the journal). Safe only for synchronous Claude SessionStart, which runs before the first prompt.'
+quote: 'I reproduced this end to end with the compiled daemon. A fresh Codex transcript contained `session_meta` plus `FIRST PROMPT MUST BE JOURNALED`. After five seconds:'
+utterance_by: tool_result
+source:
+    kind: session
+    ref: codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-22-35-01a01577-9dd5-7e63-811f-0b52ba3e3cab.jsonl#L1510
+    agent: codex
+    surface: macs-MacBook-Pro
+    at: 2026-08-18T16:27:02.081Z
+confidence: 0.88
+tags:
+    - cmd/clew/watchcmd.go
+    - cmd/clew/birthcmd.go
+    - cmd/clew/initcmd.go
+env: null
+affects:
+    - cmd/clew/watchcmd.go
+    - cmd/clew/birthcmd.go
+    - cmd/clew/initcmd.go

@@ -1,0 +1,22 @@
+id: e01M0ATNY3H0WHX91ASD0AMR8TE
+type: finding
+title: Cold CLEW_HOME loses concurrent births; warm machine state is safe
+body: 'With an empty CLEW_HOME, two simultaneous `_birth` processes in different repos left one dead on `open state.db: database is locked`; with the DB precreated but the owner store uninitialized, five of six concurrent births failed on owner git init/config lock/template copy/worktree add. Once the owner store was fully initialized, six concurrent births passed. The danger window is first-run bootstr…'
+quote: 'On an empty `CLEW_HOME`, two simultaneous `_birth` processes in different new repos caused one to exit with `open state.db: database is locked`.'
+utterance_by: assistant
+source:
+    kind: session
+    ref: codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T12-03-30-01a0159d-11bd-7b13-81c5-26b7f910b998.jsonl#L344
+    agent: codex
+    surface: macs-MacBook-Pro
+    at: 2026-08-18T16:18:41.393Z
+confidence: 0.9
+tags:
+    - cmd/clew/**
+    - internal/state/**
+env:
+    host: owner's macOS dev machine
+    dataset: empty CLEW_HOME, 2 and 6 simultaneous compiled _birth processes
+affects:
+    - cmd/clew/watchcmd.go
+    - internal/state/state.go

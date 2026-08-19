@@ -1,0 +1,18 @@
+id: e01M0ASDMN8S3TNV9502VTFK27E
+type: intent
+title: Wire the seed/lineage libraries into watcher, materialization, and clew from
+body: 'The I13 data layer is done but unwired. Parent integration must: build seeds with lineage.AncestorIDs before writing, swap recurring seed.Write calls for WriteOnJournalChange, preserve the journal''s lineage/ directory across journal-branch sync and unrelated-root remote adoption, and implement clew from as read → import → materialize.'
+quote: I did not edit command wiring, watcher/init behavior, materialization, documentation, manifest, extractor, or parent-owned repository metadata code.
+utterance_by: assistant
+source:
+    kind: session
+    ref: codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-24-04-01a01578-f76e-74f0-8e19-f7387068f66a.jsonl#L573
+    agent: codex
+    surface: macs-MacBook-Pro
+    at: 2026-08-18T15:56:41Z
+confidence: 0.86
+tags:
+    - internal/seed/**
+    - internal/lineage/**
+env: null
+affects: []

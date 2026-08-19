@@ -1,0 +1,18 @@
+id: e01M0AST4FW4WFMMX225TQ56V5E
+type: decision
+title: 'I13: laws are ambient and auto-carried; lineage must be declared explicitly'
+body: 'Under invariant I13 birth costs nothing: owner laws (promoted, project-agnostic findings) are injected into every new project automatically, but project lore is never inherited automatically. Lore travels only through the explicit `clew from <repo>` command. Reason: a wrong lineage guess poisons a fresh project worse than no inheritance at all, while promotion has already certified laws as safe a…'
+quote: lore inheritance was made explicit because a wrong lineage guess poisons a fresh project worse than no inheritance at all — laws are safe to auto-carry precisely because promotion certified them project-agnostic.
+utterance_by: user
+source:
+    kind: session
+    ref: codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T12-03-30-01a0159d-11bd-7b13-81c5-26b7f910b998.jsonl#L9
+    agent: codex
+    surface: macs-MacBook-Pro
+    at: 2026-08-18T16:03:30.428Z
+confidence: 0.95
+tags:
+    - cmd/clew/**
+    - .clew/**
+env: null
+affects: []

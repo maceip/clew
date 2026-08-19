@@ -1,0 +1,22 @@
+id: e01M0AR79QQ9PPSZKQ2EPQHW9H9
+type: finding
+title: 'Birth is structurally impossible today: the watcher only sees already-registere…'
+body: Zero-command birth (mkdir x && git init && claude) cannot work in the current design. watcher.tailAll/pollAll both start from w.repos(), which reads only repos registered in ~/.clew/state.db, and every adapter's Discover takes a repoPath — so an adapter cannot introduce an unknown repo. Explicit clew init is the only enrollment path.
+quote: 'The decisive gap is structural: the watcher only iterates repositories already registered in `~/.clew/state.db`, while every adapter’s discovery API requires a repository path.'
+utterance_by: assistant
+source:
+    kind: session
+    ref: codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-23-54-01a01578-d123-7200-af99-a2105dfb139e.jsonl#L200
+    agent: codex
+    surface: macs-MacBook-Pro
+    at: 2026-08-18T15:35:44.631Z
+confidence: 0.9
+tags:
+    - cmd/clew/watchcmd.go
+    - internal/adapters/**
+    - cmd/clew/initcmd.go
+env: null
+affects:
+    - cmd/clew/watchcmd.go
+    - internal/adapters/adapters.go
+    - cmd/clew/initcmd.go

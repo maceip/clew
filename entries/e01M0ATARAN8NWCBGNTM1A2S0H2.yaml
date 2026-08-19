@@ -1,0 +1,21 @@
+id: e01M0ATARAN8NWCBGNTM1A2S0H2
+type: finding
+title: Promotion card shows the quote but injects the extractor's title and body
+body: Docket cards render only the source quote and never read Entry.Title or Entry.Body, while the ambient owner law is built from the extractor-generated title and body. An existing extractor test shows a quote about push-over-polling paired with the proposed law 'Verify before declaring completion' — so a human can approve one statement and permanently inject a different one.
+quote: A human can therefore approve one statement while permanently injecting another.
+utterance_by: assistant
+source:
+    kind: session
+    ref: codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T12-03-33-01a0159d-1ea8-7f70-bfac-3fecc3a17c09.jsonl#L229
+    agent: codex
+    surface: macs-MacBook-Pro
+    at: 2026-08-18T16:12:35.029Z
+confidence: 0.87
+tags:
+    - internal/docket/**
+    - internal/owner/**
+    - internal/extract/**
+env: null
+affects:
+    - internal/docket/docket.go
+    - internal/owner/owner.go

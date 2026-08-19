@@ -1,0 +1,19 @@
+id: e01M0ASDMN8S3TNV9502T3QKJ52
+type: decision
+title: 'Candidate ranking formula: 0.65 topic overlap + 0.35 recency decay'
+body: clew from with no args ranks predecessor candidates by score = 0.65 x binary-cosine topic overlap + 0.35 x 1/(1 + ageDays/30), with deterministic tie-breaks on score, overlap, recency, repo name, then repo ID. A separate Blatant signal exists only to let the birth card suggest a lineage; it never triggers an import.
+quote: |-
+    score = 0.65 × binary-cosine topic overlap
+          + 0.35 × 1 / (1 + ageDays / 30)
+utterance_by: assistant
+source:
+    kind: session
+    ref: codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-24-04-01a01578-f76e-74f0-8e19-f7387068f66a.jsonl#L573
+    agent: codex
+    surface: macs-MacBook-Pro
+    at: 2026-08-18T15:56:41Z
+confidence: 0.88
+tags:
+    - internal/lineage/**
+env: null
+affects: []

@@ -1,0 +1,17 @@
+id: e01M0ASDMN8S3TNV9502TGKHRPD
+type: decision
+title: Tombstone language requires explicit lifecycle metadata; inactivity is not death
+body: Candidate summaries say "died"/"tombstoned" only when the predecessor's lifecycle metadata explicitly reads tombstoned. A quiet or inactive repository is rendered as "changed <date> · active" instead, so silence is never misreported as a dead project.
+quote: Tombstone language only when lifecycle metadata explicitly says `tombstoned`; inactivity is never interpreted as death.
+utterance_by: assistant
+source:
+    kind: session
+    ref: codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-24-04-01a01578-f76e-74f0-8e19-f7387068f66a.jsonl#L573
+    agent: codex
+    surface: macs-MacBook-Pro
+    at: 2026-08-18T15:56:41Z
+confidence: 0.9
+tags:
+    - internal/lineage/**
+env: null
+affects: []

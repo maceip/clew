@@ -1,0 +1,19 @@
+id: e01M0AQHMB1WWTYWTM79JHACMNP
+type: decision
+title: 'Ambient seed: SEED.md is maintained continuously, never generated on demand'
+body: The watcher keeps SEED.md up to date beside context.md, regenerated on journal change rather than when someone asks for it, so the carry-kit already exists before anyone wants to restart. This separates ambient seed from the deliberate manifest ceremony, which stays pull-only for big restarts and is never a gate.
+quote: the watcher maintains SEED.md continuously alongside context.md — regenerated on journal change, never on demand. The carry-kit always predates the urge to restart.
+utterance_by: user
+source:
+    kind: session
+    ref: codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-23-54-01a01578-d123-7200-af99-a2105dfb139e.jsonl#L9
+    agent: codex
+    surface: macs-MacBook-Pro
+    at: 2026-08-18T15:23:54.593Z
+confidence: 0.9
+tags:
+    - internal/materialize/**
+    - internal/journal/**
+    - cmd/clew/**
+env: null
+affects: []

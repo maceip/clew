@@ -1,0 +1,18 @@
+id: e01M0ARSXN8PR0Y3PVAG5XRP4W8
+type: decision
+title: Owner journal is its own git repo, never registered as a project
+body: The owner law store lives in a dedicated normal git repository at $CLEW_HOME/owner, reusing the clew/journal append-only branch and gitx.Sync. It is deliberately not registered as a project so adapters, archaeology, the poller, and project-session discovery cannot scan it. A configured remote is optional; the default empty owner.remote yields a fully functional local-only owner journal.
+quote: Does not register the owner repository as a project, so adapters, archaeology, poller, and project-session discovery cannot scan it.
+utterance_by: assistant
+source:
+    kind: session
+    ref: codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-24-00-01a01578-e6db-7833-9ab2-0457569af643.jsonl#L379
+    agent: codex
+    surface: macs-MacBook-Pro
+    at: 2026-08-18T15:45:54.856Z
+confidence: 0.92
+tags:
+    - internal/owner/**
+    - internal/config/**
+env: null
+affects: []

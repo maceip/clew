@@ -1,0 +1,20 @@
+id: e01M0ASDMN8S3TNV9502WFBA70W
+type: finding
+title: Losing the lineage/ directory in sync destroys cycle protection
+body: 'lineage.AncestorIDs reads the append-only lineage/ links to compute transitive ancestry, which is what makes A→B→C then C→A rejectable without contacting either predecessor. Entries and events alone are insufficient: if journal-branch sync or remote adoption drops lineage/, durable declarations and cycle protection are lost.'
+quote: Entries and events alone are insufficient; losing the links loses durable lineage declarations and transitive-cycle protection.
+utterance_by: assistant
+source:
+    kind: session
+    ref: codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-24-04-01a01578-f76e-74f0-8e19-f7387068f66a.jsonl#L573
+    agent: codex
+    surface: macs-MacBook-Pro
+    at: 2026-08-18T15:56:41Z
+confidence: 0.87
+tags:
+    - internal/lineage/**
+env: null
+affects:
+    - internal/lineage/**
+    - journal branch sync
+    - remote adoption

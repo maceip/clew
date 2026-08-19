@@ -1,0 +1,20 @@
+id: e01M0ATARAN8NWCBGNTM2VNR895
+type: finding
+title: Title-only imperatives bypass injection withholding into every project
+body: 'The imperative-withholding scan checks only Body and Quote (internal/journal/algebra.go:85), but ambient owner laws render Title and Body (internal/owner/owner.go:325). A benign body and quote carrying an imperative title passes the safety gate and becomes ambient in every project''s context. Proposed fix: include Title in the scan, add a title-only regression test, recheck raw content at owner ad…'
+quote: Injection withholding scans only `Body` and `Quote`
+utterance_by: assistant
+source:
+    kind: session
+    ref: codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T12-03-33-01a0159d-1ea8-7f70-bfac-3fecc3a17c09.jsonl#L229
+    agent: codex
+    surface: macs-MacBook-Pro
+    at: 2026-08-18T16:12:35.029Z
+confidence: 0.88
+tags:
+    - internal/journal/**
+    - internal/owner/**
+env: null
+affects:
+    - internal/journal/algebra.go
+    - internal/owner/owner.go

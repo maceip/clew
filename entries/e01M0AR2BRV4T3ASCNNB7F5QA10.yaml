@@ -1,0 +1,17 @@
+id: e01M0AR2BRV4T3ASCNNB7F5QA10
+type: decision
+title: Law is a journal scope, not a fifth entry type
+body: 'Owner-level "laws" stay findings: promotion copies the original finding unchanged into a dedicated owner journal and records a human promotion disposition. Only entries carrying that disposition are eligible for ambient injection. Chosen because it preserves the original evidence and avoids teaching every status, differ, and render path a new epistemic type.'
+quote: keep “law” as a journal scope, not a fifth entry type. A promotion copies the original finding unchanged into a dedicated owner journal and records a human promotion disposition; only entries with that disposition are eligible for ambient injection.
+utterance_by: assistant
+source:
+    kind: session
+    ref: codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-24-00-01a01578-e6db-7833-9ab2-0457569af643.jsonl#L162
+    agent: codex
+    surface: macs-MacBook-Pro
+    at: 2026-08-18T15:33:02.875Z
+confidence: 0.94
+tags:
+    - internal/owner/**
+env: null
+affects: []

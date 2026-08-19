@@ -1,0 +1,18 @@
+id: e01M0AST7PZRJP8XBWDAGG7AD44
+type: decision
+title: SEED.md is maintained continuously by the watcher, never built on demand
+body: The watcher regenerates SEED.md alongside context.md on every journal change rather than when someone asks for it, so the carry-kit always exists before the urge to restart appears. Restart never waits on seed generation.
+quote: the watcher maintains SEED.md continuously alongside context.md — regenerated on journal change, never on demand. The carry-kit always predates the urge to restart.
+utterance_by: user
+source:
+    kind: session
+    ref: codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T12-03-33-01a0159d-1ea8-7f70-bfac-3fecc3a17c09.jsonl#L9
+    agent: codex
+    surface: macs-MacBook-Pro
+    at: 2026-08-18T16:03:33.727Z
+confidence: 0.94
+tags:
+    - cmd/clew/**
+    - internal/materialize/**
+env: null
+affects: []

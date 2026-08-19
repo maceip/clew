@@ -1,0 +1,19 @@
+id: e01M0AR2HXKR05KE2VRTH1ETY28
+type: decision
+title: Birth runs on a synchronous Claude SessionStart hook, not polling
+body: Polling session files cannot serve the first Claude turn, because a project-scope hook would only be installed after Claude has already started. Birth therefore installs a machine-scope Claude SessionStart hook that auto-initializes the repo and emits laws-only context before the first prompt; the daemon's session scan stays as fallback for other agent surfaces.
+quote: 'A key birth-path constraint surfaced: polling session files cannot satisfy the first Claude turn because the project hook would be installed after Claude has already started.'
+utterance_by: assistant
+source:
+    kind: session
+    ref: codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-22-35-01a01577-9dd5-7e63-811f-0b52ba3e3cab.jsonl#L147
+    agent: codex
+    surface: macs-MacBook-Pro
+    at: 2026-08-18T15:33:09.171Z
+confidence: 0.92
+tags:
+    - cmd/clew/birthhook.go
+    - cmd/clew/birthcmd.go
+    - cmd/clew/watchcmd.go
+env: null
+affects: []

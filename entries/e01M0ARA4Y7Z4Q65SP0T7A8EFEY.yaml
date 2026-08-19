@@ -1,0 +1,17 @@
+id: e01M0ARA4Y7Z4Q65SP0T7A8EFEY
+type: decision
+title: 'One canonical renderer: admission and injection measure the same bytes'
+body: 'The owner package owns a single renderer used both when admitting a promoted law against the size budget and when injecting laws later. Reason: two formatters would let a law be admitted under one format and then silently omitted under another.'
+quote: The package will own one canonical renderer so admission and injection measure the exact same bytes; that prevents a law from being admitted under one format and silently omitted under another.
+utterance_by: assistant
+source:
+    kind: session
+    ref: codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-24-00-01a01578-e6db-7833-9ab2-0457569af643.jsonl#L207
+    agent: codex
+    surface: macs-MacBook-Pro
+    at: 2026-08-18T15:37:18.023Z
+confidence: 0.93
+tags:
+    - internal/owner/**
+env: null
+affects: []

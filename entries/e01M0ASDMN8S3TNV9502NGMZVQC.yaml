@@ -1,0 +1,18 @@
+id: e01M0ASDMN8S3TNV9502NGMZVQC
+type: decision
+title: Ambient seed carries lore only; questions and intents stay in the manifest path
+body: SEED.md deliberately carries decisions, findings, graveyard, exhibits, and an optional organ-bank pin. Active questions and intents are excluded from ambient lore and remain available only through the separate deliberate manifest path, which stays pull-only and is never a birth gate.
+quote: Active questions and intents are deliberately excluded from ambient lore; they remain available through the separate deliberate manifest path.
+utterance_by: assistant
+source:
+    kind: session
+    ref: codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-24-04-01a01578-f76e-74f0-8e19-f7387068f66a.jsonl#L573
+    agent: codex
+    surface: macs-MacBook-Pro
+    at: 2026-08-18T15:56:41Z
+confidence: 0.93
+tags:
+    - internal/seed/**
+    - internal/lineage/**
+env: null
+affects: []
