@@ -14,7 +14,7 @@ import (
 	"strings"
 	"time"
 
-	"clew/internal/config"
+	"github.com/maceip/clew/internal/config"
 )
 
 type Result struct {

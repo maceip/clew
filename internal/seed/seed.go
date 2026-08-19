@@ -20,8 +20,8 @@ import (
 
 	"gopkg.in/yaml.v3"
 
-	"clew/internal/journal"
-	"clew/internal/model"
+	"github.com/maceip/clew/internal/journal"
+	"github.com/maceip/clew/internal/model"
 )
 
 const Format = "clew.seed/v1"

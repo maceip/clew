@@ -9,12 +9,12 @@ import (
 	"strings"
 	"time"
 
-	"clew/internal/adapters"
-	"clew/internal/archaeology"
-	"clew/internal/config"
-	"clew/internal/gitx"
-	"clew/internal/manifest"
-	"clew/internal/state"
+	"github.com/maceip/clew/internal/adapters"
+	"github.com/maceip/clew/internal/archaeology"
+	"github.com/maceip/clew/internal/config"
+	"github.com/maceip/clew/internal/gitx"
+	"github.com/maceip/clew/internal/manifest"
+	"github.com/maceip/clew/internal/state"
 )
 
 // snippet is the one-time install (I1: installation, not discipline; §8.1).

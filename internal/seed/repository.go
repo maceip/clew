@@ -8,8 +8,8 @@ import (
 	"strings"
 	"time"
 
-	"clew/internal/gitx"
-	"clew/internal/journal"
+	"github.com/maceip/clew/internal/gitx"
+	"github.com/maceip/clew/internal/journal"
 )
 
 // BuildForRepo joins a journal with the small set of repository facts needed

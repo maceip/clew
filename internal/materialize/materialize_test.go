@@ -8,13 +8,13 @@ import (
 	"testing"
 	"time"
 
-	"clew/internal/gitx"
-	"clew/internal/ids"
-	"clew/internal/journal"
-	"clew/internal/lineage"
-	"clew/internal/model"
-	seedpkg "clew/internal/seed"
-	"clew/internal/state"
+	"github.com/maceip/clew/internal/gitx"
+	"github.com/maceip/clew/internal/ids"
+	"github.com/maceip/clew/internal/journal"
+	"github.com/maceip/clew/internal/lineage"
+	"github.com/maceip/clew/internal/model"
+	seedpkg "github.com/maceip/clew/internal/seed"
+	"github.com/maceip/clew/internal/state"
 )
 
 var now = time.Date(2026, 8, 16, 12, 0, 0, 0, time.UTC)

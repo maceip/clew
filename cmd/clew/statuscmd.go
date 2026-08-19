@@ -7,11 +7,11 @@ import (
 	"strings"
 	"time"
 
-	"clew/internal/adapters"
-	"clew/internal/calm"
-	"clew/internal/journal"
-	"clew/internal/model"
-	"clew/internal/poller"
+	"github.com/maceip/clew/internal/adapters"
+	"github.com/maceip/clew/internal/calm"
+	"github.com/maceip/clew/internal/journal"
+	"github.com/maceip/clew/internal/model"
+	"github.com/maceip/clew/internal/poller"
 )
 
 // cmdStatus renders the glance (§8.2): five fixed sections, ≤7 lines each

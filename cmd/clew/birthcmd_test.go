@@ -12,17 +12,17 @@ import (
 	"testing"
 	"time"
 
-	"clew/internal/adapters"
-	"clew/internal/config"
-	"clew/internal/docket"
-	"clew/internal/gitx"
-	"clew/internal/ids"
-	"clew/internal/journal"
-	"clew/internal/lineage"
-	"clew/internal/model"
-	"clew/internal/owner"
-	"clew/internal/seed"
-	"clew/internal/state"
+	"github.com/maceip/clew/internal/adapters"
+	"github.com/maceip/clew/internal/config"
+	"github.com/maceip/clew/internal/docket"
+	"github.com/maceip/clew/internal/gitx"
+	"github.com/maceip/clew/internal/ids"
+	"github.com/maceip/clew/internal/journal"
+	"github.com/maceip/clew/internal/lineage"
+	"github.com/maceip/clew/internal/model"
+	"github.com/maceip/clew/internal/owner"
+	"github.com/maceip/clew/internal/seed"
+	"github.com/maceip/clew/internal/state"
 )
 
 func testProcessEnv(overrides ...string) []string {

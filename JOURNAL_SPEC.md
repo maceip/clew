@@ -474,12 +474,14 @@ precision behind the same `evidence` field without touching anything else.
 
 | Agent | Mechanism | Latency |
 |---|---|---|
-| Claude Code | `UserPromptSubmit` hook returns `.clew/nudge.md` as additional context (hook installed by birth/init) | next user turn |
-| Codex | no context-injection hook today → nudge routes to the human (docket/push) with a one-keystroke "send to session" that types a single line into the wrapped PTY if `wrap`ped, else shows copy-paste | human-speed |
+| Claude Code | machine `SessionStart` snapshots the journal; `UserPromptSubmit` runs `clew _fresh` and returns every later decision once as `additionalContext`; the project hook still carries `.clew/nudge.md` alerts | next user turn |
+| Codex | stable `SessionStart` + `UserPromptSubmit` hooks use the same snapshot/delta command; `clew watch install` writes the preserving user hook file and enables the feature | next user turn |
+| Cursor CLI | session records are sensed automatically; a completed cloud export can return through `clew witness`; Cursor has no before-submit context seam | watcher or explicit return |
 | wrap-mode agents | watcher can inject one line into the PTY at a prompt boundary | next prompt |
 
   Invariant: **a nudge that cannot reach the agent must reach the human** — the system never
-  drops an alert because a vendor lacks a hook. Honesty note on latency: "next user turn" is
+  drops an alert because a vendor lacks a hook. Decision deltas and alert nudges remain separate:
+  deltas are entry-watermarked per session, while nudge lines are consumed once. Honesty note on latency: "next user turn" is
   effectively *never* during an hours-long autonomous run — there is no user turn. During
   autonomous stretches, nudges are human-directed for **every** vendor; turn-boundary injection
   is the best case, not the norm. The matrix above is the ceiling of what agent surfaces permit

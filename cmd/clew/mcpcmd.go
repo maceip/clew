@@ -1,7 +1,7 @@
 package main
 
 import (
-	"clew/internal/mcp"
+	"github.com/maceip/clew/internal/mcp"
 )
 
 // cmdMCP: optional stdio MCP surface (§8.1) — journal_search, journal_get,

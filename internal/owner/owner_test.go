@@ -9,11 +9,11 @@ import (
 	"testing"
 	"time"
 
-	"clew/internal/gitx"
-	"clew/internal/ids"
-	"clew/internal/journal"
-	"clew/internal/model"
-	"clew/internal/scrub"
+	"github.com/maceip/clew/internal/gitx"
+	"github.com/maceip/clew/internal/ids"
+	"github.com/maceip/clew/internal/journal"
+	"github.com/maceip/clew/internal/model"
+	"github.com/maceip/clew/internal/scrub"
 )
 
 var testNow = time.Date(2026, 8, 18, 16, 0, 0, 0, time.UTC)

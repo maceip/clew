@@ -6,11 +6,11 @@ import (
 	"strings"
 	"time"
 
-	"clew/internal/checkin"
-	"clew/internal/gitx"
-	"clew/internal/ids"
-	"clew/internal/journal"
-	"clew/internal/model"
+	"github.com/maceip/clew/internal/checkin"
+	"github.com/maceip/clew/internal/gitx"
+	"github.com/maceip/clew/internal/ids"
+	"github.com/maceip/clew/internal/journal"
+	"github.com/maceip/clew/internal/model"
 )
 
 func cmdMerge(args []string) error {

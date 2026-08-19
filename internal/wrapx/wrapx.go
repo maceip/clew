@@ -20,8 +20,8 @@ import (
 	"github.com/creack/pty"
 	"golang.org/x/term"
 
-	"clew/internal/gitx"
-	"clew/internal/ids"
+	"github.com/maceip/clew/internal/gitx"
+	"github.com/maceip/clew/internal/ids"
 )
 
 type Options struct {

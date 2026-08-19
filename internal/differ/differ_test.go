@@ -6,11 +6,11 @@ import (
 	"testing"
 	"time"
 
-	"clew/internal/ids"
-	"clew/internal/journal"
-	"clew/internal/model"
-	"clew/internal/poller"
-	"clew/internal/state"
+	"github.com/maceip/clew/internal/ids"
+	"github.com/maceip/clew/internal/journal"
+	"github.com/maceip/clew/internal/model"
+	"github.com/maceip/clew/internal/poller"
+	"github.com/maceip/clew/internal/state"
 )
 
 func testJournal(t *testing.T) *journal.Journal {

@@ -9,12 +9,12 @@ import (
 	"testing"
 	"time"
 
-	"clew/internal/gitx"
-	"clew/internal/ids"
-	"clew/internal/journal"
-	"clew/internal/lineage"
-	"clew/internal/model"
-	"clew/internal/seed"
+	"github.com/maceip/clew/internal/gitx"
+	"github.com/maceip/clew/internal/ids"
+	"github.com/maceip/clew/internal/journal"
+	"github.com/maceip/clew/internal/lineage"
+	"github.com/maceip/clew/internal/model"
+	"github.com/maceip/clew/internal/seed"
 )
 
 func captureFromStdout(t *testing.T, args []string) (string, error) {

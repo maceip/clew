@@ -18,6 +18,7 @@ usage:
   clew map [--html <file>]                       intent × reality with absence
   clew docket [answer|open|accept|reject|ack|drop] …  decision cards only
   clew import <bundle.yaml|dir|https-url>         stage one foreign proposal batch
+  clew witness <transcript.jsonl>                 return one cloud session to this journal
   clew journal show|edit|confirm|reject|supersede|answer|note|promote …
   clew from [<repo>]                              list or declare project lineage
   clew manifest [--spec <file>] [--out <dir>] [--yes]   restart kit
@@ -62,6 +63,8 @@ func main() {
 		err = cmdFrom(args)
 	case "import":
 		err = cmdImport(args)
+	case "witness":
+		err = cmdWitness(args)
 	case "manifest":
 		err = cmdManifest(args)
 	case "backfill":
@@ -74,6 +77,10 @@ func main() {
 		err = cmdMCP(args)
 	case "_birth": // machine-scope Claude SessionStart hook; intentionally hidden
 		err = cmdBirth(args)
+	case "_fresh_start": // machine-scope session snapshot hook; intentionally hidden
+		err = cmdFreshStart(args)
+	case "_fresh": // machine-scope prompt-boundary delta hook; intentionally hidden
+		err = cmdFresh(args)
 	case "help", "-h", "--help":
 		fmt.Print(usage)
 	default:

@@ -7,8 +7,8 @@ import (
 	"path/filepath"
 	"time"
 
-	"clew/internal/journal"
-	"clew/internal/manifest"
+	"github.com/maceip/clew/internal/journal"
+	"github.com/maceip/clew/internal/manifest"
 )
 
 // cmdManifest: the restart kit (§9). First run generates MANIFEST.md for the

@@ -4,7 +4,7 @@ import (
 	"regexp"
 	"strings"
 
-	"clew/internal/model"
+	"github.com/maceip/clew/internal/model"
 )
 
 // imperativeRe flags entry text that reads as instructions to an agent rather

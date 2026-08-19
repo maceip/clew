@@ -12,9 +12,9 @@ import (
 
 	"gopkg.in/yaml.v3"
 
-	"clew/internal/gitx"
-	"clew/internal/ids"
-	"clew/internal/model"
+	"github.com/maceip/clew/internal/gitx"
+	"github.com/maceip/clew/internal/ids"
+	"github.com/maceip/clew/internal/model"
 )
 
 func proposalEntry(at time.Time, title string) *model.Entry {
@@ -146,7 +146,7 @@ func TestPushBranchBasesProposalOnJournalAndPublishesForeignEntry(t *testing.T) 
 	if err != nil {
 		t.Fatal(err)
 	}
-	branch := "clew/proposal-test"
+	branch := "github.com/maceip/clew/proposal-test"
 	if err := m.PushBranch(repo, batch, branch); err != nil {
 		t.Fatal(err)
 	}

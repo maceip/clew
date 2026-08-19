@@ -7,10 +7,10 @@ import (
 	"testing"
 	"time"
 
-	"clew/internal/ids"
-	"clew/internal/journal"
-	"clew/internal/model"
-	"clew/internal/state"
+	"github.com/maceip/clew/internal/ids"
+	"github.com/maceip/clew/internal/journal"
+	"github.com/maceip/clew/internal/model"
+	"github.com/maceip/clew/internal/state"
 )
 
 func TestKnowledgeMergeIsBoundedAmnesiaProofAndHasExactVerbs(t *testing.T) {

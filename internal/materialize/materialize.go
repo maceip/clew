@@ -13,12 +13,12 @@ import (
 	"time"
 	"unicode/utf8"
 
-	"clew/internal/globx"
-	"clew/internal/journal"
-	"clew/internal/lineage"
-	"clew/internal/model"
-	seedpkg "clew/internal/seed"
-	"clew/internal/state"
+	"github.com/maceip/clew/internal/globx"
+	"github.com/maceip/clew/internal/journal"
+	"github.com/maceip/clew/internal/lineage"
+	"github.com/maceip/clew/internal/model"
+	seedpkg "github.com/maceip/clew/internal/seed"
+	"github.com/maceip/clew/internal/state"
 )
 
 const (

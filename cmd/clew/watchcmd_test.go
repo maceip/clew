@@ -7,12 +7,12 @@ import (
 	"time"
 	"unicode/utf8"
 
-	"clew/internal/adapters"
-	"clew/internal/config"
-	"clew/internal/ids"
-	"clew/internal/journal"
-	"clew/internal/model"
-	"clew/internal/state"
+	"github.com/maceip/clew/internal/adapters"
+	"github.com/maceip/clew/internal/config"
+	"github.com/maceip/clew/internal/ids"
+	"github.com/maceip/clew/internal/journal"
+	"github.com/maceip/clew/internal/model"
+	"github.com/maceip/clew/internal/state"
 )
 
 func TestClipStrHonorsCharacterLimit(t *testing.T) {

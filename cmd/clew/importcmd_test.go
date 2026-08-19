@@ -9,13 +9,13 @@ import (
 
 	"gopkg.in/yaml.v3"
 
-	"clew/internal/config"
-	"clew/internal/gitx"
-	"clew/internal/ids"
-	"clew/internal/journal"
-	"clew/internal/model"
-	"clew/internal/proposal"
-	"clew/internal/state"
+	"github.com/maceip/clew/internal/config"
+	"github.com/maceip/clew/internal/gitx"
+	"github.com/maceip/clew/internal/ids"
+	"github.com/maceip/clew/internal/journal"
+	"github.com/maceip/clew/internal/model"
+	"github.com/maceip/clew/internal/proposal"
+	"github.com/maceip/clew/internal/state"
 )
 
 func TestAcceptProposalIsHumanConfirmBoundary(t *testing.T) {

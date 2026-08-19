@@ -381,10 +381,21 @@ func (a *Codex) ID() string { return "codex" }
 func recentCodexFiles() []string {
 	root := filepath.Join(home(), ".codex", "sessions")
 	var out []string
-	for d := 0; d < 3; d++ {
-		day := time.Now().AddDate(0, 0, -d)
-		m, _ := filepath.Glob(filepath.Join(root, day.Format("2006"), day.Format("01"), day.Format("02"), "rollout-*.jsonl"))
-		out = append(out, m...)
+	seen := map[string]bool{}
+	// Codex stores date directories from the process clock, which may be UTC
+	// while clew runs in the owner's local zone. Around midnight those dates
+	// differ, so scan both clocks rather than dropping the triggering session.
+	for _, clock := range []time.Time{time.Now(), time.Now().UTC()} {
+		for d := 0; d < 3; d++ {
+			day := clock.AddDate(0, 0, -d)
+			m, _ := filepath.Glob(filepath.Join(root, day.Format("2006"), day.Format("01"), day.Format("02"), "rollout-*.jsonl"))
+			for _, file := range m {
+				if !seen[file] {
+					seen[file] = true
+					out = append(out, file)
+				}
+			}
+		}
 	}
 	return out
 }

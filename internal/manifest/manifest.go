@@ -15,10 +15,10 @@ import (
 
 	"gopkg.in/yaml.v3"
 
-	"clew/internal/ids"
-	"clew/internal/journal"
-	"clew/internal/llm"
-	"clew/internal/model"
+	"github.com/maceip/clew/internal/ids"
+	"github.com/maceip/clew/internal/journal"
+	"github.com/maceip/clew/internal/llm"
+	"github.com/maceip/clew/internal/model"
 )
 
 const SeedCap = 4 * 1024 // §9.3: SEED.md ≤ 4 KB

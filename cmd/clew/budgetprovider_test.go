@@ -8,12 +8,12 @@ import (
 	"testing"
 	"time"
 
-	"clew/internal/adapters"
-	"clew/internal/config"
-	"clew/internal/extract"
-	"clew/internal/journal"
-	"clew/internal/llm"
-	"clew/internal/state"
+	"github.com/maceip/clew/internal/adapters"
+	"github.com/maceip/clew/internal/config"
+	"github.com/maceip/clew/internal/extract"
+	"github.com/maceip/clew/internal/journal"
+	"github.com/maceip/clew/internal/llm"
+	"github.com/maceip/clew/internal/state"
 )
 
 type budgetProviderStub struct {

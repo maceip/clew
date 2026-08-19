@@ -8,13 +8,13 @@ import (
 	"strings"
 	"time"
 
-	"clew/internal/docket"
-	"clew/internal/gitx"
-	"clew/internal/ids"
-	"clew/internal/model"
-	"clew/internal/proposal"
-	"clew/internal/push"
-	"clew/internal/state"
+	"github.com/maceip/clew/internal/docket"
+	"github.com/maceip/clew/internal/gitx"
+	"github.com/maceip/clew/internal/ids"
+	"github.com/maceip/clew/internal/model"
+	"github.com/maceip/clew/internal/proposal"
+	"github.com/maceip/clew/internal/push"
+	"github.com/maceip/clew/internal/state"
 )
 
 func cmdImport(args []string) error {

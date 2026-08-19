@@ -13,19 +13,19 @@ import (
 	"syscall"
 	"time"
 
-	"clew/internal/adapters"
-	"clew/internal/calm"
-	"clew/internal/differ"
-	"clew/internal/docket"
-	"clew/internal/extract"
-	"clew/internal/gitx"
-	"clew/internal/journal"
-	"clew/internal/llm"
-	"clew/internal/materialize"
-	"clew/internal/model"
-	"clew/internal/poller"
-	"clew/internal/push"
-	"clew/internal/state"
+	"github.com/maceip/clew/internal/adapters"
+	"github.com/maceip/clew/internal/calm"
+	"github.com/maceip/clew/internal/differ"
+	"github.com/maceip/clew/internal/docket"
+	"github.com/maceip/clew/internal/extract"
+	"github.com/maceip/clew/internal/gitx"
+	"github.com/maceip/clew/internal/journal"
+	"github.com/maceip/clew/internal/llm"
+	"github.com/maceip/clew/internal/materialize"
+	"github.com/maceip/clew/internal/model"
+	"github.com/maceip/clew/internal/poller"
+	"github.com/maceip/clew/internal/push"
+	"github.com/maceip/clew/internal/state"
 )
 
 func cmdWatch(args []string) error {
@@ -793,8 +793,12 @@ func watchInstall() error {
 		if err := installClaudeBirthHook(bin); err != nil {
 			return fmt.Errorf("install Claude SessionStart birth hook: %w", err)
 		}
+		if err := installMachineFreshnessHooks(bin); err != nil {
+			return fmt.Errorf("install prompt-boundary freshness hooks: %w", err)
+		}
 		fmt.Println("installed launchd agent dev.clew.watch (log:", logDir+"/watch.log)")
 		fmt.Println("installed machine-scope Claude SessionStart birth hook")
+		fmt.Println("installed Claude and Codex prompt-boundary freshness hooks")
 		return nil
 	case "linux":
 		home, _ := os.UserHomeDir()
@@ -827,8 +831,12 @@ WantedBy=default.target
 		if err := installClaudeBirthHook(bin); err != nil {
 			return fmt.Errorf("install Claude SessionStart birth hook: %w", err)
 		}
+		if err := installMachineFreshnessHooks(bin); err != nil {
+			return fmt.Errorf("install prompt-boundary freshness hooks: %w", err)
+		}
 		fmt.Println("installed systemd user unit clew-watch.service")
 		fmt.Println("installed machine-scope Claude SessionStart birth hook")
+		fmt.Println("installed Claude and Codex prompt-boundary freshness hooks")
 		return nil
 	default:
 		return fmt.Errorf("no supervisor template for %s — run `clew watch` under your own supervisor", runtime.GOOS)
@@ -878,7 +886,11 @@ func watchUninstall() error {
 	if err := removeClaudeBirthHook(bin); err != nil {
 		return fmt.Errorf("remove Claude SessionStart birth hook: %w", err)
 	}
+	if err := removeMachineFreshnessHooks(bin); err != nil {
+		return fmt.Errorf("remove prompt-boundary freshness hooks: %w", err)
+	}
 	fmt.Println("removed machine-scope Claude SessionStart birth hook")
+	fmt.Println("removed Claude and Codex prompt-boundary freshness hooks")
 	return nil
 }
 

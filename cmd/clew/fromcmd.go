@@ -7,12 +7,12 @@ import (
 	"strings"
 	"time"
 
-	"clew/internal/config"
-	"clew/internal/gitx"
-	"clew/internal/lineage"
-	"clew/internal/model"
-	"clew/internal/seed"
-	"clew/internal/state"
+	"github.com/maceip/clew/internal/config"
+	"github.com/maceip/clew/internal/gitx"
+	"github.com/maceip/clew/internal/lineage"
+	"github.com/maceip/clew/internal/model"
+	"github.com/maceip/clew/internal/seed"
+	"github.com/maceip/clew/internal/state"
 )
 
 // cmdFrom is the single explicit lineage ceremony. With no argument it only

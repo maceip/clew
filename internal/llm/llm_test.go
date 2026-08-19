@@ -6,7 +6,7 @@ import (
 	"strings"
 	"testing"
 
-	"clew/internal/config"
+	"github.com/maceip/clew/internal/config"
 )
 
 func TestRunArgvUsesNeutralWorkingDirectory(t *testing.T) {

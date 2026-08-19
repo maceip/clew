@@ -8,12 +8,12 @@ import (
 	"strings"
 	"time"
 
-	"clew/internal/adapters"
-	"clew/internal/config"
-	"clew/internal/gitx"
-	"clew/internal/journal"
-	"clew/internal/materialize"
-	"clew/internal/state"
+	"github.com/maceip/clew/internal/adapters"
+	"github.com/maceip/clew/internal/config"
+	"github.com/maceip/clew/internal/gitx"
+	"github.com/maceip/clew/internal/journal"
+	"github.com/maceip/clew/internal/materialize"
+	"github.com/maceip/clew/internal/state"
 )
 
 // cmdBirth is the quiet SessionStart entrypoint installed in the owner's

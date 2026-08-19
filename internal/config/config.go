@@ -8,7 +8,7 @@ import (
 
 	"gopkg.in/yaml.v3"
 
-	"clew/internal/gitx"
+	"github.com/maceip/clew/internal/gitx"
 )
 
 type Push struct {

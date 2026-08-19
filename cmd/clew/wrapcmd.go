@@ -5,8 +5,8 @@ import (
 	"os"
 	"time"
 
-	"clew/internal/state"
-	"clew/internal/wrapx"
+	"github.com/maceip/clew/internal/state"
+	"github.com/maceip/clew/internal/wrapx"
 )
 
 // cmdWrap: PTY tee for agents without session files (§5.1). The transcript

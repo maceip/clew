@@ -8,7 +8,7 @@ import (
 	"time"
 	"unicode/utf8"
 
-	"clew/internal/ids"
+	"github.com/maceip/clew/internal/ids"
 )
 
 type EntryType string

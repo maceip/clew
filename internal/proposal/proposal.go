@@ -19,9 +19,9 @@ import (
 
 	"gopkg.in/yaml.v3"
 
-	"clew/internal/gitx"
-	"clew/internal/journal"
-	"clew/internal/model"
+	"github.com/maceip/clew/internal/gitx"
+	"github.com/maceip/clew/internal/journal"
+	"github.com/maceip/clew/internal/model"
 )
 
 const (

@@ -3,7 +3,7 @@ package journal
 import (
 	"testing"
 
-	"clew/internal/model"
+	"github.com/maceip/clew/internal/model"
 )
 
 func TestImperativeChecksEveryAgentVisibleField(t *testing.T) {

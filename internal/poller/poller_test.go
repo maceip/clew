@@ -5,7 +5,7 @@ import (
 	"testing"
 	"time"
 
-	"clew/internal/state"
+	"github.com/maceip/clew/internal/state"
 )
 
 func TestAttributionRequiresTimeAndFootprintAndChoosesBestOverlap(t *testing.T) {

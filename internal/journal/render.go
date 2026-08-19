@@ -8,7 +8,7 @@ import (
 	"strings"
 	"time"
 
-	"clew/internal/model"
+	"github.com/maceip/clew/internal/model"
 )
 
 const (

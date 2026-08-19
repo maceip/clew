@@ -7,11 +7,11 @@ import (
 	"testing"
 	"time"
 
-	"clew/internal/gitx"
-	"clew/internal/ids"
-	"clew/internal/journal"
-	"clew/internal/model"
-	"clew/internal/scrub"
+	"github.com/maceip/clew/internal/gitx"
+	"github.com/maceip/clew/internal/ids"
+	"github.com/maceip/clew/internal/journal"
+	"github.com/maceip/clew/internal/model"
+	"github.com/maceip/clew/internal/scrub"
 )
 
 func TestProjectRedactionLeaseRetryPreservesConcurrentJournalAppend(t *testing.T) {

@@ -8,9 +8,9 @@ import (
 	"testing"
 	"time"
 
-	"clew/internal/ids"
-	"clew/internal/journal"
-	"clew/internal/model"
+	"github.com/maceip/clew/internal/ids"
+	"github.com/maceip/clew/internal/journal"
+	"github.com/maceip/clew/internal/model"
 )
 
 var testNow = time.Date(2026, 8, 18, 15, 0, 0, 0, time.UTC)

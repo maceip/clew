@@ -18,7 +18,7 @@ import (
 
 // Branch is the orphan journal branch name. A plain branch is chosen over a
 // custom ref namespace deliberately (§4): it survives every host and tool.
-const Branch = "clew/journal"
+const Branch = "github.com/maceip/clew/journal"
 
 var identity = []string{"-c", "user.name=clew", "-c", "user.email=journal@clew.invalid"}
 

@@ -7,9 +7,9 @@ import (
 	"testing"
 	"time"
 
-	"clew/internal/ids"
-	"clew/internal/journal"
-	"clew/internal/model"
+	"github.com/maceip/clew/internal/ids"
+	"github.com/maceip/clew/internal/journal"
+	"github.com/maceip/clew/internal/model"
 )
 
 // mkRemote creates a bare "remote" and two clones ("machines" A and B).

@@ -15,10 +15,10 @@ import (
 	"time"
 	"unicode/utf8"
 
-	"clew/internal/calm"
-	"clew/internal/journal"
-	"clew/internal/model"
-	"clew/internal/state"
+	"github.com/maceip/clew/internal/calm"
+	"github.com/maceip/clew/internal/journal"
+	"github.com/maceip/clew/internal/model"
+	"github.com/maceip/clew/internal/state"
 )
 
 const (

@@ -18,8 +18,8 @@ feature (§9).
 ## Build & install
 
 ```bash
-# install onto your PATH (single static binary; Go ≥ 1.22):
-GOBIN="$HOME/.local/bin" go install ./cmd/clew   # any dir on your PATH works
+# install onto your PATH (single static binary; Go ≥ 1.26.3):
+GOBIN="$HOME/.local/bin" go install github.com/maceip/clew/cmd/clew@main
 clew help
 
 # plain `go install ./cmd/clew` uses $(go env GOPATH)/bin — put that on PATH
@@ -56,10 +56,40 @@ current whenever the durable journal changes and synchronizes the owner's
 separate project-agnostic owner guidance. No server, no new credentials.
 Optional phone delivery uses a unique ntfy topic (or plain webhook) configured in
 `~/.clew/config.yaml`; only newly created docket cards push, with headline + why-you.
+Temporary rate limits and server errors are retried before a delivery is marked
+broken. Pairing still belongs to the phone owner: create a fresh private topic,
+put its URL in the config, and subscribe from the phone.
 
 For agents with no session store: `clew wrap -- gemini …` (PTY tee).
 Optional MCP surface: `clew mcp` (journal_search / journal_get /
 journal_note).
+
+`clew watch install` also installs machine-level Claude and Codex prompt hooks.
+At session start, clew snapshots the latest journal entry. Before every later
+prompt, one hook command injects only decisions that arrived after that
+snapshot. Each session keeps its own entry watermark, so the same decision is
+delivered once. The injected block is a hard-register data block; it never acts
+as an instruction. Codex's stable hooks feature is enabled during installation.
+
+## Cloud agents return what they learned
+
+Owned Cursor, Codex, and Claude cloud environments can be full clew nodes. Put
+the install command from [the cloud setup guide](docs/cloud-agents.md) in each
+environment's setup field, give the environment ordinary repository push
+credentials, and run `clew init` in the checked-out repository. The same
+orphan journal branch remains the meeting point even when source code returns
+through a pull request.
+
+When a cloud surface exposes only an exported transcript, return it explicitly:
+
+```bash
+clew witness /path/to/exported-session.jsonl
+```
+
+`witness` accepts exactly one pinned Claude, Codex, Cursor CLI, or clew-wrap
+format, keeps a private content-addressed copy, distills it immediately, and
+pushes the resulting journal change. Unknown or ambiguous formats stop loudly;
+there is no proposal-file side channel and no guessed parsing.
 
 Claude installations relocated with `CLAUDE_CONFIG_DIR` are honored by both
 the hook installer and transcript discovery; the supervisor persists that

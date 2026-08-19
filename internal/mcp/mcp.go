@@ -13,11 +13,11 @@ import (
 	"strings"
 	"time"
 
-	"clew/internal/globx"
-	"clew/internal/ids"
-	"clew/internal/journal"
-	"clew/internal/model"
-	"clew/internal/scrub"
+	"github.com/maceip/clew/internal/globx"
+	"github.com/maceip/clew/internal/ids"
+	"github.com/maceip/clew/internal/journal"
+	"github.com/maceip/clew/internal/model"
+	"github.com/maceip/clew/internal/scrub"
 )
 
 type Server struct {

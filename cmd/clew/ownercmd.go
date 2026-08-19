@@ -5,12 +5,12 @@ import (
 	"strings"
 	"time"
 
-	"clew/internal/calm"
-	"clew/internal/ids"
-	"clew/internal/journal"
-	"clew/internal/materialize"
-	"clew/internal/model"
-	"clew/internal/owner"
+	"github.com/maceip/clew/internal/calm"
+	"github.com/maceip/clew/internal/ids"
+	"github.com/maceip/clew/internal/journal"
+	"github.com/maceip/clew/internal/materialize"
+	"github.com/maceip/clew/internal/model"
+	"github.com/maceip/clew/internal/owner"
 )
 
 // journalPromote is the sole project-to-owner crossing. The extractor may

@@ -4,9 +4,9 @@ import (
 	"errors"
 	"fmt"
 
-	"clew/internal/config"
-	"clew/internal/llm"
-	"clew/internal/state"
+	"github.com/maceip/clew/internal/config"
+	"github.com/maceip/clew/internal/llm"
+	"github.com/maceip/clew/internal/state"
 )
 
 // A provider response should be a compact extraction/link JSON object, never

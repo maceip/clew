@@ -8,12 +8,12 @@ import (
 	"testing"
 	"time"
 
-	"clew/internal/config"
-	"clew/internal/ids"
-	"clew/internal/journal"
-	"clew/internal/model"
-	"clew/internal/owner"
-	"clew/internal/state"
+	"github.com/maceip/clew/internal/config"
+	"github.com/maceip/clew/internal/ids"
+	"github.com/maceip/clew/internal/journal"
+	"github.com/maceip/clew/internal/model"
+	"github.com/maceip/clew/internal/owner"
+	"github.com/maceip/clew/internal/state"
 )
 
 func TestOwnerLawSyncNotesDistinguishColdFromPreviouslyVerifiedCache(t *testing.T) {

@@ -14,13 +14,13 @@ import (
 	"strings"
 	"time"
 
-	"clew/internal/globx"
-	"clew/internal/ids"
-	"clew/internal/journal"
-	"clew/internal/llm"
-	"clew/internal/model"
-	"clew/internal/poller"
-	"clew/internal/state"
+	"github.com/maceip/clew/internal/globx"
+	"github.com/maceip/clew/internal/ids"
+	"github.com/maceip/clew/internal/journal"
+	"github.com/maceip/clew/internal/llm"
+	"github.com/maceip/clew/internal/model"
+	"github.com/maceip/clew/internal/poller"
+	"github.com/maceip/clew/internal/state"
 )
 
 type Input struct {

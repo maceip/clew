@@ -7,10 +7,10 @@ import (
 	"testing"
 	"time"
 
-	"clew/internal/ids"
-	"clew/internal/journal"
-	"clew/internal/model"
-	"clew/internal/seed"
+	"github.com/maceip/clew/internal/ids"
+	"github.com/maceip/clew/internal/journal"
+	"github.com/maceip/clew/internal/model"
+	"github.com/maceip/clew/internal/seed"
 )
 
 var now = time.Date(2026, 8, 18, 16, 0, 0, 0, time.UTC)

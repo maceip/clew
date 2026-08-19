@@ -9,10 +9,10 @@ import (
 	"strings"
 	"time"
 
-	"clew/internal/adapters"
-	"clew/internal/extract"
-	"clew/internal/gitx"
-	"clew/internal/state"
+	"github.com/maceip/clew/internal/adapters"
+	"github.com/maceip/clew/internal/extract"
+	"github.com/maceip/clew/internal/gitx"
+	"github.com/maceip/clew/internal/state"
 )
 
 // cmdBackfill: retroactive extraction over existing session files (§5.3).

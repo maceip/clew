@@ -17,7 +17,7 @@ import (
 
 	_ "modernc.org/sqlite"
 
-	"clew/internal/gitx"
+	"github.com/maceip/clew/internal/gitx"
 )
 
 type DB struct{ *sql.DB }

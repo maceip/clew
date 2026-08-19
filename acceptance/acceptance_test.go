@@ -14,19 +14,19 @@ import (
 
 	"gopkg.in/yaml.v3"
 
-	"clew/internal/adapters"
-	"clew/internal/config"
-	"clew/internal/differ"
-	"clew/internal/extract"
-	"clew/internal/gitx"
-	"clew/internal/ids"
-	"clew/internal/journal"
-	"clew/internal/llm"
-	"clew/internal/manifest"
-	"clew/internal/materialize"
-	"clew/internal/model"
-	"clew/internal/poller"
-	"clew/internal/state"
+	"github.com/maceip/clew/internal/adapters"
+	"github.com/maceip/clew/internal/config"
+	"github.com/maceip/clew/internal/differ"
+	"github.com/maceip/clew/internal/extract"
+	"github.com/maceip/clew/internal/gitx"
+	"github.com/maceip/clew/internal/ids"
+	"github.com/maceip/clew/internal/journal"
+	"github.com/maceip/clew/internal/llm"
+	"github.com/maceip/clew/internal/manifest"
+	"github.com/maceip/clew/internal/materialize"
+	"github.com/maceip/clew/internal/model"
+	"github.com/maceip/clew/internal/poller"
+	"github.com/maceip/clew/internal/state"
 )
 
 // ---------- shared plumbing ----------

@@ -5,7 +5,7 @@ import (
 	"strings"
 	"time"
 
-	"clew/internal/model"
+	"github.com/maceip/clew/internal/model"
 )
 
 // Status values are computed by each watcher from entries + events and never

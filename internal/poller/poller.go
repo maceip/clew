@@ -10,8 +10,8 @@ import (
 	"strings"
 	"time"
 
-	"clew/internal/gitx"
-	"clew/internal/state"
+	"github.com/maceip/clew/internal/gitx"
+	"github.com/maceip/clew/internal/state"
 )
 
 type Snapshot struct {

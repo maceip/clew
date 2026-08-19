@@ -19,7 +19,7 @@ import (
 
 	"gopkg.in/yaml.v3"
 
-	"clew/internal/model"
+	"github.com/maceip/clew/internal/model"
 )
 
 type Journal struct {

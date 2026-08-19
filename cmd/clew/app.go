@@ -7,14 +7,14 @@ import (
 	"strings"
 	"time"
 
-	"clew/internal/config"
-	"clew/internal/gitx"
-	"clew/internal/journal"
-	"clew/internal/llm"
-	"clew/internal/materialize"
-	"clew/internal/owner"
-	"clew/internal/seed"
-	"clew/internal/state"
+	"github.com/maceip/clew/internal/config"
+	"github.com/maceip/clew/internal/gitx"
+	"github.com/maceip/clew/internal/journal"
+	"github.com/maceip/clew/internal/llm"
+	"github.com/maceip/clew/internal/materialize"
+	"github.com/maceip/clew/internal/owner"
+	"github.com/maceip/clew/internal/seed"
+	"github.com/maceip/clew/internal/state"
 )
 
 // app bundles the shared runtime: config + machine state.
