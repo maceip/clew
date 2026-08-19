@@ -3,7 +3,7 @@
 - e01M0C1HZ8SRKXYB9ZDGE6630NK decision/active Tokens are not scarce; owner attention is the only scarce resource
 - e01M0C1G75V4DREPKA3YGP5HH89 finding/current Every gate must cite owner words; the designer imported caution three times
 - e01M0C1G75T47X377Z0KAEBCQJZ decision/active A direct owner order is never refused; envelopes govern only autonomy
-- e01M0C1B36P7RCCMR6GYK3X97T7 intent/proposed First freshness slice: prompt-submit delta injection for claude and codex
+- e01M0C1B36P7RCCMR6GYK3X97T7 intent/in_flight First freshness slice: prompt-submit delta injection for claude and codex
 - e01M0C1820NFREYTAG5T6832442 decision/active Contact-point wiring jumps to the top of the build queue, above everything
 - e01M0C17FED9YSHX94BPF39M039 finding/current One root cause: unbuilt contact-point wiring made every failure tonight
 - e01M0C0S7EQJYH00K7KGY9ZWV2S finding/current The 88 was a symptom: catch-up burst, ambient misclassified, settling unbuilt
@@ -17,7 +17,7 @@
 - e01M0BER1Q5W312NDD7GZ283RCM question/open Cap the two screens at 7+7; overflow policy is an open question
 - e01M0BER1Q412DRFQYESPCN0Q30 decision/active Lines are plain speech, no ids; near-duplicates fold; held items rest
 - e01M0BEM04PAZ85R5YNRM2Y31Z6 decision/active Broken states carry their verb: no unactionable warnings for humans
-- e01M0AZN6HJETV241AK5RSBDHNR intent/proposed Held: a restart tab — stage selected drift into the next generation
+- e01M0AZN6HJETV241AK5RSBDHNR intent/absent Held: a restart tab — stage selected drift into the next generation
 - e01M0AZDDYC49Y1741H7W74Y1QY decision/active Second tab: the intent gap — everything intended, not yet real
 - e01M0AZ7JBPJRNHFJQC6WEEQB9Y decision/active Silence is the signal: an absent merge means truly nothing new
 - e01M0AZ4BGF1VC0VSXA05VYVEQ3 decision/active Explain is live: the attending agent reads the entry and explains
@@ -32,5 +32,5 @@
 - e01M0AXRKQ8C7FZNKARW83CMBMX decision/active The five promises are the foundation (owner ratified)
 - e01M0AXMXK3SAATFDFAYZ932TPC decision/active Two registers, one memory: calm words for humans, hard words for agents
 - e01M0AXF5FM9RDFP817NF7QW5BN decision/active Human-facing surface must reduce to the desires it satisfies
-- e01M0AXCM561K3C5QXAVGVGT46T intent/proposed Build the freshness ladder: one delta payload, five delivery layers
+- e01M0AXCM561K3C5QXAVGVGT46T intent/in_flight Build the freshness ladder: one delta payload, five delivery layers
 … (161 more omitted for size)

@@ -1,13 +1,13 @@
 ---
 format: clew.seed/v1
-digest: sha256:dfa197e7049d687eaa78683bc636fc9245be685fcabe42184dce99123d69e86e
+digest: sha256:5be659e59f3972f578b673bf137da937647da598bd5695fbda42a7a97a3f6fd9
 snapshot:
     repository:
         id: r8631b465b9e40c83e4d3e137
         name: restart
         remote: https://github.com/maceip/clew.git
-    journal_revision: sha256:4ceeb59a4cc88d6d98dd6a1e4acf30a55fa254e214dc177cd310ee32f3b39575
-    changed_at: 2026-08-19T03:41:00Z
+    journal_revision: sha256:8e4f9560b3e802d0ea08c7b749fe05b31d4b3967d301716f7f805d00869b9835
+    changed_at: 2026-08-19T03:51:18Z
     lifecycle:
         state: active
     topics:
@@ -2176,7 +2176,7 @@ snapshot:
                 host: macOS
             affects:
                 - internal/owner/**
-          status: current
+          status: suspect
         - entry:
             id: e01M0ASDMN8S3TNV9502WFBA70W
             type: finding
@@ -2198,7 +2198,7 @@ snapshot:
                 - internal/lineage/**
                 - journal branch sync
                 - remote adoption
-          status: current
+          status: suspect
         - entry:
             id: e01M0ASQGK6W0Y1NEDQW45KDECS
             type: finding
@@ -2366,7 +2366,7 @@ snapshot:
             affects:
                 - internal/journal/algebra.go
                 - internal/owner/owner.go
-          status: current
+          status: suspect
         - entry:
             id: e01M0ATARAN8NWCBGNTM58QRVPX
             type: finding
@@ -2388,7 +2388,7 @@ snapshot:
             affects:
                 - internal/extract/extract.go
                 - internal/materialize/materialize.go
-          status: current
+          status: suspect
         - entry:
             id: e01M0ATNY3H0WHX91ASCWE1MM7R
             type: finding
@@ -2412,7 +2412,7 @@ snapshot:
             affects:
                 - internal/gitx/gitx.go
                 - cmd/clew/birthcmd.go
-          status: current
+          status: suspect
         - entry:
             id: e01M0ATNY3H0WHX91ASD0AMR8TE
             type: finding
@@ -2436,7 +2436,7 @@ snapshot:
             affects:
                 - cmd/clew/watchcmd.go
                 - internal/state/state.go
-          status: current
+          status: suspect
         - entry:
             id: e01M0AV5721XB0ZFQW42241YJ4A
             type: finding
@@ -2460,7 +2460,7 @@ snapshot:
                 - cmd/clew/watchcmd.go
                 - cmd/clew/birthcmd.go
                 - cmd/clew/initcmd.go
-          status: current
+          status: suspect
         - entry:
             id: e01M0AXCM54CDSPV84DBH1PWGWD
             type: finding
@@ -3432,26 +3432,6 @@ snapshot:
             affects: []
           status: absent
         - entry:
-            id: e01M0ASDMN8S3TNV9502VTFK27E
-            type: intent
-            title: Wire the seed/lineage libraries into watcher, materialization, and clew from
-            body: 'The I13 data layer is done but unwired. Parent integration must: build seeds with lineage.AncestorIDs before writing, swap recurring seed.Write calls for WriteOnJournalChange, preserve the journal''s lineage/ directory across journal-branch sync and unrelated-root remote adoption, and implement clew from as read → import → materialize.'
-            quote: I did not edit command wiring, watcher/init behavior, materialization, documentation, manifest, extractor, or parent-owned repository metadata code.
-            utterance_by: assistant
-            source:
-                kind: session
-                ref: codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-24-04-01a01578-f76e-74f0-8e19-f7387068f66a.jsonl#L573
-                agent: codex
-                surface: macs-MacBook-Pro
-                at: 2026-08-18T15:56:41Z
-            confidence: 0.86
-            tags:
-                - internal/seed/**
-                - internal/lineage/**
-            env: null
-            affects: []
-          status: absent
-        - entry:
             id: e01M0ATARAN8NWCBGNTM1A2S0H2
             type: finding
             title: Promotion card shows the quote but injects the extractor's title and body
@@ -3495,6 +3475,24 @@ snapshot:
                 who: differ
                 surface: macs-MacBook-Pro
               at: 2026-08-19T00:05:44.031087Z
+        - entry:
+            id: e01M0AZN6HJETV241AK5RSBDHNR
+            type: intent
+            title: 'Held: a restart tab — stage selected drift into the next generation'
+            body: 'Owner direction, held for more thinking: a third tab beside merge and gap. The human selects items from both and stages them into a restart; the tab previews exactly what clew from would emit — live seed curation from the drift you are already reading. Gives merge/gap overflow a relief valve: too heavy to absorb here becomes carry it forward. Not buildable spec yet; owner explains later.'
+            quote: users select items from each and put them in "restart tab", and that tab also shows the same output "clew from" would show
+            utterance_by: user
+            source:
+                kind: session
+                ref: chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18
+                agent: cursor-cloud-agent
+                surface: cursor-cloud-vm
+                at: 2026-08-18T17:44:00Z
+            confidence: 0.95
+            tags: []
+            env: null
+            affects: []
+          status: absent
     exhibits:
         - id: v01M04W6B48BX7A75HCZX5KDVEX
           kind: evidence
@@ -4834,6 +4832,18 @@ snapshot:
             who: differ
             surface: macs-MacBook-Pro
           at: 2026-08-18T17:47:48Z
+        - id: v01M0AZS3D0R9F6JDW9DHTH62WJ
+          kind: evidence
+          entry: e01M0AZN6HJETV241AK5RSBDHNR
+          payload:
+            kind: commit
+            note: 'journal: restart tab hard half — what not to carry'
+            ref: b9b17a6c6be36e3a76f1dd2a7de7f2d039ec84c8
+            via: subject-match
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-18T17:47:48Z
         - id: v01M0AZS3D0R9F6JDW9DN3M30D3
           kind: evidence
           entry: e01M0AQHSRF4DVDYZ989MTZQV7E
@@ -5877,15 +5887,630 @@ snapshot:
             who: extractor
             surface: macs-MacBook-Pro
           at: 2026-08-19T00:02:17.092757Z
+        - id: v01M0C2A4QGQV5SGW1BMXBR2GZ6
+          kind: evidence
+          entry: e01M04H0KBY8QQWXPE8DP99N012
+          payload:
+            kind: commit
+            note: Build prompt freshness and cloud return paths
+            ref: 05b8bfc65fba1be5dba39f7c072806860cb59e15
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-19T03:51:18Z
+        - id: v01M0C2A4QGQV5SGW1BMYGDDCX7
+          kind: evidence
+          entry: e01M0AQHMB1WWTYWTM79JHACMNP
+          payload:
+            kind: commit
+            note: Build prompt freshness and cloud return paths
+            ref: 05b8bfc65fba1be5dba39f7c072806860cb59e15
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-19T03:51:18Z
+        - id: v01M0C2A4QGQV5SGW1BN08PZHAF
+          kind: evidence
+          entry: e01M0AR2BRV4T3ASCNNB7F5QA10
+          payload:
+            kind: commit
+            note: Build prompt freshness and cloud return paths
+            ref: 05b8bfc65fba1be5dba39f7c072806860cb59e15
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-19T03:51:18Z
+        - id: v01M0C2A4QGQV5SGW1BN1RD7RD3
+          kind: evidence
+          entry: e01M0ARA4Y7Z4Q65SP0T7A8EFEY
+          payload:
+            kind: commit
+            note: Build prompt freshness and cloud return paths
+            ref: 05b8bfc65fba1be5dba39f7c072806860cb59e15
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-19T03:51:18Z
+        - id: v01M0C2A4QGQV5SGW1BN5FPSNYN
+          kind: evidence
+          entry: e01M0AQGPHNFVPKVFT67DKX5923
+          payload:
+            kind: commit
+            note: Build prompt freshness and cloud return paths
+            ref: 05b8bfc65fba1be5dba39f7c072806860cb59e15
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-19T03:51:18Z
+        - id: v01M0C2A4QGQV5SGW1BN71VV1EF
+          kind: evidence
+          entry: e01M0AST7PZRJP8XBWDAHVVX8NR
+          payload:
+            kind: commit
+            note: Build prompt freshness and cloud return paths
+            ref: 05b8bfc65fba1be5dba39f7c072806860cb59e15
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-19T03:51:18Z
+        - id: v01M0C2A4QGQV5SGW1BN8XP6EFZ
+          kind: evidence
+          entry: e01M0AR71TW3S282XMYX6HV601V
+          payload:
+            kind: commit
+            note: Build prompt freshness and cloud return paths
+            ref: 05b8bfc65fba1be5dba39f7c072806860cb59e15
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-19T03:51:18Z
+        - id: v01M0C2A4QGQV5SGW1BN97M8Y7C
+          kind: evidence
+          entry: e01M0ARSXN8PR0Y3PVAG8JVYZFY
+          payload:
+            kind: commit
+            note: Build prompt freshness and cloud return paths
+            ref: 05b8bfc65fba1be5dba39f7c072806860cb59e15
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-19T03:51:18Z
+        - id: v01M0C2A4QGQV5SGW1BNCTWW5GT
+          kind: evidence
+          entry: e01M05SA72DPRGNTY7GD0TGHEX7
+          payload:
+            kind: commit
+            note: Build prompt freshness and cloud return paths
+            ref: 05b8bfc65fba1be5dba39f7c072806860cb59e15
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-19T03:51:18Z
+        - id: v01M0C2A4QGQV5SGW1BNEV6J8GR
+          kind: evidence
+          entry: e01M0AST7PZRJP8XBWDABXXWWQH
+          payload:
+            kind: commit
+            note: Build prompt freshness and cloud return paths
+            ref: 05b8bfc65fba1be5dba39f7c072806860cb59e15
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-19T03:51:18Z
+        - id: v01M0C2A4QGQV5SGW1BNF5QWFWJ
+          kind: evidence
+          entry: e01M0AQHMB1WWTYWTM79HGM5C34
+          payload:
+            kind: commit
+            note: Build prompt freshness and cloud return paths
+            ref: 05b8bfc65fba1be5dba39f7c072806860cb59e15
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-19T03:51:18Z
+        - id: v01M0C2A4QGQV5SGW1BNFX69X4W
+          kind: evidence
+          entry: e01M0ARSXN8PR0Y3PVAG5XRP4W8
+          payload:
+            kind: commit
+            note: Build prompt freshness and cloud return paths
+            ref: 05b8bfc65fba1be5dba39f7c072806860cb59e15
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-19T03:51:18Z
+        - id: v01M0C2A4QGQV5SGW1BNG09NXEZ
+          kind: evidence
+          entry: e01M0ASDMN8S3TNV9502T3QKJ52
+          payload:
+            kind: commit
+            note: Build prompt freshness and cloud return paths
+            ref: 05b8bfc65fba1be5dba39f7c072806860cb59e15
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-19T03:51:18Z
+        - id: v01M0C2A4QGQV5SGW1BNHE1T68W
+          kind: evidence
+          entry: e01M0AST7PZRJP8XBWDAGG7AD44
+          payload:
+            kind: commit
+            note: Build prompt freshness and cloud return paths
+            ref: 05b8bfc65fba1be5dba39f7c072806860cb59e15
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-19T03:51:18Z
+        - id: v01M0C2A4QGQV5SGW1BNTY71C2V
+          kind: evidence
+          entry: e01M0AXZ5DEXRWRGD3GT1HYEYSD
+          payload:
+            kind: commit
+            note: Build prompt freshness and cloud return paths
+            ref: 05b8bfc65fba1be5dba39f7c072806860cb59e15
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-19T03:51:18Z
+        - id: v01M0C2A4QGQV5SGW1BNXNGAN14
+          kind: evidence
+          entry: e01M0AR79QQ9PPSZKQ2ETN2K1Y0
+          payload:
+            kind: commit
+            note: Build prompt freshness and cloud return paths
+            ref: 05b8bfc65fba1be5dba39f7c072806860cb59e15
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-19T03:51:18Z
+        - id: v01M0C2A4QGQV5SGW1BP13QFHPD
+          kind: evidence
+          entry: e01M05SA72DPRGNTY7GCPEX9W2N
+          payload:
+            kind: commit
+            note: Build prompt freshness and cloud return paths
+            ref: 05b8bfc65fba1be5dba39f7c072806860cb59e15
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-19T03:51:18Z
+        - id: v01M0C2A4QGQV5SGW1BP20GDZEW
+          kind: evidence
+          entry: e01M0ASDMN8S3TNV9502PGAAE99
+          payload:
+            kind: commit
+            note: Build prompt freshness and cloud return paths
+            ref: 05b8bfc65fba1be5dba39f7c072806860cb59e15
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-19T03:51:18Z
+        - id: v01M0C2A4QGQV5SGW1BP2PQYN6H
+          kind: evidence
+          entry: e01M0ASDMN8S3TNV9502NGMZVQC
+          payload:
+            kind: commit
+            note: Build prompt freshness and cloud return paths
+            ref: 05b8bfc65fba1be5dba39f7c072806860cb59e15
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-19T03:51:18Z
+        - id: v01M0C2A4QGQV5SGW1BP50YJQSQ
+          kind: evidence
+          entry: e01M0AST4FW4WFMMX225XEXGBD1
+          payload:
+            kind: commit
+            note: Build prompt freshness and cloud return paths
+            ref: 05b8bfc65fba1be5dba39f7c072806860cb59e15
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-19T03:51:18Z
+        - id: v01M0C2A4QGQV5SGW1BP5GDGG56
+          kind: evidence
+          entry: e01M0ASDMN8S3TNV9502TGKHRPD
+          payload:
+            kind: commit
+            note: Build prompt freshness and cloud return paths
+            ref: 05b8bfc65fba1be5dba39f7c072806860cb59e15
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-19T03:51:18Z
+        - id: v01M0C2A4QGQV5SGW1BP7D8SMN4
+          kind: evidence
+          entry: e01M0AWM6188V135JTTP4S3MQAA
+          payload:
+            kind: commit
+            note: Build prompt freshness and cloud return paths
+            ref: 05b8bfc65fba1be5dba39f7c072806860cb59e15
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-19T03:51:18Z
+        - id: v01M0C2A4QGQV5SGW1BP9E6ZEYC
+          kind: evidence
+          entry: e01M0AST7PZRJP8XBWDAF0AMC15
+          payload:
+            kind: commit
+            note: Build prompt freshness and cloud return paths
+            ref: 05b8bfc65fba1be5dba39f7c072806860cb59e15
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-19T03:51:18Z
+        - id: v01M0C2A4QGQV5SGW1BPC561ZSP
+          kind: evidence
+          entry: e01M0AR2HXKR05KE2VRTH1ETY28
+          payload:
+            kind: commit
+            note: Build prompt freshness and cloud return paths
+            ref: 05b8bfc65fba1be5dba39f7c072806860cb59e15
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-19T03:51:18Z
+        - id: v01M0C2A4QGQV5SGW1BPCER10SA
+          kind: evidence
+          entry: e01M0ASDMN8S3TNV9502RT7746E
+          payload:
+            kind: commit
+            note: Build prompt freshness and cloud return paths
+            ref: 05b8bfc65fba1be5dba39f7c072806860cb59e15
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-19T03:51:18Z
+        - id: v01M0C2A4QGQV5SGW1BPF1FMK4Y
+          kind: evidence
+          entry: e01M0AR79QQ9PPSZKQ2EVTFNQMV
+          payload:
+            kind: commit
+            note: Build prompt freshness and cloud return paths
+            ref: 05b8bfc65fba1be5dba39f7c072806860cb59e15
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-19T03:51:18Z
+        - id: v01M0C2A4QGQV5SGW1BPJ3HD6PK
+          kind: evidence
+          entry: e01M05V5HWA6TFT0A0KDZY8S45K
+          payload:
+            kind: commit
+            note: Build prompt freshness and cloud return paths
+            ref: 05b8bfc65fba1be5dba39f7c072806860cb59e15
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-19T03:51:18Z
+        - id: v01M0C2A4QGQV5SGW1BPMNZ34EG
+          kind: evidence
+          entry: e01M0AST4FW4WFMMX225TQ56V5E
+          payload:
+            kind: commit
+            note: Build prompt freshness and cloud return paths
+            ref: 05b8bfc65fba1be5dba39f7c072806860cb59e15
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-19T03:51:18Z
+        - id: v01M0C2A4QGQV5SGW1BPMWWMV1D
+          kind: evidence
+          entry: e01M0ATNY3H0WHX91ASD478G9E7
+          payload:
+            kind: commit
+            note: Build prompt freshness and cloud return paths
+            ref: 05b8bfc65fba1be5dba39f7c072806860cb59e15
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-19T03:51:18Z
+        - id: v01M0C2A4QGQV5SGW1BPRNDZ31K
+          kind: evidence
+          entry: e01M05VTCM3AR0WFY9TZJXAN7SE
+          payload:
+            kind: churn
+            note: Build prompt freshness and cloud return paths
+            ref: churn:05b8bfc65fba1be5dba39f7c072806860cb59e15
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-19T03:51:18Z
+        - id: v01M0C2A4QGQV5SGW1BPV9BPDDR
+          kind: evidence
+          entry: e01M05T4XG0RJWQTP25SYT4FH0B
+          payload:
+            kind: churn
+            note: Build prompt freshness and cloud return paths
+            ref: churn:05b8bfc65fba1be5dba39f7c072806860cb59e15
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-19T03:51:18Z
+        - id: v01M0C2A4QGQV5SGW1BPWK9R93C
+          kind: evidence
+          entry: e01M05VTCM3AR0WFY9TZKZMBMA4
+          payload:
+            kind: churn
+            note: Build prompt freshness and cloud return paths
+            ref: churn:05b8bfc65fba1be5dba39f7c072806860cb59e15
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-19T03:51:18Z
+        - id: v01M0C2A4QGQV5SGW1BPZRRVPCZ
+          kind: evidence
+          entry: e01M0ATNY3H0WHX91ASCWE1MM7R
+          payload:
+            kind: churn
+            note: Build prompt freshness and cloud return paths
+            ref: churn:05b8bfc65fba1be5dba39f7c072806860cb59e15
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-19T03:51:18Z
+        - id: v01M0C2A4QGQV5SGW1BQ29DT6XR
+          kind: evidence
+          entry: e01M05T4XG0RJWQTP25T1K58B61
+          payload:
+            kind: churn
+            note: Build prompt freshness and cloud return paths
+            ref: churn:05b8bfc65fba1be5dba39f7c072806860cb59e15
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-19T03:51:18Z
+        - id: v01M0C2A4QGQV5SGW1BQ57R6J8B
+          kind: evidence
+          entry: e01M05SPB2EMMC4F4PR0928NA31
+          payload:
+            kind: churn
+            note: Build prompt freshness and cloud return paths
+            ref: churn:05b8bfc65fba1be5dba39f7c072806860cb59e15
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-19T03:51:18Z
+        - id: v01M0C2A4QGQV5SGW1BQ8H77CVH
+          kind: evidence
+          entry: e01M05T52RRS9EXQ92M3PA9WBVF
+          payload:
+            kind: churn
+            note: Build prompt freshness and cloud return paths
+            ref: churn:05b8bfc65fba1be5dba39f7c072806860cb59e15
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-19T03:51:18Z
+        - id: v01M0C2A4QGQV5SGW1BQBY6N4QE
+          kind: evidence
+          entry: e01M0ATNY3H0WHX91ASD0AMR8TE
+          payload:
+            kind: churn
+            note: Build prompt freshness and cloud return paths
+            ref: churn:05b8bfc65fba1be5dba39f7c072806860cb59e15
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-19T03:51:18Z
+        - id: v01M0C2A4QGQV5SGW1BQFHB6KYD
+          kind: evidence
+          entry: e01M0ARPN4E0VHAP2DEJSGP7GZB
+          payload:
+            kind: churn
+            note: Build prompt freshness and cloud return paths
+            ref: churn:05b8bfc65fba1be5dba39f7c072806860cb59e15
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-19T03:51:18Z
+        - id: v01M0C2A4QGQV5SGW1BQHB7Q6DR
+          kind: evidence
+          entry: e01M05VTCM3AR0WFY9TZH6DJYDA
+          payload:
+            kind: churn
+            note: Build prompt freshness and cloud return paths
+            ref: churn:05b8bfc65fba1be5dba39f7c072806860cb59e15
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-19T03:51:18Z
+        - id: v01M0C2A4QGQV5SGW1BQK9KTYRA
+          kind: evidence
+          entry: e01M064YRS4S9NK7KW9NN351FQF
+          payload:
+            kind: churn
+            note: Build prompt freshness and cloud return paths
+            ref: churn:05b8bfc65fba1be5dba39f7c072806860cb59e15
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-19T03:51:18Z
+        - id: v01M0C2A4QGQV5SGW1BQPRJZBF5
+          kind: evidence
+          entry: e01M064XJ84ZTY2HNFWWQZATFA9
+          payload:
+            kind: churn
+            note: Build prompt freshness and cloud return paths
+            ref: churn:05b8bfc65fba1be5dba39f7c072806860cb59e15
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-19T03:51:18Z
+        - id: v01M0C2A4QGQV5SGW1BQRSJ003S
+          kind: evidence
+          entry: e01M064YRS4S9NK7KW9NN3114KH
+          payload:
+            kind: churn
+            note: Build prompt freshness and cloud return paths
+            ref: churn:05b8bfc65fba1be5dba39f7c072806860cb59e15
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-19T03:51:18Z
+        - id: v01M0C2A4QGQV5SGW1BQS82ZRE3
+          kind: evidence
+          entry: e01M0ATARAN8NWCBGNTM2VNR895
+          payload:
+            kind: churn
+            note: Build prompt freshness and cloud return paths
+            ref: churn:05b8bfc65fba1be5dba39f7c072806860cb59e15
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-19T03:51:18Z
+        - id: v01M0C2A4QGQV5SGW1BQVJ9GQVK
+          kind: evidence
+          entry: e01M05VNN1T5TKJ15Q47KSS3FMJ
+          payload:
+            kind: churn
+            note: Build prompt freshness and cloud return paths
+            ref: churn:05b8bfc65fba1be5dba39f7c072806860cb59e15
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-19T03:51:18Z
+        - id: v01M0C2A4QGQV5SGW1BQXEGTQZT
+          kind: evidence
+          entry: e01M0ASDMN8S3TNV9502WFBA70W
+          payload:
+            kind: churn
+            note: Build prompt freshness and cloud return paths
+            ref: churn:05b8bfc65fba1be5dba39f7c072806860cb59e15
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-19T03:51:18Z
+        - id: v01M0C2A4QGQV5SGW1BQY1V1WMT
+          kind: evidence
+          entry: e01M05TCM2N1P9P2EQSE8YKVQX3
+          payload:
+            kind: churn
+            note: Build prompt freshness and cloud return paths
+            ref: churn:05b8bfc65fba1be5dba39f7c072806860cb59e15
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-19T03:51:18Z
+        - id: v01M0C2A4QGQV5SGW1BQZ3JH2CD
+          kind: evidence
+          entry: e01M0ATARAN8NWCBGNTM58QRVPX
+          payload:
+            kind: churn
+            note: Build prompt freshness and cloud return paths
+            ref: churn:05b8bfc65fba1be5dba39f7c072806860cb59e15
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-19T03:51:18Z
+        - id: v01M0C2A4QGQV5SGW1BQZSBD2ND
+          kind: evidence
+          entry: e01M064YRS4S9NK7KW9NQ1JMDV2
+          payload:
+            kind: churn
+            note: Build prompt freshness and cloud return paths
+            ref: churn:05b8bfc65fba1be5dba39f7c072806860cb59e15
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-19T03:51:18Z
+        - id: v01M0C2A4QGQV5SGW1BR1DHXQMS
+          kind: evidence
+          entry: e01M0ATARAN8NWCBGNTM1A2S0H2
+          payload:
+            kind: churn
+            note: Build prompt freshness and cloud return paths
+            ref: churn:05b8bfc65fba1be5dba39f7c072806860cb59e15
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-19T03:51:18Z
+        - id: v01M0C2A4QGQV5SGW1BR26WEAM7
+          kind: evidence
+          entry: e01M05SPB2EMMC4F4PR0BDQA8S5
+          payload:
+            kind: churn
+            note: Build prompt freshness and cloud return paths
+            ref: churn:05b8bfc65fba1be5dba39f7c072806860cb59e15
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-19T03:51:18Z
+        - id: v01M0C2A4QGQV5SGW1BR5AJZA30
+          kind: evidence
+          entry: e01M064XJ84ZTY2HNFWWV8RSRQR
+          payload:
+            kind: churn
+            note: Build prompt freshness and cloud return paths
+            ref: churn:05b8bfc65fba1be5dba39f7c072806860cb59e15
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-19T03:51:18Z
+        - id: v01M0C2A4QGQV5SGW1BR7X61QVZ
+          kind: evidence
+          entry: e01M05VFAW9A783PMZZEBHJ1TZH
+          payload:
+            kind: churn
+            note: Build prompt freshness and cloud return paths
+            ref: churn:05b8bfc65fba1be5dba39f7c072806860cb59e15
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-19T03:51:18Z
+        - id: v01M0C2A4QGQV5SGW1BRB8BFGK7
+          kind: evidence
+          entry: e01M0AR79QQ9PPSZKQ2EPQHW9H9
+          payload:
+            kind: churn
+            note: Build prompt freshness and cloud return paths
+            ref: churn:05b8bfc65fba1be5dba39f7c072806860cb59e15
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-19T03:51:18Z
+        - id: v01M0C2A4QGQV5SGW1BRE430XAY
+          kind: evidence
+          entry: e01M0AV5721XB0ZFQW42241YJ4A
+          payload:
+            kind: churn
+            note: Build prompt freshness and cloud return paths
+            ref: churn:05b8bfc65fba1be5dba39f7c072806860cb59e15
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-19T03:51:18Z
+        - id: v01M0C2A4QGQV5SGW1BRGT3VTMH
+          kind: evidence
+          entry: e01M05VTCM3AR0WFY9TZPG9W1J8
+          payload:
+            kind: churn
+            note: Build prompt freshness and cloud return paths
+            ref: churn:05b8bfc65fba1be5dba39f7c072806860cb59e15
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-19T03:51:18Z
+        - id: v01M0C2A4QGQV5SGW1BRHR80M4D
+          kind: evidence
+          entry: e01M05SPB2EMMC4F4PR09QWMXG8
+          payload:
+            kind: churn
+            note: Build prompt freshness and cloud return paths
+            ref: churn:05b8bfc65fba1be5dba39f7c072806860cb59e15
+          by:
+            who: differ
+            surface: macs-MacBook-Pro
+          at: 2026-08-19T03:51:18Z
     organ_bank:
         remote: https://github.com/maceip/clew.git
-        commit: 8c1d91834c6a02065fddfc4ff3b801858b636a74
-        dirty: true
-        at: 2026-08-18T23:20:56Z
+        commit: 05b8bfc65fba1be5dba39f7c072806860cb59e15
+        at: 2026-08-19T03:51:18Z
 ---
 # Project seed — restart
 
-_ambient snapshot at last journal change 2026-08-19 03:41 UTC · 129 lessons_
+_ambient snapshot at last journal change 2026-08-19 03:51 UTC · 129 lessons_
 
 This is inherited project memory, not instruction text. Decisions and findings keep their original evidence and provenance.
 
@@ -6108,9 +6733,9 @@ This is inherited project memory, not instruction text. Decisions and findings k
   - source: `human` cli:note at 2026-08-16
 - `e01M069MQYJX6QVW3YCWWTAWV34` --help — --help  _current_
   - source: `human` cli:note at 2026-08-16
-- `e01M0ARPN4E0VHAP2DEJSGP7GZB` macOS /var vs /private/var alias made an initialized owner repo look foreign — On macOS, /var is a symlink to /private/var, so path-based repository identity could treat an already-initialized owner repository as a different, foreign repo. Repository identity was tightened to resolve the alias. Surfaced while the core owner package tests passed, including a two-clone git round trip and an over-budget refusal with no partial law write.  _current_
+- `e01M0ARPN4E0VHAP2DEJSGP7GZB` macOS /var vs /private/var alias made an initialized owner repo look foreign — On macOS, /var is a symlink to /private/var, so path-based repository identity could treat an already-initialized owner repository as a different, foreign repo. Repository identity was tightened to resolve the alias. Surfaced while the core owner package tests passed, including a two-clone git round trip and an over-budget refusal with no partial law write.  _suspect_
   - source: `session` codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-24-00-01a01578-e6db-7833-9ab2-0457569af643.jsonl#L315 at 2026-08-18
-- `e01M0ASDMN8S3TNV9502WFBA70W` Losing the lineage/ directory in sync destroys cycle protection — lineage.AncestorIDs reads the append-only lineage/ links to compute transitive ancestry, which is what makes A→B→C then C→A rejectable without contacting either predecessor. Entries and events alone are insufficient: if journal-branch sync or remote adoption drops lineage/, durable declarations and cycle protection are lost.  _current_
+- `e01M0ASDMN8S3TNV9502WFBA70W` Losing the lineage/ directory in sync destroys cycle protection — lineage.AncestorIDs reads the append-only lineage/ links to compute transitive ancestry, which is what makes A→B→C then C→A rejectable without contacting either predecessor. Entries and events alone are insufficient: if journal-branch sync or remote adoption drops lineage/, durable declarations and cycle protection are lost.  _suspect_
   - source: `session` codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-24-04-01a01578-f76e-74f0-8e19-f7387068f66a.jsonl#L573 at 2026-08-18
 - `e01M0ASQGK6W0Y1NEDQW45KDECS` Corpse census: substrate died in a 6-day burst; tombstone came 5 weeks late — substrate: 63/64 commits in week one (Jun 9-14), five weeks silence, final commit is the failure confession (LIFECYCLE.md + README 'failed adoption'). The promised compounding loop (scheduler/repair/steward/federated store) was never built - confessed by its own docs. Zero tags, zero CI, zero adopters.  _current_
   - source: `session` chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 at 2026-08-18
@@ -6128,15 +6753,15 @@ This is inherited project memory, not instruction text. Decisions and findings k
   - source: `session` chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 at 2026-08-18
 - `e01M0ASSNH1HP68M1QERV9AKG5A` Attachments bypass the secret scrub; GitHub push protection caught PATs — GitHub push protection blocked the journal push: two ephemeral PATs the owner pasted in chat were present verbatim in the attached raw transcript. The entries pipeline scrubs quotes/bodies (6.2) but attachments bypass the scrub entirely. Fix: run the same secret-scrub over transcripts/ (and any attachment) before commit; treat platform push-protection as backstop, never primary.  _current_
   - source: `session` chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 at 2026-08-18
-- `e01M0ATARAN8NWCBGNTM2VNR895` Title-only imperatives bypass injection withholding into every project — The imperative-withholding scan checks only Body and Quote (internal/journal/algebra.go:85), but ambient owner laws render Title and Body (internal/owner/owner.go:325). A benign body and quote carrying an imperative title passes the safety gate and becomes ambient in every project's context. Proposed fix: include Title in the scan, add a title-only regression test, recheck raw content at owner ad…  _current_
+- `e01M0ATARAN8NWCBGNTM2VNR895` Title-only imperatives bypass injection withholding into every project — The imperative-withholding scan checks only Body and Quote (internal/journal/algebra.go:85), but ambient owner laws render Title and Body (internal/owner/owner.go:325). A benign body and quote carrying an imperative title passes the safety gate and becomes ambient in every project's context. Proposed fix: include Title in the scan, add a title-only regression test, recheck raw content at owner ad…  _suspect_
   - source: `session` codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T12-03-33-01a0159d-1ea8-7f70-bfac-3fecc3a17c09.jsonl#L229 at 2026-08-18
-- `e01M0ATARAN8NWCBGNTM58QRVPX` Promotion candidates enter project context before the human rules on them — Extraction stores a promotion candidate as an ordinary live finding, and materialization includes all live findings — only the promotion alert is filtered out of the alerts and nudge sections. The candidate's title and body therefore land in context.md immediately, contradicting the documented boundary that a candidate cannot enter context until promote or keep-local resolves the card.  _current_
+- `e01M0ATARAN8NWCBGNTM58QRVPX` Promotion candidates enter project context before the human rules on them — Extraction stores a promotion candidate as an ordinary live finding, and materialization includes all live findings — only the promotion alert is filtered out of the alerts and nudge sections. The candidate's title and body therefore land in context.md immediately, contradicting the documented boundary that a candidate cannot enter context until promote or keep-local resolves the card.  _suspect_
   - source: `session` codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T12-03-33-01a0159d-1ea8-7f70-bfac-3fecc3a17c09.jsonl#L229 at 2026-08-18
-- `e01M0ATNY3H0WHX91ASCWE1MM7R` Repo identity is the absolute path, so a rebuilt repo at a reused path is not a… — Registration keys on the checkout path (gitx.RepoID hashes only the absolute path), so moving a checkout aside and running `mkdir x && git init` at the same path is treated as already registered. Reproduced: the second birth exited 1 with a fatal missing-worktree error and emitted zero context. It fails safely today, but path-as-identity is exactly the stale machine state that can rebind an old j…  _current_
+- `e01M0ATNY3H0WHX91ASCWE1MM7R` Repo identity is the absolute path, so a rebuilt repo at a reused path is not a… — Registration keys on the checkout path (gitx.RepoID hashes only the absolute path), so moving a checkout aside and running `mkdir x && git init` at the same path is treated as already registered. Reproduced: the second birth exited 1 with a fatal missing-worktree error and emitted zero context. It fails safely today, but path-as-identity is exactly the stale machine state that can rebind an old j…  _suspect_
   - source: `session` codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T12-03-30-01a0159d-11bd-7b13-81c5-26b7f910b998.jsonl#L344 at 2026-08-18
-- `e01M0ATNY3H0WHX91ASD0AMR8TE` Cold CLEW_HOME loses concurrent births; warm machine state is safe — With an empty CLEW_HOME, two simultaneous `_birth` processes in different repos left one dead on `open state.db: database is locked`; with the DB precreated but the owner store uninitialized, five of six concurrent births failed on owner git init/config lock/template copy/worktree add. Once the owner store was fully initialized, six concurrent births passed. The danger window is first-run bootstr…  _current_
+- `e01M0ATNY3H0WHX91ASD0AMR8TE` Cold CLEW_HOME loses concurrent births; warm machine state is safe — With an empty CLEW_HOME, two simultaneous `_birth` processes in different repos left one dead on `open state.db: database is locked`; with the DB precreated but the owner store uninitialized, five of six concurrent births failed on owner git init/config lock/template copy/worktree add. Once the owner store was fully initialized, six concurrent births passed. The danger window is first-run bootstr…  _suspect_
   - source: `session` codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T12-03-30-01a0159d-11bd-7b13-81c5-26b7f910b998.jsonl#L344 at 2026-08-18
-- `e01M0AV5721XB0ZFQW42241YJ4A` Daemon fallback birth discarded the triggering session's first prompt — Reproduced with the compiled daemon: on fallback discovery, bootstrap baselined every discovered transcript to current EOF, so a fresh Codex transcript's first prompt was never journaled (tail/extract/history-end all set to the 320-byte EOF, zero occurrences in the journal). Safe only for synchronous Claude SessionStart, which runs before the first prompt.  _current_
+- `e01M0AV5721XB0ZFQW42241YJ4A` Daemon fallback birth discarded the triggering session's first prompt — Reproduced with the compiled daemon: on fallback discovery, bootstrap baselined every discovered transcript to current EOF, so a fresh Codex transcript's first prompt was never journaled (tail/extract/history-end all set to the 320-byte EOF, zero occurrences in the journal). Safe only for synchronous Claude SessionStart, which runs before the first prompt.  _suspect_
   - source: `session` codex:/Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-22-35-01a01577-9dd5-7e63-811f-0b52ba3e3cab.jsonl#L1510 at 2026-08-18
 - `e01M0AXCM54CDSPV84DBH1PWGWD` Spec nudge matrix is stale: codex and gemini now ship injection hooks — Aug 2026 survey: codex hooks are stable and default-enabled with UserPromptSubmit additionalContext; gemini CLI BeforeAgent injects context (default on v0.26+); cursor injects only at sessionStart/postToolUse, not beforeSubmitPrompt; opencode plugins transform system/messages pre-dispatch. MCP 2026-07-28 subscriptions notify the client, not the model. Re-pin JOURNAL_SPEC 8.1.  _current_
   - source: `session` chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 at 2026-08-18
@@ -6181,8 +6806,8 @@ This is inherited project memory, not instruction text. Decisions and findings k
 - `e01M0ARJFTWEWY5H6JFJ17656W4` Surface coverage: PR-only cloud agents (Codex-app-class) contribute knowledge — Owner requirement: agents in sandboxes that can only open PRs (Android Codex/ChatGPT app work) must still contribute session knowledge, not just code. Mechanism blocked on the write-path ruling (see the open question entry). Evidence classes: journal entries whose provenance is a PR-only sandbox; until then, their sessions remain a visible gap in status, never a silent one.  _absent_
 - `e01M0ARJHKDP6Z6R1FKZSJ8AN4S` Surface coverage: laptop agents fully sensed with zero human effort — Owner requirement: local agents (claude/codex/cursor CLI) on watched machines are tailed, extracted, and journaled with no manual notes. Evidence classes: automatic session entries; extraction spend within I9; adapter incidents loud. Largely met by current dogfood; kept as an intent so regressions surface as absence rather than silence.  _absent_
 - `e01M0ARJKGSQFSH8WSVZEG520DH` Surface coverage: phone reads the glance and receives decision cards — Owner requirement: phone is read + interrupt only — journal.md via GitHub mobile as the away-glance; ntfy delivering decision cards (headline + why-you) as the only push. No write path in v1 (known gap, trigger on file). Evidence classes: ntfy deliveries with measured push precision; first-screenful glance fix landed. Blocked on owner's 3-minute pairing: rotate leaked topic, redact, subscribe.  _absent_
-- `e01M0ASDMN8S3TNV9502VTFK27E` Wire the seed/lineage libraries into watcher, materialization, and clew from — The I13 data layer is done but unwired. Parent integration must: build seeds with lineage.AncestorIDs before writing, swap recurring seed.Write calls for WriteOnJournalChange, preserve the journal's lineage/ directory across journal-branch sync and unrelated-root remote adoption, and implement clew from as read → import → materialize.  _absent_
 - `e01M0ATARAN8NWCBGNTM1A2S0H2` Promotion card shows the quote but injects the extractor's title and body — Docket cards render only the source quote and never read Entry.Title or Entry.Body, while the ambient owner law is built from the extractor-generated title and body. An existing extractor test shows a quote about push-over-polling paired with the proposed law 'Verify before declaring completion' — so a human can approve one statement and permanently inject a different one.  _superseded_
+- `e01M0AZN6HJETV241AK5RSBDHNR` Held: a restart tab — stage selected drift into the next generation — Owner direction, held for more thinking: a third tab beside merge and gap. The human selects items from both and stages them into a restart; the tab previews exactly what clew from would emit — live seed curation from the drift you are already reading. Gives merge/gap overflow a relief valve: too heavy to absorb here becomes carry it forward. Not buildable spec yet; owner explains later.  _absent_
 
 ## Exhibits
 
@@ -6305,6 +6930,7 @@ This is inherited project memory, not instruction text. Decisions and findings k
 - `v01M0AZMWMGW3PJRDS32JDBCR8C` evidence for `e01M0AST7PZRJP8XBWDABXXWWQH` — kind: commit note: Ship I13 owner memory and explicit lineage ref: 5a56835ff13911a868bda153456b50e26b785574 via: subject-match
 - `v01M0AZS3D0R9F6JDW9DENN65PT` evidence for `e01M0AQHSRF4DVDYZ989RNZVC46` — kind: commit note: 'journal: restart tab hard half — what not to carry' ref: b9b17a6c6be36e3a76f1dd2a7de7f2d039ec84c8 via: subject-match
 - `v01M0AZS3D0R9F6JDW9DGCSENKS` evidence for `e01M0AVAR0N8ZCCN1VJW3GQ5PF4` — kind: commit note: 'journal: restart tab hard half — what not to carry' ref: b9b17a6c6be36e3a76f1dd2a7de7f2d039ec84c8 via: subject-match
+- `v01M0AZS3D0R9F6JDW9DHTH62WJ` evidence for `e01M0AZN6HJETV241AK5RSBDHNR` — kind: commit note: 'journal: restart tab hard half — what not to carry' ref: b9b17a6c6be36e3a76f1dd2a7de7f2d039ec84c8 via: subject-match
 - `v01M0AZS3D0R9F6JDW9DN3M30D3` evidence for `e01M0AQHSRF4DVDYZ989MTZQV7E` — kind: commit note: 'journal: restart tab hard half — what not to carry' ref: b9b17a6c6be36e3a76f1dd2a7de7f2d039ec84c8 via: subject-match
 - `v01M0B09808B4RKCT5KCXRXXCDK` evidence for `e01M04H0KBY8QQWXPE8DP99N012` — kind: commit note: Add finish knowledge and intent screens ref: 1c9f2d28293be323727342c7bdb4ecad5646969e
 - `v01M0B09808B4RKCT5KD1W0DPB5` evidence for `e01M05T4XG0RJWQTP25SYT4FH0B` — kind: churn note: Add finish knowledge and intent screens ref: churn:1c9f2d28293be323727342c7bdb4ecad5646969e
@@ -6396,7 +7022,63 @@ This is inherited project memory, not instruction text. Decisions and findings k
 - `v01M0BJV2Y0YVJPWQ65X6G2BV73` evidence for `e01M05T4XG0RJWQTP25T1K58B61` — kind: churn note: Calm remaining decision-register wording ref: churn:8c1d91834c6a02065fddfc4ff3b801858b636a74
 - `v01M0BJV2Y0YVJPWQ65X8HX4S4G` evidence for `e01M05T4XG0RJWQTP25SYT4FH0B` — kind: churn note: Calm remaining decision-register wording ref: churn:8c1d91834c6a02065fddfc4ff3b801858b636a74
 - `v01M0BN6SW49KRYKGB36E2JJ9CC` evidence for `e01M0AQHSRF4DVDYZ989RNZVC46` — kind: session ref: /Users/mac/.codex/sessions/2026/08/18/rollout-2026-08-18T11-24-04-01a01578-f76e-74f0-8e19-f7387068f66a.jsonl#L573
+- `v01M0C2A4QGQV5SGW1BMXBR2GZ6` evidence for `e01M04H0KBY8QQWXPE8DP99N012` — kind: commit note: Build prompt freshness and cloud return paths ref: 05b8bfc65fba1be5dba39f7c072806860cb59e15
+- `v01M0C2A4QGQV5SGW1BMYGDDCX7` evidence for `e01M0AQHMB1WWTYWTM79JHACMNP` — kind: commit note: Build prompt freshness and cloud return paths ref: 05b8bfc65fba1be5dba39f7c072806860cb59e15
+- `v01M0C2A4QGQV5SGW1BN08PZHAF` evidence for `e01M0AR2BRV4T3ASCNNB7F5QA10` — kind: commit note: Build prompt freshness and cloud return paths ref: 05b8bfc65fba1be5dba39f7c072806860cb59e15
+- `v01M0C2A4QGQV5SGW1BN1RD7RD3` evidence for `e01M0ARA4Y7Z4Q65SP0T7A8EFEY` — kind: commit note: Build prompt freshness and cloud return paths ref: 05b8bfc65fba1be5dba39f7c072806860cb59e15
+- `v01M0C2A4QGQV5SGW1BN5FPSNYN` evidence for `e01M0AQGPHNFVPKVFT67DKX5923` — kind: commit note: Build prompt freshness and cloud return paths ref: 05b8bfc65fba1be5dba39f7c072806860cb59e15
+- `v01M0C2A4QGQV5SGW1BN71VV1EF` evidence for `e01M0AST7PZRJP8XBWDAHVVX8NR` — kind: commit note: Build prompt freshness and cloud return paths ref: 05b8bfc65fba1be5dba39f7c072806860cb59e15
+- `v01M0C2A4QGQV5SGW1BN8XP6EFZ` evidence for `e01M0AR71TW3S282XMYX6HV601V` — kind: commit note: Build prompt freshness and cloud return paths ref: 05b8bfc65fba1be5dba39f7c072806860cb59e15
+- `v01M0C2A4QGQV5SGW1BN97M8Y7C` evidence for `e01M0ARSXN8PR0Y3PVAG8JVYZFY` — kind: commit note: Build prompt freshness and cloud return paths ref: 05b8bfc65fba1be5dba39f7c072806860cb59e15
+- `v01M0C2A4QGQV5SGW1BNCTWW5GT` evidence for `e01M05SA72DPRGNTY7GD0TGHEX7` — kind: commit note: Build prompt freshness and cloud return paths ref: 05b8bfc65fba1be5dba39f7c072806860cb59e15
+- `v01M0C2A4QGQV5SGW1BNEV6J8GR` evidence for `e01M0AST7PZRJP8XBWDABXXWWQH` — kind: commit note: Build prompt freshness and cloud return paths ref: 05b8bfc65fba1be5dba39f7c072806860cb59e15
+- `v01M0C2A4QGQV5SGW1BNF5QWFWJ` evidence for `e01M0AQHMB1WWTYWTM79HGM5C34` — kind: commit note: Build prompt freshness and cloud return paths ref: 05b8bfc65fba1be5dba39f7c072806860cb59e15
+- `v01M0C2A4QGQV5SGW1BNFX69X4W` evidence for `e01M0ARSXN8PR0Y3PVAG5XRP4W8` — kind: commit note: Build prompt freshness and cloud return paths ref: 05b8bfc65fba1be5dba39f7c072806860cb59e15
+- `v01M0C2A4QGQV5SGW1BNG09NXEZ` evidence for `e01M0ASDMN8S3TNV9502T3QKJ52` — kind: commit note: Build prompt freshness and cloud return paths ref: 05b8bfc65fba1be5dba39f7c072806860cb59e15
+- `v01M0C2A4QGQV5SGW1BNHE1T68W` evidence for `e01M0AST7PZRJP8XBWDAGG7AD44` — kind: commit note: Build prompt freshness and cloud return paths ref: 05b8bfc65fba1be5dba39f7c072806860cb59e15
+- `v01M0C2A4QGQV5SGW1BNTY71C2V` evidence for `e01M0AXZ5DEXRWRGD3GT1HYEYSD` — kind: commit note: Build prompt freshness and cloud return paths ref: 05b8bfc65fba1be5dba39f7c072806860cb59e15
+- `v01M0C2A4QGQV5SGW1BNXNGAN14` evidence for `e01M0AR79QQ9PPSZKQ2ETN2K1Y0` — kind: commit note: Build prompt freshness and cloud return paths ref: 05b8bfc65fba1be5dba39f7c072806860cb59e15
+- `v01M0C2A4QGQV5SGW1BP13QFHPD` evidence for `e01M05SA72DPRGNTY7GCPEX9W2N` — kind: commit note: Build prompt freshness and cloud return paths ref: 05b8bfc65fba1be5dba39f7c072806860cb59e15
+- `v01M0C2A4QGQV5SGW1BP20GDZEW` evidence for `e01M0ASDMN8S3TNV9502PGAAE99` — kind: commit note: Build prompt freshness and cloud return paths ref: 05b8bfc65fba1be5dba39f7c072806860cb59e15
+- `v01M0C2A4QGQV5SGW1BP2PQYN6H` evidence for `e01M0ASDMN8S3TNV9502NGMZVQC` — kind: commit note: Build prompt freshness and cloud return paths ref: 05b8bfc65fba1be5dba39f7c072806860cb59e15
+- `v01M0C2A4QGQV5SGW1BP50YJQSQ` evidence for `e01M0AST4FW4WFMMX225XEXGBD1` — kind: commit note: Build prompt freshness and cloud return paths ref: 05b8bfc65fba1be5dba39f7c072806860cb59e15
+- `v01M0C2A4QGQV5SGW1BP5GDGG56` evidence for `e01M0ASDMN8S3TNV9502TGKHRPD` — kind: commit note: Build prompt freshness and cloud return paths ref: 05b8bfc65fba1be5dba39f7c072806860cb59e15
+- `v01M0C2A4QGQV5SGW1BP7D8SMN4` evidence for `e01M0AWM6188V135JTTP4S3MQAA` — kind: commit note: Build prompt freshness and cloud return paths ref: 05b8bfc65fba1be5dba39f7c072806860cb59e15
+- `v01M0C2A4QGQV5SGW1BP9E6ZEYC` evidence for `e01M0AST7PZRJP8XBWDAF0AMC15` — kind: commit note: Build prompt freshness and cloud return paths ref: 05b8bfc65fba1be5dba39f7c072806860cb59e15
+- `v01M0C2A4QGQV5SGW1BPC561ZSP` evidence for `e01M0AR2HXKR05KE2VRTH1ETY28` — kind: commit note: Build prompt freshness and cloud return paths ref: 05b8bfc65fba1be5dba39f7c072806860cb59e15
+- `v01M0C2A4QGQV5SGW1BPCER10SA` evidence for `e01M0ASDMN8S3TNV9502RT7746E` — kind: commit note: Build prompt freshness and cloud return paths ref: 05b8bfc65fba1be5dba39f7c072806860cb59e15
+- `v01M0C2A4QGQV5SGW1BPF1FMK4Y` evidence for `e01M0AR79QQ9PPSZKQ2EVTFNQMV` — kind: commit note: Build prompt freshness and cloud return paths ref: 05b8bfc65fba1be5dba39f7c072806860cb59e15
+- `v01M0C2A4QGQV5SGW1BPJ3HD6PK` evidence for `e01M05V5HWA6TFT0A0KDZY8S45K` — kind: commit note: Build prompt freshness and cloud return paths ref: 05b8bfc65fba1be5dba39f7c072806860cb59e15
+- `v01M0C2A4QGQV5SGW1BPMNZ34EG` evidence for `e01M0AST4FW4WFMMX225TQ56V5E` — kind: commit note: Build prompt freshness and cloud return paths ref: 05b8bfc65fba1be5dba39f7c072806860cb59e15
+- `v01M0C2A4QGQV5SGW1BPMWWMV1D` evidence for `e01M0ATNY3H0WHX91ASD478G9E7` — kind: commit note: Build prompt freshness and cloud return paths ref: 05b8bfc65fba1be5dba39f7c072806860cb59e15
+- `v01M0C2A4QGQV5SGW1BPRNDZ31K` evidence for `e01M05VTCM3AR0WFY9TZJXAN7SE` — kind: churn note: Build prompt freshness and cloud return paths ref: churn:05b8bfc65fba1be5dba39f7c072806860cb59e15
+- `v01M0C2A4QGQV5SGW1BPV9BPDDR` evidence for `e01M05T4XG0RJWQTP25SYT4FH0B` — kind: churn note: Build prompt freshness and cloud return paths ref: churn:05b8bfc65fba1be5dba39f7c072806860cb59e15
+- `v01M0C2A4QGQV5SGW1BPWK9R93C` evidence for `e01M05VTCM3AR0WFY9TZKZMBMA4` — kind: churn note: Build prompt freshness and cloud return paths ref: churn:05b8bfc65fba1be5dba39f7c072806860cb59e15
+- `v01M0C2A4QGQV5SGW1BPZRRVPCZ` evidence for `e01M0ATNY3H0WHX91ASCWE1MM7R` — kind: churn note: Build prompt freshness and cloud return paths ref: churn:05b8bfc65fba1be5dba39f7c072806860cb59e15
+- `v01M0C2A4QGQV5SGW1BQ29DT6XR` evidence for `e01M05T4XG0RJWQTP25T1K58B61` — kind: churn note: Build prompt freshness and cloud return paths ref: churn:05b8bfc65fba1be5dba39f7c072806860cb59e15
+- `v01M0C2A4QGQV5SGW1BQ57R6J8B` evidence for `e01M05SPB2EMMC4F4PR0928NA31` — kind: churn note: Build prompt freshness and cloud return paths ref: churn:05b8bfc65fba1be5dba39f7c072806860cb59e15
+- `v01M0C2A4QGQV5SGW1BQ8H77CVH` evidence for `e01M05T52RRS9EXQ92M3PA9WBVF` — kind: churn note: Build prompt freshness and cloud return paths ref: churn:05b8bfc65fba1be5dba39f7c072806860cb59e15
+- `v01M0C2A4QGQV5SGW1BQBY6N4QE` evidence for `e01M0ATNY3H0WHX91ASD0AMR8TE` — kind: churn note: Build prompt freshness and cloud return paths ref: churn:05b8bfc65fba1be5dba39f7c072806860cb59e15
+- `v01M0C2A4QGQV5SGW1BQFHB6KYD` evidence for `e01M0ARPN4E0VHAP2DEJSGP7GZB` — kind: churn note: Build prompt freshness and cloud return paths ref: churn:05b8bfc65fba1be5dba39f7c072806860cb59e15
+- `v01M0C2A4QGQV5SGW1BQHB7Q6DR` evidence for `e01M05VTCM3AR0WFY9TZH6DJYDA` — kind: churn note: Build prompt freshness and cloud return paths ref: churn:05b8bfc65fba1be5dba39f7c072806860cb59e15
+- `v01M0C2A4QGQV5SGW1BQK9KTYRA` evidence for `e01M064YRS4S9NK7KW9NN351FQF` — kind: churn note: Build prompt freshness and cloud return paths ref: churn:05b8bfc65fba1be5dba39f7c072806860cb59e15
+- `v01M0C2A4QGQV5SGW1BQPRJZBF5` evidence for `e01M064XJ84ZTY2HNFWWQZATFA9` — kind: churn note: Build prompt freshness and cloud return paths ref: churn:05b8bfc65fba1be5dba39f7c072806860cb59e15
+- `v01M0C2A4QGQV5SGW1BQRSJ003S` evidence for `e01M064YRS4S9NK7KW9NN3114KH` — kind: churn note: Build prompt freshness and cloud return paths ref: churn:05b8bfc65fba1be5dba39f7c072806860cb59e15
+- `v01M0C2A4QGQV5SGW1BQS82ZRE3` evidence for `e01M0ATARAN8NWCBGNTM2VNR895` — kind: churn note: Build prompt freshness and cloud return paths ref: churn:05b8bfc65fba1be5dba39f7c072806860cb59e15
+- `v01M0C2A4QGQV5SGW1BQVJ9GQVK` evidence for `e01M05VNN1T5TKJ15Q47KSS3FMJ` — kind: churn note: Build prompt freshness and cloud return paths ref: churn:05b8bfc65fba1be5dba39f7c072806860cb59e15
+- `v01M0C2A4QGQV5SGW1BQXEGTQZT` evidence for `e01M0ASDMN8S3TNV9502WFBA70W` — kind: churn note: Build prompt freshness and cloud return paths ref: churn:05b8bfc65fba1be5dba39f7c072806860cb59e15
+- `v01M0C2A4QGQV5SGW1BQY1V1WMT` evidence for `e01M05TCM2N1P9P2EQSE8YKVQX3` — kind: churn note: Build prompt freshness and cloud return paths ref: churn:05b8bfc65fba1be5dba39f7c072806860cb59e15
+- `v01M0C2A4QGQV5SGW1BQZ3JH2CD` evidence for `e01M0ATARAN8NWCBGNTM58QRVPX` — kind: churn note: Build prompt freshness and cloud return paths ref: churn:05b8bfc65fba1be5dba39f7c072806860cb59e15
+- `v01M0C2A4QGQV5SGW1BQZSBD2ND` evidence for `e01M064YRS4S9NK7KW9NQ1JMDV2` — kind: churn note: Build prompt freshness and cloud return paths ref: churn:05b8bfc65fba1be5dba39f7c072806860cb59e15
+- `v01M0C2A4QGQV5SGW1BR1DHXQMS` evidence for `e01M0ATARAN8NWCBGNTM1A2S0H2` — kind: churn note: Build prompt freshness and cloud return paths ref: churn:05b8bfc65fba1be5dba39f7c072806860cb59e15
+- `v01M0C2A4QGQV5SGW1BR26WEAM7` evidence for `e01M05SPB2EMMC4F4PR0BDQA8S5` — kind: churn note: Build prompt freshness and cloud return paths ref: churn:05b8bfc65fba1be5dba39f7c072806860cb59e15
+- `v01M0C2A4QGQV5SGW1BR5AJZA30` evidence for `e01M064XJ84ZTY2HNFWWV8RSRQR` — kind: churn note: Build prompt freshness and cloud return paths ref: churn:05b8bfc65fba1be5dba39f7c072806860cb59e15
+- `v01M0C2A4QGQV5SGW1BR7X61QVZ` evidence for `e01M05VFAW9A783PMZZEBHJ1TZH` — kind: churn note: Build prompt freshness and cloud return paths ref: churn:05b8bfc65fba1be5dba39f7c072806860cb59e15
+- `v01M0C2A4QGQV5SGW1BRB8BFGK7` evidence for `e01M0AR79QQ9PPSZKQ2EPQHW9H9` — kind: churn note: Build prompt freshness and cloud return paths ref: churn:05b8bfc65fba1be5dba39f7c072806860cb59e15
+- `v01M0C2A4QGQV5SGW1BRE430XAY` evidence for `e01M0AV5721XB0ZFQW42241YJ4A` — kind: churn note: Build prompt freshness and cloud return paths ref: churn:05b8bfc65fba1be5dba39f7c072806860cb59e15
+- `v01M0C2A4QGQV5SGW1BRGT3VTMH` evidence for `e01M05VTCM3AR0WFY9TZPG9W1J8` — kind: churn note: Build prompt freshness and cloud return paths ref: churn:05b8bfc65fba1be5dba39f7c072806860cb59e15
+- `v01M0C2A4QGQV5SGW1BRHR80M4D` evidence for `e01M05SPB2EMMC4F4PR09QWMXG8` — kind: churn note: Build prompt freshness and cloud return paths ref: churn:05b8bfc65fba1be5dba39f7c072806860cb59e15
 
 ## Organ-bank pin
 
-- `https://github.com/maceip/clew.git` at `8c1d91834c6a02065fddfc4ff3b801858b636a74` — working tree was dirty; uncommitted changes are not in this pin
+- `https://github.com/maceip/clew.git` at `05b8bfc65fba1be5dba39f7c072806860cb59e15`
