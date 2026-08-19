@@ -1,0 +1,17 @@
+id: e01M0C17FED9YSHX94BPF39M039
+type: finding
+title: 'One root cause: unbuilt contact-point wiring made every failure tonight'
+body: >-
+  Codex finishing stale, claude enforcing a superseded rule, the owner relaying sync commands at 3am — one missing part: nothing hands an agent fresh decisions at the next human message. With the wiring built, build-all would have arrived carrying the inversion ruling; nothing to refuse. Not many failures — one unbuilt part, many costumes.
+quote: 'why did i have to tell it to do that? that seems like another failure of our system, as human users should never have to tell it that'
+utterance_by: user
+source:
+    kind: session
+    ref: chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18
+    agent: cursor-cloud-agent
+    surface: cursor-cloud-vm
+    at: 2026-08-19T03:29:00Z
+confidence: 0.95
+tags: []
+env: null
+affects: []
