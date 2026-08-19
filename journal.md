@@ -1,23 +1,23 @@
 # Journal
 
-_generated 2026-08-19 03:57 UTC · 161 live entries (78 decisions · 51 findings · 9 questions · 23 intents) · 183 total in history_
+_generated 2026-08-19 03:58 UTC · 161 live entries (78 decisions · 51 findings · 9 questions · 23 intents) · 183 total in history_
 
 ## DECIDED
 
-- `e01M0C1HZ8SRKXYB9ZDGE6630NK` Tokens are not scarce; owner attention is the only scarce resource — 20m · active
-- `e01M0C1G75T47X377Z0KAEBCQJZ` A direct owner order is never refused; envelopes govern only autonomy — 22m · active
-- `e01M0C1820NFREYTAG5T6832442` Contact-point wiring jumps to the top of the build queue, above everything — 26m · active
-- `e01M0C0S7EP6Q5421VRRPJPC60M` Inversion: auto-absorb knowledge, auto-build gaps; humans see exceptions — 35m · active
+- `e01M0C1HZ8SRKXYB9ZDGE6630NK` Tokens are not scarce; owner attention is the only scarce resource — 21m · active
+- `e01M0C1G75T47X377Z0KAEBCQJZ` A direct owner order is never refused; envelopes govern only autonomy — 23m · active
+- `e01M0C1820NFREYTAG5T6832442` Contact-point wiring jumps to the top of the build queue, above everything — 27m · active
+- `e01M0C0S7EP6Q5421VRRPJPC60M` Inversion: auto-absorb knowledge, auto-build gaps; humans see exceptions — 36m · active
 - `e01M0BFY164YEV6DAEFVGGH18VT` The limiter gates distillation timing, never sensing; failure is lag — 5h · active
 - `e01M0BFRYY2WVHJZ3R3TDV4CFTS` The wording sweep covers every fear-attached word; docket stays by name — 5h · active
 - `e01M0BFRYY1EW9CFMJNDJ5QH3M2` Evidence settles merge lines; apply is never asked for finished work — 5h · active
 
 ## LEARNED
 
-- `e01M0C1WKP3YKQVWY9PRG6S2H1H` Owner verdict: as built, the five promises fail; restart with seed advised — 16m · current
-- `e01M0C1G75V4DREPKA3YGP5HH89` Every gate must cite owner words; the designer imported caution three times — 22m · current
-- `e01M0C17FED9YSHX94BPF39M039` One root cause: unbuilt contact-point wiring made every failure tonight — 28m · current
-- `e01M0C0S7EQJYH00K7KGY9ZWV2S` The 88 was a symptom: catch-up burst, ambient misclassified, settling unbuilt — 35m · current
+- `e01M0C1WKP3YKQVWY9PRG6S2H1H` Owner verdict: as built, the five promises fail; restart with seed advised — 17m · current
+- `e01M0C1G75V4DREPKA3YGP5HH89` Every gate must cite owner words; the designer imported caution three times — 23m · current
+- `e01M0C17FED9YSHX94BPF39M039` One root cause: unbuilt contact-point wiring made every failure tonight — 29m · current
+- `e01M0C0S7EQJYH00K7KGY9ZWV2S` The 88 was a symptom: catch-up burst, ambient misclassified, settling unbuilt — 36m · current
 - `e01M0AYE066QK08QK8MTPX4XNFX` Codex finished I13 stale: tree uncommitted, law wording on human surfaces — 10h · current
 - `e01M0AXCM55N0QM9RCRYF48TQ6C` Universal injection point: every model API call rebuilds the mind — 10h · current
 - `e01M0AXCM54CDSPV84DBH1PWGWD` Spec nudge matrix is stale: codex and gemini now ship injection hooks — 10h · current
@@ -26,11 +26,11 @@ _generated 2026-08-19 03:57 UTC · 161 live entries (78 decisions · 51 findings
 
 - `e01M0BER1Q5W312NDD7GZ283RCM` Cap the two screens at 7+7; overflow policy is an open question — 5h · open ★
 - `e01M0AY97K0AZHNJW0D87KTD7YH` Two-grade telling: block dependent tasks on unresolved drift? — 10h · open ★
-- `e01M0ASQGM2P07Z36KVZX6P8EH4` Adopt the complexity law: additions must be a verb, label, rendering, or config — 11h · open ★
-- `e01M0ASQGKZ9ZY4XRF6K7KRCT75` Adopt clew witness <transcript> as the cloud-session gap fix? — 11h · open ★
-- `e01M0ASQGKX2F9THW496N79Z83F` Approve selfwatch + journal add + owner-laws relocation to a git-reachable repo — 11h · open ★
-- `e01M0ASQGKVW3RPZ2M51J3WQ9G9` Approve cloud env recipes: install clew + wire MCP in cursor/codex/claude envs — 11h · open ★
-- `e01M0ASQGKRQBVSGHP3RCYNWYEG` Approve extractor over-firing tune: rollup >32KB and docket hit 8 cards — 11h · open ★
+- `e01M0ASQGM2P07Z36KVZX6P8EH4` Adopt the complexity law: additions must be a verb, label, rendering, or config — 12h · open ★
+- `e01M0ASQGKZ9ZY4XRF6K7KRCT75` Adopt clew witness <transcript> as the cloud-session gap fix? — 12h · open ★
+- `e01M0ASQGKX2F9THW496N79Z83F` Approve selfwatch + journal add + owner-laws relocation to a git-reachable repo — 12h · open ★
+- `e01M0ASQGKVW3RPZ2M51J3WQ9G9` Approve cloud env recipes: install clew + wire MCP in cursor/codex/claude envs — 12h · open ★
+- `e01M0ASQGKRQBVSGHP3RCYNWYEG` Approve extractor over-firing tune: rollup >32KB and docket hit 8 cards — 12h · open ★
 
 ## ALERTS
 
@@ -46,7 +46,7 @@ _generated 2026-08-19 03:57 UTC · 161 live entries (78 decisions · 51 findings
 
 | Intent | Age | Reality | State |
 |---|---:|---:|---|
-| `e01M0C1B36P7RCCMR6GYK3X97T7` First freshness slice: prompt-submit delta injection for claude and codex | 24m | 1 evidence | in_flight |
+| `e01M0C1B36P7RCCMR6GYK3X97T7` First freshness slice: prompt-submit delta injection for claude and codex | 25m | 1 evidence | in_flight |
 | `e01M0AZN6HJETV241AK5RSBDHNR` Held: a restart tab — stage selected drift into the next generation | 10h | 0 evidence | **ABSENT** |
 | `e01M0AXCM561K3C5QXAVGVGT46T` Build the freshness ladder: one delta payload, five delivery layers | 10h | 1 evidence | in_flight |
 | `e01M0AST7PZRJP8XBWDAHWK6QNV` Build invariant I13: ambient seed, birth detection, owner laws, clew from | 11h | 3 evidence | in_flight |
