@@ -1,6 +1,6 @@
 # Journal
 
-_generated 2026-08-19 02:09 UTC · 152 live entries (74 decisions · 47 findings · 9 questions · 22 intents) · 174 total in history_
+_generated 2026-08-19 02:10 UTC · 152 live entries (74 decisions · 47 findings · 9 questions · 22 intents) · 174 total in history_
 
 ## DECIDED
 
@@ -9,7 +9,7 @@ _generated 2026-08-19 02:09 UTC · 152 live entries (74 decisions · 47 findings
 - `e01M0BFRYY1EW9CFMJNDJ5QH3M2` Evidence settles merge lines; apply is never asked for finished work — 3h · active
 - `e01M0BF0WMX264RA9D0VTM9R24K` Entry ids are machine plumbing: never shown to or relayed through humans — 3h · active
 - `e01M0BEYP65CE70G0VVSX3PV01B` Finished means shared: work ends pushed or PR'd; local-only is an alarm — 3h · active
-- `e01M0BETRRAZ54063PRJK1JSQS7` The finish message is a surface: what exists, where it lives, my next move — 3h · active
+- `e01M0BETRRAZ54063PRJK1JSQS7` The finish message is a surface: what exists, where it lives, my next move — 4h · active
 - `e01M0BER1Q412DRFQYESPCN0Q30` Lines are plain speech, no ids; near-duplicates fold; held items rest — 4h · active
 
 ## LEARNED
