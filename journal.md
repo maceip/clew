@@ -1,6 +1,6 @@
 # Journal
 
-_generated 2026-08-19 00:58 UTC · 152 live entries (74 decisions · 47 findings · 9 questions · 22 intents) · 174 total in history_
+_generated 2026-08-19 00:59 UTC · 152 live entries (74 decisions · 47 findings · 9 questions · 22 intents) · 174 total in history_
 
 ## DECIDED
 
@@ -47,7 +47,7 @@ _generated 2026-08-19 00:58 UTC · 152 live entries (74 decisions · 47 findings
 | Intent | Age | Reality | State |
 |---|---:|---:|---|
 | `e01M0AZN6HJETV241AK5RSBDHNR` Held: a restart tab — stage selected drift into the next generation | 7h | 0 evidence | proposed |
-| `e01M0AXCM561K3C5QXAVGVGT46T` Build the freshness ladder: one delta payload, five delivery layers | 7h | 0 evidence | proposed |
+| `e01M0AXCM561K3C5QXAVGVGT46T` Build the freshness ladder: one delta payload, five delivery layers | 8h | 0 evidence | proposed |
 | `e01M0AST7PZRJP8XBWDAHWK6QNV` Build invariant I13: ambient seed, birth detection, owner laws, clew from | 8h | 1 evidence | in_flight |
 | `e01M0ASDMN8S3TNV9502VTFK27E` Wire the seed/lineage libraries into watcher, materialization, and clew from | 9h | 0 evidence | **ABSENT** |
 | `e01M0ARJKGSQFSH8WSVZEG520DH` Surface coverage: phone reads the glance and receives decision cards | 9h | 0 evidence | **ABSENT** |
