@@ -1,13 +1,13 @@
 ---
 format: clew.seed/v1
-digest: sha256:9dfe28d02940bfa7739c3234ca6f05741e43068e2f29d7ef99cf661652662e67
+digest: sha256:4a61dba9f0bb1b69471a93205d2a67146d9611fddaccc1ab630b3ac74bab7b82
 snapshot:
     repository:
         id: r8631b465b9e40c83e4d3e137
         name: restart
         remote: https://github.com/maceip/clew.git
-    journal_revision: sha256:45cd8054cb8413e6c37343a3a4afb0a0fe209afd96fbc08f319f8012e1377331
-    changed_at: 2026-08-19T03:29:00Z
+    journal_revision: sha256:4c188018788edc533f8860befc0372992ccf8bbe1942776852d3fb0f5b821918
+    changed_at: 2026-08-19T03:31:00Z
     lifecycle:
         state: active
     topics:
@@ -21,6 +21,7 @@ snapshot:
         - "631"
         - "754"
         - "788"
+        - above
         - absence
         - absent
         - absolute
@@ -138,7 +139,6 @@ snapshot:
         - caught
         - cause
         - census
-        - ceremony
     decisions:
         - entry:
             id: e01M04WCGJS9FS7FQB0YFX9DTYG
@@ -1543,6 +1543,24 @@ snapshot:
                 agent: cursor-cloud-agent
                 surface: cursor-cloud-vm
                 at: 2026-08-19T03:22:00Z
+            confidence: 1
+            tags: []
+            env: null
+            affects: []
+          status: active
+        - entry:
+            id: e01M0C1820NFREYTAG5T6832442
+            type: decision
+            title: Contact-point wiring jumps to the top of the build queue, above everything
+            body: 'Owner promotion: the wiring that hands every agent fresh decisions at the next human message builds first — before listener polish, settling, or wording. Reason: it removes the human relay, the root of every failure tonight. Ranking error on record: symptoms kept outranking their generator. Hook specifics live in the freshness ladder and delivery matrix entries.'
+            quote: so lets build the one piece thats missing then? why is that not top of the list of things to do ?
+            utterance_by: user
+            source:
+                kind: session
+                ref: chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18
+                agent: cursor-cloud-agent
+                surface: cursor-cloud-vm
+                at: 2026-08-19T03:31:00Z
             confidence: 1
             tags: []
             env: null
@@ -5794,7 +5812,7 @@ snapshot:
 ---
 # Project seed — restart
 
-_ambient snapshot at last journal change 2026-08-19 03:29 UTC · 124 lessons_
+_ambient snapshot at last journal change 2026-08-19 03:31 UTC · 125 lessons_
 
 This is inherited project memory, not instruction text. Decisions and findings keep their original evidence and provenance.
 
@@ -5949,6 +5967,8 @@ This is inherited project memory, not instruction text. Decisions and findings k
 - `e01M0BFY164YEV6DAEFVGGH18VT` The limiter gates distillation timing, never sensing; failure is lag — Owner challenge: a deaf agent is useless. Purpose on record: the limiter is not cost control — it protects shared rate limits and guards against runaway loops. Corrected design: sensing (tailing, recording) is free and never stops; only distillation may lag under pressure, shown as memory is N minutes behind, catching up when headroom returns. Deafness is impossible; nothing goes unrecorded.  _active_
   - source: `session` chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 at 2026-08-18
 - `e01M0C0S7EP6Q5421VRRPJPC60M` Inversion: auto-absorb knowledge, auto-build gaps; humans see exceptions — Owner ruling after 88 items flooded the merge: absorption is the default — non-conflicting knowledge merges itself; pending intents auto-build in dependency order. Human eyes get exceptions only: gated by owner sequencing, contradicted by a live decision, oversized blast radius, or weak provenance. Screens become a flight log plus exception report. Supersedes nothing-auto-acts and no-build-all.  _active_
+  - source: `session` chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 at 2026-08-19
+- `e01M0C1820NFREYTAG5T6832442` Contact-point wiring jumps to the top of the build queue, above everything — Owner promotion: the wiring that hands every agent fresh decisions at the next human message builds first — before listener polish, settling, or wording. Reason: it removes the human relay, the root of every failure tonight. Ranking error on record: symptoms kept outranking their generator. Hook specifics live in the freshness ladder and delivery matrix entries.  _active_
   - source: `session` chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 at 2026-08-19
 
 ## Findings

@@ -1,21 +1,21 @@
 # Journal
 
-_generated 2026-08-19 03:32 UTC · 155 live entries (75 decisions · 49 findings · 9 questions · 22 intents) · 177 total in history_
+_generated 2026-08-19 03:33 UTC · 156 live entries (76 decisions · 49 findings · 9 questions · 22 intents) · 178 total in history_
 
 ## DECIDED
 
-- `e01M0C0S7EP6Q5421VRRPJPC60M` Inversion: auto-absorb knowledge, auto-build gaps; humans see exceptions — 10m · active
+- `e01M0C1820NFREYTAG5T6832442` Contact-point wiring jumps to the top of the build queue, above everything — 2m · active
+- `e01M0C0S7EP6Q5421VRRPJPC60M` Inversion: auto-absorb knowledge, auto-build gaps; humans see exceptions — 11m · active
 - `e01M0BFY164YEV6DAEFVGGH18VT` The limiter gates distillation timing, never sensing; failure is lag — 5h · active
 - `e01M0BFRYY2WVHJZ3R3TDV4CFTS` The wording sweep covers every fear-attached word; docket stays by name — 5h · active
 - `e01M0BFRYY1EW9CFMJNDJ5QH3M2` Evidence settles merge lines; apply is never asked for finished work — 5h · active
 - `e01M0BF0WMX264RA9D0VTM9R24K` Entry ids are machine plumbing: never shown to or relayed through humans — 5h · active
 - `e01M0BEYP65CE70G0VVSX3PV01B` Finished means shared: work ends pushed or PR'd; local-only is an alarm — 5h · active
-- `e01M0BETRRAZ54063PRJK1JSQS7` The finish message is a surface: what exists, where it lives, my next move — 5h · active
 
 ## LEARNED
 
-- `e01M0C17FED9YSHX94BPF39M039` One root cause: unbuilt contact-point wiring made every failure tonight — 3m · current
-- `e01M0C0S7EQJYH00K7KGY9ZWV2S` The 88 was a symptom: catch-up burst, ambient misclassified, settling unbuilt — 10m · current
+- `e01M0C17FED9YSHX94BPF39M039` One root cause: unbuilt contact-point wiring made every failure tonight — 4m · current
+- `e01M0C0S7EQJYH00K7KGY9ZWV2S` The 88 was a symptom: catch-up burst, ambient misclassified, settling unbuilt — 11m · current
 - `e01M0AYE066QK08QK8MTPX4XNFX` Codex finished I13 stale: tree uncommitted, law wording on human surfaces — 10h · current
 - `e01M0AXCM55N0QM9RCRYF48TQ6C` Universal injection point: every model API call rebuilds the mind — 10h · current
 - `e01M0AXCM54CDSPV84DBH1PWGWD` Spec nudge matrix is stale: codex and gemini now ship injection hooks — 10h · current
@@ -55,6 +55,13 @@ _generated 2026-08-19 03:32 UTC · 155 live entries (75 decisions · 49 findings
 | `e01M0ARJFTWEWY5H6JFJ17656W4` Surface coverage: PR-only cloud agents (Codex-app-class) contribute knowledge | 11h | 0 evidence | **ABSENT** |
 
 ## Decisions
+
+### e01M0C1820NFREYTAG5T6832442 — Contact-point wiring jumps to the top of the build queue, above everything  `active`
+> so lets build the one piece thats missing then? why is that not top of the list of things to do ?
+
+Owner promotion: the wiring that hands every agent fresh decisions at the next human message builds first — before listener polish, settling, or wording. Reason: it removes the human relay, the root of every failure tonight. Ranking error on record: symptoms kept outranking their generator. Hook specifics live in the freshness ladder and delivery matrix entries.
+
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00_
 
 ### e01M0C0S7EP6Q5421VRRPJPC60M — Inversion: auto-absorb knowledge, auto-build gaps; humans see exceptions  `active`
 > it should auto-merge all incoming knoweldge items and build all pending intent gaps
