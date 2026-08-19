@@ -1,0 +1,17 @@
+id: e01M0C1HZ8SRKXYB9ZDGE6630NK
+type: decision
+title: 'Tokens are not scarce; owner attention is the only scarce resource'
+body: >-
+  Owner has never said frugal; three opposite statements are on record. Standing purge: no rule, meter, ceiling, floor, or pause may exist to conserve spend — the 2% ratio, spend meters, and ceiling framing all die. The only limiter that survives is the anti-runaway circuit breaker, reframed as loop detection, never budget. Attention caps stay: they conserve the owner, which the owner authorized.
+quote: 'stop smuggling in frugality. when have i ever used the word frugal ONCE in any of my prompts? in fact ive said the opposite at least 3 times'
+utterance_by: user
+source:
+    kind: session
+    ref: chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18
+    agent: cursor-cloud-agent
+    surface: cursor-cloud-vm
+    at: 2026-08-19T03:37:00Z
+confidence: 1
+tags: []
+env: null
+affects: []
