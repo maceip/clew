@@ -105,6 +105,19 @@ func cmdGap(args []string) error {
 	if len(args) == 0 {
 		return checkin.Render(os.Stdout, view)
 	}
+	if (len(args) == 2 && args[0] == "build" && args[1] == "all") || (len(args) == 1 && args[0] == "build-all") {
+		if !view.BuildAll {
+			return fmt.Errorf("build all is not active for this journal")
+		}
+		if len(view.Items) == 0 {
+			return fmt.Errorf("everything here is already real")
+		}
+		var entryIDs []string
+		for _, item := range view.Items {
+			entryIDs = append(entryIDs, checkin.EntryIDs(item)...)
+		}
+		return checkin.RenderAgentHandoff(os.Stdout, "build", entryIDs)
+	}
 	if len(args) < 2 {
 		return fmt.Errorf("say build, explain, or retire, then name the change")
 	}

@@ -82,6 +82,47 @@ func TestIntentGapIncludesHookWiringAndLiveSpendFailureWithoutBuildAll(t *testin
 	}
 }
 
+func TestInversionAutoAbsorbsKnowledgeAndEnablesGapBuildAll(t *testing.T) {
+	base := time.Date(2026, 8, 18, 18, 0, 0, 0, time.UTC)
+	inversion := testEntry(ids.NewEntry(base), model.Decision, "Inversion: auto-absorb knowledge, auto-build gaps; humans see exceptions", base)
+	inversion.Body = "Non-conflicting knowledge merges itself; pending intents auto-build in dependency order."
+	ordinary := testEntry(ids.NewEntry(base.Add(time.Minute)), model.Finding, "The listener is healthy", base.Add(time.Minute))
+	intent := testEntry(ids.NewEntry(base.Add(2*time.Minute)), model.Intent, "Build the next contact point", base.Add(2*time.Minute))
+	conflictA := testEntry(ids.NewEntry(base.Add(3*time.Minute)), model.Decision, "Use the blue route", base.Add(3*time.Minute))
+	conflictA.Tags = []string{"route/**"}
+	conflictB := testEntry(ids.NewEntry(base.Add(4*time.Minute)), model.Decision, "Use the green route", base.Add(4*time.Minute))
+	conflictB.Tags = []string{"route/**"}
+	j := &journal.Journal{Entries: map[string]*model.Entry{
+		inversion.ID: inversion, ordinary.ID: ordinary, intent.ID: intent,
+		conflictA.ID: conflictA, conflictB.ID: conflictB,
+	}}
+
+	merge := BuildMerge(j, nil)
+	if len(merge.Settled) != 2 || len(merge.Items) != 2 {
+		t.Fatalf("inverted merge = settled %#v actionable %#v", merge.Settled, merge.Items)
+	}
+	for _, item := range append(append([]Item(nil), merge.Settled...), merge.Items...) {
+		for _, id := range EntryIDs(item) {
+			if id == intent.ID {
+				t.Fatalf("intent leaked into inverted knowledge merge: %#v", merge)
+			}
+		}
+	}
+
+	gap := BuildGap(j, nil)
+	if !gap.BuildAll || len(gap.Items) != 1 || EntryIDs(gap.Items[0])[0] != intent.ID {
+		t.Fatalf("inverted gap = %#v", gap)
+	}
+	var out bytes.Buffer
+	gap.Repo = "restart"
+	if err := Render(&out, gap); err != nil {
+		t.Fatal(err)
+	}
+	if got := out.String(); !strings.Contains(got, "build all\n") {
+		t.Fatalf("inverted gap omitted build all:\n%s", got)
+	}
+}
+
 func TestEmptyAndBrokenAreNeverTheSameScreen(t *testing.T) {
 	for _, tc := range []struct {
 		name   string

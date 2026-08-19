@@ -38,6 +38,7 @@ type View struct {
 	Repo      string
 	Items     []Item
 	Settled   []Item
+	BuildAll  bool
 	Deferred  int
 	Issues    int // source records that did not pass a clean read
 	Repairs   []string
@@ -55,6 +56,7 @@ func BuildMerge(j *journal.Journal, handled map[string]string) View {
 		return view
 	}
 	computed := journal.Compute(j, latestTime(j))
+	inverted := inversionActive(j, computed)
 	var items []Item
 	for id, entry := range j.Entries {
 		if heldForOwner(entry) {
@@ -69,11 +71,11 @@ func BuildMerge(j *journal.Journal, handled map[string]string) View {
 		case "settled":
 			continue
 		}
-		if entry.Type == model.Question || !mergeLive(computed[id]) {
+		if entry.Type == model.Question || (inverted && entry.Type == model.Intent) || !mergeLive(computed[id]) {
 			continue
 		}
 		item := Item{ID: id, IDs: []string{id}, Line: CalmLine(entry), Entry: entry}
-		if verifiedWork(j, entry) {
+		if verifiedWork(j, entry) || (inverted && mergeAutoAbsorbs(entry, computed[id])) {
 			view.Settled = appendFolded(view.Settled, item)
 			continue
 		}
@@ -135,7 +137,8 @@ func verifiedWork(j *journal.Journal, entry *model.Entry) bool {
 
 // BuildGap returns intended work with no evidence in reality. An active
 // failure may also prove that a newer decision is not real yet; the current
-// budget failure is the first such case. There is intentionally no build-all.
+// budget failure is the first such case. The inversion ruling enables one
+// direct build-all handoff while retaining the per-line verbs.
 func BuildGap(j *journal.Journal, alerts []state.Alert) View {
 	view := View{Screen: IntentGap, Issues: issueCount(j)}
 	if j == nil {
@@ -143,6 +146,7 @@ func BuildGap(j *journal.Journal, alerts []state.Alert) View {
 		return view
 	}
 	computed := journal.Compute(j, latestTime(j))
+	view.BuildAll = inversionActive(j, computed)
 	var items []Item
 	for id, entry := range j.Entries {
 		if heldForOwner(entry) {
@@ -312,6 +316,34 @@ func mergeLive(c *journal.Computed) bool {
 	}
 }
 
+// inversionActive keeps old journals and imported snapshots on their original
+// interaction until the owner ruling is actually present and live.
+func inversionActive(j *journal.Journal, computed map[string]*journal.Computed) bool {
+	if j == nil {
+		return false
+	}
+	for id, entry := range j.Entries {
+		if entry == nil || entry.Type != model.Decision || !mergeLive(computed[id]) {
+			continue
+		}
+		text := strings.ToLower(entry.Title + " " + entry.Body)
+		if strings.Contains(text, "auto-absorb knowledge") && strings.Contains(text, "auto-build") {
+			return true
+		}
+	}
+	return false
+}
+
+func mergeAutoAbsorbs(entry *model.Entry, computed *journal.Computed) bool {
+	if entry == nil || computed == nil {
+		return false
+	}
+	if computed.Status == journal.StPossibleContradiction || computed.Status == journal.StContradicted {
+		return false
+	}
+	return entry.Type == model.Decision || entry.Type == model.Finding
+}
+
 func issueCount(j *journal.Journal) int {
 	if j == nil {
 		return 0
@@ -462,6 +494,8 @@ func Render(w io.Writer, view View) error {
 			fmt.Fprintf(&b, " · %d deferred", view.Deferred)
 		}
 		b.WriteByte('\n')
+	} else if view.BuildAll {
+		b.WriteString("build all\n")
 	}
 	_, err := io.WriteString(w, b.String())
 	return err
