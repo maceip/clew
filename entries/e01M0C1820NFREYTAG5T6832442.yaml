@@ -1,0 +1,17 @@
+id: e01M0C1820NFREYTAG5T6832442
+type: decision
+title: 'Contact-point wiring jumps to the top of the build queue, above everything'
+body: >-
+  Owner promotion: the wiring that hands every agent fresh decisions at the next human message builds first — before listener polish, settling, or wording. Reason: it removes the human relay, the root of every failure tonight. Ranking error on record: symptoms kept outranking their generator. Hook specifics live in the freshness ladder and delivery matrix entries.
+quote: 'so lets build the one piece thats missing then? why is that not top of the list of things to do ?'
+utterance_by: user
+source:
+    kind: session
+    ref: chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18
+    agent: cursor-cloud-agent
+    surface: cursor-cloud-vm
+    at: 2026-08-19T03:31:00Z
+confidence: 1
+tags: []
+env: null
+affects: []
