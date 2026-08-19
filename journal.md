@@ -50,7 +50,7 @@ _generated 2026-08-19 03:56 UTC · 161 live entries (78 decisions · 51 findings
 | `e01M0AZN6HJETV241AK5RSBDHNR` Held: a restart tab — stage selected drift into the next generation | 10h | 0 evidence | **ABSENT** |
 | `e01M0AXCM561K3C5QXAVGVGT46T` Build the freshness ladder: one delta payload, five delivery layers | 10h | 1 evidence | in_flight |
 | `e01M0AST7PZRJP8XBWDAHWK6QNV` Build invariant I13: ambient seed, birth detection, owner laws, clew from | 11h | 2 evidence | in_flight |
-| `e01M0ASDMN8S3TNV9502VTFK27E` Wire the seed/lineage libraries into watcher, materialization, and clew from | 11h | 1 evidence | in_flight |
+| `e01M0ASDMN8S3TNV9502VTFK27E` Wire the seed/lineage libraries into watcher, materialization, and clew from | 12h | 1 evidence | in_flight |
 | `e01M0ARJKGSQFSH8WSVZEG520DH` Surface coverage: phone reads the glance and receives decision cards | 12h | 0 evidence | **ABSENT** |
 | `e01M0ARJHKDP6Z6R1FKZSJ8AN4S` Surface coverage: laptop agents fully sensed with zero human effort | 12h | 0 evidence | **ABSENT** |
 
