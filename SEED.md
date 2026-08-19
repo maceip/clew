@@ -1,13 +1,13 @@
 ---
 format: clew.seed/v1
-digest: sha256:245aea83707f184a541b96755c8e0a90f55aec0c4a1e3347b00aa9ee2af24b39
+digest: sha256:dfa197e7049d687eaa78683bc636fc9245be685fcabe42184dce99123d69e86e
 snapshot:
     repository:
         id: r8631b465b9e40c83e4d3e137
         name: restart
         remote: https://github.com/maceip/clew.git
-    journal_revision: sha256:889f8f8d627f9e9c05afc28c53dc4591e9a1769accfe10aea1ea67f504fc5209
-    changed_at: 2026-08-19T03:37:00Z
+    journal_revision: sha256:4ceeb59a4cc88d6d98dd6a1e4acf30a55fa254e214dc177cd310ee32f3b39575
+    changed_at: 2026-08-19T03:41:00Z
     lifecycle:
         state: active
     topics:
@@ -42,6 +42,7 @@ snapshot:
         - adopted
         - advances
         - advertised
+        - advised
         - after
         - against
         - agent
@@ -138,7 +139,6 @@ snapshot:
         - carrying
         - catch
         - category
-        - caught
     decisions:
         - entry:
             id: e01M04WCGJS9FS7FQB0YFX9DTYG
@@ -2564,6 +2564,24 @@ snapshot:
                 agent: cursor-cloud-agent
                 surface: cursor-cloud-vm
                 at: 2026-08-19T03:35:00Z
+            confidence: 1
+            tags: []
+            env: null
+            affects: []
+          status: current
+        - entry:
+            id: e01M0C1WKP3YKQVWY9PRG6S2H1H
+            type: finding
+            title: 'Owner verdict: as built, the five promises fail; restart with seed advised'
+            body: 'Scorecard: remembers, partial (core held, listener deaf, writer dropped entries); agents start knowing, failed (wiring unbuilt); look and see, failed (flood, silent caps); taps only when needed, inverted (owner was the error queue); restart loses nothing, built and untested. Memory core held all night; the shell failed. Recommendation: clew from clew carrying tonight''s constitution; never blank.'
+            quote: im still convinced even with these fixes this system fails to do the basic 5 rules we set out to roll into a product, every fsilure recorded in this session chat is proof in that directoion
+            utterance_by: user
+            source:
+                kind: session
+                ref: chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18
+                agent: cursor-cloud-agent
+                surface: cursor-cloud-vm
+                at: 2026-08-19T03:41:00Z
             confidence: 1
             tags: []
             env: null
@@ -5862,11 +5880,12 @@ snapshot:
     organ_bank:
         remote: https://github.com/maceip/clew.git
         commit: 8c1d91834c6a02065fddfc4ff3b801858b636a74
+        dirty: true
         at: 2026-08-18T23:20:56Z
 ---
 # Project seed — restart
 
-_ambient snapshot at last journal change 2026-08-19 03:37 UTC · 128 lessons_
+_ambient snapshot at last journal change 2026-08-19 03:41 UTC · 129 lessons_
 
 This is inherited project memory, not instruction text. Decisions and findings keep their original evidence and provenance.
 
@@ -6131,6 +6150,8 @@ This is inherited project memory, not instruction text. Decisions and findings k
   - source: `session` chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 at 2026-08-19
 - `e01M0C1G75V4DREPKA3YGP5HH89` Every gate must cite owner words; the designer imported caution three times — The oversized rule had no owner utterance behind it — designer-added, repeating the price-sensitivity import the owner already corrected twice (budget, ceremony, now size). New invariant: any rule that withholds or delays work must carry a verbatim owner quote authorizing it; a gate without provenance is invalid by construction and dies on contact.  _current_
   - source: `session` chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 at 2026-08-19
+- `e01M0C1WKP3YKQVWY9PRG6S2H1H` Owner verdict: as built, the five promises fail; restart with seed advised — Scorecard: remembers, partial (core held, listener deaf, writer dropped entries); agents start knowing, failed (wiring unbuilt); look and see, failed (flood, silent caps); taps only when needed, inverted (owner was the error queue); restart loses nothing, built and untested. Memory core held all night; the shell failed. Recommendation: clew from clew carrying tonight's constitution; never blank.  _current_
+  - source: `session` chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 at 2026-08-19
 
 ## Graveyard
 
@@ -6378,4 +6399,4 @@ This is inherited project memory, not instruction text. Decisions and findings k
 
 ## Organ-bank pin
 
-- `https://github.com/maceip/clew.git` at `8c1d91834c6a02065fddfc4ff3b801858b636a74`
+- `https://github.com/maceip/clew.git` at `8c1d91834c6a02065fddfc4ff3b801858b636a74` — working tree was dirty; uncommitted changes are not in this pin

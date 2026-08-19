@@ -1,6 +1,6 @@
 # Journal
 
-_generated 2026-08-19 03:44 UTC · 160 live entries (78 decisions · 50 findings · 9 questions · 23 intents) · 182 total in history_
+_generated 2026-08-19 03:44 UTC · 161 live entries (78 decisions · 51 findings · 9 questions · 23 intents) · 183 total in history_
 
 ## DECIDED
 
@@ -14,13 +14,13 @@ _generated 2026-08-19 03:44 UTC · 160 live entries (78 decisions · 50 findings
 
 ## LEARNED
 
+- `e01M0C1WKP3YKQVWY9PRG6S2H1H` Owner verdict: as built, the five promises fail; restart with seed advised — 3m · current
 - `e01M0C1G75V4DREPKA3YGP5HH89` Every gate must cite owner words; the designer imported caution three times — 9m · current
 - `e01M0C17FED9YSHX94BPF39M039` One root cause: unbuilt contact-point wiring made every failure tonight — 15m · current
 - `e01M0C0S7EQJYH00K7KGY9ZWV2S` The 88 was a symptom: catch-up burst, ambient misclassified, settling unbuilt — 22m · current
 - `e01M0AYE066QK08QK8MTPX4XNFX` Codex finished I13 stale: tree uncommitted, law wording on human surfaces — 10h · current
 - `e01M0AXCM55N0QM9RCRYF48TQ6C` Universal injection point: every model API call rebuilds the mind — 10h · current
 - `e01M0AXCM54CDSPV84DBH1PWGWD` Spec nudge matrix is stale: codex and gemini now ship injection hooks — 10h · current
-- `e01M0AV5721XB0ZFQW42241YJ4A` Daemon fallback birth discarded the triggering session's first prompt — 11h · current
 
 ## OPEN
 
@@ -603,6 +603,13 @@ Name = clew (owner). Alternatives considered: restart — verb collision, names 
 _source: human cli:note · confidence: 1.00_
 
 ## Findings
+
+### e01M0C1WKP3YKQVWY9PRG6S2H1H — Owner verdict: as built, the five promises fail; restart with seed advised  `current`
+> im still convinced even with these fixes this system fails to do the basic 5 rules we set out to roll into a product, every fsilure recorded in this session chat is proof in that directoion
+
+Scorecard: remembers, partial (core held, listener deaf, writer dropped entries); agents start knowing, failed (wiring unbuilt); look and see, failed (flood, silent caps); taps only when needed, inverted (owner was the error queue); restart loses nothing, built and untested. Memory core held all night; the shell failed. Recommendation: clew from clew carrying tonight's constitution; never blank.
+
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00_
 
 ### e01M0C1G75V4DREPKA3YGP5HH89 — Every gate must cite owner words; the designer imported caution three times  `current`
 > when did i authorize or approve _not doing work_ because it was oversized?

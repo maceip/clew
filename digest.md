@@ -1,4 +1,5 @@
 # Journal digest (live entries: id · type/status · title)
+- e01M0C1WKP3YKQVWY9PRG6S2H1H finding/current Owner verdict: as built, the five promises fail; restart with seed advised
 - e01M0C1HZ8SRKXYB9ZDGE6630NK decision/active Tokens are not scarce; owner attention is the only scarce resource
 - e01M0C1G75V4DREPKA3YGP5HH89 finding/current Every gate must cite owner words; the designer imported caution three times
 - e01M0C1G75T47X377Z0KAEBCQJZ decision/active A direct owner order is never refused; envelopes govern only autonomy
@@ -32,5 +33,4 @@
 - e01M0AXMXK3SAATFDFAYZ932TPC decision/active Two registers, one memory: calm words for humans, hard words for agents
 - e01M0AXF5FM9RDFP817NF7QW5BN decision/active Human-facing surface must reduce to the desires it satisfies
 - e01M0AXCM561K3C5QXAVGVGT46T intent/proposed Build the freshness ladder: one delta payload, five delivery layers
-- e01M0AXCM55N0QM9RCRYF48TQ6C finding/current Universal injection point: every model API call rebuilds the mind
-… (160 more omitted for size)
+… (161 more omitted for size)
