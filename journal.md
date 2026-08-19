@@ -17,7 +17,7 @@ _generated 2026-08-19 01:27 UTC · 152 live entries (74 decisions · 47 findings
 - `e01M0AYE066QK08QK8MTPX4XNFX` Codex finished I13 stale: tree uncommitted, law wording on human surfaces — 8h · current
 - `e01M0AXCM55N0QM9RCRYF48TQ6C` Universal injection point: every model API call rebuilds the mind — 8h · current
 - `e01M0AXCM54CDSPV84DBH1PWGWD` Spec nudge matrix is stale: codex and gemini now ship injection hooks — 8h · current
-- `e01M0AV5721XB0ZFQW42241YJ4A` Daemon fallback birth discarded the triggering session's first prompt — 8h · current
+- `e01M0AV5721XB0ZFQW42241YJ4A` Daemon fallback birth discarded the triggering session's first prompt — 9h · current
 - `e01M0ATNY3H0WHX91ASD0AMR8TE` Cold CLEW_HOME loses concurrent births; warm machine state is safe — 9h · current
 - `e01M0ATNY3H0WHX91ASCWE1MM7R` Repo identity is the absolute path, so a rebuilt repo at a reused path is not a… — 9h · current
 - `e01M0ATARAN8NWCBGNTM58QRVPX` Promotion candidates enter project context before the human rules on them — 9h · current
