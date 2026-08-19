@@ -1,23 +1,23 @@
 # Journal
 
-_generated 2026-08-19 03:44 UTC · 161 live entries (78 decisions · 51 findings · 9 questions · 23 intents) · 183 total in history_
+_generated 2026-08-19 03:45 UTC · 161 live entries (78 decisions · 51 findings · 9 questions · 23 intents) · 183 total in history_
 
 ## DECIDED
 
-- `e01M0C1HZ8SRKXYB9ZDGE6630NK` Tokens are not scarce; owner attention is the only scarce resource — 7m · active
-- `e01M0C1G75T47X377Z0KAEBCQJZ` A direct owner order is never refused; envelopes govern only autonomy — 9m · active
-- `e01M0C1820NFREYTAG5T6832442` Contact-point wiring jumps to the top of the build queue, above everything — 13m · active
-- `e01M0C0S7EP6Q5421VRRPJPC60M` Inversion: auto-absorb knowledge, auto-build gaps; humans see exceptions — 22m · active
+- `e01M0C1HZ8SRKXYB9ZDGE6630NK` Tokens are not scarce; owner attention is the only scarce resource — 8m · active
+- `e01M0C1G75T47X377Z0KAEBCQJZ` A direct owner order is never refused; envelopes govern only autonomy — 10m · active
+- `e01M0C1820NFREYTAG5T6832442` Contact-point wiring jumps to the top of the build queue, above everything — 14m · active
+- `e01M0C0S7EP6Q5421VRRPJPC60M` Inversion: auto-absorb knowledge, auto-build gaps; humans see exceptions — 23m · active
 - `e01M0BFY164YEV6DAEFVGGH18VT` The limiter gates distillation timing, never sensing; failure is lag — 5h · active
 - `e01M0BFRYY2WVHJZ3R3TDV4CFTS` The wording sweep covers every fear-attached word; docket stays by name — 5h · active
 - `e01M0BFRYY1EW9CFMJNDJ5QH3M2` Evidence settles merge lines; apply is never asked for finished work — 5h · active
 
 ## LEARNED
 
-- `e01M0C1WKP3YKQVWY9PRG6S2H1H` Owner verdict: as built, the five promises fail; restart with seed advised — 3m · current
-- `e01M0C1G75V4DREPKA3YGP5HH89` Every gate must cite owner words; the designer imported caution three times — 9m · current
-- `e01M0C17FED9YSHX94BPF39M039` One root cause: unbuilt contact-point wiring made every failure tonight — 15m · current
-- `e01M0C0S7EQJYH00K7KGY9ZWV2S` The 88 was a symptom: catch-up burst, ambient misclassified, settling unbuilt — 22m · current
+- `e01M0C1WKP3YKQVWY9PRG6S2H1H` Owner verdict: as built, the five promises fail; restart with seed advised — 4m · current
+- `e01M0C1G75V4DREPKA3YGP5HH89` Every gate must cite owner words; the designer imported caution three times — 10m · current
+- `e01M0C17FED9YSHX94BPF39M039` One root cause: unbuilt contact-point wiring made every failure tonight — 16m · current
+- `e01M0C0S7EQJYH00K7KGY9ZWV2S` The 88 was a symptom: catch-up burst, ambient misclassified, settling unbuilt — 23m · current
 - `e01M0AYE066QK08QK8MTPX4XNFX` Codex finished I13 stale: tree uncommitted, law wording on human surfaces — 10h · current
 - `e01M0AXCM55N0QM9RCRYF48TQ6C` Universal injection point: every model API call rebuilds the mind — 10h · current
 - `e01M0AXCM54CDSPV84DBH1PWGWD` Spec nudge matrix is stale: codex and gemini now ship injection hooks — 10h · current
@@ -46,7 +46,7 @@ _generated 2026-08-19 03:44 UTC · 161 live entries (78 decisions · 51 findings
 
 | Intent | Age | Reality | State |
 |---|---:|---:|---|
-| `e01M0C1B36P7RCCMR6GYK3X97T7` First freshness slice: prompt-submit delta injection for claude and codex | 11m | 0 evidence | proposed |
+| `e01M0C1B36P7RCCMR6GYK3X97T7` First freshness slice: prompt-submit delta injection for claude and codex | 12m | 0 evidence | proposed |
 | `e01M0AZN6HJETV241AK5RSBDHNR` Held: a restart tab — stage selected drift into the next generation | 10h | 0 evidence | proposed |
 | `e01M0AXCM561K3C5QXAVGVGT46T` Build the freshness ladder: one delta payload, five delivery layers | 10h | 0 evidence | proposed |
 | `e01M0AST7PZRJP8XBWDAHWK6QNV` Build invariant I13: ambient seed, birth detection, owner laws, clew from | 11h | 1 evidence | in_flight |
