@@ -1,6 +1,6 @@
 # Journal
 
-_generated 2026-08-19 01:37 UTC · 152 live entries (74 decisions · 47 findings · 9 questions · 22 intents) · 174 total in history_
+_generated 2026-08-19 01:38 UTC · 152 live entries (74 decisions · 47 findings · 9 questions · 22 intents) · 174 total in history_
 
 ## DECIDED
 
@@ -35,10 +35,10 @@ _generated 2026-08-19 01:37 UTC · 152 live entries (74 decisions · 47 findings
 ## ALERTS
 
 - **ABSENT** `e01M0AQHSRF4DVDYZ989PVHGA7R` Birth detection: auto-init a new repo with owner laws only — 10h
-- **ABSENT** `e01M0ARJE1XNN8Q45DJ36FP47YT` Surface coverage: repo-write cloud agents (Cursor-class) are full journal nodes — 9h
-- **ABSENT** `e01M0ARJFTWEWY5H6JFJ17656W4` Surface coverage: PR-only cloud agents (Codex-app-class) contribute knowledge — 9h
-- **ABSENT** `e01M0ARJHKDP6Z6R1FKZSJ8AN4S` Surface coverage: laptop agents fully sensed with zero human effort — 9h
-- **ABSENT** `e01M0ARJKGSQFSH8WSVZEG520DH` Surface coverage: phone reads the glance and receives decision cards — 9h
+- **ABSENT** `e01M0ARJE1XNN8Q45DJ36FP47YT` Surface coverage: repo-write cloud agents (Cursor-class) are full journal nodes — 10h
+- **ABSENT** `e01M0ARJFTWEWY5H6JFJ17656W4` Surface coverage: PR-only cloud agents (Codex-app-class) contribute knowledge — 10h
+- **ABSENT** `e01M0ARJHKDP6Z6R1FKZSJ8AN4S` Surface coverage: laptop agents fully sensed with zero human effort — 10h
+- **ABSENT** `e01M0ARJKGSQFSH8WSVZEG520DH` Surface coverage: phone reads the glance and receives decision cards — 10h
 - **ABSENT** `e01M0ASDMN8S3TNV9502VTFK27E` Wire the seed/lineage libraries into watcher, materialization, and clew from — 9h
 - possible-contradiction `e01M05SA72DPRGNTY7GCN1P7CED` Rename the inbox surface to "docket"; keep inbox as hidden alias — 2d
 
@@ -50,9 +50,9 @@ _generated 2026-08-19 01:37 UTC · 152 live entries (74 decisions · 47 findings
 | `e01M0AXCM561K3C5QXAVGVGT46T` Build the freshness ladder: one delta payload, five delivery layers | 8h | 0 evidence | proposed |
 | `e01M0AST7PZRJP8XBWDAHWK6QNV` Build invariant I13: ambient seed, birth detection, owner laws, clew from | 9h | 1 evidence | in_flight |
 | `e01M0ASDMN8S3TNV9502VTFK27E` Wire the seed/lineage libraries into watcher, materialization, and clew from | 9h | 0 evidence | **ABSENT** |
-| `e01M0ARJKGSQFSH8WSVZEG520DH` Surface coverage: phone reads the glance and receives decision cards | 9h | 0 evidence | **ABSENT** |
-| `e01M0ARJHKDP6Z6R1FKZSJ8AN4S` Surface coverage: laptop agents fully sensed with zero human effort | 9h | 0 evidence | **ABSENT** |
-| `e01M0ARJFTWEWY5H6JFJ17656W4` Surface coverage: PR-only cloud agents (Codex-app-class) contribute knowledge | 9h | 0 evidence | **ABSENT** |
+| `e01M0ARJKGSQFSH8WSVZEG520DH` Surface coverage: phone reads the glance and receives decision cards | 10h | 0 evidence | **ABSENT** |
+| `e01M0ARJHKDP6Z6R1FKZSJ8AN4S` Surface coverage: laptop agents fully sensed with zero human effort | 10h | 0 evidence | **ABSENT** |
+| `e01M0ARJFTWEWY5H6JFJ17656W4` Surface coverage: PR-only cloud agents (Codex-app-class) contribute knowledge | 10h | 0 evidence | **ABSENT** |
 
 ## Decisions
 
