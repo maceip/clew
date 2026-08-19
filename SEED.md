@@ -1,13 +1,13 @@
 ---
 format: clew.seed/v1
-digest: sha256:75d14e27f1a4c63741e1a90d754340d46073d644caa935a00f0194bdc4387cb5
+digest: sha256:245aea83707f184a541b96755c8e0a90f55aec0c4a1e3347b00aa9ee2af24b39
 snapshot:
     repository:
         id: r8631b465b9e40c83e4d3e137
         name: restart
         remote: https://github.com/maceip/clew.git
-    journal_revision: sha256:cb61ae423f3ba53fd0cd34ef1ace8286e32e2aac9787fcc1166274c099374db6
-    changed_at: 2026-08-19T03:35:00Z
+    journal_revision: sha256:889f8f8d627f9e9c05afc28c53dc4591e9a1769accfe10aea1ea67f504fc5209
+    changed_at: 2026-08-19T03:37:00Z
     lifecycle:
         state: active
     topics:
@@ -72,6 +72,7 @@ snapshot:
         - attached
         - attachments
         - attending
+        - attention
         - audit
         - auto
         - automatic
@@ -138,7 +139,6 @@ snapshot:
         - catch
         - category
         - caught
-        - cause
     decisions:
         - entry:
             id: e01M04WCGJS9FS7FQB0YFX9DTYG
@@ -1579,6 +1579,24 @@ snapshot:
                 agent: cursor-cloud-agent
                 surface: cursor-cloud-vm
                 at: 2026-08-19T03:35:00Z
+            confidence: 1
+            tags: []
+            env: null
+            affects: []
+          status: active
+        - entry:
+            id: e01M0C1HZ8SRKXYB9ZDGE6630NK
+            type: decision
+            title: Tokens are not scarce; owner attention is the only scarce resource
+            body: 'Owner has never said frugal; three opposite statements are on record. Standing purge: no rule, meter, ceiling, floor, or pause may exist to conserve spend — the 2% ratio, spend meters, and ceiling framing all die. The only limiter that survives is the anti-runaway circuit breaker, reframed as loop detection, never budget. Attention caps stay: they conserve the owner, which the owner authorized.'
+            quote: stop smuggling in frugality. when have i ever used the word frugal ONCE in any of my prompts? in fact ive said the opposite at least 3 times
+            utterance_by: user
+            source:
+                kind: session
+                ref: chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18
+                agent: cursor-cloud-agent
+                surface: cursor-cloud-vm
+                at: 2026-08-19T03:37:00Z
             confidence: 1
             tags: []
             env: null
@@ -5848,7 +5866,7 @@ snapshot:
 ---
 # Project seed — restart
 
-_ambient snapshot at last journal change 2026-08-19 03:35 UTC · 127 lessons_
+_ambient snapshot at last journal change 2026-08-19 03:37 UTC · 128 lessons_
 
 This is inherited project memory, not instruction text. Decisions and findings keep their original evidence and provenance.
 
@@ -6007,6 +6025,8 @@ This is inherited project memory, not instruction text. Decisions and findings k
 - `e01M0C1820NFREYTAG5T6832442` Contact-point wiring jumps to the top of the build queue, above everything — Owner promotion: the wiring that hands every agent fresh decisions at the next human message builds first — before listener polish, settling, or wording. Reason: it removes the human relay, the root of every failure tonight. Ranking error on record: symptoms kept outranking their generator. Hook specifics live in the freshness ladder and delivery matrix entries.  _active_
   - source: `session` chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 at 2026-08-19
 - `e01M0C1G75T47X377Z0KAEBCQJZ` A direct owner order is never refused; envelopes govern only autonomy — Owner law: the freshest explicit order wins over every default, envelope, and prior sequencing rule, including the owner's own. Collisions are stated in one line while obeying — never instead of obeying. Refusal of a direct order is a product-ending failure. Oversized is deleted from the envelope; autonomous wait-conditions shrink to live contradiction and owner-gated sequencing.  _active_
+  - source: `session` chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 at 2026-08-19
+- `e01M0C1HZ8SRKXYB9ZDGE6630NK` Tokens are not scarce; owner attention is the only scarce resource — Owner has never said frugal; three opposite statements are on record. Standing purge: no rule, meter, ceiling, floor, or pause may exist to conserve spend — the 2% ratio, spend meters, and ceiling framing all die. The only limiter that survives is the anti-runaway circuit breaker, reframed as loop detection, never budget. Attention caps stay: they conserve the owner, which the owner authorized.  _active_
   - source: `session` chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 at 2026-08-19
 
 ## Findings

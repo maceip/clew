@@ -1,16 +1,16 @@
 # Journal
 
-_generated 2026-08-19 03:38 UTC · 159 live entries (77 decisions · 50 findings · 9 questions · 23 intents) · 181 total in history_
+_generated 2026-08-19 03:38 UTC · 160 live entries (78 decisions · 50 findings · 9 questions · 23 intents) · 182 total in history_
 
 ## DECIDED
 
+- `e01M0C1HZ8SRKXYB9ZDGE6630NK` Tokens are not scarce; owner attention is the only scarce resource — 1m · active
 - `e01M0C1G75T47X377Z0KAEBCQJZ` A direct owner order is never refused; envelopes govern only autonomy — 3m · active
 - `e01M0C1820NFREYTAG5T6832442` Contact-point wiring jumps to the top of the build queue, above everything — 7m · active
 - `e01M0C0S7EP6Q5421VRRPJPC60M` Inversion: auto-absorb knowledge, auto-build gaps; humans see exceptions — 16m · active
 - `e01M0BFY164YEV6DAEFVGGH18VT` The limiter gates distillation timing, never sensing; failure is lag — 5h · active
 - `e01M0BFRYY2WVHJZ3R3TDV4CFTS` The wording sweep covers every fear-attached word; docket stays by name — 5h · active
 - `e01M0BFRYY1EW9CFMJNDJ5QH3M2` Evidence settles merge lines; apply is never asked for finished work — 5h · active
-- `e01M0BF0WMX264RA9D0VTM9R24K` Entry ids are machine plumbing: never shown to or relayed through humans — 5h · active
 
 ## LEARNED
 
@@ -55,6 +55,13 @@ _generated 2026-08-19 03:38 UTC · 159 live entries (77 decisions · 50 findings
 | `e01M0ARJHKDP6Z6R1FKZSJ8AN4S` Surface coverage: laptop agents fully sensed with zero human effort | 12h | 0 evidence | **ABSENT** |
 
 ## Decisions
+
+### e01M0C1HZ8SRKXYB9ZDGE6630NK — Tokens are not scarce; owner attention is the only scarce resource  `active`
+> stop smuggling in frugality. when have i ever used the word frugal ONCE in any of my prompts? in fact ive said the opposite at least 3 times
+
+Owner has never said frugal; three opposite statements are on record. Standing purge: no rule, meter, ceiling, floor, or pause may exist to conserve spend — the 2% ratio, spend meters, and ceiling framing all die. The only limiter that survives is the anti-runaway circuit breaker, reframed as loop detection, never budget. Attention caps stay: they conserve the owner, which the owner authorized.
+
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00_
 
 ### e01M0C1G75T47X377Z0KAEBCQJZ — A direct owner order is never refused; envelopes govern only autonomy  `active`
 > when i tell the agent to do something "build all" and it doesnt do it, then im angry and were done
