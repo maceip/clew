@@ -1,0 +1,11 @@
+id: v01M0C2A4QGQV5SGW1BP5GDGG56
+kind: evidence
+entry: e01M0ASDMN8S3TNV9502TGKHRPD
+payload:
+    kind: commit
+    note: Build prompt freshness and cloud return paths
+    ref: 05b8bfc65fba1be5dba39f7c072806860cb59e15
+by:
+    who: differ
+    surface: macs-MacBook-Pro
+at: 2026-08-19T03:51:18Z
