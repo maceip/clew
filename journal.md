@@ -1,26 +1,26 @@
 # Journal
 
-_generated 2026-08-19 03:37 UTC · 157 live entries (76 decisions · 49 findings · 9 questions · 23 intents) · 179 total in history_
+_generated 2026-08-19 03:37 UTC · 159 live entries (77 decisions · 50 findings · 9 questions · 23 intents) · 181 total in history_
 
 ## DECIDED
 
+- `e01M0C1G75T47X377Z0KAEBCQJZ` A direct owner order is never refused; envelopes govern only autonomy — 2m · active
 - `e01M0C1820NFREYTAG5T6832442` Contact-point wiring jumps to the top of the build queue, above everything — 6m · active
 - `e01M0C0S7EP6Q5421VRRPJPC60M` Inversion: auto-absorb knowledge, auto-build gaps; humans see exceptions — 15m · active
 - `e01M0BFY164YEV6DAEFVGGH18VT` The limiter gates distillation timing, never sensing; failure is lag — 5h · active
 - `e01M0BFRYY2WVHJZ3R3TDV4CFTS` The wording sweep covers every fear-attached word; docket stays by name — 5h · active
 - `e01M0BFRYY1EW9CFMJNDJ5QH3M2` Evidence settles merge lines; apply is never asked for finished work — 5h · active
 - `e01M0BF0WMX264RA9D0VTM9R24K` Entry ids are machine plumbing: never shown to or relayed through humans — 5h · active
-- `e01M0BEYP65CE70G0VVSX3PV01B` Finished means shared: work ends pushed or PR'd; local-only is an alarm — 5h · active
 
 ## LEARNED
 
+- `e01M0C1G75V4DREPKA3YGP5HH89` Every gate must cite owner words; the designer imported caution three times — 2m · current
 - `e01M0C17FED9YSHX94BPF39M039` One root cause: unbuilt contact-point wiring made every failure tonight — 8m · current
 - `e01M0C0S7EQJYH00K7KGY9ZWV2S` The 88 was a symptom: catch-up burst, ambient misclassified, settling unbuilt — 15m · current
 - `e01M0AYE066QK08QK8MTPX4XNFX` Codex finished I13 stale: tree uncommitted, law wording on human surfaces — 10h · current
 - `e01M0AXCM55N0QM9RCRYF48TQ6C` Universal injection point: every model API call rebuilds the mind — 10h · current
 - `e01M0AXCM54CDSPV84DBH1PWGWD` Spec nudge matrix is stale: codex and gemini now ship injection hooks — 10h · current
 - `e01M0AV5721XB0ZFQW42241YJ4A` Daemon fallback birth discarded the triggering session's first prompt — 11h · current
-- `e01M0ATNY3H0WHX91ASD0AMR8TE` Cold CLEW_HOME loses concurrent births; warm machine state is safe — 11h · current
 
 ## OPEN
 
@@ -55,6 +55,13 @@ _generated 2026-08-19 03:37 UTC · 157 live entries (76 decisions · 49 findings
 | `e01M0ARJHKDP6Z6R1FKZSJ8AN4S` Surface coverage: laptop agents fully sensed with zero human effort | 11h | 0 evidence | **ABSENT** |
 
 ## Decisions
+
+### e01M0C1G75T47X377Z0KAEBCQJZ — A direct owner order is never refused; envelopes govern only autonomy  `active`
+> when i tell the agent to do something "build all" and it doesnt do it, then im angry and were done
+
+Owner law: the freshest explicit order wins over every default, envelope, and prior sequencing rule, including the owner's own. Collisions are stated in one line while obeying — never instead of obeying. Refusal of a direct order is a product-ending failure. Oversized is deleted from the envelope; autonomous wait-conditions shrink to live contradiction and owner-gated sequencing.
+
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00_
 
 ### e01M0C1820NFREYTAG5T6832442 — Contact-point wiring jumps to the top of the build queue, above everything  `active`
 > so lets build the one piece thats missing then? why is that not top of the list of things to do ?
@@ -589,6 +596,13 @@ Name = clew (owner). Alternatives considered: restart — verb collision, names 
 _source: human cli:note · confidence: 1.00_
 
 ## Findings
+
+### e01M0C1G75V4DREPKA3YGP5HH89 — Every gate must cite owner words; the designer imported caution three times  `current`
+> when did i authorize or approve _not doing work_ because it was oversized?
+
+The oversized rule had no owner utterance behind it — designer-added, repeating the price-sensitivity import the owner already corrected twice (budget, ceremony, now size). New invariant: any rule that withholds or delays work must carry a verbatim owner quote authorizing it; a gate without provenance is invalid by construction and dies on contact.
+
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00_
 
 ### e01M0C17FED9YSHX94BPF39M039 — One root cause: unbuilt contact-point wiring made every failure tonight  `current`
 > why did i have to tell it to do that? that seems like another failure of our system, as human users should never have to tell it that
