@@ -1,4 +1,5 @@
 # Journal digest (live entries: id · type/status · title)
+- e01M0C1B36P7RCCMR6GYK3X97T7 intent/proposed First freshness slice: prompt-submit delta injection for claude and codex
 - e01M0C1820NFREYTAG5T6832442 decision/active Contact-point wiring jumps to the top of the build queue, above everything
 - e01M0C17FED9YSHX94BPF39M039 finding/current One root cause: unbuilt contact-point wiring made every failure tonight
 - e01M0C0S7EQJYH00K7KGY9ZWV2S finding/current The 88 was a symptom: catch-up burst, ambient misclassified, settling unbuilt
@@ -32,5 +33,4 @@
 - e01M0AXCM54CDSPV84DBH1PWGWD finding/current Spec nudge matrix is stale: codex and gemini now ship injection hooks
 - e01M0AXCM53D36PDN0H85S0WE3W decision/active Mind-plane freshness is vendor-neutral; hooks accelerate, never carry it
 - e01M0AWM6188V135JTTP4S3MQAA decision/possible-contradiction Incarnation reset needs all three facts; any Clew marker protects the repo
-- e01M0AVXA7EH2KD1BPZ4GJNKN67 decision/active Witness-node role adopted: always-on ear with owner API creds, sequenced
-… (156 more omitted for size)
+… (157 more omitted for size)

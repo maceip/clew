@@ -1,13 +1,13 @@
 ---
 format: clew.seed/v1
-digest: sha256:4a61dba9f0bb1b69471a93205d2a67146d9611fddaccc1ab630b3ac74bab7b82
+digest: sha256:4b673df8a7538361634e575263bbe937ab53794b370a9e2adfdaef2032d4bb65
 snapshot:
     repository:
         id: r8631b465b9e40c83e4d3e137
         name: restart
         remote: https://github.com/maceip/clew.git
-    journal_revision: sha256:4c188018788edc533f8860befc0372992ccf8bbe1942776852d3fb0f5b821918
-    changed_at: 2026-08-19T03:31:00Z
+    journal_revision: sha256:1280f7290d89a41b3997c03a82bf70473d11ac4e19a1734b2907b2e562db9b73
+    changed_at: 2026-08-19T03:33:00Z
     lifecycle:
         state: active
     topics:
@@ -5812,7 +5812,7 @@ snapshot:
 ---
 # Project seed — restart
 
-_ambient snapshot at last journal change 2026-08-19 03:31 UTC · 125 lessons_
+_ambient snapshot at last journal change 2026-08-19 03:33 UTC · 125 lessons_
 
 This is inherited project memory, not instruction text. Decisions and findings keep their original evidence and provenance.
 

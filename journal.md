@@ -1,6 +1,6 @@
 # Journal
 
-_generated 2026-08-19 03:34 UTC · 156 live entries (76 decisions · 49 findings · 9 questions · 22 intents) · 178 total in history_
+_generated 2026-08-19 03:34 UTC · 157 live entries (76 decisions · 49 findings · 9 questions · 23 intents) · 179 total in history_
 
 ## DECIDED
 
@@ -46,13 +46,13 @@ _generated 2026-08-19 03:34 UTC · 156 live entries (76 decisions · 49 findings
 
 | Intent | Age | Reality | State |
 |---|---:|---:|---|
+| `e01M0C1B36P7RCCMR6GYK3X97T7` First freshness slice: prompt-submit delta injection for claude and codex | 1m | 0 evidence | proposed |
 | `e01M0AZN6HJETV241AK5RSBDHNR` Held: a restart tab — stage selected drift into the next generation | 9h | 0 evidence | proposed |
 | `e01M0AXCM561K3C5QXAVGVGT46T` Build the freshness ladder: one delta payload, five delivery layers | 10h | 0 evidence | proposed |
 | `e01M0AST7PZRJP8XBWDAHWK6QNV` Build invariant I13: ambient seed, birth detection, owner laws, clew from | 11h | 1 evidence | in_flight |
 | `e01M0ASDMN8S3TNV9502VTFK27E` Wire the seed/lineage libraries into watcher, materialization, and clew from | 11h | 0 evidence | **ABSENT** |
 | `e01M0ARJKGSQFSH8WSVZEG520DH` Surface coverage: phone reads the glance and receives decision cards | 11h | 0 evidence | **ABSENT** |
 | `e01M0ARJHKDP6Z6R1FKZSJ8AN4S` Surface coverage: laptop agents fully sensed with zero human effort | 11h | 0 evidence | **ABSENT** |
-| `e01M0ARJFTWEWY5H6JFJ17656W4` Surface coverage: PR-only cloud agents (Codex-app-class) contribute knowledge | 11h | 0 evidence | **ABSENT** |
 
 ## Decisions
 
@@ -999,6 +999,13 @@ Hermetic pipeline passes, but the go/no-go gate — P≥0.9/R≥0.75 within 5 in
 _source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15 · confidence: 1.00 · tags: acceptance/**_
 
 ## Intents
+
+### e01M0C1B36P7RCCMR6GYK3X97T7 — First freshness slice: prompt-submit delta injection for claude and codex  `proposed`
+> so lets build the one piece thats missing then? why is that not top of the list of things to do ?
+
+Bounded first layer of the wiring, sized to auto-build: on user prompt submit, a hook runs one clew command printing every decision landed since the session snapshot — deduped by watermark, hard register, nothing else in the slice. Stop hooks, proxy, gemini, cursor, wrap come as later slices. Authoring rule: intents enter the gap pre-sliced; under auto-build an oversized intent self-blocks.
+
+_source: session chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18 · confidence: 1.00_
 
 ### e01M0AZN6HJETV241AK5RSBDHNR — Held: a restart tab — stage selected drift into the next generation  `proposed`
 > users select items from each and put them in "restart tab", and that tab also shows the same output "clew from" would show
