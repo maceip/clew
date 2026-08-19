@@ -1,0 +1,17 @@
+id: e01M0C2GC6ZBECVGWTTAJ5DX059
+type: finding
+title: 'Fourth corpse, same autopsy — but this one pointed at its own hole'
+body: >-
+  All four generations built organs before the pulse: blocks before use, surfaces before a core, screens before wiring. Difference this time: the gap screen listed the missing wiring all evening while triage ranked symptoms above it. The machinery detected its own fatal absence; governance failed to act. The shared branch never failed once in four days.
+quote: 'this is like a nightmare deja vu -- it seems like stratura all over again? the core isnt built / wired?'
+utterance_by: user
+source:
+    kind: session
+    ref: chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18
+    agent: cursor-cloud-agent
+    surface: cursor-cloud-vm
+    at: 2026-08-19T03:53:00Z
+confidence: 1
+tags: []
+env: null
+affects: []
