@@ -1,0 +1,17 @@
+id: e01M0C0S7EP6Q5421VRRPJPC60M
+type: decision
+title: 'Inversion: auto-absorb knowledge, auto-build gaps; humans see exceptions'
+body: >-
+  Owner ruling after 88 items flooded the merge: absorption is the default — non-conflicting knowledge merges itself; pending intents auto-build in dependency order. Human eyes get exceptions only: gated by owner sequencing, contradicted by a live decision, oversized blast radius, or weak provenance. Screens become a flight log plus exception report. Supersedes nothing-auto-acts and no-build-all.
+quote: 'it should auto-merge all incoming knoweldge items and build all pending intent gaps'
+utterance_by: user
+source:
+    kind: session
+    ref: chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18
+    agent: cursor-cloud-agent
+    surface: cursor-cloud-vm
+    at: 2026-08-19T03:22:00Z
+confidence: 1
+tags: []
+env: null
+affects: []

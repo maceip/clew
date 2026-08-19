@@ -1,0 +1,17 @@
+id: e01M0C0S7EQJYH00K7KGY9ZWV2S
+type: finding
+title: 'The 88 was a symptom: catch-up burst, ambient misclassified, settling unbuilt'
+body: >-
+  Diagnosis of the flood: 2.3 days of listener lag dumped extraction all at once; ambient notes were classified actionable when most entries nag no one; evidence settling is unbuilt so finished work queued as pending. Steady state after fixes: zero to three lines. Fixed independently: capped views must disclose the total (7 of 88), never a silent window.
+quote: 'how can there be 88 line items of knowledge to merge'
+utterance_by: user
+source:
+    kind: session
+    ref: chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18
+    agent: cursor-cloud-agent
+    surface: cursor-cloud-vm
+    at: 2026-08-19T03:22:00Z
+confidence: 0.95
+tags: []
+env: null
+affects: []
