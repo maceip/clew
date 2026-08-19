@@ -1,0 +1,17 @@
+id: e01M0C1G75V4DREPKA3YGP5HH89
+type: finding
+title: 'Every gate must cite owner words; the designer imported caution three times'
+body: >-
+  The oversized rule had no owner utterance behind it — designer-added, repeating the price-sensitivity import the owner already corrected twice (budget, ceremony, now size). New invariant: any rule that withholds or delays work must carry a verbatim owner quote authorizing it; a gate without provenance is invalid by construction and dies on contact.
+quote: 'when did i authorize or approve _not doing work_ because it was oversized?'
+utterance_by: user
+source:
+    kind: session
+    ref: chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18
+    agent: cursor-cloud-agent
+    surface: cursor-cloud-vm
+    at: 2026-08-19T03:35:00Z
+confidence: 1
+tags: []
+env: null
+affects: []

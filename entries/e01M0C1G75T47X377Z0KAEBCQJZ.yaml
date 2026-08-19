@@ -1,0 +1,17 @@
+id: e01M0C1G75T47X377Z0KAEBCQJZ
+type: decision
+title: 'A direct owner order is never refused; envelopes govern only autonomy'
+body: >-
+  Owner law: the freshest explicit order wins over every default, envelope, and prior sequencing rule, including the owner's own. Collisions are stated in one line while obeying — never instead of obeying. Refusal of a direct order is a product-ending failure. Oversized is deleted from the envelope; autonomous wait-conditions shrink to live contradiction and owner-gated sequencing.
+quote: 'when i tell the agent to do something "build all" and it doesnt do it, then im angry and were done'
+utterance_by: user
+source:
+    kind: session
+    ref: chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18
+    agent: cursor-cloud-agent
+    surface: cursor-cloud-vm
+    at: 2026-08-19T03:35:00Z
+confidence: 1
+tags: []
+env: null
+affects: []
