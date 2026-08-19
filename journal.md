@@ -1,11 +1,11 @@
 # Journal
 
-_generated 2026-08-19 03:33 UTC · 156 live entries (76 decisions · 49 findings · 9 questions · 22 intents) · 178 total in history_
+_generated 2026-08-19 03:34 UTC · 156 live entries (76 decisions · 49 findings · 9 questions · 22 intents) · 178 total in history_
 
 ## DECIDED
 
-- `e01M0C1820NFREYTAG5T6832442` Contact-point wiring jumps to the top of the build queue, above everything — 2m · active
-- `e01M0C0S7EP6Q5421VRRPJPC60M` Inversion: auto-absorb knowledge, auto-build gaps; humans see exceptions — 11m · active
+- `e01M0C1820NFREYTAG5T6832442` Contact-point wiring jumps to the top of the build queue, above everything — 3m · active
+- `e01M0C0S7EP6Q5421VRRPJPC60M` Inversion: auto-absorb knowledge, auto-build gaps; humans see exceptions — 12m · active
 - `e01M0BFY164YEV6DAEFVGGH18VT` The limiter gates distillation timing, never sensing; failure is lag — 5h · active
 - `e01M0BFRYY2WVHJZ3R3TDV4CFTS` The wording sweep covers every fear-attached word; docket stays by name — 5h · active
 - `e01M0BFRYY1EW9CFMJNDJ5QH3M2` Evidence settles merge lines; apply is never asked for finished work — 5h · active
@@ -14,8 +14,8 @@ _generated 2026-08-19 03:33 UTC · 156 live entries (76 decisions · 49 findings
 
 ## LEARNED
 
-- `e01M0C17FED9YSHX94BPF39M039` One root cause: unbuilt contact-point wiring made every failure tonight — 4m · current
-- `e01M0C0S7EQJYH00K7KGY9ZWV2S` The 88 was a symptom: catch-up burst, ambient misclassified, settling unbuilt — 11m · current
+- `e01M0C17FED9YSHX94BPF39M039` One root cause: unbuilt contact-point wiring made every failure tonight — 5m · current
+- `e01M0C0S7EQJYH00K7KGY9ZWV2S` The 88 was a symptom: catch-up burst, ambient misclassified, settling unbuilt — 12m · current
 - `e01M0AYE066QK08QK8MTPX4XNFX` Codex finished I13 stale: tree uncommitted, law wording on human surfaces — 10h · current
 - `e01M0AXCM55N0QM9RCRYF48TQ6C` Universal injection point: every model API call rebuilds the mind — 10h · current
 - `e01M0AXCM54CDSPV84DBH1PWGWD` Spec nudge matrix is stale: codex and gemini now ship injection hooks — 10h · current
