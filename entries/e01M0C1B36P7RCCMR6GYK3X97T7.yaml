@@ -1,0 +1,17 @@
+id: e01M0C1B36P7RCCMR6GYK3X97T7
+type: intent
+title: 'First freshness slice: prompt-submit delta injection for claude and codex'
+body: >-
+  Bounded first layer of the wiring, sized to auto-build: on user prompt submit, a hook runs one clew command printing every decision landed since the session snapshot — deduped by watermark, hard register, nothing else in the slice. Stop hooks, proxy, gemini, cursor, wrap come as later slices. Authoring rule: intents enter the gap pre-sliced; under auto-build an oversized intent self-blocks.
+quote: 'so lets build the one piece thats missing then? why is that not top of the list of things to do ?'
+utterance_by: user
+source:
+    kind: session
+    ref: chat:cursor-cloud-agent/stratura-strategy-2026-08-15-to-18
+    agent: cursor-cloud-agent
+    surface: cursor-cloud-vm
+    at: 2026-08-19T03:33:00Z
+confidence: 1
+tags: []
+env: null
+affects: []
